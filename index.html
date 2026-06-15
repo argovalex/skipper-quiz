@@ -253,7 +253,7 @@ let quizAnswered = false;  // true after user clicks an option
 const LETTERS_HE = ['א','ב','ג','ד'];
 const LETTERS_EN = ['A','B','C','D'];
 let LETTERS = LETTERS_HE;
-const TOPICS = ['כניסה לנמל','אורות ניווט','זכות מעבר','אותות מצוקה','עגינה','מזג אוויר','ניווט','ספנות','בטיחות','רדיו VHF','כללי','מצפן','GPS','מד עומק','הגה אוטומטי','קשר VHF','מכ"מ','ציוד הצלה'];
+const TOPICS = ['כניסה לנמל','אורות ניווט','זכות מעבר','אותות מצוקה','אותות קוליים','עגינה','מזג אוויר','ניווט','ספנות','בטיחות','רדיו VHF','כללי','מצפן','GPS','מד עומק','הגה אוטומטי','קשר VHF','מכ"מ','ציוד הצלה','מיצוף','דגלים','תמרוני ספינה'];
 
 function setLang(l) {
   currentLang = l;
@@ -2167,55 +2167,150 @@ function parseBlastPatternMulti(answerText, questionText, explText) {
       || ['L'];
 }
 
+const BLAST_DUR = { L: 2.0, S: 0.5 };
+const BLAST_GAP = 0.45;
+
 function playBlastPattern(pattern) {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     let t = ctx.currentTime + 0.4;
     pattern.forEach(b => {
-      const dur = b === 'L' ? 2.0 : 1.0;
-      [230, 460, 115].forEach((freq, i) => {
+      const dur = BLAST_DUR[b];
+      const atk = 0.04, rel = 0.07;
+      [[150, 0.50], [300, 0.22], [450, 0.10], [600, 0.05]].forEach(([freq, amp]) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
+        osc.type = 'sawtooth';
         osc.frequency.value = freq;
-        osc.type = 'sine';
-        gain.gain.setValueAtTime([0.4, 0.15, 0.25][i], t);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + dur - 0.05);
+        gain.gain.setValueAtTime(0.001, t);
+        gain.gain.linearRampToValueAtTime(amp, t + atk);
+        gain.gain.setValueAtTime(amp, t + dur - rel);
+        gain.gain.linearRampToValueAtTime(0.001, t + dur);
         osc.connect(gain); gain.connect(ctx.destination);
-        osc.start(t); osc.stop(t + dur);
+        osc.start(t); osc.stop(t + dur + 0.05);
       });
-      t += (b === 'L' ? 2.0 : 1.0) + 0.35;
+      t += dur + BLAST_GAP;
     });
   } catch(e) {}
 }
 
-function generateSoundSignalScene(pattern) {
-  const total = pattern.length;
-  const spacing = Math.min(56, 300 / Math.max(total, 1));
-  const startX = 180 - (total - 1) * spacing / 2;
-  const waveY = 200;
-  let blastEls = '', timeCursor = 0.5;
-  const cycleDur = (pattern.reduce((s,b) => s + (b==='L'?2.0:1.0), 0) + 0.35*(total-1) + 1.5).toFixed(1);
+// ── Boat drawing helpers ─────────────────────────────────────────────────────
+function sideBoat(cx, by, color, dk) {
+  // Pilothouse motorboat, bow→right, stern (motor)→left. by=waterline.
+  return `
+  <!-- Hull body -->
+  <path d="M${cx-118},${by-4} L${cx-118},${by-16} L${cx-105},${by-20}
+           L${cx+70},${by-20} L${cx+112},${by-6} L${cx+118},${by+2}
+           L${cx-118},${by+2} Z" fill="${color}" stroke="${dk}" stroke-width="1.5"/>
+  <!-- Hull keel/bottom -->
+  <path d="M${cx-118},${by+2} L${cx+118},${by+2} L${cx+108},${by+14} L${cx-128},${by+14} Z"
+        fill="${color}" stroke="${dk}" stroke-width="1.2" opacity=".85"/>
+  <!-- Waterline stripe -->
+  <line x1="${cx-118}" y1="${by+2}" x2="${cx+118}" y2="${by+2}" stroke="${dk}" stroke-width="1.8"/>
+  <!-- Pilothouse / cabin -->
+  <rect x="${cx-60}" y="${by-56}" width="106" height="38" rx="5" fill="${color}" stroke="${dk}" stroke-width="1.3"/>
+  <!-- Cabin roof -->
+  <rect x="${cx-56}" y="${by-66}" width="98" height="14" rx="6" fill="${dk}"/>
+  <!-- Windshield (angled glass, bow side) -->
+  <path d="M${cx+46},${by-56} L${cx+44},${by-66} L${cx+58},${by-66} L${cx+62},${by-56} Z"
+        fill="#7eb8f7" opacity=".6" stroke="${dk}" stroke-width="0.8"/>
+  <!-- Cabin windows -->
+  <rect x="${cx-40}" y="${by-53}" width="20" height="13" rx="2.5" fill="#7eb8f7" opacity=".8"/>
+  <rect x="${cx-14}" y="${by-53}" width="20" height="13" rx="2.5" fill="#7eb8f7" opacity=".8"/>
+  <rect x="${cx+12}" y="${by-53}" width="20" height="13" rx="2.5" fill="#7eb8f7" opacity=".8"/>
+  <!-- Bow deck (open, forward of cabin) -->
+  <rect x="${cx+62}" y="${by-20}" width="46" height="14" rx="2" fill="${color}" stroke="${dk}" stroke-width="0.8" opacity=".9"/>
+  <!-- Bow cleat -->
+  <circle cx="${cx+96}" cy="${by-13}" r="3" fill="${dk}"/>
+  <!-- Outboard motor at stern -->
+  <rect x="${cx-135}" y="${by-30}" width="18" height="36" rx="3" fill="${dk}"/>
+  <rect x="${cx-143}" y="${by-24}" width="10" height="22" rx="2" fill="${dk}"/>
+  <!-- Motor prop/exhaust -->
+  <path d="M${cx-136},${by+6} L${cx-152},${by+10} L${cx-150},${by+16} L${cx-134},${by+12} Z" fill="${dk}"/>
+  <!-- Antenna on roof -->
+  <line x1="${cx-30}" y1="${by-66}" x2="${cx-30}" y2="${by-86}" stroke="${dk}" stroke-width="1.5"/>
+  <line x1="${cx-34}" y1="${by-86}" x2="${cx-26}" y2="${by-86}" stroke="${dk}" stroke-width="1"/>`;
+}
 
+function topBoat(cx, cy, color, dk, label) {
+  // Top-view motorboat (bird's eye). Points right (bow→right).
+  return `
+  <!-- Hull -->
+  <path d="M${cx+58},${cy} L${cx+20},${cy-15} L${cx-46},${cy-16} L${cx-58},${cy} L${cx-46},${cy+16} L${cx+20},${cy+15} Z"
+        fill="${color}" stroke="${dk}" stroke-width="1.5"/>
+  <!-- Cabin top -->
+  <rect x="${cx-30}" y="${cy-10}" width="48" height="20" rx="4" fill="${dk}" opacity=".85"/>
+  <!-- Windshield strip -->
+  <rect x="${cx+18}" y="${cy-8}" width="14" height="16" rx="2" fill="#7eb8f7" opacity=".6"/>
+  <!-- Bow point -->
+  <polygon points="${cx+60},${cy} ${cx+50},${cy-6} ${cx+50},${cy+6}" fill="${dk}"/>
+  <!-- Motor at stern -->
+  <rect x="${cx-66}" y="${cy-6}" width="12" height="12" rx="2" fill="${dk}"/>
+  <text x="${cx}" y="${cy+30}" text-anchor="middle" fill="${color}" font-size="9" font-family="Heebo,sans-serif" font-weight="700">${label}</text>`;
+}
+
+function purpleSailboat(x, y, scale) {
+  // Small purple sailboat watermark
+  const s = scale || 1;
+  return `<g transform="translate(${x},${y}) scale(${s})">
+  <path d="M-20,18 L20,18 L14,24 L-14,24 Z" fill="#8e44ad" stroke="#6c3483" stroke-width="1"/>
+  <path d="M0,18 L0,-22 L-24,18 Z" fill="#9b59b6" opacity=".85"/>
+  <path d="M0,18 L0,-8 L18,18 Z" fill="#7d3c98" opacity=".8"/>
+  <line x1="0" y1="18" x2="0" y2="-24" stroke="#6c3483" stroke-width="1.2"/>
+  </g>`;
+}
+
+function generateSoundSignalScene(pattern, qText) {
+  const SHORT_R = 10, LONG_W = 56, LONG_H = 18, GAP = 14, CY = 172;
+  const SIG_COLOR = '#e74c3c';
+  const isOvertake = /עוקפת|עוקף|overtake/i.test(qText || '');
+
+  // ── Blast timing ──────────────────────────────────────────────────────────
+  const starts = [];
+  let t = 0.4;
+  pattern.forEach(b => { starts.push(t); t += BLAST_DUR[b] + BLAST_GAP; });
+
+  // ── Blast symbols ─────────────────────────────────────────────────────────
+  const totalW = pattern.reduce((s,b) => s + (b==='L' ? LONG_W : SHORT_R*2), 0) + GAP*(pattern.length-1);
+  let x = 180 - totalW / 2;
+  let blastEls = '';
   pattern.forEach((b, i) => {
-    const dur = b === 'L' ? 2.0 : 1.0;
-    const cx = startX + i * spacing;
-    const color = b === 'L' ? '#4a90d9' : '#2ecc71';
-    const r1 = b === 'L' ? 22 : 14, r2 = b === 'L' ? 38 : 26;
-    const bStr = timeCursor.toFixed(1) + 's';
-    const dStr = dur.toFixed(1) + 's';
-    blastEls += `
-    <circle cx="${cx}" cy="${waveY}" r="4" fill="${color}" opacity="0">
-      <animate attributeName="r" values="4;${r1};4" dur="${dStr}" begin="${bStr}" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0;0.9;0" dur="${dStr}" begin="${bStr}" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="${cx}" cy="${waveY}" r="${r1}" fill="none" stroke="${color}" stroke-width="1.5" opacity="0">
-      <animate attributeName="r" values="${r1};${r2};${r1}" dur="${dStr}" begin="${bStr}" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.5;0;0.5" dur="${dStr}" begin="${bStr}" repeatCount="indefinite"/>
-    </circle>
-    <text x="${cx}" y="${waveY+44}" text-anchor="middle" fill="${color}" font-size="9" font-family="Heebo,sans-serif">${b==='L'?'ארוכה':'קצרה'}</text>
-    <text x="${cx}" y="${waveY+56}" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial">${b==='L'?'2s':'1s'}</text>`;
-    timeCursor += dur + 0.35;
+    const bs = starts[i].toFixed(2) + 's';
+    const anim = `<animate attributeName="opacity" from="0" to="1" begin="${bs}" dur="0.05s" fill="freeze"/>`;
+    if (b === 'L') {
+      blastEls += `<rect x="${x.toFixed(1)}" y="${(CY-LONG_H/2).toFixed(1)}" width="${LONG_W}" height="${LONG_H}" rx="3" fill="${SIG_COLOR}" opacity="0">${anim}</rect>`;
+      blastEls += `<text x="${(x+LONG_W/2).toFixed(1)}" y="${(CY+LONG_H/2+13).toFixed(1)}" text-anchor="middle" fill="${SIG_COLOR}" font-size="9" font-family="Heebo,sans-serif" opacity="0">ארוכה${anim}</text>`;
+      x += LONG_W + GAP;
+    } else {
+      const bcx = x + SHORT_R;
+      blastEls += `<circle cx="${bcx.toFixed(1)}" cy="${CY}" r="${SHORT_R}" fill="${SIG_COLOR}" opacity="0">${anim}</circle>`;
+      blastEls += `<text x="${bcx.toFixed(1)}" y="${(CY+SHORT_R+13).toFixed(1)}" text-anchor="middle" fill="${SIG_COLOR}" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה${anim}</text>`;
+      x += SHORT_R*2 + GAP;
+    }
   });
+
+  // ── Boat scene ────────────────────────────────────────────────────────────
+  const SEA_Y = 310;
+  const seaBg = `
+  <rect x="0" y="${SEA_Y}" width="360" height="${420-SEA_Y}" fill="#0a1f3a"/>
+  <path d="M0 ${SEA_Y+5} Q90 ${SEA_Y-3} 180 ${SEA_Y+5} Q270 ${SEA_Y+13} 360 ${SEA_Y+5}" fill="none" stroke="#1a4a6a" stroke-width="1.5" opacity=".6"/>
+  <path d="M0 ${SEA_Y+18} Q60 ${SEA_Y+10} 120 ${SEA_Y+18} Q180 ${SEA_Y+26} 240 ${SEA_Y+18} Q300 ${SEA_Y+10} 360 ${SEA_Y+18}" fill="none" stroke="#1a4a6a" stroke-width="1" opacity=".35"/>`;
+
+  let boatScene;
+  if (isOvertake) {
+    // Two boats — top-down view. Yellow overtaking, turquoise ahead.
+    // Channel strip
+    boatScene = seaBg + `
+  <rect x="0" y="${SEA_Y}" width="360" height="58" fill="#0d2440" opacity=".6"/>
+  <line x1="0" y1="${SEA_Y}" x2="360" y2="${SEA_Y}" stroke="#1e4a6e" stroke-width="1" stroke-dasharray="8,5"/>
+  <line x1="0" y1="${SEA_Y+58}" x2="360" y2="${SEA_Y+58}" stroke="#1e4a6e" stroke-width="1" stroke-dasharray="8,5"/>
+  ${topBoat(95, SEA_Y+20, '#f1c40f', '#c8a000', 'עוקפת')}
+  ${topBoat(230, SEA_Y+38, '#1abc9c', '#148f77', 'נעקפת')}
+  <text x="180" y="408" text-anchor="middle" fill="#7eb8f7" font-size="8" font-family="Heebo,sans-serif" opacity=".7">נתיב צר — מבט מלמעלה</text>`;
+  } else {
+    // Single yellow motorboat — side view
+    boatScene = seaBg + sideBoat(175, SEA_Y, '#f1c40f', '#c8a000');
+  }
 
   const patternTxt = pattern.map(b => b==='L'?'━':'•').join(' ');
   return `
@@ -2224,19 +2319,12 @@ function generateSoundSignalScene(pattern) {
   <circle cx="110" cy="14" r="1.2" fill="white" opacity=".6"/>
   <circle cx="200" cy="28" r="1" fill="white" opacity=".4"/>
   <circle cx="290" cy="16" r="1.3" fill="white" opacity=".7"/>
-  <rect x="0" y="298" width="360" height="122" fill="#0a1f3a"/>
-  <path d="M0 303 Q60 296 120 303 Q180 310 240 303 Q300 296 360 303" fill="none" stroke="#1a4a6a" stroke-width="1.2" opacity=".5"/>
-  <ellipse cx="180" cy="300" rx="72" ry="12" fill="#1a2f5e" stroke="#2a4a8a" stroke-width="1.5"/>
-  <rect x="128" y="265" width="104" height="38" rx="3" fill="#1a2f5e" stroke="#2a4a8a" stroke-width="1.5"/>
-  <rect x="150" y="246" width="60" height="22" rx="3" fill="#1e3a6e"/>
-  <line x1="180" y1="145" x2="180" y2="246" stroke="#3a5a8a" stroke-width="2"/>
-  <rect x="162" y="165" width="20" height="10" rx="2" fill="#4a90d9"/>
-  <polygon points="182,165 194,160 194,175 182,175" fill="#357abd"/>
+  ${boatScene}
   ${blastEls}
-  <rect x="18" y="90" width="324" height="46" rx="8" fill="#0c1a3a" stroke="#1e3a6e" stroke-width="1"/>
-  <text x="180" y="109" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">האות הנכון:</text>
-  <text x="180" y="128" text-anchor="middle" fill="#fff" font-size="18" font-family="Arial" font-weight="700" letter-spacing="5">${patternTxt}</text>
-  <text x="180" y="340" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">⚓ Alex Argov | Sailing Instructor</text>`;
+  <rect x="18" y="88" width="324" height="46" rx="8" fill="#0c1a3a" stroke="#1e3a6e" stroke-width="1"/>
+  <text x="180" y="107" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">האות הנכון:</text>
+  <text x="180" y="126" text-anchor="middle" fill="#fff" font-size="18" font-family="Arial" font-weight="700" letter-spacing="5">${patternTxt}</text>
+  ${purpleSailboat(330, 398, 0.75)}`;
 }
 
 function updatePreview(interactive=true) {
@@ -2283,10 +2371,10 @@ function updatePreview(interactive=true) {
     document.getElementById('r-svg').style.zIndex = '';
     if(v.topic === 'אותות קוליים') {
       const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl);
-      document.getElementById('r-svg').innerHTML = generateSoundSignalScene(pattern) + getOverlaySVG(v);
+      document.getElementById('r-svg').innerHTML = generateSoundSignalScene(pattern, v.q) + getOverlaySVG(v);
     } else {
       document.getElementById('r-svg').innerHTML = getScene(v.topic, v.q) + getOverlaySVG(v) +
-        '<text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">⚓ Alex Argov | Sailing Instructor</text>';
+        `<text x="193" y="345" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">Alex Argov | Sailing Instructor</text>${purpleSailboat(330, 355, 0.75)}`;
     }
   }
 
@@ -2356,7 +2444,8 @@ function getOverlaySVG(v) {
       <div xmlns="http://www.w3.org/1999/xhtml" style="color:#fff;font-size:12px;font-family:Heebo,sans-serif;text-align:center;direction:rtl;line-height:1.5">${v.expl||''}</div>
     </foreignObject>
     <text x="180" y="375" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">⚓ עקבו למבחן הסקיפר היומי</text>
-    <text x="180" y="393" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">⚓ Alex Argov | Sailing Instructor</text>
+    <text x="193" y="393" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">Alex Argov | Sailing Instructor</text>
+    ${purpleSailboat(330, 398, 0.75)}
   </g>`;
 }
 
@@ -2500,8 +2589,10 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   const correctI = letterToIdx(q.answer);
   const expl = q.explanation || '';
   const correctText = (opts[correctI]||'').replace(/^[אבגדABCDabcd]\.\s*/,'');
-  const scene = q.topic === 'אותות קוליים'
-    ? generateSoundSignalScene(parseBlastPatternMulti(correctText, qText, expl))
+  const isSoundSignal = q.topic === 'אותות קוליים';
+  const blastPattern = isSoundSignal ? parseBlastPatternMulti(correctText, qText, expl) : null;
+  const scene = isSoundSignal
+    ? generateSoundSignalScene(blastPattern, qText)
     : getScene(q.topic, q.q_he||q.q_en);
   const optsHtml = opts.slice(0,4).map((o,i)=>{
     const t = o.replace(/^[אבגדABCDabcd]\.\s*/,'');
@@ -2578,7 +2669,7 @@ const LT=${JSON.stringify(isEn ? LETTERS_EN : LETTERS_HE)};
 ${autoPlay ? `
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)
 const prog=document.getElementById('prog');
-const DELAY=6000;
+const DELAY=15000;
 prog.style.transition='none';prog.style.width='0%';
 setTimeout(()=>{prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);
 setTimeout(()=>{
@@ -2628,6 +2719,36 @@ document.querySelectorAll('.opt').forEach((el,i)=>{
   });
 });
 `}
+${isSoundSignal ? `
+// ── Sound signal audio ──────────────────────────────────────────────────────
+const _BP=${JSON.stringify(blastPattern)};
+const _BD={L:2.0,S:0.5},_BG=0.45;
+let _played=false;
+function _playBlasts(){
+  if(_played)return;_played=true;
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    let t=ctx.currentTime+0.4;
+    _BP.forEach(b=>{
+      const dur=_BD[b];
+      [[150,0.50],[300,0.22],[450,0.10],[600,0.05]].forEach(([f,a])=>{
+        const o=ctx.createOscillator(),g=ctx.createGain();
+        o.type='sawtooth';o.frequency.value=f;
+        g.gain.setValueAtTime(0.001,t);
+        g.gain.linearRampToValueAtTime(a,t+0.04);
+        g.gain.setValueAtTime(a,t+dur-0.07);
+        g.gain.linearRampToValueAtTime(0.001,t+dur);
+        o.connect(g);g.connect(ctx.destination);
+        o.start(t);o.stop(t+dur+0.05);
+      });
+      t+=dur+_BG;
+    });
+  }catch(e){_played=false;}
+}
+// Autoplay on load; retry on first click if browser blocks
+window.addEventListener('load',()=>setTimeout(_playBlasts,350));
+document.addEventListener('click',()=>{_played=false;_playBlasts();},{once:true});
+` : ''}
 <\/script></body></html>`;
 }
 
