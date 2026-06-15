@@ -2314,35 +2314,39 @@ function purpleSailboat(x, y, scale) {
   </g>`;
 }
 
-function generateSoundSignalScene(pattern, qText) {
-  const SHORT_R = 10, LONG_W = 56, LONG_H = 18, GAP = 14, CY = 172;
+function generateSoundSignalScene(pattern, qText, answerText) {
+  const SHORT_R = 10, LONG_W = 56, LONG_H = 18, GAP = 14, CY = 158;
   const SIG_COLOR = '#e74c3c';
-  const isOvertake  = /עוקפת|עוקף|overtake/i.test(qText || '');
-  const isSailboat  = /מפרש|sailboat|sailing vessel/i.test(qText || '');
+  const ctx = (qText || '') + ' ' + (answerText || '');
+  const isOvertake  = /עוקפת|עוקף|overtake/i.test(ctx);
+  const isSailboat  = /מפרש|sailboat|sailing vessel/i.test(ctx);
+  const isBell      = /פעמון|bell|גונג/i.test(ctx) || /עוגנ/i.test(ctx);
 
   // ── Blast timing ──────────────────────────────────────────────────────────
   const starts = [];
   let t = 0.4;
   pattern.forEach(b => { starts.push(t); t += BLAST_DUR[b] + BLAST_GAP; });
 
-  // ── Blast symbols ─────────────────────────────────────────────────────────
+  // ── Blast symbols (only for horn-signal questions, not bell) ─────────────
   const totalW = pattern.reduce((s,b) => s + (b==='L' ? LONG_W : SHORT_R*2), 0) + GAP*(pattern.length-1);
   let x = 180 - totalW / 2;
   let blastEls = '';
-  pattern.forEach((b, i) => {
-    const bs = starts[i].toFixed(2) + 's';
-    const anim = `<animate attributeName="opacity" from="0" to="1" begin="${bs}" dur="0.05s" fill="freeze"/>`;
-    if (b === 'L') {
-      blastEls += `<rect x="${x.toFixed(1)}" y="${(CY-LONG_H/2).toFixed(1)}" width="${LONG_W}" height="${LONG_H}" rx="3" fill="${SIG_COLOR}" opacity="0">${anim}</rect>`;
-      blastEls += `<text x="${(x+LONG_W/2).toFixed(1)}" y="${(CY+LONG_H/2+13).toFixed(1)}" text-anchor="middle" fill="${SIG_COLOR}" font-size="9" font-family="Heebo,sans-serif" opacity="0">ארוכה${anim}</text>`;
-      x += LONG_W + GAP;
-    } else {
-      const bcx = x + SHORT_R;
-      blastEls += `<circle cx="${bcx.toFixed(1)}" cy="${CY}" r="${SHORT_R}" fill="${SIG_COLOR}" opacity="0">${anim}</circle>`;
-      blastEls += `<text x="${bcx.toFixed(1)}" y="${(CY+SHORT_R+13).toFixed(1)}" text-anchor="middle" fill="${SIG_COLOR}" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה${anim}</text>`;
-      x += SHORT_R*2 + GAP;
-    }
-  });
+  if (!isBell) {
+    pattern.forEach((b, i) => {
+      const bs = starts[i].toFixed(2) + 's';
+      const anim = `<animate attributeName="opacity" from="0" to="1" begin="${bs}" dur="0.05s" fill="freeze"/>`;
+      if (b === 'L') {
+        blastEls += `<rect x="${x.toFixed(1)}" y="${(CY-LONG_H/2).toFixed(1)}" width="${LONG_W}" height="${LONG_H}" rx="3" fill="${SIG_COLOR}" opacity="0">${anim}</rect>`;
+        blastEls += `<text x="${(x+LONG_W/2).toFixed(1)}" y="${(CY+LONG_H/2+13).toFixed(1)}" text-anchor="middle" fill="${SIG_COLOR}" font-size="9" font-family="Heebo,sans-serif" opacity="0">ארוכה${anim}</text>`;
+        x += LONG_W + GAP;
+      } else {
+        const bcx = x + SHORT_R;
+        blastEls += `<circle cx="${bcx.toFixed(1)}" cy="${CY}" r="${SHORT_R}" fill="${SIG_COLOR}" opacity="0">${anim}</circle>`;
+        blastEls += `<text x="${bcx.toFixed(1)}" y="${(CY+SHORT_R+13).toFixed(1)}" text-anchor="middle" fill="${SIG_COLOR}" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה${anim}</text>`;
+        x += SHORT_R*2 + GAP;
+      }
+    });
+  }
 
   // ── Boat scene ────────────────────────────────────────────────────────────
   const SEA_Y = 310;
@@ -2383,12 +2387,39 @@ function generateSoundSignalScene(pattern, qText) {
   <line x1="${180}" y1="${SEA_Y-100}" x2="${120}" y2="${SEA_Y-4}" stroke="#6c3483" stroke-width="0.8" opacity=".5"/>
   <line x1="${180}" y1="${SEA_Y-100}" x2="${240}" y2="${SEA_Y-4}" stroke="#6c3483" stroke-width="0.8" opacity=".5"/>
   <text x="180" y="408" text-anchor="middle" fill="#9b59b6" font-size="9" font-family="Heebo,sans-serif" font-weight="700" opacity=".8">מפרשית — Sailing Vessel</text>`;
+  } else if (isBell) {
+    // Anchored vessel: anchor light (white 360°) + bell visual
+    const bx = 175;
+    const mastX = bx - 30, mastTopY = SEA_Y - 86;
+    boatScene = seaBg + sideBoat(bx, SEA_Y, '#f1c40f', '#c8a000') + `
+  <!-- Anchor chain -->
+  <line x1="${bx+10}" y1="${SEA_Y+14}" x2="${bx+10}" y2="${SEA_Y+40}" stroke="#7eb8f7" stroke-width="1.5" stroke-dasharray="3,3" opacity=".6"/>
+  <text x="${bx+10}" y="${SEA_Y+56}" text-anchor="middle" fill="#7eb8f7" font-size="16" opacity=".7">⚓</text>
+  <!-- Anchor light: white 360° on mast -->
+  <circle cx="${mastX}" cy="${mastTopY}" r="22" fill="white" opacity=".08"/>
+  <circle cx="${mastX}" cy="${mastTopY}" r="13" fill="white" opacity=".18"/>
+  <circle cx="${mastX}" cy="${mastTopY}" r="5"  fill="white" opacity=".95"/>
+  <line x1="${mastX-22}" y1="${mastTopY}" x2="${mastX+22}" y2="${mastTopY}" stroke="white" stroke-width="0.6" opacity=".25"/>
+  <line x1="${mastX}" y1="${mastTopY-22}" x2="${mastX}" y2="${mastTopY+22}" stroke="white" stroke-width="0.6" opacity=".25"/>
+  <text x="${mastX}" y="${mastTopY-26}" text-anchor="middle" fill="white" font-size="7" font-family="Heebo,sans-serif" font-weight="700" opacity=".8">360° לבן</text>
+  <!-- Bell (upper-right of scene) -->
+  <g transform="translate(272,168)">
+    <path d="M-26,28 Q-32,-4 -32,-28 Q-32,-56 0,-60 Q32,-56 32,-28 Q32,-4 26,28 Z" fill="#f1c40f" stroke="#c8a000" stroke-width="2"/>
+    <path d="M-30,28 Q0,44 30,28" fill="none" stroke="#c8a000" stroke-width="3"/>
+    <line x1="0" y1="28" x2="0" y2="48" stroke="#c8a000" stroke-width="3"/>
+    <circle cx="0" cy="52" r="7" fill="#c8a000"/>
+    <path d="M-5,-60 Q0,-72 5,-60" fill="none" stroke="#c8a000" stroke-width="2.5"/>
+    <path d="M38,-18 Q50,-8 38,8" fill="none" stroke="white" stroke-width="1.5" opacity=".55"/>
+    <path d="M48,-22 Q64,-8 48,12" fill="none" stroke="white" stroke-width="1" opacity=".3"/>
+    <path d="M-38,-18 Q-50,-8 -38,8" fill="none" stroke="white" stroke-width="1.5" opacity=".55"/>
+    <path d="M-48,-22 Q-64,-8 -48,12" fill="none" stroke="white" stroke-width="1" opacity=".3"/>
+  </g>
+  <text x="272" y="232" text-anchor="middle" fill="#f1c40f" font-size="9" font-family="Heebo,sans-serif" font-weight="700">5 שניות / כל דקה</text>`;
   } else {
     // Single yellow motorboat — side view
     boatScene = seaBg + sideBoat(175, SEA_Y, '#f1c40f', '#c8a000');
   }
 
-  const patternTxt = pattern.map(b => b==='L'?'━':'•').join(' ');
   return `
   <rect width="360" height="420" fill="#050d1a"/>
   <circle cx="40" cy="22" r="1" fill="white" opacity=".5"/>
@@ -2397,9 +2428,6 @@ function generateSoundSignalScene(pattern, qText) {
   <circle cx="290" cy="16" r="1.3" fill="white" opacity=".7"/>
   ${boatScene}
   ${blastEls}
-  <rect x="18" y="88" width="324" height="46" rx="8" fill="#0c1a3a" stroke="#1e3a6e" stroke-width="1"/>
-  <text x="180" y="107" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">האות הנכון:</text>
-  <text x="180" y="126" text-anchor="middle" fill="#fff" font-size="18" font-family="Arial" font-weight="700" letter-spacing="5">${patternTxt}</text>
   ${purpleSailboat(330, 398, 0.75)}`;
 }
 
@@ -2447,7 +2475,7 @@ function updatePreview(interactive=true) {
     document.getElementById('r-svg').style.zIndex = '';
     if(v.topic === 'אותות קוליים') {
       const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl, v.blastOverride);
-      document.getElementById('r-svg').innerHTML = generateSoundSignalScene(pattern, v.q) + getOverlaySVG(v);
+      document.getElementById('r-svg').innerHTML = generateSoundSignalScene(pattern, v.q, v.opts[v.correct]) + getOverlaySVG(v);
     } else {
       document.getElementById('r-svg').innerHTML = getScene(v.topic, v.q) + getOverlaySVG(v) +
         `<text x="193" y="345" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">Alex Argov | Sailing Instructor</text>${purpleSailboat(330, 355, 0.75)}`;
@@ -2668,7 +2696,7 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   const isSoundSignal = q.topic === 'אותות קוליים';
   const blastPattern = isSoundSignal ? parseBlastPatternMulti(correctText, qText, expl, q.blastOverride||'') : null;
   const scene = isSoundSignal
-    ? generateSoundSignalScene(blastPattern, qText)
+    ? generateSoundSignalScene(blastPattern, qText, correctText)
     : getScene(q.topic, q.q_he||q.q_en);
   const optsHtml = opts.slice(0,4).map((o,i)=>{
     const t = o.replace(/^[אבגדABCDabcd]\.\s*/,'');
