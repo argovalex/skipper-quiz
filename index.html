@@ -2056,6 +2056,22 @@ function renderEditor(q) {
       <textarea id="f-expl" placeholder="הסבר קצר על התשובה הנכונה...">${q.explanation||''}</textarea>
     </div>
 
+    ${q.topic === 'אותות קוליים' ? `
+    <div class="field" id="blastPatternField" style="background:#0c1a3a;border:1px solid #1e3a6e;border-radius:8px;padding:10px 12px">
+      <label style="color:#7eb8f7;font-size:11px;font-weight:700">🔊 אות קולי — עריכה ידנית</label>
+      <div style="display:flex;gap:8px;margin-top:6px;align-items:center">
+        <input id="f-blast-override" type="text" placeholder="L S S  או  L,S,S  או  2L+2S"
+               value="${q.blastOverride||''}"
+               style="flex:1;font-family:monospace;font-size:13px;letter-spacing:2px"
+               title="L=ארוכה, S=קצרה. דוגמאות: L S S | 2L+3S | S S S S S">
+        <button onclick="applyBlastOverride()" style="padding:6px 14px;background:#1e3a6e;color:#7eb8f7;border:1px solid #2a5aae;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">✔ עדכן</button>
+        <button onclick="clearBlastOverride()" style="padding:6px 10px;background:#2a1010;color:#e74c3c;border:1px solid #5a2020;border-radius:6px;cursor:pointer;font-size:12px" title="נקה override — חזור לפירוש אוטומטי">✕</button>
+      </div>
+      <div id="blast-preview-txt" style="color:#aac4e8;font-size:11px;margin-top:5px;font-family:monospace">
+        נוכחי: ${(()=>{const p=parseBlastPatternMulti(q.options?.[letterToIdx(q.answer)]||'',q.q_he||'',q.explanation||'');return p.map(b=>b==='L'?'━ ארוכה':'• קצרה').join('  |  ');})()}
+      </div>
+    </div>` : ''}
+
     <div class="section-title">מדיה — רקע לסרטון</div>
     <div class="media-drop ${q.mediaUrl?'has-media':''}" onclick="this.querySelector('input').click()">
       <input type="file" accept="image/*,video/*" onchange="handleMediaUpload(this)" onclick="event.stopPropagation()">
@@ -2110,6 +2126,9 @@ function saveCurrentToState() {
     const val = document.getElementById('f-opt'+i)?.value || '';
     q.options[i] = `${LETTERS[i]}. ${val}`;
   });
+  // Save blast override if field visible
+  const boEl = document.getElementById('f-blast-override');
+  if(boEl) q.blastOverride = boEl.value.trim();
 }
 
 function showEmptyEditor() {
@@ -2139,6 +2158,7 @@ function getCurrentValues() {
     mediaUrl: q.mediaUrl || '',
     mediaType: q.mediaType || 'image',
     approved: q.approved_for_publish || false,
+    blastOverride: q.blastOverride || '',
   };
 }
 
@@ -2160,7 +2180,41 @@ function parseBlastPattern(t) {
   return null; // no match
 }
 
-function parseBlastPatternMulti(answerText, questionText, explText) {
+function applyBlastOverride() {
+  if(currentIdx < 0) return;
+  const val = document.getElementById('f-blast-override')?.value?.trim() || '';
+  questions[currentIdx].blastOverride = val;
+  const parsed = parseBlastOverrideStr(val) || parseBlastPatternMulti(
+    (questions[currentIdx].options?.[letterToIdx(questions[currentIdx].answer)]||'').replace(/^[אבגדABCDabcd]\.\s*/,''),
+    questions[currentIdx].q_he||'', questions[currentIdx].explanation||'');
+  const previewEl = document.getElementById('blast-preview-txt');
+  if(previewEl) previewEl.textContent = 'נוכחי: ' + parsed.map(b=>b==='L'?'━ ארוכה':'• קצרה').join('  |  ');
+  updatePreview();
+  showToast(val ? `✅ Override: ${parsed.join(' ')}` : '✅ חזר לאוטומטי');
+}
+
+function clearBlastOverride() {
+  if(currentIdx < 0) return;
+  questions[currentIdx].blastOverride = '';
+  const el = document.getElementById('f-blast-override');
+  if(el) el.value = '';
+  applyBlastOverride();
+}
+
+// Parse a manual override string like "L S S" or "L,S,S" or "2L+1S"
+function parseBlastOverrideStr(str) {
+  if(!str || !str.trim()) return null;
+  str = str.trim().toUpperCase();
+  // Expand shorthand like "2L+1S" or "2L 3S"
+  str = str.replace(/(\d+)\s*L/g, (_, n) => ('L ').repeat(parseInt(n)).trim());
+  str = str.replace(/(\d+)\s*S/g, (_, n) => ('S ').repeat(parseInt(n)).trim());
+  str = str.replace(/[+,]/g, ' ');
+  const parts = str.split(/\s+/).filter(p => p === 'L' || p === 'S');
+  return parts.length ? parts : null;
+}
+
+function parseBlastPatternMulti(answerText, questionText, explText, override) {
+  if(override) { const r = parseBlastOverrideStr(override); if(r) return r; }
   return parseBlastPattern(answerText)
       || parseBlastPattern(questionText)
       || parseBlastPattern(explText)
@@ -2263,7 +2317,8 @@ function purpleSailboat(x, y, scale) {
 function generateSoundSignalScene(pattern, qText) {
   const SHORT_R = 10, LONG_W = 56, LONG_H = 18, GAP = 14, CY = 172;
   const SIG_COLOR = '#e74c3c';
-  const isOvertake = /עוקפת|עוקף|overtake/i.test(qText || '');
+  const isOvertake  = /עוקפת|עוקף|overtake/i.test(qText || '');
+  const isSailboat  = /מפרש|sailboat|sailing vessel/i.test(qText || '');
 
   // ── Blast timing ──────────────────────────────────────────────────────────
   const starts = [];
@@ -2298,8 +2353,7 @@ function generateSoundSignalScene(pattern, qText) {
 
   let boatScene;
   if (isOvertake) {
-    // Two boats — top-down view. Yellow overtaking, turquoise ahead.
-    // Channel strip
+    // Two boats — top-down view
     boatScene = seaBg + `
   <rect x="0" y="${SEA_Y}" width="360" height="58" fill="#0d2440" opacity=".6"/>
   <line x1="0" y1="${SEA_Y}" x2="360" y2="${SEA_Y}" stroke="#1e4a6e" stroke-width="1" stroke-dasharray="8,5"/>
@@ -2307,6 +2361,28 @@ function generateSoundSignalScene(pattern, qText) {
   ${topBoat(95, SEA_Y+20, '#f1c40f', '#c8a000', 'עוקפת')}
   ${topBoat(230, SEA_Y+38, '#1abc9c', '#148f77', 'נעקפת')}
   <text x="180" y="408" text-anchor="middle" fill="#7eb8f7" font-size="8" font-family="Heebo,sans-serif" opacity=".7">נתיב צר — מבט מלמעלה</text>`;
+  } else if (isSailboat) {
+    // Sailboat scene — large purple sailboat side view
+    boatScene = seaBg + `
+  <!-- Sailboat hull -->
+  <path d="M${100},${SEA_Y} L${260},${SEA_Y} L${248},${SEA_Y+16} L${112},${SEA_Y+16} Z"
+        fill="#8e44ad" stroke="#6c3483" stroke-width="1.5"/>
+  <!-- Boom -->
+  <line x1="${115}" y1="${SEA_Y-4}" x2="${255}" y2="${SEA_Y-4}" stroke="#6c3483" stroke-width="3"/>
+  <!-- Mast -->
+  <line x1="${180}" y1="${SEA_Y-4}" x2="${180}" y2="${SEA_Y-145}" stroke="#6c3483" stroke-width="2.5"/>
+  <!-- Main sail -->
+  <path d="M${180},${SEA_Y-145} L${180},${SEA_Y-4} L${255},${SEA_Y-4} Z"
+        fill="#9b59b6" opacity=".85" stroke="#7d3c98" stroke-width="1"/>
+  <!-- Jib (foresail) -->
+  <path d="M${180},${SEA_Y-110} L${180},${SEA_Y-4} L${110},${SEA_Y-4} Z"
+        fill="#7d3c98" opacity=".8" stroke="#6c3483" stroke-width="1"/>
+  <!-- Forestay -->
+  <line x1="${180}" y1="${SEA_Y-145}" x2="${108}" y2="${SEA_Y-4}" stroke="#6c3483" stroke-width="1" opacity=".6"/>
+  <!-- Shrouds -->
+  <line x1="${180}" y1="${SEA_Y-100}" x2="${120}" y2="${SEA_Y-4}" stroke="#6c3483" stroke-width="0.8" opacity=".5"/>
+  <line x1="${180}" y1="${SEA_Y-100}" x2="${240}" y2="${SEA_Y-4}" stroke="#6c3483" stroke-width="0.8" opacity=".5"/>
+  <text x="180" y="408" text-anchor="middle" fill="#9b59b6" font-size="9" font-family="Heebo,sans-serif" font-weight="700" opacity=".8">מפרשית — Sailing Vessel</text>`;
   } else {
     // Single yellow motorboat — side view
     boatScene = seaBg + sideBoat(175, SEA_Y, '#f1c40f', '#c8a000');
@@ -2333,7 +2409,7 @@ function updatePreview(interactive=true) {
 
   // Play horn sound for sound signals questions
   if(v.topic === 'אותות קוליים') {
-    const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl);
+    const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl, v.blastOverride);
     playBlastPattern(pattern);
   }
 
@@ -2370,7 +2446,7 @@ function updatePreview(interactive=true) {
     document.getElementById('r-svg').style.position = '';
     document.getElementById('r-svg').style.zIndex = '';
     if(v.topic === 'אותות קוליים') {
-      const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl);
+      const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl, v.blastOverride);
       document.getElementById('r-svg').innerHTML = generateSoundSignalScene(pattern, v.q) + getOverlaySVG(v);
     } else {
       document.getElementById('r-svg').innerHTML = getScene(v.topic, v.q) + getOverlaySVG(v) +
@@ -2450,16 +2526,16 @@ function getOverlaySVG(v) {
 }
 
 const PHASES_HE = [
-  {dur:2800, label:'❓ השאלה', opts:true, correct:-1, overlay:false},
-  {dur:4500, label:'💭 חשוב על התשובה...', opts:true, correct:-1, overlay:false},
-  {dur:3000, label:'✅ התשובה הנכונה', opts:true, correct:0, overlay:false},
-  {dur:4500, label:'💡 הסבר', opts:false, correct:-1, overlay:true},
+  {dur:3000,  label:'❓ השאלה',              opts:true,  correct:-1, overlay:false},
+  {dur:12000, label:'💭 חשוב על התשובה...', opts:true,  correct:-1, overlay:false},
+  {dur:4000,  label:'✅ התשובה הנכונה',     opts:true,  correct:0,  overlay:false},
+  {dur:5000,  label:'💡 הסבר',              opts:false, correct:-1, overlay:true},
 ];
 const PHASES_EN = [
-  {dur:2800, label:'❓ Question', opts:true, correct:-1, overlay:false},
-  {dur:4500, label:'💭 Think about it...', opts:true, correct:-1, overlay:false},
-  {dur:3000, label:'✅ Correct Answer', opts:true, correct:0, overlay:false},
-  {dur:4500, label:'💡 Explanation', opts:false, correct:-1, overlay:true},
+  {dur:3000,  label:'❓ Question',       opts:true,  correct:-1, overlay:false},
+  {dur:12000, label:'💭 Think about it...', opts:true, correct:-1, overlay:false},
+  {dur:4000,  label:'✅ Correct Answer', opts:true,  correct:0,  overlay:false},
+  {dur:5000,  label:'💡 Explanation',    opts:false, correct:-1, overlay:true},
 ];
 function getPhases() { return currentLang === 'en' ? PHASES_EN : PHASES_HE; }
 
@@ -2590,7 +2666,7 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   const expl = q.explanation || '';
   const correctText = (opts[correctI]||'').replace(/^[אבגדABCDabcd]\.\s*/,'');
   const isSoundSignal = q.topic === 'אותות קוליים';
-  const blastPattern = isSoundSignal ? parseBlastPatternMulti(correctText, qText, expl) : null;
+  const blastPattern = isSoundSignal ? parseBlastPatternMulti(correctText, qText, expl, q.blastOverride||'') : null;
   const scene = isSoundSignal
     ? generateSoundSignalScene(blastPattern, qText)
     : getScene(q.topic, q.q_he||q.q_en);
