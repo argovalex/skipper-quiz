@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 SkipperQuiz Monitor</title>
+  <style>
+    :root {
+      --bg:        #0c1a3a;
+      --bg2:       #112247;
+      --bg3:       #1a2f5a;
+      --accent:    #7eb8f7;
+      --accent2:   #4a9de8;
+      --green:     #3ddc84;
+      --orange:    #f5a623;
+      --red:       #e85d5d;
+      --text:      #e8f0fe;
+      --text-dim:  #8baad4;
+      --border:    #1e3a6e;
+      --card-bg:   #112247;
+      --radius:    10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      direction: rtl;
+    }
+
+    /* ── Header ───────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, #0c1a3a 0%, #1a2f5a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-left h1 {
+      font-size: 1.6rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-left .subtitle {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      transition: background 0.3s;
+    }
+
+    .status-dot.ok   { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .status-dot.err  { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+    .status-dot.loading {
+      background: var(--orange);
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .refresh-btn {
+      background: var(--bg3);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .refresh-btn:hover { background: var(--accent2); color: #fff; }
+    .refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .last-refresh { font-size: 0.8rem; color: var(--text-dim); }
+
+    /* ── Main layout ──────────────────────────────────── */
+    .main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ── Stats cards ──────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 900px)  { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px)  { .stats-grid { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 4px; height: 100%;
+      background: var(--accent2);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .stat-card.green::before  { background: var(--green); }
+    .stat-card.orange::before { background: var(--orange); }
+    .stat-card.red::before    { background: var(--red); }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-card.green  .stat-value  { color: var(--green); }
+    .stat-card.orange .stat-value  { color: var(--orange); }
+    .stat-card.red    .stat-value  { color: var(--red); }
+
+    .stat-sub {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* ── Section wrapper ──────────────────────────────── */
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 14px 20px;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    .section-body { padding: 20px; }
+
+    /* ── Today's question ─────────────────────────────── */
+    .today-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 600px) { .today-card { grid-template-columns: 1fr; } }
+
+    .today-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent2);
+      line-height: 1;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .today-meta { display: flex; flex-direction: column; gap: 10px; }
+
+    .today-q {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .today-answer {
+      background: rgba(61, 220, 132, 0.1);
+      border: 1px solid rgba(61, 220, 132, 0.3);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      color: var(--green);
+    }
+
+    .today-answer span { color: var(--text-dim); font-size: 0.8rem; }
+
+    /* ── Topic badge ──────────────────────────────────── */
+    .topic-badge {
+      display: inline-block;
+      background: rgba(126, 184, 247, 0.15);
+      border: 1px solid rgba(126, 184, 247, 0.3);
+      color: var(--accent);
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+    }
+
+    /* ── Tables ───────────────────────────────────────── */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.87rem;
+    }
+
+    thead th {
+      background: var(--bg3);
+      color: var(--text-dim);
+      padding: 10px 14px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(30, 58, 110, 0.5);
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: rgba(126, 184, 247, 0.05); }
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody td {
+      padding: 9px 14px;
+      vertical-align: middle;
+      color: var(--text);
+    }
+
+    .td-num {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .td-q {
+      max-width: 320px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--text-dim);
+    }
+
+    .td-date { color: var(--text-dim); white-space: nowrap; }
+
+    .video-link {
+      color: var(--accent2);
+      text-decoration: none;
+      font-size: 0.8rem;
+      border: 1px solid var(--accent2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+
+    .video-link:hover { background: var(--accent2); color: #fff; }
+
+    .platform-tag {
+      display: inline-block;
+      background: rgba(74, 157, 232, 0.15);
+      color: var(--accent2);
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin: 1px;
+    }
+
+    /* ── Bar chart ────────────────────────────────────── */
+    .chart-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 60px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chart-label {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chart-bars {
+      position: relative;
+      height: 18px;
+      background: var(--bg3);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-total {
+      position: absolute;
+      top: 0; right: 0;
+      height: 100%;
+      background: rgba(126, 184, 247, 0.2);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .bar-published {
+      position: absolute;
+      top: 0; right: 0;
+      height: 100%;
+      background: var(--green);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .chart-count {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 16px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .legend-dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 2px;
+      margin-left: 5px;
+    }
+
+    /* ── Loading / empty ──────────────────────────────── */
+    .spinner {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-row td {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-dim);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .error-box {
+      background: rgba(232, 93, 93, 0.1);
+      border: 1px solid rgba(232, 93, 93, 0.3);
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: var(--red);
+      font-size: 0.85rem;
+    }
+
+    /* ── Two-column layout ────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── Countdown banner ─────────────────────────────── */
+    .countdown-banner {
+      background: rgba(126, 184, 247, 0.07);
+      border: 1px solid rgba(126, 184, 247, 0.2);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #auto-refresh-countdown { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────────── -->
+<header class="header">
+  <div class="header-left">
+    <h1>📊 SkipperQuiz Monitor</h1>
+    <div class="subtitle">מצב מערכת הפרסום</div>
+  </div>
+  <div class="header-right">
+    <div class="status-indicator">
+      <div class="status-dot loading" id="status-dot"></div>
+      <span id="status-text">טוען נתונים…</span>
+    </div>
+    <div class="last-refresh" id="last-refresh">—</div>
+    <button class="refresh-btn" id="refresh-btn" onclick="loadData()">
+      <span>🔄</span> רענן
+    </button>
+  </div>
+</header>
+
+<!-- ── Main ──────────────────────────────────────── -->
+<div class="main">
+
+  <!-- Stats row -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">סה"כ שאלות</div>
+      <div class="stat-value" id="stat-total">—</div>
+      <div class="stat-sub" id="stat-total-sub">טוען…</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-label">בתור לפרסום</div>
+      <div class="stat-value" id="stat-queue">—</div>
+      <div class="stat-sub" id="stat-queue-sub">מאושרות ולא פורסמו</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-label">פורסמו</div>
+      <div class="stat-value" id="stat-published">—</div>
+      <div class="stat-sub" id="stat-published-sub">סה"כ פרסומים</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">ימי תוכן נותרו</div>
+      <div class="stat-value" id="stat-days">—</div>
+      <div class="stat-sub" id="stat-days-sub">בקצב שאלה ליום</div>
+    </div>
+  </div>
+
+  <!-- Today's question -->
+  <div class="section">
+    <div class="section-header">
+      <span>📅</span>
+      <h2>שאלת היום</h2>
+    </div>
+    <div class="section-body" id="today-body">
+      <div class="empty-state"><span class="spinner"></span> טוען…</div>
+    </div>
+  </div>
+
+  <!-- Queue + History -->
+  <div class="two-col">
+
+    <!-- Upcoming queue -->
+    <div class="section">
+      <div class="section-header">
+        <span>⏳</span>
+        <h2>תור הפרסום הקרוב</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>נושא</th>
+              <th>שאלה</th>
+              <th>תאריך משוער</th>
+            </tr>
+          </thead>
+          <tbody id="queue-tbody">
+            <tr class="loading-row"><td colspan="4"><span class="spinner"></span> טוען…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Publish history -->
+    <div class="section">
+      <div class="section-header">
+        <span>📜</span>
+        <h2>היסטוריית פרסום</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>תאריך</th>
+              <th>#</th>
+              <th>נושא</th>
+              <th>וידאו</th>
+              <th>פלטפורמות</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <tr class="loading-row"><td colspan="5"><span class="spinner"></span> טוען…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Coverage by topic -->
+  <div class="section">
+    <div class="section-header">
+      <span>📊</span>
+      <h2>כיסוי לפי נושא</h2>
+    </div>
+    <div class="section-body">
+      <div class="chart-legend">
+        <span><span class="legend-dot" style="background:rgba(126,184,247,0.4)"></span>סה"כ שאלות</span>
+        <span><span class="legend-dot" style="background:#3ddc84"></span>פורסמו</span>
+      </div>
+      <div class="chart-grid" id="chart-grid">
+        <div class="empty-state"><span class="spinner"></span> טוען…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto-refresh notice -->
+  <div class="countdown-banner">
+    🕐 רענון אוטומטי בעוד <span id="auto-refresh-countdown">5:00</span> דקות
+  </div>
+
+</div><!-- /main -->
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// Config
+// ─────────────────────────────────────────────────────────────
+const QUESTIONS_URL   = 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/questions.json';
+const PUBLISH_LOG_URL = 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/publisher/publish-log.json';
+const AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutes
+
+let questions    = [];
+let publishLog   = [];
+let refreshTimer = null;
+let countdown    = AUTO_REFRESH_MS / 1000;
+
+// ─────────────────────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────────────────────
+function formatDate(iso) {
+  if (!iso) return '—';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  } catch { return iso; }
+}
+
+function addDays(date, n) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + n);
+  return d;
+}
+
+function dayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff   = date - start;
+  return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
+
+function truncate(str, n = 55) {
+  return str && str.length > n ? str.slice(0, n) + '…' : str;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Fetch
+// ─────────────────────────────────────────────────────────────
+async function fetchJSON(url) {
+  const res = await fetch(url + '?t=' + Date.now());
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+// ─────────────────────────────────────────────────────────────
+// Main load
+// ─────────────────────────────────────────────────────────────
+async function loadData() {
+  setStatus('loading', 'טוען נתונים…');
+  document.getElementById('refresh-btn').disabled = true;
+
+  try {
+    // Fetch both; publish log may 404 — that's fine
+    const [qs, log] = await Promise.allSettled([
+      fetchJSON(QUESTIONS_URL),
+      fetchJSON(PUBLISH_LOG_URL)
+    ]);
+
+    if (qs.status === 'rejected') throw new Error('שגיאה בטעינת השאלות: ' + qs.reason.message);
+
+    questions  = qs.value;
+    publishLog = log.status === 'fulfilled' ? log.value : [];
+
+    renderAll();
+    setStatus('ok', 'נתונים עדכניים');
+    document.getElementById('last-refresh').textContent =
+      'עודכן: ' + new Date().toLocaleTimeString('he-IL');
+
+  } catch (err) {
+    setStatus('err', 'שגיאה בטעינה');
+    showGlobalError(err.message);
+  }
+
+  document.getElementById('refresh-btn').disabled = false;
+  resetCountdown();
+}
+
+function setStatus(state, text) {
+  const dot = document.getElementById('status-dot');
+  dot.className = 'status-dot ' + state;
+  document.getElementById('status-text').textContent = text;
+}
+
+function showGlobalError(msg) {
+  document.getElementById('today-body').innerHTML =
+    `<div class="error-box">❌ ${msg}</div>`;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Render all sections
+// ─────────────────────────────────────────────────────────────
+function renderAll() {
+  const publishedNums = new Set(publishLog.map(e => e.num));
+  const approved      = questions.filter(q => q.approved_for_publish === true);
+  const queue         = approved.filter(q => !publishedNums.has(q.num));
+  const publishedQ    = approved.filter(q =>  publishedNums.has(q.num));
+
+  renderStats(queue, publishedQ);
+  renderToday(queue, publishedNums);
+  renderQueue(queue);
+  renderHistory();
+  renderChart(publishedNums);
+}
+
+// ─────────────────────────────────────────────────────────────
+// Stats
+// ─────────────────────────────────────────────────────────────
+function renderStats(queue, publishedQ) {
+  document.getElementById('stat-total').textContent = questions.length;
+  document.getElementById('stat-total-sub').textContent =
+    questions.length + ' שאלות במאגר';
+
+  document.getElementById('stat-queue').textContent = queue.length;
+  document.getElementById('stat-queue-sub').textContent =
+    queue.length > 0 ? 'ממתינות לפרסום' : 'אין שאלות בתור';
+
+  document.getElementById('stat-published').textContent = publishLog.length;
+  document.getElementById('stat-published-sub').textContent =
+    publishLog.length === 0 ? 'אין פרסומים עדיין' : 'פרסומים בלוג';
+
+  document.getElementById('stat-days').textContent = queue.length;
+  document.getElementById('stat-days-sub').textContent =
+    queue.length > 0 ? 'בקצב שאלה ליום' : '—';
+}
+
+// ─────────────────────────────────────────────────────────────
+// Today's question — same logic as publisher
+// ─────────────────────────────────────────────────────────────
+function renderToday(queue, publishedNums) {
+  const body   = document.getElementById('today-body');
+  const today  = new Date();
+  let question = null;
+  let source   = '';
+
+  if (queue.length > 0) {
+    // Priority: first approved-not-published
+    question = queue[0];
+    source   = 'ראשון בתור (מאושר, לא פורסם)';
+  } else {
+    // Fallback: dayOfYear % total
+    const idx = dayOfYear(today) % questions.length;
+    question  = questions[idx];
+    source    = 'fallback — dayOfYear % total (אין שאלות מאושרות בתור)';
+  }
+
+  if (!question) {
+    body.innerHTML = '<div class="empty-state">לא נמצאה שאלה</div>';
+    return;
+  }
+
+  // Find the answer text
+  const answerLetter = question.answer; // e.g. "א"
+  const optionFull   = (question.options || []).find(o => o.startsWith(answerLetter + '.')) ||
+                       (question.options || []).find(o => o.startsWith(answerLetter));
+  const answerText   = optionFull || answerLetter;
+
+  body.innerHTML = `
+    <div class="today-card">
+      <div class="today-num">Q${question.num}</div>
+      <div class="today-meta">
+        <div><span class="topic-badge">${question.topic}</span>
+          <span style="font-size:0.75rem;color:var(--text-dim);margin-right:8px">${source}</span>
+        </div>
+        <div class="today-q">${question.q_he}</div>
+        <div class="today-answer">
+          <span>תשובה נכונה: </span>${answerText}
+        </div>
+        ${question.explanation
+          ? `<div style="font-size:0.82rem;color:var(--text-dim);line-height:1.5">${question.explanation}</div>`
+          : ''}
+      </div>
+    </div>`;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Queue table
+// ─────────────────────────────────────────────────────────────
+function renderQueue(queue) {
+  const tbody = document.getElementById('queue-tbody');
+  if (queue.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="4" class="loading-row"><div class="empty-state">אין שאלות מאושרות בתור</div></td></tr>`;
+    return;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  tbody.innerHTML = queue.map((q, i) => {
+    const estDate = addDays(today, i);
+    const dateStr = i === 0 ? '📅 היום' : formatDate(estDate.toISOString());
+    return `
+      <tr>
+        <td class="td-num">${q.num}</td>
+        <td><span class="topic-badge">${q.topic}</span></td>
+        <td class="td-q" title="${q.q_he}">${truncate(q.q_he)}</td>
+        <td class="td-date">${dateStr}</td>
+      </tr>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────────────────────
+// Publish history
+// ─────────────────────────────────────────────────────────────
+function renderHistory() {
+  const tbody = document.getElementById('history-tbody');
+  if (publishLog.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" class="loading-row"><div class="empty-state">אין היסטוריית פרסום עדיין</div></td></tr>`;
+    return;
+  }
+
+  const entries = [...publishLog]
+    .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+    .slice(0, 30);
+
+  // Build quick lookup for topic by num
+  const topicMap = {};
+  questions.forEach(q => { topicMap[q.num] = q.topic; });
+
+  tbody.innerHTML = entries.map(e => {
+    const topic     = e.topic || topicMap[e.num] || '—';
+    const platforms = (e.platforms || []).map(p =>
+      `<span class="platform-tag">${p}</span>`).join('');
+    const videoLink = e.videoUrl
+      ? `<a href="${e.videoUrl}" target="_blank" class="video-link">▶ צפה</a>`
+      : '—';
+
+    return `
+      <tr>
+        <td class="td-date">${formatDate(e.published_at)}</td>
+        <td class="td-num">${e.num}</td>
+        <td><span class="topic-badge">${topic}</span></td>
+        <td>${videoLink}</td>
+        <td>${platforms || '—'}</td>
+      </tr>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────────────────────
+// Chart by topic
+// ─────────────────────────────────────────────────────────────
+function renderChart(publishedNums) {
+  const grid = document.getElementById('chart-grid');
+
+  // Aggregate
+  const topicTotal     = {};
+  const topicPublished = {};
+
+  questions.forEach(q => {
+    topicTotal[q.topic]     = (topicTotal[q.topic]     || 0) + 1;
+    topicPublished[q.topic] = topicPublished[q.topic]  || 0;
+  });
+
+  publishLog.forEach(e => {
+    const q = questions.find(x => x.num === e.num);
+    if (q) topicPublished[q.topic] = (topicPublished[q.topic] || 0) + 1;
+  });
+
+  const topics  = Object.keys(topicTotal).sort((a, b) => topicTotal[b] - topicTotal[a]);
+  const maxCount = Math.max(...Object.values(topicTotal));
+
+  grid.innerHTML = topics.map(t => {
+    const total = topicTotal[t];
+    const pub   = topicPublished[t] || 0;
+    const pct   = (total / maxCount * 100).toFixed(1);
+    const pubPct = (pub   / maxCount * 100).toFixed(1);
+
+    return `
+      <div class="chart-row">
+        <div class="chart-label" title="${t}">${t}</div>
+        <div class="chart-bars">
+          <div class="bar-total"    style="width:${pct}%"></div>
+          <div class="bar-published" style="width:${pubPct}%"></div>
+        </div>
+        <div class="chart-count">${pub}/${total}</div>
+      </div>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────────────────────
+// Auto-refresh countdown
+// ─────────────────────────────────────────────────────────────
+function resetCountdown() {
+  clearInterval(refreshTimer);
+  countdown = AUTO_REFRESH_MS / 1000;
+
+  refreshTimer = setInterval(() => {
+    countdown--;
+    const m = Math.floor(countdown / 60);
+    const s = String(countdown % 60).padStart(2, '0');
+    const el = document.getElementById('auto-refresh-countdown');
+    if (el) el.textContent = `${m}:${s}`;
+    if (countdown <= 0) {
+      clearInterval(refreshTimer);
+      loadData();
+    }
+  }, 1000);
+}
+
+// ─────────────────────────────────────────────────────────────
+// Boot
+// ─────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
