@@ -3129,10 +3129,12 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "approved_for_publish": false,
+    "approved_for_publish": true,
     "explanation": "5 צפירות קצרות = אות ספק/סכנה: 'כוונותיך אינן מובנות לי' / 'אני מוטרד מהיעדר פעולתך'. מחייבת תגובה מיידית מהספינה האחרת.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "blastOverride": "",
+    "scheduled_date": "2026-06-22"
   },
   {
     "num": 266,
