@@ -517,56 +517,31 @@
     </div>
   </div>
 
-  <!-- Queue + History -->
-  <div class="two-col">
-
-    <!-- Upcoming queue -->
-    <div class="section">
-      <div class="section-header">
-        <span>⏳</span>
-        <h2>תור הפרסום הקרוב</h2>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>נושא</th>
-              <th>שאלה</th>
-              <th>תאריך משוער</th>
-            </tr>
-          </thead>
-          <tbody id="queue-tbody">
-            <tr class="loading-row"><td colspan="4"><span class="spinner"></span> טוען…</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Publish history -->
-    <div class="section">
-      <div class="section-header">
+  <!-- Publish history -->
+  <div class="section">
+    <div class="section-header" style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
         <span>📜</span>
         <h2>היסטוריית פרסום</h2>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>תאריך</th>
-              <th>#</th>
-              <th>נושא</th>
-              <th>וידאו</th>
-              <th>פלטפורמות</th>
-            </tr>
-          </thead>
-          <tbody id="history-tbody">
-            <tr class="loading-row"><td colspan="5"><span class="spinner"></span> טוען…</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <a href="queue.html" target="skipper-queue" style="font-size:0.82rem;color:var(--accent2);border:1px solid var(--accent2);padding:4px 12px;border-radius:6px;text-decoration:none">⏳ לניהול התור</a>
     </div>
-
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>תאריך</th>
+            <th>#</th>
+            <th>נושא</th>
+            <th>וידאו</th>
+            <th>פלטפורמות</th>
+          </tr>
+        </thead>
+        <tbody id="history-tbody">
+          <tr class="loading-row"><td colspan="5"><span class="spinner"></span> טוען…</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Coverage by topic -->
@@ -697,7 +672,6 @@ function renderAll() {
 
   renderStats(queue, publishedQ);
   renderToday(queue, publishedNums);
-  renderQueue(queue);
   renderHistory();
   renderChart(publishedNums);
 }

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚓ מחסנית פרסום</title>
+<style>
+:root {
+  --bg: #0a1628; --bg2: #0f1f3d; --bg3: #152848;
+  --accent: #7eb8f7; --green: #3ddc84; --orange: #f5a623;
+  --red: #e85d5d; --border: #1e3a6e; --text: #e8f0fe; --dim: #7a9cc8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; direction: rtl; }
+
+/* Header */
+header { background: #081228; border-bottom: 2px solid var(--border); padding: 14px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
+.hright { margin-right: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.badge { font-size: 12px; color: var(--dim); background: var(--bg2); border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; }
+
+/* Pause banner */
+.pause-banner { background: #3d1a00; border-bottom: 2px solid var(--orange); padding: 10px 20px; display: none; align-items: center; gap: 12px; font-size: 13px; color: var(--orange); font-weight: 600; }
+.pause-banner.on { display: flex; }
+
+/* Controls */
+.controls { padding: 12px 20px; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+/* Buttons */
+.btn { padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; font-family: inherit; }
+.btn-primary { background: var(--accent); color: #081228; }
+.btn-primary:hover { background: #9ecaf9; }
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:hover { opacity: 0.85; }
+.btn-success { background: var(--green); color: #081228; }
+.btn-success:hover { opacity: 0.85; }
+.btn-ghost { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg3); color: var(--text); }
+.btn-orange { background: rgba(245,166,35,0.15); color: var(--orange); border: 1px solid rgba(245,166,35,0.4); }
+.btn-orange:hover { background: rgba(245,166,35,0.25); }
+.btn-warning { background: rgba(255,200,50,0.15); color: #ffd700; border: 1px solid rgba(255,200,50,0.4); }
+.btn-warning:hover { background: rgba(255,200,50,0.28); }
+.btn-warning:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+
+/* GitHub token row */
+.token-row { padding: 8px 20px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--dim); }
+.token-row.hidden { display: none; }
+.token-input { padding: 5px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; width: 220px; font-family: monospace; direction: ltr; }
+.token-input:focus { outline: none; border-color: var(--accent); }
+.token-ok { color: var(--green); font-size: 12px; display: flex; align-items: center; gap: 6px; }
+.token-ok a { color: var(--dim); cursor: pointer; text-decoration: underline; font-size: 11px; }
+.token-ok a:hover { color: var(--text); }
+
+/* Queue list */
+#queue-list { padding: 12px 20px 80px; }
+.empty { text-align: center; padding: 60px; color: var(--dim); font-size: 15px; }
+
+/* Queue item */
+.q-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; display: flex; gap: 12px; align-items: center; transition: border-color 0.15s, box-shadow 0.15s; }
+.q-item:hover { border-color: var(--accent); box-shadow: 0 0 12px rgba(126,184,247,0.1); }
+.q-item.dragging { opacity: 0.4; }
+.q-item.drag-over { border-color: var(--green); box-shadow: 0 0 0 2px rgba(61,220,132,0.3); }
+.q-item.published { opacity: 0.45; border-style: dashed; }
+
+.drag-handle { cursor: grab; color: var(--dim); font-size: 18px; padding: 0 4px; user-select: none; flex-shrink: 0; }
+.drag-handle:active { cursor: grabbing; }
+
+.q-order { font-size: 11px; color: var(--dim); background: var(--bg3); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+
+.q-body { flex: 1; min-width: 0; }
+.q-top { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.q-num { font-size: 11px; background: var(--bg3); color: var(--accent); padding: 2px 8px; border-radius: 6px; font-weight: 700; }
+.q-topic { font-size: 11px; color: var(--dim); }
+.q-text { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.q-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.date-input { padding: 5px 8px; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; direction: ltr; }
+.date-input:focus { outline: none; border-color: var(--accent); }
+.remove-btn { background: transparent; border: none; color: var(--red); cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 4px; opacity: 0.6; }
+.remove-btn:hover { opacity: 1; background: rgba(232,93,93,0.1); }
+
+/* Bottom save bar */
+.save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #081228; border-top: 2px solid var(--accent); padding: 10px 20px; display: flex; gap: 10px; align-items: center; z-index: 200; }
+.save-status { font-size: 12px; color: var(--dim); flex: 1; }
+
+/* Toast */
+.toast { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); background: #1e3a6e; color: var(--text); padding: 10px 20px; border-radius: 10px; font-size: 13px; z-index: 999; display: none; border: 1px solid var(--accent); white-space: nowrap; }
+.toast.on { display: block; }
+
+/* Section header */
+.section-label { font-size: 12px; color: var(--dim); padding: 4px 0 8px; font-weight: 600; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+
+<header>
+  <span style="font-size:20px">⚓</span>
+  <h1>מחסנית פרסום</h1>
+  <div class="badge" id="countBadge">0 שאלות בתור</div>
+  <div class="hright">
+    <button class="btn btn-ghost btn-sm" onclick="location.href='hub.html'">← Hub</button>
+    <button class="btn btn-ghost btn-sm" id="pauseBtn" onclick="togglePause()">⏸ עצור</button>
+    <button class="btn btn-primary btn-sm" onclick="pushToGitHub()">☁ שמור ל-GitHub</button>
+    <button class="btn btn-warning btn-sm" id="publishBtn" onclick="publishNow()" title="מפרסם את השאלה הבאה בתור עכשיו">⚡ פרסם עכשיו</button>
+  </div>
+</header>
+
+<div class="pause-banner" id="pauseBanner">
+  ⏸ המחסנית מושהית — הפאבלישר לא יפרסם עד שתפעיל מחדש
+  <button class="btn btn-success btn-sm" onclick="togglePause()">▶ הפעל</button>
+</div>
+
+<!-- Token row: shows input only if no token saved -->
+<div class="token-row" id="tokenRow">
+  <span>GitHub Token:</span>
+  <input class="token-input" id="ghToken" type="password" placeholder="ghp_xxxxxxxx — הכנס פעם אחת">
+  <button class="btn btn-primary btn-sm" onclick="saveToken()">שמור</button>
+  <span style="color:#556688">נדרש פעם אחת בלבד</span>
+</div>
+<div class="token-row hidden" id="tokenOkRow">
+  <span class="token-ok">✅ מחובר ל-GitHub <a onclick="clearToken()">החלף</a></span>
+  <span id="railwayStatus" style="font-size:11px;color:var(--dim)"></span>
+  <button class="btn btn-ghost btn-sm" style="margin-right:auto" onclick="reload()">↻ רענן</button>
+</div>
+
+
+<div id="queue-list"><div class="empty">📁 פתח את תיקיית SkipperQuiz כדי לטעון את המחסנית</div></div>
+
+<div class="save-bar">
+  <div class="save-status" id="saveStatus">—</div>
+  <button class="btn btn-success" onclick="pushToGitHub()">☁ שמור ל-GitHub</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const REPO = 'argovalex/skipper-quiz';
+const Q_FILE = 'questions.json';
+const CONFIG_FILE = 'config.json';
+
+let dirHandle = null;
+let questions = [];
+let paused = false;
+let configSHA = null;
+let questionsSHA = null;
+let dragSrcIdx = null;
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+window.onload = () => {
+  updateTokenUI();
+  updateRailwayStatus();
+  loadFromServer();
+};
+
+function saveToken() {
+  const val = document.getElementById('ghToken').value.trim();
+  if (!val) { toast('⚠ הכנס טוקן'); return; }
+  localStorage.setItem('sq_gh_token', val);
+  updateTokenUI();
+  toast('✅ טוקן נשמר');
+}
+
+function clearToken() {
+  localStorage.removeItem('sq_gh_token');
+  document.getElementById('ghToken').value = '';
+  updateTokenUI();
+}
+
+function updateTokenUI() {
+  const token = localStorage.getItem('sq_gh_token');
+  document.getElementById('tokenRow').classList.toggle('hidden', !!token);
+  document.getElementById('tokenOkRow').classList.toggle('hidden', !token);
+}
+
+function getToken() { return localStorage.getItem('sq_gh_token') || ''; }
+
+async function loadFromServer() {
+  setStatus('טוען...');
+  try {
+    // Try local http-server first, fallback to GitHub
+    let qRes = await fetch('./questions.json?t=' + Date.now()).catch(() => null);
+    if (!qRes?.ok) {
+      qRes = await fetch('https://raw.githubusercontent.com/argovalex/skipper-quiz/main/questions.json?t=' + Date.now());
+    }
+    if (!qRes.ok) throw new Error('questions.json לא נמצא');
+    questions = await qRes.json();
+
+    // Get SHA for later push
+    const token = getToken();
+    if (token) {
+      try {
+        const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${Q_FILE}`,
+          { headers: { Authorization: `Bearer ${token}` } });
+        if (r.ok) { const d = await r.json(); questionsSHA = d.sha; }
+      } catch {}
+    }
+
+    const cRes = await fetch('./config.json?t=' + Date.now()).catch(() => null);
+    if (cRes?.ok) {
+      const cfg = await cRes.json();
+      paused = cfg.paused === true;
+      updatePauseUI();
+    }
+    renderQueue();
+    setStatus('נטען — ' + getQueue().length + ' שאלות בתור');
+  } catch (e) {
+    setStatus('⚠ ' + e.message, true);
+  }
+}
+
+function reload() { loadFromServer(); }
+
+// ── Queue: filter & render ────────────────────────────────────────────────────
+function getQueue() {
+  // Approved, not yet published — in order of scheduled_date
+  return questions
+    .filter(q => q.approved_for_publish)
+    .sort((a, b) => {
+      const da = a.scheduled_date || '9999-99-99';
+      const db = b.scheduled_date || '9999-99-99';
+      return da.localeCompare(db);
+    });
+}
+
+function renderQueue() {
+  const queue = getQueue();
+  const list = document.getElementById('queue-list');
+  document.getElementById('countBadge').textContent = `${queue.length} שאלות בתור`;
+
+  if (!queue.length) {
+    list.innerHTML = '<div class="empty">אין שאלות מאושרות במחסנית<br><small style="color:#556688">כנס לעורך ואשר שאלות לפרסום</small></div>';
+    return;
+  }
+
+  const today = new Date().toISOString().split('T')[0];
+
+  list.innerHTML = queue.map((q, i) => {
+    const isToday = q.scheduled_date === today;
+    const isPast = q.scheduled_date && q.scheduled_date < today;
+    return `
+    <div class="q-item${isPast ? ' published' : ''}" id="qi-${q.num}"
+         draggable="true"
+         ondragstart="onDragStart(event,${i})"
+         ondragover="onDragOver(event,${i})"
+         ondrop="onDrop(event,${i})"
+         ondragend="onDragEnd(event)">
+      <div class="drag-handle" title="גרור לשינוי סדר">⠿</div>
+      <div class="q-order">${i + 1}</div>
+      <div class="q-body">
+        <div class="q-top">
+          <span class="q-num">#${q.num}</span>
+          <span class="q-topic">${q.topic}</span>
+          ${isToday ? '<span style="font-size:11px;background:#1a3060;color:#4a90d9;padding:2px 8px;border-radius:10px;border:1px solid #4a90d9">📅 היום</span>' : ''}
+          ${isPast ? '<span style="font-size:11px;color:var(--orange)">⚠ עבר</span>' : ''}
+        </div>
+        <div class="q-text" title="${q.q_he}">${q.q_he}</div>
+      </div>
+      <div class="q-right">
+        <input type="date" class="date-input" value="${q.scheduled_date || ''}"
+               title="תאריך פרסום"
+               onchange="setDate(${q.num}, this.value)"
+               min="${today}">
+        <div style="display:flex;gap:6px;align-items:center">
+          <button class="btn btn-warning btn-sm" onclick="publishQuestion(${q.num})" title="פרסם שאלה זו עכשיו">⚡ פרסם</button>
+          <button class="remove-btn" onclick="removeFromQueue(${q.num})" title="הסר מהמחסנית">✕</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  setStatus(`${queue.length} שאלות בתור`);
+}
+
+// ── Date change ───────────────────────────────────────────────────────────────
+function setDate(num, val) {
+  const q = questions.find(q => q.num === num);
+  if (q) { q.scheduled_date = val || null; renderQueue(); setStatus('שינויים לא שמורים ●', true); }
+}
+
+// ── Remove from queue ─────────────────────────────────────────────────────────
+function removeFromQueue(num) {
+  const q = questions.find(q => q.num === num);
+  if (!q) return;
+  if (!confirm(`להסיר שאלה #${num} מהמחסנית?`)) return;
+  q.approved_for_publish = false;
+  q.scheduled_date = null;
+  renderQueue();
+  setStatus('שינויים לא שמורים ●', true);
+  toast('↩ הוסרה מהמחסנית');
+}
+
+// ── Drag & drop reorder ───────────────────────────────────────────────────────
+function onDragStart(e, i) {
+  dragSrcIdx = i;
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+}
+function onDragOver(e, i) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  document.querySelectorAll('.q-item').forEach(el => el.classList.remove('drag-over'));
+  if (i !== dragSrcIdx) e.currentTarget.classList.add('drag-over');
+}
+function onDrop(e, toIdx) {
+  e.preventDefault();
+  if (dragSrcIdx === null || dragSrcIdx === toIdx) return;
+  const queue = getQueue();
+  const srcNum = queue[dragSrcIdx].num;
+  const toNum = queue[toIdx].num;
+
+  // Swap scheduled_dates to reorder
+  const srcQ = questions.find(q => q.num === srcNum);
+  const toQ  = questions.find(q => q.num === toNum);
+  if (srcQ && toQ) {
+    const tmp = srcQ.scheduled_date;
+    srcQ.scheduled_date = toQ.scheduled_date;
+    toQ.scheduled_date = tmp;
+  }
+  dragSrcIdx = null;
+  renderQueue();
+  setStatus('שינויים לא שמורים ●', true);
+}
+function onDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  document.querySelectorAll('.q-item').forEach(el => el.classList.remove('drag-over'));
+  dragSrcIdx = null;
+}
+
+// ── Pause ─────────────────────────────────────────────────────────────────────
+function togglePause() {
+  paused = !paused;
+  updatePauseUI();
+  setStatus('שינויים לא שמורים ●', true);
+  toast(paused ? '⏸ המחסנית מושהית' : '▶ המחסנית פעילה');
+}
+
+function updatePauseUI() {
+  const banner = document.getElementById('pauseBanner');
+  const btn    = document.getElementById('pauseBtn');
+  if (paused) {
+    banner.classList.add('on');
+    btn.textContent = '▶ הפעל';
+    btn.className = 'btn btn-success btn-sm';
+  } else {
+    banner.classList.remove('on');
+    btn.textContent = '⏸ עצור';
+    btn.className = 'btn btn-orange btn-sm';
+  }
+}
+
+// ── Save to local folder ──────────────────────────────────────────────────────
+async function saveToFile() {
+  const content = JSON.stringify(questions, null, 2);
+  const config  = JSON.stringify({ paused, updated_at: new Date().toISOString() }, null, 2);
+
+  if (dirHandle) {
+    try {
+      const qfh = await dirHandle.getFileHandle('questions.json', { create: true });
+      const qw  = await qfh.createWritable();
+      await qw.write(content); await qw.close();
+
+      const cfh = await dirHandle.getFileHandle('config.json', { create: true });
+      const cw  = await cfh.createWritable();
+      await cw.write(config); await cw.close();
+
+      setStatus('✅ נשמר מקומית');
+      toast('💾 נשמר מקומית');
+    } catch (e) { toast('❌ ' + e.message); }
+  } else {
+    // Download fallback
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([content], {type:'application/json'}));
+    a.download = 'questions.json'; a.click();
+    toast('⬇ מוריד questions.json — שים בתיקייה ודחוף ל-GitHub ידנית');
+  }
+}
+
+// ── Push to GitHub ────────────────────────────────────────────────────────────
+async function pushToGitHub() {
+  const token = getToken();
+  if (!token) { toast('⚠ הכנס GitHub Token למעלה'); document.getElementById('tokenRow').classList.remove('hidden'); return; }
+
+  const btn = document.querySelector('.save-bar .btn-success');
+  const origText = btn.textContent;
+  btn.textContent = '⏳ שומר...'; btn.disabled = true;
+
+  try {
+    // Push questions.json
+    await ghPush(token, Q_FILE, JSON.stringify(questions, null, 2), questionsSHA,
+      `queue: update approvals & schedule (${getQueue().length} in queue)`);
+
+    // Push config.json
+    const configContent = JSON.stringify({ paused, updated_at: new Date().toISOString() }, null, 2);
+    configSHA = await ghPush(token, CONFIG_FILE, configContent, configSHA,
+      paused ? 'config: pause publishing' : 'config: resume publishing');
+
+    setStatus(`✅ נשמר ל-GitHub — ${getQueue().length} שאלות בתור`);
+    toast('✅ נשמר ל-GitHub!');
+  } catch (e) {
+    toast('❌ ' + e.message);
+    setStatus('שגיאה בשמירה', true);
+  } finally {
+    btn.textContent = origText; btn.disabled = false;
+  }
+}
+
+async function ghPush(token, path, content, sha, message) {
+  // Get current SHA if not known
+  if (!sha) {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (r.ok) { const d = await r.json(); sha = d.sha; }
+    } catch {}
+  }
+
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+  const body = { message, content: encoded, ...(sha ? { sha } : {}) };
+  const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.message || `GitHub ${res.status}`);
+  }
+  const data = await res.json();
+  return data.content.sha;
+}
+
+// ── Publish Now: push trigger to publisher repo → Railway auto-deploys ────────
+const PUBLISHER_REPO = 'argovalex/skipper-quiz-publisher';
+
+function updateRailwayStatus() {
+  const el = document.getElementById('railwayStatus');
+  if (!el) return;
+  // Railway auto-deploys on GitHub push — no extra setup needed
+  el.innerHTML = '<span style="color:var(--dim);font-size:10px">⚡ Railway: auto-deploy on push</span>';
+}
+
+// publishNow = publish the first in queue (header button)
+async function publishNow() {
+  const queue = getQueue();
+  if (!queue.length) { toast('⚠ אין שאלות מאושרות בתור'); return; }
+  await publishQuestion(queue[0].num);
+}
+
+// publishQuestion = publish a specific question by num
+async function publishQuestion(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q) { toast('⚠ שאלה לא נמצאה'); return; }
+
+  const ghToken = getToken();
+  if (!ghToken) {
+    toast('⚠ הכנס GitHub Token תחילה');
+    document.getElementById('tokenRow').classList.remove('hidden');
+    return;
+  }
+
+  if (!confirm(`לפרסם שאלה #${num} — "${q.q_he.slice(0,60)}..." עכשיו?`)) return;
+
+  // Move selected question to top of queue by giving it today's date
+  const today = new Date().toISOString().split('T')[0];
+  q.scheduled_date = today;
+
+  const headerBtn = document.getElementById('publishBtn');
+  headerBtn.disabled = true;
+  headerBtn.textContent = '⏳ שומר...';
+
+  try {
+    // Step 1: push updated questions.json
+    questionsSHA = await ghPush(ghToken, Q_FILE, JSON.stringify(questions, null, 2), questionsSHA,
+      `publish-now: Q#${num}`);
+
+    // Step 2: push trigger.txt to publisher repo → Railway auto-deploys
+    headerBtn.textContent = '⏳ מפעיל Railway...';
+    const triggerContent = `publish-now: ${new Date().toISOString()} — Q#${num}`;
+
+    let triggerSHA;
+    try {
+      const r = await fetch(`https://api.github.com/repos/${PUBLISHER_REPO}/contents/trigger.txt`,
+        { headers: { Authorization: `Bearer ${ghToken}` } });
+      if (r.ok) { const d = await r.json(); triggerSHA = d.sha; }
+    } catch {}
+
+    const encoded = btoa(unescape(encodeURIComponent(triggerContent)));
+    const res = await fetch(`https://api.github.com/repos/${PUBLISHER_REPO}/contents/trigger.txt`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${ghToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `publish-now: Q#${num} — ${new Date().toISOString()}`,
+        content: encoded,
+        ...(triggerSHA ? { sha: triggerSHA } : {})
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message || `GitHub ${res.status}`);
+    }
+
+    setStatus(`🚀 Railway הופעל — שאלה #${num} תפורסם בעוד ~5 דקות`);
+    toast(`🚀 Q#${num} יוצאת בעוד ~5 דקות`);
+    renderQueue();
+  } catch (e) {
+    toast('❌ ' + e.message);
+    setStatus('שגיאה: ' + e.message, true);
+  } finally {
+    headerBtn.disabled = false;
+    headerBtn.textContent = '⚡ פרסם עכשיו';
+  }
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function setStatus(msg, warn = false) {
+  const el = document.getElementById('saveStatus');
+  el.textContent = msg;
+  el.style.color = warn ? 'var(--orange)' : 'var(--dim)';
+}
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('on'), 3000);
+}
+</script>
+</body>
+</html>
