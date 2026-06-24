@@ -1798,16 +1798,81 @@ function getScene(topic, qText) {
   return SCENES[topic] || SCENES['ניווט'];
 }
 
+// ── GitHub push helper (same token as queue.html) ────────────────────────────
+async function ghPushQuestions() {
+  const token = localStorage.getItem('sq_gh_token');
+  if (!token) return false;
+  const REPO = 'argovalex/skipper-quiz';
+  const path = 'questions.json';
+  const content = JSON.stringify(questions, null, 2);
+  try {
+    // Get current SHA
+    let sha;
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,
+      { headers: { Authorization: `Bearer ${token}` } });
+    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+    const body = { message: `approve: Q#${questions[currentIdx]?.num}`, content: encoded, ...(sha ? { sha } : {}) };
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    return res.ok;
+  } catch { return false; }
+}
+
+// ── Push pre-built HTML to GitHub for publisher ───────────────────────────────
+async function ghPushHTML(q) {
+  const token = localStorage.getItem('sq_gh_token');
+  if (!token) return false;
+  const REPO = 'argovalex/skipper-quiz';
+  const fname = `quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/[\s\/]/g,'_')}_he.html`;
+  const path = `html/${fname}`;
+  const html = generateQuizHTML(q, 'he', true); // autoPlay=true for video recording
+  try {
+    let sha;
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,
+      { headers: { Authorization: `Bearer ${token}` } });
+    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    const encoded = btoa(unescape(encodeURIComponent(html)));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `html: Q#${q.num} ${q.topic}`, content: encoded, ...(sha ? { sha } : {}) })
+    });
+    return res.ok;
+  } catch { return false; }
+}
+
 // ── Approve for Publish ──────────────────────────────────────────────────────
-function toggleApprove() {
+async function toggleApprove() {
   if(currentIdx<0){showToast('❌ בחר שאלה תחילה');return;}
   saveCurrentToState();
   const q = questions[currentIdx];
   q.approved_for_publish = !q.approved_for_publish;
+  if(q.approved_for_publish && !q.scheduled_date) {
+    q.scheduled_date = new Date().toISOString().split('T')[0];
+  }
   renderApproveBtn(q);
   renderList();
-  if(q.approved_for_publish) showToast('✅ מאושרת לפרסום!');
-  else showToast('↩ הוסרה מהתור');
+  if(q.approved_for_publish) {
+    await saveJSON();
+    // Also push to GitHub immediately so publisher sees it
+    const pushed = await ghPushQuestions();
+    ghPushHTML(q); // push pre-built HTML for publisher (fire and forget)
+    if (pushed) {
+      showToast('✅ נכנסה למחסנית + נשמר ל-GitHub! <a href="queue.html" target="_blank" style="color:#7eb8f7">פתח מחסנית →</a>');
+    } else {
+      showToast('✅ נכנסה למחסנית! <a href="queue.html" target="_blank" style="color:#7eb8f7">פתח מחסנית →</a> <span style="color:#f5a623;font-size:11px">(דחוף ל-GitHub מהמחסנית)</span>');
+    }
+  } else {
+    q.scheduled_date = null;
+    await saveJSON();
+    ghPushQuestions(); // silent push on unapprove too
+    showToast('↩ הוסרה מהמחסנית');
+  }
 }
 
 function renderApproveBtn(q) {
@@ -1900,6 +1965,7 @@ async function loadQuestionsFromDir() {
     const text = await file.text();
     const raw = JSON.parse(text);
     questions = raw.map((q,i) => ({
+      ...q,  // preserve all fields (scheduled_date, published_at, etc.)
       num: q.num ?? i+1,
       source: q.source || 'ידני',
       topic: q.topic || 'כללי',
