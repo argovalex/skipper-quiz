@@ -101,8 +101,8 @@ header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
   <div class="hright">
     <button class="btn btn-ghost btn-sm" onclick="location.href='hub.html'">← Hub</button>
     <button class="btn btn-ghost btn-sm" id="pauseBtn" onclick="togglePause()">⏸ עצור</button>
-    <button class="btn btn-primary btn-sm" onclick="pushToGitHub()">☁ שמור ל-GitHub</button>
-    <button class="btn btn-warning btn-sm" id="publishBtn" onclick="publishNow()" title="מפרסם את השאלה הבאה בתור עכשיו">⚡ פרסם עכשיו</button>
+    <button class="btn btn-primary btn-sm" onclick="saveOnly()" title="שמור שינויים בסדר/תאריכים ללא פרסום">💾 שמור שינויים</button>
+    <button class="btn btn-warning btn-sm" id="publishBtn" onclick="publishNow()" title="פרסם את הראשון בתור (שמור + הפעל Railway)">⚡ פרסם ראשון</button>
   </div>
 </header>
 
@@ -141,6 +141,8 @@ const CONFIG_FILE = 'config.json';
 
 let dirHandle = null;
 let questions = [];
+let publishLog = [];
+let publishedNums = new Set();
 let paused = false;
 let configSHA = null;
 let questionsSHA = null;
@@ -196,6 +198,13 @@ async function loadFromServer() {
       } catch {}
     }
 
+    // Load publish log (to detect already-published questions)
+    try {
+      const logRes = await fetch('https://raw.githubusercontent.com/argovalex/skipper-quiz/main/publisher/publish-log.json?t=' + Date.now());
+      publishLog = logRes.ok ? await logRes.json() : [];
+    } catch { publishLog = []; }
+    publishedNums = new Set((publishLog || []).map(e => e.num));
+
     const cRes = await fetch('./config.json?t=' + Date.now()).catch(() => null);
     if (cRes?.ok) {
       const cfg = await cRes.json();
@@ -236,10 +245,11 @@ function renderQueue() {
   const today = new Date().toISOString().split('T')[0];
 
   list.innerHTML = queue.map((q, i) => {
-    const isToday = q.scheduled_date === today;
-    const isPast = q.scheduled_date && q.scheduled_date < today;
+    const isToday  = q.scheduled_date === today;
+    const isPast   = q.scheduled_date && q.scheduled_date < today;
+    const wasPublished = publishedNums.has(q.num);
     return `
-    <div class="q-item${isPast ? ' published' : ''}" id="qi-${q.num}"
+    <div class="q-item${wasPublished ? ' published' : ''}" id="qi-${q.num}"
          draggable="true"
          ondragstart="onDragStart(event,${i})"
          ondragover="onDragOver(event,${i})"
@@ -251,8 +261,9 @@ function renderQueue() {
         <div class="q-top">
           <span class="q-num">#${q.num}</span>
           <span class="q-topic">${q.topic}</span>
-          ${isToday ? '<span style="font-size:11px;background:#1a3060;color:#4a90d9;padding:2px 8px;border-radius:10px;border:1px solid #4a90d9">📅 היום</span>' : ''}
-          ${isPast ? '<span style="font-size:11px;color:var(--orange)">⚠ עבר</span>' : ''}
+          ${wasPublished ? '<span style="font-size:11px;background:#1a3a1a;color:var(--green);padding:2px 8px;border-radius:10px;border:1px solid var(--green)">✅ פורסם</span>' : ''}
+          ${isToday && !wasPublished ? '<span style="font-size:11px;background:#1a3060;color:#4a90d9;padding:2px 8px;border-radius:10px;border:1px solid #4a90d9">📅 היום</span>' : ''}
+          ${isPast && !wasPublished ? '<span style="font-size:11px;background:#2a1a00;color:var(--orange);padding:2px 8px;border-radius:10px;border:1px solid var(--orange)">📅 מוכן לפרסום</span>' : ''}
         </div>
         <div class="q-text" title="${q.q_he}">${q.q_he}</div>
       </div>
@@ -441,11 +452,28 @@ function updateRailwayStatus() {
   el.innerHTML = '<span style="color:var(--dim);font-size:10px">⚡ Railway: auto-deploy on push</span>';
 }
 
+// saveOnly = save changes to GitHub without triggering Railway
+async function saveOnly() {
+  const ghToken = getToken();
+  if (!ghToken) { toast('⚠ הכנס GitHub Token'); document.getElementById('tokenRow').classList.remove('hidden'); return; }
+  const btn = event.target;
+  btn.disabled = true; btn.textContent = '⏳ שומר...';
+  try {
+    questionsSHA = await ghPush(ghToken, Q_FILE, JSON.stringify(questions, null, 2), questionsSHA,
+      `queue: update order/dates (${getQueue().length} in queue)`);
+    setStatus('✅ שמור ל-GitHub');
+    toast('✅ שמור ל-GitHub');
+  } catch(e) { toast('❌ ' + e.message); }
+  finally { btn.disabled = false; btn.textContent = '💾 שמור שינויים'; }
+}
+
 // publishNow = publish the first in queue (header button)
 async function publishNow() {
   const queue = getQueue();
   if (!queue.length) { toast('⚠ אין שאלות מאושרות בתור'); return; }
-  await publishQuestion(queue[0].num);
+  const first = queue.find(q => !publishedNums.has(q.num));
+  if (!first) { toast('⚠ כל השאלות בתור כבר פורסמו'); return; }
+  await publishQuestion(first.num);
 }
 
 // publishQuestion = publish a specific question by num
@@ -460,7 +488,12 @@ async function publishQuestion(num) {
     return;
   }
 
-  if (!confirm(`לפרסם שאלה #${num} — "${q.q_he.slice(0,60)}..." עכשיו?`)) return;
+  // Warn if already published
+  if (publishedNums.has(num)) {
+    if (!confirm(`⚠️ שאלה #${num} כבר פורסמה בעבר!\nלפרסם אותה שוב?`)) return;
+  } else {
+    if (!confirm(`לפרסם שאלה #${num}?\n"${q.q_he.slice(0,60)}..."\n\nהפעולה תשמור ל-GitHub ותפעיל את Railway.`)) return;
+  }
 
   // Move selected question to top of queue by giving it today's date
   const today = new Date().toISOString().split('T')[0];
