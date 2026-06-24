@@ -407,10 +407,10 @@
   <div class="header-title">🚢 SkipperQuiz <span>Control Hub</span></div>
 
   <nav class="status-row">
-    <a class="status-link" href="index.html" target="_blank" title="פתח עורך">
+    <a class="status-link" href="index.html" target="skipper-editor" title="פתח עורך">
       <span class="dot"></span> עורך
     </a>
-    <a class="status-link" href="monitor.html" target="_blank" title="פתח מוניטור">
+    <a class="status-link" href="monitor.html" target="skipper-monitor" title="פתח מוניטור">
       <span class="dot"></span> מוניטור
     </a>
     <a class="status-link" href="https://github.com/argovalex/skipper-quiz" target="_blank" title="GitHub">
@@ -432,7 +432,7 @@
     <div class="stat-value loading" id="val-queue">…</div>
     <div class="stat-label">ממתינות לפרסום</div>
   </div>
-  <div class="stat-card" id="stat-approved" onclick="window.open('queue.html','_blank')" style="cursor:pointer" title="פתח מחסנית פרסום">
+  <div class="stat-card" id="stat-approved" onclick="window.open('queue.html','skipper-queue')" style="cursor:pointer" title="פתח מחסנית פרסום">
     <div class="stat-value loading" id="val-approved">…</div>
     <div class="stat-label">מאושרות ✅</div>
   </div>
@@ -462,9 +462,9 @@
   <div class="card">
     <div class="card-header">📋 פעולות מהירות</div>
     <div class="card-body">
-      <a class="btn primary" href="queue.html" target="_blank">📦 מחסנית פרסום</a>
-      <a class="btn" href="index.html" target="_blank">✏️ פתח עורך</a>
-      <a class="btn" href="monitor.html" target="_blank">📊 פתח מוניטור</a>
+      <a class="btn primary" href="queue.html" target="skipper-queue">📦 מחסנית פרסום</a>
+      <a class="btn" href="index.html" target="skipper-editor">✏️ פתח עורך</a>
+      <a class="btn" href="monitor.html" target="skipper-monitor">📊 פתח מוניטור</a>
       <a class="btn" href="https://github.com/argovalex/skipper-quiz" target="_blank">🐙 GitHub</a>
       <a class="btn" href="https://railway.app" target="_blank">🚂 Railway Logs</a>
 
@@ -605,7 +605,7 @@ function renderTodayQuestion(qs, log) {
       <span class="q-answer-val">${correctLetter}</span>
       <span class="q-answer-text">${answerText}</span>
     </div>
-    <a class="btn green-btn" href="monitor.html" target="_blank">▶️ צפה בתור המלא</a>
+    <a class="btn green-btn" href="monitor.html" target="skipper-monitor">▶️ צפה בתור המלא</a>
   `;
 }
 
