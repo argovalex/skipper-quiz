@@ -200,7 +200,7 @@ async function loadFromServer() {
 
     // Load publish log (to detect already-published questions)
     try {
-      const logRes = await fetch('https://raw.githubusercontent.com/argovalex/skipper-quiz/main/publisher/publish-log.json?t=' + Date.now());
+      const logRes = await fetch('https://raw.githubusercontent.com/argovalex/skipper-quiz-publisher/main/publish-log.json?t=' + Date.now());
       publishLog = logRes.ok ? await logRes.json() : [];
     } catch { publishLog = []; }
     publishedNums = new Set((publishLog || []).map(e => e.num));
