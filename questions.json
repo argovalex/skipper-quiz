@@ -15,7 +15,8 @@
     "answer_confirmed": false,
     "explanation": "קווי האורך והרוחב מגדירים נקודות חיתוך ייחודיות — כל נקודה בעולם מוגדרת ע\"י קו רוחב + קו אורך.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 102,
@@ -33,7 +34,8 @@
     "answer_confirmed": false,
     "explanation": "כדור הארץ מסתובב ממערב למזרח — לכן השמש נראית זורחת במזרח ושוקעת במערב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 103,
@@ -51,7 +53,8 @@
     "answer_confirmed": false,
     "explanation": "גובה כוכב הצפון מעל האופק שווה לקו הרוחב. אם הזווית קבועה — כלי השיט שט על אותו קו רוחב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 104,
@@ -69,7 +72,8 @@
     "answer_confirmed": false,
     "explanation": "במפת מרקטור מודדים מרחקים בסקלת קווי הרוחב (הצד הימני/שמאלי), ממול לאזור השייט — כי הסקלה משתנה עם הרוחב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 105,
@@ -87,7 +91,8 @@
     "answer_confirmed": false,
     "explanation": "רמקולים, מגנטים וסוללות יוצרים שדות מגנטיים שמשבשים את המצפן המגנטי — יש להרחיקם.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 106,
@@ -105,7 +110,8 @@
     "answer_confirmed": false,
     "explanation": "FLOAT FREE — כאשר הספינה שוקעת, המשואה (EPIRB) משתחררת אוטומטית וצפה, ומשדרת אות מצוקה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 107,
@@ -123,7 +129,8 @@
     "answer_confirmed": false,
     "explanation": "מיל ימי = 1852 מטר = דקת קשת אחת על מעגל גדול (בעיקר על קו האורך/קו הרוחב).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 108,
@@ -141,7 +148,8 @@
     "answer_confirmed": false,
     "explanation": "דוויאציה = שגיאת המצפן הנגרמת ממסות מתכת ומערכות חשמל בספינה עצמה. ווראציה = הפרש בין צפון מגנטי לגיאוגרפי.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 109,
@@ -159,7 +167,8 @@
     "answer_confirmed": false,
     "explanation": "הזמן המקומי מחושב לפי קו האורך: כל 15° = שעה אחת. מזרח = קדימה, מערב = אחורה מ-UTC.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 110,
@@ -177,7 +186,8 @@
     "answer_confirmed": false,
     "explanation": "הגה אוטומטי חשמלי צורך חשמל רב, במיוחד בים גלי שבו נדרשות תיקוני קורס תכופים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 111,
@@ -195,7 +205,8 @@
     "answer_confirmed": false,
     "explanation": "כאשר הספינה עומדת — הרוח היחסית שווה לרוח האמיתית. מד הרוח מראה את הרוח האמיתית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 112,
@@ -213,7 +224,8 @@
     "answer_confirmed": false,
     "explanation": "מהירות = 15 מטר / 5 שניות = 3 מ\"ש. 3 מ\"ש × 3600 / 1852 = 5.83 קשרים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 113,
@@ -231,7 +243,8 @@
     "answer_confirmed": false,
     "explanation": "קורס מגנטי = הזווית בין שדרת הספינה לבין הצפון המגנטי (לא הגיאוגרפי, לא קורס המצפן).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 114,
@@ -249,7 +262,8 @@
     "answer_confirmed": false,
     "explanation": "אזור זמן = פס של 15° (7.5° מכל צד של קו האורך המרכזי) עם זמן אחיד.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 115,
@@ -267,7 +281,8 @@
     "answer_confirmed": false,
     "explanation": "מיל ימי = 1852 מטרים בדיוק (לפי הגדרה בינלאומית). תשובה ג' היא הקרובה ביותר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 116,
@@ -285,7 +300,8 @@
     "answer_confirmed": false,
     "explanation": "הגה רוח שומר על זווית קבועה בין שדרת הספינה לרוח היחסית (המדומה) — ללא חשמל.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 117,
@@ -303,7 +319,8 @@
     "answer_confirmed": false,
     "explanation": "נוסחה: מרחק אופק (מיל) = 2.03 × √גובה(מטר). 2.03 × √9 = 2.03 × 3 ≈ 6.1 מיל.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 118,
@@ -321,7 +338,8 @@
     "answer_confirmed": false,
     "explanation": "קווי הרוחב: 0° (קו משווה) עד 90° צפון (קוטב צפוני) ועד 90° דרום (קוטב דרומי).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 119,
@@ -339,7 +357,8 @@
     "answer_confirmed": false,
     "explanation": "כל התשובות נכונות: קו אורך 0° — הקו הראשוני, עובר בגרינוויץ ליד לונדון, וחצי מהמעגל הגדול שחציו השני הוא קו האורך 180°.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 120,
@@ -357,7 +376,8 @@
     "answer_confirmed": false,
     "explanation": "179°E ≈ UTC+12; 179°W ≈ UTC-12. ב-UTC+12: 23:59 = UTC 11:59. ב-UTC-12: 11:59 - 12 = 23:59 ב-30 בדצמבר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 121,
@@ -375,7 +395,8 @@
     "answer_confirmed": false,
     "explanation": "UTC+3 אומר: אתה מזרחית לגרינוויץ, הזמן המקומי שלך מאוחר ב-3 שעות מ-UTC, וכל השלוש תשובות נכונות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 122,
@@ -393,7 +414,8 @@
     "answer_confirmed": false,
     "explanation": "ווראציה (ההפרש בין צפון מגנטי לגיאוגרפי) משפיעה על כל מצפן שמתבסס על השדה המגנטי של כדור הארץ — מגנטי ו-Flux Gate.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 123,
@@ -411,7 +433,8 @@
     "answer_confirmed": false,
     "explanation": "בעת הפלגה, מד הרוח מודד את הרוח היחסית (apparent wind) — שילוב של הרוח האמיתית ורוח ההפלגה הנגדית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 124,
@@ -429,7 +452,8 @@
     "answer_confirmed": false,
     "explanation": "ההגה האוטומטי משחרר ידיים לתצפית ופעולות דחופות — אך אינו פוטר מחובת תצפית (Rule 5 COLREGS).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 125,
@@ -447,7 +471,8 @@
     "answer_confirmed": false,
     "explanation": "הכנת טבלת דוויאציה דורשת: זיהוי אתרים ידועים (קו בינוי) + סיבוב 360° לרישום הדוויאציה בכל כיוון.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 126,
@@ -465,7 +490,8 @@
     "answer_confirmed": false,
     "explanation": "הגה אוטומטי חשמלי: צורך חשמל, עלול להפחית ערנות, ודורש אחזקה — כל התשובות נכונות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 127,
@@ -483,7 +509,8 @@
     "answer_confirmed": false,
     "explanation": "הגה רוח: עובד ללא חשמל, מיועד למפרשיות, ואכן ישנה דרישה לערנות כאשר הרוח משתנה — כל התשובות נכונות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 128,
@@ -501,7 +528,8 @@
     "answer_confirmed": false,
     "explanation": "ברכב שיט פנאי, מד העומק משמש לבטיחות השיט, ניווט, ניתוב מצועות רדודות ועגינה בטוחה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 129,
@@ -519,7 +547,8 @@
     "answer_confirmed": false,
     "explanation": "ממיר מד עומק: לנקות בעדינות ללא כלי מתכת, ולצבוע בצבע אנטי-פאולינג ללא מתכת שמפריעה לאות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 130,
@@ -537,7 +566,8 @@
     "answer_confirmed": false,
     "explanation": "עומקי מפה ניתנים בשפל נמוך. גאות מוסיפה מים. מד עומק: 12m. מפה: 10m בשפל. הפרש = גאות של כ-2m (עם תיקון שוקע).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 131,
@@ -555,7 +585,8 @@
     "answer_confirmed": false,
     "explanation": "עומק מפה (בשפל) = עומק נמדד + שוקע - גאות = 10 + 0 - 1 = 9 מטרים. (הממיר מותקן בתחתית, לכן שוקע כבר כלול בקריאת 10m.)",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 132,
@@ -573,7 +604,8 @@
     "answer_confirmed": false,
     "explanation": "GPS: קולט אות מ-3+ לוויינים, מחשב טווח לכל אחד ומוצא נקודת חיתוך = מיקום. לדיוק תלת-ממדי נדרשים 4 לוויינים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 133,
@@ -591,7 +623,8 @@
     "answer_confirmed": false,
     "explanation": "MOB (Man Over Board) = נקודת דרך פעילה שמציגה ברצף כיוון וטווח — קריטי להציל אדם שנפל לים. MARK = מסמן בלבד.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 134,
@@ -609,7 +642,8 @@
     "answer_confirmed": false,
     "explanation": "מיקום דו-ממדי (lat/lon) דורש 3 לוויינים. מיקום תלת-ממדי (כולל גובה) דורש 4. בפועל, מקלטים מודרניים משתמשים ב-4+.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 135,
@@ -627,7 +661,8 @@
     "answer_confirmed": false,
     "explanation": "מכ\"מ ימי: זיהוי עצמים וכלי שיט בכל תנאי ראות, מניעת התנגשות, ניווט, ניתוב, וחיפוש והצלה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 136,
@@ -645,7 +680,8 @@
     "answer_confirmed": false,
     "explanation": "GAIN = רגישות הקליטה. הגברה = יותר רעש אבל גילוי מטרות חלשות. הנחתה = תמונה נקייה יותר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 137,
@@ -663,7 +699,8 @@
     "answer_confirmed": false,
     "explanation": "VHF = גלים ישרים, קו ראייה (Line of Sight) — מכאן שגובה האנטנה ומרחק האופק הם הגורמים העיקריים לטווח.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 138,
@@ -681,7 +718,8 @@
     "answer_confirmed": false,
     "explanation": "גשם מחזיר אותות מכ\"מ — FTC (Fast Time Constant) / Anti-Clutter Rain מצמצם את ההחזרים מגשם ומאפשר זיהוי מטרות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 139,
@@ -699,7 +737,8 @@
     "answer_confirmed": false,
     "explanation": "STAND-BY: המכ\"מ חמום ומוכן לפעולה מיידית אך לא משדר — חוסך בחשמל ומפחית קרינה כשלא נדרש.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 140,
@@ -717,7 +756,8 @@
     "answer_confirmed": false,
     "explanation": "MMSI (Maritime Mobile Service Identity) = מספר 9 ספרות ייחודי לכלי שיט, משמש ל-DSC, AIS, ומזהה מדינה ואופי התחנה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 141,
@@ -735,7 +775,8 @@
     "answer_confirmed": false,
     "explanation": "DSC (Digital Selective Calling) = מכלול ב-VHF לשידור וקליטה של הודעות ספרתיות — כולל אזעקת מצוקה על ערוץ 70.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 142,
@@ -753,7 +794,8 @@
     "answer_confirmed": false,
     "explanation": "DUAL WATCH = האזנה סימולטנית על ערוץ 16 (חירום) ועוד ערוץ עבודה נבחר. כשיש שידור על 16 — המכשיר עובר אוטומטית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 143,
@@ -771,7 +813,8 @@
     "answer_confirmed": false,
     "explanation": "MAYDAY מופעל כשיש סכנת חיים מיידית וחמורה. בדרך כלל המפקד מחליט — אבל בנסיבות קיצוניות, כל אחד יכול.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 144,
@@ -789,7 +832,8 @@
     "answer_confirmed": false,
     "explanation": "SART (Search And Rescue Transponder) = מגיב לכל פולס מכ\"מ ימי. כשמכ\"מ מקרין — SART מגיב ומייצר סדרת נקודות על מסך המכ\"מ.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 145,
@@ -807,7 +851,8 @@
     "answer_confirmed": false,
     "explanation": "DSC חוזר ומשדר את אזעקת המצוקה אוטומטית עד לאישור קבלה — כדי לוודא שההודעה נקלטה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 146,
@@ -825,7 +870,8 @@
     "answer_confirmed": false,
     "explanation": "SEELONCE FEENEE (מצרפתית: 'silence terminé') = סיום תקופת השתיקה המוחלטת. ערוץ 16 חוזר לשגרה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 147,
@@ -843,7 +889,8 @@
     "answer_confirmed": false,
     "explanation": "NAVTEX מקבל ומשדר הודעות מצוקה שמועברות מתחנות חוף. SART ו-EPIRB רק משדרים (לא קולטים הודעות).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 148,
@@ -861,7 +908,8 @@
     "answer_confirmed": false,
     "explanation": "כל תחנת NAVTEX משדרת כל 4 שעות (6 פעמים ביממה), בתחום תדר 518 kHz (MF).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 149,
@@ -879,7 +927,8 @@
     "answer_confirmed": false,
     "explanation": "PAN PAN (×3) = נוהל דחיפות. עדיפות שנייה אחרי MAYDAY. לסכנה פוטנציאלית, בעיה רפואית, ניווט ללא מנוע.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 150,
@@ -897,7 +946,8 @@
     "answer_confirmed": false,
     "explanation": "ב-NAVTEX מתכנתים: אילו תחנות לקלוט (לפי אות B1) ואילו סוגי הודעות (B2) — לפי אזור ההפלגה ועדיפויות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 151,
@@ -915,7 +965,8 @@
     "answer_confirmed": false,
     "explanation": "ערוץ 6 (VHF) מיועד לתקשורת בין כלי שיט (Ship-to-Ship) — בעיקר לתיאום כניסה לנמל ותנועה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 152,
@@ -933,7 +984,8 @@
     "answer_confirmed": false,
     "explanation": "PAN PAN = כל מצב דחיפות שאינו מצוקה מיידית: בעיה רפואית, ספינה מקולקלת, אדם שנפל לים (לפני אישור מוות).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 153,
@@ -951,7 +1003,8 @@
     "answer_confirmed": false,
     "explanation": "SEELONCE MAYDAY = השתק לשם MAYDAY — רשאית לאומרו רק תחנת החוף המפקחת. מחייב שתיקה על ערוץ 16.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 154,
@@ -969,7 +1022,8 @@
     "answer_confirmed": false,
     "explanation": "SEELONCE DISTRESS = כל תחנה שמזהה מצוקה יכולה לאומרו — מחייב שתיקה על ערוץ 16.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 155,
@@ -987,7 +1041,8 @@
     "answer_confirmed": false,
     "explanation": "PRUDONCE (מצרפתית: 'זהירות') = שלב ביניים — תעבורה הקשורה למצוקה מותרת, אבל שתיקה חלקית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 156,
@@ -1005,7 +1060,8 @@
     "answer_confirmed": false,
     "explanation": "ה-VHF הימי פועל בתחום 156–174 MHz, שהוקצה לשירות הימי הנייד על ידי ה-ITU.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 157,
@@ -1023,7 +1079,8 @@
     "answer_confirmed": false,
     "explanation": "AIS (Automatic Identification System) = משדר ומקבל מידע על זהות, מיקום, קורס ומהירות — לשיפור בטיחות ומניעת התנגשות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 158,
@@ -1041,7 +1098,8 @@
     "answer_confirmed": false,
     "explanation": "MEDICO = PAN PAN עם ייעוץ רפואי. כוללת: גיל, מין, חום, דופק, סימפטומים. לאחר קריאה על ערוץ 16 עוברים לערוץ עבודה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 159,
@@ -1059,7 +1117,8 @@
     "answer_confirmed": false,
     "explanation": "SECURITE = עדיפות בטיחות (שלישית). מזג אוויר, מכשולי ניווט, מוקשים. כל התשובות נכונות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 160,
@@ -1077,7 +1136,8 @@
     "answer_confirmed": false,
     "explanation": "SART: ציף, סוללה ל-96h המתנה / 8h שידור, נורה + אות קולי לאישור פעולה. מגיב לפולסי מכ\"מ X-band.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 161,
@@ -1095,7 +1155,8 @@
     "answer_confirmed": false,
     "explanation": "Cospas-Sarsat עם לוויינים קוטביים מכסה את כל הגלובוס כולל אזורים קוטביים (A4) שבהם INMARSAT לא מכסה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 162,
@@ -1113,7 +1174,8 @@
     "answer_confirmed": false,
     "explanation": "גיירו: דורש חשמל רצוף, זמן התייצבות של שעות, ויש לו שגיאה שנובעת מקו הרוחב ומהירות/קורס הספינה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 163,
@@ -1131,7 +1193,8 @@
     "answer_confirmed": false,
     "explanation": "Flux Gate: מודד את השדה המגנטי של כדור הארץ אלקטרונית (א), משתמש בסלילי חישה (ב). אינו מייצר שדה עצמי לביטול שגיאות (ג שגוי).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 164,
@@ -1149,7 +1212,8 @@
     "answer_confirmed": false,
     "explanation": "ROUTE = מסלול מתוכנן עם נקודות ביניים. TRACK = נתיב שעבר בפועל. CTS = הקורס הנדרש להגיע לנקודת הדרך הבאה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 165,
@@ -1167,7 +1231,8 @@
     "answer_confirmed": false,
     "explanation": "קווי רוחב (מקבילים): קו המשווה הוא מעגל גדול; כל השאר מעגלים קטנים הניצבים לציר כדור הארץ.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 166,
@@ -1185,7 +1250,8 @@
     "answer_confirmed": false,
     "explanation": "קווי אורך (מרידיאנים): כולם מעגלים גדולים, עוברים בשני הקטבים, ניצבים לקו המשווה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 167,
@@ -1203,7 +1269,8 @@
     "answer_confirmed": false,
     "explanation": "RHUMB LINE = קו שחוצה את כל קווי האורך באותה זווית, ומיוצג כקו ישר במפת מרקטור — אבל אינו הדרך הקצרה ביותר (Great Circle).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 168,
@@ -1221,7 +1288,8 @@
     "answer_confirmed": false,
     "explanation": "כדור הארץ סובב ממערב למזרח (כנגד כיוון השעון מהצפון) — לכן השמש נראית עוברת ממזרח למערב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 169,
@@ -1239,7 +1307,8 @@
     "answer_confirmed": false,
     "explanation": "ציר כדור הארץ נטוי ב-23.5° — גורם לחצי הכדור הצפוני לקבל יותר קרינה בקיץ ופחות בחורף.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 170,
@@ -1257,7 +1326,8 @@
     "answer_confirmed": false,
     "explanation": "משיכת הכבידה של הירח (והשמש) יוצרת את תופעת הגאות והשפל. יישור שלושתם (קו אחד) = גאות גדולה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 171,
@@ -1275,7 +1345,8 @@
     "answer_confirmed": false,
     "explanation": "גובה כוכב הצפון מעל האופק = קו הרוחב של הצופה. 45° = קו רוחב 45° צפון.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 172,
@@ -1293,7 +1364,8 @@
     "answer_confirmed": false,
     "explanation": "MOB שאבד מהעין = נוהל דחיפות PAN PAN (לא MAYDAY מיידי). מקביל — השלך ציוד ציפה ופעל כפי שניתן.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 173,
@@ -1311,7 +1383,8 @@
     "answer_confirmed": false,
     "explanation": "SART מציג על מסך המכ\"מ סדרת נקודות/קשתות. ניתן לקרוא מכך כיוון וטווח משוערים לנצולים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 174,
@@ -1329,7 +1402,8 @@
     "answer_confirmed": false,
     "explanation": "MAYDAY MAYDAY MAYDAY THIS IS [שם ספינה] [MMSI] [מיקום] [סוג מצוקה] [מספר אנשים] OVER — כל האלמנטים נדרשים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 175,
@@ -1347,7 +1421,8 @@
     "answer_confirmed": false,
     "explanation": "NAVTEX משודר רק מתחנות חוף מורשות — לא מספינות. ספינות רק קולטות NAVTEX.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 176,
@@ -1365,7 +1440,8 @@
     "answer_confirmed": false,
     "explanation": "GPS מודד מהירות ביחס לקרקע (SOG). אם GPS מראה 8 קשרים — זה המהירות האמיתית כולל הזרם. מד מהירות מכני היה מראה 10 קשרים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 177,
@@ -1383,7 +1459,8 @@
     "answer_confirmed": false,
     "explanation": "מצפן = מד-זווית בין הצפון (של המצפן הספציפי) לבין כיוון מסוים. תמיד מדידה יחסית לצפון.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 178,
@@ -1401,7 +1478,8 @@
     "answer_confirmed": false,
     "explanation": "עומק גדול יותר = זמן נסיעה ארוך יותר לאות → תדירות פולסים נמוכה יותר (כדי לא לחפוף בין משלוח וקבלה).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 179,
@@ -1419,7 +1497,8 @@
     "answer_confirmed": false,
     "explanation": "PDOP = Position DOP = פגיעה בדיוק המיקום עקב ריכוז גיאומטרי של הלוויינים. ספרה נמוכה = דיוק טוב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 180,
@@ -1437,7 +1516,8 @@
     "answer_confirmed": false,
     "explanation": "UTC (Coordinated Universal Time) = זמן אוניברסלי מתואם. לצרכים ימיים = GMT. בסיס לכל חישובי זמן ניווטיים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 181,
@@ -1455,7 +1535,8 @@
     "answer_confirmed": false,
     "explanation": "Flux Gate חייב להיות ממוקם הרחק ממקורות מגנטיים — לא ניתן להתקינו 'בכל מקום'. זה אינו יתרון.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 182,
@@ -1473,7 +1554,8 @@
     "answer_confirmed": false,
     "explanation": "ה-MMSI שלך מוטמע ומשודר אוטומטית בכל הודעת DSC. מיקום ומצב מצוקה דורשים הקלדה ידנית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 183,
@@ -1491,7 +1573,8 @@
     "answer_confirmed": false,
     "explanation": "EPIRB (Emergency Position Indicating Radio Beacon) דגם 406 MHz משדר ל-Cospas-Sarsat ומאפשר זיהוי מדויק גלובלי.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 184,
@@ -1509,7 +1592,8 @@
     "answer_confirmed": false,
     "explanation": "VHF = גלים ישרים. הגורמים העיקריים: קו ראייה (גובה אנטנות), הספק שידור, ומכשולים בין האנטנות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 185,
@@ -1527,7 +1611,8 @@
     "answer_confirmed": false,
     "explanation": "הסמכת רדיו (ROC/GMDSS) מבטיחה שהמפעיל יודע לנהל נוהל מצוקה נכון ולא יפריע לתקשורת חיפוש והצלה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 186,
@@ -1545,7 +1630,8 @@
     "answer_confirmed": false,
     "explanation": "נוהל קשר: ממתינים לפחות 2 דקות לפני קריאה חוזרת. אין לתפוס ערוץ שבשימוש.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 187,
@@ -1563,7 +1649,8 @@
     "answer_confirmed": false,
     "explanation": "ערוץ 25 הוא Duplex — ספינה משדרת על תדר שונה מהקליטה, מיועד לתקשורת עם תחנות חוף בלבד.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 188,
@@ -1581,7 +1668,8 @@
     "answer_confirmed": false,
     "explanation": "SART: מרחוק → שורת נקודות. מתקרב → קשתות. קרוב מאוד → עיגולים קונצנטריים. זה האות לחיפוש והצלה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 189,
@@ -1599,7 +1687,8 @@
     "answer_confirmed": false,
     "explanation": "אורך אנטנה = רבע עד חצי אורך הגל (λ). תדר גבוה = אורך גל קצר = אנטנה קטנה יותר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 190,
@@ -1617,7 +1706,8 @@
     "answer_confirmed": false,
     "explanation": "FM = תדר אפנון. תדר הגל הנושא משתנה לפי אות הקול/מידע. VHF ימי עובד ב-FM.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 191,
@@ -1635,7 +1725,8 @@
     "answer_confirmed": false,
     "explanation": "זיהוי ספינה בקשר: שם הספינה (עם סיווג אם רצוי) או אות קריאה (call sign). שניהם תקינים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 192,
@@ -1653,7 +1744,8 @@
     "answer_confirmed": false,
     "explanation": "DSC מקיף: MMSI (ד), המכלול הטכנולוגי (ב) ואת שיטת הזיהוי העצמי (ג) — כל התשובות נכונות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 193,
@@ -1671,7 +1763,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה ממוכנת עושה דרכה מציגה: אור ראש-תורן לבן קדמי, אורות צד (ירוק מימין, אדום משמאל) ואור גב לבן.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 194,
@@ -1689,7 +1782,8 @@
     "answer_confirmed": false,
     "explanation": "אורות הצד מכסים קשת של 112.5 מעלות כל אחד. האור הירוק (ימין) — מקדמת ספינה (0°) עד 112.5° לאחורי ימין.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 195,
@@ -1707,7 +1801,8 @@
     "answer_confirmed": false,
     "explanation": "מפרשית מציגה אורות צד (אדום/ירוק) ואור גב לבן. אם מפעילה גם מנוע — חייבת להוסיף אור ראש-תורן ולהיחשב ממוכנת.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 196,
@@ -1725,7 +1820,8 @@
     "answer_confirmed": false,
     "explanation": "כלי שייט ללא שליטה (NUC) מציג שני אורות אדומים עגולים (360°) בקו אנכי, ואם עושה דרכה — גם אורות צד וגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 197,
@@ -1743,7 +1839,8 @@
     "answer_confirmed": false,
     "explanation": "כלי שייט מוגבל בכושרו (RAM) מציג: אדום–לבן–אדום (מלמעלה למטה) בקו אנכי. ביום: כדור–ענבל–כדור.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 198,
@@ -1761,7 +1858,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה קטנה עוגנת מציגה אור לבן עגול אחד (360°) בנקודה הנראית ביותר. ספינה מעל 50 מטר מציגה שניים — ראש וגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 199,
@@ -1779,7 +1877,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה על שרטון מציגה את אורות העוגן + שלושה אורות אדומים עגולים בקו אנכי. ביום: שלושה כדורים שחורים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 200,
@@ -1797,7 +1896,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה ממוכנת מעל 50 מטר חייבת בשני אורות ראש-תורן: קדמי (נמוך) ואחורי (גבוה). ספינה מתחת ל-50 מטר — אחד מספיק.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 201,
@@ -1815,7 +1915,8 @@
     "answer_confirmed": false,
     "explanation": "גוררת: שני אורות ראש-תורן אם גרר עד 200מ', שלושה אם מעל 200מ'. בשני המקרים גם אורות צד, גב ואור צהוב גב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 202,
@@ -1833,7 +1934,8 @@
     "answer_confirmed": false,
     "explanation": "טרולר (דייג בגרירה) מציג: ירוק מעל לבן (שניהם עגולים 225°) + אורות צד וגב אם עושה דרכה. דייג שאינו גורר: אדום מעל לבן.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 203,
@@ -1851,7 +1953,8 @@
     "answer_confirmed": false,
     "explanation": "ספינת פיילוט בשירות מציגה: לבן מעל אדום (שניהם עגולים). בנוסף, אם עושה דרכה — אורות צד וגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 204,
@@ -1869,7 +1972,8 @@
     "answer_confirmed": false,
     "explanation": "ספינת סופות מציגה שלושה אורות ירוקים עגולים: אחד בראש התורן ואחד בכל קצה של קורת הסיפון הרוחבית. מסמן: אל תתקרב ל-1000 מ'.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 205,
@@ -1887,7 +1991,8 @@
     "answer_confirmed": false,
     "explanation": "אור הגב לבן וקשת הנראות שלו 135 מעלות — מקוי הגב ועד 67.5 מעלות לכל צד.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 206,
@@ -1905,7 +2010,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה מתחת ל-7 מטר שמהירותה אינה עולה על 7 קשרים — אחד לבן נראה מכל הכיוונים. אם מהירותה גבוהה יותר — חייבת אורות צד וגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 207,
@@ -1923,7 +2029,8 @@
     "answer_confirmed": false,
     "explanation": "כלי שייט מוגבל בשוקע (Constrained by Draft) מציג שלושה אורות אדומים עגולים. ביום: גליל שחור. עדיפות: גבוה מממוכן, נמוך מ-RAM.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 208,
@@ -1941,7 +2048,8 @@
     "answer_confirmed": false,
     "explanation": "אור ראש-התורן (לבן) מכסה 225 מעלות — 112.5 מכל צד של הקידמה. אינו נראה מהגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 209,
@@ -1959,7 +2067,8 @@
     "answer_confirmed": false,
     "explanation": "לפי COLREGS: ללא שליטה (NUC) > מוגבל בכושר (RAM) > מוגבל בשוקע > דייג > מפרש > ממוכן. ממוכן חייב לכולם.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 210,
@@ -1977,7 +2086,8 @@
     "answer_confirmed": false,
     "explanation": "בסיטואציה פנים-מול-פנים שתי הספינות חייבות לפנות ימינה (starboard) ולחלוף צד-שמאל (port to port).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 211,
@@ -1995,7 +2105,8 @@
     "answer_confirmed": false,
     "explanation": "בסיטואציית חיתוך, הספינה שנמצאת מימין היא 'Stand-on' (זכאית למעבר). הספינה שלמימינה יש ספינה אחרת — חייבת לפנות דרך.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 212,
@@ -2013,7 +2124,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה עוקפת חייבת לפנות דרך לספינה הנעקפת עד שתסיים את העקיפה לחלוטין — ללא קשר לסוג הכלים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 213,
@@ -2031,7 +2143,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה נחשבת עוקפת כשהיא מתקרבת מכיוון מרחק יותר מ-22.5 מעלות מאחורי קו רוחבי (מאחורי קשת 135° של האור הגב).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 214,
@@ -2049,7 +2162,8 @@
     "answer_confirmed": false,
     "explanation": "בין מפרשיות: ספינה ב-port tack (רוח משמאל) חייבת לפנות דרך לספינה ב-starboard tack (רוח מימין).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 215,
@@ -2067,7 +2181,8 @@
     "answer_confirmed": false,
     "explanation": "שתי מפרשיות באותו tack: הספינה שמצד הרוח (windward) חייבת לפנות לספינה בצד נגד הרוח (leeward).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 216,
@@ -2085,7 +2200,8 @@
     "answer_confirmed": false,
     "explanation": "מפרשית ב-port tack שאינה בטוחה לגבי ה-tack של האחרת — חייבת לפנות דרך. עדיף להיות זהיר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 217,
@@ -2103,7 +2219,8 @@
     "answer_confirmed": false,
     "explanation": "ממוכנת חייבת לפנות דרך למפרשית (למעט אם המפרשית עוקפת). המפרשית היא 'Stand-on' — תשמור על מסלול ומהירות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 218,
@@ -2121,7 +2238,8 @@
     "answer_confirmed": false,
     "explanation": "בנתיב צר — ספינה שיכולה לנווט רק בתוך הנתיב (מוגבלת בשוקע) יש לה עדיפות. ספינות קטנות שיכולות לחרוג מהנתיב — חייבות להתרחק.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 219,
@@ -2139,7 +2257,8 @@
     "answer_confirmed": false,
     "explanation": "'בדרך' (Underway) = אינה עוגנת, אינה קשורה לחוף, אינה על שרטון ואינה מעוכבת. כולל ספינה נסחפת עם המנוע כבוי.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 220,
@@ -2157,7 +2276,8 @@
     "answer_confirmed": false,
     "explanation": "ספינת ה-Stand-on חייבת לשמור על מסלולה, אך אם ברור שה-Give-way לא פועלת — תאותת 5 צפירות קצרות (אזהרה) ותנקוט בפעולה למניעת התנגשות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 221,
@@ -2175,7 +2295,8 @@
     "answer_confirmed": false,
     "explanation": "אור ירוק = צד ימין של הספינה האחרת. אם אני רואה את צד הימין שלה — היא מתקרבת מימיני. בסיטואציית חיתוך, אני צד שמאל — חייב לפנות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 222,
@@ -2193,7 +2314,8 @@
     "answer_confirmed": false,
     "explanation": "אותות המצוקה הרשמיים כוללים: N+C בקוד דגלים, כדור שחור מעל/מתחת לריבוע, SOS, MAYDAY, רקטות, עשן כתום, להב, ריסוס כתום, EPIRB, אות רדיו טלגרף.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 223,
@@ -2211,7 +2333,8 @@
     "answer_confirmed": false,
     "explanation": "הנפת דגל בודד אינה אות מצוקה. אות המצוקה בדגלים הוא: N (כחול-לבן) מעל C (פסים כחול-לבן-אדום-לבן-כחול), כלומר שני דגלים ביחד.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 224,
@@ -2229,7 +2352,8 @@
     "answer_confirmed": false,
     "explanation": "MAYDAY אמור שלוש פעמים, THIS IS שלוש פעמים, שם הספינה, מיקום, סוג מצוקה, עזרה הנדרשת, מספר נוסעים, ופרטים נוספים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 225,
@@ -2247,7 +2371,8 @@
     "answer_confirmed": false,
     "explanation": "ערוץ 16 הוא ערוץ הקריאה והמצוקה הבינלאומי — כל ספינה ממוכנת חייבת לשמור עליו. MAYDAY מוכרז תמיד על ערוץ 16.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 226,
@@ -2265,7 +2390,8 @@
     "answer_confirmed": false,
     "explanation": "MAYDAY = מצוקה מיידית, סכנת חיים. PAN-PAN = מצב דחוף שאינו מיידי (למשל — אדם פצוע שאינו בסכנת מוות מיידית). SECURITE = הודעת בטיחות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 227,
@@ -2283,7 +2409,8 @@
     "answer_confirmed": false,
     "explanation": "בהפלגה בינלאומית: 4 רקטות מצנח, 4 לפידי יד אדומים, 2 עשן צף כתום. בהפלגה לאומית: 4 רקטות מצנח + 4 לפידי יד.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 228,
@@ -2301,7 +2428,8 @@
     "answer_confirmed": false,
     "explanation": "EPIRB (Emergency Position Indicating Radio Beacon) הוא מצוף אזעקה המשדר באמצעות לוויינים את מיקום הספינה לתחנות חיפוש והצלה בעולם.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 229,
@@ -2319,7 +2447,8 @@
     "answer_confirmed": false,
     "explanation": "SART (Search and Rescue Transponder) מגיב לאות מכ\"מ של כלי חיפוש והצלה — מחזיר אות הנראה כסדרת נקודות על מסך המכ\"מ, מה שמאפשר לאתר את נקודת המצוקה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 230,
@@ -2337,7 +2466,8 @@
     "answer_confirmed": false,
     "explanation": "חובה לשאת חגורת הצלה לכל נפש המותרת לשייט בספינה — לפי מספר המפליגים הרשום ברישיון. חגורות יתקיימו לפי תקן מאושר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 231,
@@ -2355,7 +2485,8 @@
     "answer_confirmed": false,
     "explanation": "יש ללבוש חגורת הצלה בכל מצב של סכנה, בלילה, במזג אוויר סוער, ולפי שיקול הקברניט. מומלץ לילדים להוביל בכל עת.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 232,
@@ -2373,7 +2504,8 @@
     "answer_confirmed": false,
     "explanation": "רפסודת הצלה (Life raft) היא מבנה מתנפח המיועד לשרוד בים פתוח. מאוחסנת בכלי (canister) שנפתח אוטומטית במגע עם מים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 233,
@@ -2391,7 +2523,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה מעל 7 מטר המפליגה מעל 6 מיל מהחוף חייבת: חגורות הצלה, ציוד פירוטכני מלא, ורפסודת הצלה על פי תקנות הרישוי הישראלי.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 234,
@@ -2409,7 +2542,8 @@
     "answer_confirmed": false,
     "explanation": "ציוד פירוטכני שפג תוקפו אסור לשימוש (לא אמין) ואסור לזרוק לים (מזהם). יש להחליף בציוד תקין ולפנות את הישן לגורם מוסמך (תחנת דלק ימית, יצרן).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 235,
@@ -2427,7 +2561,8 @@
     "answer_confirmed": false,
     "explanation": "גלגל הצלה (Lifebuoy) מוטל לאדם בים — מספק ציפה ועוזר לו להחזיק מעמד עד לחילוץ. יש לצרף קו הצלה ומנורת הבזקים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 236,
@@ -2445,7 +2580,8 @@
     "answer_confirmed": false,
     "explanation": "רוח ים: ביום היבשה מתחממת מהר יותר מהים, האוויר מעליה עולה, ואוויר קריר מהים ממלא את החסר — נוצרת רוח מהים ליבשה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 237,
@@ -2463,7 +2599,8 @@
     "answer_confirmed": false,
     "explanation": "רוח יבשה מתרחשת בלילה: היבשה מתקררת מהר יותר מהים, האוויר מעל הים חם יותר ועולה, ואוויר מהיבשה ממלא את החסר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 238,
@@ -2481,7 +2618,8 @@
     "answer_confirmed": false,
     "explanation": "סולם בופור (0-12) מתאר מהירות רוח לפי ביטוייה הגלויים על פני הים: 0 = דממה, 6 = רוח חזקה, 8 = סערה, 12 = הוריקן.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 239,
@@ -2499,7 +2637,8 @@
     "answer_confirmed": false,
     "explanation": "הים-תיכון בקיץ: יציב, יבש, חם, רוחות שרביט (Etesian winds) ממערב-צפון-מערב, סערות נדירות. ים הפלגה טוב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 240,
@@ -2517,7 +2656,8 @@
     "answer_confirmed": false,
     "explanation": "חזית חמה: אוויר חם נע קדימה ועולה מעל אוויר קר. מתקדמת לאט, מלווה בעננות רחבה (Nimbostratus) וגשמים ממושכים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 241,
@@ -2535,7 +2675,8 @@
     "answer_confirmed": false,
     "explanation": "חזית קרה: אוויר קר דוחף אוויר חם למעלה — גשמי סחף חזקים קצרים, עליית לחץ לאחר המעבר, הצטננות, רוחות מערביות-צפוניות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 242,
@@ -2553,7 +2694,8 @@
     "answer_confirmed": false,
     "explanation": "איזובר (Isobar) = קו המחבר נקודות בעלות לחץ אוויר שווה. ככל שהאיזוברים צפופים יותר — הגרדיאנט חזק יותר ורוחות חזקות יותר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 243,
@@ -2571,7 +2713,8 @@
     "answer_confirmed": false,
     "explanation": "בחצי הכדור הצפוני: רוחות סביב לחץ נמוך (ציקלון) מסתובבות נגד כיוון השעון (Counter-clockwise). בחצי הדרומי — הפוך.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 244,
@@ -2589,7 +2732,8 @@
     "answer_confirmed": false,
     "explanation": "שרב (Khamsin) הוא רוח חמה, יבשה ומאובקת מכיוון הדרום-מזרח, הנגרמת ממערכת לחץ נמוך מדברית. נפוצה בישראל באביב ובסתיו.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 245,
@@ -2607,7 +2751,8 @@
     "answer_confirmed": false,
     "explanation": "בופור 6 = רוח חזקה (Strong Breeze) — 22-27 קשרים. על פני הים: גלים גבוהים, קצות לבנים וקצף. קשה לחזור לנמל עם סירה קטנה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 246,
@@ -2625,7 +2770,8 @@
     "answer_confirmed": false,
     "explanation": "מיסטרל (צרפת/ספרד) ובורה (אדריאטי): רוחות קרות וחזקות הנושבות מהיבשה לים בחורף — מסוכנות לשייט בשל עוצמתן ומהירות ההתפתחות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 247,
@@ -2643,7 +2789,8 @@
     "answer_confirmed": false,
     "explanation": "בחירת מקום עוגן: הגנה מרוח ומים, עומק מספיק, קרקעית מחזיקת עוגן (חול/בוץ טוב, סלע רע), ללא מכשולים תת-ימיים ועגינה חוקית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 248,
@@ -2661,7 +2808,8 @@
     "answer_confirmed": false,
     "explanation": "Scope = יחס אורך שרשרת לעומק. Scope של 5:1 עד 7:1 מומלץ. שרשרת ארוכה יוצרת זווית שכיבה קטנה יותר — אחיזת עוגן טובה יותר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 249,
@@ -2679,7 +2827,8 @@
     "answer_confirmed": false,
     "explanation": "Swinging circle = המעגל שתיצור הספינה אם הרוח/זרם ישתנה כיוון סביב העוגן. יש לוודא שמעגל זה אינו כולל ספינות אחרות, שרטונות, או מכשולים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 250,
@@ -2697,7 +2846,8 @@
     "answer_confirmed": false,
     "explanation": "סימני דרדור עוגן: GPS מראה תזוזה מנקודה קבועה, שרשרת מתוחה ורועדת, קול גרנצ'ינג (גרוס). תגובה: שחרר שרשרת נוספת, שנה מיקום, או הפעל מנוע.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 251,
@@ -2715,7 +2865,8 @@
     "answer_confirmed": false,
     "explanation": "לפני עגינה: בחר מיקום, בדוק עומק ומהות הקרקעית, הפחת מהירות לאפס (נע לאחור קלות), השלך עוגן ושחרר שרשרת לפי הscope הנדרש.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 252,
@@ -2733,7 +2884,8 @@
     "answer_confirmed": false,
     "explanation": "ביום: ספינה עוגנת מחויבת להציג כדור שחור אחד (מתחת ל-50 מ') בנקודה הנראית ביותר. בלילה: אור לבן עגול.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 253,
@@ -2751,7 +2903,8 @@
     "answer_confirmed": false,
     "explanation": "IALA-A מיושמת בישראל, אירופה, אפריקה, אסיה ואוסטרליה. IALA-B — אמריקה, יפן, קוריאה, פיליפינים. ההבדל העיקרי: בצד מאיזה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 254,
@@ -2769,7 +2922,8 @@
     "answer_confirmed": false,
     "explanation": "IALA-A: בכניסה לנמל — ימין (starboard) = ירוק, שמאל (port) = אדום. בדיוק הפוך מ-IALA-B.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 255,
@@ -2787,7 +2941,8 @@
     "answer_confirmed": false,
     "explanation": "Cardinal Marks מסמנים את כיוון המים הבטוחים ביחס לסכנה: Cardial צפון = מים בטוחים צפונה מהסכנה. צבע: שחור-צהוב בפסים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 256,
@@ -2805,7 +2960,8 @@
     "answer_confirmed": false,
     "explanation": "Safe Water Mark (פסים אדום-לבן) = מים בטוחים מכל הכיוונים. מסמן כניסה לתעלה, נקודת ציון, או נקודת הגעה ל-fairway.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 257,
@@ -2823,7 +2979,8 @@
     "answer_confirmed": false,
     "explanation": "Isolated Danger Mark: פסים שחור-אדום-שחור, ראש מיצוף: שני כדורים שחורים. נמצא על גבי הסכנה עצמה — מים בטוחים בסביבו.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 258,
@@ -2841,7 +2998,8 @@
     "answer_confirmed": false,
     "explanation": "Special Mark (צהוב, ראש מיצוף: X) מסמן אזור מיוחד שאינו מסומן בשאר הסימנים: ספורט ימי, שמורת טבע, פסולת, מחקר, כבל/צינור תת-ימי.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 259,
@@ -2859,7 +3017,8 @@
     "answer_confirmed": false,
     "explanation": "דגל Q (צהוב) = 'ספינתי בריאה, מבקשת כניסה חופשית' (Free Pratique). מניפים אותו בכניסה למים טריטוריאליים זרים עד לאישור הרשויות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 260,
@@ -2877,7 +3036,8 @@
     "answer_confirmed": false,
     "explanation": "דגל O (אוסקר) = 'Man Overboard' (אדם בים). מניפים אותו מיד כשאדם נפל למים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 261,
@@ -2895,7 +3055,8 @@
     "answer_confirmed": false,
     "explanation": "דגל A (אלפא) = 'צולל מתחת לפני המים'. כל כלי שייט בסביבה חייב להתרחק לפחות 200 מטר ולהפחית מהירות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 262,
@@ -2913,7 +3074,8 @@
     "answer_confirmed": false,
     "explanation": "כניסה לנמל זר: דגל ארץ המארחת בתורן ימין (כבוד), דגל Q בתורן שמאל (בקשת כניסה), ודגל ישראל בגב הספינה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 263,
@@ -2931,7 +3093,8 @@
     "answer_confirmed": false,
     "explanation": "דגל B (אדום בצורת זנב) = 'מטעין/פורק/נושא חומרים מסוכנים (דלק, חומרי נפץ)'. נניף כשמדלקים אוניה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 264,
@@ -2949,7 +3112,8 @@
     "answer_confirmed": false,
     "explanation": "בראות טובה: צפירה ארוכה 1 = 'אני פונה ימינה'. צפירה ארוכה 2 = 'אני פונה שמאלה'. צפירה ארוכה 3 = 'מנוע אחורה'. 5+ קצרות = סכנה/חוסר הבנה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 265,
@@ -2969,7 +3133,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "blastOverride": "",
-    "scheduled_date": "2026-06-24"
+    "scheduled_date": "2026-06-24",
+    "approved_for_publish": true,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782291158/skipper-quiz/dvceyrwlgvhnloikqify.mp4",
+    "rendered_at": "2026-06-24T11:10:00.000Z"
   },
   {
     "num": 266,
@@ -2987,7 +3154,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה ממוכנת עושה דרכה בראות מוגבלת: צפירה ארוכה אחת כל 2 דקות. ספינה עוצרת (מנוע פועל אך מהירות 0): 2 ארוכות כל 2 דקות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 267,
@@ -3005,7 +3173,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה עוגנת בערפל: מצלצלת פעמון (5 שניות) כל דקה. ספינה מעל 100 מ' — מוסיפה גם מצלצל-גונג בגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 268,
@@ -3025,7 +3194,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "blastOverride": "",
-    "scheduled_date": "2026-06-23"
+    "scheduled_date": "2026-06-23",
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782298764/skipper-quiz/q7pgudf4vcndygsyyjla.mp4",
+    "rendered_at": "2026-06-24T11:10:00.000Z"
   },
   {
     "num": 269,
@@ -3043,7 +3215,8 @@
     "answer_confirmed": false,
     "explanation": "עקיפה ימין בנתיב צר: 2 ארוכות + 1 קצרה. הספינה הנעקפת מסכימה: 1 ארוכה + 1 קצרה + 1 ארוכה (אות הסכמה).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 270,
@@ -3061,7 +3234,8 @@
     "answer_confirmed": false,
     "explanation": "עקיפה שמאל בנתיב צר: 2 ארוכות + 2 קצרות. הספינה הנעקפת מסכימה: 1 ארוכה + 1 קצרה + 1 ארוכה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 271,
@@ -3079,7 +3253,8 @@
     "answer_confirmed": false,
     "explanation": "מהירות בטוחה: המהירות שבה אפשר לנקוט פעולה יעילה למניעת התנגשות בהתחשב בראות, צפיפות תנועה, יכולת הספינה, ומצב הים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 272,
@@ -3097,7 +3272,8 @@
     "answer_confirmed": false,
     "explanation": "COLREGS כלל 5: כל ספינה תשמור בכל עת על צפייה מתאימה (Proper Lookout) — בעיניים, באוזניים, ובכל אמצעי זמין.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 273,
@@ -3115,7 +3291,8 @@
     "answer_confirmed": false,
     "explanation": "ערוץ 16 הוא ערוץ המצוקה והקריאה הבינלאומי. כל קשר עם MRCC חיפה יתחיל בערוץ 16, ואז יועבר לערוץ עבודה (כמו 67 בישראל).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 274,
@@ -3133,7 +3310,8 @@
     "answer_confirmed": false,
     "explanation": "לפי תקנות הרישוי הישראלי: ילד מתחת לגיל 12 חייב ללבוש חגורת הצלה בכל עת שנמצא על הסיפון החיצוני.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 275,
@@ -3151,7 +3329,8 @@
     "answer_confirmed": false,
     "explanation": "בכניסה למים טריטוריאליים זרים: הנף דגל Q (בקשת Free Pratique) ודגל ארץ המארחת, דווח לרשויות הנמל, ואל תרד ליבשה עד לאישור.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 276,
@@ -3169,7 +3348,8 @@
     "answer_confirmed": false,
     "explanation": "מימי חופין (Territorial Waters) בישראל — עד 12 מיל ימי מהחוף. לאחר מכן מתחיל אזור הכלכלה הבלעדית (EEZ) עד 200 מיל.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 277,
@@ -3187,7 +3367,10 @@
     "answer_confirmed": false,
     "explanation": "MMSI = Maritime Mobile Service Identity — מספר ייחודי בן 9 ספרות לכל ספינה. מוטמע ב-VHF עם DSC, ב-EPIRB וב-AIS. מאפשר זיהוי אוטומטי בתשדורות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782299454/skipper-quiz/e3ke7rezxurtmsuztoyv.mp4",
+    "rendered_at": "2026-06-24T11:10:00.000Z"
   },
   {
     "num": 278,
@@ -3205,7 +3388,8 @@
     "answer_confirmed": false,
     "explanation": "MOB: 1) קרא 'אדם בים!' 2) זרוק גלגל הצלה 3) הנף דגל O 4) לחץ MOB ב-GPS 5) שמור עין על האדם. רק אז תמרן לחזור אליו.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 279,
@@ -3223,7 +3407,8 @@
     "answer_confirmed": false,
     "explanation": "גישה ל-MOB: ניגשים מתוך הרוח (upwind) לאט ב-'quick stop' — כך שהרוח תסחוף הספינה לעבר האדם ולא ממנו. מנוע בגב צד שהאדם נמצא — סכנה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 280,
@@ -3241,7 +3426,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה שנוטלת מים: 1) אתר הנזילה ונסה לסתמה 2) הפעל משאבת ביילגה 3) לבש חגורות הצלה 4) הודע ל-MRCC אם לא ניתן לשלוט 5) הכן רפסודה לנטישה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 281,
@@ -3259,7 +3445,8 @@
     "answer_confirmed": false,
     "explanation": "שריפת דלק: לעולם לא במים (גורם לפיזור הדלק). יש להשתמש במטף ABC/CO₂ דרך פתח קטן במכסה — פתיחה מלאה תזין חמצן ותגביר את השריפה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 282,
@@ -3277,7 +3464,8 @@
     "answer_confirmed": false,
     "explanation": "מדחף ימני (סובב עם כיוון השעון קדימה): בהפעלת אחורה מסתובב נגד השעון — מייצר אפקט Prop Walk שדוחף את הגב ימינה וגורם לספינה לפנות שמאלה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 283,
@@ -3295,7 +3483,8 @@
     "answer_confirmed": false,
     "explanation": "Pivot Point: ספינה בתנועה קדמית — נקודת הסיבוב בכ-⅓ מקדמתה. ספינה בתנועה אחורית — הנקודה עוברת לכ-⅓ מגבה. קדמה מתנדנדת יותר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 284,
@@ -3313,7 +3502,8 @@
     "answer_confirmed": false,
     "explanation": "Head Reach = המרחק שספינה תנוע קדמה לאחר שמנוע הועבר לאחורה — 'ריצת אינרציה'. חשוב לחשב בעת כניסה לנמל/עגינה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 285,
@@ -3331,7 +3521,8 @@
     "answer_confirmed": false,
     "explanation": "גרירה: קו גרר ארוך (ספיגת מכות גלים), מחובר לנקודות גרר חזקות, מהירות נמוכה, הגה בגב. הספינה הנגררת מייצרת מעצור — חשב את 'ריצת האינרציה'.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 286,
@@ -3349,7 +3540,8 @@
     "answer_confirmed": false,
     "explanation": "Yaw = סיבוב של ספינה סביב ציר אנכי (סטייה ימינה/שמאלה). נגרם מרוח, גלים, קשת ים חד-צדדי, או אסימטריה בהנעה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 287,
@@ -3367,7 +3559,8 @@
     "answer_confirmed": false,
     "explanation": "Gybing (גיב): מעבר הבום בפתאומיות מצד לצד כשהרוח חוצה את הקו הגבי. הבום מנדנד בכוח — עלול להכות את הצוות. יש לשלוט בגיב ידני (Controlled Gybe).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 288,
@@ -3385,7 +3578,8 @@
     "answer_confirmed": false,
     "explanation": "Williamson Turn: פונה 60° לצד, מחכה, ואז פונה לכיוון הנגדי (180° סה\"כ) — חוזר לקו המקורי. מיועד לאיתור MOB בראות מוגבלת ולחזרה לנקודת הנפילה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 289,
@@ -3403,7 +3597,8 @@
     "answer_confirmed": false,
     "explanation": "Compass Rose על מפה ימית: עיגול חיצוני = כיוונים אמיתיים (True North), עיגול פנימי = מגנטיים (Magnetic North). ההפרש ביניהם = שינוי (Variation).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 290,
@@ -3421,7 +3616,8 @@
     "answer_confirmed": false,
     "explanation": "Deviation = שגיאת המצפן עקב מתכות/מגנטים בספינה. שונה לפי כיוון הספינה. מתוקנת בקלדת הסטייה (Deviation Card).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 291,
@@ -3439,7 +3635,8 @@
     "answer_confirmed": false,
     "explanation": "Variation = ההפרש בין צפון אמיתי (True North) לצפון מגנטי (Magnetic North). קבוע לאזור גיאוגרפי. מסומן על ורוד הרוחות במפה ומתעדכן שנתית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 292,
@@ -3457,7 +3654,8 @@
     "answer_confirmed": false,
     "explanation": "Bearing = הזווית בין הצפון (אמיתי/מגנטי) לכיוון של נקודת ציון — נמדד 0° עד 360° בכיוון השעון. QDR = Bearing from the station.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 293,
@@ -3475,7 +3673,8 @@
     "answer_confirmed": false,
     "explanation": "Cross Bearing: לוקחים נשיאות לשתי נקודות ציון (כמו מגדלור + שוניות) ומסמנים קווים על המפה — נקודת החיתוך היא מיקומנו.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 294,
@@ -3493,7 +3692,8 @@
     "answer_confirmed": false,
     "explanation": "Dead Reckoning (DR): שיטת ניווט המחשבת מיקום נוכחי מתוך: מיקום קודם ידוע + כיוון + מהירות × זמן. לא מתחשב בזרמים ורוחות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 295,
@@ -3511,7 +3711,8 @@
     "answer_confirmed": false,
     "explanation": "מספרים על מפה ימית = עומקים (soundings) — מדודים בדרך כלל ממפלס ים ממוצע נמוך (MLLW). המספר בכחול/שחור = עומק במטרים (בישראל) או רגליים (בחלק ממפות).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 296,
@@ -3529,7 +3730,8 @@
     "answer_confirmed": false,
     "explanation": "מצפן פנולי (Fluxgate) = אלקטרוני, מחובר ל-chartplotter/VHF, נותן פלט דיגיטלי, עניין בעדכוני סטייה אוטומטיים. מגנטי = מכני, פשוט, עצמאי חשמלית — גיבוי חיוני.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 297,
@@ -3547,7 +3749,8 @@
     "answer_confirmed": false,
     "explanation": "True Course = Compass Course + Deviation + Variation. סדר המרה: CC → MC (+ Deviation) → TC (+ Variation). קיצור: CADET: Compass + Add East Deviation → True.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 298,
@@ -3565,7 +3768,8 @@
     "answer_confirmed": false,
     "explanation": "גאות ושפל נגרמים מכוח המשיכה של הירח (בעיקר) והשמש. ים-תיכון: גאות זניחה (מטר אחד לכל היותר). אוקיאנוסים: גאות משמעותית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 299,
@@ -3583,7 +3787,8 @@
     "answer_confirmed": false,
     "explanation": "Course = הכיוון שמופנות אליו החרטום. Track = הנתיב בפועל של הספינה על הים, לאחר השפעת זרמים, רוח וגאות. ה-COG ב-GPS מציג את ה-Track.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 300,
@@ -3601,7 +3806,8 @@
     "answer_confirmed": false,
     "explanation": "T.O.M.I (Tracking Of Marine Identification) — ספינה ישראלית הנכנסת ממסע בינלאומי חייבת להודיע לחיפה MRCC את פרטיה, נתיבה ומיקומה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 301,
@@ -3619,7 +3825,8 @@
     "answer_confirmed": false,
     "explanation": "לפי תקנות הספנות הישראלי: קברניט תחת השפעת אלכוהול בעת ניהול ספינה — עבירה פלילית. גבול: 0.25 מ\"ג/ל (נשיפה) כמו ברכב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 302,
@@ -3637,7 +3844,8 @@
     "answer_confirmed": false,
     "explanation": "לפי פקודת הספנות הישראלי: תאונת ים (כולל התנגשות, שריפה, שקיעה, פציעה) חייבת בדיווח לקצין הנמל הסמוך תוך 24 שעות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 303,
@@ -3655,7 +3863,8 @@
     "answer_confirmed": false,
     "explanation": "אישור כשירות לשייט = תעודה שהספינה עמדה בבדיקת רשות הספנות וכשירה להפלגה. חידוש כל 24 חודשים לספינות פרטיות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 304,
@@ -3673,7 +3882,8 @@
     "answer_confirmed": false,
     "explanation": "לפי COLREGS: ספינה ממוכנת מ-12 עד 50 מטר — אור ראש-תורן: 3 מיל. אורות צד: 2 מיל. אור גב: 2 מיל.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 305,
@@ -3691,7 +3901,8 @@
     "answer_confirmed": false,
     "explanation": "COLREGS: אורות חובה משקיעה עד זריחה, ובכל עת שהראות מוגבלת (ערפל, גשם עז וכו'). אפשר גם ביום בראות מוגבלת.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 306,
@@ -3709,7 +3920,8 @@
     "answer_confirmed": false,
     "explanation": "אור ירוק = צד ימין (starboard) של ספינה אחרת. אם אנו רואים רק את הירוק — צד ימין שלה פונה אלינו, כלומר היא מתקרבת מכיוון ימיננו.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 307,
@@ -3727,7 +3939,8 @@
     "answer_confirmed": false,
     "explanation": "שני אורות לבנים בקו אנכי (הקדמי נמוך, האחורי גבוה) = שני אורות ראש-תורן של ספינה ממוכנת מעל 50 מטר. אם נמצאים זה מעל זה — הספינה ניגשת.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 308,
@@ -3745,7 +3958,8 @@
     "answer_confirmed": false,
     "explanation": "אדום-לבן-אדום = RAM (Restricted in Ability to Maneuver). לפי ההיררכיה: ספינה ממוכנת חייבת לפנות דרך ל-RAM.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 309,
@@ -3763,7 +3977,8 @@
     "answer_confirmed": false,
     "explanation": "Restricted Visibility = כל תנאי המגביל ראות: ערפל (Fog), מחסומת (Mist), גשם עז, שלג, חוגלה, עשן, אבק. לא כולל חשכת לילה!",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 310,
@@ -3781,7 +3996,8 @@
     "answer_confirmed": false,
     "explanation": "העקיפה מסתיימת רק כשהספינה העוקפת עברה את הנעקפת לחלוטין ואינה עוד ב'סיטואציה' עמה. עד אז — חייבת לפנות דרך.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 311,
@@ -3799,7 +4015,8 @@
     "answer_confirmed": false,
     "explanation": "Life Jacket: מסובב אדם מחוסר הכרה פנים למעלה — לשמירת דרכי הנשימה. Buoyancy Aid: עוזר לשחות, אינו מסובב. בים — חובה Life Jacket.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 312,
@@ -3817,7 +4034,8 @@
     "answer_confirmed": false,
     "explanation": "חגורת הצלה מתנפחת: בדוק לפני הפלגה — מיכל CO₂ (לא חלוד, אטום), שסתום הפעלה (ירוק = תקין), נפחי האוויר, רצועות. החלף כל 5 שנים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 313,
@@ -3835,7 +4053,8 @@
     "answer_confirmed": false,
     "explanation": "Immersion Suit = חליפת שרידות המכסה את הגוף לחלוטין, עמידה בקרח, מונעת היפותרמיה. נדרשת בהפלגות בים קר — לא חובה בים-תיכון.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 314,
@@ -3853,7 +4072,8 @@
     "answer_confirmed": false,
     "explanation": "North Cardinal: שחור (מעל) + צהוב (מתחת), ראש מיצוף: שתי חרוטות (cones) עם קצות למעלה. עוברים מצפון לסימן — שם המים בטוחים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 315,
@@ -3871,7 +4091,8 @@
     "answer_confirmed": false,
     "explanation": "South Cardinal: צהוב (מעל) + שחור (מתחת), ראש מיצוף: שתי חרוטות עם קצות כלפי מטה. עוברים מדרום — שם המים בטוחים.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 316,
@@ -3889,7 +4110,8 @@
     "answer_confirmed": false,
     "explanation": "IALA-A (ישראל/אירופה): כניסה לנמל — ימין ירוק, שמאל אדום. IALA-B (אמריקה/יפן): ימין אדום, שמאל ירוק. זכור: Red Right Returning (IALA-B).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 317,
@@ -3907,7 +4129,8 @@
     "answer_confirmed": false,
     "explanation": "Preferred Channel Mark = בוי שמסמן הסתעפות נתיב. צבע הבסיס = הערוץ המועדף. פס נוסף = הערוץ המשני.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 318,
@@ -3925,7 +4148,8 @@
     "answer_confirmed": false,
     "explanation": "ספינה עוגנת בראות מוגבלת: הצג אורות עוגן + צלצל פעמון חריפות 5 שניות כל דקה. ספינה ≥100 מ' מוסיפה גונג מהגב.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 319,
@@ -3943,7 +4167,8 @@
     "answer_confirmed": false,
     "explanation": "NUC, RAM, Fishing, Sailing ומוגבל-שוקע — כולם: ארוכה + 2 קצרות כל 2 דקות בראות מוגבלת. ממוכן עושה דרכה: 1 ארוכה. עוצר: 2 ארוכות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 320,
@@ -3961,7 +4186,8 @@
     "answer_confirmed": false,
     "explanation": "Safety Harness = רתמת בטיחות עם קו חיבור (Jack Line) לספינה. מונעת נפילה לים בעת עבודה בסיפון בגל גבוה, בלילה, בסערה. שונה מחגורת הצלה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 321,
@@ -3979,7 +4205,8 @@
     "answer_confirmed": false,
     "explanation": "עלייה מהירה של מים: 1) הפעל משאבת בילגה 2) אתר נזילה (קיל, שסתומי ים, תושבת מדחף) 3) סתמת זמנית (לאטם, פלסטיק, כרית) 4) לבש חגורות 5) הודע ל-MRCC.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 322,
@@ -3997,7 +4224,8 @@
     "answer_confirmed": false,
     "explanation": "H = לחץ גבוה (Anticyclone): אוויר שוקע, שמש, מזג אוויר יציב. רוחות מסתובבות עם כיוון השעון בצפון הכדור. L = לחץ נמוך (Cyclone): סערה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 323,
@@ -4015,7 +4243,8 @@
     "answer_confirmed": false,
     "explanation": "Pressure Gradient = שיפוע הלחץ בין אזורים. ככל שהאיזוברים צפופים יותר — הגרדיאנט תלול יותר ורוחות חזקות יותר. רוחות נעות מלחץ גבוה ללחץ נמוך (עם הסטת קוריוליס).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 324,
@@ -4033,7 +4262,8 @@
     "answer_confirmed": false,
     "explanation": "ערפל = ראות פחות מ-1000 מ' בשל טיפות מים. נגרם כשאוויר לח מתקרר לנקודת הטל (Dew Point). בים-תיכון: נפוץ באביב/סתיו בבוקר.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 325,
@@ -4051,7 +4281,8 @@
     "answer_confirmed": false,
     "explanation": "בופור 8 = Gale (סערה): 34-40 קשרים, גלים 4-5.5 מ'. ספינות קטנות — סכנת חיים. בופור 9 = Severe Gale. בופור 12 = הוריקן.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 326,
@@ -4069,7 +4300,8 @@
     "answer_confirmed": false,
     "explanation": "CQR (מחרשה): מחזיק טוב בחול ובוץ, מסתובב עם הרוח מבלי לאבד אחיזה. Danforth: מחזיק מצוין בחול, פחות בסלע. כפתור: לסלע.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 327,
@@ -4087,7 +4319,8 @@
     "answer_confirmed": false,
     "explanation": "עוגן גורר: 1) הפעל מנוע 2) שחרר שרשרת נוספת (10:1 בסערה) 3) נסה לאבטח במקום 4) אם לא מצליח — עלה עוגן ועבור למקום בטוח. ב-MAYDAY רק אם בסכנה אמיתית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 328,
@@ -4105,7 +4338,8 @@
     "answer_confirmed": false,
     "explanation": "Starboard Side To = עגינה עם צד ימין (ירוק) צמוד לרציף. Port Side To = צד שמאל לרציף. בהיכנסות: תכנן מי הצד הנוח בהתאם לרוח וזרם.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 329,
@@ -4123,7 +4357,8 @@
     "answer_confirmed": false,
     "explanation": "ברוח חזקה: נסה לגשת נגד הרוח כדי שהיא תעזור בעצירה. אם אי-אפשר — גש מהצד כשהרוח תסייע לדחוף לרציף. תמיד לקחת בחשבון Prop Walk.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 330,
@@ -4141,7 +4376,8 @@
     "answer_confirmed": false,
     "explanation": "Echo Sounder: שולח גל קול (אולטראסאונד) לקרקעית, מחשב זמן הגעת הד חזרה. עומק = (מהירות קול × זמן) / 2. מהירות קול בים: ~1500 מ'/שנייה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 331,
@@ -4159,7 +4395,8 @@
     "answer_confirmed": false,
     "explanation": "AIS שולח ומקבל: MMSI, שם, סוג כלי שייט, מיקום (GPS), COG, SOG, Heading, יעד, שעת הגעה. מציג ספינות אחרות על chartplotter.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 332,
@@ -4177,7 +4414,8 @@
     "answer_confirmed": false,
     "explanation": "ערוץ 70 = ערוץ DSC בלבד. שמור לקריאות מצוקה ורוטינה ב-DSC. קשר קולי ב-70 אסור. שמע ב-70 דורש מקלט DSC.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 333,
@@ -4195,7 +4433,8 @@
     "answer_confirmed": false,
     "explanation": "GMDSS (Global Maritime Distress and Safety System): מערכת תקשורת המבטיחה שאות מצוקה (EPIRB/DSC) מועבר לרשויות חיפוש והצלה ולספינות בסביבה — 24/7.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 334,
@@ -4213,7 +4452,8 @@
     "answer_confirmed": false,
     "explanation": "LOP = כשלוקחים נשיאה לנקודת ציון אחת — הספינה נמצאת על קו המורחב מהנקודה. שתי LOP = מיקום (fix). שלוש LOP = מיקום + בדיקת שגיאה.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 335,
@@ -4231,7 +4471,8 @@
     "answer_confirmed": false,
     "explanation": "GPS ניווט: תכנן Waypoints על מפה ימית (ודא שהנתיב ביניהם בטוח), השתמש ב-GPS לאישור מיקום ומעקב. GPS עלול לטעות — השתמש גם בקריאות ויזואליות.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 336,
@@ -4249,7 +4490,8 @@
     "answer_confirmed": false,
     "explanation": "VHF קריאה: ערוץ 16, שם הנקרא (×2-3), THIS IS + שם הקורא, OVER. הנקרא עונה ומציע ערוץ עבודה. עוברים לערוץ עבודה. 16 פנוי לחירום.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 337,
@@ -4267,7 +4509,8 @@
     "answer_confirmed": false,
     "explanation": "ישראל: 16 = חירום/קריאה. 67 = MRCC חיפה (ערוץ עבודה). 9 = נמל. 6/8/72 = ספינה-לספינה. תמיד תשמור על 16 + 67 בשייט ישראלי.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 338,
@@ -4285,7 +4528,8 @@
     "answer_confirmed": false,
     "explanation": "הכלל הבסיסי: ממוכנת פונה למפרשית. אבל: אם המפרשית עוקפת, אם היא ב-RAM, NUC, מוגבלת-שוקע — כלל ההיררכיה קובע. נתיב מפרשים אינו מעניק עדיפות אוטומטית.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 339,
@@ -4303,7 +4547,8 @@
     "answer_confirmed": false,
     "explanation": "אדום מעל לבן (שני עגולים) = כלי שייט עוסק בדייג שאינו גורר. ירוק מעל לבן = טרולר (גורר). לבן מעל אדום = ספינת פיילוט.",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   },
   {
     "num": 340,
@@ -4321,6 +4566,7 @@
     "answer_confirmed": false,
     "explanation": "NUC עושה דרכה: שני אדומים עגולים + אורות צד + אור גב. NUC שאינו עושה דרכה: שני אדומים עגולים בלבד (ללא צד וגב).",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "approved_for_publish": false
   }
 ]
