@@ -970,7 +970,7 @@ function renderList() {
       ? `<button class="btn btn-publish btn-sm" onclick="publishQuestion(${q.num})">📡 פרסם</button>`
       : `<button class="btn btn-publish btn-sm" disabled title="${!hasVid ? 'צריך סרטון תחילה' : 'לא מאושר לפרסום'}">📡 פרסם</button>`;
 
-    const schedInfo = q.scheduled_date
+    const schedInfo = (q.scheduled_date && hasVid)
       ? `<div class="sched-date">📅 מתוזמן: ${q.scheduled_date}${q.scheduled_time ? ' ' + q.scheduled_time : ''}</div>`
       : '';
 
