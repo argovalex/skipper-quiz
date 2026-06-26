@@ -16,9 +16,8 @@
     "explanation": "קווי האורך והרוחב מגדירים נקודות חיתוך ייחודיות — כל נקודה בעולם מוגדרת ע\"י קו רוחב + קו אורך.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782458522/skipper-quiz/boogsh1kwisljxyirzsr.mp4",
-    "rendered_at": "2026-06-26T07:22:03.705Z"
+    "approved_for_publish": true,
+    "scheduled_date": "2026-06-26"
   },
   {
     "num": 102,
@@ -37,9 +36,7 @@
     "explanation": "כדור הארץ מסתובב ממערב למזרח — לכן השמש נראית זורחת במזרח ושוקעת במערב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782458091/skipper-quiz/p3ihlzmsfpk3morvsmc8.mp4",
-    "rendered_at": "2026-06-26T07:14:52.526Z"
+    "approved_for_publish": false
   },
   {
     "num": 103,
@@ -58,9 +55,7 @@
     "explanation": "גובה כוכב הצפון מעל האופק שווה לקו הרוחב. אם הזווית קבועה — כלי השיט שט על אותו קו רוחב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782458813/skipper-quiz/eplonlj2un9njzzpssbv.mp4",
-    "rendered_at": "2026-06-26T07:26:54.182Z"
+    "approved_for_publish": false
   },
   {
     "num": 104,
@@ -79,9 +74,7 @@
     "explanation": "במפת מרקטור מודדים מרחקים בסקלת קווי הרוחב (הצד הימני/שמאלי), ממול לאזור השייט — כי הסקלה משתנה עם הרוחב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782458965/skipper-quiz/tnz6zzm3t2arjqupqdra.mp4",
-    "rendered_at": "2026-06-26T07:29:26.499Z"
+    "approved_for_publish": false
   },
   {
     "num": 105,
@@ -3142,9 +3135,9 @@
     "mediaType": "",
     "blastOverride": "",
     "scheduled_date": "2026-06-24",
-    "approved_for_publish": true,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782291158/skipper-quiz/dvceyrwlgvhnloikqify.mp4",
-    "rendered_at": "2026-06-24T11:10:00.000Z"
+    "rendered_at": "2026-06-24T11:10:00.000Z",
+    "approved_for_publish": false
   },
   {
     "num": 266,
@@ -3203,9 +3196,9 @@
     "mediaType": "",
     "blastOverride": "",
     "scheduled_date": "2026-06-23",
-    "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782298764/skipper-quiz/q7pgudf4vcndygsyyjla.mp4",
-    "rendered_at": "2026-06-24T11:10:00.000Z"
+    "rendered_at": "2026-06-24T11:10:00.000Z",
+    "approved_for_publish": false
   },
   {
     "num": 269,
@@ -3376,9 +3369,9 @@
     "explanation": "MMSI = Maritime Mobile Service Identity — מספר ייחודי בן 9 ספרות לכל ספינה. מוטמע ב-VHF עם DSC, ב-EPIRB וב-AIS. מאפשר זיהוי אוטומטי בתשדורות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782299454/skipper-quiz/e3ke7rezxurtmsuztoyv.mp4",
-    "rendered_at": "2026-06-24T11:10:00.000Z"
+    "rendered_at": "2026-06-24T11:10:00.000Z",
+    "approved_for_publish": false
   },
   {
     "num": 278,
