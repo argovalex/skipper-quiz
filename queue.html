@@ -324,7 +324,7 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
     </div>
     <div class="modal-btns">
       <button class="btn btn-ghost btn-sm" onclick="closeSchedModal()">ביטול</button>
-      <button class="btn btn-publish btn-sm" onclick="confirmPublish()">🚀 אשר ושלח</button>
+      <button class="btn btn-publish btn-sm" id="sched-confirm-btn" onclick="confirmPublish()">🚀 אשר ושלח</button>
     </div>
   </div>
 </div>
@@ -814,6 +814,8 @@ async function deleteVideo(num) {
   if (!q) return;
   delete q.videoUrl;
   delete q.rendered_at;
+  delete q.scheduled_date;
+  delete q.scheduled_time;
   toast(`⏳ מוחק סרטון...`);
   const ok = await saveQuestionsGH(`delete-video: Q#${num}`);
   updateStats();
@@ -960,6 +962,10 @@ function renderList() {
       ? `<button class="btn btn-del btn-sm" onclick="deleteVideo(${q.num})" title="מחק סרטון">🗑</button>`
       : '';
 
+    const schedBtn = !isPub
+      ? `<button class="btn btn-ghost btn-sm" onclick="setSchedDate(${q.num})" title="קבע תזמון">📅</button>`
+      : '';
+
     const publishBtn = (hasVid && isAppr)
       ? `<button class="btn btn-publish btn-sm" onclick="publishQuestion(${q.num})">📡 פרסם</button>`
       : `<button class="btn btn-publish btn-sm" disabled title="${!hasVid ? 'צריך סרטון תחילה' : 'לא מאושר לפרסום'}">📡 פרסם</button>`;
@@ -982,7 +988,7 @@ function renderList() {
       </div>
       <div class="q-actions">
         ${badge}
-        <div class="q-btns">${renderBtn}${delVidBtn}${publishBtn}</div>
+        <div class="q-btns">${renderBtn}${delVidBtn}${schedBtn}${publishBtn}</div>
       </div>
     </div>`;
   }).join('');
@@ -1124,7 +1130,8 @@ async function confirmRender() {
 }
 
 // ── Schedule modal ────────────────────────────────────────────────────────────
-let schedNum = null;
+let schedNum  = null;
+let schedOnly = false;
 
 function tomorrow() {
   const d = new Date();
@@ -1151,8 +1158,22 @@ function publishQuestion(num) {
   document.getElementById('schedModal').classList.add('on');
 }
 
+function setSchedDate(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  schedNum  = num;
+  schedOnly = true;
+  document.getElementById('sched-q-text').textContent = `#${q.num} — ${q.topic}`;
+  document.getElementById('sched-date').value = q.scheduled_date || tomorrow();
+  document.getElementById('sched-time').value = q.scheduled_time || '09:00';
+  document.getElementById('sched-confirm-btn').textContent = '💾 שמור תזמון';
+  document.getElementById('schedModal').classList.add('on');
+}
+
 function closeSchedModal() {
-  schedNum = null;
+  schedNum  = null;
+  schedOnly = false;
+  document.getElementById('sched-confirm-btn').textContent = '🚀 אשר ושלח';
   document.getElementById('schedModal').classList.remove('on');
 }
 
@@ -1160,14 +1181,21 @@ async function confirmPublish() {
   const num  = schedNum;
   const date = document.getElementById('sched-date').value;
   const time = document.getElementById('sched-time').value;
+  const only = schedOnly;
   closeSchedModal();
 
   const q = questions.find(x => x.num === num);
   if (!q) return;
 
-  // Save scheduled date back to question (local only — for display)
   q.scheduled_date = date;
   q.scheduled_time = time;
+
+  if (only) {
+    await saveQuestionsGH(`schedule: Q#${num} -> ${date}`);
+    toast(`📅 Q#${num} מתוזמן ל-${date} ${time}`);
+    updateStats(); renderList();
+    return;
+  }
 
   try {
     const caption = buildCaption(q);
