@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚓ SkipperQuiz — ניהול שאלות</title>
+<title>⚓ SkipperQuiz — פרסום</title>
 <style>
 :root {
   --bg: #0a1628; --bg2: #0f1f3d; --bg3: #152848;
@@ -13,88 +13,165 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; direction: rtl; }
 
+/* ── Header ── */
 header { background: #081228; border-bottom: 2px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
 header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
-.hright { margin-right: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.hright { margin-right: auto; display: flex; gap: 8px; align-items: center; }
 
+/* ── Buttons ── */
 .btn { padding: 7px 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; font-family: inherit; }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-primary { background: var(--accent); color: #081228; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn-ghost { background: transparent; color: var(--dim); border: 1px solid var(--border); }
 .btn-ghost:hover { background: var(--bg3); color: var(--text); }
-.btn-green { background: var(--green); color: #081228; }
-.btn-orange { background: rgba(245,166,35,0.15); color: var(--orange); border: 1px solid rgba(245,166,35,0.4); }
 .btn-sm { padding: 4px 10px; font-size: 12px; }
 .btn-render { background: rgba(126,184,247,0.12); color: var(--accent); border: 1px solid rgba(126,184,247,0.3); }
 .btn-render:hover { background: rgba(126,184,247,0.22); }
 .btn-publish { background: rgba(61,220,132,0.15); color: var(--green); border: 1px solid rgba(61,220,132,0.4); }
 .btn-publish:hover { background: rgba(61,220,132,0.25); }
 
-/* Config row */
+/* ── Config ── */
 .cfg-row { padding: 8px 20px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
 .cfg-row input { padding: 5px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; font-family: monospace; direction: ltr; }
 .cfg-row input:focus { outline: none; border-color: var(--accent); }
-.cfg-row .ok { color: var(--green); }
-.cfg-row .err { color: var(--red); }
+.ok { color: var(--green); } .err { color: var(--red); }
 
-/* Filters */
+/* ── Tabs ── */
+.tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); background: var(--bg2); padding: 0 20px; }
+.tab { padding: 10px 20px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--dim); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.15s; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab:hover:not(.active) { color: var(--text); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ── Stats bar ── */
+.stats { padding: 8px 20px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; gap: 20px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+.stat-val { color: var(--text); font-weight: 700; }
+
+/* ── Filters ── */
 .filters { padding: 10px 20px; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .filters input { flex: 1; min-width: 180px; padding: 7px 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; direction: rtl; }
 .filters input:focus { outline: none; border-color: var(--accent); }
 .filter-btn { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: var(--dim); cursor: pointer; font-size: 12px; font-family: inherit; }
 .filter-btn.active { background: var(--accent); color: #081228; border-color: var(--accent); font-weight: 700; }
 
-/* Stats bar */
-.stats { padding: 6px 20px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; gap: 16px; font-size: 12px; color: var(--dim); }
-.stat-val { color: var(--text); font-weight: 700; }
-
-/* List */
+/* ── Cards ── */
 #q-list { padding: 10px 20px 80px; }
-
-/* Question card */
 .q-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 6px; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; }
 .q-card:hover { border-color: rgba(126,184,247,0.4); }
 .q-card.rendering { border-color: var(--accent); animation: pulse 1.5s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
-
 .q-meta { display: flex; flex-direction: column; gap: 3px; }
 .q-num-badge { font-size: 11px; background: var(--bg3); color: var(--accent); padding: 2px 8px; border-radius: 5px; font-weight: 700; display: inline-block; }
 .q-topic-tag { font-size: 11px; color: var(--dim); }
-.q-text { font-size: 13px; font-weight: 600; line-height: 1.4; color: var(--text); }
+.q-text { font-size: 13px; font-weight: 600; line-height: 1.4; }
 .q-sub { font-size: 11px; color: var(--dim); margin-top: 2px; }
-
 .q-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; min-width: 100px; }
+.q-btns { display: flex; gap: 5px; }
 .vid-badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; white-space: nowrap; }
 .vid-badge.has { background: rgba(61,220,132,0.15); color: var(--green); border: 1px solid rgba(61,220,132,0.3); }
 .vid-badge.none { background: rgba(122,156,200,0.1); color: var(--dim); border: 1px solid var(--border); }
 .vid-badge.published { background: rgba(61,220,132,0.25); color: var(--green); border: 1px solid var(--green); }
+.btn-del { background: rgba(232,93,93,0.12); color: var(--red); border: 1px solid rgba(232,93,93,0.3); }
+.btn-del:hover { background: rgba(232,93,93,0.25); }
+.rm-preview { margin-bottom:10px; }
+.rm-preview summary { cursor:pointer; font-size:12px; color:var(--dim); padding:4px 0; user-select:none; }
+.rm-preview summary:hover { color:var(--text); }
+.rm-preview-iframe { width:100%; height:160px; border:1px solid var(--border); border-radius:6px; background:#000; margin-top:6px; }
 
-.q-btns { display: flex; gap: 5px; }
+/* ── History tab ── */
+.hist-main { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
 
-/* Render progress inline */
-.render-progress { font-size: 11px; color: var(--accent); text-align: right; min-height: 16px; }
+.stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 800px) { .stat-cards { grid-template-columns: repeat(2,1fr); } }
+.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; position: relative; overflow: hidden; }
+.stat-card::before { content:''; position:absolute; top:0; right:0; width:4px; height:100%; background: var(--accent); border-radius: 0 10px 10px 0; }
+.stat-card.green::before { background: var(--green); }
+.stat-card.orange::before { background: var(--orange); }
+.sc-label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .04em; }
+.sc-value { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1.1; margin: 4px 0 2px; }
+.stat-card.green  .sc-value { color: var(--green); }
+.stat-card.orange .sc-value { color: var(--orange); }
+.sc-sub { font-size: 11px; color: var(--dim); }
 
-/* Toast */
+.section { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.sec-hdr { padding: 12px 18px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.sec-hdr h2 { font-size: 14px; color: var(--accent); font-weight: 700; }
+.sec-body { padding: 18px; }
+
+/* Today card */
+.today-card { display: grid; grid-template-columns: 70px 1fr; gap: 16px; align-items: start; }
+.today-num { font-size: 2.6rem; font-weight: 800; color: var(--accent); line-height: 1; text-align: center; }
+.today-q { font-size: 14px; line-height: 1.5; margin: 6px 0; }
+.today-ans { background: rgba(61,220,132,0.1); border: 1px solid rgba(61,220,132,0.3); border-radius: 6px; padding: 7px 12px; font-size: 13px; color: var(--green); }
+.topic-badge { display: inline-block; background: rgba(126,184,247,0.12); border: 1px solid rgba(126,184,247,0.3); color: var(--accent); padding: 2px 10px; border-radius: 20px; font-size: 11px; }
+
+/* Table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th { background: var(--bg3); color: var(--dim); padding: 9px 14px; text-align: right; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid var(--border); white-space: nowrap; }
+tbody tr { border-bottom: 1px solid rgba(30,58,110,0.5); transition: background 0.1s; }
+tbody tr:hover { background: rgba(126,184,247,0.04); }
+tbody td { padding: 8px 14px; vertical-align: middle; }
+.td-num { color: var(--accent); font-weight: 700; }
+.td-q { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--dim); }
+.td-date { color: var(--dim); white-space: nowrap; }
+.video-link { color: var(--accent); text-decoration: none; font-size: 11px; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; }
+.video-link:hover { background: var(--accent); color: #081228; }
+.ptag { display: inline-block; background: rgba(74,157,232,0.15); color: var(--accent); padding: 1px 7px; border-radius: 4px; font-size: 11px; margin: 1px; }
+
+/* Chart */
+.chart-legend { display: flex; gap: 16px; margin-bottom: 14px; font-size: 12px; color: var(--dim); }
+.ldot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-left: 5px; }
+.chart-grid { display: flex; flex-direction: column; gap: 8px; }
+.chart-row { display: grid; grid-template-columns: 120px 1fr 54px; gap: 8px; align-items: center; }
+.chart-label { font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right; }
+.chart-bars { position: relative; height: 16px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.bar-total { position: absolute; top:0; right:0; height:100%; background: rgba(126,184,247,0.2); border-radius: 4px; transition: width .5s ease; }
+.bar-pub { position: absolute; top:0; right:0; height:100%; background: var(--green); border-radius: 4px; transition: width .5s ease; }
+.chart-count { font-size: 11px; color: var(--dim); white-space: nowrap; }
+
+/* ── Render modal ── */
+.render-modal { width: 500px; max-width: 95vw; }
+.render-modal textarea { width:100%; padding:8px 10px; background:var(--bg3); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:12px; font-family:inherit; direction:rtl; resize:vertical; line-height:1.5; }
+.render-modal textarea:focus { outline:none; border-color:var(--accent); }
+.preview-row { display:flex; gap:8px; align-items:center; margin-top:6px; }
+.preview-status { font-size:11px; color:var(--dim); }
+.fix-badge { display:inline-block; background:rgba(61,220,132,0.12); color:var(--green); font-size:10px; padding:1px 7px; border-radius:10px; border:1px solid rgba(61,220,132,0.3); }
+
+/* ── Schedule modal ── */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:500; display:none; align-items:center; justify-content:center; }
+.modal-overlay.on { display:flex; }
+.modal { background:var(--bg2); border:1px solid var(--border); border-radius:14px; padding:24px; width:340px; max-width:90vw; }
+.modal h3 { color:var(--accent); font-size:15px; margin-bottom:16px; }
+.modal-q { font-size:12px; color:var(--dim); margin-bottom:16px; line-height:1.4; border-right:3px solid var(--border); padding-right:10px; }
+.modal-row { display:flex; flex-direction:column; gap:5px; margin-bottom:14px; }
+.modal-row label { font-size:11px; color:var(--dim); }
+.modal-row input { padding:8px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:13px; direction:ltr; }
+.modal-row input:focus { outline:none; border-color:var(--accent); }
+.modal-btns { display:flex; gap:8px; justify-content:flex-end; margin-top:18px; }
+.sched-date { font-size:10px; color:var(--orange); margin-top:3px; }
+
+/* ── Toast & bottom bar ── */
 .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1e3a6e; color: var(--text); padding: 10px 20px; border-radius: 10px; font-size: 13px; z-index: 999; display: none; border: 1px solid var(--accent); white-space: nowrap; }
 .toast.on { display: block; }
-
-/* Bottom bar */
 .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #081228; border-top: 2px solid var(--border); padding: 8px 20px; display: flex; gap: 10px; align-items: center; z-index: 200; font-size: 12px; color: var(--dim); }
 .bottom-bar .right { margin-right: auto; display: flex; gap: 8px; }
+.empty { text-align: center; padding: 50px; color: var(--dim); }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
   <span style="font-size:20px">⚓</span>
-  <h1>SkipperQuiz — ניהול שאלות</h1>
+  <h1>SkipperQuiz — פרסום</h1>
   <div class="hright">
-    <button class="btn btn-ghost btn-sm" onclick="location.href='hub.html'">← Hub</button>
+    <button class="btn btn-ghost btn-sm" onclick="location.href='index.html'">✏️ עריכה</button>
     <button class="btn btn-ghost btn-sm" onclick="loadData()">↻ רענן</button>
   </div>
 </header>
 
-<!-- Config row -->
+<!-- Config -->
 <div class="cfg-row" id="cfgRow">
   <span>GitHub Token:</span>
   <input id="ghToken" type="password" placeholder="ghp_xxxxxxxx" style="width:200px" oninput="saveCfg()">
@@ -104,24 +181,153 @@ header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
   <span id="cfgStatus"></span>
 </div>
 
-<!-- Filters -->
-<div class="filters">
-  <input type="text" id="search" placeholder="🔍 חפש שאלה..." oninput="renderList()">
-  <button class="filter-btn active" id="f-all" onclick="setFilter('all')">הכל</button>
-  <button class="filter-btn" id="f-novideo" onclick="setFilter('novideo')">ללא סרטון</button>
-  <button class="filter-btn" id="f-ready" onclick="setFilter('ready')">מוכן לפרסום</button>
-  <button class="filter-btn" id="f-published" onclick="setFilter('published')">פורסם</button>
-</div>
-
 <!-- Stats -->
 <div class="stats">
-  <span>סה"כ: <span class="stat-val" id="st-total">—</span></span>
+  <span>סה"כ שאלות: <span class="stat-val" id="st-total">—</span></span>
   <span>🎬 יש סרטון: <span class="stat-val" id="st-video">—</span></span>
-  <span>✅ פורסם: <span class="stat-val" id="st-pub">—</span></span>
   <span>⏳ ממתין לסרטון: <span class="stat-val" id="st-novid">—</span></span>
+  <span>📤 ממתין לפרסום: <span class="stat-val" id="st-queue">—</span></span>
+  <span>✅ פורסם: <span class="stat-val" id="st-pub">—</span></span>
 </div>
 
-<div id="q-list"><div style="text-align:center;padding:60px;color:var(--dim)">טוען...</div></div>
+<!-- Tabs -->
+<div class="tabs">
+  <div class="tab active" id="tab-queue" onclick="switchTab('queue')">📋 תור לפרסום</div>
+  <div class="tab" id="tab-history" onclick="switchTab('history')">📊 היסטוריה</div>
+</div>
+
+<!-- ══════════════ TAB: QUEUE ══════════════ -->
+<div class="tab-pane active" id="pane-queue">
+  <div class="filters">
+    <input type="text" id="search" placeholder="🔍 חפש שאלה..." oninput="renderList()">
+    <button class="filter-btn active" id="f-all"       onclick="setFilter('all')">הכל</button>
+    <button class="filter-btn"       id="f-approved"   onclick="setFilter('approved')">מאושר לפרסום</button>
+    <button class="filter-btn"       id="f-novideo"    onclick="setFilter('novideo')">ללא סרטון</button>
+    <button class="filter-btn"       id="f-ready"      onclick="setFilter('ready')">מוכן לפרסום</button>
+    <button class="filter-btn"       id="f-published"  onclick="setFilter('published')">פורסם</button>
+  </div>
+  <div id="q-list"><div class="empty">טוען...</div></div>
+</div>
+
+<!-- ══════════════ TAB: HISTORY ══════════════ -->
+<div class="tab-pane" id="pane-history">
+  <div class="hist-main">
+
+    <!-- Stat cards -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="sc-label">סה"כ שאלות</div>
+        <div class="sc-value" id="hst-total">—</div>
+        <div class="sc-sub">במאגר</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="sc-label">ממתינות לפרסום</div>
+        <div class="sc-value" id="hst-queue">—</div>
+        <div class="sc-sub">מאושרות + יש סרטון</div>
+      </div>
+      <div class="stat-card green">
+        <div class="sc-label">פורסמו</div>
+        <div class="sc-value" id="hst-pub">—</div>
+        <div class="sc-sub">סה"כ פרסומים</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-label">ימי תוכן</div>
+        <div class="sc-value" id="hst-days">—</div>
+        <div class="sc-sub">בקצב שאלה ליום</div>
+      </div>
+    </div>
+
+    <!-- Today's question -->
+    <div class="section">
+      <div class="sec-hdr"><span>📅</span><h2>הבאה בתור לפרסום</h2></div>
+      <div class="sec-body" id="today-body"><div class="empty">טוען...</div></div>
+    </div>
+
+    <!-- History table -->
+    <div class="section">
+      <div class="sec-hdr"><span>📜</span><h2>היסטוריית פרסום</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>תאריך</th><th>#</th><th>נושא</th><th>שאלה</th><th>וידאו</th><th>פלטפורמות</th></tr>
+          </thead>
+          <tbody id="history-tbody">
+            <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--dim)">טוען...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="section">
+      <div class="sec-hdr"><span>📊</span><h2>כיסוי לפי נושא</h2></div>
+      <div class="sec-body">
+        <div class="chart-legend">
+          <span><span class="ldot" style="background:rgba(126,184,247,0.35)"></span>סה"כ</span>
+          <span><span class="ldot" style="background:var(--green)"></span>פורסמו</span>
+        </div>
+        <div class="chart-grid" id="chart-grid"><div class="empty">טוען...</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Render modal -->
+<div class="modal-overlay" id="renderModal">
+  <div class="modal render-modal">
+    <h3>🎬 רינדור — <span id="rm-title"></span></h3>
+
+    <details class="rm-preview" id="rm-preview-details">
+      <summary>👁 תצוגה מקדימה של האנימציה</summary>
+      <iframe class="rm-preview-iframe" id="rm-preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+    </details>
+
+    <div class="modal-row" style="margin-bottom:6px">
+      <label style="display:flex;justify-content:space-between;align-items:center">
+        <span>🎙 טקסט Voice Over</span>
+        <span class="fix-badge">תיקונים אוטומטיים מופעלים</span>
+      </label>
+      <textarea id="rm-vo" rows="5"></textarea>
+    </div>
+    <div class="preview-row">
+      <button class="btn btn-ghost btn-sm" onclick="previewVoiceover()">▶ האזן</button>
+      <button class="btn btn-ghost btn-sm" onclick="resetVoiceover()">↺ איפוס</button>
+      <span class="preview-status" id="rm-preview-status"></span>
+      <audio id="rm-audio" style="display:none"></audio>
+    </div>
+
+    <div class="modal-row" style="margin-top:14px">
+      <label>📝 הוראות לרינדור (אופציונלי)</label>
+      <textarea id="rm-notes" rows="2" placeholder="למשל: הגדל פונט, האט אנימציה, שנה צבע רקע..."></textarea>
+    </div>
+
+    <div class="modal-btns">
+      <button class="btn btn-ghost btn-sm" onclick="closeRenderModal()">ביטול</button>
+      <button class="btn btn-render btn-sm" onclick="confirmRender()">🎬 רנדר</button>
+    </div>
+  </div>
+</div>
+
+<!-- Schedule modal -->
+<div class="modal-overlay" id="schedModal">
+  <div class="modal">
+    <h3>📅 תזמון פרסום</h3>
+    <div class="modal-q" id="sched-q-text">—</div>
+    <div class="modal-row">
+      <label>תאריך פרסום</label>
+      <input type="date" id="sched-date">
+    </div>
+    <div class="modal-row">
+      <label>שעה (שעון ישראל)</label>
+      <input type="time" id="sched-time" value="09:00">
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-ghost btn-sm" onclick="closeSchedModal()">ביטול</button>
+      <button class="btn btn-publish btn-sm" onclick="confirmPublish()">🚀 אשר ושלח</button>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
@@ -134,71 +340,555 @@ header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
 
 <script>
 const REPO = 'argovalex/skipper-quiz';
-const MAKE_WEBHOOK = 'https://hook.eu2.make.com/'; // base — user fills full URL or we use stored
 
-let questions = [];
+// ── Animation scenes (ported from index.html) ─────────────────────────────────
+const LETTERS_HE = ['א','ב','ג','ד'];
+const SCENES = {
+'כניסה לנמל': `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 60 Q90 50 180 60 Q270 70 360 60" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 140 Q90 130 180 140 Q270 150 360 140" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 220 Q90 210 180 220 Q270 230 360 220" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 300 Q90 290 180 300 Q270 310 360 300" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <rect x="40" y="0" width="22" height="240" rx="6" fill="#2c5282"/><rect x="298" y="0" width="22" height="240" rx="6" fill="#2c5282"/>
+  <rect x="0" y="0" width="40" height="250" fill="#1a3a1a" opacity="0.6"/><rect x="320" y="0" width="40" height="250" fill="#1a3a1a" opacity="0.6"/>
+  <circle cx="319" cy="248" r="16" fill="#1a4a2a"/><circle cx="319" cy="248" r="13" fill="#27ae60"><animate attributeName="opacity" values="1;0.1;1" dur="1.4s" repeatCount="indefinite"/></circle>
+  <circle cx="319" cy="248" r="22" fill="#2ecc71" opacity="0"><animate attributeName="opacity" values="0;0.35;0" dur="1.4s" repeatCount="indefinite"/></circle>
+  <text x="319" y="274" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ירוק</text>
+  <text x="319" y="287" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial">Starboard</text>
+  <circle cx="41" cy="248" r="16" fill="#4a1a1a"/><circle cx="41" cy="248" r="13" fill="#c0392b"><animate attributeName="opacity" values="1;0.1;1" dur="1.4s" repeatCount="indefinite" begin="0.7s"/></circle>
+  <circle cx="41" cy="248" r="22" fill="#e74c3c" opacity="0"><animate attributeName="opacity" values="0;0.35;0" dur="1.4s" repeatCount="indefinite" begin="0.7s"/></circle>
+  <text x="41" y="274" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">אדום</text>
+  <text x="41" y="287" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial">Port</text>
+  <text x="180" y="228" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" opacity="0.8">— כניסה למרינה —</text>
+  <g><ellipse cx="180" cy="390" rx="18" ry="36" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/><ellipse cx="180" cy="370" rx="10" ry="13" fill="#ccc"/><circle cx="180" cy="370" r="3" fill="#666"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;0,-155;0,-155" dur="5s" repeatCount="indefinite" keyTimes="0;0.65;1" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1"/></g>
+`,
+'אורות ניווט': `
+  <rect width="360" height="420" fill="#050d1a"/>
+  <circle cx="50" cy="40" r="1.5" fill="white" opacity="0.8"/><circle cx="120" cy="20" r="1" fill="white" opacity="0.7"/><circle cx="200" cy="50" r="1.5" fill="white" opacity="0.9"/><circle cx="280" cy="30" r="1" fill="white" opacity="0.6"/><circle cx="320" cy="70" r="2" fill="white" opacity="0.8"/>
+  <g transform="translate(180,230)">
+    <ellipse cx="0" cy="0" rx="24" ry="50" fill="#1a2a3a" stroke="#2a4a6a" stroke-width="1.5"/>
+    <ellipse cx="0" cy="-15" rx="14" ry="18" fill="#1a2a3a" stroke="#2a4a6a" stroke-width="1"/>
+    <circle cx="22" cy="-5" r="7" fill="#27ae60"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+    <circle cx="22" cy="-5" r="14" fill="#2ecc71" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="2s" repeatCount="indefinite"/></circle>
+    <circle cx="-22" cy="-5" r="7" fill="#c0392b"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1s"/></circle>
+    <circle cx="-22" cy="-5" r="14" fill="#e74c3c" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="2s" repeatCount="indefinite" begin="1s"/></circle>
+    <line x1="0" y1="-50" x2="0" y2="10" stroke="#555" stroke-width="2"/>
+    <circle cx="0" cy="-55" r="7" fill="#fffacd"><animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/></circle>
+  </g>
+  <text x="205" y="225" fill="#2ecc71" font-size="10" font-family="Arial">Green/Starboard</text>
+  <text x="100" y="225" fill="#e74c3c" font-size="10" font-family="Arial">Red/Port</text>
+  <text x="180" y="380" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">כלי שייט בלילה — זהה את האורות</text>
+`,
+'זכות מעבר': `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 80 Q90 70 180 80 Q270 90 360 80" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 200 Q90 190 180 200 Q270 210 360 200" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 320 Q90 310 180 320 Q270 330 360 320" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <g transform="translate(70,210) rotate(90)"><ellipse cx="0" cy="0" rx="16" ry="34" fill="#e8d8b0" stroke="#999" stroke-width="1"/><ellipse cx="0" cy="-12" rx="9" ry="12" fill="#d4c090"/><circle cx="0" cy="-12" r="3" fill="#666"/></g>
+  <text x="70" y="258" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">A</text>
+  <path d="M95 210 L165 210" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr)"/>
+  <g transform="translate(250,100)"><ellipse cx="0" cy="0" rx="16" ry="34" fill="#e8e8e8" stroke="#999" stroke-width="1"/><ellipse cx="0" cy="-12" rx="9" ry="12" fill="#ccc"/><circle cx="0" cy="-12" r="3" fill="#666"/></g>
+  <text x="250" y="148" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">B</text>
+  <path d="M250 138 L250 200" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr)"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#7eb8f7"/></marker></defs>
+  <text x="180" y="210" text-anchor="middle" fill="#ff0" font-size="32">⚠</text>
+  <text x="180" y="360" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">מי נותן זכות מעבר?</text>
+`,
+'עגינה': `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 80 Q90 70 180 80 Q270 90 360 80" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 200 Q90 190 180 200 Q270 210 360 200" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 320 Q90 310 180 320 Q270 330 360 320" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <rect x="0" y="380" width="360" height="50" fill="#8b7355" opacity="0.6"/>
+  <line x1="180" y1="210" x2="180" y2="385" stroke="#aaa" stroke-width="2" stroke-dasharray="8,4"/>
+  <g transform="translate(180,390)"><circle cx="0" cy="-5" r="8" fill="none" stroke="#aaa" stroke-width="2.5"/><line x1="0" y1="-13" x2="0" y2="8" stroke="#aaa" stroke-width="2.5"/><line x1="-10" y1="8" x2="10" y2="8" stroke="#aaa" stroke-width="2.5"/></g>
+  <g transform="translate(180,190)"><ellipse cx="0" cy="0" rx="20" ry="42" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/><ellipse cx="0" cy="-14" rx="11" ry="15" fill="#ccc"/><circle cx="0" cy="-14" r="3" fill="#666"/><circle cx="0" cy="-52" r="7" fill="white" stroke="#888" stroke-width="1"/></g>
+  <text x="230" y="310" fill="#7eb8f7" font-size="11" font-family="Arial">depth: 5m</text>
+  <text x="230" y="360" fill="#7eb8f7" font-size="11" font-family="Arial">chain = ?</text>
+`,
+'אותות מצוקה': `
+  <rect width="360" height="420" fill="#0a0a14"/>
+  <text x="180" y="100" text-anchor="middle" fill="#e74c3c" font-size="48" font-family="Arial" font-weight="900" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.2;0.9" dur="1.2s" repeatCount="indefinite"/>
+    MAYDAY
+  </text>
+  <text x="180" y="130" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Arial" font-weight="700">MAYDAY  MAYDAY</text>
+  <line x1="40" y1="150" x2="320" y2="150" stroke="#e74c3c" stroke-width="1" opacity="0.4"/>
+  <rect x="80" y="165" width="200" height="85" rx="8" fill="#140a0a" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="180" y="185" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">ערוץ: </text>
+  <text x="230" y="185" fill="#fff" font-size="10" font-family="Arial">CH 16 — 156.8MHz</text>
+  <text x="180" y="203" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">DSC: </text>
+  <text x="215" y="203" fill="#fff" font-size="10" font-family="Arial">Channel 70</text>
+  <text x="180" y="221" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">EPIRB: </text>
+  <text x="220" y="221" fill="#fff" font-size="10" font-family="Arial">406 MHz</text>
+  <text x="180" y="239" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">SART: </text>
+  <text x="214" y="239" fill="#fff" font-size="10" font-family="Arial">9 GHz X-band</text>
+  <circle cx="180" cy="310" r="35" fill="#3d0000" stroke="#e74c3c" stroke-width="2">
+    <animate attributeName="fill" values="#3d0000;#7a0000;#3d0000" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="180" y="305" text-anchor="middle" fill="#fff" font-size="20">🆘</text>
+  <text x="180" y="322" text-anchor="middle" fill="#e74c3c" font-size="10" font-family="Arial" font-weight="700">SOS</text>
+  <text x="180" y="390" text-anchor="middle" fill="#c0392b" font-size="10" font-family="Heebo,sans-serif">אותות מצוקה בינלאומיים</text>
+`,
+'אותות קוליים': `
+  <rect width="360" height="420" fill="#050d1a"/>
+  <circle cx="40" cy="25" r="1" fill="white" opacity=".5"/>
+  <circle cx="110" cy="15" r="1.2" fill="white" opacity=".6"/>
+  <circle cx="200" cy="30" r="1" fill="white" opacity=".4"/>
+  <circle cx="290" cy="18" r="1.3" fill="white" opacity=".7"/>
+  <circle cx="330" cy="40" r="1" fill="white" opacity=".5"/>
+  <rect x="0" y="310" width="360" height="110" fill="#0a1f3a"/>
+  <path d="M0 315 Q60 308 120 315 Q180 322 240 315 Q300 308 360 315" fill="none" stroke="#1a4a6a" stroke-width="1.5" opacity=".6"/>
+  <path d="M0 330 Q90 322 180 330 Q270 338 360 330" fill="none" stroke="#1a4a6a" stroke-width="1" opacity=".4"/>
+  <ellipse cx="180" cy="312" rx="80" ry="14" fill="#1a2f5e" stroke="#2a4a8a" stroke-width="1.5"/>
+  <rect x="120" y="270" width="120" height="44" rx="4" fill="#1a2f5e" stroke="#2a4a8a" stroke-width="1.5"/>
+  <rect x="148" y="248" width="64" height="26" rx="3" fill="#1e3a6e" stroke="#2a5080" stroke-width="1"/>
+  <line x1="180" y1="150" x2="180" y2="248" stroke="#3a5a8a" stroke-width="2"/>
+  <rect x="163" y="170" width="22" height="12" rx="3" fill="#4a90d9"/>
+  <polygon points="185,170 198,165 198,182 185,182" fill="#357abd"/>
+  <text x="202" y="181" fill="#7eb8f7" font-size="9" font-family="Arial" font-weight="700">📯</text>
+  <g transform="translate(196,176)">
+    <path d="M0,0 Q12,-12 12,0 Q12,12 0,0" fill="none" stroke="#4a90d9" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" values="0;0.9;0" dur="1.8s" repeatCount="indefinite" begin="0s"/>
+    </path>
+    <path d="M0,0 Q22,-22 22,0 Q22,22 0,0" fill="none" stroke="#7eb8f7" stroke-width="1.5" opacity="0">
+      <animate attributeName="opacity" values="0;0.7;0" dur="1.8s" repeatCount="indefinite" begin="0.3s"/>
+    </path>
+  </g>
+  <rect x="20" y="78" width="320" height="80" rx="8" fill="#0c1a3a" stroke="#1e3a6e" stroke-width="1" opacity=".9"/>
+  <text x="180" y="97" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">אותות קוליים — COLREGS</text>
+  <text x="30" y="116" fill="#4a90d9" font-size="9" font-family="Arial">━</text><text x="42" y="116" fill="#aac4e8" font-size="9" font-family="Heebo,sans-serif"> = פניה ימינה</text>
+  <text x="165" y="116" fill="#4a90d9" font-size="9" font-family="Arial">━ ━</text><text x="185" y="116" fill="#aac4e8" font-size="9" font-family="Heebo,sans-serif"> = פניה שמאלה</text>
+  <text x="30" y="133" fill="#4a90d9" font-size="9" font-family="Arial">━ ━ ━</text><text x="60" y="133" fill="#aac4e8" font-size="9" font-family="Heebo,sans-serif"> = מנוע אחורה</text>
+  <text x="165" y="133" fill="#e74c3c" font-size="9" font-family="Arial">• • • • •</text><text x="195" y="133" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif"> = סכנה!</text>
+  <text x="180" y="395" text-anchor="middle" fill="#4a90d9" font-size="10" font-family="Heebo,sans-serif">🔊 אותות קוליים — COLREGS</text>
+`,
+'מזג אוויר': `
+  <rect width="360" height="420" fill="#0a1628"/>
+  <circle cx="180" cy="160" r="60" fill="#e8c020" opacity="0.9"><animate attributeName="opacity" values="0.9;0.6;0.9" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="180" cy="160" r="75" fill="none" stroke="#e8c020" opacity="0.3"><animate attributeName="r" values="70;85;70" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/></circle>
+  <text x="180" y="295" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">☀ מזג אוויר ימי</text>
+  <text x="180" y="340" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">תחזית · טמפרטורה · רוח · גלים</text>
+`,
+'ספנות': `
+  <rect width="360" height="420" fill="#0a1628"/>
+  <g opacity="0.12"><path d="M0 100 Q90 90 180 100 Q270 110 360 100" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 220 Q90 210 180 220 Q270 230 360 220" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <text x="180" y="200" text-anchor="middle" fill="#7eb8f7" font-size="50" font-family="Arial">⚓</text>
+  <text x="180" y="290" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">ספנות ושייט</text>
+`,
+'בטיחות': `
+  <rect width="360" height="420" fill="#0a1020"/>
+  <circle cx="180" cy="165" r="80" fill="none" stroke="#e74c3c" stroke-width="8"/>
+  <circle cx="180" cy="165" r="80" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="80,80" stroke-dashoffset="40"/>
+  <circle cx="180" cy="165" r="50" fill="#0a1020"/>
+  <line x1="180" y1="85" x2="180" y2="55" stroke="#aaa" stroke-width="3"/>
+  <line x1="260" y1="165" x2="290" y2="165" stroke="#aaa" stroke-width="3"/>
+  <line x1="180" y1="245" x2="180" y2="275" stroke="#aaa" stroke-width="3"/>
+  <line x1="100" y1="165" x2="70" y2="165" stroke="#aaa" stroke-width="3"/>
+  <text x="180" y="172" text-anchor="middle" fill="#fff" font-size="14" font-family="Arial" font-weight="900">LIFE</text>
+  <circle cx="180" cy="165" r="80" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0"><animate attributeName="r" values="82;100;82" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/></circle>
+  <text x="180" y="380" text-anchor="middle" fill="#c0392b" font-size="10" font-family="Heebo,sans-serif">בטיחות ימית</text>
+`,
+'רדיו VHF': `
+  <rect width="360" height="420" fill="#090f1a"/>
+  <rect x="120" y="30" width="120" height="200" rx="12" fill="#0d1e38" stroke="#2a4a6a" stroke-width="2"/>
+  <rect x="130" y="45" width="100" height="55" rx="5" fill="#050d1a" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="180" y="68" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">CH 16</text>
+  <text x="180" y="85" text-anchor="middle" fill="#4a90d9" font-size="10" font-family="Arial">156.800 MHz</text>
+  <line x1="180" y1="30" x2="180" y2="5" stroke="#7eb8f7" stroke-width="2"/>
+  <line x1="180" y1="5" x2="200" y2="5" stroke="#7eb8f7" stroke-width="2"/>
+  <circle cx="180" cy="195" r="14" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2"/>
+  <text x="180" y="199" text-anchor="middle" fill="#2ecc71" font-size="9" font-family="Arial" font-weight="700">PTT</text>
+  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">VHF Marine Radio — Channel 16</text>
+`,
+'כללי': `
+  <rect width="360" height="420" fill="#050d1a"/>
+  <circle cx="195" cy="200" r="80" fill="none" stroke="#1e3a6e" stroke-width="1.5" opacity=".5"/>
+  <text x="195" y="188" text-anchor="middle" fill="#4a90d9" font-size="50" font-family="Arial">⚓</text>
+  <text x="195" y="235" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,Arial" font-weight="700">שאלה כללית</text>
+`,
+'מיצוף': `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 100 Q90 90 180 100 Q270 110 360 100" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 250 Q90 240 180 250 Q270 260 360 250" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <circle cx="180" cy="180" r="50" fill="none" stroke="#e8a020" stroke-width="6" opacity="0.8"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></circle>
+  <text x="180" y="188" text-anchor="middle" fill="#e8a020" font-size="14" font-family="Arial" font-weight="900">BUOY</text>
+  <text x="180" y="360" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">מציפים וסימון ימי</text>
+`,
+'דגלים': `
+  <rect width="360" height="420" fill="#0a1628"/>
+  <rect x="140" y="60" width="3" height="200" fill="#aaa"/>
+  <rect x="143" y="60" width="80" height="55" fill="#e74c3c"/>
+  <rect x="143" y="115" width="80" height="55" fill="#fff"/>
+  <rect x="143" y="170" width="80" height="55" fill="#e74c3c"/>
+  <line x1="140" y1="60" x2="140" y2="270" stroke="#aaa" stroke-width="2"/>
+  <text x="180" y="360" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">קודי דגלים ימיים</text>
+`,
+'תמרוני ספינה': `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 100 Q90 90 180 100 Q270 110 360 100" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <ellipse cx="180" cy="210" rx="50" ry="20" fill="#1a2f5e" stroke="#2a4a8a" stroke-width="2"/>
+  <g><animateTransform attributeName="transform" type="rotate" values="0 180 210;360 180 210" dur="6s" repeatCount="indefinite"/>
+  <line x1="180" y1="210" x2="240" y2="210" stroke="#4a90d9" stroke-width="2.5"/><polygon points="240,205 250,210 240,215" fill="#4a90d9"/></g>
+  <text x="180" y="360" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">תמרוני ספינה ויצוב</text>
+`,
+'ציוד הצלה': `
+  <rect width="360" height="420" fill="#0a1020"/>
+  <circle cx="180" cy="165" r="80" fill="none" stroke="#e74c3c" stroke-width="8"/>
+  <circle cx="180" cy="165" r="80" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="80,80" stroke-dashoffset="40"/>
+  <circle cx="180" cy="165" r="50" fill="#0a1020"/>
+  <line x1="180" y1="85" x2="180" y2="55" stroke="#aaa" stroke-width="3"/>
+  <line x1="260" y1="165" x2="290" y2="165" stroke="#aaa" stroke-width="3"/>
+  <line x1="180" y1="245" x2="180" y2="275" stroke="#aaa" stroke-width="3"/>
+  <line x1="100" y1="165" x2="70" y2="165" stroke="#aaa" stroke-width="3"/>
+  <text x="180" y="172" text-anchor="middle" fill="#fff" font-size="14" font-family="Arial" font-weight="900">LIFE</text>
+  <text x="180" y="185" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">RING</text>
+  <circle cx="180" cy="165" r="80" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0"><animate attributeName="r" values="82;100;82" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/></circle>
+  <rect x="40" y="300" width="280" height="25" rx="5" fill="#1a0000" stroke="#e74c3c" stroke-width="1"/>
+  <text x="180" y="317" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">EPIRB · SART · Life Jacket · Flares</text>
+  <text x="180" y="380" text-anchor="middle" fill="#c0392b" font-size="10" font-family="Heebo,sans-serif">ציוד הצלה ימי</text>
+`
+};
+Object.assign(SCENES, {
+'ניווט': `
+  <rect width="360" height="420" fill="#0a1a30"/>
+  <rect x="20" y="20" width="320" height="230" rx="8" fill="#0d2040" stroke="#2a4a6a" stroke-width="1.5"/>
+  <line x1="20" y1="135" x2="340" y2="135" stroke="#1e3a5a" stroke-width="1"/>
+  <line x1="180" y1="20" x2="180" y2="250" stroke="#1e3a5a" stroke-width="1"/>
+  <text x="180" y="40" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°N</text>
+  <text x="180" y="248" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°S</text>
+  <text x="25" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°W</text>
+  <text x="310" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°E</text>
+  <path d="M20,100 Q90,90 180,100 Q270,110 340,100" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
+  <path d="M20,135 Q340,135 340,135" fill="none" stroke="#3a80b8" stroke-width="2"/>
+  <path d="M20,170 Q90,180 180,170 Q270,160 340,170" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
+  <circle cx="180" cy="135" r="5" fill="#4a90d9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
+  <circle cx="180" cy="135" r="12" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/></circle>
+  <path d="M180,135 L230,85" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="235" y="82" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">B</text>
+  <text x="162" y="152" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">A</text>
+  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט על מפת מרקטור</text>
+`,
+'מצפן': `
+  <rect width="360" height="420" fill="#080f1e"/>
+  <circle cx="180" cy="180" r="130" fill="#0c1828" stroke="#1e3a5a" stroke-width="2"/>
+  <circle cx="180" cy="180" r="120" fill="none" stroke="#1a3050" stroke-width="1"/>
+  ${[0,30,60,90,120,150,180,210,240,270,300,330].map(d=>{
+    const r=d%90===0?1.8:0.8, l=d%90===0?18:10, col=d%90===0?'#4a8ac0':'#2a5a7a';
+    const rd=d*Math.PI/180, x1=180+108*Math.sin(rd), y1=180-108*Math.cos(rd), x2=180+(108-l)*Math.sin(rd), y2=180-(108-l)*Math.cos(rd);
+    return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${col}" stroke-width="${r}"/>`;
+  }).join('')}
+  <text x="180" y="72" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Arial" font-weight="900">N</text>
+  <text x="180" y="302" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Arial" font-weight="700">S</text>
+  <text x="295" y="186" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Arial" font-weight="700">E</text>
+  <text x="65" y="186" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Arial" font-weight="700">W</text>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="0 180 180;360 180 180" dur="8s" repeatCount="indefinite"/>
+    <polygon points="180,90 175,180 185,180" fill="#e74c3c"/>
+    <polygon points="180,270 175,180 185,180" fill="#7eb8f7"/>
+  </g>
+  <circle cx="180" cy="180" r="8" fill="#1e3a5a" stroke="#4a8ac0" stroke-width="1.5"/>
+  <text x="180" y="380" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">מצפן מגנטי — וריאציה ודוויאציה</text>
+`,
+'GPS': `
+  <rect width="360" height="420" fill="#050d1a"/>
+  ${[0,1,2,3,4,5].map(i=>{
+    const cx=[80,200,310,140,260,50][i], cy=[60,40,100,160,180,140][i], r=[3,2,2.5,2,3,1.5][i];
+    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="white" opacity="0.7"/>`;
+  }).join('')}
+  <circle cx="180" cy="210" r="140" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.5"/>
+  <circle cx="180" cy="210" r="100" fill="none" stroke="#1a4a6a" stroke-width="1" opacity="0.6"/>
+  <circle cx="180" cy="210" r="60" fill="none" stroke="#1a5a7a" stroke-width="1" opacity="0.7"/>
+  <circle cx="180" cy="210" r="8" fill="#4a90d9"/>
+  <circle cx="180" cy="210" r="16" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/></circle>
+  ${[[60,55],[300,70],[250,165],[100,160]].map(([sx,sy],i)=>`
+    <line x1="${sx}" y1="${sy}" x2="180" y2="210" stroke="#2a6a9a" stroke-width="1" stroke-dasharray="4,3" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="${1.5+i*0.4}s" repeatCount="indefinite"/>
+    </line>
+    <rect x="${sx-10}" y="${sy-10}" width="20" height="14" rx="3" fill="#1a3a6a" stroke="#4a90d9" stroke-width="1"/>
+    <text x="${sx}" y="${sy+2}" text-anchor="middle" fill="#7eb8f7" font-size="8" font-family="Arial">SAT</text>
+  `).join('')}
+  <rect x="50" y="320" width="260" height="50" rx="8" fill="#0d1e38" stroke="#2a4a7a" stroke-width="1"/>
+  <text x="180" y="340" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מיקום GPS</text>
+  <text x="180" y="358" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial">32°04.521'N  34°46.218'E</text>
+`,
+'קשר VHF': `
+  <rect width="360" height="420" fill="#090f1a"/>
+  <rect x="120" y="30" width="120" height="200" rx="12" fill="#0d1e38" stroke="#2a4a6a" stroke-width="2"/>
+  <rect x="130" y="45" width="100" height="55" rx="5" fill="#050d1a" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="180" y="68" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">CH 16</text>
+  <text x="180" y="85" text-anchor="middle" fill="#4a90d9" font-size="10" font-family="Arial">156.800 MHz</text>
+  <line x1="180" y1="30" x2="180" y2="5" stroke="#7eb8f7" stroke-width="2"/>
+  <line x1="180" y1="5" x2="200" y2="5" stroke="#7eb8f7" stroke-width="2"/>
+  ${[0,1,2,3,4,5].map(i=>`
+    <circle cx="${135+i*18}" cy="${118+Math.floor(i/3)*22}" r="7" fill="#0a1830" stroke="#2a4a6a" stroke-width="1"/>
+    <text x="${135+i*18}" y="${122+Math.floor(i/3)*22}" text-anchor="middle" fill="#7eb8f7" font-size="8" font-family="Arial">${['1','2','3','4','5','6'][i]}</text>
+  `).join('')}
+  <circle cx="180" cy="195" r="14" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2"/>
+  <text x="180" y="199" text-anchor="middle" fill="#2ecc71" font-size="9" font-family="Arial" font-weight="700">PTT</text>
+  ${[30,55,80,105,130,155].map((x,i)=>`
+    <rect x="${x}" y="${280 - i*8}" width="14" height="${20+i*8}" rx="2" fill="#4a90d9" opacity="${0.3+i*0.12}">
+      <animate attributeName="height" values="${20+i*8};${30+i*10};${20+i*8}" dur="${0.8+i*0.15}s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="${280-i*8};${270-i*10};${280-i*8}" dur="${0.8+i*0.15}s" repeatCount="indefinite"/>
+    </rect>
+  `).join('')}
+  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">VHF Marine Radio — Channel 16</text>
+`,
+'מד עומק': `
+  <rect width="360" height="420" fill="#061018"/>
+  <rect x="20" y="20" width="320" height="260" rx="8" fill="#0a1828" stroke="#1a3a50" stroke-width="1.5"/>
+  <line x1="20" y1="150" x2="340" y2="150" stroke="#2ecc71" stroke-width="1.5" opacity="0.3"/>
+  <polyline points="20,100 60,110 100,95 140,130 160,140 190,155 220,148 260,160 300,145 340,158" fill="none" stroke="#2ecc71" stroke-width="2.5"/>
+  <polygon points="20,100 60,110 100,95 140,130 160,140 190,155 220,148 260,160 300,145 340,158 340,280 20,280" fill="#0d3d1a" opacity="0.4"/>
+  <line x1="190" y1="20" x2="190" y2="155" stroke="#4a90d9" stroke-width="1.5" stroke-dasharray="5,3">
+    <animate attributeName="y2" values="20;155;155;20" dur="3s" repeatCount="indefinite" keyTimes="0;0.4;0.6;1"/>
+  </line>
+  <circle cx="190" cy="155" r="4" fill="#4a90d9"><animate attributeName="cy" values="20;155;155;20" dur="3s" repeatCount="indefinite" keyTimes="0;0.4;0.6;1"/></circle>
+  <rect x="130" y="290" width="100" height="36" rx="6" fill="#0d1e38" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="180" y="308" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">DEPTH</text>
+  <text x="180" y="322" text-anchor="middle" fill="#fff" font-size="12" font-family="Arial" font-weight="900">12.4 m</text>
+  <text x="180" y="385" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">Echo Sounder — מד עומק</text>
+`,
+'הגה אוטומטי': `
+  <rect width="360" height="420" fill="#080f1a"/>
+  <circle cx="180" cy="175" r="120" fill="none" stroke="#1a3050" stroke-width="2"/>
+  <circle cx="180" cy="175" r="115" fill="none" stroke="#0d2040" stroke-width="8"/>
+  ${[0,30,60,90,120,150,180,210,240,270,300,330].map(d=>{
+    const rd=d*Math.PI/180, x=180+108*Math.sin(rd), y=175-108*Math.cos(rd), x2=180+95*Math.sin(rd), y2=175-95*Math.cos(rd);
+    return `<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${d===0?'#e74c3c':'#2a5a7a'}" stroke-width="${d%90===0?2:1}"/>`;
+  }).join('')}
+  <text x="180" y="70" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Arial" font-weight="900">N</text>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="15 180 175;-15 180 175;15 180 175" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+    <line x1="180" y1="175" x2="180" y2="85" stroke="#4a90d9" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="180,82 176,92 184,92" fill="#4a90d9"/>
+  </g>
+  <circle cx="180" cy="175" r="6" fill="#1e3a5a" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="60" y="315" width="240" height="40" rx="8" fill="#0d1e38" stroke="#4a90d9" stroke-width="1"/>
+  <text x="180" y="331" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">AUTO</text>
+  <text x="180" y="348" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial" font-weight="900">Course: 045°</text>
+  <text x="180" y="400" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">הגה אוטומטי — Autopilot</text>
+`,
+'מכ"מ': `
+  <rect width="360" height="420" fill="#030a08"/>
+  <circle cx="180" cy="180" r="140" fill="#050f0a" stroke="#0a2a18" stroke-width="1"/>
+  <circle cx="180" cy="180" r="105" fill="none" stroke="#0a2a18" stroke-width="1"/>
+  <circle cx="180" cy="180" r="70" fill="none" stroke="#0a2a18" stroke-width="1"/>
+  <circle cx="180" cy="180" r="35" fill="none" stroke="#0a2a18" stroke-width="1"/>
+  <line x1="180" y1="40" x2="180" y2="320" stroke="#0a2a18" stroke-width="1"/>
+  <line x1="40" y1="180" x2="320" y2="180" stroke="#0a2a18" stroke-width="1"/>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="0 180 180;360 180 180" dur="3s" repeatCount="indefinite"/>
+    <line x1="180" y1="180" x2="180" y2="42" stroke="#2ecc71" stroke-width="2" opacity="0.9"/>
+    <path d="M180,180 L180,42 A138,138 0 0,1 228,65 Z" fill="#2ecc71" opacity="0.12"/>
+  </g>
+  <circle cx="130" cy="120" r="5" fill="#2ecc71" opacity="0.8"><animate attributeName="opacity" values="0.8;0.1;0.8" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="240" cy="150" r="4" fill="#2ecc71" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite" begin="0.5s"/></circle>
+  <circle cx="180" cy="180" r="4" fill="#2ecc71"/>
+  <text x="180" y="380" text-anchor="middle" fill="#2ecc71" font-size="10" font-family="Heebo,sans-serif" opacity="0.8">Radar — מכ"מ</text>
+`
+});
+
+function getScene(topic, qText) {
+  const q = qText || '';
+  if (topic === 'זכות מעבר' && /מפרש|sail/i.test(q)) return SCENES['זכות_מעבר_מפרש'] || SCENES['זכות מעבר'];
+  if (/VHF|רדיו|קשר/.test(topic)) return SCENES['קשר VHF'];
+  if (/מכ.מ|radar/i.test(topic)) return SCENES['מכ"מ'];
+  return SCENES[topic] || SCENES['ניווט'];
+}
+
+function letterToIdx(l) {
+  return { 'א':0,'ב':1,'ג':2,'ד':3,'A':0,'B':1,'C':2,'D':3 }[(l||'').trim()] ?? 0;
+}
+
+function generateQuizHTML(q) {
+  const qText = q.q_he || q.q_en || '';
+  const opts = q.options || [];
+  const correctI = letterToIdx(q.answer);
+  const expl = q.explanation || '';
+  const scene = getScene(q.topic, qText);
+  const optsHtml = opts.slice(0,4).map((o,i) => {
+    const t = o.replace(/^[אבגדABCDabcd]\.\s*/,'');
+    return `<div class="opt" id="o${i}"><div class="ltr">${LETTERS_HE[i]}</div>${t}</div>`;
+  }).join('');
+  return `<!DOCTYPE html>
+<html dir="rtl" lang="he"><head><meta charset="UTF-8">
+<title>Skipper Quiz #${q.num} — ${q.topic||''}</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+#reel{width:390px;height:693px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
+.htitle{color:#fff;font-size:18px;font-weight:900}
+#scene{flex:1;position:relative;overflow:hidden}
+#ftr{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.ql{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.qt{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.opt.correct .ltr{background:#2ecc71;color:#0d3d2a}
+#prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+</style></head><body>
+<div id="reel">
+  <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
+  <div id="scene">
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice">
+      ${scene}
+      <g id="ov" opacity="0">
+        <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
+        <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ תשובה נכונה!</text>
+      </g>
+      <text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">⚓ Alex Argov | Sailing Instructor</text>
+    </svg>
+    <div id="prog"></div>
+  </div>
+  <div id="ftr">
+    <div class="ql" id="ql">❓ השאלה</div>
+    <div class="qt" id="qt">${qText.replace(/</g,'&lt;')}</div>
+    <div class="opts" id="opts">${optsHtml}</div>
+  </div>
+</div>
+<script>
+const C=${correctI};
+const OPTS=${JSON.stringify(opts)};
+const E=${JSON.stringify(expl)};
+const prog=document.getElementById('prog');
+const DELAY=15000;
+prog.style.transition='none';prog.style.width='0%';
+setTimeout(()=>{prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);
+setTimeout(()=>{
+  document.querySelectorAll('.opt').forEach((o,j)=>{
+    o.style.transition='all 0.6s';
+    if(j===C)o.classList.add('correct'); else o.style.opacity='0.3';
+  });
+  document.getElementById('ov').setAttribute('opacity','1');
+  setTimeout(()=>{
+    document.getElementById('ql').textContent='✅ התשובה הנכונה:';
+    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'<\\/span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'<\\/span>':'');
+  },600);
+},DELAY+50);
+<\/script>
+</body></html>`;
+}
+
+async function ghPushHTML(q) {
+  const token = getToken();
+  if (!token) return false;
+  const fname = `quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/[\s\/\"]/g,'_')}_he.html`;
+  const path = `html/${fname}`;
+  const html = generateQuizHTML(q);
+  try {
+    let sha;
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,
+      { headers: { Authorization: `Bearer ${token}` } });
+    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    const encoded = btoa(unescape(encodeURIComponent(html)));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `html: Q#${q.num} ${q.topic}`, content: encoded, ...(sha ? { sha } : {}) })
+    });
+    return res.ok;
+  } catch { return false; }
+}
+
+async function saveQuestionsGH(msg) {
+  const token = getToken();
+  if (!token) return false;
+  try {
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`,
+      { headers: { Authorization: `Bearer ${token}` } });
+    let sha;
+    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; questionsSHA = sha; }
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(questions, null, 2))));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg || 'update: questions', content: encoded, ...(sha ? { sha } : {}) })
+    });
+    return res.ok;
+  } catch(e) { toast('❌ שמירה נכשלה: ' + e.message); return false; }
+}
+
+async function deleteVideo(num) {
+  if (!confirm(`מחוק סרטון של Q#${num}?`)) return;
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  delete q.videoUrl;
+  delete q.rendered_at;
+  toast(`⏳ מוחק סרטון...`);
+  const ok = await saveQuestionsGH(`delete-video: Q#${num}`);
+  updateStats();
+  renderList();
+  toast(ok ? `🗑 סרטון Q#${num} נמחק` : `⚠ סרטון נמחק מקומית (שמירה ל-GitHub נכשלה)`);
+}
+
+let questions     = [];
+let publishLog    = [];
 let publishedNums = new Set();
-let questionsSHA = null;
-let activeFilter = 'all';
+let questionsSHA  = null;
+let activeFilter  = 'all';
 let renderingNums = new Set();
 
-// ── Config (localStorage) ─────────────────────────────────────────────────────
+// ── Config ────────────────────────────────────────────────────────────────────
 function saveCfg() {
-  localStorage.setItem('sq_gh_token', document.getElementById('ghToken').value.trim());
+  localStorage.setItem('sq_gh_token',    document.getElementById('ghToken').value.trim());
   localStorage.setItem('sq_railway_url', document.getElementById('railwayUrl').value.trim());
   updateCfgStatus();
 }
-
 function loadCfg() {
-  const t = localStorage.getItem('sq_gh_token') || '';
-  const r = localStorage.getItem('sq_railway_url') || '';
-  document.getElementById('ghToken').value = t;
-  document.getElementById('railwayUrl').value = r;
+  document.getElementById('ghToken').value    = localStorage.getItem('sq_gh_token') || '';
+  document.getElementById('railwayUrl').value = localStorage.getItem('sq_railway_url') || '';
   updateCfgStatus();
 }
-
 function updateCfgStatus() {
   const t = document.getElementById('ghToken').value.trim();
   const r = document.getElementById('railwayUrl').value.trim();
   const el = document.getElementById('cfgStatus');
   if (t && r) el.innerHTML = '<span class="ok">✅ מוגדר</span>';
-  else if (t) el.innerHTML = '<span class="err">⚠ Railway URL חסר</span>';
-  else el.innerHTML = '<span class="err">⚠ Token חסר</span>';
+  else if (t)  el.innerHTML = '<span class="err">⚠ Railway URL חסר</span>';
+  else         el.innerHTML = '<span class="err">⚠ Token חסר</span>';
 }
+const getToken      = () => localStorage.getItem('sq_gh_token') || '';
+const getRailwayUrl = () => (localStorage.getItem('sq_railway_url') || '').replace(/\/$/, '');
 
-function getToken() { return localStorage.getItem('sq_gh_token') || ''; }
-function getRailwayUrl() { return (localStorage.getItem('sq_railway_url') || '').replace(/\/$/, ''); }
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('pane-' + name).classList.add('active');
+}
 
 // ── Data loading ──────────────────────────────────────────────────────────────
 async function loadData() {
   setBottom('טוען...');
   try {
-    // Load questions
     const token = getToken();
-    let res;
     if (token) {
       const r = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`,
         { headers: { Authorization: `Bearer ${token}` } });
       if (r.ok) {
         const d = await r.json();
         questionsSHA = d.sha;
-        questions = JSON.parse(atob(d.content.replace(/\n/g, '')));
+        const raw = atob(d.content.replace(/\n/g, ''));
+        questions = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
       }
     }
     if (!questions.length) {
-      res = await fetch(`https://raw.githubusercontent.com/${REPO}/main/questions.json?t=${Date.now()}`);
-      questions = await res.json();
+      const r = await fetch(`https://raw.githubusercontent.com/${REPO}/main/questions.json?t=${Date.now()}`);
+      questions = await r.json();
     }
 
-    // Load publish log
     try {
       const lr = await fetch(`https://raw.githubusercontent.com/argovalex/skipper-quiz-publisher/main/publish-log.json?t=${Date.now()}`);
-      const log = lr.ok ? await lr.json() : [];
-      publishedNums = new Set(log.map(e => e.num));
-    } catch { publishedNums = new Set(); }
+      publishLog    = lr.ok ? await lr.json() : [];
+      publishedNums = new Set(publishLog.map(e => e.num));
+    } catch { publishLog = []; publishedNums = new Set(); }
 
     updateStats();
     renderList();
+    renderHistory();
+    renderToday();
+    renderChart();
     setBottom(`✅ ${questions.length} שאלות נטענו`);
   } catch(e) { setBottom('❌ ' + e.message, true); }
 }
@@ -206,11 +896,19 @@ async function loadData() {
 // ── Stats ─────────────────────────────────────────────────────────────────────
 function updateStats() {
   const withVideo = questions.filter(q => q.videoUrl).length;
-  const published = publishedNums.size;
+  const approved  = questions.filter(q => q.approved_for_publish && q.videoUrl && !publishedNums.has(q.num)).length;
+  const pub       = publishedNums.size;
+
   document.getElementById('st-total').textContent = questions.length;
   document.getElementById('st-video').textContent = withVideo;
-  document.getElementById('st-pub').textContent = published;
   document.getElementById('st-novid').textContent = questions.length - withVideo;
+  document.getElementById('st-queue').textContent = approved;
+  document.getElementById('st-pub').textContent   = pub;
+
+  document.getElementById('hst-total').textContent = questions.length;
+  document.getElementById('hst-queue').textContent = approved;
+  document.getElementById('hst-pub').textContent   = pub;
+  document.getElementById('hst-days').textContent  = approved;
 }
 
 // ── Filters ───────────────────────────────────────────────────────────────────
@@ -220,202 +918,311 @@ function setFilter(f) {
   document.getElementById('f-' + f).classList.add('active');
   renderList();
 }
-
 function getFiltered() {
   const search = document.getElementById('search').value.toLowerCase().trim();
   return questions.filter(q => {
-    if (activeFilter === 'novideo' && q.videoUrl) return false;
-    if (activeFilter === 'ready' && (!q.videoUrl || publishedNums.has(q.num))) return false;
-    if (activeFilter === 'published' && !publishedNums.has(q.num)) return false;
+    if (activeFilter === 'approved'  && !q.approved_for_publish)                              return false;
+    if (activeFilter === 'novideo'   && q.videoUrl)                                           return false;
+    if (activeFilter === 'ready'     && (!q.videoUrl || !q.approved_for_publish || publishedNums.has(q.num))) return false;
+    if (activeFilter === 'published' && !publishedNums.has(q.num))                            return false;
     if (search) {
-      const haystack = `${q.num} ${q.topic} ${q.q_he}`.toLowerCase();
-      if (!haystack.includes(search)) return false;
+      if (!`${q.num} ${q.topic} ${q.q_he}`.toLowerCase().includes(search)) return false;
     }
     return true;
   });
 }
 
-// ── Render list ───────────────────────────────────────────────────────────────
+// ── Queue list ────────────────────────────────────────────────────────────────
 function renderList() {
   const filtered = getFiltered();
   const list = document.getElementById('q-list');
-
-  if (!filtered.length) {
-    list.innerHTML = '<div style="text-align:center;padding:60px;color:var(--dim)">אין תוצאות</div>';
-    return;
-  }
+  if (!filtered.length) { list.innerHTML = '<div class="empty">אין תוצאות</div>'; return; }
 
   list.innerHTML = filtered.map(q => {
-    const hasVid = !!q.videoUrl;
-    const isPub  = publishedNums.has(q.num);
-    const isRendering = renderingNums.has(q.num);
+    const hasVid   = !!q.videoUrl;
+    const isPub    = publishedNums.has(q.num);
+    const isRender = renderingNums.has(q.num);
+    const isAppr   = !!q.approved_for_publish;
 
-    const vidBadge = isPub
-      ? '<span class="vid-badge published">✅ פורסם</span>'
-      : hasVid
-        ? '<span class="vid-badge has">🎬 יש סרטון</span>'
-        : '<span class="vid-badge none">⬜ אין סרטון</span>';
+    const badge = isPub   ? '<span class="vid-badge published">✅ פורסם</span>'
+                : hasVid  ? '<span class="vid-badge has">🎬 יש סרטון</span>'
+                :           '<span class="vid-badge none">⬜ אין סרטון</span>';
+
+    const approveIcon = isAppr ? '<span style="font-size:11px;color:var(--green)">📤</span>' : '';
 
     const renderBtn = !hasVid
-      ? `<button class="btn btn-render btn-sm" onclick="renderVideo(${q.num})" ${isRendering ? 'disabled' : ''}>${isRendering ? '⏳...' : '🎬 רנדר'}</button>`
-      : `<button class="btn btn-render btn-sm" onclick="renderVideo(${q.num})" title="רנדר מחדש" style="opacity:0.5">${isRendering ? '⏳...' : '↺'}</button>`;
+      ? `<button class="btn btn-render btn-sm" onclick="renderVideo(${q.num})" ${isRender?'disabled':''}>
+           ${isRender ? '⏳...' : '🎬 רנדר'}</button>`
+      : `<button class="btn btn-render btn-sm" onclick="renderVideo(${q.num})" title="רנדר מחדש" style="opacity:0.6">
+           ${isRender ? '⏳...' : '↺ רנדר'}</button>`;
 
-    const publishBtn = hasVid
+    const delVidBtn = hasVid && !isPub
+      ? `<button class="btn btn-del btn-sm" onclick="deleteVideo(${q.num})" title="מחק סרטון">🗑</button>`
+      : '';
+
+    const publishBtn = (hasVid && isAppr)
       ? `<button class="btn btn-publish btn-sm" onclick="publishQuestion(${q.num})">📡 פרסם</button>`
-      : `<button class="btn btn-publish btn-sm" disabled title="צריך סרטון תחילה">📡 פרסם</button>`;
+      : `<button class="btn btn-publish btn-sm" disabled title="${!hasVid ? 'צריך סרטון תחילה' : 'לא מאושר לפרסום'}">📡 פרסם</button>`;
+
+    const schedInfo = q.scheduled_date
+      ? `<div class="sched-date">📅 מתוזמן: ${q.scheduled_date}${q.scheduled_time ? ' ' + q.scheduled_time : ''}</div>`
+      : '';
 
     return `
-    <div class="q-card${isRendering ? ' rendering' : ''}" id="qc-${q.num}">
+    <div class="q-card${isRender?' rendering':''}" id="qc-${q.num}">
       <div class="q-meta">
         <span class="q-num-badge">#${q.num}</span>
         <span class="q-topic-tag">${q.topic}</span>
+        ${approveIcon}
       </div>
       <div>
         <div class="q-text">${q.q_he}</div>
-        <div class="q-sub" id="rp-${q.num}">${hasVid ? `<a href="${q.videoUrl}" target="_blank" style="color:var(--dim);font-size:11px">🔗 ${q.videoUrl.slice(-30)}</a>` : ''}</div>
+        <div class="q-sub" id="rp-${q.num}">${hasVid ? `<a href="${q.videoUrl}" target="_blank" style="color:var(--accent);font-size:12px">▶ צפה בסרטון</a>` : ''}</div>
+        ${schedInfo}
       </div>
       <div class="q-actions">
-        ${vidBadge}
-        <div class="q-btns">
-          ${renderBtn}
-          ${publishBtn}
-        </div>
+        ${badge}
+        <div class="q-btns">${renderBtn}${delVidBtn}${publishBtn}</div>
       </div>
     </div>`;
   }).join('');
 }
 
-// ── Render video via Railway API ──────────────────────────────────────────────
-async function renderVideo(num) {
+// ── Voice over text fixes ─────────────────────────────────────────────────────
+const VO_FIXES = [
+  [/קוי /g,          'קווי '],
+  [/קוי-/g,          'קווי-'],
+  [/\bVHF\b/g,       'וי אייץ אף'],
+  [/\bUTC\b/g,       'יו טי סי'],
+  [/\bGPS\b/g,       'ג׳י פי אס'],
+  [/\bAIS\b/g,       'איי איי אס'],
+  [/\bEPIRB\b/g,     'איי פירב'],
+  [/מכ"מ/g,          'מכ מ'],
+  [/\bSOG\b/g,       'מהירות על הקרקע'],
+  [/\bCOG\b/g,       'כיוון על הקרקע'],
+  [/\bMMSI\b/g,      'אם אם אס איי'],
+  [/°/g,             ' מעלות '],
+  [/\bknots?\b/gi,   'קשרים'],
+];
+
+function applyVoFixes(text) {
+  let t = text;
+  for (const [pat, rep] of VO_FIXES) t = t.replace(pat, rep);
+  return t;
+}
+
+function buildVoiceover(q) {
+  const idx = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'א').trim()] ?? 0;
+  const ans = ((q.options||[])[idx]||'').replace(/^[אבגד]\.\s*/,'');
+  let text = `שאלה מספר ${q.num}. ${q.q_he}. התשובה הנכונה: ${ans}.`;
+  if (q.explanation) text += ` ${q.explanation}`;
+  return applyVoFixes(text);
+}
+
+// ── Render modal ──────────────────────────────────────────────────────────────
+let renderModalNum = null;
+
+function renderVideo(num) {
   const railwayUrl = getRailwayUrl();
-  if (!railwayUrl) { toast('⚠ הכנס Railway URL בהגדרות למעלה'); return; }
+  if (!railwayUrl) { toast('⚠ הכנס Railway URL'); return; }
+
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+
+  renderModalNum = num;
+  document.getElementById('rm-title').textContent = `Q#${num} — ${q.topic}`;
+  document.getElementById('rm-vo').value    = q.voiceover_text || buildVoiceover(q);
+  document.getElementById('rm-notes').value = q.render_notes  || '';
+  document.getElementById('rm-preview-status').textContent = '';
+  document.getElementById('rm-audio').src = '';
+  // Populate animation preview
+  try {
+    const previewHtml = generateQuizHTML(q);
+    document.getElementById('rm-preview-iframe').srcdoc = previewHtml;
+  } catch(e) { /* preview not critical */ }
+  document.getElementById('renderModal').classList.add('on');
+}
+
+function closeRenderModal() {
+  renderModalNum = null;
+  document.getElementById('renderModal').classList.remove('on');
+  const audio = document.getElementById('rm-audio');
+  audio.pause(); audio.src = '';
+}
+
+function resetVoiceover() {
+  const q = questions.find(x => x.num === renderModalNum);
+  if (q) document.getElementById('rm-vo').value = buildVoiceover(q);
+}
+
+async function previewVoiceover() {
+  const railwayUrl = getRailwayUrl();
+  const text = document.getElementById('rm-vo').value.trim();
+  if (!text) return;
+  const statusEl = document.getElementById('rm-preview-status');
+  statusEl.textContent = '⏳ מייצר...';
+  try {
+    const res = await fetch(`${railwayUrl}/tts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const blob = await res.blob();
+    const url  = URL.createObjectURL(blob);
+    const audio = document.getElementById('rm-audio');
+    audio.src = url;
+    audio.play();
+    statusEl.textContent = '🔊 מנגן...';
+    audio.onended = () => { statusEl.textContent = '✅ סיים'; };
+  } catch(e) {
+    statusEl.textContent = '❌ ' + e.message;
+  }
+}
+
+async function confirmRender() {
+  const num  = renderModalNum;
+  const voText = document.getElementById('rm-vo').value.trim();
+  const notes  = document.getElementById('rm-notes').value.trim();
+  closeRenderModal();
+
+  const railwayUrl = getRailwayUrl();
+  const q = questions.find(x => x.num === num);
+  if (q) { q.voiceover_text = voText; q.render_notes = notes; }
 
   renderingNums.add(num);
   renderList();
   setBottom(`🎬 מרנדר Q#${num}...`);
-  setRenderProgress(num, '⏳ שולח לRailway...');
+  setRP(num, '⏳ דוחף HTML ל-GitHub...');
+
+  // Push pre-built animation HTML to GitHub so Railway uses it
+  if (q) {
+    const pushed = await ghPushHTML(q);
+    if (!pushed) setRP(num, '⚠ HTML לא נדחף — ממשיך בכל זאת...');
+  }
+  setRP(num, '⏳ שולח לRailway...');
 
   try {
     const res = await fetch(`${railwayUrl}/render/${num}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ voiceover_text: voText, render_notes: notes, force: !!q?.videoUrl })
     });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
-      throw new Error(err.error || `HTTP ${res.status}`);
-    }
-
+    if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
     const data = await res.json();
-    // Update local questions array
-    const q = questions.find(q => q.num === num);
-    if (q && data.videoUrl) {
-      q.videoUrl = data.videoUrl;
-      q.rendered_at = new Date().toISOString();
-    }
-
+    if (q && data.videoUrl) { q.videoUrl = data.videoUrl; q.rendered_at = new Date().toISOString(); }
     renderingNums.delete(num);
     updateStats();
     renderList();
-    toast(`✅ Q#${num} רונדר בהצלחה!`);
+    toast(`✅ Q#${num} רונדר!`);
     setBottom(`✅ Q#${num} מוכן לפרסום`);
   } catch(e) {
     renderingNums.delete(num);
     renderList();
-    toast(`❌ רינדור נכשל: ${e.message}`);
+    toast(`❌ ${e.message}`);
     setBottom(`❌ ${e.message}`, true);
   }
 }
 
-// ── Publish directly to Make.com ──────────────────────────────────────────────
-async function publishQuestion(num) {
-  const q = questions.find(x => x.num === num);
-  if (!q || !q.videoUrl) { toast('⚠ אין סרטון לשאלה זו — רנדר קודם'); return; }
+// ── Schedule modal ────────────────────────────────────────────────────────────
+let schedNum = null;
 
-  const makeUrl = localStorage.getItem('sq_make_url') || '';
+function tomorrow() {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().split('T')[0];
+}
+
+function publishQuestion(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q?.videoUrl) { toast('⚠ אין סרטון'); return; }
+
+  let makeUrl = localStorage.getItem('sq_make_url') || '';
   if (!makeUrl) {
-    const url = prompt('הכנס Make.com Webhook URL (פעם אחת):');
-    if (!url) return;
-    localStorage.setItem('sq_make_url', url.trim());
+    makeUrl = prompt('הכנס Make.com Webhook URL:');
+    if (!makeUrl) return;
+    localStorage.setItem('sq_make_url', makeUrl.trim());
   }
 
-  const webhookUrl = localStorage.getItem('sq_make_url');
+  schedNum = num;
+  document.getElementById('sched-q-text').textContent = `#${q.num} — ${q.topic}\n${q.q_he.slice(0,80)}${q.q_he.length>80?'…':''}`;
+  // Default: scheduled_date from question or tomorrow
+  document.getElementById('sched-date').value = q.scheduled_date || tomorrow();
+  document.getElementById('sched-time').value = q.scheduled_time || '09:00';
+  document.getElementById('schedModal').classList.add('on');
+}
 
-  if (!confirm(`לפרסם Q#${num}?\n${q.q_he.slice(0, 70)}...`)) return;
+function closeSchedModal() {
+  schedNum = null;
+  document.getElementById('schedModal').classList.remove('on');
+}
+
+async function confirmPublish() {
+  const num  = schedNum;
+  const date = document.getElementById('sched-date').value;
+  const time = document.getElementById('sched-time').value;
+  closeSchedModal();
+
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+
+  // Save scheduled date back to question (local only — for display)
+  q.scheduled_date = date;
+  q.scheduled_time = time;
 
   try {
     const caption = buildCaption(q);
-    const title   = `SkipperQuiz — ${q.topic} שאלה #${q.num}`;
-
     const payload = {
-      videoUrl:    q.videoUrl,
-      title,
+      videoUrl:     q.videoUrl,
+      title:        `SkipperQuiz — ${q.topic} שאלה #${q.num}`,
       caption,
-      topic:       q.topic,
-      questionNum: q.num,
-      date:        new Date().toISOString().split('T')[0]
+      topic:        q.topic,
+      questionNum:  q.num,
+      scheduled_at: `${date}T${time}:00`,
+      date
     };
-
-    const res = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+    const res = await fetch(localStorage.getItem('sq_make_url'), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
     });
-
     if (!res.ok && res.status !== 200) {
       const txt = await res.text();
-      if (txt.includes('Queue is full')) throw new Error('Make.com queue מלאה — נקה ב-Make.com');
-      throw new Error(`Make.com ${res.status}: ${txt}`);
+      if (txt.includes('Queue is full')) throw new Error('Make.com queue מלאה');
+      throw new Error(`Make.com ${res.status}`);
     }
-
-    toast(`🚀 Q#${num} נשלח ל-Make.com!`);
-    setBottom(`✅ Q#${num} פורסם — Make.com שולח לכל הפלטפורמות`);
-
-    // Update publish log in GitHub
-    await updatePublishLog(num, q.videoUrl, q.topic);
-
+    toast(`🚀 Q#${num} נשלח — יפורסם ב-${date} ${time}`);
+    setBottom(`✅ Q#${num} מתוזמן ל-${date} ${time}`);
+    await updatePublishLog(num, q.videoUrl, q.topic, date);
     publishedNums.add(num);
+    publishLog.push({ num, topic: q.topic, published_at: new Date().toISOString(), scheduled_at: `${date}T${time}:00`, videoUrl: q.videoUrl, platforms: ['youtube','facebook','instagram'] });
     updateStats();
     renderList();
-  } catch(e) {
-    toast('❌ ' + e.message);
-    setBottom('❌ ' + e.message, true);
-  }
+    renderHistory();
+    renderToday();
+  } catch(e) { toast('❌ ' + e.message); setBottom('❌ ' + e.message, true); }
 }
 
-// ── Build caption ─────────────────────────────────────────────────────────────
 function buildCaption(q) {
-  const LETTER_MAP = {'א':0,'ב':1,'ג':2,'ד':3};
-  const idx = LETTER_MAP[(q.answer||'').trim()] ?? 0;
+  const idx  = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'').trim()] ?? 0;
   const opts = (q.options||[]).map(o => o.replace(/^[אבגד]\.\s*/,'').trim());
-  const optLines = ['א','ב','ג','ד'].map((l,i) => `${l}. ${opts[i]||''}`).join('\n');
-  const answer = opts[idx] || '';
-  return `${q.topic} 🚢\n\n${q.q_he}\n\n${optLines}\n\n✅ תשובה: ${answer}\n\n💡 ${q.explanation||''}\n\n#SkipperQuiz #שאלות_נוטים #רישיון_שייט`;
+  return `${q.topic} 🚢\n\n${q.q_he}\n\n${['א','ב','ג','ד'].map((l,i)=>`${l}. ${opts[i]||''}`).join('\n')}\n\n✅ תשובה: ${opts[idx]||''}\n\n💡 ${q.explanation||''}\n\n#SkipperQuiz #שאלות_נוטים #רישיון_שייט`;
 }
 
-// ── Update publish log on GitHub ──────────────────────────────────────────────
-async function updatePublishLog(num, videoUrl, topic) {
+async function updatePublishLog(num, videoUrl, topic, scheduledDate) {
   const token = getToken();
   if (!token) return;
   try {
-    const apiUrl = 'https://api.github.com/repos/argovalex/skipper-quiz-publisher/contents/publish-log.json';
-    const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
-
+    const api = 'https://api.github.com/repos/argovalex/skipper-quiz-publisher/contents/publish-log.json';
+    const hdrs = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
     let log = [], sha;
-    const r = await fetch(apiUrl, { headers });
+    const r = await fetch(api, { headers: hdrs });
     if (r.ok) {
-      const d = await r.json();
-      sha = d.sha;
-      log = JSON.parse(atob(d.content.replace(/\n/g,'')));
+      const d = await r.json(); sha = d.sha;
+      const raw = atob(d.content.replace(/\n/g,''));
+      log = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c=>c.charCodeAt(0))));
     }
-
-    log.push({ num, topic, published_at: new Date().toISOString(), videoUrl, platforms: ['youtube','facebook','instagram'] });
-
+    log.push({ num, topic, published_at: new Date().toISOString(), scheduled_date: scheduledDate || null, videoUrl, platforms: ['youtube','facebook','instagram'] });
     const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(log, null, 2))));
-    await fetch(apiUrl, {
-      method: 'PUT', headers,
-      body: JSON.stringify({ message: `publish-log: Q#${num} published`, content: encoded, ...(sha ? {sha} : {}) })
-    });
+    await fetch(api, { method:'PUT', headers: hdrs, body: JSON.stringify({ message:`publish-log: Q#${num}`, content: encoded, ...(sha?{sha}:{}) }) });
   } catch(e) { console.warn('publish-log update failed:', e.message); }
 }
 
@@ -424,24 +1231,82 @@ async function renderNextBatch() {
   const missing = questions.filter(q => !q.videoUrl && !renderingNums.has(q.num)).slice(0, 5);
   if (!missing.length) { toast('✅ כל השאלות כבר יש להן סרטון'); return; }
   toast(`🎬 מתחיל לרנדר ${missing.length} שאלות...`);
-  for (const q of missing) {
-    await renderVideo(q.num);
-    await new Promise(r => setTimeout(r, 500));
+  for (const q of missing) { await renderVideo(q.num); await new Promise(r=>setTimeout(r,500)); }
+}
+
+// ── History tab ───────────────────────────────────────────────────────────────
+function renderToday() {
+  const body  = document.getElementById('today-body');
+  const ready = questions.filter(q => q.approved_for_publish && q.videoUrl && !publishedNums.has(q.num));
+  const q     = ready[0];
+  if (!q) { body.innerHTML = '<div class="empty">אין שאלות מוכנות לפרסום</div>'; return; }
+  const optIdx = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'').trim()] ?? 0;
+  const ans    = (q.options||[])[optIdx] || q.answer;
+  body.innerHTML = `
+    <div class="today-card">
+      <div class="today-num">Q${q.num}</div>
+      <div>
+        <span class="topic-badge">${q.topic}</span>
+        <div class="today-q">${q.q_he}</div>
+        <div class="today-ans">✅ תשובה נכונה: ${ans}</div>
+        ${q.explanation ? `<div style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5">${q.explanation}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+function renderHistory() {
+  const tbody = document.getElementById('history-tbody');
+  if (!publishLog.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--dim)">אין היסטוריית פרסום</td></tr>`;
+    return;
   }
+  const topicMap = {};
+  questions.forEach(q => { topicMap[q.num] = q.topic; });
+  const entries = [...publishLog].sort((a,b) => new Date(b.published_at) - new Date(a.published_at)).slice(0,30);
+  tbody.innerHTML = entries.map(e => {
+    const q = questions.find(x => x.num === e.num);
+    const qText = q ? q.q_he : '';
+    return `<tr>
+      <td class="td-date">${fmtDate(e.published_at)}</td>
+      <td class="td-num">${e.num}</td>
+      <td><span class="topic-badge">${e.topic || topicMap[e.num] || '—'}</span></td>
+      <td class="td-q" title="${qText}">${(qText||'').slice(0,50)}${qText.length>50?'…':''}</td>
+      <td>${e.videoUrl ? `<a href="${e.videoUrl}" target="_blank" class="video-link">▶ צפה</a>` : '—'}</td>
+      <td>${(e.platforms||[]).map(p=>`<span class="ptag">${p}</span>`).join('') || '—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderChart() {
+  const grid = document.getElementById('chart-grid');
+  const total = {}, pub = {};
+  questions.forEach(q => { total[q.topic] = (total[q.topic]||0)+1; pub[q.topic] = pub[q.topic]||0; });
+  publishLog.forEach(e => { const q = questions.find(x=>x.num===e.num); if(q) pub[q.topic] = (pub[q.topic]||0)+1; });
+  const topics = Object.keys(total).sort((a,b) => total[b]-total[a]);
+  const maxV   = Math.max(...Object.values(total));
+  grid.innerHTML = topics.map(t => `
+    <div class="chart-row">
+      <div class="chart-label" title="${t}">${t}</div>
+      <div class="chart-bars">
+        <div class="bar-total" style="width:${(total[t]/maxV*100).toFixed(1)}%"></div>
+        <div class="bar-pub"   style="width:${(pub[t]/maxV*100).toFixed(1)}%"></div>
+      </div>
+      <div class="chart-count">${pub[t]||0}/${total[t]}</div>
+    </div>`).join('');
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  try { return new Date(iso).toLocaleDateString('he-IL', { day:'2-digit', month:'2-digit', year:'numeric' }); }
+  catch { return iso; }
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function setRenderProgress(num, msg) {
-  const el = document.getElementById(`rp-${num}`);
-  if (el) el.textContent = msg;
-}
-
+function setRP(num, msg) { const el = document.getElementById(`rp-${num}`); if(el) el.textContent = msg; }
 function setBottom(msg, warn=false) {
   const el = document.getElementById('bottomStatus');
-  el.textContent = msg;
-  el.style.color = warn ? 'var(--orange)' : 'var(--dim)';
+  el.textContent = msg; el.style.color = warn ? 'var(--orange)' : 'var(--dim)';
 }
-
 let toastTimer;
 function toast(msg) {
   const el = document.getElementById('toast');
