@@ -2580,7 +2580,7 @@ function updatePreview(interactive=true) {
   }
 
   // Header text per language
-  const headerTitle = v.lang === 'en' ? 'Daily Skipper Quiz' : 'מבחן הסקיפר היומי';
+  const headerTitle = v.lang === 'en' ? "Alex Argov's Daily Skipper Quiz" : 'מבחן הסקיפר היומי של אלכס ארגוב';
   document.querySelector('.r-title').textContent = headerTitle;
   document.getElementById('reel').dir = v.lang === 'en' ? 'ltr' : 'rtl';
 
@@ -2840,7 +2840,7 @@ function generateQuizHTML(q, lang, autoPlay=false) {
     const t = o.replace(/^[אבגדABCDabcd]\.\s*/,'');
     return `<div class="opt" id="o${i}"><div class="ltr">${LT[i]}</div>${t}</div>`;
   }).join('');
-  const headerTitle = isEn ? 'Daily Skipper Quiz' : 'מבחן הסקיפר היומי';
+  const headerTitle = isEn ? "Alex Argov's Daily Skipper Quiz" : 'מבחן הסקיפר היומי של אלכס ארגוב';
   const dir = isEn ? 'ltr' : 'rtl';
   const lang_he = isEn ? 'en' : 'he';
   // Media scene
