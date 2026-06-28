@@ -5,7 +5,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
-#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#reel{width:390px;height:693px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
 #hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
 .brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
 .htitle{color:#fff;font-size:18px;font-weight:900}
@@ -68,11 +68,6 @@ const E="רמקולים, מגנטים וסוללות יוצרים שדות מג�
 const LT=["א","ב","ג","ד"];
 
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)
-// Gated behind window.__startAutoPlay() instead of running on page load, so the
-// recorder (Puppeteer) can fire it the instant the screencast actually starts —
-// otherwise the timer head-starts before recording begins and drifts out of sync
-// with the audio track (which assumes recording-start == t=0).
-window.__startAutoPlay = function(){
 const prog=document.getElementById('prog');
 const DELAY=15000;
 prog.style.transition='none';prog.style.width='0%';
@@ -97,7 +92,6 @@ setTimeout(()=>{
     setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
   },600);
 },DELAY+50);
-};
 
 
 </script></body></html>
