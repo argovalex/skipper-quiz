@@ -329,6 +329,22 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
   </div>
 </div>
 
+<!-- Fix-request modal -->
+<div class="modal-overlay" id="fixModal">
+  <div class="modal">
+    <h3>🛠 בקשת תיקון</h3>
+    <div class="modal-q" id="fix-q-text">—</div>
+    <div class="modal-row">
+      <label>מה לתקן?</label>
+      <textarea id="fix-text" rows="4" placeholder="למשל: הגדל את כדור הארץ, תקן את כיוון הסיבוב, האט את הקריינות..." style="padding:8px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit;direction:rtl;resize:vertical;line-height:1.5"></textarea>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-ghost btn-sm" onclick="closeFixModal()">ביטול</button>
+      <button class="btn btn-render btn-sm" onclick="saveFixRequest()">💾 שמור בקשה</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <div class="bottom-bar">
@@ -2236,6 +2252,33 @@ async function saveQuestionsGH(msg) {
   } catch(e) { toast('❌ שמירה נכשלה: ' + e.message); return false; }
 }
 
+let fixModalNum = null;
+function openFixModal(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  fixModalNum = num;
+  document.getElementById('fix-q-text').textContent = `#${num} — ${q.q_he}`;
+  document.getElementById('fix-text').value = q.fix_request || '';
+  document.getElementById('fixModal').classList.add('on');
+}
+function closeFixModal() {
+  document.getElementById('fixModal').classList.remove('on');
+  fixModalNum = null;
+}
+async function saveFixRequest() {
+  const q = questions.find(x => x.num === fixModalNum);
+  if (!q) return;
+  const text = document.getElementById('fix-text').value.trim();
+  if (!text) { toast('⚠ כתוב פרומפט תיקון לפני שמירה'); return; }
+  q.fix_request = text;
+  q.fix_requested_at = new Date().toISOString();
+  toast('⏳ שומר...');
+  const ok = await saveQuestionsGH(`fix-request: Q#${q.num}`);
+  closeFixModal();
+  renderList();
+  toast(ok ? `✅ בקשת תיקון לQ#${q.num} נשמרה` : '⚠ שמירה ל-GitHub נכשלה');
+}
+
 async function toggleApprove(num) {
   const q = questions.find(x => x.num === num);
   if (!q) return;
@@ -2412,6 +2455,8 @@ function renderList() {
       ? `<button class="btn btn-ghost btn-sm" onclick="toggleApprove(${q.num})" title="אשר לפרסום">✅ אשר</button>`
       : '';
 
+    const fixBtn = `<button class="btn btn-ghost btn-sm" onclick="openFixModal(${q.num})" title="בקש תיקון">🛠${q.fix_request ? ' 🟠' : ''}</button>`;
+
     const schedInfo = (q.scheduled_date && hasVid)
       ? `<div class="sched-date">📅 מתוזמן: ${q.scheduled_date}${q.scheduled_time ? ' ' + q.scheduled_time : ''}</div>`
       : '';
@@ -2430,7 +2475,7 @@ function renderList() {
       </div>
       <div class="q-actions">
         ${badge}
-        <div class="q-btns">${renderBtn}${delVidBtn}${schedBtn}${approveBtn}${publishBtn}</div>
+        <div class="q-btns">${renderBtn}${delVidBtn}${schedBtn}${approveBtn}${fixBtn}${publishBtn}</div>
       </div>
     </div>`;
   }).join('');
