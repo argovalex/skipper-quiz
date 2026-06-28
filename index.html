@@ -844,23 +844,29 @@ Object.assign(SCENES_QA, {
 // Q102, Q168: Earth rotates W→E → sun rises east
 'earth_rotation': `
   <rect width="360" height="420" fill="#050a18"/>
-  <circle cx="180" cy="210" r="135" fill="#0d3a6e" stroke="#2a6aae" stroke-width="2"/>
-  <text x="180" y="175" text-anchor="middle" fill="#7eb8f7" font-size="14" font-family="Arial" font-weight="700">🌍</text>
-  <text x="180" y="218" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif">כדור הארץ</text>
+  <circle cx="48" cy="20" r="1" fill="white" opacity=".5"/>
+  <circle cx="320" cy="35" r="1.2" fill="white" opacity=".6"/>
+  <!-- Sun + rays, fixed on the right -->
   <g>
-    <path d="M295,225 A115,115 0 0,1 255,128" fill="none" stroke="#f39c12" stroke-width="4" stroke-linecap="round" marker-end="url(#rArr)">
-      <animateTransform attributeName="transform" type="rotate" from="0 180 210" to="-360 180 210" dur="6s" repeatCount="indefinite"/>
-    </path>
+    <circle cx="350" cy="210" r="34" fill="#f1c40f"/>
+    <circle cx="350" cy="210" r="46" fill="#f1c40f" opacity=".18"/>
+    ${[-40,-20,0,20,40].map(a=>`<line x1="${(316-26*Math.cos(a*Math.PI/180)).toFixed(1)}" y1="${(210+26*Math.sin(a*Math.PI/180)).toFixed(1)}" x2="${(300-20*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(210+20*Math.sin(a*Math.PI/180)).toFixed(1)}" stroke="#f1c40f" stroke-width="2" opacity=".7"/>`).join('')}
   </g>
-  <defs><marker id="rArr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#f39c12"/></marker></defs>
-  <text x="280" y="160" fill="#f39c12" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ממ→מ</text>
-  <circle cx="330" cy="130" r="25" fill="#f39c12" opacity="0.9"/>
-  <text x="330" y="135" text-anchor="middle" fill="#000" font-size="14" font-weight="900">☀</text>
-  <text x="330" y="170" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif">מזרח — זריחה</text>
-  <circle cx="30" cy="270" r="16" fill="#c07030" opacity="0.5"/>
-  <text x="30" y="275" text-anchor="middle" fill="#f39c12" font-size="11" font-weight="700">☀</text>
-  <text x="30" y="295" text-anchor="middle" fill="#c07030" font-size="9" font-family="Heebo,sans-serif">מערב — שקיעה</text>
-  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">סיבוב כדור הארץ</text>
+  <!-- Earth: lit (day) hemisphere + dark (night) hemisphere split by terminator -->
+  <circle cx="180" cy="210" r="135" fill="#7eb8f7"/>
+  <path d="M180,75 A135,135 0 0,0 180,345 Z" fill="#04102a"/>
+  <line x1="180" y1="75" x2="180" y2="345" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,4" opacity=".5"/>
+  <text x="223" y="218" text-anchor="middle" fill="#0a1a30" font-size="12" font-family="Heebo,sans-serif" font-weight="700">יום</text>
+  <text x="137" y="218" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לילה</text>
+  <text x="180" y="218" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" font-weight="700" opacity=".9">🌍</text>
+  <!-- Rotation arrow on the globe, animated west→east toward the sun -->
+  <path d="M295,255 A115,115 0 0,1 245,140" fill="none" stroke="#e67e22" stroke-width="4" stroke-linecap="round" marker-end="url(#rArr)">
+    <animateTransform attributeName="transform" type="rotate" from="0 180 210" to="-360 180 210" dur="6s" repeatCount="indefinite"/>
+  </path>
+  <defs><marker id="rArr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#e67e22"/></marker></defs>
+  <text x="223" y="92" text-anchor="middle" fill="#f1c40f" font-size="10" font-family="Heebo,sans-serif" font-weight="700">זריחה</text>
+  <text x="137" y="332" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">שקיעה</text>
+  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">סיבוב כדור הארץ ממערב למזרח</text>
 `,
 
 // Q103, Q171: Polaris altitude = latitude
