@@ -76,7 +76,7 @@ header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
 .rm-preview { margin-bottom:10px; }
 .rm-preview summary { cursor:pointer; font-size:12px; color:var(--dim); padding:4px 0; user-select:none; }
 .rm-preview summary:hover { color:var(--text); }
-.rm-preview-iframe { width:100%; height:160px; border:1px solid var(--border); border-radius:6px; background:#000; margin-top:6px; }
+.rm-preview-iframe { width:auto; height:min(70vh,620px); aspect-ratio:390/693; display:block; border:1px solid var(--border); border-radius:6px; background:#000; margin:6px auto 0; }
 
 /* ── History tab ── */
 .hist-main { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
@@ -131,7 +131,7 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
 .chart-count { font-size: 11px; color: var(--dim); white-space: nowrap; }
 
 /* ── Render modal ── */
-.render-modal { width: 500px; max-width: 95vw; }
+.render-modal { width: 500px; max-width: 95vw; max-height: 90vh; overflow-y: auto; }
 .render-modal textarea { width:100%; padding:8px 10px; background:var(--bg3); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:12px; font-family:inherit; direction:rtl; resize:vertical; line-height:1.5; }
 .render-modal textarea:focus { outline:none; border-color:var(--accent); }
 .preview-row { display:flex; gap:8px; align-items:center; margin-top:6px; }
@@ -2236,6 +2236,16 @@ async function saveQuestionsGH(msg) {
   } catch(e) { toast('❌ שמירה נכשלה: ' + e.message); return false; }
 }
 
+async function toggleApprove(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  q.approved_for_publish = !q.approved_for_publish;
+  renderList();
+  toast(q.approved_for_publish ? `✅ Q#${num} מאושר לפרסום` : `Q#${num} בוטל אישור`);
+  await saveQuestionsGH(`approve: Q#${num}`);
+  updateStats();
+}
+
 async function deleteVideo(num) {
   if (!confirm(`מחוק סרטון של Q#${num}?`)) return;
   const q = questions.find(x => x.num === num);
@@ -2398,6 +2408,10 @@ function renderList() {
       ? `<button class="btn btn-publish btn-sm" onclick="publishQuestion(${q.num})">📡 פרסם</button>`
       : `<button class="btn btn-publish btn-sm" disabled title="${!hasVid ? 'צריך סרטון תחילה' : 'לא מאושר לפרסום'}">📡 פרסם</button>`;
 
+    const approveBtn = (hasVid && !isAppr && !isPub)
+      ? `<button class="btn btn-ghost btn-sm" onclick="toggleApprove(${q.num})" title="אשר לפרסום">✅ אשר</button>`
+      : '';
+
     const schedInfo = (q.scheduled_date && hasVid)
       ? `<div class="sched-date">📅 מתוזמן: ${q.scheduled_date}${q.scheduled_time ? ' ' + q.scheduled_time : ''}</div>`
       : '';
@@ -2416,7 +2430,7 @@ function renderList() {
       </div>
       <div class="q-actions">
         ${badge}
-        <div class="q-btns">${renderBtn}${delVidBtn}${schedBtn}${publishBtn}</div>
+        <div class="q-btns">${renderBtn}${delVidBtn}${schedBtn}${approveBtn}${publishBtn}</div>
       </div>
     </div>`;
   }).join('');
@@ -2458,6 +2472,19 @@ function buildVoiceover(q) {
 // ── Render modal ──────────────────────────────────────────────────────────────
 let renderModalNum = null;
 
+function freshPreviewIframe(html) {
+  // file:// + srcdoc can get stuck showing stale content when reusing the same
+  // iframe node — swap in a brand-new iframe element each time instead.
+  const old = document.getElementById('rm-preview-iframe');
+  const fresh = document.createElement('iframe');
+  fresh.className = 'rm-preview-iframe';
+  fresh.id = 'rm-preview-iframe';
+  fresh.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+  old.replaceWith(fresh);
+  if (html != null) fresh.srcdoc = html;
+  return fresh;
+}
+
 function renderVideo(num) {
   const railwayUrl = getRailwayUrl();
   if (!railwayUrl) { toast('⚠ הכנס Railway URL'); return; }
@@ -2474,7 +2501,7 @@ function renderVideo(num) {
   // Populate animation preview (autoPlay=true — same version that gets rendered to video)
   try {
     const previewHtml = generateQuizHTML(q, 'he', true);
-    document.getElementById('rm-preview-iframe').srcdoc = previewHtml;
+    freshPreviewIframe(previewHtml);
   } catch(e) { /* preview not critical */ }
   document.getElementById('renderModal').classList.add('on');
 }
@@ -2512,7 +2539,7 @@ async function previewVoiceover() {
     const iframe = document.getElementById('rm-preview-iframe');
     const details = document.getElementById('rm-preview-details');
     if (details) details.open = true;
-    if (iframe && iframe.srcdoc) { const html = iframe.srcdoc; iframe.srcdoc = ''; iframe.srcdoc = html; }
+    if (iframe && iframe.srcdoc) freshPreviewIframe(iframe.srcdoc);
     audio.play();
     statusEl.textContent = '🔊 מנגן...';
     audio.onended = () => { statusEl.textContent = '✅ סיים'; };
@@ -2523,6 +2550,7 @@ async function previewVoiceover() {
 
 async function confirmRender() {
   const num  = renderModalNum;
+  if (renderingNums.has(num)) { toast(`⏳ Q#${num} כבר בתהליך רינדור...`); return; }
   const voText = document.getElementById('rm-vo').value.trim();
   const notes  = document.getElementById('rm-notes').value.trim();
   closeRenderModal();
@@ -2530,6 +2558,7 @@ async function confirmRender() {
   const railwayUrl = getRailwayUrl();
   const q = questions.find(x => x.num === num);
   if (q) { q.voiceover_text = voText; q.render_notes = notes; }
+  const priorRenderedAt = q?.rendered_at || null;
 
   renderingNums.add(num);
   renderList();
@@ -2558,10 +2587,34 @@ async function confirmRender() {
     toast(`✅ Q#${num} רונדר!`);
     setBottom(`✅ Q#${num} מוכן לפרסום`);
   } catch(e) {
+    // The browser connection can drop mid-render even though Railway finishes the
+    // job successfully a few seconds later (Puppeteer+ffmpeg take ~20-25s with no
+    // response until done). Poll /status before reporting a hard failure.
+    setRP(num, '⚠ החיבור נפל — בודק אם הרינדור בעצם הסתיים בשרת...');
+    let confirmed = false;
+    for (let i = 0; i < 10 && !confirmed; i++) {
+      await new Promise(r => setTimeout(r, 3000));
+      try {
+        const sres = await fetch(`${railwayUrl}/status/${num}`);
+        if (sres.ok) {
+          const sdata = await sres.json();
+          if (sdata.videoUrl && sdata.rendered_at && sdata.rendered_at !== priorRenderedAt) {
+            if (q) { q.videoUrl = sdata.videoUrl; q.rendered_at = sdata.rendered_at; }
+            confirmed = true;
+          }
+        }
+      } catch(e2) { /* keep polling */ }
+    }
     renderingNums.delete(num);
+    updateStats();
     renderList();
-    toast(`❌ ${e.message}`);
-    setBottom(`❌ ${e.message}`, true);
+    if (confirmed) {
+      toast(`✅ Q#${num} רונדר בכל זאת! (החיבור נפל אך השרת סיים)`);
+      setBottom(`✅ Q#${num} מוכן לפרסום`);
+    } else {
+      toast(`❌ ${e.message}`);
+      setBottom(`❌ ${e.message}`, true);
+    }
   }
 }
 
@@ -2579,12 +2632,8 @@ function publishQuestion(num) {
   const q = questions.find(x => x.num === num);
   if (!q?.videoUrl) { toast('⚠ אין סרטון'); return; }
 
-  let makeUrl = localStorage.getItem('sq_make_url') || '';
-  if (!makeUrl) {
-    makeUrl = prompt('הכנס Make.com Webhook URL:');
-    if (!makeUrl) return;
-    localStorage.setItem('sq_make_url', makeUrl.trim());
-  }
+  let makeUrl = localStorage.getItem('sq_make_url') || 'https://hook.eu1.make.com/deu5m0qyc6xndo7nhd6noioi9gnwc4yr';
+  localStorage.setItem('sq_make_url', makeUrl);
 
   schedNum = num;
   document.getElementById('sched-q-text').textContent = `#${q.num} — ${q.topic}\n${q.q_he.slice(0,80)}${q.q_he.length>80?'…':''}`;

@@ -66,6 +66,11 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 .btn-save:hover{background:#357abd}
 .btn-del{background:#3d1a1a;color:var(--red);border:1px solid var(--red)}
 .btn-del:hover{background:#5c2a2a}
+.btn-render{background:#1e3a6e;color:#7eb8f7;border:1px solid #2a5aae}
+.btn-render:hover{background:#244a8a}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-ghost:hover{background:#0a1528}
+.btn-sm{padding:5px 10px;font-size:12px}
 .confirmed-row{display:flex;align-items:center;gap:10px;padding:8px 12px;background:#0a1528;border-radius:8px;border:1px solid var(--border)}
 .confirmed-row label{font-size:13px;cursor:pointer;flex:1}
 .confirmed-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--green);cursor:pointer}
@@ -169,6 +174,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
   <button class="tbtn green" onclick="saveJSON()" title="שמור את כל השאלות חזרה ל-questions.json">💾 שמור</button>
   <button class="tbtn" onclick="addQuestion()" title="הוסף שאלה חדשה ריקה">➕ שאלה חדשה</button>
   <button class="tbtn blue" onclick="exportAllZip()">📦 ייצא ZIP</button>
+  <input id="railwayUrl" type="text" placeholder="Railway URL (לרינדור)" style="width:220px;margin-right:8px" oninput="localStorage.setItem('sq_railway_url', this.value.trim())">
 </div>
 
 <!-- SETUP OVERLAY — shown on first run -->
@@ -179,7 +185,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
     כדי להתחיל, בחר את <strong style="color:#fff">תיקיית SkipperQuiz</strong> שלך.<br>
     זה יטען אוטומטית את <code style="color:#7eb8f7">questions.json</code> בכל פתיחה.
   </div>
-  <button onclick="pickFolder()" style="background:#4a90d9;color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif">
+  <button id="setupMainBtn" onclick="pickFolder()" style="background:#4a90d9;color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif">
     📁 בחר תיקיית SkipperQuiz
   </button>
   <div style="color:#556688;font-size:12px">C:\Users\argov\OneDrive\Co-Work OS\SkipperQuiz</div>
@@ -1846,6 +1852,165 @@ async function ghPushHTML(q) {
   } catch { return false; }
 }
 
+// ── Render — voice over + send to Railway (ported from queue.html) ──────────
+function getRailwayUrl() {
+  return document.getElementById('railwayUrl')?.value.trim() || localStorage.getItem('sq_railway_url') || '';
+}
+
+const VO_FIXES = [
+  [/קוי/g,           'קווי'],
+  [/\bVHF\b/g,       'וי אייץ אף'],
+  [/\bUTC\b/g,       'יו טי סי'],
+  [/\bGPS\b/g,       'ג׳י פי אס'],
+  [/\bAIS\b/g,       'איי איי אס'],
+  [/\bEPIRB\b/g,     'איי פירב'],
+  [/מכ"מ/g,          'מכ מ'],
+  [/\bSOG\b/g,       'מהירות על הקרקע'],
+  [/\bCOG\b/g,       'כיוון על הקרקע'],
+  [/\bMMSI\b/g,      'אם אם אס איי'],
+  [/°/g,             ' מעלות '],
+  [/\bknots?\b/gi,   'קשרים'],
+];
+function applyVoFixes(text) {
+  let t = text;
+  for (const [pat, rep] of VO_FIXES) t = t.replace(pat, rep);
+  return t;
+}
+function buildVoiceover(q) {
+  const idx = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'א').trim()] ?? 0;
+  const ans = ((q.options||[])[idx]||'').replace(/^[אבגד]\.\s*/,'');
+  let q1 = applyVoFixes(`שאלה מספר ${q.num}. ${q.q_he}.`);
+  let q2 = `התשובה הנכונה: ${ans}.`;
+  if (q.explanation) q2 += ` ${q.explanation}`;
+  return q1 + ' [[PAUSE]] ' + applyVoFixes(q2);
+}
+
+function freshPreviewIframe(html) {
+  const old = document.getElementById('rm-preview-iframe');
+  if (!old) return null;
+  const fresh = document.createElement('iframe');
+  fresh.className = 'rm-preview-iframe';
+  fresh.id = 'rm-preview-iframe';
+  fresh.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+  fresh.style.cssText = old.style.cssText;
+  old.replaceWith(fresh);
+  if (html != null) fresh.srcdoc = html;
+  return fresh;
+}
+
+function loadRenderPreview() {
+  if (currentIdx < 0) return;
+  const q = questions[currentIdx];
+  try {
+    const html = generateQuizHTML(q, 'he', true);
+    freshPreviewIframe(html);
+  } catch(e) { /* preview not critical */ }
+}
+
+function resetVoiceover() {
+  if (currentIdx < 0) return;
+  const q = questions[currentIdx];
+  document.getElementById('rm-vo').value = buildVoiceover(q);
+}
+
+async function previewVoiceover() {
+  const railwayUrl = getRailwayUrl();
+  if (!railwayUrl) { showToast('⚠ הכנס Railway URL'); return; }
+  const text = document.getElementById('rm-vo').value.trim();
+  if (!text) return;
+  const statusEl = document.getElementById('rm-preview-status');
+  statusEl.textContent = '⏳ מייצר...';
+  try {
+    const res = await fetch(`${railwayUrl}/tts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const blob = await res.blob();
+    const url  = URL.createObjectURL(blob);
+    const audio = document.getElementById('rm-audio');
+    audio.src = url;
+    const iframe = document.getElementById('rm-preview-iframe');
+    const details = document.getElementById('rm-preview-details');
+    if (details) details.open = true;
+    if (iframe && iframe.srcdoc) freshPreviewIframe(iframe.srcdoc);
+    audio.play();
+    statusEl.textContent = '🔊 מנגן...';
+    audio.onended = () => { statusEl.textContent = '✅ סיים'; };
+  } catch(e) {
+    statusEl.textContent = '❌ ' + e.message;
+  }
+}
+
+const renderingNums = new Set();
+function setRenderStatus(msg, isErr) {
+  const el = document.getElementById('rm-bottom-status');
+  if (el) { el.textContent = msg; el.style.color = isErr ? 'var(--red)' : 'var(--muted)'; }
+}
+
+async function renderFromEditor() {
+  if (currentIdx < 0) return;
+  saveCurrentToState();
+  const q = questions[currentIdx];
+  const num = q.num;
+  if (renderingNums.has(num)) { showToast(`⏳ Q#${num} כבר בתהליך רינדור...`); return; }
+
+  const railwayUrl = getRailwayUrl();
+  if (!railwayUrl) { showToast('⚠ הכנס Railway URL'); return; }
+
+  q.voiceover_text = document.getElementById('rm-vo').value.trim();
+  q.render_notes    = document.getElementById('rm-notes').value.trim();
+  const priorRenderedAt = q.rendered_at || null;
+
+  renderingNums.add(num);
+  setRenderStatus('⏳ דוחף HTML ל-GitHub...');
+
+  const pushed = await ghPushHTML(q);
+  if (!pushed) setRenderStatus('⚠ HTML לא נדחף — ממשיך בכל זאת...');
+  setRenderStatus('⏳ שולח לRailway...');
+
+  try {
+    const res = await fetch(`${railwayUrl}/render/${num}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ voiceover_text: q.voiceover_text, render_notes: q.render_notes, force: !!q.videoUrl })
+    });
+    if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
+    const data = await res.json();
+    if (data.videoUrl) { q.videoUrl = data.videoUrl; q.rendered_at = new Date().toISOString(); }
+    renderingNums.delete(num);
+    showToast(`✅ Q#${num} רונדר!`);
+    setRenderStatus(`✅ Q#${num} מוכן לפרסום`);
+    renderEditor(q);
+  } catch(e) {
+    setRenderStatus('⚠ החיבור נפל — בודק אם הרינדור בעצם הסתיים בשרת...');
+    let confirmed = false;
+    for (let i = 0; i < 10 && !confirmed; i++) {
+      await new Promise(r => setTimeout(r, 3000));
+      try {
+        const sres = await fetch(`${railwayUrl}/status/${num}`);
+        if (sres.ok) {
+          const sdata = await sres.json();
+          if (sdata.videoUrl && sdata.rendered_at && sdata.rendered_at !== priorRenderedAt) {
+            q.videoUrl = sdata.videoUrl; q.rendered_at = sdata.rendered_at;
+            confirmed = true;
+          }
+        }
+      } catch(e2) { /* keep polling */ }
+    }
+    renderingNums.delete(num);
+    if (confirmed) {
+      showToast(`✅ Q#${num} רונדר בכל זאת! (החיבור נפל אך השרת סיים)`);
+      setRenderStatus(`✅ Q#${num} מוכן לפרסום`);
+      renderEditor(q);
+    } else {
+      showToast(`❌ ${e.message}`);
+      setRenderStatus(`❌ ${e.message}`, true);
+    }
+  }
+}
+
 // ── Approve for Publish ──────────────────────────────────────────────────────
 async function toggleApprove() {
   if(currentIdx<0){showToast('❌ בחר שאלה תחילה');return;}
@@ -2022,11 +2187,13 @@ function populateTopicFilter() {
 }
 
 // ── INIT: restore folder on load ──────────────────────────────────────────────
+let pendingHandle = null; // a remembered folder waiting on a permission re-click
+
 async function initApp() {
   const stored = await loadHandleFromDB();
   if(stored) {
     try {
-      // Check we still have permission
+      // Check we still have permission — if granted, load with zero clicks.
       const perm = await stored.queryPermission({ mode: 'readwrite' });
       if(perm === 'granted') {
         dirHandle = stored;
@@ -2035,21 +2202,36 @@ async function initApp() {
         await loadQuestionsFromDir();
         return;
       }
-      // Need to re-request permission
-      const req = await stored.requestPermission({ mode: 'readwrite' });
-      if(req === 'granted') {
-        dirHandle = stored;
-        document.getElementById('folderBtn').textContent = `📁 ${stored.name}`;
-        document.getElementById('setupOverlay').style.display = 'none';
-        await loadQuestionsFromDir();
-        return;
-      }
+      // Browsers require a user gesture (click) to show the permission prompt —
+      // calling requestPermission() here with no click would silently fail.
+      // Remember the handle and surface a one-click "reconnect" button instead
+      // of the full folder picker.
+      pendingHandle = stored;
     } catch(e) { /* fall through to show overlay */ }
   }
-  // First run — show setup overlay
+  // First run, or permission needs a one-click reconnect
+  if(pendingHandle) {
+    document.getElementById('setupMainBtn').textContent = `📁 התחבר מחדש ל-${pendingHandle.name}`;
+    document.getElementById('setupMainBtn').setAttribute('onclick', 'reconnectFolder()');
+  }
   document.getElementById('setupOverlay').style.display = 'flex';
 }
 document.addEventListener('DOMContentLoaded', initApp);
+
+async function reconnectFolder() {
+  if(!pendingHandle) return pickFolder();
+  try {
+    const req = await pendingHandle.requestPermission({ mode: 'readwrite' });
+    if(req === 'granted') {
+      dirHandle = pendingHandle;
+      document.getElementById('folderBtn').textContent = `📁 ${pendingHandle.name}`;
+      document.getElementById('setupOverlay').style.display = 'none';
+      await loadQuestionsFromDir();
+      return;
+    }
+    showToast('⚠ הגישה לתיקייה נדחתה');
+  } catch(e) { showToast('❌ ' + e.message); }
+}
 
 // ── Add Question ─────────────────────────────────────────────────────────────
 function addQuestion() {
@@ -2220,6 +2402,32 @@ function renderEditor(q) {
         : `<div style="color:var(--muted);font-size:13px">📎 גרור תמונה / וידאו לכאן<br><small style="font-size:11px;opacity:0.7">JPG, PNG, MP4, MOV</small></div>`
       }
       ${q.mediaUrl?`<div class="media-clear" onclick="event.stopPropagation();clearMedia()">✕ הסר מדיה</div>`:''}
+    </div>
+
+    <div class="section-title">🎬 רינדור סרטון</div>
+    <div class="field" style="background:#0c1a3a;border:1px solid #1e3a6e;border-radius:8px;padding:10px 12px">
+      <label style="display:flex;justify-content:space-between;align-items:center">
+        <span>🎙 טקסט Voice Over</span>
+        <span style="color:#7eb8f7;font-size:11px">תיקונים אוטומטיים מופעלים</span>
+      </label>
+      <textarea id="rm-vo" rows="3" style="width:100%;margin-top:4px">${q.voiceover_text || buildVoiceover(q)}</textarea>
+      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-ghost btn-sm" onclick="resetVoiceover()">↻ שחזר ברירת מחדל</button>
+        <button class="btn btn-ghost btn-sm" onclick="previewVoiceover()">🔊 האזן</button>
+        <span id="rm-preview-status" style="font-size:12px;color:var(--muted)"></span>
+        <audio id="rm-audio" style="display:none"></audio>
+      </div>
+      <label style="display:block;margin-top:10px">📝 הנחיות רינדור (נשמר ל-log, עוד לא משפיע על העיצוב בפועל)</label>
+      <textarea id="rm-notes" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: שגיאה בכותרת, להגדיל טקסט וכו'">${q.render_notes||''}</textarea>
+      <details id="rm-preview-details" style="margin-top:8px" ontoggle="if(this.open) loadRenderPreview()">
+        <summary style="cursor:pointer;color:#7eb8f7;font-size:12px">👁 תצוגה מקדימה של האנימציה</summary>
+        <iframe class="rm-preview-iframe" id="rm-preview-iframe" sandbox="allow-scripts allow-same-origin" style="width:auto;height:min(70vh,620px);aspect-ratio:390/693;display:block;border:1px solid var(--border);border-radius:6px;background:#000;margin:6px auto 0"></iframe>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+        <button class="btn btn-render" onclick="renderFromEditor()">🎬 רינדור${q.videoUrl?' מחדש':''}</button>
+        ${q.videoUrl ? `<a href="${q.videoUrl}" target="_blank" style="color:var(--accent);font-size:12px">▶ צפה בסרטון הקיים</a>` : ''}
+        <span id="rm-bottom-status" style="font-size:12px;color:var(--muted)"></span>
+      </div>
     </div>
 
     <div class="confirmed-row">
@@ -2864,7 +3072,7 @@ function generateQuizHTML(q, lang, autoPlay=false) {
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
-#reel{width:390px;height:693px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:${dir}}
+#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:${dir}}
 #hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
 .brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
 .htitle{color:#fff;font-size:18px;font-weight:900}
@@ -2910,6 +3118,11 @@ const E=${JSON.stringify(expl)};
 const LT=${JSON.stringify(isEn ? LETTERS_EN : LETTERS_HE)};
 ${autoPlay ? `
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)
+// Gated behind window.__startAutoPlay() instead of running on page load, so the
+// recorder (Puppeteer) can fire it the instant the screencast actually starts —
+// otherwise the timer head-starts before recording begins and drifts out of sync
+// with the audio track (which assumes recording-start == t=0).
+window.__startAutoPlay = function(){
 const prog=document.getElementById('prog');
 const DELAY=15000;
 prog.style.transition='none';prog.style.width='0%';
@@ -2934,6 +3147,7 @@ setTimeout(()=>{
     setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
   },600);
 },DELAY+50);
+};
 ` : `
 let answered=false;
 document.querySelectorAll('.opt').forEach((el,i)=>{
@@ -3121,6 +3335,8 @@ window.addEventListener('load', ()=>{
   if(!window.showOpenFilePicker) {
     document.getElementById('empty').innerHTML += '<br><p style="color:#e74c3c;font-size:12px">⚠ השתמש ב-Chrome או Edge לתמיכה מלאה בפתיחת קבצים</p>';
   }
+  const railwayInput = document.getElementById('railwayUrl');
+  if (railwayInput) railwayInput.value = localStorage.getItem('sq_railway_url') || '';
 });
 </script>
 </body>
