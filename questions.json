@@ -88,8 +88,12 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
+    "voiceover_text": "שאלה מספר 104. היכן יש למדוד מרחקים במפת מרקטור?. [[PAUSE]] התשובה הנכונה: יחידות של קווי רוחב בצד ימין או שמאל ומול אזור השייט. במפת מרקטור מודדים מרחקים בסקלת קווי הרוחב (הצד הימני/שמאלי), ממול לאזור השייט — כי הסקלה משתנה עם הרוחב.",
+    "render_notes": "",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782642232/skipper-quiz/n0pmoh6h6olqs4g5q2wc.mp4",
-    "rendered_at": "2026-06-28T10:23:53.441Z"
+    "rendered_at": "2026-06-28T10:24:49.848Z",
+    "scheduled_date": "2026-06-29",
+    "scheduled_time": "09:00"
   },
   {
     "num": 105,
