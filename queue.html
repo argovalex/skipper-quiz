@@ -302,6 +302,11 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
       <textarea id="rm-notes" rows="2" placeholder="למשל: הגדל פונט, האט אנימציה, שנה צבע רקע..."></textarea>
     </div>
 
+    <div class="modal-row" style="margin-top:6px;flex-direction:row;align-items:center;gap:8px">
+      <input type="checkbox" id="rm-locked" style="width:auto">
+      <label for="rm-locked" style="margin:0;cursor:pointer">🔒 HTML נעול — אל תדרוס עיצוב מותאם אישית ברינדור הבא</label>
+    </div>
+
     <div class="modal-btns">
       <button class="btn btn-ghost btn-sm" onclick="closeRenderModal()">ביטול</button>
       <button class="btn btn-render btn-sm" onclick="confirmRender()">🎬 רנדר</button>
@@ -2432,6 +2437,7 @@ function renderList() {
                 :           '<span class="vid-badge none">⬜ אין סרטון</span>';
 
     const approveIcon = isAppr ? '<span style="font-size:11px;color:var(--green)">📤</span>' : '';
+    const lockIcon = q.html_locked ? '<span style="font-size:11px;color:var(--accent)" title="HTML נעול — לא נדרס ברינדור">🔒</span>' : '';
 
     const renderBtn = !hasVid
       ? `<button class="btn btn-render btn-sm" onclick="renderVideo(${q.num})" ${isRender?'disabled':''}>
@@ -2466,7 +2472,7 @@ function renderList() {
       <div class="q-meta">
         <span class="q-num-badge">#${q.num}</span>
         <span class="q-topic-tag">${q.topic}</span>
-        ${approveIcon}
+        ${approveIcon}${lockIcon}
       </div>
       <div>
         <div class="q-text">${q.q_he}</div>
@@ -2541,6 +2547,7 @@ function renderVideo(num) {
   document.getElementById('rm-title').textContent = `Q#${num} — ${q.topic}`;
   document.getElementById('rm-vo').value    = q.voiceover_text || buildVoiceover(q);
   document.getElementById('rm-notes').value = q.render_notes  || '';
+  document.getElementById('rm-locked').checked = !!q.html_locked;
   document.getElementById('rm-preview-status').textContent = '';
   document.getElementById('rm-audio').src = '';
   // Populate animation preview (autoPlay=true — same version that gets rendered to video)
@@ -2598,20 +2605,27 @@ async function confirmRender() {
   if (renderingNums.has(num)) { toast(`⏳ Q#${num} כבר בתהליך רינדור...`); return; }
   const voText = document.getElementById('rm-vo').value.trim();
   const notes  = document.getElementById('rm-notes').value.trim();
+  const locked = document.getElementById('rm-locked').checked;
   closeRenderModal();
 
   const railwayUrl = getRailwayUrl();
   const q = questions.find(x => x.num === num);
-  if (q) { q.voiceover_text = voText; q.render_notes = notes; }
+  if (q) { q.voiceover_text = voText; q.render_notes = notes; q.html_locked = locked; }
   const priorRenderedAt = q?.rendered_at || null;
+  if (q) await saveQuestionsGH(`render-settings: Q#${num}${locked ? ' (locked)' : ''}`);
 
   renderingNums.add(num);
   renderList();
   setBottom(`🎬 מרנדר Q#${num}...`);
-  setRP(num, '⏳ דוחף HTML ל-GitHub...');
 
-  // Push pre-built animation HTML to GitHub so Railway uses it
-  if (q) {
+  // Push pre-built animation HTML to GitHub so Railway uses it — unless the
+  // scene was hand-fixed and locked, in which case overwriting it here would
+  // silently destroy the manual fix (this is exactly what kept happening to
+  // Q102/Q105 before the lock existed).
+  if (q && q.html_locked) {
+    setRP(num, '🔒 HTML נעול — לא נדרס, משתמש בעיצוב הקיים...');
+  } else if (q) {
+    setRP(num, '⏳ דוחף HTML ל-GitHub...');
     const pushed = await ghPushHTML(q);
     if (!pushed) setRP(num, '⚠ HTML לא נדחף — ממשיך בכל זאת...');
   }

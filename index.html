@@ -1995,13 +1995,21 @@ async function renderFromEditor() {
 
   q.voiceover_text = document.getElementById('rm-vo').value.trim();
   q.render_notes    = document.getElementById('rm-notes').value.trim();
+  q.html_locked     = document.getElementById('fix-locked')?.checked || false;
   const priorRenderedAt = q.rendered_at || null;
 
   renderingNums.add(num);
-  setRenderStatus('⏳ דוחף HTML ל-GitHub...');
 
-  const pushed = await ghPushHTML(q);
-  if (!pushed) setRenderStatus('⚠ HTML לא נדחף — ממשיך בכל זאת...');
+  // Skip the overwrite when the scene was hand-fixed and locked — otherwise a
+  // routine re-render silently wipes out manual SVG fixes (this is what kept
+  // happening to Q102/Q105 before the lock existed).
+  if (q.html_locked) {
+    setRenderStatus('🔒 HTML נעול — לא נדרס, משתמש בעיצוב הקיים...');
+  } else {
+    setRenderStatus('⏳ דוחף HTML ל-GitHub...');
+    const pushed = await ghPushHTML(q);
+    if (!pushed) setRenderStatus('⚠ HTML לא נדחף — ממשיך בכל זאת...');
+  }
   setRenderStatus('⏳ שולח לRailway...');
 
   try {
@@ -2460,6 +2468,10 @@ function renderEditor(q) {
         <button class="btn btn-ghost btn-sm" onclick="saveFixRequest()">💾 שמור בקשת תיקון</button>
         <span style="font-size:11px;color:var(--muted)">נשמר ל-questions.json, לא מפעיל רינדור</span>
       </div>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+        <input type="checkbox" id="fix-locked" ${q.html_locked?'checked':''} onchange="saveLockState(this.checked)" style="width:auto">
+        <label for="fix-locked" style="margin:0;cursor:pointer;font-size:12px">🔒 HTML נעול — אל תדרוס עיצוב מותאם אישית ברינדור הבא</label>
+      </div>
       <details id="rm-preview-details" style="margin-top:8px" ontoggle="if(this.open) loadRenderPreview()">
         <summary style="cursor:pointer;color:#7eb8f7;font-size:12px">👁 תצוגה מקדימה של האנימציה</summary>
         <iframe class="rm-preview-iframe" id="rm-preview-iframe" sandbox="allow-scripts allow-same-origin" style="width:auto;height:min(70vh,620px);aspect-ratio:390/693;display:block;border:1px solid var(--border);border-radius:6px;background:#000;margin:6px auto 0"></iframe>
@@ -2516,6 +2528,14 @@ function saveCurrentToState() {
   // Save blast override if field visible
   const boEl = document.getElementById('f-blast-override');
   if(boEl) q.blastOverride = boEl.value.trim();
+}
+
+async function saveLockState(checked) {
+  if(currentIdx < 0) return;
+  const q = questions[currentIdx];
+  q.html_locked = checked;
+  await saveJSON();
+  showToast(checked ? `🔒 Q#${q.num} ננעל` : `🔓 Q#${q.num} נפתח`);
 }
 
 async function saveFixRequest() {
