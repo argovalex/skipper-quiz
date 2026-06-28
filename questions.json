@@ -42,7 +42,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "fix_resolved_at": "2026-06-28T10:20:17.082Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782639017/skipper-quiz/ksgxs50ffyu5bqftvktt.mp4",
+    "rendered_at": "2026-06-28T09:30:18.290Z"
   },
   {
     "num": 103,
@@ -61,9 +62,12 @@
     "explanation": "גובה כוכב הצפון מעל האופק שווה לקו הרוחב. אם הזווית קבועה — כלי השיט שט על אותו קו רוחב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
+    "approved_for_publish": true,
+    "voiceover_text": "שאלה מספר 103. מה מסיק כלי שיט שמודד בכל ערב את אותה זווית מעל האופק לכוכב הצפון?. [[PAUSE]] התשובה הנכונה: שהוא שט בחפיפה לקו רוחב קבוע. גובה כוכב הצפון מעל האופק שווה לקו הרוחב. אם הזווית קבועה — כלי השיט שט על אותו קו רוחב.",
+    "render_notes": "",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782642053/skipper-quiz/lpbxoz4m2lysysjuzyhd.mp4",
-    "rendered_at": "2026-06-28T10:20:55.172Z"
+    "rendered_at": "2026-06-28T10:21:51.672Z",
+    "scheduled_date": "2026-06-28"
   },
   {
     "num": 104,
