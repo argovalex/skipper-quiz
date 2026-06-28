@@ -67,7 +67,8 @@
     "render_notes": "",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782642053/skipper-quiz/lpbxoz4m2lysysjuzyhd.mp4",
     "rendered_at": "2026-06-28T10:21:51.672Z",
-    "scheduled_date": "2026-06-28"
+    "scheduled_date": "2026-06-28",
+    "scheduled_time": "15:00"
   },
   {
     "num": 104,
@@ -86,9 +87,7 @@
     "explanation": "במפת מרקטור מודדים מרחקים בסקלת קווי הרוחב (הצד הימני/שמאלי), ממול לאזור השייט — כי הסקלה משתנה עם הרוחב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782642154/skipper-quiz/fumyygxafx5xbhfbiazl.mp4",
-    "rendered_at": "2026-06-28T10:22:35.435Z"
+    "approved_for_publish": false
   },
   {
     "num": 105,
