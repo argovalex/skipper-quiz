@@ -5,7 +5,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
-#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#reel{width:390px;height:693px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
 #hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
 .brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
 .htitle{color:#fff;font-size:18px;font-weight:900}
@@ -29,39 +29,23 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
     
     <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
       
-  <circle cx="48" cy="20" r="1" fill="white" opacity=".5"/>
-  <circle cx="320" cy="35" r="1.2" fill="white" opacity=".6"/>
-  <!-- Sun + rays, fixed on the right -->
-  <g>
-    <circle cx="350" cy="210" r="34" fill="#f1c40f"/>
-    <circle cx="350" cy="210" r="46" fill="#f1c40f" opacity=".18"/>
-    <line x1="296.1" y1="193.3" x2="284.7" y2="197.1" stroke="#f1c40f" stroke-width="2" opacity=".7"/><line x1="291.6" y1="201.1" x2="281.2" y2="203.2" stroke="#f1c40f" stroke-width="2" opacity=".7"/><line x1="290.0" y1="210.0" x2="280.0" y2="210.0" stroke="#f1c40f" stroke-width="2" opacity=".7"/><line x1="291.6" y1="218.9" x2="281.2" y2="216.8" stroke="#f1c40f" stroke-width="2" opacity=".7"/><line x1="296.1" y1="226.7" x2="284.7" y2="222.9" stroke="#f1c40f" stroke-width="2" opacity=".7"/>
-  </g>
-  <!-- Earth: lit (day) hemisphere + dark (night) hemisphere split by terminator -->
-  <defs><clipPath id="earthClip"><circle cx="180" cy="210" r="135"/></clipPath></defs>
-  <circle cx="180" cy="210" r="135" fill="#7eb8f7"/>
-  <path d="M180,75 A135,135 0 0,0 180,345 Z" fill="#04102a"/>
-  <!-- Continents drifting west→east across the globe's own face, simulating its rotation -->
-  <g clip-path="url(#earthClip)">
-    <ellipse cx="45" cy="180" rx="30" ry="18" fill="#2ecc71" opacity="0">
-      <animate attributeName="cx" values="45;315" dur="6s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0;0.85;0.85;0" keyTimes="0;0.15;0.85;1" dur="6s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="45" cy="240" rx="22" ry="15" fill="#27ae60" opacity="0">
-      <animate attributeName="cx" values="45;315" begin="-2s" dur="6s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.15;0.85;1" begin="-2s" dur="6s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="45" cy="210" rx="18" ry="24" fill="#2ecc71" opacity="0">
-      <animate attributeName="cx" values="45;315" begin="-4s" dur="6s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.15;0.85;1" begin="-4s" dur="6s" repeatCount="indefinite"/>
-    </ellipse>
-  </g>
-  <line x1="180" y1="75" x2="180" y2="345" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,4" opacity=".5"/>
-  <text x="223" y="218" text-anchor="middle" fill="#0a1a30" font-size="12" font-family="Heebo,sans-serif" font-weight="700">יום</text>
-  <text x="137" y="218" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לילה</text>
-  <text x="223" y="92" text-anchor="middle" fill="#f1c40f" font-size="10" font-family="Heebo,sans-serif" font-weight="700">זריחה</text>
-  <text x="137" y="332" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">שקיעה</text>
-  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">סיבוב כדור הארץ ממערב למזרח</text>
+  <rect width="360" height="420" fill="#050a18"/>
+  <circle cx="180" cy="200" r="100" fill="#0d3a6e" stroke="#2a6aae" stroke-width="2"/>
+  <text x="180" y="165" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Arial" font-weight="700">🌍</text>
+  <text x="180" y="205" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif">כדור הארץ</text>
+  <path d="M245,118 A85,85 0 0,1 270,190" fill="none" stroke="#f39c12" stroke-width="3.5" stroke-linecap="round" marker-end="url(#rArr)"/>
+  <defs><marker id="rArr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f39c12"/></marker></defs>
+  <text x="280" y="160" fill="#f39c12" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ממ→מ</text>
+  <circle cx="330" cy="130" r="25" fill="#f39c12" opacity="0.9"/>
+  <text x="330" y="135" text-anchor="middle" fill="#000" font-size="14" font-weight="900">☀</text>
+  <text x="330" y="170" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif">מזרח — זריחה</text>
+  <circle cx="30" cy="270" r="16" fill="#c07030" opacity="0.5"/>
+  <text x="30" y="275" text-anchor="middle" fill="#f39c12" font-size="11" font-weight="700">☀</text>
+  <text x="30" y="295" text-anchor="middle" fill="#c07030" font-size="9" font-family="Heebo,sans-serif">מערב — שקיעה</text>
+  <rect x="18" y="325" width="324" height="50" rx="7" fill="#0d1e38" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="180" y="344" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Heebo,sans-serif" font-weight="900">כדור הארץ סובב מ-מ׳ ל-מ׳ (ממ→מ)</text>
+  <text x="180" y="362" text-anchor="middle" fill="#aaa" font-size="10" font-family="Heebo,sans-serif">⇒ השמש נראית זורחת במזרח ושוקעת במערב</text>
+  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">סיבוב כדור הארץ</text>
 
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
@@ -85,11 +69,6 @@ const E="כדור הארץ מסתובב ממערב למזרח — לכן השמ�
 const LT=["א","ב","ג","ד"];
 
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)
-// Gated behind window.__startAutoPlay() instead of running on page load, so the
-// recorder (Puppeteer) can fire it the instant the screencast actually starts —
-// otherwise the timer head-starts before recording begins and drifts out of sync
-// with the audio track (which assumes recording-start == t=0).
-window.__startAutoPlay = function(){
 const prog=document.getElementById('prog');
 const DELAY=15000;
 prog.style.transition='none';prog.style.width='0%';
@@ -114,7 +93,6 @@ setTimeout(()=>{
     setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
   },600);
 },DELAY+50);
-};
 
 
 </script></body></html>
