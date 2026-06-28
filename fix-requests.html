@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛠 SkipperQuiz — בקשות תיקון</title>
+<style>
+:root {
+  --bg: #0a1628; --bg2: #0f1f3d; --bg3: #152848;
+  --accent: #7eb8f7; --green: #3ddc84; --orange: #f5a623;
+  --red: #e85d5d; --border: #1e3a6e; --text: #e8f0fe; --dim: #7a9cc8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; direction: rtl; }
+
+header { background: #081228; border-bottom: 2px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
+.hright { margin-right: auto; display: flex; gap: 8px; align-items: center; }
+
+.btn { padding: 7px 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; font-family: inherit; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-ghost { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg3); color: var(--text); }
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+.btn-save { background: rgba(126,184,247,0.15); color: var(--accent); border: 1px solid rgba(126,184,247,0.4); }
+.btn-save:hover { background: rgba(126,184,247,0.25); }
+.btn-done { background: rgba(61,220,132,0.15); color: var(--green); border: 1px solid rgba(61,220,132,0.4); }
+.btn-done:hover { background: rgba(61,220,132,0.25); }
+
+.cfg-row { padding: 8px 20px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+.cfg-row input { padding: 5px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; font-family: monospace; direction: ltr; }
+.cfg-row input:focus { outline: none; border-color: var(--accent); }
+.ok { color: var(--green); } .err { color: var(--red); }
+
+.stats { padding: 8px 20px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; gap: 20px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+.stat-val { color: var(--text); font-weight: 700; }
+
+.filters { padding: 10px 20px; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.filters input { flex: 1; min-width: 180px; padding: 7px 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; direction: rtl; }
+.filters input:focus { outline: none; border-color: var(--accent); }
+.filter-btn { padding: 5px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: var(--dim); cursor: pointer; font-size: 12px; font-family: inherit; }
+.filter-btn.active { background: var(--accent); color: #081228; border-color: var(--accent); font-weight: 700; }
+
+#q-list { padding: 10px 20px 80px; max-width: 900px; margin: 0 auto; }
+.q-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+.q-card.pending { border-color: rgba(245,166,35,0.5); }
+.q-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.q-num-badge { font-size: 11px; background: var(--bg3); color: var(--accent); padding: 2px 8px; border-radius: 5px; font-weight: 700; }
+.q-topic-tag { font-size: 11px; color: var(--dim); }
+.pending-badge { font-size: 10px; background: rgba(245,166,35,0.15); color: var(--orange); border: 1px solid rgba(245,166,35,0.4); padding: 1px 8px; border-radius: 10px; margin-right: auto; }
+.q-text { font-size: 13px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
+.q-sub { font-size: 11px; color: var(--dim); margin-bottom: 8px; }
+textarea { width: 100%; padding: 8px 10px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; font-family: inherit; direction: rtl; resize: vertical; line-height: 1.5; }
+textarea:focus { outline: none; border-color: var(--accent); }
+.row-btns { display: flex; gap: 8px; margin-top: 8px; align-items: center; }
+.fix-meta { font-size: 10px; color: var(--dim); margin-right: auto; }
+.video-link { color: var(--accent); text-decoration: none; font-size: 11px; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; }
+.video-link:hover { background: var(--accent); color: #081228; }
+
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1e3a6e; color: var(--text); padding: 10px 20px; border-radius: 10px; font-size: 13px; z-index: 999; display: none; border: 1px solid var(--accent); white-space: nowrap; }
+.toast.on { display: block; }
+.empty { text-align: center; padding: 50px; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <span style="font-size:20px">🛠</span>
+  <h1>SkipperQuiz — בקשות תיקון</h1>
+  <div class="hright">
+    <button class="btn btn-ghost btn-sm" onclick="location.href='queue.html'">📋 תור פרסום</button>
+    <button class="btn btn-ghost btn-sm" onclick="loadData()">↻ רענן</button>
+  </div>
+</header>
+
+<div class="cfg-row" id="cfgRow">
+  <span>GitHub Token:</span>
+  <input id="ghToken" type="password" placeholder="ghp_xxxxxxxx" style="width:200px" oninput="saveCfg()">
+  <span id="cfgStatus"></span>
+</div>
+
+<div class="stats">
+  <span>סה"כ שאלות: <span class="stat-val" id="st-total">—</span></span>
+  <span>🟠 תיקונים ממתינים: <span class="stat-val" id="st-pending">—</span></span>
+</div>
+
+<div class="filters">
+  <input type="text" id="search" placeholder="🔍 חפש שאלה..." oninput="renderList()">
+  <button class="filter-btn active" id="f-all"     onclick="setFilter('all')">הכל</button>
+  <button class="filter-btn"       id="f-pending" onclick="setFilter('pending')">ממתין לתיקון</button>
+</div>
+
+<div id="q-list"><div class="empty">טוען...</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const REPO = 'argovalex/skipper-quiz';
+let questions = [];
+let questionsSHA = null;
+let activeFilter = 'all';
+
+function saveCfg() {
+  localStorage.setItem('sq_gh_token', document.getElementById('ghToken').value.trim());
+  updateCfgStatus();
+}
+function loadCfg() {
+  document.getElementById('ghToken').value = localStorage.getItem('sq_gh_token') || '';
+  updateCfgStatus();
+}
+function updateCfgStatus() {
+  const t = document.getElementById('ghToken').value.trim();
+  document.getElementById('cfgStatus').innerHTML = t ? '<span class="ok">✅ מוגדר</span>' : '<span class="err">⚠ Token חסר</span>';
+}
+const getToken = () => localStorage.getItem('sq_gh_token') || '';
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('on');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(() => el.classList.remove('on'), 2800);
+}
+
+async function loadData() {
+  try {
+    const token = getToken();
+    if (token) {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`,
+        { headers: { Authorization: `Bearer ${token}` } });
+      if (r.ok) {
+        const d = await r.json();
+        questionsSHA = d.sha;
+        const raw = atob(d.content.replace(/\n/g, ''));
+        questions = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
+      }
+    }
+    if (!questions.length) {
+      const r = await fetch(`https://raw.githubusercontent.com/${REPO}/main/questions.json?t=${Date.now()}`);
+      questions = await r.json();
+    }
+    updateStats();
+    renderList();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+
+function updateStats() {
+  document.getElementById('st-total').textContent = questions.length;
+  document.getElementById('st-pending').textContent = questions.filter(q => q.fix_request).length;
+}
+
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('f-' + f).classList.add('active');
+  renderList();
+}
+
+function getFiltered() {
+  const search = document.getElementById('search').value.toLowerCase().trim();
+  return questions.filter(q => {
+    if (activeFilter === 'pending' && !q.fix_request) return false;
+    if (search && !`${q.num} ${q.topic} ${q.q_he}`.toLowerCase().includes(search)) return false;
+    return true;
+  });
+}
+
+function renderList() {
+  const list = getFiltered().sort((a, b) => a.num - b.num);
+  const el = document.getElementById('q-list');
+  if (!list.length) { el.innerHTML = '<div class="empty">אין שאלות תואמות</div>'; return; }
+  el.innerHTML = list.map(q => `
+    <div class="q-card ${q.fix_request ? 'pending' : ''}">
+      <div class="q-head">
+        <span class="q-num-badge">#${q.num}</span>
+        <span class="q-topic-tag">${q.topic || ''}</span>
+        ${q.fix_request ? `<span class="pending-badge">🟠 ממתין לתיקון</span>` : ''}
+      </div>
+      <div class="q-text">${q.q_he || ''}</div>
+      ${q.videoUrl ? `<div class="q-sub"><a class="video-link" href="${q.videoUrl}" target="_blank">▶ צפה בסרטון</a></div>` : `<div class="q-sub">אין סרטון עדיין</div>`}
+      <textarea id="fix-${q.num}" rows="3" placeholder="למשל: הגדל את כדור הארץ, תקן את כיוון הסיבוב, האט את הקריינות בסצנה השלישית...">${q.fix_request || ''}</textarea>
+      <div class="row-btns">
+        <button class="btn btn-save btn-sm" onclick="saveFix(${q.num})">💾 שמור בקשה</button>
+        ${q.fix_request ? `<button class="btn btn-done btn-sm" onclick="resolveFix(${q.num})">✅ בוצע</button>` : ''}
+        <span class="fix-meta">${q.fix_requested_at ? 'נשלח: ' + new Date(q.fix_requested_at).toLocaleString('he-IL') : ''}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function saveQuestionsGH(msg) {
+  const token = getToken();
+  if (!token) { toast('⚠ הגדר GitHub Token'); return false; }
+  try {
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`,
+      { headers: { Authorization: `Bearer ${token}` } });
+    let sha;
+    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; questionsSHA = sha; }
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(questions, null, 2))));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg || 'update: questions', content: encoded, ...(sha ? { sha } : {}) })
+    });
+    return res.ok;
+  } catch (e) { toast('❌ שמירה נכשלה: ' + e.message); return false; }
+}
+
+async function saveFix(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  const text = document.getElementById(`fix-${num}`).value.trim();
+  if (!text) { toast('⚠ כתוב פרומפט תיקון לפני שמירה'); return; }
+  q.fix_request = text;
+  q.fix_requested_at = new Date().toISOString();
+  toast('⏳ שומר...');
+  const ok = await saveQuestionsGH(`fix-request: Q#${num}`);
+  updateStats();
+  renderList();
+  toast(ok ? `✅ בקשת תיקון לQ#${num} נשמרה` : '⚠ שמירה ל-GitHub נכשלה');
+}
+
+async function resolveFix(num) {
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  delete q.fix_request;
+  delete q.fix_requested_at;
+  q.fix_resolved_at = new Date().toISOString();
+  toast('⏳ מסמן כבוצע...');
+  const ok = await saveQuestionsGH(`fix-resolved: Q#${num}`);
+  updateStats();
+  renderList();
+  toast(ok ? `✅ Q#${num} סומן כבוצע` : '⚠ שמירה ל-GitHub נכשלה');
+}
+
+loadCfg();
+loadData();
+</script>
+</body>
+</html>
