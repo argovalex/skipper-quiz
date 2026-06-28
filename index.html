@@ -842,31 +842,51 @@ Object.assign(SCENES_QA, {
 `,
 
 // Q102, Q168: Earth rotates W→E → sun rises east
+// Sun fixed in the center (large); Earth (small) orbits it on an ellipse while
+// also spinning on its own axis — matches the fix-request from Q102 (no static
+// orbiting arrow; the globe itself must visibly rotate).
 'earth_rotation': `
   <rect width="360" height="420" fill="#050a18"/>
   <circle cx="48" cy="20" r="1" fill="white" opacity=".5"/>
   <circle cx="320" cy="35" r="1.2" fill="white" opacity=".6"/>
-  <!-- Sun + rays, fixed on the right -->
+  <circle cx="30" cy="380" r="1" fill="white" opacity=".4"/>
+  <circle cx="335" cy="350" r="1.3" fill="white" opacity=".5"/>
+
+  <ellipse cx="180" cy="205" rx="150" ry="78" fill="none" stroke="#3a5a8a" stroke-width="1.5" opacity=".55"/>
+
+  <defs>
+    <radialGradient id="sunGrad" cx="38%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fff6c8"/>
+      <stop offset="60%" stop-color="#f1c40f"/>
+      <stop offset="100%" stop-color="#e08e0b"/>
+    </radialGradient>
+    <radialGradient id="earthGrad" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#a9c9e8"/>
+      <stop offset="100%" stop-color="#3a6ea5"/>
+    </radialGradient>
+    <clipPath id="earthClip2"><circle cx="0" cy="0" r="22"/></clipPath>
+  </defs>
+  <circle cx="180" cy="205" r="50" fill="#f1c40f" opacity=".16"/>
+  <circle cx="180" cy="205" r="38" fill="url(#sunGrad)"/>
+
   <g>
-    <circle cx="350" cy="210" r="34" fill="#f1c40f"/>
-    <circle cx="350" cy="210" r="46" fill="#f1c40f" opacity=".18"/>
-    ${[-40,-20,0,20,40].map(a=>`<line x1="${(316-26*Math.cos(a*Math.PI/180)).toFixed(1)}" y1="${(210+26*Math.sin(a*Math.PI/180)).toFixed(1)}" x2="${(300-20*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(210+20*Math.sin(a*Math.PI/180)).toFixed(1)}" stroke="#f1c40f" stroke-width="2" opacity=".7"/>`).join('')}
+    <animateMotion dur="10s" repeatCount="indefinite" rotate="0">
+      <mpath href="#orbitPath"/>
+    </animateMotion>
+    <circle r="22" fill="url(#earthGrad)" stroke="#1e4a7a" stroke-width="1"/>
+    <g clip-path="url(#earthClip2)">
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2.4s" repeatCount="indefinite"/>
+        <line x1="0" y1="-22" x2="0" y2="22" stroke="#1e4a7a" stroke-width="1.2" opacity=".7"/>
+        <ellipse cx="0" cy="0" rx="9" ry="22" fill="none" stroke="#1e4a7a" stroke-width="1" opacity=".6"/>
+        <ellipse cx="0" cy="0" rx="18" ry="22" fill="none" stroke="#1e4a7a" stroke-width="1" opacity=".6"/>
+      </g>
+      <line x1="-22" y1="0" x2="22" y2="0" stroke="#1e4a7a" stroke-width="1" opacity=".5"/>
+    </g>
   </g>
-  <!-- Earth: lit (day) hemisphere + dark (night) hemisphere split by terminator -->
-  <circle cx="180" cy="210" r="135" fill="#7eb8f7"/>
-  <path d="M180,75 A135,135 0 0,0 180,345 Z" fill="#04102a"/>
-  <line x1="180" y1="75" x2="180" y2="345" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,4" opacity=".5"/>
-  <text x="223" y="218" text-anchor="middle" fill="#0a1a30" font-size="12" font-family="Heebo,sans-serif" font-weight="700">יום</text>
-  <text x="137" y="218" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לילה</text>
-  <text x="180" y="218" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" font-weight="700" opacity=".9">🌍</text>
-  <!-- Rotation arrow on the globe, animated west→east toward the sun -->
-  <path d="M295,255 A115,115 0 0,1 245,140" fill="none" stroke="#e67e22" stroke-width="4" stroke-linecap="round" marker-end="url(#rArr)">
-    <animateTransform attributeName="transform" type="rotate" from="0 180 210" to="-360 180 210" dur="6s" repeatCount="indefinite"/>
-  </path>
-  <defs><marker id="rArr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#e67e22"/></marker></defs>
-  <text x="223" y="92" text-anchor="middle" fill="#f1c40f" font-size="10" font-family="Heebo,sans-serif" font-weight="700">זריחה</text>
-  <text x="137" y="332" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700">שקיעה</text>
-  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">סיבוב כדור הארץ ממערב למזרח</text>
+  <path id="orbitPath" d="M30,205 A150,78 0 1,1 330,205 A150,78 0 1,1 30,205" fill="none" stroke="none"/>
+
+  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">כדור הארץ מסתובב סביב צירו וסביב השמש</text>
 `,
 
 // Q103, Q171: Polaris altitude = latitude
@@ -2294,6 +2314,7 @@ function renderList() {
       <div class="q-item-topic">
         <span class="q-item-badge ${q.answer_confirmed?'':'unconfirmed'}">${q.answer_confirmed?'✓ מאושר':'⚠ לא מאושר'}</span>
         ${q.approved_for_publish?'<span class="q-item-badge" style="background:#1a3a6e;color:#7eb8f7;margin-right:3px">📤 לפרסום</span>':''}
+        ${q.fix_request?'<span class="q-item-badge" style="background:#3a2a10;color:#f5a623;margin-right:3px">🟠 תיקון</span>':''}
         ${q.mediaUrl?'<span style="font-size:11px">📎</span>':''}
         &nbsp;${q.topic||''}
       </div>`;
@@ -2433,6 +2454,12 @@ function renderEditor(q) {
       </div>
       <label style="display:block;margin-top:10px">📝 הנחיות רינדור (נשמר ל-log, עוד לא משפיע על העיצוב בפועל)</label>
       <textarea id="rm-notes" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: שגיאה בכותרת, להגדיל טקסט וכו'">${q.render_notes||''}</textarea>
+      <label style="display:block;margin-top:10px">🛠 בקשת תיקון ${q.fix_request?'<span style="color:#f5a623;font-size:11px">🟠 ממתין</span>':''}</label>
+      <textarea id="fix-request" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: הגדל את כדור הארץ, תקן כיוון סיבוב...">${q.fix_request||''}</textarea>
+      <div style="display:flex;gap:8px;margin-top:6px;align-items:center">
+        <button class="btn btn-ghost btn-sm" onclick="saveFixRequest()">💾 שמור בקשת תיקון</button>
+        <span style="font-size:11px;color:var(--muted)">נשמר ל-questions.json, לא מפעיל רינדור</span>
+      </div>
       <details id="rm-preview-details" style="margin-top:8px" ontoggle="if(this.open) loadRenderPreview()">
         <summary style="cursor:pointer;color:#7eb8f7;font-size:12px">👁 תצוגה מקדימה של האנימציה</summary>
         <iframe class="rm-preview-iframe" id="rm-preview-iframe" sandbox="allow-scripts allow-same-origin" style="width:auto;height:min(70vh,620px);aspect-ratio:390/693;display:block;border:1px solid var(--border);border-radius:6px;background:#000;margin:6px auto 0"></iframe>
@@ -2489,6 +2516,18 @@ function saveCurrentToState() {
   // Save blast override if field visible
   const boEl = document.getElementById('f-blast-override');
   if(boEl) q.blastOverride = boEl.value.trim();
+}
+
+async function saveFixRequest() {
+  if(currentIdx < 0) return;
+  const q = questions[currentIdx];
+  const text = document.getElementById('fix-request')?.value.trim();
+  if(!text) { showToast('⚠ כתוב פרומפט תיקון לפני שמירה'); return; }
+  q.fix_request = text;
+  q.fix_requested_at = new Date().toISOString();
+  renderList();
+  await saveJSON();
+  showToast(`✅ בקשת תיקון לQ#${q.num} נשמרה`);
 }
 
 function showEmptyEditor() {
