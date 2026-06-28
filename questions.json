@@ -114,7 +114,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782643972/skipper-quiz/h2er9xdl8qplvjkzz92e.mp4",
-    "rendered_at": "2026-06-28T10:52:53.181Z"
+    "rendered_at": "2026-06-28T10:52:53.181Z",
+    "fix_request": "הוסף ציור של רמקול וכאשר המחט עוברת לידו היא נעצרת  ורוטטת לאחר 1 שניה ממשיכה.",
+    "fix_requested_at": "2026-06-28T10:55:38.037Z"
   },
   {
     "num": 106,
