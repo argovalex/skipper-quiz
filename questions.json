@@ -42,8 +42,9 @@
     "mediaType": "",
     "approved_for_publish": true,
     "voiceover_text": "שאלה מספר 102. מדוע רואים את השמש זורחת במזרח ושוקעת במערב?. [[PAUSE]] התשובה הנכונה: כדור הארץ סובב סביב צירו ממערב למזרח. כדור הארץ מסתובב ממערב למזרח — לכן השמש נראית זורחת במזרח ושוקעת במערב.",
+    "html_locked": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782723907/skipper-quiz/ofgd5vklh0xkzaxsk2rs.mp4",
-    "rendered_at": "2026-06-29T09:05:08.756Z"
+    "rendered_at": "2026-06-29T09:05:10.900Z"
   },
   {
     "num": 103,
@@ -78,7 +79,7 @@
     "options": [
       "א. יחידות של קווי רוחב בצד ימין או שמאל ומול אזור השייט",
       "ב. יחידות של קווי אורך בכל קצה שנבחר",
-      "ג. ביחידה התקנית של מיל ימי שהיא 1.853 ק\"מ",
+      "ג. ביחידה התקנית של מיל ימי שהיא 1.853 ק",
       "ד. אורך הקשת של דקת רוחב על כל מעגל גדול"
     ],
     "answer": "א",
@@ -110,12 +111,13 @@
     "explanation": "רמקולים, מגנטים וסוללות יוצרים שדות מגנטיים שמשבשים את המצפן המגנטי — יש להרחיקם.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
+    "approved_for_publish": true,
     "voiceover_text": "שאלה מספר 105. כיצד ישפיעו מכשירים המכילים רמקולים, אזניות, מיקרופון וסוללות על מצפן הספינה?. [[PAUSE]] התשובה הנכונה: יוציאו את מצפן מגנטי מאיזון. רמקולים, מגנטים וסוללות יוצרים שדות מגנטיים שמשבשים את המצפן המגנטי — יש להרחיקם.",
     "html_locked": true,
     "fix_resolved_at": "2026-06-28T11:21:04.044Z",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782724090/skipper-quiz/pcytscnngxzmngqbmtid.mp4",
-    "rendered_at": "2026-06-29T09:08:11.570Z"
+    "rendered_at": "2026-06-29T09:08:13.858Z",
+    "scheduled_date": "2026-06-29"
   },
   {
     "num": 106,
