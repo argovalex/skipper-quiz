@@ -171,25 +171,23 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 <div id="topbar">
   <h1>⚓ Skipper Quiz Manager</h1>
   <span id="q-count" style="color:var(--muted);font-size:13px">לא נטען</span>
-  <button class="tbtn blue" id="folderBtn" onclick="pickFolder()" title="בחר את תיקיית SkipperQuiz">📁 הגדר תיקייה</button>
-  <button class="tbtn green" onclick="saveJSON()" title="שמור את כל השאלות חזרה ל-questions.json">💾 שמור</button>
+  <span id="syncStatus" style="font-size:12px"></span>
+  <input id="ghToken" type="password" placeholder="GitHub Token" style="width:160px" oninput="saveToken()">
+  <button class="tbtn green" onclick="saveJSON()" title="שמור את כל השאלות ל-GitHub">💾 שמור</button>
   <button class="tbtn" onclick="addQuestion()" title="הוסף שאלה חדשה ריקה">➕ שאלה חדשה</button>
   <button class="tbtn blue" onclick="exportAllZip()">📦 ייצא ZIP</button>
   <input id="railwayUrl" type="text" placeholder="Railway URL (לרינדור)" style="width:220px;margin-right:8px" oninput="localStorage.setItem('sq_railway_url', this.value.trim())">
 </div>
 
-<!-- SETUP OVERLAY — shown on first run -->
+<!-- SETUP OVERLAY — shown only when there's no GitHub token and no local cache to fall back on -->
 <div id="setupOverlay" style="display:none;position:fixed;inset:0;background:rgba(6,13,26,0.97);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">
   <div style="font-size:60px">⚓</div>
   <div style="color:#7eb8f7;font-size:24px;font-weight:900">Skipper Quiz Manager</div>
   <div style="color:#aac4e8;font-size:15px;text-align:center;line-height:1.7">
-    כדי להתחיל, בחר את <strong style="color:#fff">תיקיית SkipperQuiz</strong> שלך.<br>
-    זה יטען אוטומטית את <code style="color:#7eb8f7">questions.json</code> בכל פתיחה.
+    הדביק <strong style="color:#fff">GitHub Token</strong> בשדה שמופיע מעל.<br>
+    כל השמירות/טעינות יילכו ישירות ל-GitHub (questions.json בריפו skipper-quiz),<br>
+    עם עותק מקומי שמאפשר לעבוד גם בלי רשת.
   </div>
-  <button id="setupMainBtn" onclick="pickFolder()" style="background:#4a90d9;color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif">
-    📁 בחר תיקיית SkipperQuiz
-  </button>
-  <div style="color:#556688;font-size:12px">C:\Users\argov\OneDrive\Co-Work OS\SkipperQuiz</div>
 </div>
 
 <!-- TAB NAV -->
@@ -583,104 +581,58 @@ function clearMedia() {
   showToast('🗑 מדיה נמחקה');
 }
 
-// ── Directory Handle (persisted in IndexedDB) ────────────────────────────────
-const DB_NAME = 'SkipperQuizDB', DB_STORE = 'handles', DIR_KEY = 'skipperfolder';
-let dirHandle = null;
+// ── GitHub-backed persistence (with local cache for offline use) ────────────
+let questionsSHA = null;
 
-function openDB() {
-  return new Promise((res, rej) => {
-    const req = indexedDB.open(DB_NAME, 1);
-    req.onupgradeneeded = e => e.target.result.createObjectStore(DB_STORE);
-    req.onsuccess = e => res(e.target.result);
-    req.onerror = () => rej(req.error);
-  });
+function saveToken() {
+  localStorage.setItem('sq_gh_token', document.getElementById('ghToken').value.trim());
+  updateSyncStatus();
 }
-async function saveHandleToDB(handle) {
-  const db = await openDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction(DB_STORE, 'readwrite');
-    tx.objectStore(DB_STORE).put(handle, DIR_KEY);
-    tx.oncomplete = res; tx.onerror = () => rej(tx.error);
-  });
-}
-async function loadHandleFromDB() {
-  const db = await openDB();
-  return new Promise((res) => {
-    const tx = db.transaction(DB_STORE, 'readonly');
-    const req = tx.objectStore(DB_STORE).get(DIR_KEY);
-    req.onsuccess = () => res(req.result || null);
-    req.onerror = () => res(null);
-  });
+function updateSyncStatus(offline) {
+  const el = document.getElementById('syncStatus');
+  if (offline) { el.textContent = '⚠ אופליין (עותק מקומי)'; el.style.color = 'var(--orange,#f5a623)'; }
+  else { el.textContent = '✅ מסונכרן'; el.style.color = 'var(--green,#3ddc84)'; }
 }
 
-// ── Pick Folder ───────────────────────────────────────────────────────────────
-async function pickFolder() {
-  try {
-    const handle = await window.showDirectoryPicker({ mode: 'readwrite' });
-    dirHandle = handle;
-    await saveHandleToDB(handle);
-    document.getElementById('folderBtn').textContent = `📁 ${handle.name}`;
-    document.getElementById('setupOverlay').style.display = 'none';
-    await loadQuestionsFromDir();
-  } catch(e) {
-    if(e.name !== 'AbortError') showToast('❌ ' + e.message);
+// ── Load questions.json from GitHub (falls back to local cache if offline) ──
+async function loadQuestions() {
+  const { data, sha, offline } = await loadQuestionsCached();
+  questionsSHA = sha;
+  updateSyncStatus(offline);
+  if (!data.length) {
+    document.getElementById('setupOverlay').style.display = 'flex';
+    return;
   }
+  document.getElementById('setupOverlay').style.display = 'none';
+  questions = data.map((q,i) => ({
+    ...q,  // preserve all fields (scheduled_date, published_at, etc.)
+    num: q.num ?? i+1,
+    source: q.source || 'ידני',
+    topic: q.topic || 'כללי',
+    q_he: q.q_he || '',
+    q_en: q.q_en || '',
+    options: q.options || ['א. ','ב. ','ג. ','ד. '],
+    answer: q.answer || 'א',
+    answer_confirmed: q.answer_confirmed || false,
+    approved_for_publish: q.approved_for_publish || false,
+    explanation: q.explanation || '',
+    mediaUrl: q.mediaUrl || '',
+    mediaType: q.mediaType || '',
+  }));
+  populateTopicFilter();
+  renderList();
+  updateCount();
+  showToast(`✅ ${questions.length} שאלות נטענו${offline ? ' (אופליין)' : ''}`);
+  if(questions.length > 0) selectQuestion(0);
 }
 
-// ── Load questions.json from folder ──────────────────────────────────────────
-async function loadQuestionsFromDir() {
-  if(!dirHandle) return;
-  try {
-    const fh = await dirHandle.getFileHandle('questions.json');
-    const file = await fh.getFile();
-    const text = await file.text();
-    const raw = JSON.parse(text);
-    questions = raw.map((q,i) => ({
-      ...q,  // preserve all fields (scheduled_date, published_at, etc.)
-      num: q.num ?? i+1,
-      source: q.source || 'ידני',
-      topic: q.topic || 'כללי',
-      q_he: q.q_he || '',
-      q_en: q.q_en || '',
-      options: q.options || ['א. ','ב. ','ג. ','ד. '],
-      answer: q.answer || 'א',
-      answer_confirmed: q.answer_confirmed || false,
-      approved_for_publish: q.approved_for_publish || false,
-      explanation: q.explanation || '',
-      mediaUrl: q.mediaUrl || '',
-      mediaType: q.mediaType || '',
-    }));
-    populateTopicFilter();
-    renderList();
-    updateCount();
-    showToast(`✅ ${questions.length} שאלות נטענו`);
-    if(questions.length > 0) selectQuestion(0);
-  } catch(e) {
-    if(e.name === 'NotFoundError') showToast('⚠ questions.json לא נמצא בתיקייה');
-    else showToast('❌ ' + e.message);
-  }
-}
-
-// ── Save JSON → folder ────────────────────────────────────────────────────────
+// ── Save questions → GitHub (queued locally and retried automatically if offline) ──
 async function saveJSON() {
   if(!questions.length) { showToast('❌ אין שאלות לשמור'); return; }
   if(currentIdx >= 0) saveCurrentToState();
-  // Save to folder if handle exists
-  if(dirHandle) {
-    try {
-      const fh = await dirHandle.getFileHandle('questions.json', { create: true });
-      const writable = await fh.createWritable();
-      await writable.write(JSON.stringify(questions, null, 2));
-      await writable.close();
-      showToast('💾 נשמר ל-questions.json');
-      return;
-    } catch(e) { showToast('⚠ שגיאה: ' + e.message); }
-  }
-  // Fallback: download
-  const blob = new Blob([JSON.stringify(questions, null, 2)], {type:'application/json'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = 'questions.json'; a.click();
-  showToast('⬇ מוריד questions.json');
+  const ok = await saveQuestionsGH('update: questions');
+  updateSyncStatus(!ok);
+  showToast(ok ? '💾 נשמר ל-GitHub' : '⚠ אין רשת — נשמר מקומית, יסונכרן אוטומטית');
 }
 
 // ── Auto-populate topic filter ────────────────────────────────────────────────
@@ -692,52 +644,14 @@ function populateTopicFilter() {
     topics.map(t=>`<option${t===cur?' selected':''}>${t}</option>`).join('');
 }
 
-// ── INIT: restore folder on load ──────────────────────────────────────────────
-let pendingHandle = null; // a remembered folder waiting on a permission re-click
-
+// ── INIT ──────────────────────────────────────────────────────────────────────
 async function initApp() {
-  const stored = await loadHandleFromDB();
-  if(stored) {
-    try {
-      // Check we still have permission — if granted, load with zero clicks.
-      const perm = await stored.queryPermission({ mode: 'readwrite' });
-      if(perm === 'granted') {
-        dirHandle = stored;
-        document.getElementById('folderBtn').textContent = `📁 ${stored.name}`;
-        document.getElementById('setupOverlay').style.display = 'none';
-        await loadQuestionsFromDir();
-        return;
-      }
-      // Browsers require a user gesture (click) to show the permission prompt —
-      // calling requestPermission() here with no click would silently fail.
-      // Remember the handle and surface a one-click "reconnect" button instead
-      // of the full folder picker.
-      pendingHandle = stored;
-    } catch(e) { /* fall through to show overlay */ }
-  }
-  // First run, or permission needs a one-click reconnect
-  if(pendingHandle) {
-    document.getElementById('setupMainBtn').textContent = `📁 התחבר מחדש ל-${pendingHandle.name}`;
-    document.getElementById('setupMainBtn').setAttribute('onclick', 'reconnectFolder()');
-  }
-  document.getElementById('setupOverlay').style.display = 'flex';
+  document.getElementById('ghToken').value = localStorage.getItem('sq_gh_token') || '';
+  await loadQuestions();
+  flushPendingSave();
 }
 document.addEventListener('DOMContentLoaded', initApp);
-
-async function reconnectFolder() {
-  if(!pendingHandle) return pickFolder();
-  try {
-    const req = await pendingHandle.requestPermission({ mode: 'readwrite' });
-    if(req === 'granted') {
-      dirHandle = pendingHandle;
-      document.getElementById('folderBtn').textContent = `📁 ${pendingHandle.name}`;
-      document.getElementById('setupOverlay').style.display = 'none';
-      await loadQuestionsFromDir();
-      return;
-    }
-    showToast('⚠ הגישה לתיקייה נדחתה');
-  } catch(e) { showToast('❌ ' + e.message); }
-}
+window.addEventListener('online', () => loadQuestions());
 
 // ── Add Question ─────────────────────────────────────────────────────────────
 function addQuestion() {
