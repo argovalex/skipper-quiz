@@ -811,6 +811,7 @@ async function confirmPublish() {
 
   const q = questions.find(x => x.num === num);
   if (!q) return;
+  if (!only && !q.videoUrl) { toast('⚠ אין סרטון — לא נשלח'); return; }
 
   q.scheduled_date = date;
   q.scheduled_time = time;
@@ -861,21 +862,29 @@ function buildCaption(q) {
 
 async function updatePublishLog(num, videoUrl, topic, scheduledDate) {
   const token = getToken();
-  if (!token) return;
-  try {
-    const api = 'https://api.github.com/repos/argovalex/skipper-quiz-publisher/contents/publish-log.json';
-    const hdrs = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
-    let log = [], sha;
-    const r = await fetch(api, { headers: hdrs });
-    if (r.ok) {
-      const d = await r.json(); sha = d.sha;
-      const raw = atob(d.content.replace(/\n/g,''));
-      log = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c=>c.charCodeAt(0))));
-    }
-    log.push({ num, topic, published_at: new Date().toISOString(), scheduled_date: scheduledDate || null, videoUrl, platforms: ['youtube','facebook','instagram'] });
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(log, null, 2))));
-    await fetch(api, { method:'PUT', headers: hdrs, body: JSON.stringify({ message:`publish-log: Q#${num}`, content: encoded, ...(sha?{sha}:{}) }) });
-  } catch(e) { console.warn('publish-log update failed:', e.message); }
+  if (!token) return false;
+  const api = 'https://api.github.com/repos/argovalex/skipper-quiz-publisher/contents/publish-log.json';
+  const hdrs = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+  // The Make webhook already fired by the time this runs, so a swallowed PUT
+  // failure here would leave the question looking unpublished and risk a
+  // duplicate send next time — retry a few times against sha conflicts.
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      let log = [], sha;
+      const r = await fetch(api, { headers: hdrs });
+      if (r.ok) {
+        const d = await r.json(); sha = d.sha;
+        const raw = atob(d.content.replace(/\n/g,''));
+        log = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c=>c.charCodeAt(0))));
+      }
+      log.push({ num, topic, published_at: new Date().toISOString(), scheduled_date: scheduledDate || null, videoUrl, platforms: ['youtube','facebook','instagram'] });
+      const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(log, null, 2))));
+      const putRes = await fetch(api, { method:'PUT', headers: hdrs, body: JSON.stringify({ message:`publish-log: Q#${num}`, content: encoded, ...(sha?{sha}:{}) }) });
+      if (putRes.ok) return true;
+      console.warn(`publish-log PUT failed (attempt ${attempt}): ${putRes.status}`);
+    } catch(e) { console.warn(`publish-log update failed (attempt ${attempt}):`, e.message); }
+  }
+  return false;
 }
 
 // ── Batch render ──────────────────────────────────────────────────────────────
