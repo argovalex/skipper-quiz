@@ -327,6 +327,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 
 <script src="auth.js"></script>
 <script src="scenes.js"></script>
+<script src="github-api.js"></script>
 <script>
 // ── State ──────────────────────────────────────────────────────────────────
 let questions = [];
@@ -351,54 +352,6 @@ function setLang(l) {
   if(currentIdx>=0) renderEditor(questions[currentIdx]);
 }
 
-
-// ── GitHub push helper (same token as queue.html) ────────────────────────────
-async function ghPushQuestions() {
-  const token = getToken();
-  if (!token) return false;
-  const REPO = 'argovalex/skipper-quiz';
-  const path = 'questions.json';
-  const content = JSON.stringify(questions, null, 2);
-  try {
-    // Get current SHA
-    let sha;
-    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,
-      { headers: { Authorization: `Bearer ${token}` } });
-    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
-
-    const encoded = btoa(unescape(encodeURIComponent(content)));
-    const body = { message: `approve: Q#${questions[currentIdx]?.num}`, content: encoded, ...(sha ? { sha } : {}) };
-    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    return res.ok;
-  } catch { return false; }
-}
-
-// ── Push pre-built HTML to GitHub for publisher ───────────────────────────────
-async function ghPushHTML(q) {
-  const token = getToken();
-  if (!token) return false;
-  const REPO = 'argovalex/skipper-quiz';
-  const fname = `quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/[\s\/]/g,'_')}_he.html`;
-  const path = `html/${fname}`;
-  const html = generateQuizHTML(q, 'he', true); // autoPlay=true for video recording
-  try {
-    let sha;
-    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,
-      { headers: { Authorization: `Bearer ${token}` } });
-    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
-    const encoded = btoa(unescape(encodeURIComponent(html)));
-    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: `html: Q#${q.num} ${q.topic}`, content: encoded, ...(sha ? { sha } : {}) })
-    });
-    return res.ok;
-  } catch { return false; }
-}
 
 // ── Render — voice over + send to Railway (ported from queue.html) ──────────
 function getRailwayUrl() {

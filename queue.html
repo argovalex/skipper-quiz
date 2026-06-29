@@ -338,54 +338,9 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
 
 <script src="auth.js"></script>
 <script src="scenes.js"></script>
+<script src="github-api.js"></script>
 <script>
-const REPO = 'argovalex/skipper-quiz';
-
-// ── Animation scenes (canonical — synced from index.html generateQuizHTML) ──
-
-// ── GitHub push helper (same token as queue.html) ────────────────────────────
-
 // ── Editor ───────────────────────────────────────────────────────────────────
-
-
-async function ghPushHTML(q) {
-  const token = getToken();
-  if (!token) return false;
-  const fname = `quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/[\s\/\"]/g,'_')}_he.html`;
-  const path = `html/${fname}`;
-  const html = generateQuizHTML(q, 'he', true); // autoPlay=true for video recording
-  try {
-    let sha;
-    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,
-      { headers: { Authorization: `Bearer ${token}` } });
-    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
-    const encoded = btoa(unescape(encodeURIComponent(html)));
-    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: `html: Q#${q.num} ${q.topic}`, content: encoded, ...(sha ? { sha } : {}) })
-    });
-    return res.ok;
-  } catch { return false; }
-}
-
-async function saveQuestionsGH(msg) {
-  const token = getToken();
-  if (!token) return false;
-  try {
-    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`,
-      { headers: { Authorization: `Bearer ${token}` } });
-    let sha;
-    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; questionsSHA = sha; }
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(questions, null, 2))));
-    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`, {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: msg || 'update: questions', content: encoded, ...(sha ? { sha } : {}) })
-    });
-    return res.ok;
-  } catch(e) { toast('❌ שמירה נכשלה: ' + e.message); return false; }
-}
 
 let fixModalNum = null;
 function openFixModal(num) {
