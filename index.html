@@ -325,6 +325,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 
 <div id="toast">✅ נשמר!</div>
 
+<script src="auth.js"></script>
 <script>
 // ── State ──────────────────────────────────────────────────────────────────
 let questions = [];
@@ -1840,7 +1841,7 @@ function getScene(topic, qText) {
 
 // ── GitHub push helper (same token as queue.html) ────────────────────────────
 async function ghPushQuestions() {
-  const token = localStorage.getItem('sq_gh_token');
+  const token = getToken();
   if (!token) return false;
   const REPO = 'argovalex/skipper-quiz';
   const path = 'questions.json';
@@ -1865,7 +1866,7 @@ async function ghPushQuestions() {
 
 // ── Push pre-built HTML to GitHub for publisher ───────────────────────────────
 async function ghPushHTML(q) {
-  const token = localStorage.getItem('sq_gh_token');
+  const token = getToken();
   if (!token) return false;
   const REPO = 'argovalex/skipper-quiz';
   const fname = `quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/[\s\/]/g,'_')}_he.html`;
@@ -1994,7 +1995,6 @@ async function renderFromEditor() {
   if (!railwayUrl) { showToast('⚠ הכנס Railway URL'); return; }
 
   q.voiceover_text = document.getElementById('rm-vo').value.trim();
-  q.render_notes    = document.getElementById('rm-notes').value.trim();
   q.html_locked     = document.getElementById('fix-locked')?.checked || false;
   const priorRenderedAt = q.rendered_at || null;
 
@@ -2016,7 +2016,7 @@ async function renderFromEditor() {
     const res = await fetch(`${railwayUrl}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: q.voiceover_text, render_notes: q.render_notes, force: !!q.videoUrl })
+      body: JSON.stringify({ voiceover_text: q.voiceover_text, force: !!q.videoUrl })
     });
     if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
     const data = await res.json();
@@ -2460,8 +2460,6 @@ function renderEditor(q) {
         <span id="rm-preview-status" style="font-size:12px;color:var(--muted)"></span>
         <audio id="rm-audio" style="display:none"></audio>
       </div>
-      <label style="display:block;margin-top:10px">📝 הנחיות רינדור (נשמר ל-log, עוד לא משפיע על העיצוב בפועל)</label>
-      <textarea id="rm-notes" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: שגיאה בכותרת, להגדיל טקסט וכו'">${q.render_notes||''}</textarea>
       <label style="display:block;margin-top:10px">🛠 בקשת תיקון ${q.fix_request?'<span style="color:#f5a623;font-size:11px">🟠 ממתין</span>':''}</label>
       <textarea id="fix-request" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: הגדל את כדור הארץ, תקן כיוון סיבוב...">${q.fix_request||''}</textarea>
       <div style="display:flex;gap:8px;margin-top:6px;align-items:center">

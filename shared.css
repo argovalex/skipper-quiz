@@ -1,0 +1,20 @@
+:root {
+  --bg: #0a1628; --bg2: #0f1f3d; --bg3: #152848;
+  --accent: #7eb8f7; --green: #3ddc84; --orange: #f5a623;
+  --red: #e85d5d; --border: #1e3a6e; --text: #e8f0fe; --dim: #7a9cc8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; direction: rtl; }
+
+/* ── Buttons ── */
+.btn { padding: 7px 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; font-family: inherit; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-ghost { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg3); color: var(--text); }
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+
+/* ── Config row ── */
+.cfg-row { padding: 8px 20px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+.cfg-row input { padding: 5px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; font-family: monospace; direction: ltr; }
+.cfg-row input:focus { outline: none; border-color: var(--accent); }
+.ok { color: var(--green); } .err { color: var(--red); }

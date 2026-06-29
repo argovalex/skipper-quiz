@@ -4,36 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚓ SkipperQuiz — פרסום</title>
+<link rel="stylesheet" href="shared.css">
 <style>
-:root {
-  --bg: #0a1628; --bg2: #0f1f3d; --bg3: #152848;
-  --accent: #7eb8f7; --green: #3ddc84; --orange: #f5a623;
-  --red: #e85d5d; --border: #1e3a6e; --text: #e8f0fe; --dim: #7a9cc8;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; direction: rtl; }
-
 /* ── Header ── */
 header { background: #081228; border-bottom: 2px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
 header h1 { font-size: 17px; color: var(--accent); font-weight: 800; }
 .hright { margin-right: auto; display: flex; gap: 8px; align-items: center; }
 
 /* ── Buttons ── */
-.btn { padding: 7px 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; font-family: inherit; }
-.btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn-ghost { background: transparent; color: var(--dim); border: 1px solid var(--border); }
-.btn-ghost:hover { background: var(--bg3); color: var(--text); }
-.btn-sm { padding: 4px 10px; font-size: 12px; }
 .btn-render { background: rgba(126,184,247,0.12); color: var(--accent); border: 1px solid rgba(126,184,247,0.3); }
 .btn-render:hover { background: rgba(126,184,247,0.22); }
 .btn-publish { background: rgba(61,220,132,0.15); color: var(--green); border: 1px solid rgba(61,220,132,0.4); }
 .btn-publish:hover { background: rgba(61,220,132,0.25); }
-
-/* ── Config ── */
-.cfg-row { padding: 8px 20px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
-.cfg-row input { padding: 5px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; font-family: monospace; direction: ltr; }
-.cfg-row input:focus { outline: none; border-color: var(--accent); }
-.ok { color: var(--green); } .err { color: var(--red); }
 
 /* ── Tabs ── */
 .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); background: var(--bg2); padding: 0 20px; }
@@ -297,11 +279,6 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
       <audio id="rm-audio" style="display:none"></audio>
     </div>
 
-    <div class="modal-row" style="margin-top:14px">
-      <label>📝 הוראות לרינדור (אופציונלי)</label>
-      <textarea id="rm-notes" rows="2" placeholder="למשל: הגדל פונט, האט אנימציה, שנה צבע רקע..."></textarea>
-    </div>
-
     <div class="modal-row" style="margin-top:6px;flex-direction:row;align-items:center;gap:8px">
       <input type="checkbox" id="rm-locked" style="width:auto">
       <label for="rm-locked" style="margin:0;cursor:pointer">🔒 HTML נעול — אל תדרוס עיצוב מותאם אישית ברינדור הבא</label>
@@ -359,6 +336,7 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
   </div>
 </div>
 
+<script src="auth.js"></script>
 <script>
 const REPO = 'argovalex/skipper-quiz';
 
@@ -2335,8 +2313,6 @@ function updateCfgStatus() {
   else if (t)  el.innerHTML = '<span class="err">⚠ Railway URL חסר</span>';
   else         el.innerHTML = '<span class="err">⚠ Token חסר</span>';
 }
-const getToken      = () => localStorage.getItem('sq_gh_token') || '';
-const getRailwayUrl = () => (localStorage.getItem('sq_railway_url') || '').replace(/\/$/, '');
 
 // ── Tabs ──────────────────────────────────────────────────────────────────────
 function switchTab(name) {
@@ -2546,7 +2522,6 @@ function renderVideo(num) {
   renderModalNum = num;
   document.getElementById('rm-title').textContent = `Q#${num} — ${q.topic}`;
   document.getElementById('rm-vo').value    = q.voiceover_text || buildVoiceover(q);
-  document.getElementById('rm-notes').value = q.render_notes  || '';
   document.getElementById('rm-locked').checked = !!q.html_locked;
   document.getElementById('rm-preview-status').textContent = '';
   document.getElementById('rm-audio').src = '';
@@ -2604,13 +2579,12 @@ async function confirmRender() {
   const num  = renderModalNum;
   if (renderingNums.has(num)) { toast(`⏳ Q#${num} כבר בתהליך רינדור...`); return; }
   const voText = document.getElementById('rm-vo').value.trim();
-  const notes  = document.getElementById('rm-notes').value.trim();
   const locked = document.getElementById('rm-locked').checked;
   closeRenderModal();
 
   const railwayUrl = getRailwayUrl();
   const q = questions.find(x => x.num === num);
-  if (q) { q.voiceover_text = voText; q.render_notes = notes; q.html_locked = locked; }
+  if (q) { q.voiceover_text = voText; q.html_locked = locked; }
   const priorRenderedAt = q?.rendered_at || null;
   if (q) await saveQuestionsGH(`render-settings: Q#${num}${locked ? ' (locked)' : ''}`);
 
@@ -2635,7 +2609,7 @@ async function confirmRender() {
     const res = await fetch(`${railwayUrl}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: voText, render_notes: notes, force: !!q?.videoUrl })
+      body: JSON.stringify({ voiceover_text: voText, force: !!q?.videoUrl })
     });
     if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
     const data = await res.json();
