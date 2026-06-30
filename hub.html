@@ -407,7 +407,7 @@
   <div class="header-title">🚢 SkipperQuiz <span>Control Hub</span></div>
 
   <nav class="status-row">
-    <a class="status-link" href="index.html" target="skipper-editor" title="פתח עורך">
+    <a class="status-link" href="index.html" target="skipper-editor" title="פתח עורך" onclick="return openFresh(this)">
       <span class="dot"></span> עורך
     </a>
     <a class="status-link" href="monitor.html" target="skipper-monitor" title="פתח מוניטור">
@@ -466,7 +466,7 @@
     <div class="card-header">📋 פעולות מהירות</div>
     <div class="card-body">
       <a class="btn primary" href="queue.html" target="skipper-queue">📦 מחסנית פרסום</a>
-      <a class="btn" href="index.html" target="skipper-editor">✏️ פתח עורך</a>
+      <a class="btn" href="index.html" target="skipper-editor" onclick="return openFresh(this)">✏️ פתח עורך</a>
       <a class="btn" href="monitor.html" target="skipper-monitor">📊 פתח מוניטור</a>
       <a class="btn" href="fix-requests.html" target="skipper-fix">🛠 בקשות תיקון</a>
       <a class="btn" href="https://github.com/argovalex/skipper-quiz" target="_blank">🐙 GitHub</a>
@@ -488,6 +488,21 @@
 </main>
 
 <script>
+// These tool links reuse a named window (target="skipper-editor" etc.) so
+// repeated clicks don't pile up tabs — but that means if the window is
+// already open, clicking again just focuses it without re-fetching the file,
+// so edits to index.html/monitor.html/etc. can look "stuck" on an old version.
+// Force a real reload when the window already exists.
+function openFresh(a) {
+  const w = window.open('', a.target);
+  if (w && w.location && w.location.href !== 'about:blank') {
+    w.location.href = a.href;
+    w.focus();
+    return false;
+  }
+  return true; // no existing window — let the normal link navigation open it
+}
+
 // ── Config ──────────────────────────────────────────────────────────────
 const QUESTIONS_URL   = 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/questions.json';
 // skipper-quiz-publisher (where publish-log.json lives) is a private repo, and
