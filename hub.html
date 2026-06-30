@@ -490,7 +490,11 @@
 <script>
 // ── Config ──────────────────────────────────────────────────────────────
 const QUESTIONS_URL   = 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/questions.json';
-const PUBLISH_LOG_URL = 'https://raw.githubusercontent.com/argovalex/skipper-quiz-publisher/main/publish-log.json';
+// skipper-quiz-publisher (where publish-log.json lives) is a private repo, and
+// this is a public no-login page with nowhere to hold a GitHub token, so a
+// direct raw.githubusercontent.com fetch here always 404s. Go through the
+// publisher server's own read-only proxy instead — it already has the token.
+const PUBLISH_LOG_URL = 'https://skipper-quiz-publisher-production.up.railway.app/publish-log';
 const AUTO_REFRESH_SEC = 60;
 
 // Topic → color mapping
