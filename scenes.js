@@ -1922,7 +1922,7 @@ document.querySelectorAll('.opt').forEach((el,i)=>{
 ${isSoundSignal ? `
 // ── Sound signal audio ──────────────────────────────────────────────────────
 const _BP=${JSON.stringify(blastPattern)};
-const _BD={L:2.0,S:0.5},_BG=0.45;
+const _BD={L:${BLAST_DUR.L},S:${BLAST_DUR.S}},_BG=${BLAST_GAP};
 let _played=false;
 function _playBlasts(){
   if(_played)return;_played=true;
