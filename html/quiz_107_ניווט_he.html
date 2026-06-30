@@ -29,39 +29,34 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
     
     <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
       
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="20" y="20" width="320" height="230" rx="8" fill="#0d2040" stroke="#2a4a6a" stroke-width="1.5"/>
-  <line x1="20" y1="135" x2="340" y2="135" stroke="#1e3a5a" stroke-width="1"/>
-  <line x1="180" y1="20" x2="180" y2="250" stroke="#1e3a5a" stroke-width="1"/>
-  <text x="180" y="40" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°N</text>
-  <text x="180" y="248" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°S</text>
-  <text x="25" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°W</text>
-  <text x="310" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°E</text>
-  <path d="M20,100 Q90,90 180,100 Q270,110 340,100" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,135 Q340,135 340,135" fill="none" stroke="#3a80b8" stroke-width="2"/>
-  <path d="M20,170 Q90,180 180,170 Q270,160 340,170" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,55 Q90,48 180,55 Q270,62 340,55" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <path d="M20,215 Q90,222 180,215 Q270,208 340,215" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <line x1="110" y1="20" x2="110" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <line x1="250" y1="20" x2="250" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <circle cx="180" cy="135" r="5" fill="#4a90d9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="180" cy="135" r="12" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M180,135 L230,85" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="235" y="82" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">B</text>
-  <text x="162" y="152" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">A</text>
-  <g transform="translate(20,265)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קורס: </text>
-    <text x="52" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">045°M</text>
-    <text x="120" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מהירות: </text>
-    <text x="178" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">6.2 kn</text>
-  </g>
-  <g transform="translate(20,290)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">N </text>
-    <text x="14" y="15" fill="#fff" font-size="11" font-family="Arial">32°04.5'</text>
-    <text x="105" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">E </text>
-    <text x="118" y="15" fill="#fff" font-size="11" font-family="Arial">34°46.2'</text>
-  </g>
-  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט על מפת מרקטור</text>
+  <rect width="360" height="420" fill="#ffffff"/>
+  <text x="180" y="26" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל ימי = לאורך הקשת שבין קו אורך</text>
+  <text x="180" y="46" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">°20 01' לבין קו אורך °20 00'</text>
+  <defs>
+    <radialGradient id="earthGrad" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#bfe3ff"/>
+      <stop offset="55%" stop-color="#6fb6e8"/>
+      <stop offset="100%" stop-color="#2a6aa8"/>
+    </radialGradient>
+  </defs>
+  <circle cx="180" cy="245" r="135" fill="url(#earthGrad)" stroke="#000" stroke-width="1.6"/>
+  <circle cx="180" cy="245" r="95" fill="none" stroke="#1a3a5a" stroke-width="0.8" opacity="0.45"/>
+  <circle cx="180" cy="245" r="50" fill="none" stroke="#1a3a5a" stroke-width="0.8" opacity="0.4"/>
+  <path d="M95,185 Q75,225 100,265 Q70,285 105,320 Q90,345 130,355 Q170,335 150,300 Q175,280 155,250 Q175,220 145,195 Q120,175 95,185Z" fill="#3a7a3a" opacity="0.85"/>
+  <path d="M250,150 Q280,175 265,210 Q295,230 270,260 Q290,285 255,295 Q235,270 250,240 Q225,215 245,190 Q230,165 250,150Z" fill="#3a7a3a" opacity="0.7"/>
+  <circle cx="180" cy="245" r="3.5" fill="#000"/>
+  <text x="180" y="262" text-anchor="middle" fill="#000" font-size="8" font-family="Heebo,sans-serif" font-weight="700">קוטב צפוני</text>
+  <line x1="180" y1="245" x2="180" y2="113" stroke="#777" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="170" y="105" text-anchor="end" fill="#777" font-size="10" font-family="Arial">קו אורך 00°00'</text>
+  <line x1="180" y1="245" x2="226" y2="118" stroke="#000" stroke-width="2"/>
+  <text x="232" y="112" fill="#000" font-size="12" font-family="Arial" font-weight="700">קו אורך 20°00'</text>
+  <path d="M180,165 A88,88 0 0,1 213,178" fill="none" stroke="#000" stroke-width="1.2"/>
+  <text x="195" y="155" fill="#000" font-size="11" font-family="Arial" font-weight="700">20°</text>
+  <line x1="180" y1="245" x2="243" y2="126" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="248" y="128" fill="#c0392b" font-size="12" font-family="Arial" font-weight="700">'קו אורך 01 °20</text>
+  <path d="M226,118 A135,135 0 0,1 243,126" fill="none" stroke="#c0392b" stroke-width="3.5"/>
+  <line x1="318" y1="160" x2="236" y2="122" stroke="#c0392b" stroke-width="1.3"/>
+  <text x="320" y="164" fill="#c0392b" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל 1</text>
 
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
