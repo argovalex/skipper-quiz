@@ -3169,8 +3169,10 @@
     "blastOverride": "",
     "scheduled_date": "2026-06-24",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782830972/skipper-quiz/tfyd3livmpfeq5fvfgcq.mp4",
-    "rendered_at": "2026-06-30T14:49:33.608Z",
-    "approved_for_publish": false
+    "rendered_at": "2026-06-30T14:49:36.209Z",
+    "approved_for_publish": true,
+    "voiceover_text": "שאלה מספר 265. מה מסמלת סדרה של 5 צפירות קצרות?. [[PAUSE]] התשובה הנכונה: כוונותיך אינן מובנות, או שאני מוטרד מפעולתך. 5 צפירות קצרות = אות ספק/סכנה: 'כוונותיך אינן מובנות לי' / 'אני מוטרד מהיעדר פעולתך'. מחייבת תגובה מיידית מהספינה האחרת.",
+    "html_locked": false
   },
   {
     "num": 266,
@@ -3189,7 +3191,8 @@
     "explanation": "ספינה ממוכנת עושה דרכה בראות מוגבלת: צפירה ארוכה אחת כל 2 דקות. ספינה עוצרת (מנוע פועל אך מהירות 0): 2 ארוכות כל 2 דקות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "blastOverride": ""
   },
   {
     "num": 267,
@@ -3444,7 +3447,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782829989/skipper-quiz/qkllnyhjadkv0qrhu8ug.mp4",
-    "rendered_at": "2026-06-30T14:33:10.963Z"
+    "rendered_at": "2026-06-30T14:33:13.701Z",
+    "voiceover_text": "שאלה מספר 279. כיצד ניגשים לאדם שנפל לים עם סירה קטנה?. [[PAUSE]] התשובה הנכונה: מתוך הרוח (upwind) לאט, כך שהרוח תסחוף הספינה אל האדם. גישה ל-MOB: ניגשים מתוך הרוח (upwind) לאט ב-'quick stop' — כך שהרוח תסחוף הספינה לעבר האדם ולא ממנו. מנוע בצד שהאדם נמצא — סכנה!",
+    "html_locked": false
   },
   {
     "num": 280,
