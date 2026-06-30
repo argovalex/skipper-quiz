@@ -266,12 +266,8 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
       <div class="ph-dot"></div><div class="ph-dot"></div>
     </div>
     <div class="preview-btns">
-      <button class="btn-preview" onclick="runPreview()">▶ תצוגה מקדימה</button>
-      <button class="btn-export" onclick="exportCurrentHTML()">⬇ הורד HTML</button>
+      <button class="btn-export" onclick="downloadCurrentVideo()" style="width:100%">⬇ הורד סרטון</button>
     </div>
-    <button onclick="openFullAnimation()" style="width:100%;padding:12px;border-radius:10px;border:none;cursor:pointer;font-family:'Heebo',sans-serif;font-size:15px;font-weight:900;background:linear-gradient(135deg,#1a3a6e,#2a5aaa);color:#fff;transition:all 0.2s;box-shadow:0 4px 16px rgba(74,144,217,0.3)" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
-      🎬 צפה באנימציה מלאה
-    </button>
 
     <!-- Approve for publish -->
     <button class="btn-approve pending" id="approveBtn" onclick="toggleApprove()">
@@ -1150,114 +1146,22 @@ function getOverlaySVG(v) {
   </g>`;
 }
 
-const PHASES_HE = [
-  {dur:3000,  label:'❓ השאלה',              opts:true,  correct:-1, overlay:false},
-  {dur:12000, label:'💭 חשוב על התשובה...', opts:true,  correct:-1, overlay:false},
-  {dur:4000,  label:'✅ התשובה הנכונה',     opts:true,  correct:0,  overlay:false},
-  {dur:5000,  label:'💡 הסבר',              opts:false, correct:-1, overlay:true},
-];
-const PHASES_EN = [
-  {dur:3000,  label:'❓ Question',       opts:true,  correct:-1, overlay:false},
-  {dur:12000, label:'💭 Think about it...', opts:true, correct:-1, overlay:false},
-  {dur:4000,  label:'✅ Correct Answer', opts:true,  correct:0,  overlay:false},
-  {dur:5000,  label:'💡 Explanation',    opts:false, correct:-1, overlay:true},
-];
-function getPhases() { return currentLang === 'en' ? PHASES_EN : PHASES_HE; }
-
-function runPreview() {
-  const v = getCurrentValues();
-  if(!v) return;
-  stopAnimation();
-  updatePreview(false);  // non-interactive: auto-animation mode
-  const gen = animGeneration;  // capture current generation
-  const dots = document.querySelectorAll('.ph-dot');
-  const PHASES = getPhases();
-  function runPhase(i) {
-    if(gen !== animGeneration) return;  // question changed — stop
-    if(i >= PHASES.length) return;
-    const ph = PHASES[i];
-    dots.forEach((d,j) => d.classList.toggle('on', j===i));
-    document.getElementById('r-qlabel').textContent = ph.label;
-    document.getElementById('r-opts').style.display = ph.opts ? 'flex' : 'none';
-    if(ph.opts) {
-      for(let j=0;j<4;j++) {
-        const el = document.getElementById('ro'+j);
-        if(!el) continue;
-        el.classList.remove('correct','dim');
-        if(ph.correct >= 0) { if(j===v.correct) el.classList.add('correct'); else el.classList.add('dim'); }
-      }
-    }
-    const ov = document.getElementById('answerOverlay');
-    if(ov) ov.setAttribute('opacity', ph.overlay ? '1' : '0');
-    document.getElementById('r-qtext').textContent = ph.overlay ? v.expl : v.q;
-    const p = document.getElementById('r-prog');
-    p.style.transition = 'none'; p.style.width = '0%';
-    setTimeout(() => { if(gen === animGeneration) { p.style.transition='width '+ph.dur+'ms linear'; p.style.width='100%'; } }, 30);
-    animTimer = setTimeout(() => runPhase(i+1), ph.dur);
-  }
-  runPhase(0);
-}
-
-// ── Open Full Animation (iframe overlay) ─────────────────────────────────────
-function openFullAnimation() {
-  if(currentIdx < 0) { showToast('❌ בחר שאלה תחילה'); return; }
-  saveCurrentToState();
-  const q = questions[currentIdx];
-  const html = generateQuizHTML(q, currentLang, true);
-
-  // Remove old overlay if exists
-  const old = document.getElementById('animOverlay');
-  if(old) old.remove();
-
-  const overlay = document.createElement('div');
-  overlay.id = 'animOverlay';
-  overlay.style.cssText = [
-    'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:500',
-    'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px'
-  ].join(';');
-
-  // Topic label
-  const label = document.createElement('div');
-  label.textContent = `${q.topic} — #${q.num}`;
-  label.style.cssText = 'color:#7eb8f7;font-size:13px;font-weight:700;letter-spacing:1px';
-
-  // iframe with srcdoc — works on file://
-  const iframe = document.createElement('iframe');
-  iframe.style.cssText = 'width:390px;height:693px;border:none;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,0.8)';
-  iframe.srcdoc = html;
-
-  // Close button
-  const closeBtn = document.createElement('button');
-  closeBtn.textContent = '✕ סגור';
-  closeBtn.style.cssText = [
-    'background:#0a1528;color:#7eb8f7;border:1px solid #2a4a8a',
-    'padding:10px 40px;border-radius:8px;font-family:Heebo,sans-serif',
-    'font-size:14px;font-weight:700;cursor:pointer'
-  ].join(';');
-  closeBtn.onclick = () => overlay.remove();
-
-  // Click outside to close
-  overlay.onclick = e => { if(e.target === overlay) overlay.remove(); };
-
-  overlay.appendChild(label);
-  overlay.appendChild(iframe);
-  overlay.appendChild(closeBtn);
-  document.body.appendChild(overlay);
-}
-
-// ── Export Single HTML ────────────────────────────────────────────────────────
-function exportCurrentHTML() {
+// ── Download Rendered Video ─────────────────────────────────────────────────
+async function downloadCurrentVideo() {
   if(currentIdx<0){showToast('❌ בחר שאלה תחילה');return;}
-  saveCurrentToState();
   const q = questions[currentIdx];
-  const html = generateQuizHTML(q, currentLang);
-  const blob = new Blob([html],{type:'text/html;charset=utf-8'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  const langSuffix = currentLang === 'en' ? '_en' : '_he';
-  a.download=`quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/\s/g,'_')}${langSuffix}.html`;
-  a.click();
-  showToast('⬇ מוריד HTML...');
+  if(!q.videoUrl){showToast('❌ אין עדיין סרטון מרונדר לשאלה הזו — לחץ רינדור קודם');return;}
+  showToast('⬇ מוריד סרטון...');
+  try {
+    const res = await fetch(q.videoUrl);
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `quiz_${String(q.num).padStart(3,'0')}_${(q.topic||'quiz').replace(/\s/g,'_')}.mp4`;
+    a.click();
+  } catch(e) {
+    showToast('❌ הורדה נכשלה: ' + e.message);
+  }
 }
 
 // ── Export All ZIP ────────────────────────────────────────────────────────────
