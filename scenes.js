@@ -571,32 +571,18 @@ Object.assign(SCENES_QA, {
 
 // Q107, Q115: Nautical mile = 1' arc on great circle (meridian) = 1852m
 'nautical_mile': `
-  <rect width="360" height="420" fill="#080f1a"/>
-  <rect x="25" y="18" width="310" height="225" fill="#bcd9e8" stroke="#5a4a2a" stroke-width="2"/>
-  <path d="M335,18 L335,90 Q300,75 280,105 Q260,140 290,170 Q310,190 335,180 L335,243 L25,243 L25,18 Z" fill="#bcd9e8"/>
-  <path d="M25,18 L80,18 Q120,40 100,75 Q70,100 90,140 Q60,160 40,150 Q20,130 25,90 Z" fill="#d9c79a" stroke="#8a7a4a" stroke-width="1"/>
-  <path d="M335,18 L335,90 Q300,75 280,105 Q260,140 290,170 Q310,190 335,180 L335,18 Z" fill="#d9c79a" stroke="#8a7a4a" stroke-width="1"/>
-  ${[0,1,2,3,4,5,6].map(i=>`<line x1="${25+i*51.6}" y1="18" x2="${25+i*51.6}" y2="243" stroke="${i===3?'#c0392b':'#7a8a8a'}" stroke-width="${i===3?2.2:0.8}" opacity="${i===3?0.9:0.55}"/>`).join('')}
-  ${[0,1,2,3,4].map(i=>`<line x1="25" y1="${18+i*56.25}" x2="335" y2="${18+i*56.25}" stroke="#7a8a8a" stroke-width="0.8" opacity="0.55"/>`).join('')}
-  ${[0,1,2,3,4,5,6].map(i=>`<text x="${25+i*51.6}" y="13" text-anchor="middle" fill="#3a2f1a" font-size="7" font-family="Arial">${(34+i)}°W</text>`).join('')}
-  ${[0,1,2,3,4].map(i=>`<text x="14" y="${22+i*56.25}" text-anchor="middle" fill="#3a2f1a" font-size="7" font-family="Arial">${36-i}°N</text>`).join('')}
-  <circle cx="63" cy="65" r="20" fill="none" stroke="#3a2f1a" stroke-width="1"/>
-  <path d="M63,47 L67,61 L63,57 L59,61 Z" fill="#c0392b"/>
-  <path d="M63,83 L67,69 L63,73 L59,69 Z" fill="#3a2f1a"/>
-  <text x="63" y="40" text-anchor="middle" fill="#3a2f1a" font-size="8" font-family="Arial" font-weight="700">N</text>
-  ${[[110,200],[150,160],[210,210],[250,150],[290,225]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.2" fill="#3a2f1a"/><text x="${x+4}" y="${y+3}" fill="#3a2f1a" font-size="6" font-family="Arial">${10+(x%9)}</text>`).join('')}
-  <text x="180" y="234" text-anchor="middle" fill="#c0392b" font-size="8.5" font-family="Heebo,sans-serif" font-weight="700">קו האורך המודגש = מעגל גדול (עובר בשני הקטבים)</text>
-  <rect x="40" y="258" width="280" height="92" rx="6" fill="#0c1828" stroke="#f39c12" stroke-width="1.5"/>
-  <text x="180" y="272" text-anchor="middle" fill="#7eb8f7" font-size="8.5" font-family="Heebo,sans-serif">סולם קו הרוחב בשולי המפה — כך מודדים מרחק בים</text>
-  <line x1="180" y1="278" x2="180" y2="338" stroke="#f39c12" stroke-width="3"/>
-  ${[0,1,2,3,4,5,6].map(i=>`<line x1="170" y1="${280+i*10}" x2="190" y2="${280+i*10}" stroke="${i===3?'#2ecc71':'#7eb8f7'}" stroke-width="${i===3?2.5:1}"/>`).join('')}
-  <text x="200" y="313" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="900">1' = 1 NM</text>
-  <text x="60" y="313" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Arial" font-weight="900">1°</text>
-  <line x1="55" y1="280" x2="55" y2="336" stroke="#f39c12" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
-  <rect x="15" y="354" width="330" height="58" rx="7" fill="#0d1e38" stroke="#f39c12" stroke-width="1.5"/>
-  <text x="180" y="368" text-anchor="middle" fill="#f39c12" font-size="10.5" font-family="Heebo,sans-serif" font-weight="700">מיל ימי = דקת קשת אחת (1') על מעגל גדול</text>
-  <text x="180" y="385" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Arial" font-weight="700">1' = 1,852 מטר</text>
-  <text x="180" y="402" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">1° = 60' = 60 NM</text>
+  <rect width="360" height="420" fill="#ffffff"/>
+  <text x="180" y="26" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל ימי = לאורך הקשת שבין קו רוחב</text>
+  <text x="180" y="46" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">°45 01' לבין קו רוחב °45 00'</text>
+  <circle cx="180" cy="245" r="135" fill="none" stroke="#000" stroke-width="1.6"/>
+  <line x1="45" y1="245" x2="315" y2="245" stroke="#000" stroke-width="1.2"/>
+  <line x1="180" y1="245" x2="180" y2="110" stroke="#000" stroke-width="1.2"/>
+  <line x1="180" y1="245" x2="200" y2="112" stroke="#000" stroke-width="1.2"/>
+  <path d="M180,110 A135,135 0 0,1 200,112" fill="none" stroke="#c0392b" stroke-width="3"/>
+  <text x="206" y="103" fill="#1a3aa0" font-size="13" font-family="Arial" font-weight="700">'45° 01</text>
+  <text x="186" y="135" fill="#1a3aa0" font-size="13" font-family="Arial" font-weight="700">'45° 00</text>
+  <line x1="318" y1="118" x2="208" y2="115" stroke="#c0392b" stroke-width="1.3"/>
+  <text x="320" y="122" fill="#c0392b" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל 1</text>
 `,
 
 // Q112: Speed calculation 15m/5s = 5.83 kn
