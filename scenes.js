@@ -569,11 +569,14 @@ Object.assign(SCENES_QA, {
   <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט בכוכב הצפון</text>
 `,
 
-// Q107, Q115: Nautical mile = 1' arc on great circle (meridian) = 1852m
+// Q107, Q115: Nautical mile = 1' arc on great circle (meridian) = 1852m.
+// Polar (top-down, from the North Pole) view: meridians are real straight
+// radii from the pole, so the 20° angle between 0° and 20°00' is drawn true,
+// and the 20°00'→20°01' gap (1' of arc = 1 NM) is exaggerated for visibility.
 'nautical_mile': `
   <rect width="360" height="420" fill="#ffffff"/>
   <text x="180" y="26" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל ימי = לאורך הקשת שבין קו אורך</text>
-  <text x="180" y="46" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">°20 01' לבין קו אורך °20 00' (על קו המשווה)</text>
+  <text x="180" y="46" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">°20 01' לבין קו אורך °20 00'</text>
   <defs>
     <radialGradient id="earthGrad" cx="38%" cy="32%" r="75%">
       <stop offset="0%" stop-color="#bfe3ff"/>
@@ -582,20 +585,23 @@ Object.assign(SCENES_QA, {
     </radialGradient>
   </defs>
   <circle cx="180" cy="245" r="135" fill="url(#earthGrad)" stroke="#000" stroke-width="1.6"/>
-  <ellipse cx="180" cy="245" rx="135" ry="38" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.55"/>
-  <ellipse cx="180" cy="245" rx="80" ry="135" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.55"/>
-  <ellipse cx="180" cy="245" rx="30" ry="135" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.4"/>
-  <path d="M120,150 Q105,180 120,215 Q100,235 125,265 Q110,290 135,310" fill="none" stroke="#3a7a3a" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
-  <path d="M225,165 Q245,195 220,225 Q248,250 222,285" fill="none" stroke="#3a7a3a" stroke-width="7" stroke-linecap="round" opacity="0.75"/>
-  <line x1="45" y1="245" x2="315" y2="245" stroke="#000" stroke-width="1.6"/>
-  <line x1="180" y1="245" x2="180" y2="110" stroke="#000" stroke-width="1.2"/>
-  <line x1="180" y1="245" x2="200" y2="112" stroke="#000" stroke-width="1.2"/>
-  <path d="M180,110 A135,135 0 0,1 200,112" fill="none" stroke="#c0392b" stroke-width="3"/>
-  <text x="206" y="103" fill="#fff" font-size="13" font-family="Arial" font-weight="700">'20° 01</text>
-  <text x="186" y="135" fill="#fff" font-size="13" font-family="Arial" font-weight="700">'20° 00</text>
-  <text x="100" y="262" fill="#fff" font-size="9" font-family="Heebo,sans-serif" font-weight="700">קו המשווה</text>
-  <line x1="318" y1="118" x2="208" y2="115" stroke="#c0392b" stroke-width="1.3"/>
-  <text x="320" y="122" fill="#c0392b" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל 1</text>
+  <circle cx="180" cy="245" r="95" fill="none" stroke="#1a3a5a" stroke-width="0.8" opacity="0.45"/>
+  <circle cx="180" cy="245" r="50" fill="none" stroke="#1a3a5a" stroke-width="0.8" opacity="0.4"/>
+  <path d="M95,185 Q75,225 100,265 Q70,285 105,320 Q90,345 130,355 Q170,335 150,300 Q175,280 155,250 Q175,220 145,195 Q120,175 95,185Z" fill="#3a7a3a" opacity="0.85"/>
+  <path d="M250,150 Q280,175 265,210 Q295,230 270,260 Q290,285 255,295 Q235,270 250,240 Q225,215 245,190 Q230,165 250,150Z" fill="#3a7a3a" opacity="0.7"/>
+  <circle cx="180" cy="245" r="3.5" fill="#000"/>
+  <text x="180" y="262" text-anchor="middle" fill="#000" font-size="8" font-family="Heebo,sans-serif" font-weight="700">קוטב צפוני</text>
+  <line x1="180" y1="245" x2="180" y2="113" stroke="#777" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="170" y="105" text-anchor="end" fill="#777" font-size="10" font-family="Arial">קו אורך 00°00'</text>
+  <line x1="180" y1="245" x2="226" y2="118" stroke="#000" stroke-width="2"/>
+  <text x="232" y="112" fill="#000" font-size="12" font-family="Arial" font-weight="700">קו אורך 20°00'</text>
+  <path d="M180,165 A88,88 0 0,1 213,178" fill="none" stroke="#000" stroke-width="1.2"/>
+  <text x="195" y="155" fill="#000" font-size="11" font-family="Arial" font-weight="700">20°</text>
+  <line x1="180" y1="245" x2="243" y2="126" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="248" y="128" fill="#c0392b" font-size="12" font-family="Arial" font-weight="700">'קו אורך 01 °20</text>
+  <path d="M226,118 A135,135 0 0,1 243,126" fill="none" stroke="#c0392b" stroke-width="3.5"/>
+  <line x1="318" y1="160" x2="236" y2="122" stroke="#c0392b" stroke-width="1.3"/>
+  <text x="320" y="164" fill="#c0392b" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל 1</text>
 `,
 
 // Q112: Speed calculation 15m/5s = 5.83 kn
