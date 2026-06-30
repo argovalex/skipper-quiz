@@ -1460,7 +1460,7 @@ function getScene(topic, qText) {
     if(/כוכב הצפון|פולר|polaris/i.test(q))                   return SCENES_QA['polaris'];
     if(/זרח|שוקע|שמש.*זורח|rise.*east/i.test(q))             return SCENES_QA['earth_rotation'];
     if(/סובב|סיבוב|מסתובב/.test(q))                          return SCENES_QA['earth_rotation'];
-    if(/מיל ימי|nautical mile|1852|דקת קשת/.test(q))          return SCENES_QA['nautical_mile'];
+    if(/מי?יל ימי|nautical mile|1852|דקת קשת/.test(q))          return SCENES_QA['nautical_mile'];
     if(/5 שניות|15 מטר|5.83|מהירות.*שניות|שניות.*מהירות/.test(q)) return SCENES_QA['speed_calc'];
     if(/אופק.*מרחק|מרחק.*אופק|גובה.*מטר/.test(q))             return SCENES_QA['horizon_dist'];
     if(/זמן מקומי|local time|קו האורך.*זמן/.test(q))           return SCENES_QA['local_time'];
