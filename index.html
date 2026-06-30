@@ -832,20 +832,13 @@ function renderEditor(q) {
       </div>
     </div>` : ''}
 
-    <div class="section-title">מדיה — רקע לסרטון</div>
-    <div class="media-drop ${q.mediaUrl?'has-media':''}" onclick="this.querySelector('input').click()">
-      <input type="file" accept="image/*,video/*" onchange="handleMediaUpload(this)" onclick="event.stopPropagation()">
-      ${q.mediaUrl
-        ? (q.mediaType==='video'
-            ? `<video src="${q.mediaUrl}" style="width:100%;max-height:100px;object-fit:cover;border-radius:6px" muted></video>`
-            : `<img src="${q.mediaUrl}" class="media-thumb">`)
-        : `<div style="color:var(--muted);font-size:13px">📎 גרור תמונה / וידאו לכאן<br><small style="font-size:11px;opacity:0.7">JPG, PNG, MP4, MOV</small></div>`
-      }
-      ${q.mediaUrl?`<div class="media-clear" onclick="event.stopPropagation();clearMedia()">✕ הסר מדיה</div>`:''}
-    </div>
-
     <div class="section-title">🎬 רינדור סרטון</div>
     <div class="field" style="background:#0c1a3a;border:1px solid #1e3a6e;border-radius:8px;padding:10px 12px">
+
+      ${q.videoUrl ? `
+      <video src="${q.videoUrl}" controls style="width:100%;max-height:340px;border-radius:8px;background:#000;display:block;margin-bottom:10px"></video>
+      ` : `<div style="color:var(--muted);font-size:13px;margin-bottom:10px">עדיין אין סרטון מרונדר לשאלה הזו</div>`}
+
       <label style="display:flex;justify-content:space-between;align-items:center">
         <span>🎙 טקסט Voice Over</span>
         <span style="color:#7eb8f7;font-size:11px">תיקונים אוטומטיים מופעלים</span>
@@ -857,23 +850,32 @@ function renderEditor(q) {
         <span id="rm-preview-status" style="font-size:12px;color:var(--muted)"></span>
         <audio id="rm-audio" style="display:none"></audio>
       </div>
-      <label style="display:block;margin-top:10px">🛠 בקשת תיקון ${q.fix_request?'<span style="color:#f5a623;font-size:11px">🟠 ממתין</span>':''}</label>
+
+      <label style="display:block;margin-top:14px">🛠 מה לתקן ${q.fix_request?'<span style="color:#f5a623;font-size:11px">🟠 ממתין</span>':''}</label>
       <textarea id="fix-request" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: הגדל את כדור הארץ, תקן כיוון סיבוב...">${q.fix_request||''}</textarea>
-      <div style="display:flex;gap:8px;margin-top:6px;align-items:center">
-        <button class="btn btn-ghost btn-sm" onclick="saveFixRequest()">💾 שמור בקשת תיקון</button>
+
+      <div class="media-drop ${q.mediaUrl?'has-media':''}" style="margin-top:8px" onclick="this.querySelector('input').click()">
+        <input type="file" accept="image/*,video/*" onchange="handleMediaUpload(this)" onclick="event.stopPropagation()">
+        ${q.mediaUrl
+          ? (q.mediaType==='video'
+              ? `<video src="${q.mediaUrl}" style="width:100%;max-height:100px;object-fit:cover;border-radius:6px" muted></video>`
+              : `<img src="${q.mediaUrl}" class="media-thumb">`)
+          : `<div style="color:var(--muted);font-size:13px">📷 או — העלה תמונה מוכנה שתחליף את הסצנה<br><small style="font-size:11px;opacity:0.7">JPG, PNG, MP4, MOV</small></div>`
+        }
+        ${q.mediaUrl?`<div class="media-clear" onclick="event.stopPropagation();clearMedia()">✕ הסר תמונה</div>`:''}
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+        <button class="btn btn-ghost btn-sm" onclick="saveFixRequest()">💾 שמור</button>
         <span style="font-size:11px;color:var(--muted)">נשמר ל-questions.json, לא מפעיל רינדור</span>
       </div>
       <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
         <input type="checkbox" id="fix-locked" ${q.html_locked?'checked':''} onchange="saveLockState(this.checked)" style="width:auto">
         <label for="fix-locked" style="margin:0;cursor:pointer;font-size:12px">🔒 HTML נעול — אל תדרוס עיצוב מותאם אישית ברינדור הבא</label>
       </div>
-      <details id="rm-preview-details" style="margin-top:8px" ontoggle="if(this.open) loadRenderPreview()">
-        <summary style="cursor:pointer;color:#7eb8f7;font-size:12px">👁 תצוגה מקדימה של האנימציה</summary>
-        <iframe class="rm-preview-iframe" id="rm-preview-iframe" sandbox="allow-scripts allow-same-origin" style="width:auto;height:min(70vh,620px);aspect-ratio:390/693;display:block;border:1px solid var(--border);border-radius:6px;background:#000;margin:6px auto 0"></iframe>
-      </details>
-      <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+
+      <div style="display:flex;gap:8px;margin-top:14px;align-items:center">
         <button class="btn btn-render" onclick="renderFromEditor()">🎬 רינדור${q.videoUrl?' מחדש':''}</button>
-        ${q.videoUrl ? `<a href="${q.videoUrl}" target="_blank" style="color:var(--accent);font-size:12px">▶ צפה בסרטון הקיים</a>` : ''}
         <span id="rm-bottom-status" style="font-size:12px;color:var(--muted)"></span>
       </div>
     </div>
