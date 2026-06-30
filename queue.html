@@ -450,8 +450,26 @@ async function loadData() {
     }
 
     try {
-      const lr = await fetch(`https://raw.githubusercontent.com/argovalex/skipper-quiz-publisher/main/publish-log.json?t=${Date.now()}`);
-      publishLog    = lr.ok ? await lr.json() : [];
+      // skipper-quiz-publisher is a private repo, so the raw.githubusercontent.com
+      // URL 404s unauthenticated — go through the Contents API with the GitHub
+      // token like questions.json does, with the public raw URL only as a
+      // best-effort fallback if the repo's visibility ever changes.
+      const ghToken = getToken();
+      let lr = null;
+      if (ghToken) {
+        const r = await fetch('https://api.github.com/repos/argovalex/skipper-quiz-publisher/contents/publish-log.json',
+          { headers: { Authorization: `Bearer ${ghToken}` } });
+        if (r.ok) {
+          const d = await r.json();
+          const raw = atob(d.content.replace(/\n/g, ''));
+          publishLog = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
+          lr = r;
+        }
+      }
+      if (!lr) {
+        const r = await fetch(`https://raw.githubusercontent.com/argovalex/skipper-quiz-publisher/main/publish-log.json?t=${Date.now()}`);
+        publishLog = r.ok ? await r.json() : [];
+      }
       publishedNums = new Set(publishLog.map(e => e.num));
     } catch { publishLog = []; publishedNums = new Set(); }
 

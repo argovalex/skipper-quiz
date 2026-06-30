@@ -54,10 +54,17 @@ function readQuestionsCache() {
 async function loadQuestionsCached() {
   const file = await ghGetFile('questions.json');
   if (file) {
-    const raw = atob(file.content.replace(/\n/g, ''));
-    const data = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
-    cacheQuestions(data, file.sha);
-    return { data, sha: file.sha, offline: false };
+    try {
+      const raw = atob(file.content.replace(/\n/g, ''));
+      const data = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
+      if (!Array.isArray(data)) throw new Error('questions.json on GitHub is not an array');
+      cacheQuestions(data, file.sha);
+      return { data, sha: file.sha, offline: false };
+    } catch (e) {
+      // Corrupted/malformed content on GitHub — fall through to the local
+      // cache instead of crashing the caller with an uncaught parse error.
+      ghNotify('⚠ questions.json ב-GitHub פגום — עובד מהעותק האחרון שנשמר');
+    }
   }
   const cached = readQuestionsCache();
   if (cached) {

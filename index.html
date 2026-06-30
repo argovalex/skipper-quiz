@@ -624,6 +624,29 @@ async function loadQuestions() {
   updateCount();
   showToast(`✅ ${questions.length} שאלות נטענו${offline ? ' (אופליין)' : ''}`);
   if(questions.length > 0) selectQuestion(0);
+  loadPublishedNums();
+}
+
+// ── "Published" status comes from publish-log.json (skipper-quiz-publisher repo),
+// never from a field on the question itself — nothing in this codebase writes
+// q.published_at, so the queue tab used to always show every approved question
+// as pending forever. skipper-quiz-publisher is private, so this needs the
+// GitHub token, same as queue.html's equivalent fetch.
+let publishLog = [];
+let publishedAtByNum = new Map();
+async function loadPublishedNums() {
+  try {
+    const token = getToken();
+    if (!token) { publishLog = []; publishedAtByNum = new Map(); return; }
+    const r = await fetch('https://api.github.com/repos/argovalex/skipper-quiz-publisher/contents/publish-log.json',
+      { headers: { Authorization: `Bearer ${token}` } });
+    if (!r.ok) { publishLog = []; publishedAtByNum = new Map(); return; }
+    const d = await r.json();
+    const raw = atob(d.content.replace(/\n/g, ''));
+    publishLog = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
+    publishedAtByNum = new Map(publishLog.map(e => [e.num, e.published_at]));
+  } catch { publishLog = []; publishedAtByNum = new Map(); }
+  if (currentTab === 'queue') renderQueueTab();
 }
 
 // ── Save questions → GitHub (queued locally and retried automatically if offline) ──
@@ -877,7 +900,12 @@ function renderEditor(q) {
 function setCorrectBtn(i) {
   correctIdx = i;
   document.querySelectorAll('.correct-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
-  if(currentIdx>=0) questions[currentIdx].answer = LETTERS[i];
+  // q.answer is always stored as the canonical Hebrew letter (א/ב/ג/ד),
+  // never LETTERS[i] — scenes.js/publisher's letter→index maps don't
+  // recognize uppercase English (A/B/C/D), which is what LETTERS_EN[i]
+  // would save here while the UI is in English mode, silently breaking
+  // which answer gets highlighted downstream.
+  if(currentIdx>=0) questions[currentIdx].answer = LETTERS_HE[i];
   updatePreview();
 }
 
@@ -890,7 +918,7 @@ function saveCurrentToState() {
   q.q_en = document.getElementById('f-qen')?.value || '';
   q.explanation = document.getElementById('f-expl')?.value || '';
   q.answer_confirmed = document.getElementById('f-confirmed')?.checked || false;
-  q.answer = LETTERS[correctIdx];
+  q.answer = LETTERS_HE[correctIdx]; // canonical storage form — see setCorrectBtn
   const topicSel = document.getElementById('f-topic');
   if(topicSel) q.topic = topicSel.value;
   [0,1,2,3].forEach(i => {
@@ -1281,8 +1309,9 @@ function topicBadgeHTML(topic) {
 }
 
 function renderQueueTab() {
-  var queue     = questions.filter(function(q){ return q.approved_for_publish && !q.published_at; });
-  var published = questions.filter(function(q){ return !!q.published_at; }).sort(function(a,b){ return new Date(b.published_at)-new Date(a.published_at); });
+  var queue     = questions.filter(function(q){ return q.approved_for_publish && !publishedAtByNum.has(q.num); });
+  var published = questions.filter(function(q){ return publishedAtByNum.has(q.num); })
+    .sort(function(a,b){ return new Date(publishedAtByNum.get(b.num)) - new Date(publishedAtByNum.get(a.num)); });
   var totalPub  = published.length;
   var totalQ    = queue.length;
   var daysLeft  = totalQ;
@@ -1321,8 +1350,9 @@ function renderQueueTab() {
   } else {
     pempty.style.display = 'none';
     ptbody.innerHTML = published.map(function(q) {
-      var d = new Date(q.published_at);
-      var dateStr = isNaN(d.getTime()) ? q.published_at : d.toLocaleDateString('he-IL',{year:'numeric',month:'short',day:'numeric'});
+      var publishedAt = publishedAtByNum.get(q.num);
+      var d = new Date(publishedAt);
+      var dateStr = isNaN(d.getTime()) ? publishedAt : d.toLocaleDateString('he-IL',{year:'numeric',month:'short',day:'numeric'});
       var text = (q.q_he || q.q_en || '');
       var preview = text.length > 60 ? text.substring(0,60)+'...' : text;
       return '<tr>'+
