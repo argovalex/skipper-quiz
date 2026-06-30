@@ -572,15 +572,28 @@ Object.assign(SCENES_QA, {
 // Q107, Q115: Nautical mile = 1' arc on great circle (meridian) = 1852m
 'nautical_mile': `
   <rect width="360" height="420" fill="#ffffff"/>
-  <text x="180" y="26" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל ימי = לאורך הקשת שבין קו רוחב</text>
-  <text x="180" y="46" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">°45 01' לבין קו רוחב °45 00'</text>
-  <circle cx="180" cy="245" r="135" fill="none" stroke="#000" stroke-width="1.6"/>
-  <line x1="45" y1="245" x2="315" y2="245" stroke="#000" stroke-width="1.2"/>
+  <text x="180" y="26" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל ימי = לאורך הקשת שבין קו אורך</text>
+  <text x="180" y="46" text-anchor="middle" fill="#000" font-size="13" font-family="Heebo,sans-serif" font-weight="700">°20 01' לבין קו אורך °20 00' (על קו המשווה)</text>
+  <defs>
+    <radialGradient id="earthGrad" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#bfe3ff"/>
+      <stop offset="55%" stop-color="#6fb6e8"/>
+      <stop offset="100%" stop-color="#2a6aa8"/>
+    </radialGradient>
+  </defs>
+  <circle cx="180" cy="245" r="135" fill="url(#earthGrad)" stroke="#000" stroke-width="1.6"/>
+  <ellipse cx="180" cy="245" rx="135" ry="38" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.55"/>
+  <ellipse cx="180" cy="245" rx="80" ry="135" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.55"/>
+  <ellipse cx="180" cy="245" rx="30" ry="135" fill="none" stroke="#1a3a5a" stroke-width="1" opacity="0.4"/>
+  <path d="M120,150 Q105,180 120,215 Q100,235 125,265 Q110,290 135,310" fill="none" stroke="#3a7a3a" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+  <path d="M225,165 Q245,195 220,225 Q248,250 222,285" fill="none" stroke="#3a7a3a" stroke-width="7" stroke-linecap="round" opacity="0.75"/>
+  <line x1="45" y1="245" x2="315" y2="245" stroke="#000" stroke-width="1.6"/>
   <line x1="180" y1="245" x2="180" y2="110" stroke="#000" stroke-width="1.2"/>
   <line x1="180" y1="245" x2="200" y2="112" stroke="#000" stroke-width="1.2"/>
   <path d="M180,110 A135,135 0 0,1 200,112" fill="none" stroke="#c0392b" stroke-width="3"/>
-  <text x="206" y="103" fill="#1a3aa0" font-size="13" font-family="Arial" font-weight="700">'45° 01</text>
-  <text x="186" y="135" fill="#1a3aa0" font-size="13" font-family="Arial" font-weight="700">'45° 00</text>
+  <text x="206" y="103" fill="#fff" font-size="13" font-family="Arial" font-weight="700">'20° 01</text>
+  <text x="186" y="135" fill="#fff" font-size="13" font-family="Arial" font-weight="700">'20° 00</text>
+  <text x="100" y="262" fill="#fff" font-size="9" font-family="Heebo,sans-serif" font-weight="700">קו המשווה</text>
   <line x1="318" y1="118" x2="208" y2="115" stroke="#c0392b" stroke-width="1.3"/>
   <text x="320" y="122" fill="#c0392b" font-size="13" font-family="Heebo,sans-serif" font-weight="700">מייל 1</text>
 `,
