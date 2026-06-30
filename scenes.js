@@ -1600,8 +1600,8 @@ function parseBlastPatternMulti(answerText, questionText, explText, override) {
       || ['L'];
 }
 
-const BLAST_DUR = { L: 2.0, S: 0.5 };
-const BLAST_GAP = 0.45;
+const BLAST_DUR = { L: 2.0, S: 1.0 };
+const BLAST_GAP = 1.0;
 
 // ── Boat drawing helpers ─────────────────────────────────────────────────────
 function sideBoat(cx, by, color, dk) {
