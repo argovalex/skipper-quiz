@@ -573,7 +573,9 @@
 // Config
 // ─────────────────────────────────────────────────────────────
 const QUESTIONS_URL   = 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/questions.json';
-const PUBLISH_LOG_URL = 'https://raw.githubusercontent.com/argovalex/skipper-quiz-publisher/main/publish-log.json';
+// skipper-quiz-publisher (where publish-log.json lives) is a private repo, and
+// raw.githubusercontent.com 404s without an auth token — use the public Railway proxy instead.
+const PUBLISH_LOG_URL = 'https://skipper-quiz-publisher-production.up.railway.app/publish-log';
 const AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutes
 
 let questions    = [];
