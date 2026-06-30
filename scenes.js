@@ -990,7 +990,7 @@ Object.assign(SCENES_QA, {
 <text x="180" y="302" text-anchor="middle" fill="white" font-size="13" font-family="Heebo,sans-serif" font-weight="900">ספינה ממוכנת בדרכה</text>
 <text x="180" y="320" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">לבן ראש-תורן (225°) + ירוק + אדום + לבן גב (135°)</text>
 <text x="180" y="337" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ראש-תורן: קדמה + 112.5° לכל צד — לא נראה מהגב</text>
-<text x="180" y="354" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות צד: 112.5° כל אחד | אור גב: 135° לאחור</text>
+<text x="180" y="354" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות צד: 112.5° כל אחד | אור ירכתיים: 135° לאחור</text>
 <text x="180" y="375" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">מעל 50מ' — חייבת שני ראשי-תורן (קדמי נמוך, אחורי גבוה)</text>
 `,
 'lights_arc_green': `<rect width="360" height="420" fill="#050d1a"/>
@@ -1014,7 +1014,7 @@ Object.assign(SCENES_QA, {
 <text x="180" y="302" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">קשת אורות הצד — 112.5° כל אחד</text>
 <text x="180" y="320" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ירוק (starboard/ימין): מקדמת ספינה ועד 112.5° ימינה</text>
 <text x="180" y="337" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אדום (port/שמאל): מקדמת ספינה ועד 112.5° שמאלה</text>
-<text x="180" y="354" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">שניהם ביחד = 225° | הנותרים 135° = אור גב לבן</text>
+<text x="180" y="354" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">שניהם ביחד = 225° | הנותרים 135° = אור ירכתיים לבן</text>
 <text x="180" y="375" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">אם רואים ירוק בלבד — הספינה ניגשת מימין שלך</text>
 `,
 'lights_sailing': `<rect width="360" height="420" fill="#050d1a"/>
@@ -1037,7 +1037,7 @@ Object.assign(SCENES_QA, {
 <text x="186" y="216" fill="#ccc" font-size="8" font-family="Heebo,sans-serif">גב</text>
 <rect x="18" y="282" width="324" height="115" rx="8" fill="#0d1e38" stroke="#3498db" stroke-width="1.5"/>
 <text x="180" y="302" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">מפרשית בדרכה</text>
-<text x="180" y="320" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות צד בלבד (ירוק+אדום) + אור גב לבן</text>
+<text x="180" y="320" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות צד בלבד (ירוק+אדום) + אור ירכתיים לבן</text>
 <text x="180" y="337" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ללא אור ראש-תורן — זה שמבדיל אותה מממוכנת</text>
 <text x="180" y="354" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">מפרשית קטנה: יכולה לאחד שלושת האורות לפנס אחד</text>
 <text x="180" y="375" text-anchor="middle" fill="#e74c3c" font-size="10" font-family="Heebo,sans-serif" font-weight="700">הדליקה מנוע — חייבת להוסיף ראש-תורן → ממוכנת!</text>
@@ -1059,7 +1059,7 @@ Object.assign(SCENES_QA, {
 <text x="180" y="292" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">כלי שייט ללא שליטה — NUC</text>
 <text x="180" y="310" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">שני אורות אדומים עגולים (360°) בקו אנכי</text>
 <text x="180" y="327" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אינה עושה דרכה: רק שני האדומים</text>
-<text x="180" y="344" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">עושה דרכה: + אורות צד + אור גב</text>
+<text x="180" y="344" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">עושה דרכה: + אורות צד + אור ירכתיים</text>
 <text x="180" y="361" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ביום: שני כדורים שחורים בקו אנכי</text>
 <text x="180" y="382" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">כמעט הכל חייב לפנות דרך ל-NUC</text>
 `,
@@ -1140,7 +1140,7 @@ Object.assign(SCENES_QA, {
 <rect x="18" y="278" width="324" height="120" rx="8" fill="#0d1e38" stroke="#f5f5ff" stroke-width="1.5"/>
 <text x="180" y="298" text-anchor="middle" fill="white" font-size="13" font-family="Heebo,sans-serif" font-weight="900">ספינה ממוכנת מעל 50 מטר</text>
 <text x="180" y="316" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">שני אורות ראש-תורן: קדמי (נמוך) + אחורי (גבוה)</text>
-<text x="180" y="333" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">+ אורות צד ירוק+אדום + אור גב לבן</text>
+<text x="180" y="333" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">+ אורות צד ירוק+אדום + אור ירכתיים לבן</text>
 <text x="180" y="350" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אם רואים שניהם זה מעל זה — ניגשת ישירות אליך</text>
 <text x="180" y="371" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">מתחת 50מ': ראש-תורן אחד מספיק</text>
 `,
@@ -1183,7 +1183,7 @@ Object.assign(SCENES_QA, {
 <rect x="18" y="282" width="324" height="115" rx="8" fill="#0d1e38" stroke="#2ecc71" stroke-width="1.5"/>
 <text x="180" y="302" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">כלי דייג בגרירה (טרולר)</text>
 <text x="180" y="320" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ירוק מעל לבן — שניהם עגולים 360°</text>
-<text x="180" y="337" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אם עושה דרכה: + אורות צד + אור גב</text>
+<text x="180" y="337" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אם עושה דרכה: + אורות צד + אור ירכתיים</text>
 <text x="180" y="354" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">השווה: דייג שאינו גורר = אדום מעל לבן</text>
 <text x="180" y="375" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">זכור: ירוק (גרירה) מעל לבן — לא הפוך!</text>
 `,
@@ -1235,15 +1235,15 @@ Object.assign(SCENES_QA, {
 <polygon points="180,90 169,106 191,106" fill="#2a4a8a"/>
 <circle cx="180" cy="190" r="9" fill="white"><animate attributeName="opacity" values="1;.5;1" dur="2s" repeatCount="indefinite"/></circle>
 <circle cx="180" cy="190" r="9" fill="white" opacity=".1"><animate attributeName="r" values="12;25;12" dur="2s" repeatCount="indefinite"/></circle>
-<text x="186" y="208" fill="white" font-size="9" font-family="Heebo,sans-serif">לבן גב</text>
+<text x="186" y="208" fill="white" font-size="9" font-family="Heebo,sans-serif">לבן ירכתיים</text>
 <text x="112" y="200" fill="#4a6a8a" font-size="8" font-family="Heebo,sans-serif">67.5°</text>
 <text x="232" y="200" fill="#4a6a8a" font-size="8" font-family="Heebo,sans-serif">67.5°</text>
 <text x="180" y="225" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Heebo,sans-serif">← 135° →</text>
 <rect x="18" y="272" width="324" height="125" rx="8" fill="#0d1e38" stroke="#ddd" stroke-width="1.5"/>
-<text x="180" y="292" text-anchor="middle" fill="white" font-size="13" font-family="Heebo,sans-serif" font-weight="900">אור גב (Stern Light)</text>
+<text x="180" y="292" text-anchor="middle" fill="white" font-size="13" font-family="Heebo,sans-serif" font-weight="900">אור ירכתיים (Stern Light)</text>
 <text x="180" y="310" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">צבע: לבן | קשת: 135° לאחור</text>
 <text x="180" y="327" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">67.5° מכל צד מאחורי הספינה</text>
-<text x="180" y="344" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ראש-תורן (225°) + גב (135°) = 360° כיסוי מלא</text>
+<text x="180" y="344" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ראש-תורן (225°) + ירכתיים (135°) = 360° כיסוי מלא</text>
 <text x="180" y="365" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">רואים רק לבן אחד? — הספינה מתרחקת ממך</text>
 `,
 'lights_small': `<rect width="360" height="420" fill="#050d1a"/>
@@ -1300,7 +1300,7 @@ Object.assign(SCENES_QA, {
 <rect x="18" y="270" width="324" height="128" rx="8" fill="#0d1e38" stroke="#ddd" stroke-width="1.5"/>
 <text x="180" y="290" text-anchor="middle" fill="white" font-size="13" font-family="Heebo,sans-serif" font-weight="900">ראש-תורן — קשת 225° מלפנים</text>
 <text x="180" y="308" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">112.5° לצד ימין + 112.5° לצד שמאל מהקדמה</text>
-<text x="180" y="325" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">הגב (135°) לא מכוסה — שם מציגים אור גב לבן</text>
+<text x="180" y="325" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">הירכתיים (135°) לא מכוסה — שם מציגים אור ירכתיים לבן</text>
 <text x="180" y="342" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ראש-תורן (225°) + גב (135°) = 360° כיסוי מלא</text>
 <text x="180" y="363" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">טווח נראות: 3 מיל (50-12מ') | 5 מיל (מעל 50מ')</text>
 `,
@@ -1311,7 +1311,7 @@ Object.assign(SCENES_QA, {
 <text x="30" y="83" fill="#888" font-size="9" font-family="Heebo,sans-serif">גודל ספינה</text>
 <text x="152" y="83" fill="#888" font-size="9" font-family="Heebo,sans-serif">ראש-תורן</text>
 <text x="228" y="83" fill="#888" font-size="9" font-family="Heebo,sans-serif">אורות צד</text>
-<text x="298" y="83" fill="#888" font-size="9" font-family="Heebo,sans-serif">אור גב</text>
+<text x="298" y="83" fill="#888" font-size="9" font-family="Heebo,sans-serif">אור ירכתיים</text>
 <rect x="20" y="90" width="320" height="28" rx="0" fill="#091528"/>
 <text x="30" y="109" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">מתחת 12 מטר</text>
 <text x="162" y="109" fill="white" font-size="10" font-family="Heebo,sans-serif" font-weight="700">2 מיל</text>
@@ -1333,7 +1333,7 @@ Object.assign(SCENES_QA, {
 <rect x="18" y="215" width="324" height="185" rx="8" fill="#0d1e38" stroke="#f39c12" stroke-width="1.5"/>
 <text x="180" y="237" text-anchor="middle" fill="#f39c12" font-size="13" font-family="Heebo,sans-serif" font-weight="900">ספינה 20 מטר = 12–50מ'</text>
 <text x="180" y="258" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ראש-תורן: 3 מיל</text>
-<text x="180" y="275" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות צד: 2 מיל | אור גב: 2 מיל</text>
+<text x="180" y="275" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות צד: 2 מיל | אור ירכתיים: 2 מיל</text>
 <text x="180" y="310" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">12–50מ' = ראש-תורן 3 מיל | מעל 50מ' = 5 מיל</text>
 `,
 'lights_when': `<rect width="360" height="420" fill="#050d1a"/>
@@ -1418,7 +1418,7 @@ Object.assign(SCENES_QA, {
 <rect x="18" y="278" width="324" height="120" rx="8" fill="#0d1e38" stroke="#e74c3c" stroke-width="1.5"/>
 <text x="180" y="298" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">כלי דייג שאינו גורר</text>
 <text x="180" y="316" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אדום מעל לבן — שניהם עגולים 360°</text>
-<text x="180" y="333" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">בדרכה: + אורות צד + אור גב</text>
+<text x="180" y="333" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">בדרכה: + אורות צד + אור ירכתיים</text>
 <text x="180" y="350" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">השווה: טרולר = ירוק מעל לבן | פיילוט = לבן מעל אדום</text>
 <text x="180" y="371" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">דייג לא-גורר: אדום למעלה | טרולר: ירוק למעלה</text>
 `,
@@ -1442,7 +1442,7 @@ Object.assign(SCENES_QA, {
 <text x="186" y="250" fill="#ccc" font-size="8" font-family="Heebo,sans-serif">גב</text>
 <rect x="18" y="262" width="324" height="138" rx="8" fill="#0d1e38" stroke="#e74c3c" stroke-width="1.5"/>
 <text x="180" y="282" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">NUC עושה דרכה</text>
-<text x="180" y="300" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">שני אדומים עגולים + אורות צד + אור גב</text>
+<text x="180" y="300" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">שני אדומים עגולים + אורות צד + אור ירכתיים</text>
 <text x="180" y="317" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">NUC לא בדרכה: שני אדומים בלבד (ללא צד וגב)</text>
 <text x="180" y="334" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">אורות הצד מאשרים שהיא אכן בתנועה</text>
 <text x="180" y="355" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">2 אדומים + ירוק+אדום+גב = NUC בתנועה</text>
@@ -1493,7 +1493,7 @@ function getScene(topic, qText) {
     if(/מפרש|sail/i.test(q))                                    return SCENES_QA['lights_sailing'];
     if(/112\.5|קשת.*ירוק|ירוק.*קשת|אור הצד|אור.*צד.*ימין/i.test(q)) return SCENES_QA['lights_arc_green'];
     if(/50 מטר|מעל 50|over 50/i.test(q))                       return SCENES_QA['lights_large'];
-    if(/אור גב|stern light/i.test(q))                           return SCENES_QA['lights_stern'];
+    if(/אור גב|אור ירכתיים|stern light/i.test(q))                return SCENES_QA['lights_stern'];
     if(/מתחת.{0,3}7|under 7/i.test(q))                         return SCENES_QA['lights_small'];
     if(/מוגבל בשוקע|constrained.*draft/i.test(q))              return SCENES_QA['lights_constrained'];
     if(/225|ראש.תורן.*קשת|קשת.*ראש.תורן/i.test(q))            return SCENES_QA['lights_masthead_225'];
