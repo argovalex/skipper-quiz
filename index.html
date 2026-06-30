@@ -517,9 +517,10 @@ async function toggleApprove() {
   saveCurrentToState();
   const q = questions[currentIdx];
   q.approved_for_publish = !q.approved_for_publish;
-  if(q.approved_for_publish && !q.scheduled_date) {
-    q.scheduled_date = new Date().toISOString().split('T')[0];
-  }
+  // Don't auto-set scheduled_date here — the publisher's scheduler treats any
+  // scheduled_date as "due" once its time passes, so stamping today's date on
+  // approval made it publish immediately instead of waiting in the queue for
+  // the release date to be picked in queue.html.
   renderApproveBtn(q);
   renderList();
   if(q.approved_for_publish) {
