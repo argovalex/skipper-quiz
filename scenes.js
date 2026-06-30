@@ -569,24 +569,26 @@ Object.assign(SCENES_QA, {
   <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט בכוכב הצפון</text>
 `,
 
-// Q107, Q115: Nautical mile = 1' arc on great circle = 1852m
+// Q107, Q115: Nautical mile = 1' arc on great circle (meridian) = 1852m
 'nautical_mile': `
   <rect width="360" height="420" fill="#080f1a"/>
-  <circle cx="180" cy="310" r="200" fill="none" stroke="#1a3a58" stroke-width="1.5"/>
-  <path d="M104,130 A200,200 0 0,1 256,130" fill="none" stroke="#f39c12" stroke-width="4" stroke-linecap="round"/>
-  <line x1="180" y1="310" x2="104" y2="130" stroke="#f39c12" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
-  <line x1="180" y1="310" x2="256" y2="130" stroke="#f39c12" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
-  <path d="M180,230 A80,80 0 0,1 226,168" fill="none" stroke="#f39c12" stroke-width="1.5"/>
-  <text x="235" y="198" fill="#f39c12" font-size="15" font-family="Arial" font-weight="900">1°</text>
-  <text x="180" y="120" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Arial" font-weight="700">← 60 NM →</text>
-  <path d="M176,130 A200,200 0 0,1 179,127" fill="none" stroke="#2ecc71" stroke-width="4" stroke-linecap="round"/>
-  <text x="170" y="120" text-anchor="end" fill="#2ecc71" font-size="10" font-family="Arial" font-weight="700">1' = 1 NM</text>
-  <rect x="15" y="30" width="175" height="75" rx="7" fill="#0d1e38" stroke="#f39c12" stroke-width="1.5"/>
-  <text x="102" y="52" text-anchor="middle" fill="#f39c12" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מיל ימי (NM)</text>
-  <text x="102" y="69" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial">1' קשת על מעגל גדול</text>
-  <text x="102" y="86" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Arial" font-weight="700">= 1,852 מטרים</text>
-  <text x="102" y="100" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Arial">1° = 60 NM</text>
-  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">המיל הימי — הגדרה</text>
+  <rect x="30" y="20" width="300" height="190" fill="#0c1828" stroke="#1e3a5a" stroke-width="1.5"/>
+  ${[0,1,2,3,4,5,6].map(i=>`<line x1="${30+i*50}" y1="20" x2="${30+i*50}" y2="210" stroke="${i===3?'#f39c12':'#234266'}" stroke-width="${i===3?2.5:1}"/>`).join('')}
+  ${[0,1,2,3,4].map(i=>`<line x1="30" y1="${20+i*47.5}" x2="330" y2="${20+i*47.5}" stroke="#234266" stroke-width="1"/>`).join('')}
+  <text x="180" y="14" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Heebo,sans-serif">מפה ימית — קווי אורך (אנכי) וקווי רוחב (אופקי)</text>
+  <text x="180" y="226" text-anchor="middle" fill="#f39c12" font-size="9" font-family="Heebo,sans-serif">קו האורך המסומן = מעגל גדול (עובר בשני הקטבים)</text>
+  <rect x="155" y="20" width="50" height="190" fill="#f39c12" opacity="0.08"/>
+  <rect x="40" y="240" width="280" height="100" rx="6" fill="#0c1828" stroke="#f39c12" stroke-width="1.5"/>
+  <line x1="180" y1="248" x2="180" y2="332" stroke="#f39c12" stroke-width="3"/>
+  ${[0,1,2,3,4,5,6].map(i=>`<line x1="170" y1="${250+i*13}" x2="190" y2="${250+i*13}" stroke="${i===3?'#2ecc71':'#7eb8f7'}" stroke-width="${i===3?2.5:1}"/>`).join('')}
+  <text x="200" y="293" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="900">1' = 1 NM</text>
+  <text x="200" y="270" fill="#7eb8f7" font-size="9" font-family="Arial">תחתית סולם קו הרוחב במפה</text>
+  <text x="60" y="293" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Arial" font-weight="900">1°</text>
+  <line x1="55" y1="250" x2="55" y2="328" stroke="#f39c12" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+  <rect x="15" y="346" width="330" height="60" rx="7" fill="#0d1e38" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="180" y="364" text-anchor="middle" fill="#f39c12" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מיל ימי = דקת קשת אחת (1') על מעגל גדול</text>
+  <text x="180" y="382" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Arial" font-weight="700">1' = 1,852 מטר</text>
+  <text x="180" y="398" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">1° = 60' = 60 NM</text>
 `,
 
 // Q112: Speed calculation 15m/5s = 5.83 kn
