@@ -157,9 +157,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "voiceover_text": "שאלה מספר 107. מייל ימי שווה באורכו ל:. [[PAUSE]] התשובה הנכונה: דקה על גבי מעגל גדול. מיל ימי = 1852 מטר = דקת קשת אחת על מעגל גדול (בעיקר על קו האורך/קו הרוחב).",
-    "html_locked": true,
+    "html_locked": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782805351/skipper-quiz/ondwdvcwueuqojs74acn.mp4",
-    "rendered_at": "2026-06-30T07:42:32.688Z",
+    "rendered_at": "2026-06-30T07:42:35.599Z",
     "fix_request": "הצג על המפה איך נראת דקה על הצעגל הגדול",
     "fix_requested_at": "2026-06-30T07:41:33.496Z"
   },
