@@ -494,13 +494,12 @@
 // so edits to index.html/monitor.html/etc. can look "stuck" on an old version.
 // Force a real reload when the window already exists.
 function openFresh(a) {
-  const w = window.open('', a.target);
-  if (w && w.location && w.location.href !== 'about:blank') {
-    w.location.href = a.href;
-    w.focus();
-    return false;
-  }
-  return true; // no existing window — let the normal link navigation open it
+  // Always append a cache-busting query string — navigating a window to the
+  // exact URL it's already on is a no-op in most browsers (no re-fetch from
+  // disk happens), which is why a stale window used to look "stuck".
+  const freshUrl = a.getAttribute('href').split('?')[0] + '?t=' + Date.now();
+  window.open(freshUrl, a.target);
+  return false;
 }
 
 // ── Config ──────────────────────────────────────────────────────────────
