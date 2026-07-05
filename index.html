@@ -340,6 +340,7 @@ function setLicense(lic) {
   document.getElementById('lic-11').classList.toggle('active', lic === 11);
   currentIdx = -1;
   showEmptyEditor();
+  populateTopicFilter();
   renderList();
 }
 let correctIdx = 0;
@@ -651,11 +652,13 @@ async function saveJSON() {
 
 // ── Auto-populate topic filter ────────────────────────────────────────────────
 function populateTopicFilter() {
-  const topics = [...new Set(questions.map(q=>q.topic).filter(Boolean))].sort();
+  const topics = [...new Set(questions.filter(q=>(q.license??30)===activeLicense).map(q=>q.topic).filter(Boolean))].sort();
   const sel = document.getElementById('topic-filter');
   const cur = sel.value;
+  const keepCur = topics.includes(cur);
   sel.innerHTML = '<option value="">— כל הנושאים —</option>' +
-    topics.map(t=>`<option${t===cur?' selected':''}>${t}</option>`).join('');
+    topics.map(t=>`<option${t===cur&&keepCur?' selected':''}>${t}</option>`).join('');
+  if(!keepCur) sel.value = '';
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
