@@ -1493,8 +1493,104 @@ SCENES_QA['mob_approach'] = `
   <text x="180" y="384" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">הרוח תסחוף את הספינה לעבר האדם, לא ממנו</text>
 `;
 
+// ── Compass Rose (שושנה) for license-11 questions ────────────────────────────
+const CR_CX = 180, CR_CY = 210, CR_R_TIP = 68, CR_R_BASE = 148, CR_R_LABEL = 168;
+const CR_LETTERS = 'ABCDEFGHIJKLMNOP'.split('');
+function crPos(angleDeg, radius) {
+  const rad = (angleDeg - 90) * Math.PI / 180;
+  return { x: CR_CX + radius * Math.cos(rad), y: CR_CY + radius * Math.sin(rad) };
+}
+function crColor(idx) {
+  return ['#1a3fd6','#8a8a8a','#2ecc40','#ff8c1a','#e6007a','#ff8c1a','#2ecc40','#8a8a8a','#e6007a','#8a8a8a','#2ecc40','#ff8c1a','#1a3fd6','#ff8c1a','#2ecc40','#8a8a8a'][idx];
+}
+function crVessel(letter) {
+  const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, color = crColor(idx);
+  const flip = letter === 'E' || letter === 'I';
+  const tip = crPos(angle, flip ? CR_R_BASE : CR_R_TIP);
+  const bL = crPos(angle - 5, flip ? CR_R_TIP : CR_R_BASE);
+  const bR = crPos(angle + 5, flip ? CR_R_TIP : CR_R_BASE);
+  const lbl = crPos(angle, CR_R_LABEL);
+  return `<polygon points="${tip.x.toFixed(1)},${tip.y.toFixed(1)} ${bL.x.toFixed(1)},${bL.y.toFixed(1)} ${bR.x.toFixed(1)},${bR.y.toFixed(1)}" fill="${color}" stroke="#000" stroke-width="1.2"/>`
+    + `<rect x="${(lbl.x-11).toFixed(1)}" y="${(lbl.y-11).toFixed(1)}" width="22" height="22" fill="#fff" stroke="${color}" stroke-width="2.2"/>`
+    + `<text x="${lbl.x.toFixed(1)}" y="${(lbl.y+5).toFixed(1)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="${color}">${letter}</text>`;
+}
+function crHighlight(letter) {
+  const p = crPos(CR_LETTERS.indexOf(letter) * 22.5, CR_R_LABEL);
+  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="26" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="20;28;20" dur="1.4s" repeatCount="indefinite"/></circle>`;
+}
+function crBowLine(letter, color) {
+  const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, flip = letter === 'E' || letter === 'I';
+  const tipR = flip ? CR_R_BASE : CR_R_TIP;
+  const from = crPos(angle, tipR), to = crPos(angle, flip ? tipR + 50 : tipR - 45);
+  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color}" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.8"/>`;
+}
+function crBall(cx, cy, r) { return `<circle cx="${cx}" cy="${cy}" r="${r||8}" fill="#111"/>`; }
+function crDiamond(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy} ${cx},${cy+s} ${cx-s},${cy}" fill="#111"/>`; }
+function crConeDown(cx, cy, s) { s=s||9; return `<polygon points="${cx-s},${cy-s} ${cx+s},${cy-s} ${cx},${cy+s}" fill="#111"/>`; }
+function crConeUp(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy+s} ${cx-s},${cy+s}" fill="#111"/>`; }
+const CR_SHAPES = {
+  80: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-8)}${crBall(0,8)}<line x1="0" y1="-14" x2="0" y2="14" stroke="#111" stroke-width="1.6"/></g>`,
+  10: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crBall(0,0)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.6"/></g>`,
+  77: (cx,cy) => crBall(cx,cy),
+  20: (cx,cy) => crConeDown(cx,cy),
+  75: (cx,cy) => `<rect x="${cx-7}" y="${cy-10}" width="14" height="20" rx="3" fill="#111"/>`,
+  76: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-10)}${crDiamond(-12,0,5)}${crDiamond(12,0,5)}<line x1="0" y1="-16" x2="0" y2="6" stroke="#111" stroke-width="1.2"/><line x1="-12" y1="0" x2="12" y2="0" stroke="#111" stroke-width="1.2"/></g>`,
+  79: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/></g>`,
+  83: (cx,cy) => `<g transform="translate(${cx},${cy})"><rect x="-6" y="-14" width="12" height="10" fill="#e74c3c" stroke="#111" stroke-width="1"/>${crBall(0,6)}<line x1="0" y1="-14" x2="0" y2="12" stroke="#111" stroke-width="1.2"/></g>`,
+  84: (cx,cy) => `<g transform="translate(${cx},${cy})">${crConeDown(0,-6,5)}${crConeUp(0,6,5)}<line x1="0" y1="-12" x2="0" y2="12" stroke="#111" stroke-width="1.2"/></g>`,
+  86: (cx,cy) => crDiamond(cx,cy,8),
+  87: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>${crDiamond(14,-6,4)}${crDiamond(14,6,4)}</g>`,
+  89: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>${crBall(14,-6,4)}${crBall(14,6,4)}</g>`,
+  90: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>${crDiamond(-14,-6,4)}${crDiamond(-14,6,4)}${crBall(14,-6,4)}${crBall(14,6,4)}</g>`,
+  93: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#0055BF" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#fff">A</text></g>`,
+  95: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#e74c3c" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#e74c3c">B</text></g>`,
+  98: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#0055BF" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#fff">A</text></g>`,
+  104: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#e74c3c" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#ffd700">O</text></g>`,
+};
+function crDayShape(letter, shapeId) {
+  const angle = CR_LETTERS.indexOf(letter) * 22.5;
+  const midR = (CR_R_TIP + CR_R_BASE) / 2;
+  const p = crPos(angle, midR);
+  const shapeFn = CR_SHAPES[shapeId];
+  if (!shapeFn) return '';
+  let svg = `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="22" fill="#fff" stroke="#333" stroke-width="1" opacity="0.9"/>`;
+  svg += shapeFn(p.x, p.y);
+  const lp = crPos(angle, midR + 28);
+  svg += `<rect x="${(lp.x-30).toFixed(1)}" y="${(lp.y-7).toFixed(1)}" width="60" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
+  svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y+4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${letter} | תמונה ${shapeId}</text>`;
+  return svg;
+}
+function generateCompassRoseScene(qText) {
+  const vesselMatch = (qText || '').match(/\(([A-P])\)/g);
+  const vessels = vesselMatch ? vesselMatch.map(v => v.replace(/[()]/g, '')) : [];
+  const imgMatch = (qText || '').match(/תמונה (\d+)/);
+  const observer = vessels[0] || null, target = vessels[1] || null;
+  const shapeId = imgMatch ? parseInt(imgMatch[1]) : null;
+  if (!observer || !target) return null;
+  const D = CR_R_LABEL + 20;
+  const d45 = Math.round(D * 0.707);
+  let svg = `<rect x="10" y="10" width="340" height="400" fill="#fff" stroke="#0c1a3a" stroke-width="2"/>`;
+  svg += `<line x1="${CR_CX}" y1="${CR_CY-D}" x2="${CR_CX}" y2="${CR_CY+D}" stroke="#333" stroke-width="0.6" stroke-dasharray="2,2"/>`;
+  svg += `<line x1="${CR_CX-D}" y1="${CR_CY}" x2="${CR_CX+D}" y2="${CR_CY}" stroke="#333" stroke-width="0.6" stroke-dasharray="2,2"/>`;
+  svg += `<line x1="${CR_CX-d45}" y1="${CR_CY-d45}" x2="${CR_CX+d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
+  svg += `<line x1="${CR_CX+d45}" y1="${CR_CY-d45}" x2="${CR_CX-d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
+  for (const l of CR_LETTERS) svg += crVessel(l);
+  if (shapeId && target) svg += crDayShape(target, shapeId);
+  if (observer) svg += crBowLine(observer, '#ffd700');
+  if (target) svg += crBowLine(target, '#e74c3c');
+  if (observer) svg += crHighlight(observer);
+  if (target) svg += crHighlight(target);
+  svg += `<rect x="30" y="18" width="300" height="30" rx="6" fill="#0c1a3a" stroke="#7eb8f7" stroke-width="1"/>`;
+  svg += `<text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">${observer} מבחין ב-${target} המציג סימן יום</text>`;
+  return svg;
+}
+
 function getScene(topic, qText) {
   const q = qText || '';
+  if(topic==='זכות מעבר' && /\([A-P]\)/.test(q) && /תמונה \d+/.test(q)) {
+    const compass = generateCompassRoseScene(q);
+    if (compass) return compass;
+  }
   if(topic==='זכות מעבר' && /מפרש|sail/i.test(q)) return SCENES['זכות_מעבר_מפרש'];
   if(/VHF|רדיו|קשר/.test(topic)) return SCENES['קשר VHF'];
   if(/מכ.מ|radar/i.test(topic)) return SCENES['מכ"מ'];
