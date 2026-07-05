@@ -68,6 +68,10 @@ textarea:focus { outline: none; border-color: var(--accent); }
 </div>
 
 <div class="filters">
+  <button class="filter-btn active" id="lic-30" onclick="setLicense(30)">רישיון 30</button>
+  <button class="filter-btn"       id="lic-11" onclick="setLicense(11)">רישיון 11</button>
+</div>
+<div class="filters">
   <input type="text" id="search" placeholder="🔍 חפש שאלה..." oninput="renderList()">
   <button class="filter-btn active" id="f-all"     onclick="setFilter('all')">הכל</button>
   <button class="filter-btn"       id="f-pending" onclick="setFilter('pending')">ממתין לתיקון</button>
@@ -83,6 +87,14 @@ textarea:focus { outline: none; border-color: var(--accent); }
 let questions = [];
 let questionsSHA = null;
 let activeFilter = 'all';
+let activeLicense = 30;
+function setLicense(lic) {
+  activeLicense = lic;
+  document.getElementById('lic-30').classList.toggle('active', lic === 30);
+  document.getElementById('lic-11').classList.toggle('active', lic === 11);
+  updateStats();
+  renderList();
+}
 
 function saveCfg() {
   localStorage.setItem('sq_gh_token', document.getElementById('ghToken').value.trim());
@@ -128,8 +140,9 @@ async function loadData() {
 }
 
 function updateStats() {
-  document.getElementById('st-total').textContent = questions.length;
-  document.getElementById('st-pending').textContent = questions.filter(q => q.fix_request).length;
+  const inLicense = questions.filter(q => (q.license ?? 30) === activeLicense);
+  document.getElementById('st-total').textContent = inLicense.length;
+  document.getElementById('st-pending').textContent = inLicense.filter(q => q.fix_request).length;
 }
 
 function setFilter(f) {
@@ -142,6 +155,7 @@ function setFilter(f) {
 function getFiltered() {
   const search = document.getElementById('search').value.toLowerCase().trim();
   return questions.filter(q => {
+    if ((q.license ?? 30) !== activeLicense) return false;
     if (activeFilter === 'pending' && !q.fix_request) return false;
     if (search && !`${q.num} ${q.topic} ${q.q_he}`.toLowerCase().includes(search)) return false;
     return true;

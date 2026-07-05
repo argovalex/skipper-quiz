@@ -21,7 +21,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782638177/skipper-quiz/ayeaz7lvun92izlwjfwe.mp4",
     "rendered_at": "2026-06-28T09:16:18.251Z",
     "scheduled_date": "2026-06-28",
-    "scheduled_time": "10:31"
+    "scheduled_time": "10:31",
+    "license": 30
   },
   {
     "num": 102,
@@ -44,7 +45,8 @@
     "voiceover_text": "שאלה מספר 102. מדוע רואים את השמש זורחת במזרח ושוקעת במערב?. [[PAUSE]] התשובה הנכונה: כדור הארץ סובב סביב צירו ממערב למזרח. כדור הארץ מסתובב ממערב למזרח — לכן השמש נראית זורחת במזרח ושוקעת במערב.",
     "html_locked": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782723907/skipper-quiz/ofgd5vklh0xkzaxsk2rs.mp4",
-    "rendered_at": "2026-06-29T09:05:10.900Z"
+    "rendered_at": "2026-06-29T09:05:10.900Z",
+    "license": 30
   },
   {
     "num": 103,
@@ -68,7 +70,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782642053/skipper-quiz/lpbxoz4m2lysysjuzyhd.mp4",
     "rendered_at": "2026-06-28T10:21:51.672Z",
     "scheduled_date": "2026-06-28",
-    "scheduled_time": "15:00"
+    "scheduled_time": "15:00",
+    "license": 30
   },
   {
     "num": 104,
@@ -92,7 +95,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782642232/skipper-quiz/n0pmoh6h6olqs4g5q2wc.mp4",
     "rendered_at": "2026-06-28T10:24:49.848Z",
     "scheduled_date": "2026-06-29",
-    "scheduled_time": "09:00"
+    "scheduled_time": "09:00",
+    "license": 30
   },
   {
     "num": 105,
@@ -117,7 +121,8 @@
     "fix_resolved_at": "2026-06-28T11:21:04.044Z",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782724090/skipper-quiz/pcytscnngxzmngqbmtid.mp4",
     "rendered_at": "2026-06-29T09:08:13.858Z",
-    "scheduled_date": "2026-06-29"
+    "scheduled_date": "2026-06-29",
+    "license": 30
   },
   {
     "num": 106,
@@ -136,7 +141,8 @@
     "explanation": "FLOAT FREE — כאשר הספינה שוקעת, המשואה (EPIRB) משתחררת אוטומטית וצפה, ומשדרת אות מצוקה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 107,
@@ -162,7 +168,8 @@
     "rendered_at": "2026-06-30T09:19:10.729Z",
     "fix_request": "הצג על המפה איך נראת דקה על הצעגל הגדול",
     "fix_requested_at": "2026-06-30T07:41:33.496Z",
-    "scheduled_date": "2026-06-30"
+    "scheduled_date": "2026-06-30",
+    "license": 30
   },
   {
     "num": 108,
@@ -181,7 +188,8 @@
     "explanation": "דוויאציה = שגיאת המצפן הנגרמת ממסות מתכת ומערכות חשמל בספינה עצמה. ווראציה = הפרש בין צפון מגנטי לגיאוגרפי.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 109,
@@ -200,7 +208,8 @@
     "explanation": "הזמן המקומי מחושב לפי קו האורך: כל 15° = שעה אחת. מזרח = קדימה, מערב = אחורה מ-UTC.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 110,
@@ -219,7 +228,8 @@
     "explanation": "הגה אוטומטי חשמלי צורך חשמל רב, במיוחד בים גלי שבו נדרשות תיקוני קורס תכופים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 111,
@@ -238,7 +248,8 @@
     "explanation": "כאשר הספינה עומדת — הרוח היחסית שווה לרוח האמיתית. מד הרוח מראה את הרוח האמיתית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 112,
@@ -257,7 +268,8 @@
     "explanation": "מהירות = 15 מטר / 5 שניות = 3 מ\"ש. 3 מ\"ש × 3600 / 1852 = 5.83 קשרים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 113,
@@ -276,7 +288,8 @@
     "explanation": "קורס מגנטי = הזווית בין שדרת הספינה לבין הצפון המגנטי (לא הגיאוגרפי, לא קורס המצפן).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 114,
@@ -295,7 +308,8 @@
     "explanation": "אזור זמן = פס של 15° (7.5° מכל צד של קו האורך המרכזי) עם זמן אחיד.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 115,
@@ -314,7 +328,8 @@
     "explanation": "מיל ימי = 1852 מטרים בדיוק (לפי הגדרה בינלאומית). תשובה ג' היא הקרובה ביותר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 116,
@@ -333,7 +348,8 @@
     "explanation": "הגה רוח שומר על זווית קבועה בין שדרת הספינה לרוח היחסית (המדומה) — ללא חשמל.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 117,
@@ -352,7 +368,8 @@
     "explanation": "נוסחה: מרחק אופק (מיל) = 2.03 × √גובה(מטר). 2.03 × √9 = 2.03 × 3 ≈ 6.1 מיל.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 118,
@@ -371,7 +388,8 @@
     "explanation": "קווי הרוחב: 0° (קו משווה) עד 90° צפון (קוטב צפוני) ועד 90° דרום (קוטב דרומי).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 119,
@@ -390,7 +408,8 @@
     "explanation": "כל התשובות נכונות: קו אורך 0° — הקו הראשוני, עובר בגרינוויץ ליד לונדון, וחצי מהמעגל הגדול שחציו השני הוא קו האורך 180°.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 120,
@@ -409,7 +428,8 @@
     "explanation": "179°E ≈ UTC+12; 179°W ≈ UTC-12. ב-UTC+12: 23:59 = UTC 11:59. ב-UTC-12: 11:59 - 12 = 23:59 ב-30 בדצמבר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 121,
@@ -428,7 +448,8 @@
     "explanation": "UTC+3 אומר: אתה מזרחית לגרינוויץ, הזמן המקומי שלך מאוחר ב-3 שעות מ-UTC, וכל השלוש תשובות נכונות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 122,
@@ -447,7 +468,8 @@
     "explanation": "ווראציה (ההפרש בין צפון מגנטי לגיאוגרפי) משפיעה על כל מצפן שמתבסס על השדה המגנטי של כדור הארץ — מגנטי ו-Flux Gate.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 123,
@@ -466,7 +488,8 @@
     "explanation": "בעת הפלגה, מד הרוח מודד את הרוח היחסית (apparent wind) — שילוב של הרוח האמיתית ורוח ההפלגה הנגדית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 124,
@@ -485,7 +508,8 @@
     "explanation": "ההגה האוטומטי משחרר ידיים לתצפית ופעולות דחופות — אך אינו פוטר מחובת תצפית (Rule 5 COLREGS).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 125,
@@ -504,7 +528,8 @@
     "explanation": "הכנת טבלת דוויאציה דורשת: זיהוי אתרים ידועים (קו בינוי) + סיבוב 360° לרישום הדוויאציה בכל כיוון.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 126,
@@ -523,7 +548,8 @@
     "explanation": "הגה אוטומטי חשמלי: צורך חשמל, עלול להפחית ערנות, ודורש אחזקה — כל התשובות נכונות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 127,
@@ -542,7 +568,8 @@
     "explanation": "הגה רוח: עובד ללא חשמל, מיועד למפרשיות, ואכן ישנה דרישה לערנות כאשר הרוח משתנה — כל התשובות נכונות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 128,
@@ -561,7 +588,8 @@
     "explanation": "ברכב שיט פנאי, מד העומק משמש לבטיחות השיט, ניווט, ניתוב מצועות רדודות ועגינה בטוחה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 129,
@@ -580,7 +608,8 @@
     "explanation": "ממיר מד עומק: לנקות בעדינות ללא כלי מתכת, ולצבוע בצבע אנטי-פאולינג ללא מתכת שמפריעה לאות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 130,
@@ -599,7 +628,8 @@
     "explanation": "עומקי מפה ניתנים בשפל נמוך. גאות מוסיפה מים. מד עומק: 12m. מפה: 10m בשפל. הפרש = גאות של כ-2m (עם תיקון שוקע).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 131,
@@ -618,7 +648,8 @@
     "explanation": "עומק מפה (בשפל) = עומק נמדד + שוקע - גאות = 10 + 0 - 1 = 9 מטרים. (הממיר מותקן בתחתית, לכן שוקע כבר כלול בקריאת 10m.)",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 132,
@@ -637,7 +668,8 @@
     "explanation": "GPS: קולט אות מ-3+ לוויינים, מחשב טווח לכל אחד ומוצא נקודת חיתוך = מיקום. לדיוק תלת-ממדי נדרשים 4 לוויינים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 133,
@@ -656,7 +688,8 @@
     "explanation": "MOB (Man Over Board) = נקודת דרך פעילה שמציגה ברצף כיוון וטווח — קריטי להציל אדם שנפל לים. MARK = מסמן בלבד.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 134,
@@ -675,7 +708,8 @@
     "explanation": "מיקום דו-ממדי (lat/lon) דורש 3 לוויינים. מיקום תלת-ממדי (כולל גובה) דורש 4. בפועל, מקלטים מודרניים משתמשים ב-4+.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 135,
@@ -694,7 +728,8 @@
     "explanation": "מכ\"מ ימי: זיהוי עצמים וכלי שיט בכל תנאי ראות, מניעת התנגשות, ניווט, ניתוב, וחיפוש והצלה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 136,
@@ -713,7 +748,8 @@
     "explanation": "GAIN = רגישות הקליטה. הגברה = יותר רעש אבל גילוי מטרות חלשות. הנחתה = תמונה נקייה יותר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 137,
@@ -732,7 +768,8 @@
     "explanation": "VHF = גלים ישרים, קו ראייה (Line of Sight) — מכאן שגובה האנטנה ומרחק האופק הם הגורמים העיקריים לטווח.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 138,
@@ -751,7 +788,8 @@
     "explanation": "גשם מחזיר אותות מכ\"מ — FTC (Fast Time Constant) / Anti-Clutter Rain מצמצם את ההחזרים מגשם ומאפשר זיהוי מטרות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 139,
@@ -770,7 +808,8 @@
     "explanation": "STAND-BY: המכ\"מ חמום ומוכן לפעולה מיידית אך לא משדר — חוסך בחשמל ומפחית קרינה כשלא נדרש.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 140,
@@ -789,7 +828,8 @@
     "explanation": "MMSI (Maritime Mobile Service Identity) = מספר 9 ספרות ייחודי לכלי שיט, משמש ל-DSC, AIS, ומזהה מדינה ואופי התחנה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 141,
@@ -808,7 +848,8 @@
     "explanation": "DSC (Digital Selective Calling) = מכלול ב-VHF לשידור וקליטה של הודעות ספרתיות — כולל אזעקת מצוקה על ערוץ 70.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 142,
@@ -827,7 +868,8 @@
     "explanation": "DUAL WATCH = האזנה סימולטנית על ערוץ 16 (חירום) ועוד ערוץ עבודה נבחר. כשיש שידור על 16 — המכשיר עובר אוטומטית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 143,
@@ -846,7 +888,8 @@
     "explanation": "MAYDAY מופעל כשיש סכנת חיים מיידית וחמורה. בדרך כלל המפקד מחליט — אבל בנסיבות קיצוניות, כל אחד יכול.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 144,
@@ -865,7 +908,8 @@
     "explanation": "SART (Search And Rescue Transponder) = מגיב לכל פולס מכ\"מ ימי. כשמכ\"מ מקרין — SART מגיב ומייצר סדרת נקודות על מסך המכ\"מ.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 145,
@@ -884,7 +928,8 @@
     "explanation": "DSC חוזר ומשדר את אזעקת המצוקה אוטומטית עד לאישור קבלה — כדי לוודא שההודעה נקלטה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 146,
@@ -903,7 +948,8 @@
     "explanation": "SEELONCE FEENEE (מצרפתית: 'silence terminé') = סיום תקופת השתיקה המוחלטת. ערוץ 16 חוזר לשגרה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 147,
@@ -922,7 +968,8 @@
     "explanation": "NAVTEX מקבל ומשדר הודעות מצוקה שמועברות מתחנות חוף. SART ו-EPIRB רק משדרים (לא קולטים הודעות).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 148,
@@ -941,7 +988,8 @@
     "explanation": "כל תחנת NAVTEX משדרת כל 4 שעות (6 פעמים ביממה), בתחום תדר 518 kHz (MF).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 149,
@@ -960,7 +1008,8 @@
     "explanation": "PAN PAN (×3) = נוהל דחיפות. עדיפות שנייה אחרי MAYDAY. לסכנה פוטנציאלית, בעיה רפואית, ניווט ללא מנוע.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 150,
@@ -979,7 +1028,8 @@
     "explanation": "ב-NAVTEX מתכנתים: אילו תחנות לקלוט (לפי אות B1) ואילו סוגי הודעות (B2) — לפי אזור ההפלגה ועדיפויות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 151,
@@ -998,7 +1048,8 @@
     "explanation": "ערוץ 6 (VHF) מיועד לתקשורת בין כלי שיט (Ship-to-Ship) — בעיקר לתיאום כניסה לנמל ותנועה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 152,
@@ -1017,7 +1068,8 @@
     "explanation": "PAN PAN = כל מצב דחיפות שאינו מצוקה מיידית: בעיה רפואית, ספינה מקולקלת, אדם שנפל לים (לפני אישור מוות).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 153,
@@ -1036,7 +1088,8 @@
     "explanation": "SEELONCE MAYDAY = השתק לשם MAYDAY — רשאית לאומרו רק תחנת החוף המפקחת. מחייב שתיקה על ערוץ 16.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 154,
@@ -1055,7 +1108,8 @@
     "explanation": "SEELONCE DISTRESS = כל תחנה שמזהה מצוקה יכולה לאומרו — מחייב שתיקה על ערוץ 16.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 155,
@@ -1074,7 +1128,8 @@
     "explanation": "PRUDONCE (מצרפתית: 'זהירות') = שלב ביניים — תעבורה הקשורה למצוקה מותרת, אבל שתיקה חלקית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 156,
@@ -1093,7 +1148,8 @@
     "explanation": "ה-VHF הימי פועל בתחום 156–174 MHz, שהוקצה לשירות הימי הנייד על ידי ה-ITU.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 157,
@@ -1112,7 +1168,8 @@
     "explanation": "AIS (Automatic Identification System) = משדר ומקבל מידע על זהות, מיקום, קורס ומהירות — לשיפור בטיחות ומניעת התנגשות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 158,
@@ -1131,7 +1188,8 @@
     "explanation": "MEDICO = PAN PAN עם ייעוץ רפואי. כוללת: גיל, מין, חום, דופק, סימפטומים. לאחר קריאה על ערוץ 16 עוברים לערוץ עבודה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 159,
@@ -1150,7 +1208,8 @@
     "explanation": "SECURITE = עדיפות בטיחות (שלישית). מזג אוויר, מכשולי ניווט, מוקשים. כל התשובות נכונות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 160,
@@ -1169,7 +1228,8 @@
     "explanation": "SART: ציף, סוללה ל-96h המתנה / 8h שידור, נורה + אות קולי לאישור פעולה. מגיב לפולסי מכ\"מ X-band.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 161,
@@ -1188,7 +1248,8 @@
     "explanation": "Cospas-Sarsat עם לוויינים קוטביים מכסה את כל הגלובוס כולל אזורים קוטביים (A4) שבהם INMARSAT לא מכסה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 162,
@@ -1207,7 +1268,8 @@
     "explanation": "גיירו: דורש חשמל רצוף, זמן התייצבות של שעות, ויש לו שגיאה שנובעת מקו הרוחב ומהירות/קורס הספינה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 163,
@@ -1226,7 +1288,8 @@
     "explanation": "Flux Gate: מודד את השדה המגנטי של כדור הארץ אלקטרונית (א), משתמש בסלילי חישה (ב). אינו מייצר שדה עצמי לביטול שגיאות (ג שגוי).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 164,
@@ -1245,7 +1308,8 @@
     "explanation": "ROUTE = מסלול מתוכנן עם נקודות ביניים. TRACK = נתיב שעבר בפועל. CTS = הקורס הנדרש להגיע לנקודת הדרך הבאה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 165,
@@ -1264,7 +1328,8 @@
     "explanation": "קווי רוחב (מקבילים): קו המשווה הוא מעגל גדול; כל השאר מעגלים קטנים הניצבים לציר כדור הארץ.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 166,
@@ -1283,7 +1348,8 @@
     "explanation": "קווי אורך (מרידיאנים): כולם מעגלים גדולים, עוברים בשני הקטבים, ניצבים לקו המשווה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 167,
@@ -1302,7 +1368,8 @@
     "explanation": "RHUMB LINE = קו שחוצה את כל קווי האורך באותה זווית, ומיוצג כקו ישר במפת מרקטור — אבל אינו הדרך הקצרה ביותר (Great Circle).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 168,
@@ -1321,7 +1388,8 @@
     "explanation": "כדור הארץ סובב ממערב למזרח (כנגד כיוון השעון מהצפון) — לכן השמש נראית עוברת ממזרח למערב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 169,
@@ -1340,7 +1408,8 @@
     "explanation": "ציר כדור הארץ נטוי ב-23.5° — גורם לחצי הכדור הצפוני לקבל יותר קרינה בקיץ ופחות בחורף.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 170,
@@ -1359,7 +1428,8 @@
     "explanation": "משיכת הכבידה של הירח (והשמש) יוצרת את תופעת הגאות והשפל. יישור שלושתם (קו אחד) = גאות גדולה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 171,
@@ -1378,7 +1448,8 @@
     "explanation": "גובה כוכב הצפון מעל האופק = קו הרוחב של הצופה. 45° = קו רוחב 45° צפון.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 172,
@@ -1397,7 +1468,8 @@
     "explanation": "MOB שאבד מהעין = נוהל דחיפות PAN PAN (לא MAYDAY מיידי). מקביל — השלך ציוד ציפה ופעל כפי שניתן.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 173,
@@ -1416,7 +1488,8 @@
     "explanation": "SART מציג על מסך המכ\"מ סדרת נקודות/קשתות. ניתן לקרוא מכך כיוון וטווח משוערים לנצולים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 174,
@@ -1435,7 +1508,8 @@
     "explanation": "MAYDAY MAYDAY MAYDAY THIS IS [שם ספינה] [MMSI] [מיקום] [סוג מצוקה] [מספר אנשים] OVER — כל האלמנטים נדרשים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 175,
@@ -1454,7 +1528,8 @@
     "explanation": "NAVTEX משודר רק מתחנות חוף מורשות — לא מספינות. ספינות רק קולטות NAVTEX.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 176,
@@ -1473,7 +1548,8 @@
     "explanation": "GPS מודד מהירות ביחס לקרקע (SOG). אם GPS מראה 8 קשרים — זה המהירות האמיתית כולל הזרם. מד מהירות מכני היה מראה 10 קשרים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 177,
@@ -1492,7 +1568,8 @@
     "explanation": "מצפן = מד-זווית בין הצפון (של המצפן הספציפי) לבין כיוון מסוים. תמיד מדידה יחסית לצפון.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 178,
@@ -1511,7 +1588,8 @@
     "explanation": "עומק גדול יותר = זמן נסיעה ארוך יותר לאות → תדירות פולסים נמוכה יותר (כדי לא לחפוף בין משלוח וקבלה).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 179,
@@ -1530,7 +1608,8 @@
     "explanation": "PDOP = Position DOP = פגיעה בדיוק המיקום עקב ריכוז גיאומטרי של הלוויינים. ספרה נמוכה = דיוק טוב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 180,
@@ -1549,7 +1628,8 @@
     "explanation": "UTC (Coordinated Universal Time) = זמן אוניברסלי מתואם. לצרכים ימיים = GMT. בסיס לכל חישובי זמן ניווטיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 181,
@@ -1568,7 +1648,8 @@
     "explanation": "Flux Gate חייב להיות ממוקם הרחק ממקורות מגנטיים — לא ניתן להתקינו 'בכל מקום'. זה אינו יתרון.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 182,
@@ -1587,7 +1668,8 @@
     "explanation": "ה-MMSI שלך מוטמע ומשודר אוטומטית בכל הודעת DSC. מיקום ומצב מצוקה דורשים הקלדה ידנית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 183,
@@ -1606,7 +1688,8 @@
     "explanation": "EPIRB (Emergency Position Indicating Radio Beacon) דגם 406 MHz משדר ל-Cospas-Sarsat ומאפשר זיהוי מדויק גלובלי.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 184,
@@ -1625,7 +1708,8 @@
     "explanation": "VHF = גלים ישרים. הגורמים העיקריים: קו ראייה (גובה אנטנות), הספק שידור, ומכשולים בין האנטנות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 185,
@@ -1644,7 +1728,8 @@
     "explanation": "הסמכת רדיו (ROC/GMDSS) מבטיחה שהמפעיל יודע לנהל נוהל מצוקה נכון ולא יפריע לתקשורת חיפוש והצלה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 186,
@@ -1663,7 +1748,8 @@
     "explanation": "נוהל קשר: ממתינים לפחות 2 דקות לפני קריאה חוזרת. אין לתפוס ערוץ שבשימוש.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 187,
@@ -1682,7 +1768,8 @@
     "explanation": "ערוץ 25 הוא Duplex — ספינה משדרת על תדר שונה מהקליטה, מיועד לתקשורת עם תחנות חוף בלבד.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 188,
@@ -1701,7 +1788,8 @@
     "explanation": "SART: מרחוק → שורת נקודות. מתקרב → קשתות. קרוב מאוד → עיגולים קונצנטריים. זה האות לחיפוש והצלה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 189,
@@ -1720,7 +1808,8 @@
     "explanation": "אורך אנטנה = רבע עד חצי אורך הגל (λ). תדר גבוה = אורך גל קצר = אנטנה קטנה יותר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 190,
@@ -1739,7 +1828,8 @@
     "explanation": "FM = תדר אפנון. תדר הגל הנושא משתנה לפי אות הקול/מידע. VHF ימי עובד ב-FM.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 191,
@@ -1758,7 +1848,8 @@
     "explanation": "זיהוי ספינה בקשר: שם הספינה (עם סיווג אם רצוי) או אות קריאה (call sign). שניהם תקינים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 192,
@@ -1777,7 +1868,8 @@
     "explanation": "DSC מקיף: MMSI (ד), המכלול הטכנולוגי (ב) ואת שיטת הזיהוי העצמי (ג) — כל התשובות נכונות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 193,
@@ -1796,7 +1888,8 @@
     "explanation": "ספינה ממוכנת עושה דרכה מציגה: אור ראש-תורן לבן קדמי, אורות צד (ירוק מימין, אדום משמאל) ואור ירכתיים לבן.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 194,
@@ -1815,7 +1908,8 @@
     "explanation": "אורות הצד מכסים קשת של 112.5 מעלות כל אחד. האור הירוק (ימין) — מקדמת ספינה (0°) עד 112.5° לאחורי ימין.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 195,
@@ -1834,7 +1928,8 @@
     "explanation": "מפרשית מציגה אורות צד (אדום/ירוק) ואור ירכתיים לבן. אם מפעילה גם מנוע — חייבת להוסיף אור ראש-תורן ולהיחשב ממוכנת.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 196,
@@ -1853,7 +1948,8 @@
     "explanation": "כלי שייט ללא שליטה (NUC) מציג שני אורות אדומים עגולים (360°) בקו אנכי, ואם עושה דרכה — גם אורות צד וירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 197,
@@ -1872,7 +1968,8 @@
     "explanation": "כלי שייט מוגבל בכושרו (RAM) מציג: אדום–לבן–אדום (מלמעלה למטה) בקו אנכי. ביום: כדור–ענבל–כדור.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 198,
@@ -1891,7 +1988,8 @@
     "explanation": "ספינה קטנה עוגנת מציגה אור לבן עגול אחד (360°) בנקודה הנראית ביותר. ספינה מעל 50 מטר מציגה שניים — ראש וירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 199,
@@ -1910,7 +2008,8 @@
     "explanation": "ספינה על שרטון מציגה את אורות העוגן + שלושה אורות אדומים עגולים בקו אנכי. ביום: שלושה כדורים שחורים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 200,
@@ -1929,7 +2028,8 @@
     "explanation": "ספינה ממוכנת מעל 50 מטר חייבת בשני אורות ראש-תורן: קדמי (נמוך) ואחורי (גבוה). ספינה מתחת ל-50 מטר — אחד מספיק.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 201,
@@ -1948,7 +2048,8 @@
     "explanation": "גוררת: שני אורות ראש-תורן אם גרר עד 200מ', שלושה אם מעל 200מ'. בשני המקרים גם אורות צד, ירכתיים ואור צהוב ירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 202,
@@ -1967,7 +2068,8 @@
     "explanation": "טרולר (דייג בגרירה) מציג: ירוק מעל לבן (שניהם עגולים 225°) + אורות צד וירכתיים אם עושה דרכה. דייג שאינו גורר: אדום מעל לבן.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 203,
@@ -1986,7 +2088,8 @@
     "explanation": "ספינת פיילוט בשירות מציגה: לבן מעל אדום (שניהם עגולים). בנוסף, אם עושה דרכה — אורות צד וירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 204,
@@ -2005,7 +2108,8 @@
     "explanation": "ספינת סופות מציגה שלושה אורות ירוקים עגולים: אחד בראש התורן ואחד בכל קצה של קורת הסיפון הרוחבית. מסמן: אל תתקרב ל-1000 מ'.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 205,
@@ -2026,7 +2130,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782821918/skipper-quiz/gl1h8alagnkmugizkhfs.mp4",
-    "rendered_at": "2026-06-30T12:18:40.649Z"
+    "rendered_at": "2026-06-30T12:18:40.649Z",
+    "license": 30
   },
   {
     "num": 206,
@@ -2045,7 +2150,8 @@
     "explanation": "ספינה מתחת ל-7 מטר שמהירותה אינה עולה על 7 קשרים — אחד לבן נראה מכל הכיוונים. אם מהירותה גבוהה יותר — חייבת אורות צד וירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 207,
@@ -2064,7 +2170,8 @@
     "explanation": "כלי שייט מוגבל בשוקע (Constrained by Draft) מציג שלושה אורות אדומים עגולים. ביום: גליל שחור. עדיפות: גבוה מממוכן, נמוך מ-RAM.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 208,
@@ -2083,7 +2190,8 @@
     "explanation": "אור ראש-התורן (לבן) מכסה 225 מעלות — 112.5 מכל צד של הקידמה. אינו נראה מהירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 209,
@@ -2102,7 +2210,8 @@
     "explanation": "לפי COLREGS: ללא שליטה (NUC) > מוגבל בכושר (RAM) > מוגבל בשוקע > דייג > מפרש > ממוכן. ממוכן חייב לכולם.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 210,
@@ -2121,7 +2230,8 @@
     "explanation": "בסיטואציה פנים-מול-פנים שתי הספינות חייבות לפנות ימינה (starboard) ולחלוף צד-שמאל (port to port).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 211,
@@ -2140,7 +2250,8 @@
     "explanation": "בסיטואציית חיתוך, הספינה שנמצאת מימין היא 'Stand-on' (זכאית למעבר). הספינה שלמימינה יש ספינה אחרת — חייבת לפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 212,
@@ -2159,7 +2270,8 @@
     "explanation": "ספינה עוקפת חייבת לפנות דרך לספינה הנעקפת עד שתסיים את העקיפה לחלוטין — ללא קשר לסוג הכלים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 213,
@@ -2178,7 +2290,8 @@
     "explanation": "ספינה נחשבת עוקפת כשהיא מתקרבת מכיוון מרחק יותר מ-22.5 מעלות מאחורי קו רוחבי (מאחורי קשת 135° של אור הירכתיים).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 214,
@@ -2197,7 +2310,8 @@
     "explanation": "בין מפרשיות: ספינה ב-port tack (רוח משמאל) חייבת לפנות דרך לספינה ב-starboard tack (רוח מימין).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 215,
@@ -2216,7 +2330,8 @@
     "explanation": "שתי מפרשיות באותו tack: הספינה שמצד הרוח (windward) חייבת לפנות לספינה בצד נגד הרוח (leeward).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 216,
@@ -2235,7 +2350,8 @@
     "explanation": "מפרשית ב-port tack שאינה בטוחה לגבי ה-tack של האחרת — חייבת לפנות דרך. עדיף להיות זהיר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 217,
@@ -2254,7 +2370,8 @@
     "explanation": "ממוכנת חייבת לפנות דרך למפרשית (למעט אם המפרשית עוקפת). המפרשית היא 'Stand-on' — תשמור על מסלול ומהירות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 218,
@@ -2273,7 +2390,8 @@
     "explanation": "בנתיב צר — ספינה שיכולה לנווט רק בתוך הנתיב (מוגבלת בשוקע) יש לה עדיפות. ספינות קטנות שיכולות לחרוג מהנתיב — חייבות להתרחק.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 219,
@@ -2292,7 +2410,8 @@
     "explanation": "'בדרך' (Underway) = אינה עוגנת, אינה קשורה לחוף, אינה על שרטון ואינה מעוכבת. כולל ספינה נסחפת עם המנוע כבוי.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 220,
@@ -2311,7 +2430,8 @@
     "explanation": "ספינת ה-Stand-on חייבת לשמור על מסלולה, אך אם ברור שה-Give-way לא פועלת — תאותת 5 צפירות קצרות (אזהרה) ותנקוט בפעולה למניעת התנגשות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 221,
@@ -2330,7 +2450,8 @@
     "explanation": "אור ירוק = צד ימין של הספינה האחרת. אם אני רואה את צד הימין שלה — היא מתקרבת מימיני. בסיטואציית חיתוך, אני צד שמאל — חייב לפנות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 222,
@@ -2349,7 +2470,8 @@
     "explanation": "אותות המצוקה הרשמיים כוללים: N+C בקוד דגלים, כדור שחור מעל/מתחת לריבוע, SOS, MAYDAY, רקטות, עשן כתום, להב, ריסוס כתום, EPIRB, אות רדיו טלגרף.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 223,
@@ -2368,7 +2490,8 @@
     "explanation": "הנפת דגל בודד אינה אות מצוקה. אות המצוקה בדגלים הוא: N (כחול-לבן) מעל C (פסים כחול-לבן-אדום-לבן-כחול), כלומר שני דגלים ביחד.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 224,
@@ -2387,7 +2510,8 @@
     "explanation": "MAYDAY אמור שלוש פעמים, THIS IS שלוש פעמים, שם הספינה, מיקום, סוג מצוקה, עזרה הנדרשת, מספר נוסעים, ופרטים נוספים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 225,
@@ -2406,7 +2530,8 @@
     "explanation": "ערוץ 16 הוא ערוץ הקריאה והמצוקה הבינלאומי — כל ספינה ממוכנת חייבת לשמור עליו. MAYDAY מוכרז תמיד על ערוץ 16.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 226,
@@ -2425,7 +2550,8 @@
     "explanation": "MAYDAY = מצוקה מיידית, סכנת חיים. PAN-PAN = מצב דחוף שאינו מיידי (למשל — אדם פצוע שאינו בסכנת מוות מיידית). SECURITE = הודעת בטיחות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 227,
@@ -2444,7 +2570,8 @@
     "explanation": "בהפלגה בינלאומית: 4 רקטות מצנח, 4 לפידי יד אדומים, 2 עשן צף כתום. בהפלגה לאומית: 4 רקטות מצנח + 4 לפידי יד.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 228,
@@ -2463,7 +2590,8 @@
     "explanation": "EPIRB (Emergency Position Indicating Radio Beacon) הוא מצוף אזעקה המשדר באמצעות לוויינים את מיקום הספינה לתחנות חיפוש והצלה בעולם.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 229,
@@ -2482,7 +2610,8 @@
     "explanation": "SART (Search and Rescue Transponder) מגיב לאות מכ\"מ של כלי חיפוש והצלה — מחזיר אות הנראה כסדרת נקודות על מסך המכ\"מ, מה שמאפשר לאתר את נקודת המצוקה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 230,
@@ -2501,7 +2630,8 @@
     "explanation": "חובה לשאת חגורת הצלה לכל נפש המותרת לשייט בספינה — לפי מספר המפליגים הרשום ברישיון. חגורות יתקיימו לפי תקן מאושר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 231,
@@ -2520,7 +2650,8 @@
     "explanation": "יש ללבוש חגורת הצלה בכל מצב של סכנה, בלילה, במזג אוויר סוער, ולפי שיקול הקברניט. מומלץ לילדים להוביל בכל עת.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 232,
@@ -2539,7 +2670,8 @@
     "explanation": "רפסודת הצלה (Life raft) היא מבנה מתנפח המיועד לשרוד בים פתוח. מאוחסנת בכלי (canister) שנפתח אוטומטית במגע עם מים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 233,
@@ -2558,7 +2690,8 @@
     "explanation": "ספינה מעל 7 מטר המפליגה מעל 6 מיל מהחוף חייבת: חגורות הצלה, ציוד פירוטכני מלא, ורפסודת הצלה על פי תקנות הרישוי הישראלי.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 234,
@@ -2577,7 +2710,8 @@
     "explanation": "ציוד פירוטכני שפג תוקפו אסור לשימוש (לא אמין) ואסור לזרוק לים (מזהם). יש להחליף בציוד תקין ולפנות את הישן לגורם מוסמך (תחנת דלק ימית, יצרן).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 235,
@@ -2596,7 +2730,8 @@
     "explanation": "גלגל הצלה (Lifebuoy) מוטל לאדם בים — מספק ציפה ועוזר לו להחזיק מעמד עד לחילוץ. יש לצרף קו הצלה ומנורת הבזקים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 236,
@@ -2615,7 +2750,8 @@
     "explanation": "רוח ים: ביום היבשה מתחממת מהר יותר מהים, האוויר מעליה עולה, ואוויר קריר מהים ממלא את החסר — נוצרת רוח מהים ליבשה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 237,
@@ -2634,7 +2770,8 @@
     "explanation": "רוח יבשה מתרחשת בלילה: היבשה מתקררת מהר יותר מהים, האוויר מעל הים חם יותר ועולה, ואוויר מהיבשה ממלא את החסר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 238,
@@ -2653,7 +2790,8 @@
     "explanation": "סולם בופור (0-12) מתאר מהירות רוח לפי ביטוייה הגלויים על פני הים: 0 = דממה, 6 = רוח חזקה, 8 = סערה, 12 = הוריקן.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 239,
@@ -2672,7 +2810,8 @@
     "explanation": "הים-תיכון בקיץ: יציב, יבש, חם, רוחות שרביט (Etesian winds) ממערב-צפון-מערב, סערות נדירות. ים הפלגה טוב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 240,
@@ -2691,7 +2830,8 @@
     "explanation": "חזית חמה: אוויר חם נע קדימה ועולה מעל אוויר קר. מתקדמת לאט, מלווה בעננות רחבה (Nimbostratus) וגשמים ממושכים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 241,
@@ -2710,7 +2850,8 @@
     "explanation": "חזית קרה: אוויר קר דוחף אוויר חם למעלה — גשמי סחף חזקים קצרים, עליית לחץ לאחר המעבר, הצטננות, רוחות מערביות-צפוניות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 242,
@@ -2729,7 +2870,8 @@
     "explanation": "איזובר (Isobar) = קו המחבר נקודות בעלות לחץ אוויר שווה. ככל שהאיזוברים צפופים יותר — הגרדיאנט חזק יותר ורוחות חזקות יותר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 243,
@@ -2748,7 +2890,8 @@
     "explanation": "בחצי הכדור הצפוני: רוחות סביב לחץ נמוך (ציקלון) מסתובבות נגד כיוון השעון (Counter-clockwise). בחצי הדרומי — הפוך.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 244,
@@ -2767,7 +2910,8 @@
     "explanation": "שרב (Khamsin) הוא רוח חמה, יבשה ומאובקת מכיוון הדרום-מזרח, הנגרמת ממערכת לחץ נמוך מדברית. נפוצה בישראל באביב ובסתיו.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 245,
@@ -2786,7 +2930,8 @@
     "explanation": "בופור 6 = רוח חזקה (Strong Breeze) — 22-27 קשרים. על פני הים: גלים גבוהים, קצות לבנים וקצף. קשה לחזור לנמל עם סירה קטנה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 246,
@@ -2805,7 +2950,8 @@
     "explanation": "מיסטרל (צרפת/ספרד) ובורה (אדריאטי): רוחות קרות וחזקות הנושבות מהיבשה לים בחורף — מסוכנות לשייט בשל עוצמתן ומהירות ההתפתחות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 247,
@@ -2824,7 +2970,8 @@
     "explanation": "בחירת מקום עוגן: הגנה מרוח ומים, עומק מספיק, קרקעית מחזיקת עוגן (חול/בוץ טוב, סלע רע), ללא מכשולים תת-ימיים ועגינה חוקית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 248,
@@ -2843,7 +2990,8 @@
     "explanation": "Scope = יחס אורך שרשרת לעומק. Scope של 5:1 עד 7:1 מומלץ. שרשרת ארוכה יוצרת זווית שכיבה קטנה יותר — אחיזת עוגן טובה יותר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 249,
@@ -2862,7 +3010,8 @@
     "explanation": "Swinging circle = המעגל שתיצור הספינה אם הרוח/זרם ישתנה כיוון סביב העוגן. יש לוודא שמעגל זה אינו כולל ספינות אחרות, שרטונות, או מכשולים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 250,
@@ -2881,7 +3030,8 @@
     "explanation": "סימני דרדור עוגן: GPS מראה תזוזה מנקודה קבועה, שרשרת מתוחה ורועדת, קול גרנצ'ינג (גרוס). תגובה: שחרר שרשרת נוספת, שנה מיקום, או הפעל מנוע.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 251,
@@ -2900,7 +3050,8 @@
     "explanation": "לפני עגינה: בחר מיקום, בדוק עומק ומהות הקרקעית, הפחת מהירות לאפס (נע לאחור קלות), השלך עוגן ושחרר שרשרת לפי הscope הנדרש.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 252,
@@ -2919,7 +3070,8 @@
     "explanation": "ביום: ספינה עוגנת מחויבת להציג כדור שחור אחד (מתחת ל-50 מ') בנקודה הנראית ביותר. בלילה: אור לבן עגול.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 253,
@@ -2938,7 +3090,8 @@
     "explanation": "IALA-A מיושמת בישראל, אירופה, אפריקה, אסיה ואוסטרליה. IALA-B — אמריקה, יפן, קוריאה, פיליפינים. ההבדל העיקרי: בצד מאיזה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 254,
@@ -2957,7 +3110,8 @@
     "explanation": "IALA-A: בכניסה לנמל — ימין (starboard) = ירוק, שמאל (port) = אדום. בדיוק הפוך מ-IALA-B.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 255,
@@ -2976,7 +3130,8 @@
     "explanation": "Cardinal Marks מסמנים את כיוון המים הבטוחים ביחס לסכנה: Cardial צפון = מים בטוחים צפונה מהסכנה. צבע: שחור-צהוב בפסים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 256,
@@ -2995,7 +3150,8 @@
     "explanation": "Safe Water Mark (פסים אדום-לבן) = מים בטוחים מכל הכיוונים. מסמן כניסה לתעלה, נקודת ציון, או נקודת הגעה ל-fairway.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 257,
@@ -3014,7 +3170,8 @@
     "explanation": "Isolated Danger Mark: פסים שחור-אדום-שחור, ראש מיצוף: שני כדורים שחורים. נמצא על גבי הסכנה עצמה — מים בטוחים בסביבו.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 258,
@@ -3033,7 +3190,8 @@
     "explanation": "Special Mark (צהוב, ראש מיצוף: X) מסמן אזור מיוחד שאינו מסומן בשאר הסימנים: ספורט ימי, שמורת טבע, פסולת, מחקר, כבל/צינור תת-ימי.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 259,
@@ -3052,7 +3210,8 @@
     "explanation": "דגל Q (צהוב) = 'ספינתי בריאה, מבקשת כניסה חופשית' (Free Pratique). מניפים אותו בכניסה למים טריטוריאליים זרים עד לאישור הרשויות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 260,
@@ -3071,7 +3230,8 @@
     "explanation": "דגל O (אוסקר) = 'Man Overboard' (אדם בים). מניפים אותו מיד כשאדם נפל למים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 261,
@@ -3090,7 +3250,8 @@
     "explanation": "דגל A (אלפא) = 'צולל מתחת לפני המים'. כל כלי שייט בסביבה חייב להתרחק לפחות 200 מטר ולהפחית מהירות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 262,
@@ -3109,7 +3270,8 @@
     "explanation": "כניסה לנמל זר: דגל ארץ המארחת בתורן ימין (כבוד), דגל Q בתורן שמאל (בקשת כניסה), ודגל ישראל בירכתי הספינה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 263,
@@ -3128,7 +3290,8 @@
     "explanation": "דגל B (אדום בצורת זנב) = 'מטעין/פורק/נושא חומרים מסוכנים (דלק, חומרי נפץ)'. נניף כשמדלקים אוניה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 264,
@@ -3148,7 +3311,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "blastOverride": ""
+    "blastOverride": "",
+    "license": 30
   },
   {
     "num": 265,
@@ -3173,7 +3337,8 @@
     "rendered_at": "2026-06-30T15:16:57.253Z",
     "approved_for_publish": true,
     "voiceover_text": "שאלה מספר 265. מה מסמלת סדרה של 5 צפירות קצרות?. [[PAUSE]] התשובה הנכונה: כוונותיך אינן מובנות, או שאני מוטרד מפעולתך. 5 צפירות קצרות = אות ספק/סכנה: 'כוונותיך אינן מובנות לי' / 'אני מוטרד מהיעדר פעולתך'. מחייבת תגובה מיידית מהספינה האחרת.",
-    "html_locked": false
+    "html_locked": false,
+    "license": 30
   },
   {
     "num": 266,
@@ -3193,7 +3358,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "blastOverride": ""
+    "blastOverride": "",
+    "license": 30
   },
   {
     "num": 267,
@@ -3212,7 +3378,8 @@
     "explanation": "ספינה עוגנת בערפל: מצלצלת פעמון (5 שניות) כל דקה. ספינה מעל 100 מ' — מוסיפה גם מצלצל-גונג בירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 268,
@@ -3235,7 +3402,8 @@
     "scheduled_date": "2026-06-23",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782298764/skipper-quiz/q7pgudf4vcndygsyyjla.mp4",
     "rendered_at": "2026-06-24T11:10:00.000Z",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 269,
@@ -3254,7 +3422,8 @@
     "explanation": "עקיפה ימין בנתיב צר: 2 ארוכות + 1 קצרה. הספינה הנעקפת מסכימה: 1 ארוכה + 1 קצרה + 1 ארוכה (אות הסכמה).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 270,
@@ -3273,7 +3442,8 @@
     "explanation": "עקיפה שמאל בנתיב צר: 2 ארוכות + 2 קצרות. הספינה הנעקפת מסכימה: 1 ארוכה + 1 קצרה + 1 ארוכה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 271,
@@ -3292,7 +3462,8 @@
     "explanation": "מהירות בטוחה: המהירות שבה אפשר לנקוט פעולה יעילה למניעת התנגשות בהתחשב בראות, צפיפות תנועה, יכולת הספינה, ומצב הים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 272,
@@ -3311,7 +3482,8 @@
     "explanation": "COLREGS כלל 5: כל ספינה תשמור בכל עת על צפייה מתאימה (Proper Lookout) — בעיניים, באוזניים, ובכל אמצעי זמין.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 273,
@@ -3330,7 +3502,8 @@
     "explanation": "ערוץ 16 הוא ערוץ המצוקה והקריאה הבינלאומי. כל קשר עם MRCC חיפה יתחיל בערוץ 16, ואז יועבר לערוץ עבודה (כמו 67 בישראל).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 274,
@@ -3349,7 +3522,8 @@
     "explanation": "לפי תקנות הרישוי הישראלי: ילד מתחת לגיל 12 חייב ללבוש חגורת הצלה בכל עת שנמצא על הסיפון החיצוני.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 275,
@@ -3368,7 +3542,8 @@
     "explanation": "בכניסה למים טריטוריאליים זרים: הנף דגל Q (בקשת Free Pratique) ודגל ארץ המארחת, דווח לרשויות הנמל, ואל תרד ליבשה עד לאישור.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 276,
@@ -3387,7 +3562,8 @@
     "explanation": "מימי חופין (Territorial Waters) בישראל — עד 12 מיל ימי מהחוף. לאחר מכן מתחיל אזור הכלכלה הבלעדית (EEZ) עד 200 מיל.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 277,
@@ -3408,7 +3584,8 @@
     "mediaType": "",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782299454/skipper-quiz/e3ke7rezxurtmsuztoyv.mp4",
     "rendered_at": "2026-06-24T11:10:00.000Z",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 278,
@@ -3427,7 +3604,8 @@
     "explanation": "MOB: 1) קרא 'אדם בים!' 2) זרוק גלגל הצלה 3) הנף דגל O 4) לחץ MOB ב-GPS 5) שמור עין על האדם. רק אז תמרן לחזור אליו.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 279,
@@ -3450,7 +3628,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782829989/skipper-quiz/qkllnyhjadkv0qrhu8ug.mp4",
     "rendered_at": "2026-06-30T14:33:13.701Z",
     "voiceover_text": "שאלה מספר 279. כיצד ניגשים לאדם שנפל לים עם סירה קטנה?. [[PAUSE]] התשובה הנכונה: מתוך הרוח (upwind) לאט, כך שהרוח תסחוף הספינה אל האדם. גישה ל-MOB: ניגשים מתוך הרוח (upwind) לאט ב-'quick stop' — כך שהרוח תסחוף הספינה לעבר האדם ולא ממנו. מנוע בצד שהאדם נמצא — סכנה!",
-    "html_locked": false
+    "html_locked": false,
+    "license": 30
   },
   {
     "num": 280,
@@ -3469,7 +3648,8 @@
     "explanation": "ספינה שנוטלת מים: 1) אתר הנזילה ונסה לסתמה 2) הפעל משאבת ביילגה 3) לבש חגורות הצלה 4) הודע ל-MRCC אם לא ניתן לשלוט 5) הכן רפסודה לנטישה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 281,
@@ -3488,7 +3668,8 @@
     "explanation": "שריפת דלק: לעולם לא במים (גורם לפיזור הדלק). יש להשתמש במטף ABC/CO₂ דרך פתח קטן במכסה — פתיחה מלאה תזין חמצן ותגביר את השריפה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 282,
@@ -3507,7 +3688,8 @@
     "explanation": "מדחף ימני (סובב עם כיוון השעון קדימה): בהפעלת אחורה מסתובב נגד השעון — מייצר אפקט Prop Walk שדוחף את הגב ימינה וגורם לספינה לפנות שמאלה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 283,
@@ -3526,7 +3708,8 @@
     "explanation": "Pivot Point: ספינה בתנועה קדמית — נקודת הסיבוב בכ-⅓ מקדמתה. ספינה בתנועה אחורית — הנקודה עוברת לכ-⅓ מגבה. קדמה מתנדנדת יותר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 284,
@@ -3545,7 +3728,8 @@
     "explanation": "Head Reach = המרחק שספינה תנוע קדמה לאחר שמנוע הועבר לאחורה — 'ריצת אינרציה'. חשוב לחשב בעת כניסה לנמל/עגינה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 285,
@@ -3564,7 +3748,8 @@
     "explanation": "גרירה: קו גרר ארוך (ספיגת מכות גלים), מחובר לנקודות גרר חזקות, מהירות נמוכה, הגה בגב. הספינה הנגררת מייצרת מעצור — חשב את 'ריצת האינרציה'.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 286,
@@ -3583,7 +3768,8 @@
     "explanation": "Yaw = סיבוב של ספינה סביב ציר אנכי (סטייה ימינה/שמאלה). נגרם מרוח, גלים, קשת ים חד-צדדי, או אסימטריה בהנעה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 287,
@@ -3602,7 +3788,8 @@
     "explanation": "Gybing (גיב): מעבר הבום בפתאומיות מצד לצד כשהרוח חוצה את הקו הגבי. הבום מנדנד בכוח — עלול להכות את הצוות. יש לשלוט בגיב ידני (Controlled Gybe).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 288,
@@ -3621,7 +3808,8 @@
     "explanation": "Williamson Turn: פונה 60° לצד, מחכה, ואז פונה לכיוון הנגדי (180° סה\"כ) — חוזר לקו המקורי. מיועד לאיתור MOB בראות מוגבלת ולחזרה לנקודת הנפילה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 289,
@@ -3640,7 +3828,8 @@
     "explanation": "Compass Rose על מפה ימית: עיגול חיצוני = כיוונים אמיתיים (True North), עיגול פנימי = מגנטיים (Magnetic North). ההפרש ביניהם = שינוי (Variation).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 290,
@@ -3659,7 +3848,8 @@
     "explanation": "Deviation = שגיאת המצפן עקב מתכות/מגנטים בספינה. שונה לפי כיוון הספינה. מתוקנת בקלדת הסטייה (Deviation Card).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 291,
@@ -3678,7 +3868,8 @@
     "explanation": "Variation = ההפרש בין צפון אמיתי (True North) לצפון מגנטי (Magnetic North). קבוע לאזור גיאוגרפי. מסומן על ורד הרוחות במפה ומתעדכן שנתית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 292,
@@ -3697,7 +3888,8 @@
     "explanation": "Bearing = הזווית בין הצפון (אמיתי/מגנטי) לכיוון של נקודת ציון — נמדד 0° עד 360° בכיוון השעון. QDR = Bearing from the station.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 293,
@@ -3716,7 +3908,8 @@
     "explanation": "Cross Bearing: לוקחים נשיאות לשתי נקודות ציון (כמו מגדלור + שוניות) ומסמנים קווים על המפה — נקודת החיתוך היא מיקומנו.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 294,
@@ -3735,7 +3928,8 @@
     "explanation": "Dead Reckoning (DR): שיטת ניווט המחשבת מיקום נוכחי מתוך: מיקום קודם ידוע + כיוון + מהירות × זמן. לא מתחשב בזרמים ורוחות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 295,
@@ -3754,7 +3948,8 @@
     "explanation": "מספרים על מפה ימית = עומקים (soundings) — מדודים בדרך כלל ממפלס ים ממוצע נמוך (MLLW). המספר בכחול/שחור = עומק במטרים (בישראל) או רגליים (בחלק ממפות).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 296,
@@ -3773,7 +3968,8 @@
     "explanation": "מצפן פנולי (Fluxgate) = אלקטרוני, מחובר ל-chartplotter/VHF, נותן פלט דיגיטלי, עניין בעדכוני סטייה אוטומטיים. מגנטי = מכני, פשוט, עצמאי חשמלית — גיבוי חיוני.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 297,
@@ -3792,7 +3988,8 @@
     "explanation": "True Course = Compass Course + Deviation + Variation. סדר המרה: CC → MC (+ Deviation) → TC (+ Variation). קיצור: CADET: Compass + Add East Deviation → True.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 298,
@@ -3811,7 +4008,8 @@
     "explanation": "גאות ושפל נגרמים מכוח המשיכה של הירח (בעיקר) והשמש. ים-תיכון: גאות זניחה (מטר אחד לכל היותר). אוקיאנוסים: גאות משמעותית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 299,
@@ -3830,7 +4028,8 @@
     "explanation": "Course = הכיוון שמופנות אליו החרטום. Track = הנתיב בפועל של הספינה על הים, לאחר השפעת זרמים, רוח וגאות. ה-COG ב-GPS מציג את ה-Track.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 300,
@@ -3849,7 +4048,8 @@
     "explanation": "T.O.M.I (Tracking Of Marine Identification) — ספינה ישראלית הנכנסת ממסע בינלאומי חייבת להודיע לחיפה MRCC את פרטיה, נתיבה ומיקומה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 301,
@@ -3868,7 +4068,8 @@
     "explanation": "לפי תקנות הספנות הישראלי: קברניט תחת השפעת אלכוהול בעת ניהול ספינה — עבירה פלילית. גבול: 0.25 מ\"ג/ל (נשיפה) כמו ברכב.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 302,
@@ -3887,7 +4088,8 @@
     "explanation": "לפי פקודת הספנות הישראלי: תאונת ים (כולל התנגשות, שריפה, שקיעה, פציעה) חייבת בדיווח לקצין הנמל הסמוך תוך 24 שעות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 303,
@@ -3906,7 +4108,8 @@
     "explanation": "אישור כשירות לשייט = תעודה שהספינה עמדה בבדיקת רשות הספנות וכשירה להפלגה. חידוש כל 24 חודשים לספינות פרטיות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 304,
@@ -3925,7 +4128,8 @@
     "explanation": "לפי COLREGS: ספינה ממוכנת מ-12 עד 50 מטר — אור ראש-תורן: 3 מיל. אורות צד: 2 מיל. אור ירכתיים: 2 מיל.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 305,
@@ -3944,7 +4148,8 @@
     "explanation": "COLREGS: אורות חובה משקיעה עד זריחה, ובכל עת שהראות מוגבלת (ערפל, גשם עז וכו'). אפשר גם ביום בראות מוגבלת.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 306,
@@ -3963,7 +4168,8 @@
     "explanation": "אור ירוק = צד ימין (starboard) של ספינה אחרת. אם אנו רואים רק את הירוק — צד ימין שלה פונה אלינו, כלומר היא מתקרבת מכיוון ימיננו.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 307,
@@ -3982,7 +4188,8 @@
     "explanation": "שני אורות לבנים בקו אנכי (הקדמי נמוך, האחורי גבוה) = שני אורות ראש-תורן של ספינה ממוכנת מעל 50 מטר. אם נמצאים זה מעל זה — הספינה ניגשת.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 308,
@@ -4001,7 +4208,8 @@
     "explanation": "אדום-לבן-אדום = RAM (Restricted in Ability to Maneuver). לפי ההיררכיה: ספינה ממוכנת חייבת לפנות דרך ל-RAM.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 309,
@@ -4020,7 +4228,8 @@
     "explanation": "Restricted Visibility = כל תנאי המגביל ראות: ערפל (Fog), מחסומת (Mist), גשם עז, שלג, חוגלה, עשן, אבק. לא כולל חשכת לילה!",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 310,
@@ -4039,7 +4248,8 @@
     "explanation": "העקיפה מסתיימת רק כשהספינה העוקפת עברה את הנעקפת לחלוטין ואינה עוד ב'סיטואציה' עמה. עד אז — חייבת לפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 311,
@@ -4058,7 +4268,8 @@
     "explanation": "Life Jacket: מסובב אדם מחוסר הכרה פנים למעלה — לשמירת דרכי הנשימה. Buoyancy Aid: עוזר לשחות, אינו מסובב. בים — חובה Life Jacket.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 312,
@@ -4077,7 +4288,8 @@
     "explanation": "חגורת הצלה מתנפחת: בדוק לפני הפלגה — מיכל CO₂ (לא חלוד, אטום), שסתום הפעלה (ירוק = תקין), נפחי האוויר, רצועות. החלף כל 5 שנים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 313,
@@ -4096,7 +4308,8 @@
     "explanation": "Immersion Suit = חליפת שרידות המכסה את הגוף לחלוטין, עמידה בקרח, מונעת היפותרמיה. נדרשת בהפלגות בים קר — לא חובה בים-תיכון.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 314,
@@ -4115,7 +4328,8 @@
     "explanation": "North Cardinal: שחור (מעל) + צהוב (מתחת), ראש מיצוף: שתי חרוטות (cones) עם קצות למעלה. עוברים מצפון לסימן — שם המים בטוחים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 315,
@@ -4134,7 +4348,8 @@
     "explanation": "South Cardinal: צהוב (מעל) + שחור (מתחת), ראש מיצוף: שתי חרוטות עם קצות כלפי מטה. עוברים מדרום — שם המים בטוחים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 316,
@@ -4153,7 +4368,8 @@
     "explanation": "IALA-A (ישראל/אירופה): כניסה לנמל — ימין ירוק, שמאל אדום. IALA-B (אמריקה/יפן): ימין אדום, שמאל ירוק. זכור: Red Right Returning (IALA-B).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 317,
@@ -4172,7 +4388,8 @@
     "explanation": "Preferred Channel Mark = בוי שמסמן הסתעפות נתיב. צבע הבסיס = הערוץ המועדף. פס נוסף = הערוץ המשני.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 318,
@@ -4191,7 +4408,8 @@
     "explanation": "ספינה עוגנת בראות מוגבלת: הצג אורות עוגן + צלצל פעמון חריפות 5 שניות כל דקה. ספינה ≥100 מ' מוסיפה גונג מהירכתיים.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 319,
@@ -4210,7 +4428,8 @@
     "explanation": "NUC, RAM, Fishing, Sailing ומוגבל-שוקע — כולם: ארוכה + 2 קצרות כל 2 דקות בראות מוגבלת. ממוכן עושה דרכה: 1 ארוכה. עוצר: 2 ארוכות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 320,
@@ -4229,7 +4448,8 @@
     "explanation": "Safety Harness = רתמת בטיחות עם קו חיבור (Jack Line) לספינה. מונעת נפילה לים בעת עבודה בסיפון בגל גבוה, בלילה, בסערה. שונה מחגורת הצלה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 321,
@@ -4248,7 +4468,8 @@
     "explanation": "עלייה מהירה של מים: 1) הפעל משאבת בילגה 2) אתר נזילה (קיל, שסתומי ים, תושבת מדחף) 3) סתמת זמנית (לאטם, פלסטיק, כרית) 4) לבש חגורות 5) הודע ל-MRCC.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 322,
@@ -4267,7 +4488,8 @@
     "explanation": "H = לחץ גבוה (Anticyclone): אוויר שוקע, שמש, מזג אוויר יציב. רוחות מסתובבות עם כיוון השעון בצפון הכדור. L = לחץ נמוך (Cyclone): סערה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 323,
@@ -4286,7 +4508,8 @@
     "explanation": "Pressure Gradient = שיפוע הלחץ בין אזורים. ככל שהאיזוברים צפופים יותר — הגרדיאנט תלול יותר ורוחות חזקות יותר. רוחות נעות מלחץ גבוה ללחץ נמוך (עם הסטת קוריוליס).",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 324,
@@ -4305,7 +4528,8 @@
     "explanation": "ערפל = ראות פחות מ-1000 מ' בשל טיפות מים. נגרם כשאוויר לח מתקרר לנקודת הטל (Dew Point). בים-תיכון: נפוץ באביב/סתיו בבוקר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 325,
@@ -4324,7 +4548,8 @@
     "explanation": "בופור 8 = Gale (סערה): 34-40 קשרים, גלים 4-5.5 מ'. ספינות קטנות — סכנת חיים. בופור 9 = Severe Gale. בופור 12 = הוריקן.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 326,
@@ -4343,7 +4568,8 @@
     "explanation": "CQR (מחרשה): מחזיק טוב בחול ובוץ, מסתובב עם הרוח מבלי לאבד אחיזה. Danforth: מחזיק מצוין בחול, פחות בסלע. כפתור: לסלע.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 327,
@@ -4362,7 +4588,8 @@
     "explanation": "עוגן גורר: 1) הפעל מנוע 2) שחרר שרשרת נוספת (10:1 בסערה) 3) נסה לאבטח במקום 4) אם לא מצליח — עלה עוגן ועבור למקום בטוח. ב-MAYDAY רק אם בסכנה אמיתית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 328,
@@ -4381,7 +4608,8 @@
     "explanation": "Starboard Side To = עגינה עם צד ימין (ירוק) צמוד לרציף. Port Side To = צד שמאל לרציף. בהיכנסות: תכנן מי הצד הנוח בהתאם לרוח וזרם.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 329,
@@ -4400,7 +4628,8 @@
     "explanation": "ברוח חזקה: נסה לגשת נגד הרוח כדי שהיא תעזור בעצירה. אם אי-אפשר — גש מהצד כשהרוח תסייע לדחוף לרציף. תמיד לקחת בחשבון Prop Walk.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 330,
@@ -4419,7 +4648,8 @@
     "explanation": "Echo Sounder: שולח גל קול (אולטראסאונד) לקרקעית, מחשב זמן הגעת הד חזרה. עומק = (מהירות קול × זמן) / 2. מהירות קול בים: ~1500 מ'/שנייה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 331,
@@ -4438,7 +4668,8 @@
     "explanation": "AIS שולח ומקבל: MMSI, שם, סוג כלי שייט, מיקום (GPS), COG, SOG, Heading, יעד, שעת הגעה. מציג ספינות אחרות על chartplotter.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 332,
@@ -4457,7 +4688,8 @@
     "explanation": "ערוץ 70 = ערוץ DSC בלבד. שמור לקריאות מצוקה ורוטינה ב-DSC. קשר קולי ב-70 אסור. שמע ב-70 דורש מקלט DSC.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 333,
@@ -4476,7 +4708,8 @@
     "explanation": "GMDSS (Global Maritime Distress and Safety System): מערכת תקשורת המבטיחה שאות מצוקה (EPIRB/DSC) מועבר לרשויות חיפוש והצלה ולספינות בסביבה — 24/7.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 334,
@@ -4495,7 +4728,8 @@
     "explanation": "LOP = כשלוקחים נשיאה לנקודת ציון אחת — הספינה נמצאת על קו המורחב מהנקודה. שתי LOP = מיקום (fix). שלוש LOP = מיקום + בדיקת שגיאה.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 335,
@@ -4514,7 +4748,8 @@
     "explanation": "GPS ניווט: תכנן Waypoints על מפה ימית (ודא שהנתיב ביניהם בטוח), השתמש ב-GPS לאישור מיקום ומעקב. GPS עלול לטעות — השתמש גם בקריאות ויזואליות.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 336,
@@ -4533,7 +4768,8 @@
     "explanation": "VHF קריאה: ערוץ 16, שם הנקרא (×2-3), THIS IS + שם הקורא, OVER. הנקרא עונה ומציע ערוץ עבודה. עוברים לערוץ עבודה. 16 פנוי לחירום.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 337,
@@ -4552,7 +4788,8 @@
     "explanation": "ישראל: 16 = חירום/קריאה. 67 = MRCC חיפה (ערוץ עבודה). 9 = נמל. 6/8/72 = ספינה-לספינה. תמיד תשמור על 16 + 67 בשייט ישראלי.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 338,
@@ -4571,7 +4808,8 @@
     "explanation": "הכלל הבסיסי: ממוכנת פונה למפרשית. אבל: אם המפרשית עוקפת, אם היא ב-RAM, NUC, מוגבלת-שוקע — כלל ההיררכיה קובע. נתיב מפרשים אינו מעניק עדיפות אוטומטית.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 339,
@@ -4590,7 +4828,8 @@
     "explanation": "אדום מעל לבן (שני עגולים) = כלי שייט עוסק בדייג שאינו גורר. ירוק מעל לבן = טרולר (גורר). לבן מעל אדום = ספינת פיילוט.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "license": 30
   },
   {
     "num": 340,
@@ -4607,6 +4846,3227 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "NUC עושה דרכה: שני אדומים עגולים + אורות צד + אור ירכתיים. NUC שאינו עושה דרכה: שני אדומים עגולים בלבד (ללא צד וירכתיים).",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30
+  },
+  {
+    "num": 1001,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (K) מבחין בכלי שייט (G) המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. G עוגן, אין סכנה, K יכול להמשיך.",
+      "ב. K מפנה ל-G, G הוא כלי שיט ללא שליטה.",
+      "ג. G על שרטון, K ינהג בזהירות רבה, יתרחק בצורה היעילה ביותר מהשרטון.",
+      "ד. G מבקש עזרה, על K לגשת אליו ולעזור לו."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1002,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (P) מבחין בספינת מפרש (H) ועליה סימן יום כמתואר בתמונה 20, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. H יפנה ל-P (שמאלה), כלי מנוע מפנה למפרשית.",
+      "ב. P יפנה ימינה וגם H יפנה ימינה.",
+      "ג. P יפנה ל-H ימינה, P איננו מבין את האותות של H ומה שבטוח- בטוח!",
+      "ד. H ו-P יכולים להמשיך בדרכיהם."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1003,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (H) מבחין במפרשית (P) המציגה סימן יום כמתואר בתמונה 20, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. P עוגנת, על H לפנות לה דרך.",
+      "ב. H פונה ימינה, ו-P פונה ימינה.",
+      "ג. P מוגבלת בכושרה לתמרן (אין מספיק רוח), על H לפנות לה דרך.",
+      "ד. אין סכנה, H יכול להמשיך באורח ומהירות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1004,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחינה בספינה (B) המציגה סימן יום כמתואר בתמונה 10, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B מוגבל מפאת השוקע שלה, ולכן על J לפנות לה דרך.",
+      "ב. B ללא שליטה ועוגנת, אין סכנה, J יכול להמשיך בדרכו.",
+      "ג. B מבקשת עזרה, על J לגשת אליו ולעזור לו.",
+      "ד. B על שרטון, J ינהג בזהירות רבה ויתרחק בצורה היעילה ביותר מהשרטון."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1005,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (K) מבחינה בכלי שייט (C) המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. C עוגן, אין סכנה, K יכולה להמשיך.",
+      "ב. C מוגבל שוקע, על K לפנות לו דרך בזהירות.",
+      "ג. K ו-C כל אחד פונה ימינה.",
+      "ד. C על שרטון, K תנהג בזהירות רבה, תתרחק בצורה היעילה ביותר מהשרטון."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1006,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (M) מבחין בכלי שייט (A) המציג סימן יום כמתואר בתמונה 86, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. M צריך לעבור מאחורי ירכתיו של A.",
+      "ב. A מפנה ל-M, M מימינו.",
+      "ג. M מפנה ל-A, A גורר ואורך הגרר מעל 200 מטר.",
+      "ד. M מפנה ל-A, A קשה לו לתמרן."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1007,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (O) מבחין בכלי שיט (C) כשהוא מניף סימן יום כמתואר בתמונה 86, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. C מפנה ל-O.",
+      "ב. O מפנה ל-C.",
+      "ג. O ו-C, כל אחד פונה ימינה.",
+      "ד. אין סכנת התנגשות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1008,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (P) מבחין בספינת מנוע (D) המציגה סימן יום מנוע כמתואר בתמונה 75, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. ספינה D עוסקת בדייג, על P לפנות לה דרך.",
+      "ב. P מהיר ויכול להמשיך בתנועה ללא חשש.",
+      "ג. ספינה D מפנה לאופנוע ים P: P מימינו.",
+      "ד. D מוגבלת בגלל השוקע, P יפליג בזהירות עד שהסכנה תחלוף."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1009,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (M) מבחין באופנוע ים (E), מהי הפעולה הנדרשת? (לא קיימת סכנת התנגשות).",
+    "q_en": "",
+    "options": [
+      "א. E מפנה ל-M.",
+      "ב. M מפנה ל-E, עוקפת.",
+      "ג. אין צורך לבצע שינוי בקורס או מהירות.",
+      "ד. E יפנה ל-M, מה שבטוח, בטוח!"
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1010,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "כלי שייט (M) המציג סימן יום כמתואר בתמונה 84 משיג ועובר את אופנוע ים (E), מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. E מפנה ל-M, M העוסק בדייג.",
+      "ב. M יפנה ל-E. כלי שייט עוקף יפנה.",
+      "ג. E יפנה ל-M, אינו מבין את האותות של M ומה שבטוח – בטוח!",
+      "ד. E יפנה ל-M, ספינה מפנה לאופנוע."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1011,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) רואה כלי שייט (B) המניף על התורן שלו דגל כמתואר בתמונה 95 ובחרטום הספינה כדור שחור. מה מסמן (B) ומהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B מודיע שהוא עוגן ועל הספינה יש חומרים מסוכנים, יש לעבור בזהירות.",
+      "ב. B מסמן מצוקה, יש לגשת ולעזור.",
+      "ג. B מהווה סירת אם לצולל. צריך לשמור מרחק מעל 200 מטרים ממנו.",
+      "ד. B ללא שליטה אך הניף דגל במקום הכדור השני- ולכן צריך לשים לב!"
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1012,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (C) מבחין בכלי שייט (N) המציג סימן יום כמתואר בתמונה 77, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. N מבקש עזרה ועל C לגשת ולסייע לו.",
+      "ב. N עוגן, C יכול להמשיך להפליג.",
+      "ג. N מסמן שהוא מתמרן בקושי, על C לפנות לו דרך שמאלה.",
+      "ד. C ו-N יכולים להמשיך בדרכיהם."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1013,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (C) מבחין בכלי שייט (H) המציג סימן יום כמתואר בתמונה 83, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. H במצוקה ועל C לגשת ולסייע לו.",
+      "ב. H מוגבל בכשרו לתמרן מפאת השוקע שלו, על C לפנות לו דרך.",
+      "ג. H מסמן שהוא מוגבל בכושרו לתמרן, על C לפנות לו דרך.",
+      "ד. H עוגן, C יכול להמשיך ללא חשש."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1014,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע הים (F) מבחין בסירה (B) המניפה סימן יום כמתואר בתמונה 83. מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B ספינת אם לצוללים, יש להתרחק לפחות 200 מטרים ממנה.",
+      "ב. B עוגנת ומניפה דגל של כניסה לנמל.",
+      "ג. B קוראת לעזרה ולכן יש לחוש לכיוונה ולסייע.",
+      "ד. B היא כלי שייט ללא שליטה, יש להימנע מלהתקרב אליה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1015,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (A) ורואה מימנו ספינה (M) המניפה על התורן שלה דגל בודד כמתואר בתמונה 93. מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. A מפנה ל-M.",
+      "ב. M מפנה ל-A.",
+      "ג. M מהווה ספינת אם לצוללים ויש להתרחק ממנה לפחות 200 מטר.",
+      "ד. M היא כלי שייט ללא שליטה ויש להתרחק ממנה כדי לא להפריע לשיוטה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1016,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (C) מבחין בספינה (K) ועליה סימן יום כמתואר בתמונה 90, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. C פונה ימינה ומפנה דרך.",
+      "ב. C פונה שמאלה ומפנה דרך.",
+      "ג. K פונה שמאלה ומפנה דרך.",
+      "ד. כל אחד מכלי השייט יפנה ימינה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1017,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (I) מבחין בכלי שייט ממונע (A) המציג סימן יום כמתואר בתמונה 79, ומתקרב אל (I), וקיימת סכנת התנגשות, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. A חייב לפנות דרך ל-I.",
+      "ב. I חייב לפנות דרך ל-A.",
+      "ג. I מהיר יותר, אפשר להמשיך ללא חשש.",
+      "ד. A ממוכן, מפנה לאופנוע I."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1018,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (M) מבחין בכלי שייט ממוכנן (A) המציג סימן יום כמתואר בתמונה 79, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. A ממוכן, מפנה לאופנוע M הנראה מימינו.",
+      "ב. A גורר המתקשה בתמרון, M חייב לפנות לו דרך.",
+      "ג. M מהיר יותר ויכול להמשיך בתנועה ללא חשש.",
+      "ד. A מוגבל בכושרו לתמרן, M חייב לפנות לו דרך."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1019,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחין בכלי השייט (F) כשעליו מונף סימן יום כמתואר בתמונה 84. מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. F מימינו של J, על J לפנות לו דרך.",
+      "ב. F דייג, J יפנה דרך.",
+      "ג. F מוגבל בכושרו לתמרן ועוגן, אין סכנה, J יכול להמשיך.",
+      "ד. J ניגש לעזור ל-F המסמן שהוא במצוקה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1020,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (A) מבחין בספינה (I) ועליה סימן יום כמתואר בתמונה 84, (קיימת סכנת התנגשות בין כלי השייט) מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. A מפנה ל-I.",
+      "ב. I מפנה ל-A.",
+      "ג. כל אחד מכלי השייט יפנה לימין.",
+      "ד. I יוריד מהירות, A יגביר מהירות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1021,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחין בכלי השייט (F) כשעליו מונף סימן יום כמתואר בתמונה 76. מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. F מימינו של J, על J לפנות לו דרך.",
+      "ב. F שולת מוקשים, J יפנה דרך.",
+      "ג. F מוגבל בכושרו לתמרן ועוגן, אין סכנה, J יכול להמשיך.",
+      "ד. J ניגש לעזור ל-F המסמן שהוא במצוקה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1022,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחינה בספינה (B) המציגה סימן יום כמתואר בתמונה 87, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B מוגבל מפאת השוקע שלה, ולכן על J לפנות לה דרך.",
+      "ב. B ללא שליטה ועוגנת, אין סכנה, J יכול להמשיך בדרכו.",
+      "ג. B מבקשת עזרה, על J לגשת אליו ולעזור לו.",
+      "ד. B מוגבל בגלל אופי עיסוקו, J יפנה ימינה ויפנה דרך."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1023,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחינה בספינה (B) המציגה סימן יום כמתואר בתמונה 87, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B מוגבל בגלל אופי עיסוקו, J יפנה שמאלה ויפנה דרך.",
+      "ב. B ללא שליטה ועוגנת, אין סכנה, J יכול להמשיך בדרכו.",
+      "ג. B מבקשת עזרה, על J לגשת אליו ולעזור לו.",
+      "ד. B מוגבל בגלל אופי עיסוקו, J יפנה ימינה ויפנה דרך."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1024,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחינה בספינה (B) המציגה סימן יום כמתואר בתמונה 90, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B מוגבל בגלל אופי עיסוקו, J יפנה שמאלה ויפנה דרך.",
+      "ב. B ללא שליטה ועוגנת, אין סכנה, J יכול להמשיך בדרכו.",
+      "ג. B מבקשת עזרה, על J לגשת אליו ולעזור לו.",
+      "ד. B מוגבל בגלל אופי עיסוקו, J יפנה ימינה ויפנה דרך."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1025,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (J) מבחינה בספינה (B) המציגה סימן יום כמתואר בתמונה 89, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. B מוגבל בגלל אופי עיסוקו, J יפנה שמאלה ויפנה דרך.",
+      "ב. B ללא שליטה ועוגנת, אין סכנה, J יכול להמשיך בדרכו.",
+      "ג. B מבקשת עזרה, על J לגשת אליו ולעזור לו.",
+      "ד. B מוגבל בגלל אופי עיסוקו, J יפנה ימינה ויפנה דרך."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1026,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (L) מבחין בכלי שייט ממונע (P) המציג סימן יום כמתואר בתמונה 86, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. P ממוכן, מפנה לאופנוע L.",
+      "ב. P גורר, L חייב לפנות לו דרך.",
+      "ג. L מהיר יותר, ויכול להמשיך ללא חשש.",
+      "ד. שניהם ממוכנים ולכן על שניהם כל אחד לפנות ימינה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1027,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (G) מבחין בכלי שייט ממונע (K) המציג סימן יום כמתואר בתמונה 86, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. K ממוכן, מפנה לאופנוע G.",
+      "ב. K גורר, G חייב לפנות לו דרך.",
+      "ג. G מהיר יותר, ויכול להמשיך ללא חשש.",
+      "ד. שניהם ממוכנים ולכן על שניהם כל אחד לפנות ימינה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1028,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "כלי שייט \"F\" המציג את הצורה שבתמונה \"81\" מבחין באופנוע-ים \"N\" כיצד יפעלו כלי השייט?",
+    "q_en": "",
+    "options": [
+      "א. כל אחד פונה ימינה.",
+      "ב. כל אחד עוצר ומנסה לנסוע לאחור.",
+      "ג. \"N\" יפנה, ויתרחק ככל האפשר מ-\"F\".",
+      "ד. \"N\" במצוקה, ולכן חובה לגשת אליו ולהגיש עזרה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1029,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (F) מבחין בספינת מפרש (N) המציגה סימן יום כמתואר בתמונה 77. מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. N על שרטון, F יתקדם בזהירות רבה.",
+      "ב. N עוגנת, F יכול לעבור על ידה.",
+      "ג. N מסמנת שהיא מתמרנת בקושי, על F לפנות לה דרך שמאלה.",
+      "ד. N מבקשת עזרה ועל F לגשת ולסייע לה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1030,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "כאשר כלי שיט אחר חייב לפנות לך את הדרך - מה עליך לעשות?",
+    "q_en": "",
+    "options": [
+      "א. עלי לשמור על אורח ומהירות, כמו שהפלגתי עד עכשיו.",
+      "ב. עלי להוריד מהירות למינימום ולשמור על האורח.",
+      "ג. עלי לשנות אורח ו/או מהירות בצורה שתראה לעיני משיט כלי השיט השני באופן ברור.",
+      "ד. אין זה משנה מה אני אעשה - כלי השיט השני חייב לפנות לי דרך בכל מקרה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1031,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "איך אתה מפנה דרך לכלי שיט אחר?",
+    "q_en": "",
+    "options": [
+      "א. אשמור על אורח (כיוון הפלגה) ומהירות, כמו שהפלגתי עד עכשיו.",
+      "ב. אוריד מהירות למינימום ואשמור על האורח (כיוון ההפלגה) בו הפלגתי עד עכשיו.",
+      "ג. אני חייב לעצור את האופנוע ולתת לכלי השיט השני לעבור לפני.",
+      "ד. עלי לשנות אורח ו/או מהירות בצורה שתראה לעיני משיט כלי השיט השני באופן ברור."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1032,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "סכנת התנגשות קיימת בין שני כלי שיט כאשר:",
+    "q_en": "",
+    "options": [
+      "א. תכוון המצפן לכלי שיט אחר המתקרב אליך משתנה במידה ניכרת.",
+      "ב. תכוון המצפן לכלי שיט אחר המתקרב אליך אינו משתנה במידה ניכרת.",
+      "ג. כאשר כלי השיט השני מהיר יותר משלך.",
+      "ד. כאשר המרחק בין שני כלי השיט קטן בהדרגה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1033,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "הגדרת כלי שיט \"בדרך\" היא:",
+    "q_en": "",
+    "options": [
+      "א. כלי שיט שאיננו רתוק לחוף, אינו במצב עגינה ואינו על שרטון.",
+      "ב. כלי שיט המתקדם במים בעזרת מנועים, מפרשים או משוטים.",
+      "ג. כלי שיט שאינו מתקדם בעזרת מנועים או מפרשים אלא ניסחף ברוח ובזורם.",
+      "ד. כלי שיט המפליג מנקודה אחת לנקודה אחרת."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1034,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "באיזה מקרה על פי החוק, לא יהיה חייב אופנוע-ים בפנוי דרך לכלי שייט המוגבל בכושרו לתמרן?",
+    "q_en": "",
+    "options": [
+      "א. כאשר המוגבל מתקרב מולו.",
+      "ב. כאשר המוגבל מתקרב משמאלו.",
+      "ג. כאשר המוגבל מתקרב מאחוריו ומשיג את האופנוע ים.",
+      "ד. לא יתכן בשום מקרה שכלי שייט מוגבל יפנה דרך לאופנוע-ים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1035,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "מתי קיימת סכנת התנגשות בין שני כלי שייט?",
+    "q_en": "",
+    "options": [
+      "א. כיוון המצפן לכלי שייט מתקרב משתנה במידה ניכרת.",
+      "ב. כאשר המרחק בין שני כלי השייט קטן וכיוון המצפן אליו לא משתנה במידה ניכרת.",
+      "ג. כאשר כלי השייט השני מהיר יותר משאתה מזה שאתה משיט וכוון המצפן אליו משתנה במהירות.",
+      "ד. כאשר כיוון המצפן לכלי שייט מתקרב אינו משתנה והטווח אליו גם לא משתנה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1036,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "האם משיט כלי שיט חייב לקיים תצפית לפי ראיה ושמיעה, ואם כן, מתי?",
+    "q_en": "",
+    "options": [
+      "א. חובת תצפית היא בכל עת ובכל מצב.",
+      "ב. התצפית דרושה בראות לקויה.",
+      "ג. קיום התצפית נתון לשיקול דעתו של המשיט בהתאם לנסיבות הקיימות.",
+      "ד. התקנה נוגעת למשיטי כלי שייט שאורכם מעל 7 מטרים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1037,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "האם מותר לאופנוע ים להפליג בשעות החשיכה או בשעת ראות לקויה?",
+    "q_en": "",
+    "options": [
+      "א. מותר, אבל לא יותר ממיל 1 מהחוף.",
+      "ב. מותר, בתנאי שיהיה האופנוע מכשיר להשמעת אות קולי.",
+      "ג. מותר, בתנאי שיהיה עוד נוסע שיקים תצפית לאחור.",
+      "ד. אסור להפליג."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1038,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים P מבחין בכלי שייט H המניף על התורן את הדגל בתמונה 95, מה הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. כל אחד פונה ימינה.",
+      "ב. כל אחד פונה שמאלה.",
+      "ג. H מסמן שיש צוללים במים ולכן P חייב להתרחק לפחות 200 מטר.",
+      "ד. P תפנה דרך הספינה H עוגנת."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1039,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "במרינה אופנוע ים שומע את כלי השייט מלפניו משמיע אות קולי שבתמונה 114, מה פרוש האות?",
+    "q_en": "",
+    "options": [
+      "א. כלי השייט פונה ימינה.",
+      "ב. כלי השייט פונה שמאלה.",
+      "ג. כלי השייט מטיל עוגן.",
+      "ד. כלי השייט מסמן מצוקה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1040,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "כלי שייט D משמיע צפירה שבתמונה 111, כלי השייט L משמיע את אותו הצפירה. מה המשמעות?",
+    "q_en": "",
+    "options": [
+      "א. הם מסמנים שאין סכנת התנגשות ביניהם.",
+      "ב. הם מסמנים שיש סכנת התנגשות ולכן כל אחד פונה שמאלה.",
+      "ג. אלו אותות שנותנים רק בערפל ולכן אין משמעות.",
+      "ד. הם מסמנים שיש סכנת התנגשות ולכן כל אחד פונה ימינה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1041,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע – ים \"F\" מבחין בכלי שייט \"N\" המציג דגל שבתמונה \"106\" כיצד עליו לפעול?",
+    "q_en": "",
+    "options": [
+      "א. חובה לגשת לכלי שייט \"N\" ולהגיש עזרה.",
+      "ב. אופנוע הים ימשיך להפליג בזהירות, שלא יעלה על האדם על בים.",
+      "ג. \"N\" מסמן שיש צוללים במים ולכן יש להתרחק למרחק של 200 מטר לפחות.",
+      "ד. שני כלי השייט יפנו ימינה על מנת למנוע התנגשות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1042,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "כלי שייט G משמיע את האות שבתמונה 115 לאופנוע ים K, מה המשמעות?",
+    "q_en": "",
+    "options": [
+      "א. כלי השייט G מזהיר את האופנוע מעליה על שרטון.",
+      "ב. כלי השייט G מברך לשלום.",
+      "ג. כלי השייט G מנסה להזהיר או למשוך תשומת לב של האופנוע.",
+      "ד. אין משמעות לצפירות ביום, אלה רק בערפל."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1043,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים E רואה מימינו את אופנוע ים I. מה הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. כל אחד פונה ימינה.",
+      "ב. כל אחד פונה שמאלה.",
+      "ג. כל אחד ימשיך בדרכו, אין סכנת התנגשות.",
+      "ד. E יפנה ל-I הנמצא מימינו."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1044,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע – ים \"B\" מבחין בכלי שייט \"J\" המציג דגל שבתמונה \"104\" כיצד עליו לפעול?",
+    "q_en": "",
+    "options": [
+      "א. חובה לגשת לכלי שייט \"J\" ולהגיש עזרה.",
+      "ב. אופנוע הים ימשיך להפליג בזהירות, שלא יעלה על האדם על בים.",
+      "ג. \"J\" מסמן שיש צוללים במים ולכן יש להתרחק למרחק של 200 מטר לפחות.",
+      "ד. שני כלי השייט יפנו שמאלה על מנת למנוע התנגשות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1045,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע (D) מבחין באופנוע ים (L), מה הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. כל אחד פונה ימינה.",
+      "ב. כל אחד פונה שמאלה.",
+      "ג. D מוריד מהירות, L פונה ימינה.",
+      "ד. שני האופנועים יעצרו."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1046,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "אופנוע-ים מפליג צפונה, מקביל אליו אופנוע-ים נוסף, התכוון לאופנוע הנוסף לא משתנה והטווח לא משתנה וכן...",
+    "q_en": "",
+    "options": [
+      "א. קיימת סכנת התנגשות (התכוון לא משתנה).",
+      "ב. לא קיימת סכנת התנגשות.",
+      "ג. סכנת התנגשות תיתכן רק אם יפליגו לאורך 3 שעות לפחות.",
+      "ד. לא ניתן לדעת על פי הנתונים בשאלה אם יהיה סכנת התנגשות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1047,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע-ים A מבחין במפרשית K, התכוון אל המפרשית הולכת וגדלה בצורה ניכרת וכך...",
+    "q_en": "",
+    "options": [
+      "א. קיימת סכנת התנגשות על האופנוע-ים לפנות למפרשית.",
+      "ב. לא קיימת סכנת התנגשות, אופנוע-ים יעבור לפני חרטום המפרשית.",
+      "ג. אופנוע-ים יקטין את מהירותו על מנת שהזווית בינה לבין המפרשית תגדל.",
+      "ד. שני כלי השייט יפנו ימינה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1048,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע-ים A מבחין במפרשית K, התכוון אל המפרשית הולכת וקטנה בצורה ניכרת וכך...",
+    "q_en": "",
+    "options": [
+      "א. קיימת סכנת התנגשות על האופנוע-ים לפנות למפרשית.",
+      "ב. לא קיימת סכנת התנגשות, אופנוע-ים יעבור לפני חרטום המפרשית.",
+      "ג. אופנוע-ים יקטין את מהירותו על מנת שהזווית בינה לבין המפרשית תגדל.",
+      "ד. לא קיימת סכנת התנגשות, אופנוע-ים יעבור מאחורי המפרשית."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1049,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "בתעלה צרה אופנוע-ים I שומע מאחור כלי שייט A משמיע את האות שבתמונה 116, מה משמעות האות?",
+    "q_en": "",
+    "options": [
+      "א. A מסמן שהוא זורק עוגן.",
+      "ב. A רוצה לעקוף את I מימין.",
+      "ג. A רוצה לעקוף את I משמאל.",
+      "ד. A מפעיל מנועים לאחור."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1050,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "בתעלה צרה אופנוע-ים I שומע מאחור כלי שייט A משמיע את האות שבתמונה 121, מה משמעות האות?",
+    "q_en": "",
+    "options": [
+      "א. A מסמן שהוא זורק עוגן.",
+      "ב. A רוצה לעקוף את I מימין.",
+      "ג. A רוצה לעקוף את I משמאל.",
+      "ד. A מפעיל מנועים לאחור."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1051,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (D) רואה את כלי שייט (L) המציג סימן יום כמתואר בתמונה 83, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. L עוגן (ומניף דגל לאום), D יכול לעבור על ידו.",
+      "ב. L על שרטון, D להפליג בזהירות רבה.",
+      "ג. L מסמן שהוא מתמרן בקושי, על D לפנות לו דרך שמאלה.",
+      "ד. L מבקש עזרה ועל D לגשת ולסייע לו."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1052,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "כלי שייט בטווח ראייתך משמיע צפירה כמתואר בתמונה 119, מה פירוש האות?",
+    "q_en": "",
+    "options": [
+      "א. שהוא משנה אורחו לימין.",
+      "ב. שהוא משנה אורחו לשמאל.",
+      "ג. שהוא במצוקה.",
+      "ד. שמנועיו מופעלים אחורה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1053,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהו אות מצוקה יעיל לרוכב אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. הפעלת מצוף עשן בצבע כחול.",
+      "ב. הנפת ידיים מעל הראש כדי סימון שיתקרב אל האופנוע שבמצוקה.",
+      "ג. נצנוץ האות ...‏ _ _ _ ‏... במראה איתות או פיסת מתכת מבריקה.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1054,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "כלי שייט בטווח ראייתך – משמיע 7 צפירות ארוכות ברצף, מה פירוש האות?",
+    "q_en": "",
+    "options": [
+      "א. שהוא במצוקה.",
+      "ב. שפעולותיך אינן מובנות לו.",
+      "ג. שהוא בתנועה אחורה.",
+      "ד. כנראה אין תקלה, לא קיימת צפירה כזאת."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1055,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "אופנוע ים P מבחין בכלי שייט C המשמיע אות קולי שבתמונה 119, מה תהיה פעולתו של האופנוע?",
+    "q_en": "",
+    "options": [
+      "א. P ימשיך בדרכו, C חייב לפנות דרך (מימינו).",
+      "ב. שני כלי השייט יפנו ימינה.",
+      "ג. C במצוקה, האופנוע חייב לגשת.",
+      "ד. ל-C נתפס הצופר, אין צורך בלגשת אליו."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1056,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אתה מפליג באופנוע ים (A) ורואה לפניך ספינה (J) המניפה על התורן דגל בתמונה 104 ומתחתיו כדור שחור, מה כוונתה ומה עליך לעשות?",
+    "q_en": "",
+    "options": [
+      "א. J מודיעה שהיא עוגנה, חיפוש אדם בים.",
+      "ב. J מהווה סירת אם לצולל. צריך לשמור מרחק מעל 200 מטרים ממנה.",
+      "ג. J ללא שליטה אך הניפה דגל במקום הכדור השני- ולכן צריך לשים לב!",
+      "ד. J קוראת לעזרה ולכן יש לגשת אליה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1057,
+    "source": "ידני",
+    "license": 11,
+    "topic": "דגלים",
+    "q_he": "כלי שייט בטווח ראייתך מציג את הדגל בתמונה 93 מעל הדגל שבתמונה 92, מה משמעות הדגלים?",
+    "q_en": "",
+    "options": [
+      "א. כלי השייט במצוקה.",
+      "ב. כלי השייט משמש ספינה משמש לצוללים.",
+      "ג. כלי השייט מחפש אדם בים.",
+      "ד. אין משמעות ל-2 הדגלים ביחד."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1058,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "כלי שייט בטווח ראייתך, משמיע 3 צפירות קצרות, 3 צפירות קצרות ו-3 צפירות ארוכות. מהו פירוש האות?",
+    "q_en": "",
+    "options": [
+      "א. שמנועיו מופעלים אחורה.",
+      "ב. שפעולותיך אינן מובנות לו.",
+      "ג. שהוא מבקש עזרה.",
+      "ד. שהוא בתנועה אחורה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1059,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים A מבחין בכלי שייט M ולידו כלי השייט עשן כתום סמיך. מה תהיה פעולתו של האופנוע?",
+    "q_en": "",
+    "options": [
+      "א. מפנה דרך (כלי השייט מצד ימין).",
+      "ב. מעלה מהירות על מנת למנוע את הסכנה.",
+      "ג. כלי השייט M במצוקה ולכן אגש לעזור.",
+      "ד. כלי השייט M מפעיל מסך עשן."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1060,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים D מבחין בכלי שייט L המניף על התורן את הדגל שבתמונה 104 ומעליו את הדגל שבתמונה 93. מה תהיה הפעולה של האופנוע?",
+    "q_en": "",
+    "options": [
+      "א. L במצוקה ולכן יש לגשת אליו.",
+      "ב. אופנוע ים D יפנה ימינה למנוע התנגשות.",
+      "ג. אופנוע ים D יפנה שמאלה למנוע התנגשות.",
+      "ד. אופנוע ים D יפליג לנמל לקרוא לעזרה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1061,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (A) מבחין בספינה (M) המניפה על התורן שלה דגל כמתואר בתמונה 98 ובחרטום כדור שחור, מה כוונתה?",
+    "q_en": "",
+    "options": [
+      "א. M קוראת לעזרה ולכן יש לחוש לכיוונה ולסייע.",
+      "ב. M מודיעה שהיא ממתינה לאשור רפואי לכניסה למרינה.",
+      "ג. M מהווה אוניית אם לצוללים ועוגנת ויש להתרחק ממנה לפחות 200 מטרים.",
+      "ד. M היא ספינה ללא שליטה ויש להתרחק ממנה כדי לא להפריע לשיוטה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1062,
+    "source": "ידני",
+    "license": 11,
+    "topic": "דגלים",
+    "q_he": "מה המרחק המינימלי שמותר להתקרב לדגל שבתמונה 98?",
+    "q_en": "",
+    "options": [
+      "א. 300 מטרים.",
+      "ב. 200 מטרים.",
+      "ג. 50 מטרים.",
+      "ד. 500 מטרים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1063,
+    "source": "ידני",
+    "license": 11,
+    "topic": "דגלים",
+    "q_he": "איזה מהדגלים הבאים מסמן שיש צוללים במים?",
+    "q_en": "",
+    "options": [
+      "א. תמונה 104",
+      "ב. תמונה 95.",
+      "ג. תמונה 98",
+      "ד. תמונה 93."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1064,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "האם מותר לאופנוע ים לשמש כספינת אם לצולל?",
+    "q_en": "",
+    "options": [
+      "א. אסור בכל תנאי.",
+      "ב. מותר אם יניף את הדגל שבתמונה 104, ועל האופנוע נשאר תמיד משיט מוסמך כדין.",
+      "ג. מותר אם יניף את הדגל שבתמונה 98, ועל האופנוע נשאר תמיד משיט מוסמך כדין.",
+      "ד. מותר בכל תנאי."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1065,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "איזה סימן יום מניפה סירה המשמשת כספינת אם לצוללים?",
+    "q_en": "",
+    "options": [
+      "א. תמונה 83.",
+      "ב. תמונה 75.",
+      "ג. תמונה 98.",
+      "ד. תמונה 104."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1066,
+    "source": "ידני",
+    "license": 11,
+    "topic": "זכות מעבר",
+    "q_he": "אופנוע ים (A) רואה סירת גומי (H) ועליה דגל כמתואר בתמונה 104, מהי הפעולה הנדרשת?",
+    "q_en": "",
+    "options": [
+      "א. H קורא לעזרה ולכן יש לגשת אליו.",
+      "ב. H עוגן, אפשר לעבור לידו ללא חשש.",
+      "ג. H מסמן שהוא מהווה סירת אם לצוללים, עליך לשמור מרחק של לפחות 200 מטרים ממנו.",
+      "ד. H מסמן שאדם בים, יש להפליג בזהירות ולפנות לו דרך."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1067,
+    "source": "ידני",
+    "license": 11,
+    "topic": "דגלים",
+    "q_he": "מה המשמעות של הדגל בתמונה 104?",
+    "q_en": "",
+    "options": [
+      "א. צוללים בים.",
+      "ב. אדם בים, יש לגשת מיד ולהגיש עזרה.",
+      "ג. אדם בים, יש להפליג בזהירות.",
+      "ד. פורק או טוען חומרים נפיצים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1068,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "אתה רוצה להשיט את האופנוע-ים שלך מחוף שאיננו חוף רחצה. מה הן המגבלות החלות על שיט כזה?",
+    "q_en": "",
+    "options": [
+      "א. עלי להוביל את האופנוע שי ברגל עד 50 מטרים מקו החוף ורק אז אוכל להתניע ולשוט באופן חופשי.",
+      "ב. אני יכול להתניע את האופנוע ברגע שעומק המים מספיק, ולשוט באופן חופשי.",
+      "ג. מקו החוף ועד 300 מטרים ממנו עלי לשוט בקו ניצב לקו החוף, ובמהירות שלא תעלה על 5 קשרים (9 קמ\"ש). אחרי 300 המטרים אני רשאי לשוט בהתאם לטווח המירבי הרשום ברשיון השיט של האופנוע.",
+      "ד. אני חייב להשתמש ליציאה וחזרה בנתיב מסומן במצופים המיועד לכלי שיט. אם אין נתיב כזה אסור לי להשיט את האופנוע."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1069,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "מהו טווח המרחק מחוף שאינו חוף רחצה מוכרז המותר להפלגת אופנוע ים (ללא הגבלות)?",
+    "q_en": "",
+    "options": [
+      "א. ברצועה שבין החוף עד לגבול קשר עין מקו החוף.",
+      "ב. ברצועה שבין קו שפל המים עד למרחק 300 מטרים מהחוף.",
+      "ג. במרחק עד 1 מייל מהחוף אך לא פחות מ-300 מטרים מנקודת שפל המים.",
+      "ד. על פי התחום המוגדר בתעודת המשיט."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1070,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהי מהירות ההפלגה המותרת בטווח 200 מטרים מחוף לא מוכרז?",
+    "q_en": "",
+    "options": [
+      "א. אין הגבלה למהירות.",
+      "ב. מהירות של 5 קשרים עד שיוצאים בניצב לחוף למרחק של 300 מטרים מקו החוף.",
+      "ג. אסור להפליג בשום מקרה בטווח 200 מטרים מהחוף.",
+      "ד. מותר להפליג במהירות של 15 קשרים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1071,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהי מהירות ההפלגה וכוון ההפלגה המותרים במרחק של 200 מטרים מקו חוף לא מוכרז?",
+    "q_en": "",
+    "options": [
+      "א. אין הגבלה למהירות ולכוון.",
+      "ב. מהירות של 5 קשרים בניצב לחוף (90°) עד שיוצאים למרחק של 300 מטרים מקו החוף.",
+      "ג. אסור להפליג בשום מקרה בטווח 200 מטרים מהחוף.",
+      "ד. מותר להפליג במהירות של 5 קשרים ללא הגבלת כוון הפלגה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1072,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "היכן מותר לאופנוע ים להפליג בים הפתוח?",
+    "q_en": "",
+    "options": [
+      "א. בכל מקום שאינו סגור לשייט וברצועה שמעבר ל-300 מטרים מקו שפל המים.",
+      "ב. אין שום הגבלות או אזורים אסורים לשייט אופנוע ים.",
+      "ג. רק בתוך רצועה של 300 מטרים מקו שפל המים.",
+      "ד. מותר בכל מקום לאורך החוף כל עוד ניתן להבחין בקו החוף בעין."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1073,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "האם מותר להפליג עם אופנוע – ים במרחק של 2 מיל מערבית לשטח אש 30 (עתלית)?",
+    "q_en": "",
+    "options": [
+      "א. רק באישור מיוחד של משרד התחבורה.",
+      "ב. אסור להפליג בשום תנאי מערבית לעתלית למרחק של 2 מיל.",
+      "ג. מותר להפליג במרחק של 300 מטר מערבית לעתלית.",
+      "ד. יש להתרחק לפחות 3 מיל מעתלית."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1074,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "האם מותר להכנס לתוך שפך נחל \"הירקון\" על מנת לעלות נוסע?",
+    "q_en": "",
+    "options": [
+      "א. מותר במהירות של 5 קשר.",
+      "ב. מותר רק אם לנוסע יש מגבלות.",
+      "ג. חל איסור לאופנוע-ים לשוט בנחלים.",
+      "ד. רק באישור העירייה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1075,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "האם מותר להפליג עם אופנוע ים בים המלח?",
+    "q_en": "",
+    "options": [
+      "א. מותר באותם תנאים כמו בים התיכון.",
+      "ב. מותר רק אם לנוסע יש מגבלות בריאות.",
+      "ג. אסור בשום מקרה לשוט עם אופנוע-ים בים המלח.",
+      "ד. רק באישור המועצה האזורית."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1076,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "האם מותר להפליג עם אופנוע-ים מיפו לאשדוד במרחק של 1 מיל מהחוף?",
+    "q_en": "",
+    "options": [
+      "א. במידה וכתוב ברשיון שניתן להתרחק 1 מיל מהחוף, אז מותר.",
+      "ב. מותר להפליג בין 2 האתרים הנ\"ל, בתנאי שההפלגה תתבצע באור יום.",
+      "ג. אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים.",
+      "ד. מותר להפליג בתנאי שאופנוע הים יתרחק משטח האש מערבה 7 מיל."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1077,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "האם רשאי משיט אופנוע ים להפליג בתחום חוף רחצה מוכרז?",
+    "q_en": "",
+    "options": [
+      "א. אסור לשוט בתחום חוף רחצה בשום אופן ובשום תנאי.",
+      "ב. אם יש באותו חוף רחצה נתיב מיוחד, מסומן במצופים, המיועד למעבר כלי שייט.",
+      "ג. כן, במהירות איטית, שלא יסכן מתרחצים.",
+      "ד. כן, כאשר החוף סגור ואין בו מתרחצים בכלל."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1078,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "היכן ניתן לפגוש מקומות או אזורים הסגורים לשיט (באופן קבוע או במועדים מסוימים)?",
+    "q_en": "",
+    "options": [
+      "א. באזורים מסוימים ליד החופים, מול מקומות בהם צ.ה.ל. נוהג להתאמן בירי.",
+      "ב. 300 מטרים מצידי חוף רחצה.",
+      "ג. 500 מטרים מחוף רחצה לא מוכרז.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1079,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "מהו \"חוף רחצה מוכרז\" ומה הם גבולותיו?",
+    "q_en": "",
+    "options": [
+      "א. חוף שבו מתרחצים אנשים, בין 200 עד 400 מטרים מהחוף.",
+      "ב. חוף עירוני שיש בו מצילים, שירותים ומלתחות, וגבולותיו יהיו כפי שתקבע העירייה.",
+      "ג. חוף רחצה שהוכרז עליו ב\"רשומות\" מקו שיא הגיאות ועד 300 מטרים מקו זה וכן 60 מטרים מכל צד של השטח המיועד לרחצה.",
+      "ד. חוף רחצה שהוכרז עליו ב\"רשומות\" הנמשך מקו שפל המים על החוף עד 300 מטרים לתוך הים וכן 50 מטרים מכל צד של השטח המיועד לרחצה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1080,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "האם מותר להתקרב לחוף רחצה על מנת להעלות נוסע?",
+    "q_en": "",
+    "options": [
+      "א. רק אם בדקתי שאין שחיינים בסביבה.",
+      "ב. רק אם הנוסע מאוד עייף.",
+      "ג. אסור להתקרב עד 300 מטר מצדי חוף רחצה.",
+      "ד. כן, אך לא פחות מ-50 מטר מצדי חוף רחצה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1081,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "באיזה מקומות/תנאים מותר לאופנוע ים להפליג בים הפתוח?",
+    "q_en": "",
+    "options": [
+      "א. אין שום איסורים והגבלות לשייט אופנוע ים בים הפתוח.",
+      "ב. בכל מקום שאיננו חוף רחצה מוכרז, אבל מותר בתוך רצועה שמקו השפל ועד 300 מטרים ממנו.",
+      "ג. מותר להפליג לאורך החוף כל עוד ניתן לשמור איתו קשר עין ואין מתרחצים.",
+      "ד. בכל מקום מורשה, במרחק מעל 300 מטרים מהחוף עד מרחק של 1 מייל."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1082,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "מהי מהירות ההפלגה המותרת במרחק של 200 מטרים מחוף רחצה לא מוכרז?",
+    "q_en": "",
+    "options": [
+      "א. אין הגבלה למהירות.",
+      "ב. מהירות של 5 קשרים.",
+      "ג. אסור להפליג בשום מקרה בטווח 200 מטרים מהחוף.",
+      "ד. מותר להפליג במהירות של 15 קשרים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1083,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "מיכל הדלק של אופנוע הים שלך התחיל לבעור כאשר אתה בערך 800 מטרים מחוף הרצליה. המרחק לחוף נראה לך גדול מדי בשביל יכולת השחייה שלך. מהי הפעולה הנכונה?",
+    "q_en": "",
+    "options": [
+      "א. לנסות ולכבות את השריפה בעזרת מים מהים.",
+      "ב. לשבת על האופנוע לנפנף ידיים לצידי הגוף כסימן מצוקה.",
+      "ג. להפעיל את ידנית העשן שבאופנוע, לקפוץ למים ולשחות לחוף.",
+      "ד. לקפוץ למים מהאופנוע, לשחות מרחק מה הרוח מול הרוח המערבית (כדי לא להיקלע לשלולית דלק בוער) ולהמתין לעזרה שתגיע אליך, מהחוף יבחינו בעשן מהאופנוע הבוער."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1084,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "במהלך שייט עם אופנוע ים נוסף, הבחנת כי עשן שחור וסמיך החל לצאת מהאופנוע של חברך, מה תעשה?",
+    "q_en": "",
+    "options": [
+      "א. תסמן לנטוש את האופנוע, תאסוף אותו ותתרחק מהכלי.",
+      "ב. ייתכן ויש לו תקלה במנוע, תסמן לו לחזור חוף.",
+      "ג. זה שום דבר, מנוע האופנוע \"אוכל שמן\" ולכן העשן.",
+      "ד. תשאיר אותו ליד, או על האופנוע ותזעיק עזרה מהחוף."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1085,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "על מה יש להקפיד בזמן תדלוק אופנוע ים:",
+    "q_en": "",
+    "options": [
+      "א. יש להרחיק כל מקור אש גלויה.",
+      "ב. יבוצע רק כאשר המנוע עובד.",
+      "ג. יבוצע רק כאשר המנוע דומם.",
+      "ד. יש לוודא שכמות הדלק במיכל יורדת מתחת ל-10 ליטרים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1086,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "מה חשוב לבצע לאחר תדלוק האופנוע?",
+    "q_en": "",
+    "options": [
+      "א. יש לוודא שאין גזים דליקים לפני התנעה.",
+      "ב. אין חשיבות לכלום, אפשר לתדלק היכן שרוצים.",
+      "ג. חשוב לשמור על בריאות המתדלק.",
+      "ד. יש למנוע נזילות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1087,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "בעת תדלוק האופנוע, מהו האופן היעיל ביותר לכיבוי שריפת דלק?",
+    "q_en": "",
+    "options": [
+      "א. התזת קצף ממטפה קצף.",
+      "ב. התזת סילון חזק של מים במשאבת כבוי.",
+      "ג. התזת מי-ים על המקום הבוער.",
+      "ד. להפעיל מטפה גז (CO2) ולזרוק אותו אל מרכז השטח הבוער."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1088,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "מהם שלושת מרכיבי האש (משולש האש)?",
+    "q_en": "",
+    "options": [
+      "א. חמצן, חום, חומר בעירה.",
+      "ב. מוצקים, נוזלים, חשמל.",
+      "ג. חום, חנקן, חומר בעירה.",
+      "ד. להבות, עשן, גז."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1089,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "איזה מרכיב ממשולש האש יש לנתק כדי לכבות את השריפה?",
+    "q_en": "",
+    "options": [
+      "א. לנתק את המימן.",
+      "ב. חייבים לנתק את שלושת המרכיבים.",
+      "ג. מספיק אם ננתק מרכיב אחד.",
+      "ד. רק אם ננתק את החמצן נצליח לכבות את השריפה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1090,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "איזה צלע של משולש האש ננתק מטף קצף?",
+    "q_en": "",
+    "options": [
+      "א. את החמצן.",
+      "ב. את החום.",
+      "ג. את החומר הבוער.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1091,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "אלו בדיקות יש לבצע על מנת לדעת שהמטף תקני?",
+    "q_en": "",
+    "options": [
+      "א. לבדוק את תאריך פקיעתו.",
+      "ב. לבדוק שמחוג הלחץ נמצא על הצבע הירוק.",
+      "ג. ניתן לשקול ולראות שהמשקל מתאים למה שרשום.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1092,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "איזה צלע של משולש האש מנתק מטף אבקה?",
+    "q_en": "",
+    "options": [
+      "א. את החמצן.",
+      "ב. את החום.",
+      "ג. את החומר הבוער.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1093,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "מה המשמעות של רוח דרומית חזקה במפרץ אילת?",
+    "q_en": "",
+    "options": [
+      "א. הים יישאר שקט ותוכל לשוט בבטחה.",
+      "ב. הרוח תסחוף כלי שייט לכוון עקבה.",
+      "ג. הים יעלה ויהיה סוער מאוד בחוף הצפוני.",
+      "ד. אפשר לשוט בבטחה ובלבד שלא תתרחק יותר מ-500 מ' מהחוף הצפוני."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1094,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "מה המשמעות של רוח צפונית במפרץ אילת?",
+    "q_en": "",
+    "options": [
+      "א. הים יישאר שקט ותוכל לשוט בבטחה.",
+      "ב. הרוח תסחוף כלי שייט לכוון עקבה.",
+      "ג. הים יעלה ויהיה סוער מאוד בחוף הצפוני.",
+      "ד. אפשר לשוט בבטחה ובלבד שלא תתרחק יותר מ-500 מ' מהחוף הצפוני."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1095,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "מה המשמעות של רוח מזרחית במפרץ אילת?",
+    "q_en": "",
+    "options": [
+      "א. הרוח תסחוף את אופנוע-הים לכיוון בסיס חיל הים.",
+      "ב. הרוח תסחוף כלי שייט לכוון עקבה.",
+      "ג. הים יעלה ויהיה סוער מאוד בחוף הצפוני.",
+      "ד. אפשר לשוט בבטחה ובלבד שלא תתרחק יותר מ-500 מ' מהחוף הצפוני."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1096,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "שמעת כי מחר, בים התיכון, תהיה \"בריזה רגילה\" לעונת הקיץ. מאיזה כיוון תנשב הרוח בשעת הצהריים?",
+    "q_en": "",
+    "options": [
+      "א. מערבית.",
+      "ב. מזרחית.",
+      "ג. דרום מזרחית.",
+      "ד. דרומית."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1097,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "שמעת כי מחר, בים התיכון, תהיה \"בריזה רגילה\" לעונת הקיץ. מאיזה כיוון תנשב הרוח בשעת בוקר?",
+    "q_en": "",
+    "options": [
+      "א. מערבית.",
+      "ב. צפונית.",
+      "ג. דרום מזרחית.",
+      "ד. צפונית מזרחית."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1098,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "בחורף כאשר מודיעים בתחזית מזג האוויר, כי שקע ברומטרי עמוק נמצא צפונית לארצנו. מה יהיה כוון הרוח ועוצמתה בקרבת חוף ים התיכון שלאורך ישראל?",
+    "q_en": "",
+    "options": [
+      "א. מזרחית ערה עד חזקה.",
+      "ב. דרומית ערה עד חזקה.",
+      "ג. מערבית ערה עד חזקה.",
+      "ד. צפונית מתונה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1099,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "בחורף כאשר מודיעים בתחזית מזג האוויר, כי רמה ברומטרית נמצאת צפונית לארצנו. מה יהיה כוון הרוח בקרבת חוף ים התיכון שלאורך ישראל?",
+    "q_en": "",
+    "options": [
+      "א. מזרחית.",
+      "ב. דרומית.",
+      "ג. מערבית.",
+      "ד. צפונית."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1100,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "באיזה כיווני רוחות קיימת סכנת היסחפות אופנוע ים לעומק, לאורך חוף הים התיכון בישראל?",
+    "q_en": "",
+    "options": [
+      "א. רוח דרומית מערבית עד חזקה.",
+      "ב. רוח צפונית מתונה.",
+      "ג. רוח מזרחית עד חזקה.",
+      "ד. רוח מערבית קלה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1101,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "באיזה כיווני רוחות קיימת סכנת היסחפות אופנוע ים לעומק, לאורך חוף המזרחי של הכנרת?",
+    "q_en": "",
+    "options": [
+      "א. רוח דרומית מערבית עד חזקה.",
+      "ב. רוח צפונית מתונה.",
+      "ג. רוח מזרחית עד חזקה.",
+      "ד. רוח מערבית קלה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1102,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "באיזה כיווני רוחות קיימת סכנת היסחפות אופנוע ים לעומק, לאורך חוף המערבי של הכנרת?",
+    "q_en": "",
+    "options": [
+      "א. רוח דרומית מערבית עד חזקה.",
+      "ב. רוח צפונית מתונה.",
+      "ג. רוח מזרחית עד חזקה.",
+      "ד. רוח מערבית."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1103,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "בתחזית מזג האוויר מודיעים על רוחות מזרחיות ערות. כיצד יש לנהוג?",
+    "q_en": "",
+    "options": [
+      "א. יש להיזהר, השקט בקרבת החוף מטעה.",
+      "ב. כדאי לבוא עם אופנוע עמידה ולקפוץ בגלי החוף.",
+      "ג. לא כדאי להגיע לים, יהיה סוער מדי בקרבת החוף.",
+      "ד. אפשר להתרחץ בים, יש סחיפה חזקה לכיוון החוף."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1104,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "בתחזית מזג האוויר מודיעים על רוחות מערביות ערות. כיצד יש לנהוג?",
+    "q_en": "",
+    "options": [
+      "א. יש להיזהר, השקט בקרבת החוף מטעה.",
+      "ב. כדאי לבוא עם אופנוע עמידה ולקפוץ בגלי החוף.",
+      "ג. לא כדאי להגיע לים, יהיה סוער מדי בקרבת החוף.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1105,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "איזה סימנים בטבע מבשרים על התקרבות סערה אל האזור בו אנחנו נמצאים?",
+    "q_en": "",
+    "options": [
+      "א. התרבות של עננים כהים ונמוכים, שנעים בשמיים במהירות ממערב או מדרום-מערב.",
+      "ב. לחץ האוויר יורד במהירות (יחסית) ובצורה ניכרת.",
+      "ג. בים התיכון ובכינרת: רוחות מדרום-מערב או מערב ההולכות ומתחזקות.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1106,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "בחורף כאשר מודיעים בתחזית מזג האוויר, כי רמה ברומטרית נמצאת דרומית לארצנו, מה יהיה כוון הרוח בקרבת חוף ים התיכון שלאורך ישראל?",
+    "q_en": "",
+    "options": [
+      "א. מזרחית.",
+      "ב. דרומית.",
+      "ג. מערבית.",
+      "ד. צפונית."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1107,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "בנוסף לסכנה של ים גבוה במזג אוויר סוער וגשום, קיימת סכנה בטיחותית נוספת שהיא",
+    "q_en": "",
+    "options": [
+      "א. ירידה משמעותית בראות.",
+      "ב. סכנה שהמנוע של האופנוע ירטב ויהיה קצר.",
+      "ג. האנשים על האופנוע ירטבו ויהיו חולים.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1108,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "מה תהיה פעולתך הראשונה שתבצע באדם מחוסר הכרה?",
+    "q_en": "",
+    "options": [
+      "א. לבדוק את חום הגוף.",
+      "ב. לבדוק נשימה ודופק.",
+      "ג. להשקותו במשקה קר.",
+      "ד. לבצע מיד הנשמה מפה לפה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1109,
+    "source": "ידני",
+    "license": 11,
+    "topic": "עזרה ראשונה",
+    "q_he": "נצרבת ממדוזה. מה עליך לעשות באזור הצריבה?",
+    "q_en": "",
+    "options": [
+      "א. לשטוף עם חומץ או אמוניה מהולה במים.",
+      "ב. לשפשף את המקום עם מי ים.",
+      "ג. לשטוף במים וסבון.",
+      "ד. לגרד את מקום הצריבה בעזרת סכין חדה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1110,
+    "source": "ידני",
+    "license": 11,
+    "topic": "עזרה ראשונה",
+    "q_he": "מהו הטיפול לנפגע ממכת חום?",
+    "q_en": "",
+    "options": [
+      "א. לדאוג לחמם את גוף הנפגע.",
+      "ב. להעביר את הנפגע למקום לח.",
+      "ג. להעבירו לצל ולתת לו לתות כמות של מי שתייה.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1111,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "מה אסור לעשות כאשר יש חשש לשבר באחת מגפיו של נפגע? (ידים או רגליים)",
+    "q_en": "",
+    "options": [
+      "א. לתת תמיכה לאזור השבר.",
+      "ב. להשכיבו על גבו.",
+      "ג. להשכיבו על בטנו.",
+      "ד. לפשוט בגדיו או להזיז את האבר הנפגע."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1112,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהו הטיפול הנדרש כתוצאה מפגיעת גז ארסי?",
+    "q_en": "",
+    "options": [
+      "א. חימום איזור הפגיעה.",
+      "ב. קירור איזור הפגיעה.",
+      "ג. השקיית הנפגע בהרבה נוזלים כדי למנוע התייבשות.",
+      "ד. שטיפת איזור הפגיעה בחומץ או במים מהוליים באמוניה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1113,
+    "source": "ידני",
+    "license": 11,
+    "topic": "עזרה ראשונה",
+    "q_he": "מהו השלב שאין לעשותו בביצוע פעולת הנשמה בנפגע שטבע ואינו נושם?",
+    "q_en": "",
+    "options": [
+      "א. לנקות את פיו משאריות קיא וגופים זרים.",
+      "ב. לסתום את נחיריו לפני תחילת ההנשמה.",
+      "ג. להוציא את המים מריאותיו.",
+      "ד. להשכיב את הנפגע על גבו."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1114,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "חברך שהפליג אתך על האופנוע נפל למים כתוצאה מגל פתאומי. כשניגשת אליו מצאת אותו צף במים כשפניו כלפי מעלה אך הוא מחוסר הכרה. מהו הדבר הראשון שיש לעשות?",
+    "q_en": "",
+    "options": [
+      "א. לבצע מיד הנשמה מלאכותית מפה לפה.",
+      "ב. לשמור על חום גופו.",
+      "ג. לבדוק אם יש לו דופק ואם הוא נושם.",
+      "ד. לבצע עיסוי לב-ריאה ברגע שיתאפשר."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1115,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "על אופנוע עם 2 רוכבים, כבה המנוע במרחק 1000 מטרים מהחוף המזרחי של הכנרת ואינך מצליח להניעו מחדש, בעוד שעה יחשיך. הרוח מערבית. כיצד עליך לנהוג?",
+    "q_en": "",
+    "options": [
+      "א. עוד מעט חושך ולכן יש לעזוב מיד את האופנוע ולשחות לחוף.",
+      "ב. להפעיל מצוף עשן ולהמתין על האופנוע לסיוע.",
+      "ג. להישאר על האופנוע ולשלוח את הרוכב השני בשחייה לחוף להזעקת עזרה.",
+      "ד. להיסחף עם הרוח והגלים."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1116,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "מהי הסכנה הפיזית הנוספת לנוסע מנפילה למים בזמן האצה פתאומית של אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. סכנת טביעה של הנוסע.",
+      "ב. היפגעות ממדחף האופנוע.",
+      "ג. פגיעות כתוצאה מסילון המים.",
+      "ד. אין בכך כל סכנה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1117,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהי הסכנה מהאצה (הגברת מהירות) פתאומית של האופנוע?",
+    "q_en": "",
+    "options": [
+      "א. הנוהג יכול להחליק קדימה.",
+      "ב. הנוסע מאחור יכול ליפול לים ולהיפגע מסילון המים.",
+      "ג. הנוסע מאחור יכול להחליק קדימה ולהיפגע מהמדחף.",
+      "ד. הנוהג והנוסע יחליקו קדימה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1118,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "למי יש אחיזה טובה יותר באופנוע ים בנופל מגל גבוה (לא מתהפך)?",
+    "q_en": "",
+    "options": [
+      "א. לנוהג.",
+      "ב. לשניהם במידה שווה.",
+      "ג. לנוסע.",
+      "ד. תלוי במהירות האופנוע."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1119,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "בעת נפילת אופנוע ים מגל גבוה, במהירות הפלגה גבוהה, מי נתון לסכנה גדולה יותר? (האופנוע לא מתהפך)",
+    "q_en": "",
+    "options": [
+      "א. נוהג האופנוע.",
+      "ב. שניהם באותה מידה.",
+      "ג. הנוסע מאחור.",
+      "ד. תלוי בגיל של כל אחד מהם."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1120,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "למה עלול לגרום מעבר האופנוע בגלי חוף בעל מהירות גבוהה מדי?",
+    "q_en": "",
+    "options": [
+      "א. לאיבוד השליטה באופנוע הים כתוצאה מהנפילה לאחר מעבר הגל.",
+      "ב. לירידה נוחה מהגל.",
+      "ג. לתמרון טוב יותר של האופנוע כתוצאה מהמהירות הנצברת.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1121,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "במהירות הפלגה גבוהה מאוד של אופנוע ים כאשר המדומם ניתלש ממקומו, מי יהיה נתון לסכנת פגיעה גדולה יותר?",
+    "q_en": "",
+    "options": [
+      "א. הנוהג יפגע מההגה של האופנוע.",
+      "ב. הנוסע היושב מאחור יחליק לאחור.",
+      "ג. הנוהג יפול על הנוסע.",
+      "ד. שניהם נתונים לאותה מידה של סכנה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1122,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "מה הסכנה בהפלגה במהירות גבוהה כאשר באים גלים גבוהים מהצד?",
+    "q_en": "",
+    "options": [
+      "א. הנוהג יכול ליפול לים.",
+      "ב. הנוסע יכול ליפול לים.",
+      "ג. הנוסע מאחור יכול להחליק קדימה.",
+      "ד. סכנת ההתהפכות של האופנוע."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1123,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "בעת הפלגה יחד עם נוסף אופנוע ים עצר חברך וסימן לך להתקרב אליו כדי להעביר לך בקבוק מים לשתייה, מהי הדרך הטובה ביותר לביצוע גישה לכלי שיט אחר ולעצור לידו מבלי לגרום נזקים?",
+    "q_en": "",
+    "options": [
+      "א. לדומם מנוע מרחוק ולתת לתנופה לשאת אותו לכיוונו.",
+      "ב. להאט למינימום מהירות, להתקרב נגד כיוון הרוח ולדומם מנוע בקרבת כלי השייט.",
+      "ג. אין אפשרות לבצע גישה כזו באופנוע ים.",
+      "ד. להגיע במהירות לכיוונו ולדומם מנוע בקרבתו של כלי השייט השני."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1124,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "באיזה טווח ראות יוכל רוכב אופנוע ים הנמצא בגובה של 1 מטר מעל המים בראות טובה ים שקט לראות אופנוע ים אחר?",
+    "q_en": "",
+    "options": [
+      "א. כ-200 מטרים.",
+      "ב. כ-2 מיל.",
+      "ג. כ-600 מטרים.",
+      "ד. כ-8 מיל."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1125,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "ביציאה מנמל אילו מצופים ימצאו בצד ימין ושמאל?",
+    "q_en": "",
+    "options": [
+      "א. בצד ימין מצוף אדום, בצד שמאל מצוף ירוק.",
+      "ב. בצד ימין מצוף ירוק, בצד שמאל מצוף אדום.",
+      "ג. בשני הצדדים יהיו מצופים שחורים.",
+      "ד. אין חשיבות לצבע המצוף, אלה רק לאורות בלילה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1127,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "האם משיט אופנוע – ים רשאי לאפשר לכל אדם לנהוג באופנוע – כאשר המשיט משיג מחוף?",
+    "q_en": "",
+    "options": [
+      "א. כן, במידה והמשיט והמוסמך נמצא תמיד בקשר עין.",
+      "ב. כן, בתנאי שהנוהג הוא מעל גיל 16.",
+      "ג. לא, רק משיט מוסמך רשאי לנהוג באופנוע-ים.",
+      "ד. כן, בתנאי שהנוהג קיבל בכתב אישור מטעם רשות הספנות והנמלים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1128,
+    "source": "ידני",
+    "license": 11,
+    "topic": "חוקים ותקנות",
+    "q_he": "באיזה תנאים נדרש לעמוד מועמד, בכדי לקבל תעודת משיט ל-11-לאופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. גיל של 16 שנים לפחות, מעבר מבחן עיוני ומעשי באופנוע ים, בריאות תקינה, ללא צורך באבחנה בצבעים.",
+      "ב. גיל של לפחות 16 שנים, מעבר מבחן עיוני ומעשי באופנוע ים, מעבר קורס הגשת עזרה ראשונה ואבחנת צבעים.",
+      "ג. גיל של לפחות 16 שנים, מעבר מבחן עיוני ומעשי באופנוע ים, בריאות תקינה ואבחנה בצבעים.",
+      "ד. גיל של לפחות 17 שנים, מעבר מבחן עיוני ומעשי באופנוע ים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1129,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "האם מותרת גרירת סקי ע\"י אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. כן, בתנאי שהאופנוע מורשה ל-3 מפליגים ועליו יהיו לפחות 2 אנשי צוות.",
+      "ב. אפשר לגרור רק אם לגוף הנגרר יש תפס עם שחרור חרום.",
+      "ג. מותרת, בתנאי שהאופנוע מורשה ל-2 מפליגים בלבד.",
+      "ד. אסורה לחלוטין!"
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1130,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "האם מותרת גרירת סקי, או \"בננה\" ע\"י אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. מותרת בכל תנאי.",
+      "ב. אסורה לחלוטין!",
+      "ג. מותרת ע\"י כל סוגי האופנועים בתנאי שלא נגרר יותר מאדם אחד ותנאי הים מתאפשרים זאת.",
+      "ד. מותרת ע\"י אופנוע ים, המורשה לשאת 3 רוכבים, המושט בעת הגרירה ועליו לפחות 2 אנשים, כאשר הרוכב האחורי שומר קשר עין עם הנגרר."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1131,
+    "source": "ידני",
+    "license": 11,
+    "topic": "חוקים ותקנות",
+    "q_he": "איזה מסמך לא חייבים לשאת בעת הפלגה על אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. רשיון שייט.",
+      "ב. תעודת מזהה.",
+      "ג. תעודה משיט.",
+      "ד. רשימת ציוד הצלה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1132,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "לפני יציאה לים יש לוודא תקינות מערכת ההגה. כיצד תעשה זאת?",
+    "q_en": "",
+    "options": [
+      "א. ע\"י סיבוב ידית ההגה ימינה ושמאלה.",
+      "ב. ע\"י סיבוב ידית ההגה ומבט בנחיר הפליטה.",
+      "ג. ע\"י מבט כללי באופנוע.",
+      "ד. ע\"י הפניית האופנוע במים במהלך היציאה לים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1133,
+    "source": "ידני",
+    "license": 11,
+    "topic": "חוקים ותקנות",
+    "q_he": "מהו פרק הזמן בו אופנוע ים פרטי חייב בבדיקת כושר שייט ע\"י מפקח?",
+    "q_en": "",
+    "options": [
+      "א. אחת לשנה.",
+      "ב. אחת לשנתיים.",
+      "ג. רק כאשר קונים אותו או מחליפים בעלות.",
+      "ד. אין צורך לבצע בדיקות כושר שייט באופנוע ים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1134,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "למי מותר להשיט אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. רק למשיט המוסמך להשיט אופנוע ים, או לתלמיד שעבר בהצלחה מבחן עיוני למשיט אופנוע ים, במהלך שיעור מעשי בפיקוח מדריך.",
+      "ב. לכל אחד בתנאי שבעל תעודת המשיט נמצא על האופנוע ויושב על אחד המושבים האחוריים, אולם הוא חייב לענוד את מדומם החירום.",
+      "ג. באופנוע דו מושבי או תלת מושבי, בעל תעודת משיט יכול לשבת במושב אחורי, בתנאי שהוא נוהג את האופנוע.",
+      "ד. כל בעל תעודת משיט אחרת כלשהי (סירה/ספינה) אפילו אם אינו מוסמך דווקא להשטת אופנוע-ים רשאי להשיט אופנוע ים ללא מגבלות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1135,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "כיצד יש לנהוג כאשר פג תוקפו של הציוד הפירוטכני?",
+    "q_en": "",
+    "options": [
+      "א. זורקים לפח האשפה הקרוב.",
+      "ב. שומרים אולי נצטרך אותו בשלב מאוחר יותר.",
+      "ג. זורקים לים.",
+      "ד. מוסרים למשטרה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1136,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "האם מותר להיקשר למצופים המיקשר של מיקשר דלק לצורך תדלוק האופנוע (מיקשר דלק בים הפתוח - מצופים עם צינור תת ימי המוביל דלק לחוף)?",
+    "q_en": "",
+    "options": [
+      "א. רק אם הם מחוץ לטווח של 300 מטרים.",
+      "ב. אסור בהחלט.",
+      "ג. רק אם יש תקלה במנוע.",
+      "ד. אין איסור להתקשר."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1137,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מה המספר המרבי היכולים לשוט על אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. לא יותר מבן אדם אחד.",
+      "ב. לא יותר מארבע אנשים.",
+      "ג. לא יותר משלושה אנשים.",
+      "ד. לא יותר בשני אישים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1138,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "באיזה תנאים וכמה אנשים חייבים להיות על האופנוע על מנת שיוכל לגרור סקי מים?",
+    "q_en": "",
+    "options": [
+      "א. התנאי שהאופנוע מיועד ל-2 אנשים ועל האופנוע ימצאו 2 אנשים.",
+      "ב. התנאי שהאופנוע מיועד ל-3 אנשים ועל האופנוע ימצאו 3 אנשים.",
+      "ג. התנאי שהאופנוע מיועד ל-3 אנשים ועל האופנוע ימצאו 2 אנשים.",
+      "ד. לא ניתן לגרור סקי מים בשום תנאי."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1139,
+    "source": "ידני",
+    "license": 11,
+    "topic": "בטיחות אש",
+    "q_he": "כיצד תנהג כאשר החלטת לשוט עם אופנוע הים מחוף הרצליה לחוף בת-ים?",
+    "q_en": "",
+    "options": [
+      "א. תשאיר הודעה בחוף לגבי כוונותיך וזמן חזרה משוער.",
+      "ב. תתארגן ותצא ישר לים.",
+      "ג. אין צורך בהכנות מיוחדות, לאופנוע אין בעיה לכסות טווח זה.",
+      "ד. תודיע לחברך בחוף שיצאת לשוט."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1140,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "איזה מהתעודות הרשומות מטה לא צריך לשאת בעת הפלגה?",
+    "q_en": "",
+    "options": [
+      "א. תעודת משיט.",
+      "ב. תעודה מזהה.",
+      "ג. תעודה המעידה על בריאות תקינה.",
+      "ד. רשיון שייט של כלי השייט."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1141,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "בכול כמה זמן תתבצע ביקורת כושר שייט תקופתית לרישוי אופנוע-ים המשמש ליעוד פרטי?",
+    "q_en": "",
+    "options": [
+      "א. אחת לשנתיים.",
+      "ב. רק כאשר קונים אותו/ החלפת בעלות.",
+      "ג. לאחר התנגשות או שפוץ כללי.",
+      "ד. אחת לשנה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1142,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהי התקנה בדבר מדומם חירום באופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. יש לחבר את המדומם לאופנוע ליד ההגה.",
+      "ב. יש לחבר את המדומם לנוסע מאחורי הנהג.",
+      "ג. יש לחבר את המדומם לנוהג.",
+      "ד. אין חשיבות למי מחברים את המדומם."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1143,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מה הגודל המינימלי של מספר הזיהוי על האופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. 10 ס\"מ.",
+      "ב. 20 ס\"מ.",
+      "ג. 30 ס\"מ.",
+      "ד. 40 ס\"מ."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1144,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מה הכמות המינימלית של חגורות הצלה לאופנוע ים המורשה לשאת 3 אנשים, לבדיקות כושר שייט?",
+    "q_en": "",
+    "options": [
+      "א. 2 חגורות.",
+      "ב. חגורה לנוהג בלבד.",
+      "ג. 3 חגורות.",
+      "ד. 4 חגורות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1145,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "השקת את אופנוע הים שלך דרומית מחוף הבונים והתחלת להפליג דרומה כאשר חברך מפליג על אופנוע ים אחר כ-20 מטרים ממך ובמקביל כ-1000 מטרים מהחוף. אתם בערך מול חוף קבוץ נחשולים, כ-3 ק\"מ מנקודת המוצא. השמים התקדרו, רוח דרום מערבית מתחזקת ומתפתחת והים מתחיל להעלות גלים. לפתע דמם המנוע של האופנוע של חברך ולא ניתן להתניעו מחדש. החלטתם לגרור אותו לחוף, לאיזה חוף?",
+    "q_en": "",
+    "options": [
+      "א. חוף דור (טנטורה).",
+      "ב. נק' המוצא בחוף הבונים.",
+      "ג. מעגן ג'יסר אל זרקא.",
+      "ד. חוף נחשולים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1146,
+    "source": "ידני",
+    "license": 11,
+    "topic": "מזג אוויר",
+    "q_he": "השקת את אופנוע הים שלך ליד המרינה בהרצליה. הפלגת דרומה במקביל לאופנוע ים אחר, במרחק של כ-1000 מ' מהחוף. אתם בערך מול חוף תל-ברוך, צפונית לתחנת הכח רידינג וכ-3 ק\"מ מנקודת המוצא. השמים התקדרו, רוח צפונית חזקה מתפתחת והים מתחיל להעלות גלים. אופנוע הים של חברך דמם ולא ניתן להתניעו. החלטתם לגרור אותו לחוף. להיכן תגרור אותו?",
+    "q_en": "",
+    "options": [
+      "א. למעגן רידינג.",
+      "ב. למרינה להרצליה.",
+      "ג. למעגן תל אביב.",
+      "ד. לנמל יפו."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1147,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "בעת סיבוב חד ובמהירות גבוהה, נפלת מהאופנוע והאופנוע התהפך, כיצד תפעל?",
+    "q_en": "",
+    "options": [
+      "א. אהפוך אותו חזרה, לא משנה דרך איזה צד, אתניע ואמשיך לנסוע.",
+      "ב. חשוב להפוך בכיוון נכון ע\"פ הוראת היצרן ואז להפעיל את המנוע מיד.",
+      "ג. אהפוך חזרה ואחכה לעזרה מהחוף להניע אותו שוב.",
+      "ד. אנטוש את האופנוע ואשחה חזרה לחוף."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1148,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "אתה חייב לגרור אופנוע ים אחר ע\"י האופנוע שלך. היכן צריך לקשור את חבל הגרירה באופנוע שלך והיכן בנגרר?",
+    "q_en": "",
+    "options": [
+      "א. בניגרר-בתפס הקדמי ואצלי, מסביב למושב, או בתפס אחורי, אם קיים.",
+      "ב. בניגרר - סביב מוט ההיגוי ואצלי-לאחוז את החבל ביד כדי לאפשר שיחרור מיידי.",
+      "ג. בניגרר - בתפס הקידמי ואצלי-להקיף את גופי ולקשור את הקצה בתפס הקדמי שלי.",
+      "ד. אין חשיבות למיקום קשירת חבל הגרירה."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1149,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "מהו אורך חבל גרירה המומלץ בעת גרירת אופנוע ים ע\"י אופנוע ים אחר?",
+    "q_en": "",
+    "options": [
+      "א. 80 מטרים.",
+      "ב. 14 מטרים.",
+      "ג. 4 מטרים.",
+      "ד. 40 מטרים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1150,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהו ציוד הבטיחות וההצלה הדרושים לאופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. חגורות הצלה, 1 מצוף עשן, מדומם מנוע, מראת איתות.",
+      "ב. חגורות הצלה, 1 לפידי יד אדום, מדומם מנוע.",
+      "ג. חגורות-הצלה, 1 רקטות מצנח, מראת איתות.",
+      "ד. חגורות הצלה, מדומם מנוע, מראת איתות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1151,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהו העומק הרדוד ביותר המאפשר ביטחון בהפעיל מנוע של אופנוע ים?",
+    "q_en": "",
+    "options": [
+      "א. לפחות 6 מטרים.",
+      "ב. לפחות 60 ס\"מ.",
+      "ג. כאשר קצה צינור פליט הג'ט מכוסה מים.",
+      "ד. לפחות 6 ס\"מ."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1152,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "מהי הסיבה שבעת החפה בגלי חוף רצוי למקם את האופנוע בין שני גלים? (החפה = עליה מתוכננת על החוף עם האופנוע ים)",
+    "q_en": "",
+    "options": [
+      "א. למנוע התחפרות החרטום בחול.",
+      "ב. לאפשר שליטה באופנוע.",
+      "ג. שהגל יכסה את האופנוע.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1153,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "איזה ציוד חובה עלי לקחת איתי להפלגה באופנוע-ים?",
+    "q_en": "",
+    "options": [
+      "א. חגורות הצלה, מצוף/ידנית עשן, מדומם-מנוע ואת התעודות הנחוצות.",
+      "ב. חגורות הצלה, ראי איתות, מטפה אוטומטי בתא המנוע ולפיד-יד.",
+      "ג. חגורות הצלה, מטפה אוטומטי בתא המנוע, מצוף/ידנית עשן ואת התעודות הנחוצות.",
+      "ד. חגורות הצלה, מדומם מנוע, ראי איתות ואת התעודות הנחוצות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1154,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "ביציאה מפתח מרינה באיזה צד יש לעבור את מצופי הכניסה?",
+    "q_en": "",
+    "options": [
+      "א. ירוק מצד ימין של הסירה ואדום מצד שמאל של הסירה.",
+      "ב. ירוק מצד שמאל של הסירה ואדום מצד ימין של הסירה.",
+      "ג. אין חשיבות באיזה צד, העיקר לא לעלות על המצוף.",
+      "ד. אף תשובה לא נכונה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1155,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אותות קוליים",
+    "q_he": "בהפלגה בערפל, כלי שייט לפני שהחרטום משמיע 3 צפירות קצרות, מה המשמעות?",
+    "q_en": "",
+    "options": [
+      "א. 3 צפירות קצרות משמעותן מנועי פועלים לאחור.",
+      "ב. מה שכתוב בסעיף \"א\" נכון, אבל אסור להשמיע אותות אלו בזמן ערפל.",
+      "ג. 3 צפירות קצרות הוא חלק ממצב מצוקה, וכנראה שמצבו של כלי השייט לא כל כך חמור ולכן השמיעה רק חלק מאות המצוקה.",
+      "ד. המשמעות של הצפירות שזה כלי שייט שזרק עוגן."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1156,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מדוע יש להפליג במהירות איטית ליד כלי שייט אחרים?",
+    "q_en": "",
+    "options": [
+      "א. על מנת למנוע גלים.",
+      "ב. על מנת למנוע מערבולות.",
+      "ג. על מנת למנוע ירידה בראות כתוצאה מהרסס מהאוויר.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1157,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "האם מותר לנוהג או לנוסע לשוט על אופנוע-ים במידה והוא קצת שתוי?",
+    "q_en": "",
+    "options": [
+      "א. רק הנוהג חייב להיות לא שתוי.",
+      "ב. שניהם חייבים להיות לא שתויים.",
+      "ג. מספיק עם אחד מהם לא שתוי.",
+      "ד. במהירות איטית אין בעיה שהנוסע קצת שתוי."
+    ],
+    "answer": "ב",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1158,
+    "source": "ידני",
+    "license": 11,
+    "topic": "תמרוני ספינה",
+    "q_he": "כיצד יש לישר אופנוע-ים שהתהפך?",
+    "q_en": "",
+    "options": [
+      "א. טפס על הפגוש והעזר במשקל גופך.",
+      "ב. סובב את האופנוע שאורכו יהיה מול הרוח.",
+      "ג. וודא שהמנוע לא עובד.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1159,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אזורי שיט",
+    "q_he": "עד לאיזה מרחק מותר להתקרב עם אופנוע ים אל חוף רחצה מוכרז?",
+    "q_en": "",
+    "options": [
+      "א. עד ל-50 מטרים מקו שפל המים.",
+      "ב. עד ל-300 מטרים מכל צד של החוף המוכרז.",
+      "ג. עד ל-50 מטרים מכל צד ו-300 מטרים מקו שפל המים.",
+      "ד. מותר להתקרב לכל מרחק, אם מפליגים במהירות נמוכה מ-5 קשרים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1160,
+    "source": "ידני",
+    "license": 11,
+    "topic": "חוקים ותקנות",
+    "q_he": "על פי התקנה, כיצד צריך להיות לבוש המשיט?",
+    "q_en": "",
+    "options": [
+      "א. אין משמעות לפרטי הלבוש.",
+      "ב. בכל פריט לבוש שיבחר בכדי לשמור על צניעות.",
+      "ג. חייב בחליפה גלישה מלאה ועבה.",
+      "ד. מכנס עבה, מהמותנים ועד הבירכיים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1161,
+    "source": "ידני",
+    "license": 11,
+    "topic": "חוקים ותקנות",
+    "q_he": "על פי התקנה, כיצד צריך להיות לבוש הנוסע מאחור?",
+    "q_en": "",
+    "options": [
+      "א. אין משמעות לפרטי הלבוש.",
+      "ב. בכל פריט לבוש שיבחר בכדי לשמור על צניעות.",
+      "ג. חייב בחליפה גלישה מלאה ועבה.",
+      "ד. מכנס עבה, מהמותנים ועד הבירכיים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": false,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false
+  },
+  {
+    "num": 1162,
+    "source": "ידני",
+    "license": 11,
+    "topic": "אופנוע ים - כללי",
+    "q_he": "מהו הטווח המזערי בו רשאי משיט אופנוע ים להפליג בסמוך לחוף הצפוני של מפרץ אילת?",
+    "q_en": "",
+    "options": [
+      "א. 200 מטרים מקו שפל המים.",
+      "ב. 300 מטרים מקו שפל המים.",
+      "ג. 1000 מטרים מקו שפל המים.",
+      "ד. אין משמעות למרחק כל עוד אין מתרחצים באזור."
+    ],
+    "answer": "ג",
+    "answer_confirmed": false,
+    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false

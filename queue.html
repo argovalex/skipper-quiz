@@ -181,6 +181,10 @@ tbody td { padding: 8px 14px; vertical-align: middle; }
 <!-- ══════════════ TAB: QUEUE ══════════════ -->
 <div class="tab-pane active" id="pane-queue">
   <div class="filters">
+    <button class="filter-btn active" id="lic-30" onclick="setLicense(30)">רישיון 30</button>
+    <button class="filter-btn"       id="lic-11" onclick="setLicense(11)">רישיון 11</button>
+  </div>
+  <div class="filters">
     <input type="text" id="search" placeholder="🔍 חפש שאלה..." oninput="renderList()">
     <button class="filter-btn active" id="f-all"       onclick="setFilter('all')">הכל</button>
     <button class="filter-btn"       id="f-approved"   onclick="setFilter('approved')">מאושר לפרסום</button>
@@ -399,6 +403,7 @@ let publishLog    = [];
 let publishedNums = new Set();
 let questionsSHA  = null;
 let activeFilter  = 'all';
+let activeLicense = 30;
 let renderingNums = new Set();
 
 // ── Config ────────────────────────────────────────────────────────────────────
@@ -484,23 +489,31 @@ async function loadData() {
 
 // ── Stats ─────────────────────────────────────────────────────────────────────
 function updateStats() {
-  const withVideo = questions.filter(q => q.videoUrl).length;
-  const approved  = questions.filter(q => q.approved_for_publish && q.videoUrl && !publishedNums.has(q.num)).length;
-  const pub       = publishedNums.size;
+  const inLicense = questions.filter(q => (q.license ?? 30) === activeLicense);
+  const withVideo = inLicense.filter(q => q.videoUrl).length;
+  const approved  = inLicense.filter(q => q.approved_for_publish && q.videoUrl && !publishedNums.has(q.num)).length;
+  const pub       = inLicense.filter(q => publishedNums.has(q.num)).length;
 
-  document.getElementById('st-total').textContent = questions.length;
+  document.getElementById('st-total').textContent = inLicense.length;
   document.getElementById('st-video').textContent = withVideo;
-  document.getElementById('st-novid').textContent = questions.length - withVideo;
+  document.getElementById('st-novid').textContent = inLicense.length - withVideo;
   document.getElementById('st-queue').textContent = approved;
   document.getElementById('st-pub').textContent   = pub;
 
-  document.getElementById('hst-total').textContent = questions.length;
+  document.getElementById('hst-total').textContent = inLicense.length;
   document.getElementById('hst-queue').textContent = approved;
   document.getElementById('hst-pub').textContent   = pub;
   document.getElementById('hst-days').textContent  = approved;
 }
 
 // ── Filters ───────────────────────────────────────────────────────────────────
+function setLicense(lic) {
+  activeLicense = lic;
+  document.getElementById('lic-30').classList.toggle('active', lic === 30);
+  document.getElementById('lic-11').classList.toggle('active', lic === 11);
+  renderList();
+  updateStats();
+}
 function setFilter(f) {
   activeFilter = f;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -510,6 +523,7 @@ function setFilter(f) {
 function getFiltered() {
   const search = document.getElementById('search').value.toLowerCase().trim();
   return questions.filter(q => {
+    if ((q.license ?? 30) !== activeLicense)                                                  return false;
     if (activeFilter === 'approved'  && !q.approved_for_publish)                              return false;
     if (activeFilter === 'novideo'   && q.videoUrl)                                           return false;
     if (activeFilter === 'ready'     && (!q.videoUrl || !q.approved_for_publish || publishedNums.has(q.num))) return false;

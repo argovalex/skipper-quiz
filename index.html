@@ -41,6 +41,8 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 .q-item-badge.unconfirmed{background:#3d1a0a;color:#e67e22}
 .add-btn{margin:8px;background:#0d3d2a;border:1px dashed var(--green);color:var(--green);padding:10px;border-radius:8px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:13px;font-weight:700;width:calc(100% - 16px);transition:all 0.2s}
 .add-btn:hover{background:#1a5c3a}
+.filter-btn{padding:7px 10px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:12px;font-family:inherit;font-weight:700}
+.filter-btn.active{background:var(--accent);color:#081228;border-color:var(--accent)}
 
 /* CENTER: Editor */
 #editor{flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;min-width:0}
@@ -202,6 +204,10 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
   <!-- SIDEBAR -->
   <div id="sidebar">
     <div id="sidebar-head">
+      <div style="display:flex;gap:6px;margin-bottom:6px">
+        <button id="lic-30" class="filter-btn active" onclick="setLicense(30)" style="flex:1">רישיון 30</button>
+        <button id="lic-11" class="filter-btn" onclick="setLicense(11)" style="flex:1">רישיון 11</button>
+      </div>
       <input id="search" placeholder="🔍 חיפוש לפי מילה או מספר שאלה (#)..." oninput="renderList()" title="חפש בטקסט השאלה או לפי מספר השאלה">
       <select id="topic-filter" onchange="renderList()" title="סנן לפי נושא">
         <option value="">— כל הנושאים —</option>
@@ -327,6 +333,15 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 let questions = [];
 let currentIdx = -1;
 let animTimer = null;
+let activeLicense = 30;
+function setLicense(lic) {
+  activeLicense = lic;
+  document.getElementById('lic-30').classList.toggle('active', lic === 30);
+  document.getElementById('lic-11').classList.toggle('active', lic === 11);
+  currentIdx = -1;
+  showEmptyEditor();
+  renderList();
+}
 let correctIdx = 0;
 let currentLang = 'he';  // 'he' | 'en'
 let animGeneration = 0;  // increments on every new animation, invalidates old callbacks
@@ -656,7 +671,7 @@ window.addEventListener('online', () => loadQuestions());
 function addQuestion() {
   const maxNum = questions.length ? Math.max(...questions.map(q=>q.num||0)) + 1 : 1;
   questions.push({
-    num: maxNum, source: 'ידני', topic: 'כללי',
+    num: maxNum, source: 'ידני', topic: 'כללי', license: activeLicense,
     q_he: '', q_en: '',
     options: ['א. ','ב. ','ג. ','ד. '],
     answer: 'א', answer_confirmed: false, explanation: '',
@@ -687,6 +702,7 @@ function renderList() {
 
   questions.forEach((q, i) => {
     const text = (q.q_he || q.q_en || '').toLowerCase();
+    if((q.license ?? 30) !== activeLicense) return;
     if(search && !text.includes(search) && !String(q.num).includes(search)) return;
     if(topicF && q.topic !== topicF) return;
 
@@ -710,10 +726,11 @@ function renderList() {
 }
 
 function updateCount() {
-  const confirmed = questions.filter(q=>q.answer_confirmed).length;
-  const approved  = questions.filter(q=>q.approved_for_publish).length;
+  const inLicense = questions.filter(q => (q.license ?? 30) === activeLicense);
+  const confirmed = inLicense.filter(q=>q.answer_confirmed).length;
+  const approved  = inLicense.filter(q=>q.approved_for_publish).length;
   document.getElementById('q-count').textContent =
-    `${questions.length} שאלות · ${confirmed} מאושרות · ${approved} לפרסום`;
+    `${inLicense.length} שאלות · ${confirmed} מאושרות · ${approved} לפרסום`;
 }
 
 // ── Select Question ──────────────────────────────────────────────────────────
