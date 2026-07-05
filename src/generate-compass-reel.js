@@ -3,7 +3,7 @@ const path = require('path');
 const questions = require('../questions.json');
 
 const CX = 180, CY = 210;
-const R_TIP = 68, R_BASE = 148, R_LABEL = 168;
+const R_TIP = 55, R_BASE = 120, R_LABEL = 140;
 const LETTERS = 'ABCDEFGHIJKLMNOP'.split('');
 
 function pos(angleDeg, radius) {

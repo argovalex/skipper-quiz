@@ -1494,7 +1494,7 @@ SCENES_QA['mob_approach'] = `
 `;
 
 // ── Compass Rose (שושנה) for license-11 questions ────────────────────────────
-const CR_CX = 180, CR_CY = 210, CR_R_TIP = 68, CR_R_BASE = 148, CR_R_LABEL = 168;
+const CR_CX = 180, CR_CY = 210, CR_R_TIP = 55, CR_R_BASE = 120, CR_R_LABEL = 140;
 const CR_LETTERS = 'ABCDEFGHIJKLMNOP'.split('');
 function crPos(angleDeg, radius) {
   const rad = (angleDeg - 90) * Math.PI / 180;
