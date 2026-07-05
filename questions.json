@@ -5648,14 +5648,15 @@
       "ג. אלו אותות שנותנים רק בערפל ולכן אין משמעות.",
       "ד. הם מסמנים שיש סכנת התנגשות ולכן כל אחד פונה ימינה."
     ],
-    "answer": "ב",
+    "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783256350/skipper-quiz/kt247faaq2lwbncljmom.mp4",
-    "rendered_at": "2026-07-05T12:59:10.957Z"
+    "rendered_at": "2026-07-05T12:59:10.957Z",
+    "blastOverride": ""
   },
   {
     "num": 1041,
