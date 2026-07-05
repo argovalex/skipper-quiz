@@ -19,19 +19,31 @@ async function ghGetFile(path) {
   } catch { return null; }
 }
 
-async function ghPutFile(path, content, message) {
+// `expectedSha` is the sha the caller last saw for this file (from its own
+// load/save). Passing it lets GitHub reject the write with 409 if the file
+// changed remotely since then. Omitting it falls back to fetching a fresh
+// sha right before writing — that always "succeeds" even when the file
+// diverged in the meantime, which is how a stale tab can silently clobber
+// newer remote changes. Callers that track a sha (questions.json) MUST pass it.
+async function ghPutFile(path, content, message, expectedSha) {
   const token = getToken();
   if (!token) { ghNotify('⚠ הגדר GitHub Token'); return { ok: false }; }
   try {
-    const existing = await ghGetFile(path);
-    const sha = existing?.sha;
+    let sha = expectedSha;
+    if (sha == null) {
+      const existing = await ghGetFile(path);
+      sha = existing?.sha;
+    }
     const encoded = btoa(unescape(encodeURIComponent(content)));
     const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ message, content: encoded, ...(sha ? { sha } : {}) })
     });
-    return { ok: res.ok, sha };
+    if (res.status === 409) return { ok: false, conflict: true };
+    if (!res.ok) return { ok: false };
+    const body = await res.json();
+    return { ok: true, sha: body.content?.sha };
   } catch (e) { ghNotify('❌ שמירה נכשלה: ' + e.message); return { ok: false }; }
 }
 
@@ -80,12 +92,19 @@ async function loadQuestionsCached() {
 // the tool keeps working, it just hasn't reached GitHub yet.
 async function saveQuestionsGH(msg) {
   const message = msg || 'update: questions';
-  const result = await ghPutFile('questions.json', JSON.stringify(questions, null, 2), message);
+  const expectedSha = (typeof questionsSHA !== 'undefined') ? questionsSHA : undefined;
+  const result = await ghPutFile('questions.json', JSON.stringify(questions, null, 2), message, expectedSha);
   if (result.ok) {
     if (typeof questionsSHA !== 'undefined') questionsSHA = result.sha;
     cacheQuestions(questions, result.sha);
     localStorage.removeItem(PENDING_SAVE_KEY);
     return true;
+  }
+  if (result.conflict) {
+    // Someone else's save landed since this tab last loaded/saved — do NOT
+    // queue a retry, that would just clobber their change with our stale copy.
+    ghNotify('⚠ מישהו אחר עדכן את questions.json בינתיים — רענן את הדף (F5) ובצע את הפעולה שוב, אחרת תדרוס שינויים');
+    return false;
   }
   cacheQuestions(questions, null);
   try { localStorage.setItem(PENDING_SAVE_KEY, JSON.stringify({ message, queuedAt: Date.now() })); } catch {}
@@ -103,12 +122,16 @@ async function flushPendingSave() {
   if (!pending || typeof questions === 'undefined' || !questions.length) return;
   flushingPendingSave = true;
   try {
-    const result = await ghPutFile('questions.json', JSON.stringify(questions, null, 2), pending.message);
+    const expectedSha = (typeof questionsSHA !== 'undefined') ? questionsSHA : undefined;
+    const result = await ghPutFile('questions.json', JSON.stringify(questions, null, 2), pending.message, expectedSha);
     if (result.ok) {
       if (typeof questionsSHA !== 'undefined') questionsSHA = result.sha;
       cacheQuestions(questions, result.sha);
       localStorage.removeItem(PENDING_SAVE_KEY);
       ghNotify('✅ סונכרן עם GitHub');
+    } else if (result.conflict) {
+      localStorage.removeItem(PENDING_SAVE_KEY);
+      ghNotify('⚠ מישהו אחר עדכן את questions.json בזמן שהיית אופליין — רענן את הדף ובצע את השינוי שוב');
     }
   } finally {
     flushingPendingSave = false;
