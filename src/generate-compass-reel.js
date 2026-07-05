@@ -57,7 +57,7 @@ function drawBowLine(letter, color) {
   const tipR = isFlipped ? R_BASE : R_TIP;
   const from = pos(angle, tipR);
   const to = pos(angle, isFlipped ? tipR + 50 : tipR - 45);
-  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color}" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.8"/>`;
+  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/>`;
 }
 
 // Day shape SVG generators — drawn at midpoint of target arrow, enlarged

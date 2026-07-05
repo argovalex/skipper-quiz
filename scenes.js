@@ -1522,7 +1522,7 @@ function crBowLine(letter, color) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, flip = letter === 'E' || letter === 'I';
   const tipR = flip ? CR_R_BASE : CR_R_TIP;
   const from = crPos(angle, tipR), to = crPos(angle, flip ? tipR + 50 : tipR - 45);
-  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color}" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.8"/>`;
+  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/>`;
 }
 function crBall(cx, cy, r) { return `<circle cx="${cx}" cy="${cy}" r="${r||8}" fill="#111"/>`; }
 function crDiamond(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy} ${cx},${cy+s} ${cx-s},${cy}" fill="#111"/>`; }
@@ -1940,7 +1940,7 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
         <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
       </g>
-      ${q.topic !== 'אותות קוליים' ? '<text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial" opacity=".85">⚓ Alex Argov | Sailing Instructor</text>' : ''}
+      ${q.topic !== 'אותות קוליים' ? '<text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>' : ''}
     </svg>
     <div id="prog"></div>
   </div>
