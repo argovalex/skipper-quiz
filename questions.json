@@ -5891,12 +5891,13 @@
       "ג. שהוא במצוקה.",
       "ד. שמנועיו מופעלים אחורה."
     ],
-    "answer": "ד",
+    "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "blastOverride": ""
   },
   {
     "num": 1053,
