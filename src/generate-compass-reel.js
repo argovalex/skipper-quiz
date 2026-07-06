@@ -60,22 +60,20 @@ function drawBowLine(letter, color) {
   return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/>`;
 }
 
-// Day shape SVG generators — drawn at midpoint of target arrow, enlarged
+// Day shape SVG generators — drawn inside compass (below vessel) so both are visible
 function dayShapeAt(letter, shapeId) {
   const angle = vesselAngle(letter);
-  const isFlipped = (letter === 'E' || letter === 'I');
-  const midR = (R_TIP + R_BASE) / 2;
-  const p = pos(angle, midR);
+  const shapeR = R_TIP - 32;
+  const p = pos(angle, shapeR);
   const shapes = DAY_SHAPES[shapeId];
   if (!shapes) return `<!-- unknown shape ${shapeId} -->`;
 
   // White background circle behind the shape for visibility
-  let svg = `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="22" fill="#fff" stroke="#333" stroke-width="1" opacity="0.9"/>`;
+  let svg = `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="32" fill="#fff" stroke="#333" stroke-width="1.5" opacity="0.92"/>`;
   svg += shapes(p.x, p.y, angle);
 
-  // Label: letter + image number, placed just outside the white circle
-  const lblR = midR + 28;
-  const lp = pos(angle, lblR);
+  // Label: letter + image number, placed further inside
+  const lp = pos(angle, shapeR - 36);
   svg += `<rect x="${(lp.x - 30).toFixed(1)}" y="${(lp.y - 7).toFixed(1)}" width="60" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
   svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y + 4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${letter} | תמונה ${shapeId}</text>`;
   return svg;
@@ -105,99 +103,95 @@ const DAY_SHAPES = {
   // NUC: 2 black balls
   80: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -8) + ball(0, 8) +
-      `<line x1="0" y1="-14" x2="0" y2="14" stroke="#111" stroke-width="1.6"/>` +
+      ball(0, -12, 6) + ball(0, 12, 6) +
+      `<line x1="0" y1="-20" x2="0" y2="20" stroke="#111" stroke-width="2"/>` +
       `</g>`;
   },
-  // Aground: 3 black balls
+  // Aground: 3 black balls (vertical)
   10: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -12) + ball(0, 0) + ball(0, 12) +
-      `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.6"/>` +
+      ball(0, -16, 6) + ball(0, 0, 6) + ball(0, 16, 6) +
+      `<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="2"/>` +
       `</g>`;
   },
   // At anchor: 1 black ball
-  77: (cx, cy) => ball(cx, cy),
+  77: (cx, cy) => ball(cx, cy, 10),
   // Sailing under engine: cone point down
-  20: (cx, cy) => coneDown(cx, cy),
+  20: (cx, cy) => coneDown(cx, cy, 10),
   // Constrained by draught: cylinder
-  75: (cx, cy) => cylinder(cx, cy),
-  // Minesweeping: ball on mast + diamond each side
+  75: (cx, cy) => `<rect x="${cx-9}" y="${cy-14}" width="18" height="28" rx="3" fill="#111"/>`,
+  // Minesweeping: 3 balls in triangle
   76: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -10) +
-      diamond(-12, 0, 5) + diamond(12, 0, 5) +
-      `<line x1="0" y1="-16" x2="0" y2="6" stroke="#111" stroke-width="1.2"/>` +
-      `<line x1="-12" y1="0" x2="12" y2="0" stroke="#111" stroke-width="1.2"/>` +
+      ball(0, -14, 6) + ball(-14, 10, 6) + ball(14, 10, 6) +
+      `<line x1="0" y1="-20" x2="0" y2="4" stroke="#111" stroke-width="2"/>` +
+      `<line x1="-14" y1="4" x2="14" y2="4" stroke="#111" stroke-width="2"/>` +
       `</g>`;
   },
   // RAM (restricted ability to maneuver): ball-diamond-ball
   79: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -12) + diamond(0, 0, 5) + ball(0, 12) +
-      `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>` +
+      ball(0, -16, 6) + diamond(0, 0, 7) + ball(0, 16, 6) +
+      `<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>` +
       `</g>`;
   },
   // Distress signal: square flag + ball
   83: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      `<rect x="-6" y="-14" width="12" height="10" fill="#e74c3c" stroke="#111" stroke-width="1"/>` +
-      ball(0, 6) +
-      `<line x1="0" y1="-14" x2="0" y2="12" stroke="#111" stroke-width="1.2"/>` +
+      `<rect x="-8" y="-18" width="16" height="14" fill="#e74c3c" stroke="#111" stroke-width="1.2"/>` +
+      ball(0, 10, 6) +
+      `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.5"/>` +
+      `</g>`;
+  },
+  // Towing: 2 cones (hourglass)
+  81: (cx, cy) => {
+    return `<g transform="translate(${cx},${cy})">` +
+      coneDown(0, -8, 9) + coneUp(0, 10, 9) +
+      `<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/>` +
       `</g>`;
   },
   // Fishing: 2 cones (basket shape)
   84: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      coneDown(0, -6, 5) + coneUp(0, 6, 5) +
-      `<line x1="0" y1="-12" x2="0" y2="12" stroke="#111" stroke-width="1.2"/>` +
+      coneDown(0, -8, 9) + coneUp(0, 10, 9) +
+      `<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/>` +
       `</g>`;
   },
   // Towing >200m: diamond
-  86: (cx, cy) => diamond(cx, cy, 8),
-  // Vessel engaged in work (RAM variant): ball-diamond-ball
+  86: (cx, cy) => diamond(cx, cy, 12),
+  // Vessel engaged in work (RAM variant): ball-diamond-ball + side diamonds
   87: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -12) + diamond(0, 0, 5) + ball(0, 12) +
-      `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>` +
-      // safe side indicator (2 diamonds on one side)
-      diamond(14, -6, 4) + diamond(14, 6, 4) +
+      ball(0, -16, 6) + diamond(0, 0, 7) + ball(0, 16, 6) +
+      `<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>` +
+      diamond(18, -8, 5) + diamond(18, 8, 5) +
       `</g>`;
   },
-  // Vessel engaged in work variant (obstructed side)
+  // Vessel engaged in work variant (obstructed side): ball-diamond-ball + side balls
   89: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -12) + diamond(0, 0, 5) + ball(0, 12) +
-      `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>` +
-      // clear side indicator (2 balls on one side)
-      ball(14, -6, 4) + ball(14, 6, 4) +
+      ball(0, -16, 6) + diamond(0, 0, 7) + ball(0, 16, 6) +
+      `<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>` +
+      ball(18, -8, 5) + ball(18, 8, 5) +
       `</g>`;
   },
-  // Vessel engaged in work variant (different arrangement)
+  // Vessel engaged in work variant (both sides)
   90: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      ball(0, -12) + diamond(0, 0, 5) + ball(0, 12) +
-      `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>` +
-      // both sides indicated
-      diamond(-14, -6, 4) + diamond(-14, 6, 4) +
-      ball(14, -6, 4) + ball(14, 6, 4) +
+      ball(0, -16, 6) + diamond(0, 0, 7) + ball(0, 16, 6) +
+      `<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>` +
+      diamond(-18, -8, 5) + diamond(-18, 8, 5) +
+      ball(18, -8, 5) + ball(18, 8, 5) +
       `</g>`;
   },
-  // Flags — rendered as rectangular flags on a pole
-  93: (cx, cy) => flag(cx, cy, '#0055BF', '#fff', 'A'),   // Alpha flag
-  92: (cx, cy) => flag(cx, cy, '#fff', '#0055BF', 'N'),   // November flag (checkerboard)
-  95: (cx, cy) => flag(cx, cy, '#e74c3c', '#e74c3c', 'B'), // Bravo flag (red swallowtail)
-  98: (cx, cy) => flag(cx, cy, '#0055BF', '#fff', 'A'),   // Alpha flag (diver)
-  104: (cx, cy) => flag(cx, cy, '#e74c3c', '#ffd700', 'O'), // Oscar flag (man overboard)
+  // Flags — rendered as swallowtail flags on a pole
+  92: (cx, cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="18" height="14" fill="#fff" stroke="#111" stroke-width="1"/><line x1="1" y1="-20" x2="19" y2="-6" stroke="#e74c3c" stroke-width="2"/><line x1="1" y1="-6" x2="19" y2="-20" stroke="#e74c3c" stroke-width="2"/><text x="10" y="-10" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#e74c3c">V</text></g>`,
+  93: (cx, cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="18" height="14" fill="#0055BF" stroke="#111" stroke-width="1"/><rect x="5" y="-17" width="5" height="4" fill="#fff"/><rect x="10" y="-13" width="5" height="4" fill="#fff"/><rect x="5" y="-9" width="5" height="4" fill="#fff"/><text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">N</text></g>`,
+  95: (cx, cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#e74c3c" stroke="#111" stroke-width="1"/><text x="9" y="-10" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#fff">B</text></g>`,
+  98: (cx, cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#0055BF" stroke="#111" stroke-width="1"/><polygon points="1,-13 14,-13 11,-10 14,-6 1,-6" fill="#fff" stroke="none"/><text x="9" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">A</text></g>`,
+  104: (cx, cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#e74c3c" stroke="#111" stroke-width="1"/><rect x="4" y="-17" width="9" height="4" fill="#ffd700"/><rect x="4" y="-9" width="9" height="4" fill="#ffd700"/><text x="9" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#e74c3c">B</text></g>`,
+  106: (cx, cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="6" height="14" fill="#0055BF" stroke="none"/><rect x="7" y="-20" width="6" height="14" fill="#fff" stroke="none"/><rect x="13" y="-20" width="6" height="14" fill="#e74c3c" stroke="none"/><rect x="1" y="-20" width="18" height="14" fill="none" stroke="#111" stroke-width="1"/><text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">W</text></g>`,
 };
-
-function flag(cx, cy, bg, fg, letter) {
-  return `<g transform="translate(${cx},${cy})">` +
-    `<line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/>` +
-    `<rect x="1" y="-16" width="14" height="10" fill="${bg}" stroke="#111" stroke-width="0.8"/>` +
-    `<text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="${fg}">${letter}</text>` +
-    `</g>`;
-}
 
 // Reusable compass rose SVG (just the arrows + labels, no question-specific elements)
 function buildCompassRoseSvg() {
@@ -386,6 +380,9 @@ const compassQuestions = questions
   })
   .filter(q => q.observer && q.target && q.imageId);
 
+const l11Dir = path.join(outDir, 'license11');
+if (!fs.existsSync(l11Dir)) fs.mkdirSync(l11Dir, { recursive: true });
+
 let generated = 0;
 for (const q of compassQuestions) {
   const headerText = makeHeaderText(q.observer, q.target, q.imageId);
@@ -395,6 +392,9 @@ for (const q of compassQuestions) {
   const topic = (q.topic || 'quiz').replace(/[\s\/]/g, '_');
   const filename = `quiz_${String(q.num).padStart(3, '0')}_${topic}_he.html`;
   fs.writeFileSync(path.join(outDir, filename), html, 'utf8');
+  // Also save to license11 directory
+  const l11Filename = `quiz_${String(q.num).padStart(4, '0')}_L11_he.html`;
+  fs.writeFileSync(path.join(l11Dir, l11Filename), html, 'utf8');
   generated++;
   console.log(`Generated: ${filename} (obs:${q.observer} tgt:${q.target} img:${q.imageId})`);
 }
@@ -402,5 +402,6 @@ for (const q of compassQuestions) {
 // Save standalone compass rose SVG for reuse
 const roseSvg = `<svg width="360" height="420" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">\n${buildCompassRoseSvg()}\n</svg>`;
 fs.writeFileSync(path.join(outDir, 'compass-rose.svg'), roseSvg, 'utf8');
+fs.writeFileSync(path.join(l11Dir, 'compass-rose.svg'), roseSvg, 'utf8');
 console.log(`\nSaved: compass-rose.svg (standalone reusable compass rose)`);
-console.log(`Total: ${generated} quiz reels generated in html/`);
+console.log(`Total: ${generated} quiz reels generated in html/ and html/license11/`);

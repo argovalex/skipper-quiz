@@ -1529,40 +1529,71 @@ function crDiamond(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} $
 function crConeDown(cx, cy, s) { s=s||9; return `<polygon points="${cx-s},${cy-s} ${cx+s},${cy-s} ${cx},${cy+s}" fill="#111"/>`; }
 function crConeUp(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy+s} ${cx-s},${cy+s}" fill="#111"/>`; }
 const CR_SHAPES = {
-  80: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-8)}${crBall(0,8)}<line x1="0" y1="-14" x2="0" y2="14" stroke="#111" stroke-width="1.6"/></g>`,
-  10: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crBall(0,0)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.6"/></g>`,
-  77: (cx,cy) => crBall(cx,cy),
-  20: (cx,cy) => crConeDown(cx,cy),
-  75: (cx,cy) => `<rect x="${cx-7}" y="${cy-10}" width="14" height="20" rx="3" fill="#111"/>`,
-  76: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-10)}${crDiamond(-12,0,5)}${crDiamond(12,0,5)}<line x1="0" y1="-16" x2="0" y2="6" stroke="#111" stroke-width="1.2"/><line x1="-12" y1="0" x2="12" y2="0" stroke="#111" stroke-width="1.2"/></g>`,
-  79: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/></g>`,
-  83: (cx,cy) => `<g transform="translate(${cx},${cy})"><rect x="-6" y="-14" width="12" height="10" fill="#e74c3c" stroke="#111" stroke-width="1"/>${crBall(0,6)}<line x1="0" y1="-14" x2="0" y2="12" stroke="#111" stroke-width="1.2"/></g>`,
-  84: (cx,cy) => `<g transform="translate(${cx},${cy})">${crConeDown(0,-6,5)}${crConeUp(0,6,5)}<line x1="0" y1="-12" x2="0" y2="12" stroke="#111" stroke-width="1.2"/></g>`,
-  86: (cx,cy) => crDiamond(cx,cy,8),
-  87: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>${crDiamond(14,-6,4)}${crDiamond(14,6,4)}</g>`,
-  89: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>${crBall(14,-6,4)}${crBall(14,6,4)}</g>`,
-  90: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12)}${crDiamond(0,0,5)}${crBall(0,12)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.2"/>${crDiamond(-14,-6,4)}${crDiamond(-14,6,4)}${crBall(14,-6,4)}${crBall(14,6,4)}</g>`,
-  93: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#0055BF" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#fff">A</text></g>`,
-  95: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#e74c3c" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#e74c3c">B</text></g>`,
-  98: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#0055BF" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#fff">A</text></g>`,
-  104: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-16" x2="0" y2="6" stroke="#333" stroke-width="1.5"/><rect x="1" y="-16" width="14" height="10" fill="#e74c3c" stroke="#111" stroke-width="0.8"/><text x="8" y="-9" text-anchor="middle" font-family="Arial" font-size="7" font-weight="900" fill="#ffd700">O</text></g>`,
+  80: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12,6)}${crBall(0,12,6)}<line x1="0" y1="-20" x2="0" y2="20" stroke="#111" stroke-width="2"/></g>`,
+  10: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crBall(0,0,6)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="2"/></g>`,
+  77: (cx,cy) => crBall(cx,cy,10),
+  20: (cx,cy) => crConeDown(cx,cy,10),
+  75: (cx,cy) => `<rect x="${cx-9}" y="${cy-14}" width="18" height="28" rx="3" fill="#111"/>`,
+  76: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-14,6)}${crBall(-14,10,6)}${crBall(14,10,6)}<line x1="0" y1="-20" x2="0" y2="4" stroke="#111" stroke-width="2"/><line x1="-14" y1="4" x2="14" y2="4" stroke="#111" stroke-width="2"/></g>`,
+  79: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/></g>`,
+  81: (cx,cy) => `<g transform="translate(${cx},${cy})">${crConeDown(0,-8,9)}${crConeUp(0,10,9)}<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/></g>`,
+  83: (cx,cy) => `<g transform="translate(${cx},${cy})"><rect x="-8" y="-18" width="16" height="14" fill="#e74c3c" stroke="#111" stroke-width="1.2"/>${crBall(0,10,6)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.5"/></g>`,
+  84: (cx,cy) => `<g transform="translate(${cx},${cy})">${crConeDown(0,-8,9)}${crConeUp(0,10,9)}<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/></g>`,
+  86: (cx,cy) => crDiamond(cx,cy,12),
+  87: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>${crDiamond(18,-8,5)}${crDiamond(18,8,5)}</g>`,
+  89: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>${crBall(18,-8,5)}${crBall(18,8,5)}</g>`,
+  90: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>${crDiamond(-18,-8,5)}${crDiamond(-18,8,5)}${crBall(18,-8,5)}${crBall(18,8,5)}</g>`,
+  92: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="18" height="14" fill="#fff" stroke="#111" stroke-width="1"/><line x1="1" y1="-20" x2="19" y2="-6" stroke="#e74c3c" stroke-width="2"/><line x1="1" y1="-6" x2="19" y2="-20" stroke="#e74c3c" stroke-width="2"/><text x="10" y="-10" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#e74c3c">V</text></g>`,
+  93: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="18" height="14" fill="#0055BF" stroke="#111" stroke-width="1"/><rect x="5" y="-17" width="5" height="4" fill="#fff"/><rect x="10" y="-13" width="5" height="4" fill="#fff"/><rect x="5" y="-9" width="5" height="4" fill="#fff"/><text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">N</text></g>`,
+  95: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#e74c3c" stroke="#111" stroke-width="1"/><text x="9" y="-10" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#fff">B</text></g>`,
+  98: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#0055BF" stroke="#111" stroke-width="1"/><polygon points="1,-13 14,-13 11,-10 14,-6 1,-6" fill="#fff" stroke="none"/><text x="9" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">A</text></g>`,
+  104: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#e74c3c" stroke="#111" stroke-width="1"/><rect x="4" y="-17" width="9" height="4" fill="#ffd700"/><rect x="4" y="-9" width="9" height="4" fill="#ffd700"/><text x="9" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#e74c3c">B</text></g>`,
+  106: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="6" height="14" fill="#0055BF" stroke="none"/><rect x="7" y="-20" width="6" height="14" fill="#fff" stroke="none"/><rect x="13" y="-20" width="6" height="14" fill="#e74c3c" stroke="none"/><rect x="1" y="-20" width="18" height="14" fill="none" stroke="#111" stroke-width="1"/><text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">W</text></g>`,
 };
 function crDayShape(letter, shapeId) {
   const angle = CR_LETTERS.indexOf(letter) * 22.5;
-  const midR = (CR_R_TIP + CR_R_BASE) / 2;
-  const p = crPos(angle, midR);
+  const shapeR = CR_R_TIP - 32;
+  const p = crPos(angle, shapeR);
   const shapeFn = CR_SHAPES[shapeId];
   if (!shapeFn) return '';
-  let svg = `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="22" fill="#fff" stroke="#333" stroke-width="1" opacity="0.9"/>`;
+  let svg = `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="32" fill="#fff" stroke="#333" stroke-width="1.5" opacity="0.92"/>`;
   svg += shapeFn(p.x, p.y);
-  const lp = crPos(angle, midR + 28);
+  const lp = crPos(angle, shapeR - 36);
   svg += `<rect x="${(lp.x-30).toFixed(1)}" y="${(lp.y-7).toFixed(1)}" width="60" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
   svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y+4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${letter} | תמונה ${shapeId}</text>`;
   return svg;
 }
+const SIGNAL_IMAGES = {
+  111: ['S'],
+  112: ['S','S'],
+  113: ['S','S','S'],
+  114: ['S','S','S'],
+  115: ['L','S','S'],
+  116: ['L','S','L','S'],
+  117: ['L','L'],
+  118: ['L'],
+  119: ['S','S','S','S','S'],
+  120: ['L','S'],
+  121: ['L','S','S','S'],
+  122: ['L','L','S'],
+  123: ['L','S','S'],
+  124: ['L','S','L','S'],
+  125: ['L','L','L','L','L','L','L'],
+  126: ['S','S','S','S','S','S','S','S','S','S','S','S'],
+};
+
 function generateCompassRoseScene(qText) {
-  const vesselMatch = (qText || '').match(/\(([A-P])\)/g);
-  const vessels = vesselMatch ? vesselMatch.map(v => v.replace(/[()]/g, '')) : [];
+  const txt = qText || '';
+  const parenMatch = txt.match(/\(([A-P])\)/g);
+  const bareMatch = txt.match(/(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+([A-P])\b/g);
+  let vessels;
+  if (parenMatch && parenMatch.length >= 2) {
+    vessels = parenMatch.map(v => v.replace(/[()]/g, ''));
+  } else if (bareMatch) {
+    vessels = bareMatch.map(m => m.match(/([A-P])$/)[1]);
+  } else {
+    vessels = [];
+  }
   const imgMatch = (qText || '').match(/תמונה (\d+)/);
   const observer = vessels[0] || null, target = vessels[1] || null;
   const shapeId = imgMatch ? parseInt(imgMatch[1]) : null;
@@ -1580,14 +1611,35 @@ function generateCompassRoseScene(qText) {
   if (target) svg += crBowLine(target, '#e74c3c');
   if (observer) svg += crHighlight(observer);
   if (target) svg += crHighlight(target);
+  const hasShape = shapeId && CR_SHAPES[shapeId];
+  const signalPattern = shapeId && SIGNAL_IMAGES[shapeId];
+  const headerText = hasShape
+    ? `${observer} מבחין ב-${target} המציג סימן יום`
+    : `${observer} ו-${target} — מיקום על השושנה`;
   svg += `<rect x="30" y="18" width="300" height="30" rx="6" fill="#0c1a3a" stroke="#7eb8f7" stroke-width="1"/>`;
-  svg += `<text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">${observer} מבחין ב-${target} המציג סימן יום</text>`;
+  svg += `<text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">${headerText}</text>`;
+  if (signalPattern) {
+    const SR=7, LW=36, LH=14, GAP=8, SY=385;
+    const totalW = signalPattern.reduce((s,b) => s + (b==='L' ? LW : SR*2), 0) + GAP*(signalPattern.length-1);
+    let sx = 180 - totalW/2;
+    svg += `<rect x="30" y="${SY-18}" width="300" height="32" rx="6" fill="#0c1a3a" stroke="#e74c3c" stroke-width="1"/>`;
+    svg += `<text x="180" y="${SY-6}" text-anchor="middle" fill="#e74c3c" font-size="8" font-family="Heebo,sans-serif">תמונה ${shapeId}</text>`;
+    signalPattern.forEach(b => {
+      if (b==='L') {
+        svg += `<rect x="${sx}" y="${SY-1}" width="${LW}" height="${LH}" rx="3" fill="#e74c3c"/>`;
+        sx += LW + GAP;
+      } else {
+        svg += `<circle cx="${sx+SR}" cy="${SY+LH/2-1}" r="${SR}" fill="#e74c3c"/>`;
+        sx += SR*2 + GAP;
+      }
+    });
+  }
   return svg;
 }
 
 function getScene(topic, qText) {
   const q = qText || '';
-  if(topic==='זכות מעבר' && /\([A-P]\)/.test(q) && /תמונה \d+/.test(q)) {
+  if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+[A-P]\b/.test(q)) {
     const compass = generateCompassRoseScene(q);
     if (compass) return compass;
   }
@@ -1881,7 +1933,8 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   const correctText = (opts[correctI]||'').replace(/^[אבגדABCDabcd]\.\s*/,'');
   const isSoundSignal = q.topic === 'אותות קוליים';
   const blastPattern = isSoundSignal ? parseBlastPatternMulti(correctText, qText, expl, q.blastOverride||'') : null;
-  const scene = isSoundSignal
+  const hasVesselLetters = /\([A-P]\)/.test(qText) || /(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+[A-P]\b/.test(qText);
+  const scene = (isSoundSignal && !hasVesselLetters)
     ? generateSoundSignalScene(blastPattern, qText, correctText)
     : getScene(q.topic, q.q_he||q.q_en);
   const optsHtml = opts.slice(0,4).map((o,i)=>{

@@ -3307,7 +3307,6 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "בראות טובה: צפירה ארוכה 1 = 'אני פונה ימינה'. צפירה ארוכה 2 = 'אני פונה שמאלה'. צפירה ארוכה 3 = 'מנוע אחורה'. 5+ קצרות = סכנה/חוסר הבנה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -4866,7 +4865,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 80 = שני כדורים = ללא שליטה (NUC). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. ללא שליטה בראש ההיררכיה, כל כלי שיט חייב לפנות לו דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -4888,7 +4887,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 20 = חרוט הפוך = מפרשית תחת מנוע (ממוכנת). שניהם ממוכנים, אותה משפחה. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. חזית מול חזית - שניהם פונים ימינה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -4908,7 +4907,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 20 = חרוט הפוך = מפרשית תחת מנוע (ממוכנת). שניהם ממוכנים באותה משפחה. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. חזית מול חזית - שניהם פונים ימינה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -4928,7 +4927,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 10 מסמן כלי שיט על שרטון. יש לנהוג בזהירות רבה ולהתרחק מאזור השרטון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -4950,7 +4949,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כלי שיט C עוגן, אין סכנה. כלי שיט עוגן אינו שייט ולכן אין חובת פינוי.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -4970,7 +4969,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 86 = יהלום = ממוכן. שניהם ממוכנים (אותה משפחה). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. M מימין A, לכן A מפנה ל-M.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -4990,7 +4989,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 86 = יהלום = ממוכן. שניהם ממוכנים (אותה משפחה). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. O מימין C, לכן C מפנה ל-O.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5010,7 +5009,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 75 = מלבן/צילינדר = מוגבל שוקע. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. מוגבל גובר על ממוכן. P חייב להפליג בזהירות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5030,7 +5029,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כשלא קיימת סכנת התנגשות, אין חובה לבצע שינוי בקורס או במהירות. חוק המשפחות חל רק כשקיימת סכנת התנגשות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5050,7 +5049,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כלי שיט עוקף חייב תמיד לפנות דרך לנעקף, ללא קשר לסוג הכלי. כלל העקיפה גובר על חוק המשפחות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5070,7 +5069,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל B (תמונה 95) עם כדור שחור בחרטום מסמן עגינה עם חומרים מסוכנים. יש לעבור בזהירות מרבית.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5090,7 +5089,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כדור שחור (תמונה 77) מסמן עגינה. כלי שיט עוגן אינו מהווה סכנה, ניתן להמשיך בהפלגה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5110,7 +5109,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 83 מסמן מצוקה. חובה על כל כלי שיט לגשת ולסייע לכלי שיט במצוקה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5130,7 +5129,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 83 מסמן מצוקה/קריאה לעזרה. חובה להגיש סיוע לכלי שיט במצוקה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5150,7 +5149,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל N (תמונה 93) = ממוכן. שניהם ממוכנים (אותה משפחה). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. M מימין A, לכן A מפנה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5170,7 +5169,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 90 = מוגבל באופי עיסוקו. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. מוגבל גובר על ממוכן. C חייב לפנות שמאלה ולהפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5190,7 +5189,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 79 = כדור-יהלום-כדור = מוגבל בכושר תמרון. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. A מוגבל ומתקרב ל-I, A חייב לפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5210,7 +5209,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 79 = כדור-יהלום-כדור = מוגבל בכושר תמרון. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. מוגבל גובר על ממוכן. M (אופנוע) חייב לפנות דרך ל-A המוגבל.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5230,7 +5229,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 84 מסמן דייג. אופנוע ים חייב לפנות דרך לכלי שיט העוסק בדיג.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5250,7 +5249,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 84 = שני חרוטים = דייג. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. דיג גובר על ממוכן. A (אופנוע) חייב לפנות דרך ל-I העוסק בדיג.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5270,7 +5269,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 76 מסמן שולת מוקשים. יש לפנות דרך ולהתרחק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5290,7 +5289,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 87 מסמן מוגבל באופי עיסוקו. אופנוע ים חייב לפנות ימינה ולפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5310,7 +5309,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 87 מסמן מוגבל באופי עיסוקו. אופנוע ים חייב לפנות ימינה ולפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5330,7 +5329,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 90 מסמן מוגבל באופי עיסוקו. כיוון הפנייה (שמאלה) נקבע לפי מיקום הסימן.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5350,7 +5349,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 89 מסמן מוגבל באופי עיסוקו. אופנוע ים חייב לפנות ימינה ולפנות דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5370,7 +5369,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 86 = יהלום = ממוכן. שניהם ממוכנים (אותה משפחה). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. P ממוכן מפנה דרך לאופנוע L.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5390,7 +5389,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 86 = יהלום = ממוכן. שניהם ממוכנים (אותה משפחה). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. K ממוכן מפנה דרך לאופנוע G.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5410,7 +5409,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תמונה 81 = דייג/גרירה. חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. דיג גובר על ממוכן. N (אופנוע) חייב להתרחק ולפנות דרך ל-F.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5430,7 +5429,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 77 בהקשר של מפרשית מסמן קושי בתמרון. יש לפנות דרך שמאלה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5450,7 +5449,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כשכלי שיט אחר חייב לפנות לך דרך, עליך לשמור על קורס ומהירות קבועים כדי לא ליצור בלבול.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5470,7 +5469,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "פינוי דרך חייב להיות ברור ומובהק: שינוי קורס ו/או מהירות שנראה בבירור לעיני המשיט השני. לא מספיק להוריד מהירות בלבד.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5490,7 +5489,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סכנת התנגשות קיימת כאשר תכוון המצפן לכלי שיט מתקרב נשאר קבוע - סימן שנתיבי השיט חוצים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5510,7 +5509,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כלי שיט \"בדרך\" הוא כלי שיט המתקדם פעיל במים, בניגוד לכלי שיט עוגן, על שרטון, או מחובר לרציף.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5530,7 +5529,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אופנוע ים נחשב לכלי השיט הנחות ביותר בהיררכיית זכות המעבר. לעולם לא יפנו לו דרך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5550,7 +5549,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סכנת התנגשות נקבעת לפי שינוי בכוון המצפן, לא לפי מהירות. אם הכוון משתנה מהר - אין סכנה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5570,7 +5569,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "חובת תצפית חלה בכל עת, אך בראות לקויה נדרשת תצפית מוגברת במיוחד.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5590,7 +5589,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מותר להפליג בחשיכה או ראות לקויה, אך רק בטווח של מיל אחד מהחוף לכל היותר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5610,7 +5609,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל B (תמונה 95) = כלי שיט מטעין/פורק מטען מסוכן. P חייב לפנות דרך ולהתרחק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5630,10 +5629,10 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "אות קולי בתמונה 114 (שלוש צפירות קצרות) = כלי שיט מטיל עוגן."
   },
   {
     "num": 1040,
@@ -5650,13 +5649,13 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783257206/skipper-quiz/urtfoglpahkdwukrbhzv.mp4",
     "rendered_at": "2026-07-05T13:13:27.751Z",
-    "blastOverride": ""
+    "blastOverride": "",
+    "explanation": "צפירה אחת קצרה (תמונה 111) = אני פונה ימינה. שני כלי השיט משמיעים אות זהה, שניהם פונים ימינה."
   },
   {
     "num": 1041,
@@ -5673,7 +5672,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל בתמונה 106 הוא סימן מצוקה/בקשת עזרה. חובה להגיש סיוע מיידי.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5693,10 +5692,10 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "אות בתמונה 115 הוא צפירת ברכה/שלום בין כלי שיט. אינו מסמן סכנה או הוראת מעבר."
   },
   {
     "num": 1043,
@@ -5713,7 +5712,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "שני אופנועי ים = אותה משפחה (ממוכנים). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. חזית מול חזית - שניהם פונים ימינה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5733,7 +5732,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל בתמונה 104 מסמן צוללים במים. חובה להתרחק למרחק של 200 מטר לפחות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5753,7 +5752,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "שני אופנועי ים = אותה משפחה (ממוכנים). חוק המשפחות: מנוע מפנה למפרש, מפרש לדיג, דיג למוגבל, מוגבל לללא שליטה. באותה משפחה: חזית מול חזית שניהם ימינה, הרואה מימין מפנה. חזית מול חזית - שניהם פונים ימינה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5773,7 +5772,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כשתכוון (bearing) והטווח (range) לכלי שיט אחר אינם משתנים ומקביל, לא קיימת סכנת התנגשות ואין צורך בפעולה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5793,7 +5792,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כשתכוון המצפן למפרשית גדל - סכנת התנגשות קיימת. אופנוע ים חייב לפנות דרך למפרשית.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5813,7 +5812,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כשתכוון המצפן לכלי שיט קטן - לא קיימת סכנת התנגשות. האופנוע יעבור מאחוריו.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5833,10 +5832,10 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "אות בתמונה 116 פירושו \"אני רוצה לעקוף אותך מצד ימין\" - צפירה ארוכה ואחריה צפירה קצרה."
   },
   {
     "num": 1050,
@@ -5853,10 +5852,10 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "אות בתמונה 121 מסמן זריקת עוגן. יש להיזהר מחבלי העוגן."
   },
   {
     "num": 1051,
@@ -5873,7 +5872,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סימן יום בתמונה 83 יכול לסמן שרטון. יש להפליג בזהירות רבה ולהתרחק מאזור הסכנה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5893,7 +5892,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "צפירה ארוכה ללא הפסקה מצוקה!",
+    "explanation": "שלוש צפירות קצרות (תמונה 119) מסמנות שמנועי כלי השיט מופעלים אחורה (ריוורס).",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -5916,7 +5915,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אותות מצוקה יעילים לאופנוע ים: מצוף עשן, מראת איתות, הנפת ידיים - כולם מוכרים בינלאומית.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5936,10 +5935,10 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "7 צפירות ארוכות ברצף הן אות מצוקה מוכר בינלאומית."
   },
   {
     "num": 1055,
@@ -5956,10 +5955,10 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "צפירת ריוורס (תמונה 119) מסמנת מנועים אחורה - לא מצוקה. ייתכן שהצופר נתפס."
   },
   {
     "num": 1056,
@@ -5976,7 +5975,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל בתמונה 104 עם כדור שחור מסמן עגינה לצורך חיפוש אדם בים. יש לסייע.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -5996,7 +5995,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל N מעל דגל V (תמונות 93+92) מסמן מצוקה בינלאומית.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6016,7 +6015,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "3 קצרות, 3 קצרות, 3 ארוכות - אות SOS בצפירות, מסמן בקשת עזרה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -6038,7 +6037,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "עשן כתום סמיך הוא אות מצוקה מוכר בינלאומית (COLREGS Annex IV). חובה להגיש סיוע מיידי.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6058,7 +6057,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "שילוב דגלי תמונות 104 ו-93 מסמן מצוקה. חובה לגשת ולהגיש סיוע.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6078,7 +6077,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל A (תמונה 98) עם כדור שחור מסמן אוניית אם לצוללים ועוגנת. חובה להתרחק 200 מטר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6098,7 +6097,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל A (צוללים) מחייב מרחק מינימלי של 200 מטר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6118,7 +6117,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל Alpha (תמונה 104) - דגל כחול-לבן המסמן צוללים במים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6138,7 +6137,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מותר לאופנוע ים לשמש כספינת אם לצולל בתנאי שמניפים דגל A (תמונה 98) ונשאר משיט מוסמך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6158,7 +6157,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "סירה המשמשת כספינת אם לצוללים מניפה סימן יום של דגל A כמתואר בתמונה 75.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6178,7 +6177,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל בתמונה 104 על סירת גומי מסמן קריאה לעזרה. חובה להגיש סיוע.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6198,7 +6197,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "דגל B (תמונה 104) מסמן פריקה/טעינה של חומרים נפיצים או מסוכנים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6218,7 +6217,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מחוף שאינו חוף רחצה: להוביל ברגל עד 50 מ' מהחוף, ורק אז להתניע.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6238,7 +6237,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בחוף לא מוכרז, ההפלגה החופשית מותרת ברצועה שבין קו שפל המים ל-300 מטר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6258,7 +6257,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בטווח 200 מטר מחוף לא מוכרז, מהירות מותרת היא 15 קשרים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6278,7 +6277,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בטווח 200 מטר מחוף לא מוכרז - מותר 5 קשרים בלבד, ללא הגבלת כיוון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6298,7 +6297,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אופנוע ים מוגבל לרצועה של 300 מטר מקו שפל המים עד מיל אחד מהחוף.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6318,7 +6317,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "הפלגה מותרת במרחק 300 מ' מערבית לשטח אש עתלית, לא 2 מיל.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6338,7 +6337,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מותר להיכנס לשפך הירקון רק עבור נוסע עם מגבלות (מוגבלות ניידות).",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6358,7 +6357,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בים המלח חלים אותם תנאי שיט כמו בים התיכון - אין הקלות מיוחדות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6378,7 +6377,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "הפלגה מיפו לאשדוד מותרת בתנאי שתתבצע באור יום בלבד.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6398,7 +6397,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ניתן להפליג בתחום חוף רחצה מוכרז רק אם קיים נתיב מיוחד המסומן במצופים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6418,7 +6417,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אזורים סגורים לשיט קיימים ליד בסיסי צבא, שטחי אש, אזורי צלילה ומקומות נוספים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6438,7 +6437,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "חוף רחצה מוכרז: מקו שיא הגיאות עד 300 מ', ו-60 מ' מכל צד של שטח הרחצה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6458,7 +6457,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מותר להתקרב לחוף רחצה לאיסוף נוסע, אך לא פחות מ-50 מ' מצדי החוף.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6478,7 +6477,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אופנוע ים מותר בים הפתוח במרחק 300 מ' עד מיל מהחוף, בכל מקום מורשה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6498,7 +6497,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מהירות מותרת 200 מ' מחוף לא מוכרז: 5 קשרים בלבד.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6518,7 +6517,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בשריפת אופנוע ים: לקפוץ למים, לשחות נגד הרוח (להתרחק משלולית דלק בוער) ולהמתין לעזרה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6538,7 +6537,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "עשן שחור סמיך מאופנוע ים מסמן סכנת שריפה. יש לנטוש מיד, לאסוף את הרוכב ולהתרחק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6558,7 +6557,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תדלוק חייב להתבצע כשהמנוע כבוי למניעת התלקחות מניצוצות או חום.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6578,7 +6577,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "לאחר תדלוק יש לוודא שאין נזילות דלק - דלק בים מהווה סכנת שריפה וזיהום.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6598,7 +6597,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "קצף הוא האמצעי היעיל ביותר לכיבוי שריפת דלק - הוא מכסה ומחניק את האש.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6618,7 +6617,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "משולש האש מורכב משלושה מרכיבים: חום, חנקן וחומר בעירה. שלושתם נדרשים לקיום אש.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6638,7 +6637,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מספיק לנתק מרכיב אחד ממשולש האש (חום/חמצן/דלק) כדי לכבות שריפה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6658,7 +6657,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מטף קצף מכסה את החומר הבוער בשכבת קצף ומונע ממנו מגע עם חמצן.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6678,7 +6677,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בדיקת מטף כוללת: תאריך תוקף, לחץ תקין, חותמת שלמה, ומצב חיצוני תקין.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6698,7 +6697,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מטף אבקה יוצר שכבה שמנתקת את החמצן מהאש.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6718,7 +6717,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח דרומית חזקה במפרץ אילת דוחפת את המים צפונה ויוצרת ים סוער בחוף הצפוני.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6738,7 +6737,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שקט.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6758,7 +6757,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח מזרחית במפרץ אילת גורמת לאפקט דומה לרוח דרומית - ים סוער בחוף הצפוני.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6778,7 +6777,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בריזה קיצית: בצהריים השמש מחממת את היבשה, אוויר עולה, ונוצרת רוח ים (מדרום/מערב).",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6798,7 +6797,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בריזה קיצית בבוקר: הרוח עדיין בכיוון דרום-מזרחי לפני שהשמש מחממת מספיק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6818,7 +6817,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "שקע ברומטרי צפונה גורם לרוחות מערביות ערות עד חזקות לאורך חוף ים התיכון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6838,7 +6837,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רמה ברומטרית צפונה גורמת לזרימת אוויר מערבית לאורך חוף ים התיכון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6858,7 +6857,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח צפונית מתונה לאורך חוף ים התיכון דוחפת כלי שיט קטנים לעומק הים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6878,7 +6877,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בכנרת, רוח צפונית מתונה דוחפת כלי שיט קטנים מהחוף המזרחי לעומק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6898,7 +6897,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח דרום-מערבית חזקה בכנרת דוחפת כלי שיט מהחוף המערבי לעומק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6918,7 +6917,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוחות מזרחיות חזקות יוצרות גלי חוף טובים לגלישה אך מסוכנות לשיט.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6938,7 +6937,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוחות מערביות ערות גורמות לים סוער בקרבת חוף ים התיכון - מסוכן להפלגה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6958,7 +6957,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "עננים כהים ונמוכים הנעים מהר ממערב/דרום-מערב מבשרים על סערה מתקרבת.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6978,7 +6977,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רמה ברומטרית דרומה גורמת לרוח מערבית לאורך חוף ים התיכון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -6998,7 +6997,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בנוסף לים גבוה, מזג אוויר סוער וגשום גורם לירידה משמעותית בראות - סכנה בטיחותית חמורה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7018,7 +7017,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "באדם מחוסר הכרה - הפעולה הראשונה היא בדיקת נשימה ודופק לקביעת מצבו.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7038,7 +7037,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "צריבת מדוזה: לשטוף עם חומץ או אמוניה מהולה. לא מים מתוקים שמחמירים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7058,7 +7057,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מכת חום דורשת קירור, השכבה בצל, שתיה והורדת בגדים - כל הפעולות נכונות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7078,7 +7077,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בחשד לשבר אסור להזיז את האבר או לפשוט בגדים - עלול להחמיר את הפציעה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7098,7 +7097,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "פגיעת גז ארסי (מדוזה וכד') דורשת קירור מיידי של אזור הפגיעה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7118,7 +7117,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בנפגע טביעה: אסור להשכיב על הגב (סכנת חסימת נתיבי אוויר). יש לבצע הנשמה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7138,7 +7137,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מחוסר הכרה צף עם פנים למעלה - הפעולה הראשונה היא הנשמה מלאכותית מפה לפה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7158,7 +7157,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בכנרת עם רוח מערבית, הרוח דוחפת לחוף המזרחי. עדיף לשחות מיד לפני שיחשיך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7178,7 +7177,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "נפילה למים בזמן האצה פתאומית עלולה לגרום לטביעה, במיוחד עם ציוד כבד.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7198,7 +7197,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "האצה פתאומית גורמת לנוהג להחליק קדימה על האופנוע, מה שעלול לגרום לאיבוד שליטה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7218,7 +7217,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "לנוהג אחיזה טובה יותר בזכות ההגה והמושב הקדמי. הנוסע מאחור חשוף יותר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7238,7 +7237,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "הנוסע מאחור חשוף לסכנה גדולה יותר כי אין לו אחיזה כמו לנוהג שמחזיק בהגה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7258,7 +7257,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מעבר גלי חוף במהירות גבוהה גורם לנפילה מהגל ואיבוד שליטה מוחלט באופנוע.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7278,7 +7277,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "כשהמדומם ניתלש במהירות גבוהה, הנוהג עלול להיפגע מההגה שמול פניו.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7298,7 +7297,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "גלים גבוהים מהצד במהירות גבוהה יוצרים מומנט שעלול להפוך את האופנוע.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7318,7 +7317,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "גישה נכונה לכלי שיט אחר: האטה, התקרבות נגד הרוח, ודימום מנוע בקרבתו.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7338,7 +7337,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מגובה של מטר אחד מעל המים, טווח הראייה האפקטי הוא כ-2 מיל בתנאים טובים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7358,7 +7357,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ביציאה מנמל: מצוף אדום בימין (סטארבורד), מצוף ירוק בשמאל (פורט).",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7378,7 +7377,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רק משיט מוסמך רשאי לנהוג באופנוע ים. השגחה מהחוף אינה מספיקה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7398,7 +7397,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תנאי רישיון 11: גיל 16+, מבחן עיוני ומעשי, בריאות תקינה ואבחנת צבעים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7418,7 +7417,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "גרירת סקי מותרת רק אם האופנוע מורשה ל-3 ועליו לפחות 2 (נוהג + צופה).",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7438,7 +7437,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "גרירת סקי/בננה: אופנוע ל-3, עליו לפחות 2 אנשים, הרוכב האחורי שומר קשר עין עם הנגרר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7458,7 +7457,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רשימת ציוד הצלה אינה מסמך שחובה לשאת בעת הפלגה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7478,7 +7477,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בדיקת הגה נעשית ע\"י הפניית האופנוע במים בזמן יציאה לים - בדיקה מעשית.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7498,7 +7497,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אופנוע ים פרטי נבדק בבדיקת כושר שייט אחת לשנתיים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7518,7 +7517,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רק בעל רישיון משיט 11 רשאי לנהוג באופנוע ים, או תלמיד בשיעור מעשי בפיקוח מדריך.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7538,7 +7537,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ציוד פירוטכני שפג תוקפו הוא חומר מסוכן - יש למסור למשטרה לסילוק בטוח.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7558,7 +7557,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אסור בהחלט להיקשר למצופי מיקשר דלק - סכנת שריפה ופיצוץ.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7578,7 +7577,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מספר מרבי של 3 אנשים על אופנוע ים, בהתאם לקיבולת המאושרת של כלי השיט.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7598,7 +7597,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תנאי גרירת סקי: אופנוע ל-3 אנשים, ועליו ימצאו 2 אנשים (נוהג + צופה אחורי).",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7618,7 +7617,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "בהפלגה ארוכה בין חופים יש להשאיר הודעה עם פרטי ההפלגה וזמן חזרה משוער.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7638,7 +7637,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "תעודת בריאות אינה נדרשת בעת הפלגה - היא נדרשת רק בשלב הרישום לרישיון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7658,7 +7657,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ביקורת כושר שייט לאופנוע ים פרטי מתבצעת אחת לשנתיים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7678,7 +7677,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מדומם חירום (Kill Switch) חייב להיות מחובר לגוף הנוהג למניעת בריחת אופנוע ללא נוהג.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7698,7 +7697,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מספר הזיהוי חייב להיות בגודל מינימלי של 10 ס\"מ כדי להיות קריא מרחוק.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7718,7 +7717,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מספר חגורות ההצלה חייב להתאים למספר הנוסעים המורשה - 3 חגורות ל-3 אנשים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7738,7 +7737,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח דרום-מערבית מתחזקת - יש לחזור לנקודת המוצא (צפונה) כי הרוח והגלים יעזרו.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7758,7 +7757,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7778,7 +7777,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "אחרי התהפכות: להפוך בכיוון הנכון לפי הוראת היצרן ולהפעיל מנוע מיד.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7798,7 +7797,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "חבל גרירה: בנגרר לתפס הקדמי, בגורר מסביב למושב או בתפס אחורי.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7818,7 +7817,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "חבל גרירה מומלץ באורך 40 מטר - מספיק ארוך למניעת התנגשות עם גלים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7838,7 +7837,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ציוד חובה: חגורות הצלה, מצוף עשן, מדומם מנוע (Kill Switch), ומראת איתות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7858,7 +7857,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "עומק מינימלי של 60 ס\"מ נדרש כדי שהמדחף לא יפגע בקרקעית ולא ישאב חול/אבנים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7878,7 +7877,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מיקום בין שני גלים בזמן החפה מאפשר שליטה מיטבית באופנוע על החוף.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7898,7 +7897,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ציוד חובה להפלגה: חגורות הצלה, מצוף/ידנית עשן, מדומם מנוע והתעודות הנדרשות.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7918,7 +7917,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "ביציאה מפתח מרינה: ירוק בשמאל, אדום בימין - הפוך מהכניסה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7938,10 +7937,10 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "explanation": "שלוש צפירות קצרות מסמנות מנועים אחורה, אבל אות זה אסור להשמיע בערפל."
   },
   {
     "num": 1156,
@@ -7958,7 +7957,7 @@
     ],
     "answer": "א",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "הפלגה במהירות גבוהה ליד כלי שיט אחרים יוצרת גלים שעלולים לערער את יציבותם.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7978,7 +7977,7 @@
     ],
     "answer": "ב",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "חל איסור מוחלט על שתיית אלכוהול הן לנוהג והן לנוסע באופנוע ים.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -7998,7 +7997,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "יישור אופנוע שהתהפך: כל השיטות תקפות - הפיכה ידנית, בעזרת גל, או בעזרת אדם נוסף.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -8018,7 +8017,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "מותר להתקרב עד 50 מ' מצדי חוף רחצה מוכרז, ולא יותר מ-300 מ' מקו שפל.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -8038,7 +8037,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "לפי התקנה, המשיט חייב ללבוש מכנס עבה מהמותנים עד הברכיים להגנה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -8058,7 +8057,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "גם הנוסע מאחור חייב במכנס עבה מהמותנים עד הברכיים לפי התקנה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
@@ -8078,7 +8077,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": false,
-    "explanation": "",
+    "explanation": "במפרץ אילת הטווח המזערי הוא 1000 מ' מקו שפל המים, בשל רגישות אקולוגית.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false
