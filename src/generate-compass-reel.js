@@ -84,7 +84,8 @@ function ball(cx, cy, r = 8) {
 }
 
 function diamond(cx, cy, s = 9) {
-  return `<polygon points="${cx},${cy-s} ${cx+s},${cy} ${cx},${cy+s} ${cx-s},${cy}" fill="#111"/>`;
+  const h = s * 1.4, w = s * 0.65;
+  return `<polygon points="${cx},${cy-h} ${cx+w},${cy} ${cx},${cy+h} ${cx-w},${cy}" fill="#111"/>`;
 }
 
 function coneDown(cx, cy, s = 9) {
@@ -143,11 +144,11 @@ const DAY_SHAPES = {
       `<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.5"/>` +
       `</g>`;
   },
-  // Towing: 2 cones (hourglass)
+  // Aground: 3 black balls (vertical)
   81: (cx, cy) => {
     return `<g transform="translate(${cx},${cy})">` +
-      coneDown(0, -8, 9) + coneUp(0, 10, 9) +
-      `<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/>` +
+      ball(0, -16, 6) + ball(0, 0, 6) + ball(0, 16, 6) +
+      `<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="2"/>` +
       `</g>`;
   },
   // Fishing: 2 cones (basket shape)

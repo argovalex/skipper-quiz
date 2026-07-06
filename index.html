@@ -862,8 +862,8 @@ function renderEditor(q) {
       </div>
 
       <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
-        <button class="btn btn-ghost btn-sm" onclick="saveFixRequest()">💾 שמור</button>
-        <span style="font-size:11px;color:var(--muted)">נשמר ל-questions.json, לא מפעיל רינדור</span>
+        <button class="btn btn-ghost btn-sm" onclick="saveFixAndRender()">💾 שמור ורנדר</button>
+        <span id="fix-render-status" style="font-size:11px;color:var(--muted)"></span>
       </div>
       <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
         <input type="checkbox" id="fix-locked" ${q.html_locked?'checked':''} onchange="saveLockState(this.checked)" style="width:auto">
@@ -882,7 +882,7 @@ function renderEditor(q) {
     </div>
 
     <div class="action-row">
-      <button class="btn btn-save" onclick="saveCurrentToState();renderList();showToast('✅ נשמר בזיכרון')">💾 שמור שינויים</button>
+      <button class="btn btn-save" onclick="saveCurrentToState();renderList();saveJSON()">💾 שמור שינויים</button>
       <button class="btn btn-del" onclick="deleteQuestion()">🗑 מחק</button>
     </div>
   `;
@@ -940,12 +940,65 @@ async function saveFixRequest() {
   if(currentIdx < 0) return;
   const q = questions[currentIdx];
   const text = document.getElementById('fix-request')?.value.trim();
-  if(!text) { showToast('⚠ כתוב פרומפט תיקון לפני שמירה'); return; }
-  q.fix_request = text;
-  q.fix_requested_at = new Date().toISOString();
+  if(text) {
+    q.fix_request = text;
+    q.fix_requested_at = new Date().toISOString();
+  }
   renderList();
   await saveJSON();
-  showToast(`✅ בקשת תיקון לQ#${q.num} נשמרה`);
+  showToast(`✅ Q#${q.num} נשמר`);
+}
+
+async function saveFixAndRender() {
+  if(currentIdx < 0) return;
+  saveCurrentToState();
+  const q = questions[currentIdx];
+  const text = document.getElementById('fix-request')?.value.trim();
+  if(text) {
+    q.fix_request = text;
+    q.fix_requested_at = new Date().toISOString();
+  }
+  const statusEl = document.getElementById('fix-render-status');
+  const setStatus = s => { if(statusEl) statusEl.textContent = s; };
+
+  setStatus('⏳ שומר...');
+  await saveJSON();
+  renderList();
+
+  const railwayUrl = getRailwayUrl();
+  if (!railwayUrl) { setStatus('⚠ הכנס Railway URL'); return; }
+
+  const num = q.num;
+  if (renderingNums.has(num)) { setStatus('⏳ כבר ברינדור...'); return; }
+
+  if (!q.html_locked) {
+    setStatus('⏳ דוחף HTML...');
+    await ghPushHTML(q);
+  }
+
+  setStatus('⏳ מרנדר...');
+  renderingNums.add(num);
+  try {
+    const res = await fetch(`${railwayUrl}/render/${num}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ voiceover_text: q.voiceover_text, force: true })
+    });
+    const data = await res.json();
+    if (data.videoUrl) {
+      q.videoUrl = data.videoUrl;
+      q.rendered_at = new Date().toISOString();
+      if(text) { q.fix_request = ''; q.fix_requested_at = ''; }
+      await saveJSON();
+    }
+    renderingNums.delete(num);
+    setStatus(`✅ Q#${num} רונדר!`);
+    showToast(`✅ Q#${num} נשמר ורונדר!`);
+    renderEditor(q);
+  } catch(e) {
+    renderingNums.delete(num);
+    setStatus(`❌ ${e.message}`);
+  }
 }
 
 function showEmptyEditor() {
@@ -1067,7 +1120,8 @@ function updatePreview(interactive=true) {
     if(existBg) existBg.remove();
     document.getElementById('r-svg').style.position = '';
     document.getElementById('r-svg').style.zIndex = '';
-    if(v.topic === 'אותות קוליים') {
+    const hasVesselLetters = /\([A-P]\)/.test(v.q) || /(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+[A-P]\b/.test(v.q);
+    if(v.topic === 'אותות קוליים' && !hasVesselLetters) {
       const pattern = parseBlastPatternMulti(v.opts[v.correct], v.q, v.expl, v.blastOverride);
       document.getElementById('r-svg').innerHTML = generateSoundSignalScene(pattern, v.q, v.opts[v.correct]) + getOverlaySVG(v);
     } else {

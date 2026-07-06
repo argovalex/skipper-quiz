@@ -1525,7 +1525,7 @@ function crBowLine(letter, color) {
   return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/>`;
 }
 function crBall(cx, cy, r) { return `<circle cx="${cx}" cy="${cy}" r="${r||8}" fill="#111"/>`; }
-function crDiamond(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy} ${cx},${cy+s} ${cx-s},${cy}" fill="#111"/>`; }
+function crDiamond(cx, cy, s) { s=s||9; const h=s*1.4,w=s*0.65; return `<polygon points="${cx},${cy-h} ${cx+w},${cy} ${cx},${cy+h} ${cx-w},${cy}" fill="#111"/>`; }
 function crConeDown(cx, cy, s) { s=s||9; return `<polygon points="${cx-s},${cy-s} ${cx+s},${cy-s} ${cx},${cy+s}" fill="#111"/>`; }
 function crConeUp(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy+s} ${cx-s},${cy+s}" fill="#111"/>`; }
 const CR_SHAPES = {
@@ -1536,7 +1536,7 @@ const CR_SHAPES = {
   75: (cx,cy) => `<rect x="${cx-9}" y="${cy-14}" width="18" height="28" rx="3" fill="#111"/>`,
   76: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-14,6)}${crBall(-14,10,6)}${crBall(14,10,6)}<line x1="0" y1="-20" x2="0" y2="4" stroke="#111" stroke-width="2"/><line x1="-14" y1="4" x2="14" y2="4" stroke="#111" stroke-width="2"/></g>`,
   79: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/></g>`,
-  81: (cx,cy) => `<g transform="translate(${cx},${cy})">${crConeDown(0,-8,9)}${crConeUp(0,10,9)}<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/></g>`,
+  81: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crBall(0,0,6)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="2"/></g>`,
   83: (cx,cy) => `<g transform="translate(${cx},${cy})"><rect x="-8" y="-18" width="16" height="14" fill="#e74c3c" stroke="#111" stroke-width="1.2"/>${crBall(0,10,6)}<line x1="0" y1="-18" x2="0" y2="18" stroke="#111" stroke-width="1.5"/></g>`,
   84: (cx,cy) => `<g transform="translate(${cx},${cy})">${crConeDown(0,-8,9)}${crConeUp(0,10,9)}<line x1="0" y1="-18" x2="0" y2="20" stroke="#111" stroke-width="1.5"/></g>`,
   86: (cx,cy) => crDiamond(cx,cy,12),
