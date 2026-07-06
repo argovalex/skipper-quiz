@@ -861,18 +861,13 @@ function renderEditor(q) {
         ${q.mediaUrl?`<div class="media-clear" onclick="event.stopPropagation();clearMedia()">✕ הסר תמונה</div>`:''}
       </div>
 
-      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
-        <button class="btn btn-ghost btn-sm" onclick="saveFixAndRender()">💾 שמור ורנדר</button>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-render" onclick="saveFixAndRender()">🎬 שמור ורנדר${q.videoUrl?' מחדש':''}</button>
         <span id="fix-render-status" style="font-size:11px;color:var(--muted)"></span>
       </div>
       <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
         <input type="checkbox" id="fix-locked" ${q.html_locked?'checked':''} onchange="saveLockState(this.checked)" style="width:auto">
         <label for="fix-locked" style="margin:0;cursor:pointer;font-size:12px">🔒 HTML נעול — אל תדרוס עיצוב מותאם אישית ברינדור הבא</label>
-      </div>
-
-      <div style="display:flex;gap:8px;margin-top:14px;align-items:center">
-        <button class="btn btn-render" onclick="renderFromEditor()">🎬 רינדור${q.videoUrl?' מחדש':''}</button>
-        <span id="rm-bottom-status" style="font-size:12px;color:var(--muted)"></span>
       </div>
     </div>
 
