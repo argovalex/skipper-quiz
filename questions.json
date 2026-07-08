@@ -3231,7 +3231,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783522696/skipper-quiz/icbbip9iu9tif47zuic9.mp4",
+    "rendered_at": "2026-07-08T14:58:17.859Z"
   },
   {
     "num": 261,
