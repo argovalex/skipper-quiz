@@ -643,11 +643,14 @@ async function loadPublishedNums() {
 
 // ── Save questions → GitHub (queued locally and retried automatically if offline) ──
 async function saveJSON() {
-  if(!questions.length) { showToast('❌ אין שאלות לשמור'); return; }
+  if(!questions.length) { showToast('❌ אין שאלות לשמור'); return false; }
   if(currentIdx >= 0) saveCurrentToState();
   const ok = await saveQuestionsGH('update: questions');
   updateSyncStatus(!ok);
-  showToast(ok ? '💾 נשמר ל-GitHub' : '⚠ אין רשת — נשמר מקומית, יסונכרן אוטומטית');
+  if (!ok && !document.querySelector('.toast')?.textContent?.includes('קונפליקט'))
+    showToast('⚠ אין רשת — נשמר מקומית, יסונכרן אוטומטית');
+  else if (ok) showToast('💾 נשמר ל-GitHub');
+  return ok;
 }
 
 // ── Auto-populate topic filter ────────────────────────────────────────────────
@@ -957,8 +960,9 @@ async function saveFixAndRender() {
   const setStatus = s => { if(statusEl) statusEl.textContent = s; };
 
   setStatus('⏳ שומר...');
-  await saveJSON();
+  const saved = await saveJSON();
   renderList();
+  if (!saved) setStatus('⚠ שמירה ל-GitHub נכשלה — ממשיך לרנדר');
 
   const railwayUrl = getRailwayUrl();
   if (!railwayUrl) { setStatus('⚠ הכנס Railway URL'); return; }
@@ -986,11 +990,12 @@ async function saveFixAndRender() {
       q.videoUrl = data.videoUrl;
       q.rendered_at = new Date().toISOString();
       if(text) { q.fix_request = ''; q.fix_requested_at = ''; }
-      await saveJSON();
+      const saved2 = await saveJSON();
+      if (!saved2) showToast('⚠ רונדר הצליח אבל שמירה ל-GitHub נכשלה');
     }
     renderingNums.delete(num);
-    setStatus(`✅ Q#${num} רונדר!`);
-    showToast(`✅ Q#${num} נשמר ורונדר!`);
+    setStatus(saved ? `✅ Q#${num} נשמר ורונדר!` : `⚠ Q#${num} רונדר אבל לא נשמר ל-GitHub`);
+    if (saved) showToast(`✅ Q#${num} נשמר ורונדר!`);
     renderEditor(q);
   } catch(e) {
     renderingNums.delete(num);

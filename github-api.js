@@ -40,8 +40,25 @@ async function ghPutFile(path, content, message, expectedSha) {
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ message, content: encoded, ...(sha ? { sha } : {}) })
     });
-    if (res.status === 409) return { ok: false, conflict: true };
-    if (!res.ok) return { ok: false };
+    if (res.status === 409) {
+      // SHA mismatch - fetch fresh SHA and retry once
+      const fresh = await ghGetFile(path);
+      if (fresh?.sha) {
+        const retry = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+          method: 'PUT',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, content: encoded, sha: fresh.sha })
+        });
+        if (retry.ok) { const b = await retry.json(); return { ok: true, sha: b.content?.sha }; }
+      }
+      return { ok: false, conflict: true };
+    }
+    if (!res.ok) {
+      const errBody = await res.text().catch(() => '');
+      console.error(`[ghPutFile] ${res.status} ${res.statusText} — ${errBody}`);
+      ghNotify(`❌ GitHub ${res.status}: ${res.statusText}`);
+      return { ok: false };
+    }
     const body = await res.json();
     return { ok: true, sha: body.content?.sha };
   } catch (e) { ghNotify('❌ שמירה נכשלה: ' + e.message); return { ok: false }; }
@@ -101,9 +118,21 @@ async function saveQuestionsGH(msg) {
     return true;
   }
   if (result.conflict) {
-    // Someone else's save landed since this tab last loaded/saved — do NOT
-    // queue a retry, that would just clobber their change with our stale copy.
-    ghNotify('⚠ מישהו אחר עדכן את questions.json בינתיים — רענן את הדף (F5) ובצע את הפעולה שוב, אחרת תדרוס שינויים');
+    // SHA mismatch - fetch fresh SHA and retry once with merged data
+    ghNotify('⏳ קונפליקט SHA — מסנכרן ומנסה שוב...');
+    const fresh = await ghGetFile('questions.json');
+    if (fresh) {
+      if (typeof questionsSHA !== 'undefined') questionsSHA = fresh.sha;
+      const retryResult = await ghPutFile('questions.json', JSON.stringify(questions, null, 2), message, fresh.sha);
+      if (retryResult.ok) {
+        if (typeof questionsSHA !== 'undefined') questionsSHA = retryResult.sha;
+        cacheQuestions(questions, retryResult.sha);
+        localStorage.removeItem(PENDING_SAVE_KEY);
+        ghNotify('✅ נשמר ל-GitHub (אחרי סנכרון)');
+        return true;
+      }
+    }
+    ghNotify('⚠ קונפליקט — רענן את הדף (F5) ובצע את השינוי שוב');
     return false;
   }
   cacheQuestions(questions, null);
