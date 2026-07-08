@@ -5443,17 +5443,15 @@
     "options": [
       "א. כל אחד פונה ימינה.",
       "ב. כל אחד עוצר ומנסה לנסוע לאחור.",
-      "ג. ",
-      "ד. "
+      "ג. \"N\" יפנה, ויתרחק ככל האפשר מ-\"F\" שעל שרטון.",
+      "ד. \"N\" במצוקה, ולכן חובה לגשת אליו ולהגיש עזרה."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "תמונה 81 = שלושה כדורים = על שרטון. N (אופנוע ים) חייב לפנות ולהתרחק ככל האפשר מ-F שעל שרטון.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783347761/skipper-quiz/zyivq7d5oxd0eifzbsef.mp4",
-    "rendered_at": "2026-07-06T14:22:42.046Z",
     "html_locked": false
   },
   {
