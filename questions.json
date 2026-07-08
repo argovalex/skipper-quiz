@@ -5687,7 +5687,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "explanation": "אות קולי בתמונה 114 (שלוש צפירות קצרות) = כלי שיט מטיל עוגן."
+    "explanation": "אות קולי בתמונה 114 (שלוש צפירות קצרות) = כלי שיט מטיל עוגן.",
+    "blastOverride": ""
   },
   {
     "num": 1040,
@@ -6025,7 +6026,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "explanation": "צפירת ריוורס (תמונה 119) מסמנת מנועים אחורה - לא מצוקה. ייתכן שהצופר נתפס."
+    "explanation": "צפירת ריוורס (תמונה 119) מסמנת מנועים אחורה - לא מצוקה. ייתכן שהצופר נתפס.",
+    "blastOverride": ""
   },
   {
     "num": 1056,
@@ -6072,7 +6074,7 @@
     "source": "ידני",
     "license": 11,
     "topic": "אותות קוליים",
-    "q_he": "כלי שייט בטווח ראייתך, משמיע 3 צפירות קצרות, 3 צפירות קצרות ו-3 צפירות ארוכות. מהו פירוש האות?",
+    "q_he": "כלי שייט בטווח ראייתך, משמיע 3 צפירות קצרות,  ו-3 צפירות ארוכות, 3 צפירות קצרות. מהו פירוש האות?",
     "q_en": "",
     "options": [
       "א. שמנועיו מופעלים אחורה.",
@@ -6087,7 +6089,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783275067/skipper-quiz/d2qabgywqgnwtktn9ifp.mp4",
-    "rendered_at": "2026-07-05T18:11:07.939Z"
+    "rendered_at": "2026-07-05T18:11:07.939Z",
+    "blastOverride": ""
   },
   {
     "num": 1059,
