@@ -1823,7 +1823,9 @@ function generateSoundSignalScene(pattern, qText, answerText) {
   pattern.forEach(b => { starts.push(t); t += BLAST_DUR[b] + BLAST_GAP; });
 
   // ── Blast symbols (only for horn-signal questions, not bell) ─────────────
+  const MAX_W = 340;
   const totalW = pattern.reduce((s,b) => s + (b==='L' ? LONG_W : SHORT_R*2), 0) + GAP*(pattern.length-1);
+  const scale = totalW > MAX_W ? MAX_W / totalW : 1;
   let x = 180 - totalW / 2;
   let blastEls = '';
   if (!isBell) {
@@ -1841,6 +1843,9 @@ function generateSoundSignalScene(pattern, qText, answerText) {
         x += SHORT_R*2 + GAP;
       }
     });
+    if (scale < 1) {
+      blastEls = `<g transform="translate(180,${CY}) scale(${scale.toFixed(3)}) translate(-180,-${CY})">${blastEls}</g>`;
+    }
   }
 
   // ── Boat scene ────────────────────────────────────────────────────────────
