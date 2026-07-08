@@ -1702,6 +1702,8 @@ function getScene(topic, qText) {
     return SCENES_QA['lights_power'];
   }
 
+  if(topic==='דגלים') return generateFlagScene(q);
+
   if(topic==='ספנות') {
     if(/נפל לים|man overboard|\bMOB\b|אדם בים|אדם שנפל/i.test(q))  return SCENES_QA['mob_approach'];
     return SCENES['ספנות'];
@@ -1807,6 +1809,116 @@ function topBoat(cx, cy, color, dk, label) {
   <!-- Motor at stern -->
   <rect x="${cx-66}" y="${cy-6}" width="12" height="12" rx="2" fill="${dk}"/>
   <text x="${cx}" y="${cy+30}" text-anchor="middle" fill="${color}" font-size="9" font-family="Heebo,sans-serif" font-weight="700">${label}</text>`;
+}
+
+// ── Maritime Signal Flags ────────────────────────────────────────────────────
+const SIGNAL_FLAGS = {
+  Q: { name: 'Quebec', color: '#f1c40f', draw: (x,y,w,h) =>
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#f1c40f"/>` },
+  O: { name: 'Oscar', color: '#e74c3c', draw: (x,y,w,h) =>
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#f1c40f"/>
+     <polygon points="${x},${y} ${x+w},${y} ${x},${y+h}" fill="#e74c3c"/>` },
+  A: { name: 'Alpha', color: '#2980b9', draw: (x,y,w,h) => {
+    const cx = x+w*0.85, cy = y+h/2, notch = w*0.15;
+    return `<polygon points="${x},${y} ${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x},${y+h}" fill="white"/>
+     <polygon points="${x},${y} ${x+w/2},${y} ${x+w/2},${y+h} ${x},${y+h}" fill="white"/>
+     <polygon points="${x+w/2},${y} ${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x+w/2},${y+h}" fill="#2980b9"/>`;
+  }},
+  B: { name: 'Bravo', color: '#e74c3c', draw: (x,y,w,h) => {
+    const cx = x+w*0.85, cy = y+h/2;
+    return `<polygon points="${x},${y} ${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x},${y+h}" fill="#e74c3c"/>`;
+  }},
+  N: { name: 'November', color: '#2c3e50', draw: (x,y,w,h) => {
+    const cw=w/4, ch=h/4;
+    let svg = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="white"/>`;
+    for(let r=0;r<4;r++) for(let c=0;c<4;c++)
+      if((r+c)%2===0) svg+=`<rect x="${x+c*cw}" y="${y+r*ch}" width="${cw}" height="${ch}" fill="#2c3e50"/>`;
+    return svg;
+  }},
+  V: { name: 'Victor', color: '#e74c3c', draw: (x,y,w,h) =>
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="white"/>
+     <line x1="${x}" y1="${y}" x2="${x+w}" y2="${y+h}" stroke="#e74c3c" stroke-width="${w*0.18}"/>
+     <line x1="${x+w}" y1="${y}" x2="${x}" y2="${y+h}" stroke="#e74c3c" stroke-width="${w*0.18}"/>` },
+};
+
+function generateFlagScene(qText) {
+  const q = qText || '';
+  // Detect which flags are referenced
+  const flags = [];
+  if(/Quebec|'Q'|דגל Q|דגל.*Q\b/i.test(q)) flags.push('Q');
+  if(/Oscar|'O'|דגל O|דגל.*O\b/i.test(q)) flags.push('O');
+  if(/Alpha|'A'|דגל A|דגל.*A\b|תמונה 98/i.test(q)) flags.push('A');
+  if(/Bravo|'B'|דגל B|דגל.*B\b|תמונה 104/i.test(q)) flags.push('B');
+  if(/תמונה 93|דגל N\b/i.test(q)) flags.push('N');
+  if(/תמונה 92|דגל V\b/i.test(q)) flags.push('V');
+  if(/נמל זר|כניסה.*נמל.*זר/i.test(q) && !flags.length) flags.push('Q');
+  if(/צוללים/i.test(q) && !flags.length) flags.push('A');
+  if(!flags.length) flags.push('Q');
+
+  const SEA_Y = 320;
+  const waveFilter = `
+  <defs>
+    <filter id="waveFlag" x="-10%" y="-10%" width="130%" height="130%">
+      <feTurbulence type="turbulence" baseFrequency="0.015 0.04" numOctaves="3" seed="2" result="turb">
+        <animate attributeName="baseFrequency" values="0.015 0.04;0.025 0.06;0.015 0.04" dur="2.5s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>`;
+
+  const sky = `<rect width="360" height="420" fill="#050d1a"/>
+  <circle cx="40" cy="22" r="1" fill="white" opacity=".5"/>
+  <circle cx="110" cy="14" r="1.2" fill="white" opacity=".6"/>
+  <circle cx="200" cy="28" r="1" fill="white" opacity=".4"/>
+  <circle cx="290" cy="16" r="1.3" fill="white" opacity=".7"/>
+  <circle cx="330" cy="42" r="1" fill="white" opacity=".5"/>`;
+
+  const sea = `
+  <rect x="0" y="${SEA_Y}" width="360" height="${420-SEA_Y}" fill="#0a1f3a"/>
+  <path d="M0 ${SEA_Y+8} Q90 ${SEA_Y} 180 ${SEA_Y+8} Q270 ${SEA_Y+16} 360 ${SEA_Y+8}" fill="none" stroke="#1a4a6a" stroke-width="1.5" opacity=".5">
+    <animate attributeName="d" values="M0 ${SEA_Y+8} Q90 ${SEA_Y} 180 ${SEA_Y+8} Q270 ${SEA_Y+16} 360 ${SEA_Y+8};M0 ${SEA_Y+4} Q90 ${SEA_Y+12} 180 ${SEA_Y+4} Q270 ${SEA_Y-2} 360 ${SEA_Y+4};M0 ${SEA_Y+8} Q90 ${SEA_Y} 180 ${SEA_Y+8} Q270 ${SEA_Y+16} 360 ${SEA_Y+8}" dur="4s" repeatCount="indefinite"/>
+  </path>`;
+
+  let flagsSvg = '';
+  if (flags.length === 1) {
+    // Single large flag
+    const f = SIGNAL_FLAGS[flags[0]];
+    const FW = 140, FH = 100, FX = 120, FY = 80;
+    const poleX = FX - 4;
+    // Pole
+    flagsSvg += `<rect x="${poleX}" y="${FY-20}" width="6" height="${SEA_Y-FY+20}" rx="2" fill="#8B7355" stroke="#6B5335" stroke-width="1"/>`;
+    // Flag with wave filter
+    flagsSvg += `<g filter="url(#waveFlag)">${f.draw(FX, FY, FW, FH)}</g>`;
+    // Rope ties
+    flagsSvg += `<circle cx="${poleX+3}" cy="${FY}" r="2.5" fill="#6B5335"/>`;
+    flagsSvg += `<circle cx="${poleX+3}" cy="${FY+FH}" r="2.5" fill="#6B5335"/>`;
+    // Label
+    flagsSvg += `<text x="${FX+FW/2}" y="${FY+FH+24}" text-anchor="middle" fill="${f.color}" font-size="14" font-family="Heebo,sans-serif" font-weight="900">${flags[0]} - ${f.name}</text>`;
+    flagsSvg += `<text x="${FX+FW/2}" y="${FY+FH+40}" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" opacity=".8">International Signal Flag</text>`;
+  } else {
+    // Multiple flags on same pole (like N over V for distress)
+    const FW = 100, FH = 70, FX = 130, gap = 12;
+    const startY = 60;
+    const poleX = FX - 4;
+    const totalH = flags.length * FH + (flags.length-1) * gap;
+    flagsSvg += `<rect x="${poleX}" y="${startY-20}" width="6" height="${SEA_Y-startY+20}" rx="2" fill="#8B7355" stroke="#6B5335" stroke-width="1"/>`;
+    flags.forEach((key, i) => {
+      const f = SIGNAL_FLAGS[key];
+      const fy = startY + i * (FH + gap);
+      flagsSvg += `<g filter="url(#waveFlag)">${f.draw(FX, fy, FW, FH)}</g>`;
+      flagsSvg += `<circle cx="${poleX+3}" cy="${fy}" r="2.5" fill="#6B5335"/>`;
+      flagsSvg += `<circle cx="${poleX+3}" cy="${fy+FH}" r="2.5" fill="#6B5335"/>`;
+      flagsSvg += `<text x="${FX+FW+10}" y="${fy+FH/2+4}" fill="${f.color}" font-size="12" font-family="Heebo,sans-serif" font-weight="700">${key} - ${f.name}</text>`;
+    });
+  }
+
+  // Boat silhouette at waterline
+  const boat = `
+  <path d="M100,${SEA_Y} L260,${SEA_Y} L248,${SEA_Y+14} L112,${SEA_Y+14} Z" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+  <rect x="160" y="${SEA_Y-30}" width="4" height="30" fill="#2a5a8a"/>
+  <rect x="200" y="${SEA_Y-20}" width="3" height="20" fill="#2a5a8a"/>`;
+
+  return `${waveFilter}${sky}${sea}${boat}${flagsSvg}`;
 }
 
 function generateSoundSignalScene(pattern, qText, answerText) {
