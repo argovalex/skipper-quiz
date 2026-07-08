@@ -1585,16 +1585,19 @@ const SIGNAL_IMAGES = {
 function generateCompassRoseScene(qText) {
   const txt = qText || '';
   const parenMatch = txt.match(/\(([A-P])\)/g);
-  const bareMatch = txt.match(/(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+([A-P])\b/g);
+  const quoteMatch = txt.match(/[""״"]([A-P])[""״"]/g);
+  const bareMatch = txt.match(/(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+([A-P])\b/g);
   let vessels;
   if (parenMatch && parenMatch.length >= 2) {
     vessels = parenMatch.map(v => v.replace(/[()]/g, ''));
+  } else if (quoteMatch && quoteMatch.length >= 2) {
+    vessels = quoteMatch.map(v => v.replace(/[""״"]/g, ''));
   } else if (bareMatch) {
     vessels = bareMatch.map(m => m.match(/([A-P])$/)[1]);
   } else {
     vessels = [];
   }
-  const imgMatch = (qText || '').match(/תמונה (\d+)/);
+  const imgMatch = (qText || '').match(/תמונה\s*[""״"(]?(\d+)/);
   const observer = vessels[0] || null, target = vessels[1] || null;
   const shapeId = imgMatch ? parseInt(imgMatch[1]) : null;
   if (!observer || !target) return null;
@@ -1639,7 +1642,7 @@ function generateCompassRoseScene(qText) {
 
 function getScene(topic, qText) {
   const q = qText || '';
-  if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+[A-P]\b/.test(q)) {
+  if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
     const compass = generateCompassRoseScene(q);
     if (compass) return compass;
   }

@@ -735,12 +735,13 @@ async function confirmRender() {
   // scene was hand-fixed and locked, in which case overwriting it here would
   // silently destroy the manual fix (this is exactly what kept happening to
   // Q102/Q105 before the lock existed).
+  let renderHTML = null;
   if (q && q.html_locked) {
     setRP(num, '🔒 HTML נעול — לא נדרס, משתמש בעיצוב הקיים...');
   } else if (q) {
-    setRP(num, '⏳ דוחף HTML ל-GitHub...');
-    const pushed = await ghPushHTML(q);
-    if (!pushed) setRP(num, '⚠ HTML לא נדחף — ממשיך בכל זאת...');
+    setRP(num, '⏳ מייצר HTML...');
+    renderHTML = generateQuizHTML(q, 'he', true);
+    ghPushHTML(q);
   }
   setRP(num, '⏳ שולח לRailway...');
 
@@ -748,7 +749,7 @@ async function confirmRender() {
     const res = await fetch(`${railwayUrl}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: voText, force: !!q?.videoUrl })
+      body: JSON.stringify({ voiceover_text: voText, force: !!q?.videoUrl, html: renderHTML })
     });
     if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
     const data = await res.json();

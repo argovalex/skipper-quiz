@@ -966,9 +966,11 @@ async function saveFixAndRender() {
   const num = q.num;
   if (renderingNums.has(num)) { setStatus('⏳ כבר ברינדור...'); return; }
 
+  setStatus('⏳ מייצר HTML...');
+  const renderHTML = q.html_locked ? null : generateQuizHTML(q, 'he', true);
+
   if (!q.html_locked) {
-    setStatus('⏳ דוחף HTML...');
-    await ghPushHTML(q);
+    ghPushHTML(q);
   }
 
   setStatus('⏳ מרנדר...');
@@ -977,7 +979,7 @@ async function saveFixAndRender() {
     const res = await fetch(`${railwayUrl}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: q.voiceover_text, force: true })
+      body: JSON.stringify({ voiceover_text: q.voiceover_text, force: true, html: renderHTML })
     });
     const data = await res.json();
     if (data.videoUrl) {
