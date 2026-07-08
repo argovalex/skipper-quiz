@@ -176,7 +176,6 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
   <span id="syncStatus" style="font-size:12px"></span>
   <input id="ghToken" type="password" placeholder="GitHub Token" style="width:160px" oninput="saveToken()">
   <button class="tbtn green" onclick="saveJSON()" title="שמור את כל השאלות ל-GitHub">💾 שמור</button>
-  <button class="tbtn" onclick="addQuestion()" title="הוסף שאלה חדשה ריקה">➕ שאלה חדשה</button>
   <button class="tbtn blue" onclick="exportAllZip()">📦 ייצא ZIP</button>
   <input id="railwayUrl" type="text" placeholder="Railway URL (לרינדור)" style="width:220px;margin-right:8px" oninput="localStorage.setItem('sq_railway_url', this.value.trim())">
 </div>
@@ -360,11 +359,6 @@ function setLang(l) {
   if(currentIdx>=0) renderEditor(questions[currentIdx]);
 }
 
-
-// ── Render — voice over + send to Railway (ported from queue.html) ──────────
-function getRailwayUrl() {
-  return document.getElementById('railwayUrl')?.value.trim() || localStorage.getItem('sq_railway_url') || '';
-}
 
 const VO_FIXES = [
   [/קוי/g,           'קווי'],
@@ -647,7 +641,7 @@ async function saveJSON() {
   if(currentIdx >= 0) saveCurrentToState();
   const ok = await saveQuestionsGH('update: questions');
   updateSyncStatus(!ok);
-  if (!ok && !document.querySelector('.toast')?.textContent?.includes('קונפליקט'))
+  if (!ok && !document.getElementById('toast')?.textContent?.includes('קונפליקט'))
     showToast('⚠ אין רשת — נשמר מקומית, יסונכרן אוטומטית');
   else if (ok) showToast('💾 נשמר ל-GitHub');
   return ok;
@@ -667,6 +661,8 @@ function populateTopicFilter() {
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function initApp() {
   document.getElementById('ghToken').value = localStorage.getItem('sq_gh_token') || '';
+  const railwayInput = document.getElementById('railwayUrl');
+  if (railwayInput) railwayInput.value = localStorage.getItem('sq_railway_url') || '';
   await loadQuestions();
   flushPendingSave();
 }
@@ -932,19 +928,6 @@ async function saveLockState(checked) {
   q.html_locked = checked;
   await saveJSON();
   showToast(checked ? `🔒 Q#${q.num} ננעל` : `🔓 Q#${q.num} נפתח`);
-}
-
-async function saveFixRequest() {
-  if(currentIdx < 0) return;
-  const q = questions[currentIdx];
-  const text = document.getElementById('fix-request')?.value.trim();
-  if(text) {
-    q.fix_request = text;
-    q.fix_requested_at = new Date().toISOString();
-  }
-  renderList();
-  await saveJSON();
-  showToast(`✅ Q#${q.num} נשמר`);
 }
 
 async function saveFixAndRender() {
@@ -1240,15 +1223,6 @@ async function exportAllZip() {
   showToast(`✅ ייוצאו ${questions.length} קבצים!`);
 }
 
-// ── Generate Quiz HTML ────────────────────────────────────────────────────────
-
-// ── PDF note ──────────────────────────────────────────────────────────────────
-function importPDFNote() {
-  alert('לייבוא PDF של גוב"ל:\n\n1. הרץ "הרץ_scraper.bat" (Python נדרש)\n   זה יוריד ויחלץ את כל השאלות ל-questions.json\n\n2. לאחר מכן פתח את questions.json כאן עם "📂 פתח JSON"');
-}
-
-// ── Toast ─────────────────────────────────────────────────────────────────────
-
 // -- Publish Queue Tab --------------------------------------------------------
 const TOPIC_COLORS = {
   'כניסה לנמל':   {bg:'#0d2a4a',color:'#7eb8f7'},
@@ -1266,82 +1240,82 @@ const TOPIC_COLORS = {
 };
 
 function topicBadgeHTML(topic) {
-  var c = TOPIC_COLORS[topic] || {bg:'#1a2f5e',color:'#7eb8f7'};
-  return '<span class="topic-badge" style="background:'+c.bg+';color:'+c.color+'">'+(topic||'\u2014')+'</span>';
+  const c = TOPIC_COLORS[topic] || {bg:'#1a2f5e',color:'#7eb8f7'};
+  return `<span class="topic-badge" style="background:${c.bg};color:${c.color}">${topic||'\u2014'}</span>`;
 }
 
 function renderQueueTab() {
-  var queue     = questions.filter(function(q){ return q.approved_for_publish && !publishedAtByNum.has(q.num); });
-  var published = questions.filter(function(q){ return publishedAtByNum.has(q.num); })
-    .sort(function(a,b){ return new Date(publishedAtByNum.get(b.num)) - new Date(publishedAtByNum.get(a.num)); });
-  var totalPub  = published.length;
-  var totalQ    = queue.length;
-  var daysLeft  = totalQ;
+  const queue     = questions.filter(q => q.approved_for_publish && !publishedAtByNum.has(q.num));
+  const published = questions.filter(q => publishedAtByNum.has(q.num))
+    .sort((a,b) => new Date(publishedAtByNum.get(b.num)) - new Date(publishedAtByNum.get(a.num)));
+  const totalPub  = published.length;
+  const totalQ    = queue.length;
 
   document.getElementById('queue-stats').innerHTML =
-    '<div class="stat-card"><div class="stat-num" style="color:var(--accent)">'+totalQ+'</div><div class="stat-label">ממתינות לפרסום</div></div>'+
-    '<div class="stat-card"><div class="stat-num" style="color:var(--green)">'+totalPub+'</div><div class="stat-label">פורסמו</div></div>'+
-    '<div class="stat-card"><div class="stat-num" style="color:#f1c40f">'+daysLeft+'</div><div class="stat-label">ימי תוכן קדימה</div></div>'+
-    '<div class="stat-card"><div class="stat-num" style="color:var(--muted)">'+questions.length+'</div><div class="stat-label">סה"כ שאלות</div></div>';
+    `<div class="stat-card"><div class="stat-num" style="color:var(--accent)">${totalQ}</div><div class="stat-label">ממתינות לפרסום</div></div>`+
+    `<div class="stat-card"><div class="stat-num" style="color:var(--green)">${totalPub}</div><div class="stat-label">פורסמו</div></div>`+
+    `<div class="stat-card"><div class="stat-num" style="color:#f1c40f">${totalQ}</div><div class="stat-label">ימי תוכן קדימה</div></div>`+
+    `<div class="stat-card"><div class="stat-num" style="color:var(--muted)">${questions.length}</div><div class="stat-label">סה"כ שאלות</div></div>`;
 
-  var tbody   = document.getElementById('queue-tbody');
-  var emptyEl = document.getElementById('queue-empty');
+  const tbody   = document.getElementById('queue-tbody');
+  const emptyEl = document.getElementById('queue-empty');
   if (queue.length === 0) {
     tbody.innerHTML = '';
     emptyEl.style.display = 'block';
   } else {
     emptyEl.style.display = 'none';
-    tbody.innerHTML = queue.map(function(q) {
-      var gi = questions.indexOf(q);
-      var text = (q.q_he || q.q_en || '');
-      var preview = text.length > 60 ? text.substring(0,60)+'...' : text;
-      return '<tr>'+
-        '<td style="color:var(--muted);font-weight:700">#'+q.num+'</td>'+
-        '<td>'+topicBadgeHTML(q.topic)+'</td>'+
-        '<td style="color:#ccc">'+preview+'</td>'+
-        '<td><button class="queue-remove-btn" onclick="removeFromQueue('+gi+')">הסר</button></td>'+
-        '</tr>';
+    tbody.innerHTML = queue.map(q => {
+      const gi = questions.indexOf(q);
+      const text = q.q_he || q.q_en || '';
+      const preview = text.length > 60 ? text.substring(0,60)+'...' : text;
+      return `<tr>
+        <td style="color:var(--muted);font-weight:700">#${q.num}</td>
+        <td>${topicBadgeHTML(q.topic)}</td>
+        <td style="color:#ccc">${preview}</td>
+        <td><button class="queue-remove-btn" onclick="removeFromQueue(${gi})">הסר</button></td>
+        </tr>`;
     }).join('');
   }
 
-  var ptbody = document.getElementById('published-tbody');
-  var pempty  = document.getElementById('published-empty');
+  const ptbody = document.getElementById('published-tbody');
+  const pempty = document.getElementById('published-empty');
   if (published.length === 0) {
     ptbody.innerHTML = '';
     pempty.style.display = 'block';
   } else {
     pempty.style.display = 'none';
-    ptbody.innerHTML = published.map(function(q) {
-      var publishedAt = publishedAtByNum.get(q.num);
-      var d = new Date(publishedAt);
-      var dateStr = isNaN(d.getTime()) ? publishedAt : d.toLocaleDateString('he-IL',{year:'numeric',month:'short',day:'numeric'});
-      var text = (q.q_he || q.q_en || '');
-      var preview = text.length > 60 ? text.substring(0,60)+'...' : text;
-      return '<tr>'+
-        '<td style="color:var(--muted);font-weight:700">#'+q.num+'</td>'+
-        '<td>'+topicBadgeHTML(q.topic)+'</td>'+
-        '<td style="color:#ccc">'+preview+'</td>'+
-        '<td class="pub-date"><span class="pub-badge">פורסם</span> '+dateStr+'</td>'+
-        '</tr>';
+    ptbody.innerHTML = published.map(q => {
+      const publishedAt = publishedAtByNum.get(q.num);
+      const d = new Date(publishedAt);
+      const dateStr = isNaN(d.getTime()) ? publishedAt : d.toLocaleDateString('he-IL',{year:'numeric',month:'short',day:'numeric'});
+      const text = q.q_he || q.q_en || '';
+      const preview = text.length > 60 ? text.substring(0,60)+'...' : text;
+      return `<tr>
+        <td style="color:var(--muted);font-weight:700">#${q.num}</td>
+        <td>${topicBadgeHTML(q.topic)}</td>
+        <td style="color:#ccc">${preview}</td>
+        <td class="pub-date"><span class="pub-badge">פורסם</span> ${dateStr}</td>
+        </tr>`;
     }).join('');
   }
 }
 
-function removeFromQueue(idx) {
+async function removeFromQueue(idx) {
   if (idx < 0 || idx >= questions.length) return;
   questions[idx].approved_for_publish = false;
   renderList();
   renderQueueTab();
-  showToast('הוסרה מהתור');
+  await saveQuestionsGH(`unapprove: Q#${questions[idx].num}`);
+  showToast('הוסרה מהתור ונשמר');
 }
 
-var currentTab = 'editor';
+let currentTab = 'editor';
 function switchTab(tab) {
   currentTab = tab;
-  var main       = document.getElementById('main');
-  var queuePanel = document.getElementById('queue-panel');
-  var editorBtn  = document.getElementById('tab-editor-btn');
-  var queueBtn   = document.getElementById('tab-queue-btn');
+  const main       = document.getElementById('main');
+  const queuePanel = document.getElementById('queue-panel');
+  const editorBtn  = document.getElementById('tab-editor-btn');
+  const queueBtn   = document.getElementById('tab-queue-btn');
   if (tab === 'queue') {
     main.style.display = 'none';
     queuePanel.classList.add('visible');
@@ -1364,15 +1338,6 @@ function showToast(msg) {
   toastTimer=setTimeout(()=>el.classList.remove('show'),3000);
 }
 
-// ── Init ──────────────────────────────────────────────────────────────────────
-window.addEventListener('load', ()=>{
-  // If File System API not supported
-  if(!window.showOpenFilePicker) {
-    document.getElementById('empty').innerHTML += '<br><p style="color:#e74c3c;font-size:12px">⚠ השתמש ב-Chrome או Edge לתמיכה מלאה בפתיחת קבצים</p>';
-  }
-  const railwayInput = document.getElementById('railwayUrl');
-  if (railwayInput) railwayInput.value = localStorage.getItem('sq_railway_url') || '';
-});
 </script>
 </body>
 </html>
