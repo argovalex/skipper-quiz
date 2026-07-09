@@ -1819,14 +1819,13 @@ const SIGNAL_FLAGS = {
     `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#f1c40f"/>
      <polygon points="${x},${y} ${x+w},${y} ${x},${y+h}" fill="#e74c3c"/>` },
   A: { name: 'Alpha', color: '#2980b9', draw: (x,y,w,h) => {
-    const cx = x+w*0.85, cy = y+h/2, notch = w*0.15;
-    return `<polygon points="${x},${y} ${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x},${y+h}" fill="white"/>
-     <polygon points="${x},${y} ${x+w/2},${y} ${x+w/2},${y+h} ${x},${y+h}" fill="white"/>
-     <polygon points="${x+w/2},${y} ${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x+w/2},${y+h}" fill="#2980b9"/>`;
+    const notch = w*0.2;
+    return `<polygon points="${x},${y} ${x+w},${y} ${x+w-notch},${y+h/2} ${x+w},${y+h} ${x},${y+h}" fill="white"/>
+     <polygon points="${x+w/2},${y} ${x+w},${y} ${x+w-notch},${y+h/2} ${x+w},${y+h} ${x+w/2},${y+h}" fill="#2980b9"/>`;
   }},
   B: { name: 'Bravo', color: '#e74c3c', draw: (x,y,w,h) => {
-    const cx = x+w*0.85, cy = y+h/2;
-    return `<polygon points="${x},${y} ${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x},${y+h}" fill="#e74c3c"/>`;
+    const notch = w*0.2;
+    return `<polygon points="${x},${y} ${x+w},${y} ${x+w-notch},${y+h/2} ${x+w},${y+h} ${x},${y+h}" fill="#e74c3c"/>`;
   }},
   N: { name: 'November', color: '#2c3e50', draw: (x,y,w,h) => {
     const cw=w/4, ch=h/4;
@@ -1839,18 +1838,28 @@ const SIGNAL_FLAGS = {
     `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="white"/>
      <line x1="${x}" y1="${y}" x2="${x+w}" y2="${y+h}" stroke="#e74c3c" stroke-width="${w*0.18}"/>
      <line x1="${x+w}" y1="${y}" x2="${x}" y2="${y+h}" stroke="#e74c3c" stroke-width="${w*0.18}"/>` },
+  C: { name: 'Charlie', color: '#2980b9', draw: (x,y,w,h) => {
+    const sh = h/5;
+    return `<rect x="${x}" y="${y}" width="${w}" height="${sh}" fill="#2980b9"/>
+     <rect x="${x}" y="${y+sh}" width="${w}" height="${sh}" fill="white"/>
+     <rect x="${x}" y="${y+sh*2}" width="${w}" height="${sh}" fill="#e74c3c"/>
+     <rect x="${x}" y="${y+sh*3}" width="${w}" height="${sh}" fill="white"/>
+     <rect x="${x}" y="${y+sh*4}" width="${w}" height="${sh}" fill="#2980b9"/>`;
+  }},
 };
 
 function generateFlagScene(qText) {
   const q = qText || '';
   // Detect which flags are referenced
   const flags = [];
-  if(/Quebec|'Q'|דגל Q|דגל.*Q\b/i.test(q)) flags.push('Q');
-  if(/Oscar|'O'|דגל O|דגל.*O\b/i.test(q)) flags.push('O');
-  if(/Alpha|'A'|דגל A|דגל.*A\b|תמונה 98/i.test(q)) flags.push('A');
-  if(/Bravo|'B'|דגל B|דגל.*B\b|תמונה 104/i.test(q)) flags.push('B');
-  if(/תמונה 93|דגל N\b/i.test(q)) flags.push('N');
-  if(/תמונה 92|דגל V\b/i.test(q)) flags.push('V');
+  if(/Quebec|'Q'|דגל\s+Q\b/i.test(q)) flags.push('Q');
+  if(/Oscar|'O'|דגל\s+O\b/i.test(q)) flags.push('O');
+  if(/Alpha|'A'|דגל\s+A\b|תמונה 98/i.test(q)) flags.push('A');
+  if(/Bravo|'B'|דגל\s+B\b|תמונה 104/i.test(q)) flags.push('B');
+  if(/דגל N\b/i.test(q)) flags.push('N');
+  if(/תמונה 93|דגל C\b/i.test(q)) flags.push('C');
+  if(/דגל V\b/i.test(q)) flags.push('V');
+  if(/תמונה 92/i.test(q)) flags.push('N');
   if(/נמל זר|כניסה.*נמל.*זר/i.test(q) && !flags.length) flags.push('Q');
   if(/צוללים/i.test(q) && !flags.length) flags.push('A');
   if(!flags.length) flags.push('Q');
@@ -1878,6 +1887,56 @@ function generateFlagScene(qText) {
   <path d="M0 ${SEA_Y+8} Q90 ${SEA_Y} 180 ${SEA_Y+8} Q270 ${SEA_Y+16} 360 ${SEA_Y+8}" fill="none" stroke="#1a4a6a" stroke-width="1.5" opacity=".5">
     <animate attributeName="d" values="M0 ${SEA_Y+8} Q90 ${SEA_Y} 180 ${SEA_Y+8} Q270 ${SEA_Y+16} 360 ${SEA_Y+8};M0 ${SEA_Y+4} Q90 ${SEA_Y+12} 180 ${SEA_Y+4} Q270 ${SEA_Y-2} 360 ${SEA_Y+4};M0 ${SEA_Y+8} Q90 ${SEA_Y} 180 ${SEA_Y+8} Q270 ${SEA_Y+16} 360 ${SEA_Y+8}" dur="4s" repeatCount="indefinite"/>
   </path>`;
+
+  // Q#262 - stern view with Israel flag, Q starboard, host country port
+  if (/נמל זר|כניסה.*נמל.*זר/i.test(q)) {
+    const hullY = SEA_Y - 60;
+    const hull = `
+    <path d="M90,${hullY+60} Q90,${hullY+80} 130,${SEA_Y+10} L230,${SEA_Y+10} Q270,${hullY+80} 270,${hullY+60} Z" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1.5"/>
+    <path d="M110,${hullY+60} L250,${hullY+60}" stroke="#2a5a8a" stroke-width="0.8" opacity=".5"/>
+    <rect x="120" y="${hullY+30}" width="120" height="30" rx="3" fill="#0f2a44" stroke="#2a5a8a" stroke-width="0.8"/>
+    <rect x="140" y="${hullY+35}" width="14" height="10" rx="2" fill="#1a4a6a" opacity=".7"/>
+    <rect x="165" y="${hullY+35}" width="14" height="10" rx="2" fill="#1a4a6a" opacity=".7"/>
+    <rect x="190" y="${hullY+35}" width="14" height="10" rx="2" fill="#1a4a6a" opacity=".7"/>
+    <rect x="215" y="${hullY+35}" width="14" height="10" rx="2" fill="#1a4a6a" opacity=".7"/>`;
+    const mastX = 180;
+    const mastTop = 40;
+    const mast = `<rect x="${mastX-2}" y="${mastTop}" width="4" height="${hullY+30-mastTop}" fill="#6B5335" stroke="#5a4530" stroke-width="0.5"/>
+    <circle cx="${mastX}" cy="${mastTop-3}" r="4" fill="#8B7355" stroke="#6B5335" stroke-width="1"/>
+    <rect x="${mastX-30}" y="${mastTop+20}" width="60" height="3" rx="1" fill="#6B5335"/>`;
+    const fq = SIGNAL_FLAGS['Q'];
+    const fw = 50, fh = 35;
+    const qFlag = `<g filter="url(#waveFlag)">
+      <rect x="${mastX+32}" y="${mastTop+24}" width="2" height="${fh+6}" fill="#6B5335"/>
+      ${fq.draw(mastX+34, mastTop+26, fw, fh)}
+    </g>
+    <text x="${mastX+34+fw/2}" y="${mastTop+26+fh+14}" text-anchor="middle" fill="${fq.color}" font-size="10" font-family="Heebo,sans-serif" font-weight="700">Q - Quebec</text>
+    <text x="${mastX+34+fw/2}" y="${mastTop+26+fh+26}" text-anchor="middle" fill="#aaa" font-size="9" font-family="Heebo,sans-serif">דופן ימין</text>`;
+    const hostFlag = `<g filter="url(#waveFlag)">
+      <rect x="${mastX-34}" y="${mastTop+24}" width="2" height="${fh+6}" fill="#6B5335"/>
+      <rect x="${mastX-34-fw}" y="${mastTop+26}" width="${fw}" height="${fh}" fill="#e74c3c"/>
+      <rect x="${mastX-34-fw}" y="${mastTop+26+fh/3}" width="${fw}" height="${fh/3}" fill="white"/>
+    </g>
+    <text x="${mastX-34-fw/2}" y="${mastTop+26+fh+14}" text-anchor="middle" fill="#e0e0e0" font-size="10" font-family="Heebo,sans-serif" font-weight="700">דגל מארח</text>
+    <text x="${mastX-34-fw/2}" y="${mastTop+26+fh+26}" text-anchor="middle" fill="#aaa" font-size="9" font-family="Heebo,sans-serif">דופן שמאל</text>`;
+    const sternPoleX = 255;
+    const sternPoleTop = hullY + 5;
+    const isw = 44, ish = 30;
+    const cx = sternPoleX+4+isw/2, cy = sternPoleTop+2+ish/2;
+    const r = ish*0.28;
+    const israelFlag = `
+    <rect x="${sternPoleX}" y="${sternPoleTop}" width="3" height="${hullY+55-sternPoleTop}" rx="1" fill="#8B7355"/>
+    <g filter="url(#waveFlag)">
+      <rect x="${sternPoleX+4}" y="${sternPoleTop+2}" width="${isw}" height="${ish}" fill="white"/>
+      <rect x="${sternPoleX+4}" y="${sternPoleTop+2}" width="${isw}" height="${ish*0.22}" fill="#2980b9"/>
+      <rect x="${sternPoleX+4}" y="${sternPoleTop+2+ish*0.78}" width="${isw}" height="${ish*0.22}" fill="#2980b9"/>
+      <polygon points="${cx},${cy-r} ${cx+r*0.866},${cy+r*0.5} ${cx-r*0.866},${cy+r*0.5}" fill="none" stroke="#2980b9" stroke-width="1.2"/>
+      <polygon points="${cx},${cy+r} ${cx+r*0.866},${cy-r*0.5} ${cx-r*0.866},${cy-r*0.5}" fill="none" stroke="#2980b9" stroke-width="1.2"/>
+    </g>
+    <text x="${sternPoleX+4+isw/2}" y="${sternPoleTop+ish+18}" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Heebo,sans-serif" font-weight="700">דגל ישראל</text>
+    <text x="${sternPoleX+4+isw/2}" y="${sternPoleTop+ish+29}" text-anchor="middle" fill="#aaa" font-size="9" font-family="Heebo,sans-serif">ירכתיים</text>`;
+    return `${waveFilter}${sky}${sea}${hull}${mast}${qFlag}${hostFlag}${israelFlag}`;
+  }
 
   let flagsSvg = '';
   if (flags.length === 1) {

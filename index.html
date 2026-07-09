@@ -469,6 +469,7 @@ async function renderFromEditor() {
     const data = await res.json();
     if (data.videoUrl) { q.videoUrl = data.videoUrl; q.rendered_at = new Date().toISOString(); }
     renderingNums.delete(num);
+    await saveJSON();
     showToast(`✅ Q#${num} רונדר!`);
     setRenderStatus(`✅ Q#${num} מוכן לפרסום`);
     renderEditor(q);
@@ -490,6 +491,7 @@ async function renderFromEditor() {
     }
     renderingNums.delete(num);
     if (confirmed) {
+      await saveJSON();
       showToast(`✅ Q#${num} רונדר בכל זאת! (החיבור נפל אך השרת סיים)`);
       setRenderStatus(`✅ Q#${num} מוכן לפרסום`);
       renderEditor(q);
@@ -920,6 +922,8 @@ function saveCurrentToState() {
   // Save blast override if field visible
   const boEl = document.getElementById('f-blast-override');
   if(boEl) q.blastOverride = boEl.value.trim();
+  const voEl = document.getElementById('rm-vo');
+  if(voEl) q.voiceover_text = voEl.value.trim();
 }
 
 async function saveLockState(checked) {
