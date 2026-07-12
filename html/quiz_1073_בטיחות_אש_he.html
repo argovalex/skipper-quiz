@@ -2,6 +2,8 @@
 <html dir="rtl" lang="he"><head><meta charset="UTF-8">
 <title>Skipper Quiz #1073 — בטיחות אש</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"></script>
+<link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
@@ -26,34 +28,63 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
 <div id="reel">
   <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
   <div id="scene">
-    
-    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
-      
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="250" y="0" width="110" height="280" fill="#1a3a1a" opacity="0.4"/>
-  <text x="305" y="30" text-anchor="middle" fill="#4a8a4a" font-size="10" font-family="Heebo,sans-serif" font-weight="700">קו החוף</text>
-  <rect x="40" y="60" width="180" height="150" rx="6" fill="#3d0000" opacity="0.25" stroke="#e74c3c" stroke-width="2" stroke-dasharray="8,4"/>
-  <text x="130" y="100" text-anchor="middle" fill="#e74c3c" font-size="16" font-family="Heebo,sans-serif" font-weight="900">⚠ שטח אש</text>
-  <text x="130" y="120" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">FIRING ZONE</text>
-  <text x="130" y="145" text-anchor="middle" fill="#ff6666" font-size="10" font-family="Heebo,sans-serif">הפלגה אסורה!</text>
-  <circle cx="130" cy="135" r="40" fill="#e74c3c" opacity="0"><animate attributeName="r" values="35;50;35" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0;0.15" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M0,350 Q90,340 180,350 Q270,360 360,350" fill="none" stroke="#1e5080" stroke-width="1" opacity="0.3"/>
-  <path d="M0,370 Q90,360 180,370 Q270,380 360,370" fill="none" stroke="#1e5080" stroke-width="1" opacity="0.2"/>
-  <g>
-    <ellipse cx="290" cy="250" rx="12" ry="25" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/>
-    <ellipse cx="290" cy="238" rx="7" ry="9" fill="#ccc"/>
-    <circle cx="290" cy="238" r="2" fill="#666"/>
-    <line x1="260" y1="245" x2="290" y2="245" stroke="#e74c3c" stroke-width="2"/>
-    <text x="250" y="243" fill="#e74c3c" font-size="16" font-family="Arial">✘</text>
-  </g>
-  <text x="180" y="380" text-anchor="middle" fill="#e74c3c" font-size="10" font-family="Heebo,sans-serif">שטחי אש — אזורים אסורים לשיט</text>
-
+    <div id="map" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.85"></div>
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="position:absolute;top:0;left:0;pointer-events:none">
+      <text x="180" y="25" text-anchor="middle" fill="#cc0000" font-size="12" font-family="Heebo,sans-serif" font-weight="900" stroke="#fff" stroke-width="0.3">⚠ שטח אש 30 - עתלית</text>
+      <g id="answer-overlay" opacity="0">
+        <rect x="20" y="340" width="320" height="50" rx="8" fill="rgba(0,0,0,0.75)"/>
+        <text x="180" y="362" text-anchor="middle" fill="#ff6666" font-size="11" font-family="Heebo,sans-serif" font-weight="700">2 מיל מערבה - הפלגה אסורה!</text>
+        <text x="180" y="380" text-anchor="middle" fill="#ffcccc" font-size="9" font-family="Heebo,sans-serif">שטח אש 30 אוסר הפלגה באזור</text>
+      </g>
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
         <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
       </g>
-      <text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>
+      <text x="180" y="410" text-anchor="middle" fill="#fff" font-size="10" font-family="Heebo,sans-serif" font-weight="700" opacity="0.8">⚓ Alex Argov | Sailing Instructor</text>
     </svg>
+    <script>
+    maptilersdk.config.apiKey = '2eDxQEb5BnHq6DXnTpCl';
+    const map = new maptilersdk.Map({
+      container: 'map',
+      style: maptilersdk.MapStyle.OCEAN,
+      center: [34.91, 32.70],
+      zoom: 12.3,
+      interactive: false,
+      attributionControl: false
+    });
+    map.on('load', () => {
+      map.addSource('fire-zone', {
+        type: 'geojson',
+        data: { type:'Feature', geometry:{ type:'Polygon', coordinates:[[
+          [34.94,32.73],[34.88,32.73],[34.88,32.67],[34.94,32.67],[34.94,32.73]
+        ]]}, properties:{} }
+      });
+      map.addLayer({ id:'fire-fill', type:'fill', source:'fire-zone', paint:{'fill-color':'#ff0000','fill-opacity':0.35} });
+      map.addLayer({ id:'fire-border', type:'line', source:'fire-zone', paint:{'line-color':'#ff0000','line-width':2.5,'line-dasharray':[4,2]} });
+      map.addSource('two-mile-line', {
+        type: 'geojson',
+        data: { type:'Feature', geometry:{ type:'LineString', coordinates:[
+          [34.88,32.74],[34.88,32.66]
+        ]}, properties:{} }
+      });
+      map.addLayer({ id:'mile-line', type:'line', source:'two-mile-line', paint:{'line-color':'#ffcc00','line-width':3,'line-dasharray':[6,3]} });
+      map.addSource('two-mile-label', {
+        type: 'geojson',
+        data: { type:'Feature', geometry:{ type:'Point', coordinates:[34.88,32.735] }, properties:{ label:'קו 2 מיל ←' } }
+      });
+      map.addLayer({ id:'mile-label', type:'symbol', source:'two-mile-label', layout:{'text-field':['get','label'],'text-size':11,'text-anchor':'top','text-offset':[0,0.5]}, paint:{'text-color':'#ffcc00','text-halo-color':'#000','text-halo-width':1.5} });
+      map.addSource('atlit-label', {
+        type: 'geojson',
+        data: { type:'Feature', geometry:{ type:'Point', coordinates:[34.945,32.70] }, properties:{ label:'עתלית' } }
+      });
+      map.addLayer({ id:'atlit-text', type:'symbol', source:'atlit-label', layout:{'text-field':['get','label'],'text-size':14,'text-anchor':'left','text-offset':[0.3,0]}, paint:{'text-color':'#ffffff','text-halo-color':'#333','text-halo-width':2} });
+      map.addSource('fire-label', {
+        type: 'geojson',
+        data: { type:'Feature', geometry:{ type:'Point', coordinates:[34.91,32.70] }, properties:{ label:'שטח אש 30' } }
+      });
+      map.addLayer({ id:'fire-text', type:'symbol', source:'fire-label', layout:{'text-field':['get','label'],'text-size':13,'text-anchor':'center'}, paint:{'text-color':'#ff4444','text-halo-color':'#000','text-halo-width':1.5} });
+    });
+    </script>
     <div id="prog"></div>
   </div>
   <div id="ftr">
@@ -66,14 +97,9 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
 const C=1;
 const OPTS=["א. רק באישור מיוחד של משרד התחבורה.","ב. אסור להפליג בשום תנאי מערבית לעתלית למרחק של 2 מיל.","ג. מותר להפליג במרחק של 300 מטר מערבית לעתלית.","ד. יש להתרחק לפחות 3 מיל מעתלית."];
 const Q="האם מותר להפליג עם אופנוע – ים במרחק של 2 מיל מערבית לשטח אש 30 (עתלית)?";
-const E="הפלגה מותרת במרחק 300 מ' מערבית לשטח אש עתלית, לא 2 מיל.";
+const E="אסור להפליג בשום תנאי מערבית לעתלית למרחק של 2 מיל - שטח אש 30 אוסר הפלגה באזור.";
 const LT=["א","ב","ג","ד"];
 
-// AUTO-PLAY MODE — countdown then reveal (for screen recording)
-// Gated behind window.__startAutoPlay() instead of running on page load, so the
-// recorder (Puppeteer) can fire it the instant the screencast actually starts —
-// otherwise the timer head-starts before recording begins and drifts out of sync
-// with the audio track (which assumes recording-start == t=0).
 window.__startAutoPlay = function(){
 const prog=document.getElementById('prog');
 const DELAY=15000;
@@ -90,16 +116,14 @@ setTimeout(()=>{
   txt.textContent='✅ תשובה נכונה!';txt.setAttribute('fill','#2ecc71');
   rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');
   ov.setAttribute('opacity','1');
+  document.getElementById('answer-overlay').setAttribute('opacity','1');
   setTimeout(()=>{
     document.getElementById('ql').textContent='✅ התשובה הנכונה:';
     document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
-    // Second countdown — next card (loop for batch recording)
     const prog2=document.getElementById('prog');
     prog2.style.transition='none';prog2.style.width='0%';
     setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
   },600);
 },DELAY+50);
 };
-
-
 </script></body></html>
