@@ -4915,7 +4915,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783580182/skipper-quiz/ezyqnxgwmzbecq2dboop.mp4",
-    "rendered_at": "2026-07-09T06:56:30.691Z"
+    "rendered_at": "2026-07-09T06:56:30.691Z",
+    "voiceover_text": "שאלה מספר 1001. אופנוע ים K מבחין בכלי שייט G המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: K מפנה ל-G, G הוא כלי שיט ללא שליטה. ... תמונה 80 שני כדורים ללא שליטה NUC. ללא שליטה בראש ההיררכיה, כל כלי שיט חייב לפנות לו דרך."
   },
   {
     "num": 1002,
@@ -4937,7 +4938,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783580246/skipper-quiz/xgjo1em1ta3rcaguetgv.mp4",
-    "rendered_at": "2026-07-09T06:57:34.903Z"
+    "rendered_at": "2026-07-09T06:57:34.903Z",
+    "voiceover_text": "שאלה מספר 1002. אופנוע ים P מבחין בספינת מפרש H ועליה סימן יום כמתואר בתמונה 20, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: P יפנה ימינה וגם H יפנה ימינה. ... תמונה 20 חרוט הפוך מפרשית תחת מנוע ממוכנת. שניהם ממוכנים, אותה משפחה. חזית מול חזית - שניהם פונים ימינה."
   },
   {
     "num": 1003,
@@ -5740,7 +5742,7 @@
       "ג. כלי השייט מטיל עוגן.",
       "ד. כלי השייט מסמן מצוקה."
     ],
-    "answer": "ג",
+    "answer": "ב",
     "answer_confirmed": false,
     "mediaUrl": "",
     "mediaType": "",
