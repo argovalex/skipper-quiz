@@ -1528,6 +1528,16 @@ function crBall(cx, cy, r) { return `<circle cx="${cx}" cy="${cy}" r="${r||8}" f
 function crDiamond(cx, cy, s) { s=s||9; const h=s*1.4,w=s*0.65; return `<polygon points="${cx},${cy-h} ${cx+w},${cy} ${cx},${cy+h} ${cx-w},${cy}" fill="#111"/>`; }
 function crConeDown(cx, cy, s) { s=s||9; return `<polygon points="${cx-s},${cy-s} ${cx+s},${cy-s} ${cx},${cy+s}" fill="#111"/>`; }
 function crConeUp(cx, cy, s) { s=s||9; return `<polygon points="${cx},${cy-s} ${cx+s},${cy+s} ${cx-s},${cy+s}" fill="#111"/>`; }
+// Draws a signal flag on a mast using the canonical SIGNAL_FLAGS definitions,
+// so the collision-rules diagrams and the flag scenes can never diverge.
+function crFlag(cx, cy, letter) {
+  const f = SIGNAL_FLAGS[letter];
+  if (!f) return '';
+  return `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/>`
+    + f.draw(1, -20, 18, 14)
+    + `<rect x="1" y="-20" width="18" height="14" fill="none" stroke="#111" stroke-width="1"/>`
+    + `<text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="${f.color}">${letter}</text></g>`;
+}
 const CR_SHAPES = {
   80: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-12,6)}${crBall(0,12,6)}<line x1="0" y1="-20" x2="0" y2="20" stroke="#111" stroke-width="2"/></g>`,
   10: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crBall(0,0,6)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="2"/></g>`,
@@ -1543,24 +1553,35 @@ const CR_SHAPES = {
   87: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>${crDiamond(18,-8,5)}${crDiamond(18,8,5)}</g>`,
   89: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>${crBall(18,-8,5)}${crBall(18,8,5)}</g>`,
   90: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/>${crDiamond(-18,-8,5)}${crDiamond(-18,8,5)}${crBall(18,-8,5)}${crBall(18,8,5)}</g>`,
-  92: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="18" height="14" fill="#fff" stroke="#111" stroke-width="1"/><line x1="1" y1="-20" x2="19" y2="-6" stroke="#e74c3c" stroke-width="2"/><line x1="1" y1="-6" x2="19" y2="-20" stroke="#e74c3c" stroke-width="2"/><text x="10" y="-10" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#e74c3c">V</text></g>`,
-  93: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="18" height="14" fill="#0055BF" stroke="#111" stroke-width="1"/><rect x="5" y="-17" width="5" height="4" fill="#fff"/><rect x="10" y="-13" width="5" height="4" fill="#fff"/><rect x="5" y="-9" width="5" height="4" fill="#fff"/><text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">N</text></g>`,
-  95: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#e74c3c" stroke="#111" stroke-width="1"/><text x="9" y="-10" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#fff">B</text></g>`,
-  98: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#0055BF" stroke="#111" stroke-width="1"/><polygon points="1,-13 14,-13 11,-10 14,-6 1,-6" fill="#fff" stroke="none"/><text x="9" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">A</text></g>`,
-  104: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><polygon points="1,-20 20,-20 14,-13 20,-6 1,-6" fill="#e74c3c" stroke="#111" stroke-width="1"/><rect x="4" y="-17" width="9" height="4" fill="#ffd700"/><rect x="4" y="-9" width="9" height="4" fill="#ffd700"/><text x="9" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#e74c3c">B</text></g>`,
-  106: (cx,cy) => `<g transform="translate(${cx},${cy})"><line x1="0" y1="-20" x2="0" y2="10" stroke="#333" stroke-width="2"/><rect x="1" y="-20" width="6" height="14" fill="#0055BF" stroke="none"/><rect x="7" y="-20" width="6" height="14" fill="#fff" stroke="none"/><rect x="13" y="-20" width="6" height="14" fill="#e74c3c" stroke="none"/><rect x="1" y="-20" width="18" height="14" fill="none" stroke="#111" stroke-width="1"/><text x="10" y="-3" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#0055BF">W</text></g>`,
+  // #1057 hoists 93 over 92 and means distress; the distress hoist is N over C.
+  92: (cx,cy) => crFlag(cx,cy,'C'),
+  93: (cx,cy) => crFlag(cx,cy,'N'),
+  95: (cx,cy) => crFlag(cx,cy,'B'),
+  98: (cx,cy) => crFlag(cx,cy,'A'),
+  104: (cx,cy) => crFlag(cx,cy,'O'),
+  106: (cx,cy) => crFlag(cx,cy,'Q'),
 };
-function crDayShape(letter, shapeId) {
+// shapeIds are listed top-down. withBall appends the black ball that some
+// questions describe in prose rather than by image number; it is often the only
+// thing distinguishing two otherwise identical questions (#1011 vs #1038).
+function crDayShape(letter, shapeIds, withBall) {
+  const ids = (Array.isArray(shapeIds) ? shapeIds : [shapeIds]).filter(id => CR_SHAPES[id]);
+  if (!ids.length && !withBall) return '';
   const angle = CR_LETTERS.indexOf(letter) * 22.5;
   const shapeR = CR_R_TIP - 32;
   const p = crPos(angle, shapeR);
-  const shapeFn = CR_SHAPES[shapeId];
-  if (!shapeFn) return '';
-  let svg = `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="32" fill="#fff" stroke="#333" stroke-width="1.5" opacity="0.92"/>`;
-  svg += shapeFn(p.x, p.y);
-  const lp = crPos(angle, shapeR - 36);
-  svg += `<rect x="${(lp.x-30).toFixed(1)}" y="${(lp.y-7).toFixed(1)}" width="60" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
-  svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y+4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${letter} | תמונה ${shapeId}</text>`;
+  const rows = ids.length + (withBall ? 1 : 0);
+  const rowH = 36;
+  const top = -(rows - 1) * rowH / 2;
+  const ry = 32 + (rows - 1) * rowH / 2;
+  let svg = `<ellipse cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" rx="34" ry="${ry.toFixed(1)}" fill="#fff" stroke="#333" stroke-width="1.5" opacity="0.92"/>`;
+  ids.forEach((id, i) => { svg += CR_SHAPES[id](p.x, p.y + top + i * rowH); });
+  if (withBall) svg += crBall(p.x, p.y + top + ids.length * rowH, 9);
+  const lp = crPos(angle, shapeR - 36 - (rows - 1) * rowH / 2);
+  const label = `${letter} | תמונה ${ids.join('+')}${withBall ? '+כדור' : ''}`;
+  const lw = Math.max(60, label.length * 5.2);
+  svg += `<rect x="${(lp.x-lw/2).toFixed(1)}" y="${(lp.y-7).toFixed(1)}" width="${lw.toFixed(1)}" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
+  svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y+4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${label}</text>`;
   return svg;
 }
 const SIGNAL_IMAGES = {
@@ -1597,9 +1618,13 @@ function generateCompassRoseScene(qText) {
   } else {
     vessels = [];
   }
-  const imgMatch = (qText || '').match(/תמונה\s*[""״"(]?(\d+)/);
+  // Every image in the question, in text order. "X ומעליו Y" states Y sits above
+  // X, so that phrasing flips the text order into display (top-down) order.
+  let shapeIds = (txt.match(/תמונה\s*[""״"(]?(\d+)/g) || [])
+    .map(m => parseInt(m.match(/(\d+)/)[1], 10));
+  if (shapeIds.length > 1 && /ומעליו/.test(txt)) shapeIds.reverse();
+  const withBall = /כדור שחור/.test(txt);
   const observer = vessels[0] || null, target = vessels[1] || null;
-  const shapeId = imgMatch ? parseInt(imgMatch[1]) : null;
   if (!observer || !target) return null;
   const D = CR_R_LABEL + 20;
   const d45 = Math.round(D * 0.707);
@@ -1609,12 +1634,13 @@ function generateCompassRoseScene(qText) {
   svg += `<line x1="${CR_CX-d45}" y1="${CR_CY-d45}" x2="${CR_CX+d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
   svg += `<line x1="${CR_CX+d45}" y1="${CR_CY-d45}" x2="${CR_CX-d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
   for (const l of CR_LETTERS) svg += crVessel(l);
-  if (shapeId && target) svg += crDayShape(target, shapeId);
+  if ((shapeIds.length || withBall) && target) svg += crDayShape(target, shapeIds, withBall);
   if (observer) svg += crBowLine(observer, '#ffd700');
   if (target) svg += crBowLine(target, '#e74c3c');
   if (observer) svg += crHighlight(observer);
   if (target) svg += crHighlight(target);
-  const hasShape = shapeId && CR_SHAPES[shapeId];
+  const shapeId = shapeIds[0] || null;
+  const hasShape = shapeIds.some(id => CR_SHAPES[id]) || withBall;
   const signalPattern = shapeId && SIGNAL_IMAGES[shapeId];
   const headerText = hasShape
     ? `${observer} מבחין ב-${target} המציג סימן יום`
@@ -1850,19 +1876,24 @@ const SIGNAL_FLAGS = {
 
 function generateFlagScene(qText) {
   const q = qText || '';
-  // Detect which flags are referenced
-  const flags = [];
-  if(/Quebec|'Q'|דגל\s+Q\b/i.test(q)) flags.push('Q');
-  if(/Oscar|'O'|דגל\s+O\b/i.test(q)) flags.push('O');
-  if(/Alpha|'A'|דגל\s+A\b|תמונה 98/i.test(q)) flags.push('A');
-  if(/Bravo|'B'|דגל\s+B\b|תמונה 104/i.test(q)) flags.push('B');
-  if(/דגל N\b/i.test(q)) flags.push('N');
-  if(/תמונה 93|דגל C\b/i.test(q)) flags.push('C');
-  if(/דגל V\b/i.test(q)) flags.push('V');
-  if(/תמונה 92/i.test(q)) flags.push('N');
-  if(/נמל זר|כניסה.*נמל.*זר/i.test(q) && !flags.length) flags.push('Q');
-  if(/צוללים/i.test(q) && !flags.length) flags.push('A');
-  if(!flags.length) flags.push('Q');
+  // Detect which flags are referenced. A hoist reads top-down, so the flags are
+  // ordered by where they appear in the question text, not by match order here.
+  const FLAG_PATTERNS = [
+    ['Q', /Quebec|'Q'|דגל\s+Q\b|תמונה 106/i],
+    ['O', /Oscar|'O'|דגל\s+O\b|תמונה 104/i],
+    ['A', /Alpha|'A'|דגל\s+A\b|תמונה 98/i],
+    ['B', /Bravo|'B'|דגל\s+B\b|תמונה 95/i],
+    ['N', /דגל N\b|תמונה 93/i],
+    ['C', /דגל C\b|תמונה 92/i],
+    ['V', /דגל V\b/i],
+  ];
+  let flags = FLAG_PATTERNS
+    .map(([letter, re]) => ({ letter, at: q.search(re) }))
+    .filter(m => m.at >= 0)
+    .sort((a, b) => a.at - b.at)
+    .map(m => m.letter);
+  if(!flags.length && /נמל זר|כניסה.*נמל.*זר/i.test(q)) flags = ['Q'];
+  if(!flags.length && /צוללים/i.test(q)) flags = ['A'];
 
   const SEA_Y = 320;
   const waveFilter = `
@@ -1939,7 +1970,10 @@ function generateFlagScene(qText) {
   }
 
   let flagsSvg = '';
-  if (flags.length === 1) {
+  if (flags.length === 0) {
+    // No flag identified: draw no flag rather than guessing one.
+    flagsSvg = '';
+  } else if (flags.length === 1) {
     // Single large flag
     const f = SIGNAL_FLAGS[flags[0]];
     const FW = 140, FH = 100, FX = 120, FY = 80;
