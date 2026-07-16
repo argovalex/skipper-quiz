@@ -374,6 +374,14 @@ const VO_FIXES = [
   [/\bAIS\b/g,        'איי איי אס'],
   [/\bEPIRB\b/g,      'איי פירב'],
   [/מכ"מ/g,           'מכמ'],
+  // Hebrew abbreviations the TTS otherwise spells out letter-by-letter or
+  // mis-vowels (verified against the bank: ע"י→"על ידי", מ' after a number
+  // means metres, etc.).
+  [/ע"י/g,            'על ידי'],
+  [/סה"כ/g,           'סך הכל'],
+  [/ק"מ/g,            'קילומטר'],
+  [/ס"מ/g,            'סנטימטר'],
+  [/(\d+)\s*מ'/g,     '$1 מטר'],
   [/\bSOG\b/g,        'מהירות על הקרקע'],
   [/\bCOG\b/g,        'כיוון על הקרקע'],
   [/\bMMSI\b/g,       'אם אם אס איי'],
