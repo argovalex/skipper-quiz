@@ -438,21 +438,10 @@ function switchTab(name) {
 async function loadData() {
   setBottom('טוען...');
   try {
-    const token = getToken();
-    if (token) {
-      const r = await fetch(`https://api.github.com/repos/${REPO}/contents/questions.json`,
-        { headers: { Authorization: `Bearer ${token}` } });
-      if (r.ok) {
-        const d = await r.json();
-        questionsSHA = d.sha;
-        const raw = atob(d.content.replace(/\n/g, ''));
-        questions = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
-      }
-    }
-    if (!questions.length) {
-      const r = await fetch(`https://raw.githubusercontent.com/${REPO}/main/questions.json?t=${Date.now()}`);
-      questions = await r.json();
-    }
+    // Loads the per-license bank (data/l*.json) and populates bankState so
+    // saveQuestionsGH writes back only the changed license file, sha-guarded.
+    const { data } = await loadBank();
+    questions = data;
 
     try {
       // skipper-quiz-publisher is a private repo, so the raw.githubusercontent.com

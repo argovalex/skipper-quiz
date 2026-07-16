@@ -596,10 +596,9 @@ function updateSyncStatus(offline) {
   else { el.textContent = '✅ מסונכרן'; el.style.color = 'var(--green,#3ddc84)'; }
 }
 
-// ── Load questions.json from GitHub (falls back to local cache if offline) ──
+// ── Load the per-license bank from GitHub (falls back to local cache if offline) ──
 async function loadQuestions() {
-  const { data, sha, offline } = await loadQuestionsCached();
-  questionsSHA = sha;
+  const { data, offline } = await loadBank();
   updateSyncStatus(offline);
   if (!data.length) {
     document.getElementById('setupOverlay').style.display = 'flex';
