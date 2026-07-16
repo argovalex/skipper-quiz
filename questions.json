@@ -6248,9 +6248,10 @@
     "explanation": "דגל A (צוללים) מחייב מרחק מינימלי של 200 מטר.",
     "mediaUrl": "",
     "mediaType": "",
-    "approved_for_publish": false,
+    "approved_for_publish": true,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783583075/skipper-quiz/tdqtvtwlrjqyazgc9gin.mp4",
-    "rendered_at": "2026-07-09T07:44:44.359Z"
+    "rendered_at": "2026-07-09T07:44:44.359Z",
+    "voiceover_text": "שאלה מספר 1062. מה המרחק המינימלי שמותר להתקרב לדגל שבתמונה 98?. [[PAUSE]] התשובה הנכונה היא: 200 מטרים. ... דגל A צוללים מחייב מרחק מינימלי של 200 מטר."
   },
   {
     "num": 1063,
