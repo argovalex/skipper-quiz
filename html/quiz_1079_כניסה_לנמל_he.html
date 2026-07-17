@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="he"><head><meta charset="UTF-8">
-<title>Skipper Quiz #1073 — כניסה לנמל</title>
+<title>Skipper Quiz #1079 — כניסה לנמל</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -55,15 +55,15 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
   </div>
   <div id="ftr">
     <div class="ql" id="ql">❓ השאלה</div>
-    <div class="qt" id="qt">האם מותר להפליג עם אופנוע – ים במרחק של 2 מיל מערבית לשטח אש 30 (עתלית)?</div>
-    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>רק באישור מיוחד של משרד התחבורה.</div><div class="opt" id="o1"><div class="ltr">ב</div>אסור להפליג בשום תנאי מערבית לעתלית למרחק של 2 מיל.</div><div class="opt" id="o2"><div class="ltr">ג</div>מותר להפליג במרחק של 300 מטר מערבית לעתלית.</div><div class="opt" id="o3"><div class="ltr">ד</div>יש להתרחק לפחות 3 מיל מעתלית.</div></div>
+    <div class="qt" id="qt">מהו "חוף רחצה מוכרז" ומה הם גבולותיו?</div>
+    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>חוף שבו מתרחצים אנשים, בין 200 עד 400 מטרים מהחוף.</div><div class="opt" id="o1"><div class="ltr">ב</div>חוף עירוני שיש בו מצילים, שירותים ומלתחות, וגבולותיו יהיו כפי שתקבע העירייה.</div><div class="opt" id="o2"><div class="ltr">ג</div>חוף רחצה שהוכרז עליו ב"רשומות" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  60 מטרים מכל צד של השטח המיועד לרחצה.</div><div class="opt" id="o3"><div class="ltr">ד</div>חוף רחצה שהוכרז עליו ב"רשומות" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  50 מטרים מכל צד של השטח המיועד לרחצה.</div></div>
   </div>
 </div>
 <script>
-const C=1;
-const OPTS=["א. רק באישור מיוחד של משרד התחבורה.","ב. אסור להפליג בשום תנאי מערבית לעתלית למרחק של 2 מיל.","ג. מותר להפליג במרחק של 300 מטר מערבית לעתלית.","ד. יש להתרחק לפחות 3 מיל מעתלית."];
-const Q="האם מותר להפליג עם אופנוע – ים במרחק של 2 מיל מערבית לשטח אש 30 (עתלית)?";
-const E="הפלגה מותרת במרחק 300 מ' מערבית לשטח אש עתלית, לא 2 מיל.";
+const C=3;
+const OPTS=["א. חוף שבו מתרחצים אנשים, בין 200 עד 400 מטרים מהחוף.","ב. חוף עירוני שיש בו מצילים, שירותים ומלתחות, וגבולותיו יהיו כפי שתקבע העירייה.","ג.  חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  60 מטרים מכל צד של השטח המיועד לרחצה.","ד.  חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  50 מטרים מכל צד של השטח המיועד לרחצה."];
+const Q="מהו \"חוף רחצה מוכרז\" ומה הם גבולותיו?";
+const E="ג. חוף רחצה מוכרז הוא: מקו שיא הגיאות עד 300 מ', ו-50 מ' מכל צד של שטח הרחצה.";
 const LT=["א","ב","ג","ד"];
 
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)

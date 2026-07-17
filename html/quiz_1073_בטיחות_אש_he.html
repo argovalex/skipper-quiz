@@ -26,28 +26,9 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
 <div id="reel">
   <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
   <div id="scene">
-    
-    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
+    <img src="https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1073-atlit-fire-zone.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1">
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;z-index:2;">
       
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="250" y="0" width="110" height="280" fill="#1a3a1a" opacity="0.4"/>
-  <text x="305" y="30" text-anchor="middle" fill="#4a8a4a" font-size="10" font-family="Heebo,sans-serif" font-weight="700">קו החוף</text>
-  <rect x="40" y="60" width="180" height="150" rx="6" fill="#3d0000" opacity="0.25" stroke="#e74c3c" stroke-width="2" stroke-dasharray="8,4"/>
-  <text x="130" y="100" text-anchor="middle" fill="#e74c3c" font-size="16" font-family="Heebo,sans-serif" font-weight="900">⚠ שטח אש</text>
-  <text x="130" y="120" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">FIRING ZONE</text>
-  <text x="130" y="145" text-anchor="middle" fill="#ff6666" font-size="10" font-family="Heebo,sans-serif">הפלגה אסורה!</text>
-  <circle cx="130" cy="135" r="40" fill="#e74c3c" opacity="0"><animate attributeName="r" values="35;50;35" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0;0.15" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M0,350 Q90,340 180,350 Q270,360 360,350" fill="none" stroke="#1e5080" stroke-width="1" opacity="0.3"/>
-  <path d="M0,370 Q90,360 180,370 Q270,380 360,370" fill="none" stroke="#1e5080" stroke-width="1" opacity="0.2"/>
-  <g>
-    <ellipse cx="290" cy="250" rx="12" ry="25" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/>
-    <ellipse cx="290" cy="238" rx="7" ry="9" fill="#ccc"/>
-    <circle cx="290" cy="238" r="2" fill="#666"/>
-    <line x1="260" y1="245" x2="290" y2="245" stroke="#e74c3c" stroke-width="2"/>
-    <text x="250" y="243" fill="#e74c3c" font-size="16" font-family="Arial">✘</text>
-  </g>
-  <text x="180" y="380" text-anchor="middle" fill="#e74c3c" font-size="10" font-family="Heebo,sans-serif">שטחי אש — אזורים אסורים לשיט</text>
-
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
         <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
@@ -66,7 +47,7 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
 const C=1;
 const OPTS=["א. רק באישור מיוחד של משרד התחבורה.","ב. אסור להפליג בשום תנאי מערבית לעתלית למרחק של 2 מיל.","ג. מותר להפליג במרחק של 300 מטר מערבית לעתלית.","ד. יש להתרחק לפחות 3 מיל מעתלית."];
 const Q="האם מותר להפליג עם אופנוע – ים במרחק של 2 מיל מערבית לשטח אש 30 (עתלית)?";
-const E="הפלגה מותרת במרחק 300 מ' מערבית לשטח אש עתלית, לא 2 מיל.";
+const E="אופנוע ים מוגבל לרצועה שבין 300 מ' מקו שפל המים ועד מייל אחד מהחוף. 2 מייל הם פי שניים מהגבול, ולכן ההפלגה שם אסורה בכל מקרה, עוד לפני ששואלים מה נמצא במקום. בנוסף, שטח אש 30 מול עתלית משתרע מהחוף מערבה הרבה מעבר לנקודה הזאת, כך שב-2 מייל אתה גם בתוך שטח סגור לפי צו 100. שתי סיבות עצמאיות, ומכאן \"בשום תנאי\". תשובה ג נוקבת במספר הנכון, 300 מ', אבל הופכת את משמעותו: זהו הגבול התחתון של הרצועה, מרחק שממנו צריך להתרחק בגלל המתרחצים, ולא היתר הפלגה. תשובה א ממציאה אישור שלא קיים, ותשובה ד ממציאה מרחק של 3 מייל שאין לו מקור.";
 const LT=["א","ב","ג","ד"];
 
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)
