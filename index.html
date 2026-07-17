@@ -360,6 +360,17 @@ function setLang(l) {
 }
 
 
+// A standalone Latin letter inside Hebrew ("דגל N מעל דגל C") makes the TTS
+// code-switch to English and rattle it off unintelligibly. Spelling the letter
+// in Hebrew keeps it in Hebrew phonology, at Hebrew pace.
+const LATIN_LETTER_HE = {
+  A: 'איי', B: 'בי',  C: 'סי',   D: 'די',  E: 'אי',   F: 'אף',
+  G: "ג'י", H: "אייץ'", I: 'איי', J: "ג'יי", K: 'קיי', L: 'אל',
+  M: 'אם',  N: 'אן',  O: 'או',   P: 'פי',  Q: 'קיו',  R: 'אר',
+  S: 'אס',  T: 'טי',  U: 'יו',   V: 'וי',  W: 'דאבליו', X: 'אקס',
+  Y: 'וואי', Z: 'זי',
+};
+
 const VO_FIXES = [
   [/=/g,              ' '],
   [/[(){}\[\]]/g,     ''],
@@ -368,11 +379,13 @@ const VO_FIXES = [
   [/\.{2,}/g,         '.'],
   [/\s{2,}/g,         ' '],
   [/קוי/g,            'קווי'],
-  [/\bVHF\b/g,        'וי אייץ\' אף'],
-  [/\bUTC\b/g,        'יו טי סי'],
-  [/\bGPS\b/g,        'ג\'י פי אס'],
-  [/\bAIS\b/g,        'איי איי אס'],
-  [/\bEPIRB\b/g,      'איי פירב'],
+  // Commas between the spelled-out letters: without them the TTS runs the
+  // letters together into one unintelligible burst.
+  [/\bVHF\b/g,        'וי, אייץ\', אף'],
+  [/\bUTC\b/g,        'יו, טי, סי'],
+  [/\bGPS\b/g,        'ג\'י, פי, אס'],
+  [/\bAIS\b/g,        'איי, איי, אס'],
+  [/\bEPIRB\b/g,      'איי, פירב'],
   [/מכ"מ/g,           'מכמ'],
   // Hebrew abbreviations the TTS otherwise spells out letter-by-letter or
   // mis-vowels (verified against the bank: ע"י→"על ידי", מ' after a number
@@ -384,14 +397,19 @@ const VO_FIXES = [
   [/(\d+)\s*מ'/g,     '$1 מטר'],
   [/\bSOG\b/g,        'מהירות על הקרקע'],
   [/\bCOG\b/g,        'כיוון על הקרקע'],
-  [/\bMMSI\b/g,       'אם אם אס איי'],
-  [/\bDSC\b/g,        'די אס סי'],
-  [/\bMOB\b/g,        'אם או בי'],
+  [/\bMMSI\b/g,       'אם, אם, אס, איי'],
+  [/\bDSC\b/g,        'די, אס, סי'],
+  [/\bMOB\b/g,        'אם, או, בי'],
   [/\bNM\b/g,         'מייל ימי'],
   [/\bm\/s\b/g,       'מטר לשנייה'],
   [/\bkm\/h\b/gi,     'קילומטר לשעה'],
   [/°/g,              ' מעלות '],
   [/\bknots?\b/gi,    'קשרים'],
+  // Must stay AFTER every named Latin rule above (m/s, km/h, NM...), otherwise
+  // it would eat their letters first. Letters glued to other Latin text or a
+  // hyphen (IALA-A, X-band, [[PAUSE]]) are deliberately left alone.
+  [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g,
+                      (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
   [/\b(\d+)%/g,       '$1 אחוז'],
   [/(\d+)\.(\d+)/g,   '$1 נקודה $2'],
   [/\//g,             ' או '],
