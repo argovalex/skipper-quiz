@@ -865,28 +865,40 @@ function stopAnimation() {
 }
 
 // ── Editor ───────────────────────────────────────────────────────────────────
+// The editor form is built with innerHTML, so every interpolated value must be
+// escaped. A raw " inside an attribute closes it early: the input then loads
+// visibly truncated, and saveCurrentToState reads that truncated value straight
+// back into the bank as if it were the truth. Hebrew makes this routine rather
+// than exotic — הנ"ל, ע"י, סה"כ, 9קמ"ש all carry gershayim. It silently ate
+// 1076[ב] and 1068[ג] before it was found on 2026-07-17.
+const escAttr = s => String(s ?? '')
+  .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+  .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const escHtml = s => String(s ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
 function renderEditor(q) {
   const ed = document.getElementById('editor');
   ed.innerHTML = `
     <div class="section-title">פרטי שאלה</div>
     <div class="row2">
       <div class="field"><label>מספר שאלה</label><input id="f-num" type="number" value="${q.num||''}"></div>
-      <div class="field"><label>מקור</label><input id="f-source" value="${q.source||''}"></div>
+      <div class="field"><label>מקור</label><input id="f-source" value="${escAttr(q.source)}"></div>
     </div>
     <div class="field"><label>נושא</label>
       <select id="f-topic" onchange="if(currentIdx>=0){questions[currentIdx].topic=this.value;renderList();updatePreview();}">
         ${TOPICS.map(t=>`<option${q.topic===t?' selected':''}>${t}</option>`).join('')}
       </select>
     </div>
-    <div class="field"><label>שאלה בעברית</label><textarea id="f-qhe" placeholder="טקסט השאלה בעברית...">${q.q_he||''}</textarea></div>
-    <div class="field"><label>שאלה באנגלית (מ-PDF)</label><textarea id="f-qen" placeholder="טקסט השאלה באנגלית...">${q.q_en||''}</textarea></div>
+    <div class="field"><label>שאלה בעברית</label><textarea id="f-qhe" placeholder="טקסט השאלה בעברית...">${escHtml(q.q_he)}</textarea></div>
+    <div class="field"><label>שאלה באנגלית (מ-PDF)</label><textarea id="f-qen" placeholder="טקסט השאלה באנגלית...">${escHtml(q.q_en)}</textarea></div>
 
     <div class="section-title">אפשרויות תשובה</div>
     <div class="opts-grid">
       ${[0,1,2,3].map(i=>`
         <div class="opt-row">
           <div class="opt-letter">${LETTERS[i]}</div>
-          <input id="f-opt${i}" value="${(q.options[i]||'').replace(/^[אבגדabcd]\.\s*/,'')}">
+          <input id="f-opt${i}" value="${escAttr((q.options[i]||'').replace(/^[אבגדabcd]\.\s*/,''))}">
         </div>`).join('')}
     </div>
 
@@ -897,7 +909,7 @@ function renderEditor(q) {
     </div>
 
     <div class="field"><label>הסבר (יוצג לאחר התשובה)</label>
-      <textarea id="f-expl" placeholder="הסבר קצר על התשובה הנכונה...">${q.explanation||''}</textarea>
+      <textarea id="f-expl" placeholder="הסבר קצר על התשובה הנכונה...">${escHtml(q.explanation)}</textarea>
     </div>
 
     ${q.topic === 'אותות קוליים' ? `
@@ -905,7 +917,7 @@ function renderEditor(q) {
       <label style="color:#7eb8f7;font-size:11px;font-weight:700">🔊 אות קולי — עריכה ידנית</label>
       <div style="display:flex;gap:8px;margin-top:6px;align-items:center">
         <input id="f-blast-override" type="text" placeholder="L S S  או  L,S,S  או  2L+2S"
-               value="${q.blastOverride||''}"
+               value="${escAttr(q.blastOverride)}"
                style="flex:1;font-family:monospace;font-size:13px;letter-spacing:2px"
                title="L=ארוכה, S=קצרה. דוגמאות: L S S | 2L+3S | S S S S S">
         <button onclick="applyBlastOverride()" style="padding:6px 14px;background:#1e3a6e;color:#7eb8f7;border:1px solid #2a5aae;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">✔ עדכן</button>
@@ -927,7 +939,7 @@ function renderEditor(q) {
         <span>🎙 טקסט Voice Over</span>
         <span style="color:#7eb8f7;font-size:11px">תיקונים אוטומטיים מופעלים</span>
       </label>
-      <textarea id="rm-vo" rows="3" style="width:100%;margin-top:4px">${q.voiceover_text || buildVoiceover(q)}</textarea>
+      <textarea id="rm-vo" rows="3" style="width:100%;margin-top:4px">${escHtml(q.voiceover_text || buildVoiceover(q))}</textarea>
       <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center">
         <button class="btn btn-ghost btn-sm" onclick="resetVoiceover()">↻ שחזר ברירת מחדל</button>
         <button class="btn btn-ghost btn-sm" onclick="applyNikud(this)" title="הוסף ניקוד אוטומטי (Dicta) לשיפור ההגייה. אפשר לתקן ידנית אחרי כן, ואז להאזין.">אָ ניקוד</button>
@@ -937,7 +949,7 @@ function renderEditor(q) {
       </div>
 
       <label style="display:block;margin-top:14px">🛠 מה לתקן ${q.fix_request?'<span style="color:#f5a623;font-size:11px">🟠 ממתין</span>':''}</label>
-      <textarea id="fix-request" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: הגדל את כדור הארץ, תקן כיוון סיבוב...">${q.fix_request||''}</textarea>
+      <textarea id="fix-request" rows="2" style="width:100%;margin-top:4px" placeholder="לדוגמה: הגדל את כדור הארץ, תקן כיוון סיבוב...">${escHtml(q.fix_request)}</textarea>
 
       <div class="media-drop ${q.mediaUrl?'has-media':''}" style="margin-top:8px" onclick="this.querySelector('input').click()">
         <input type="file" accept="image/*,video/*" onchange="handleMediaUpload(this)" onclick="event.stopPropagation()">
