@@ -806,6 +806,7 @@ function renderList() {
         <span class="q-item-badge ${q.answer_confirmed?'':'unconfirmed'}">${q.answer_confirmed?'✓ מאושר':'⚠ לא מאושר'}</span>
         ${q.approved_for_publish?'<span class="q-item-badge" style="background:#1a3a6e;color:#7eb8f7;margin-right:3px">📤 לפרסום</span>':''}
         ${q.fix_request?'<span class="q-item-badge" style="background:#3a2a10;color:#f5a623;margin-right:3px">🟠 תיקון</span>':''}
+        ${isVideoStale(q)?'<span class="q-item-badge" style="background:#4a1a1a;color:#ff6b6b;margin-right:3px">🎬 סרטון לא מעודכן</span>':''}
         ${q.mediaUrl?'<span style="font-size:11px">📎</span>':''}
         &nbsp;${q.topic||''}
       </div>`;
@@ -990,9 +991,22 @@ function setCorrectBtn(i) {
   updatePreview();
 }
 
+// Everything the video burns in. If any of it moves, the rendered MP4 stops
+// representing the question and must not publish until it is re-rendered.
+function contentFingerprint(q) {
+  return JSON.stringify([q.answer, q.q_he, q.explanation, q.options,
+                         q.topic, q.voiceover_text, q.blastOverride]);
+}
+
 function saveCurrentToState() {
   if(currentIdx < 0) return;
   const q = questions[currentIdx];
+  // Snapshot before the form overwrites the fields, so an edit can be detected.
+  // Deliberately does NOT clear answer_confirmed/approved_for_publish: those are
+  // Alex's judgement and re-earning them by hand is the work that got clobbered
+  // on 2026-07-16. Instead the publisher gates on rendered_at >= content_updated_at,
+  // so a re-render lifts the block on its own and nothing needs re-approving.
+  const beforeFingerprint = contentFingerprint(q);
   q.num = parseInt(document.getElementById('f-num')?.value) || q.num;
   q.source = document.getElementById('f-source')?.value || q.source;
   q.q_he = document.getElementById('f-qhe')?.value || '';
@@ -1011,6 +1025,18 @@ function saveCurrentToState() {
   if(boEl) q.blastOverride = boEl.value.trim();
   const voEl = document.getElementById('rm-vo');
   if(voEl) q.voiceover_text = voEl.value.trim();
+
+  if (contentFingerprint(q) !== beforeFingerprint) {
+    q.content_updated_at = new Date().toISOString();
+  }
+}
+
+// True once the question has been edited since its video was made. The publisher
+// refuses to publish these; rendering again clears it by moving rendered_at past
+// content_updated_at.
+function isVideoStale(q) {
+  return !!(q.content_updated_at && q.rendered_at &&
+            new Date(q.content_updated_at) > new Date(q.rendered_at));
 }
 
 async function saveLockState(checked) {
