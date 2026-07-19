@@ -1756,11 +1756,167 @@ function generateCompassRoseScene(qText) {
   return svg;
 }
 
+// סכנות רכיבה ותמרון — מי חשוף לסכנה: הנוהג אוחז בהגה, הנוסע מאחור לא
+SCENES_QA['pwc_rider_risk'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="286" width="360" height="134" fill="#1a5276"/>
+  <g opacity="0.12">
+    <path d="M0 330 Q90 322 180 330 Q270 338 360 330" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 372 Q90 364 180 372 Q270 380 360 372" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">מי חשוף לסכנה?</text>
+
+  <!-- jet stream off the nozzle: where the thrown passenger ends up -->
+  <g opacity=".5">
+    <path d="M120 322 Q92 326 64 334" fill="none" stroke="#aed6f1" stroke-width="6" stroke-linecap="round"/>
+    <path d="M120 328 Q96 336 72 346" fill="none" stroke="#aed6f1" stroke-width="4" stroke-linecap="round"/>
+    <path d="M120 317 Q94 318 68 322" fill="none" stroke="#aed6f1" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="74" y="344" text-anchor="middle" fill="#aed6f1" font-size="11" font-family="Heebo,sans-serif" font-weight="700">סילון המים</text>
+
+  ${sideJetSki(200, 318, '#f1c40f', '#c8a000', 1.3)}
+
+  <!-- braced: hands on the bars, feet in the footwell -->
+  ${sideRider(197, 292, 1.25, 'grip', '#2980b9')}
+
+  <!-- flung off the saddle, still in the air, heading for the jet stream -->
+  <path d="M170 288 Q152 268 138 254" fill="none" stroke="#e74c3c" stroke-width="2"
+        stroke-dasharray="5 4" opacity=".75"/>
+  <path d="M136 252 L144 260 L134 262 Z" fill="#e74c3c" opacity=".75"/>
+  ${sideRider(128, 258, 1.1, 'thrown', '#e74c3c')}
+
+  <!-- callouts, centred so RTL cannot smear them across the artwork, and kept
+       clear of the figures they point at -->
+  <text x="292" y="216" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">הנוהג</text>
+  <text x="292" y="232" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">אוחז בהגה</text>
+  <text x="292" y="247" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">אחיזה טובה יותר</text>
+  <path d="M278 252 Q252 260 228 266" fill="none" stroke="#2ecc71" stroke-width="1.6" opacity=".7"/>
+
+  <text x="88" y="160" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">הנוסע מאחור</text>
+  <text x="88" y="176" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">אין לו במה לאחוז</text>
+  <text x="88" y="191" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">נזרק לים אל הסילון</text>
+  <path d="M96 198 Q106 208 112 218" fill="none" stroke="#e74c3c" stroke-width="1.6" opacity=".7"/>
+`;
+
+// סכנות רכיבה ותמרון — מעבר גלי חוף במהירות: עף מעל הגל ונוחת בלי שליטה
+SCENES_QA['pwc_wave_launch'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גלי חוף במהירות גבוהה מדי</text>
+
+  <!-- the sea, with one steep shore wave the craft has just cleared -->
+  <path d="M0 420 L0 322 Q52 320 96 300 Q126 286 150 250 Q168 276 200 296
+           Q246 320 300 318 Q334 317 360 320 L360 420 Z" fill="#1a5276"/>
+  <path d="M150 250 Q160 266 176 280 Q160 274 150 276 Q142 262 150 250 Z" fill="#eaf4fb" opacity=".85"/>
+  <g opacity="0.12">
+    <path d="M206 348 Q268 342 360 346" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 372 Q90 366 180 372 Q270 378 360 372" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+
+  <!-- flight path off the crest down to the slam -->
+  <path d="M158 244 Q212 200 268 262" fill="none" stroke="#e74c3c" stroke-width="2"
+        stroke-dasharray="6 5" opacity=".8"/>
+
+  <!-- airborne, bow already dropping -->
+  <g transform="translate(258,250) rotate(30)">
+    ${sideJetSki(0, 0, '#f1c40f', '#c8a000', 0.8)}
+    ${sideRider(-2, -16, 0.78, 'grip', '#2980b9')}
+  </g>
+
+  <!-- impact burst where it comes down -->
+  <g opacity=".8">
+    <path d="M282 292 L288 276" stroke="#eaf4fb" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M296 296 L306 284" stroke="#eaf4fb" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M270 296 L264 282" stroke="#eaf4fb" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <text x="96" y="182" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">עובר את הגל</text>
+  <text x="96" y="198" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מהר מדי</text>
+
+  <text x="272" y="176" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">נופל אחרי הגל</text>
+  <text x="272" y="192" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">ומאבד שליטה</text>
+
+  <text x="180" y="336" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט לפני גלי החוף</text>
+`;
+
+// סכנות רכיבה ותמרון — גלים גבוהים מהצד: סכנת התהפכות
+SCENES_QA['pwc_beam_capsize'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גלים גבוהים מהצד</text>
+
+  <!-- water, with the beam wave stacked up on the right -->
+  <path d="M0 420 L0 300 Q80 296 150 302 Q220 308 268 268 Q292 246 312 232
+           Q336 250 360 268 L360 420 Z" fill="#1a5276"/>
+  <path d="M312 232 Q330 246 344 262 Q324 252 308 254 Q306 242 312 232 Z" fill="#eaf4fb" opacity=".85"/>
+  <g opacity="0.12"><path d="M0 350 Q90 344 180 350 Q270 356 360 352" fill="none" stroke="white" stroke-width="1.5"/></g>
+
+  <!-- the craft end-on, already heeled away from the wave -->
+  <g transform="translate(168,296) rotate(-32)">
+    ${sternJetSki(0, 0, 1.05, '#2980b9')}
+  </g>
+
+  <!-- the wave shoving the hull from the side -->
+  <path d="M268 272 L222 288" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M222 288 L233 284 L232 294 Z" fill="#e74c3c"/>
+
+  <!-- roll arrow over the top -->
+  <path d="M212 198 A50 50 0 0 0 128 220" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <path d="M128 220 L139 217 L134 227 Z" fill="#e74c3c"/>
+
+  <text x="180" y="176" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Heebo,sans-serif" font-weight="900">סכנת התהפכות</text>
+
+  <text x="284" y="316" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הגל בא מהצד</text>
+  <text x="180" y="338" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט וקבל את הגלים באלכסון</text>
+`;
+
+// סכנות רכיבה ותמרון — גישה לכלי שיט אחר: לאט, נגד הרוח, בלי גלים
+SCENES_QA['pwc_slow_approach'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="244" width="360" height="176" fill="#1a5276"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גישה לכלי שיט אחר</text>
+
+  <!-- barely a ripple between them: the whole point of going slow -->
+  <g opacity="0.16">
+    <path d="M0 306 Q90 302 180 306 Q270 310 360 306" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 352 Q90 348 180 352 Q270 356 360 352" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+
+  <!-- the vessel being approached, lying stopped -->
+  <g transform="translate(262,272) scale(0.52)">
+    ${sideBoat(0, 0, '#ecf0f1', '#95a5a6')}
+  </g>
+
+  <!-- our craft, coming up slowly from astern of it -->
+  ${sideJetSki(108, 282, '#f1c40f', '#c8a000', 0.82)}
+  ${sideRider(106, 266, 0.8, 'grip', '#2980b9')}
+
+  <!-- wind on the nose: approach against it so the craft slows itself -->
+  <path d="M316 190 L240 190" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M240 190 L250 185 L250 195 Z" fill="#7eb8f7"/>
+  <text x="278" y="180" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הרוח</text>
+  <text x="272" y="212" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">התקרב נגד הרוח</text>
+
+  <!-- slow-speed callout on our craft -->
+  <text x="82" y="180" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">מהירות מינימלית</text>
+  <text x="82" y="196" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">כדי לא לייצר גלים</text>
+  <path d="M90 204 Q96 218 100 230" fill="none" stroke="#2ecc71" stroke-width="1.6" opacity=".7"/>
+
+  <text x="180" y="336" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דומם מנוע בקרבת כלי השיט</text>
+`;
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
     const compass = generateCompassRoseScene(q);
     if (compass) return compass;
+  }
+  if(topic==='סכנות רכיבה ותמרון') {
+    // Order matters: the wave and approach questions also mention speed and
+    // danger, so they have to be claimed before the rider-risk catch-all.
+    if(/גלי חוף|מעבר.*גל|לאחר מעבר/.test(q))              return SCENES_QA['pwc_wave_launch'];
+    if(/מהצד|התהפכות|גלים גבוהים/.test(q))                 return SCENES_QA['pwc_beam_capsize'];
+    if(/גישה לכלי|להתקרב|לעצור לידו|מהירות איטית|למנוע גלים|ליד כלי/.test(q))
+                                                            return SCENES_QA['pwc_slow_approach'];
+    if(/נוסע מאחור|האצה|מדומם|אחיזה|נתון לסכנה/.test(q))   return SCENES_QA['pwc_rider_risk'];
   }
   if(topic==='זכות מעבר' && /מפרש|sail/i.test(q)) return SCENES['זכות_מעבר_מפרש'];
   if(/VHF|רדיו|קשר/.test(topic)) return SCENES['קשר VHF'];
@@ -1910,6 +2066,77 @@ function sideJetSki(cx, by, color, dk, s) {
   <circle cx="${cx + 18 * s}" cy="${by + -27 * s}" r="${2.6 * s}" fill="#1a2530"/>
   <!-- Jet nozzle -->
   <rect x="${cx + -50 * s}" y="${by + -6 * s}" width="${7 * s}" height="${7 * s}" rx="${1.5 * s}" fill="#7f8c8d"/>
+  </g>`;
+}
+
+function sternJetSki(cx, by, s, kit) {
+  // Same craft seen end-on, rider aboard. A profile view cannot show roll, so
+  // beam-sea capsize needs this one. Drawn upright around (cx,by)=waterline
+  // centre; the caller wraps it in a rotate() to lean it over.
+  s = s || 1; kit = kit || '#2980b9';
+  const p = (x, y) => `${cx + x * s},${by + y * s}`;
+  return `
+  <g>
+  <!-- hull below the waterline -->
+  <path d="M${p(-32,-8)} L${p(32,-8)} Q${p(29,12)} ${p(0,17)} Q${p(-29,12)} ${p(-32,-8)} Z"
+        fill="#c8a000" stroke="#8a7000" stroke-width="${1.6 * s}" stroke-linejoin="round"/>
+  <!-- deck / gunwales -->
+  <path d="M${p(-34,-8)} L${p(34,-8)} L${p(30,-18)} L${p(-30,-18)} Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="${1.6 * s}" stroke-linejoin="round"/>
+  <!-- saddle -->
+  <rect x="${cx - 13 * s}" y="${by - 25 * s}" width="${26 * s}" height="${8 * s}"
+        rx="${3 * s}" fill="#2c3e50"/>
+  <!-- handlebars seen end-on -->
+  <path d="M${p(-15,-34)} L${p(15,-34)}" stroke="#2c3e50" stroke-width="${3 * s}" stroke-linecap="round"/>
+  <!-- rider: torso, arms out to the bars, helmeted head. Kept tall relative to
+       the hull — at true end-on proportions the figure reads as a stub. -->
+  <path d="M${p(0,-26)} L${p(0,-50)}" stroke="${kit}" stroke-width="${14 * s}" stroke-linecap="round"/>
+  <path d="M${p(0,-44)} L${p(-15,-35)}" stroke="${kit}" stroke-width="${5.5 * s}" stroke-linecap="round"/>
+  <path d="M${p(0,-44)} L${p(15,-35)}" stroke="${kit}" stroke-width="${5.5 * s}" stroke-linecap="round"/>
+  <path d="M${p(0,-29)} L${p(0,-47)}" stroke="#f4d03f" stroke-width="${10 * s}" stroke-linecap="round" opacity=".92"/>
+  <circle cx="${cx}" cy="${by - 60 * s}" r="${9.5 * s}" fill="#f5cba7"/>
+  <path d="M${p(-9.5,-61)} A${9.5*s},${9.5*s} 0 0 1 ${p(9.5,-61)} L${p(9.5,-64)} L${p(-9.5,-64)} Z" fill="${kit}"/>
+  </g>`;
+}
+
+function sideRider(hx, hy, s, pose, kit) {
+  // Seated rider in profile, facing right, drawn from the hip point (hx,hy) so
+  // it drops straight onto a sideJetSki saddle. Two poses carry the whole
+  // rider-risk topic: 'grip' is braced against the handlebars, 'thrown' has
+  // lost the seat, which is the difference the questions turn on.
+  s = s || 1; kit = kit || '#e67e22';
+  const p = (x, y) => `${hx + x * s},${hy + y * s}`;
+  const thrown = pose === 'thrown';
+  // Thrown rider pivots back off the saddle: torso reclined, arms up, legs loose.
+  const sh   = thrown ? [-13, -25] : [5, -26];   // shoulder
+  const head = thrown ? [-21, -34] : [9, -34];   // head centre
+  const hand = thrown ? [-3, -40]  : [20, -6];   // hands (bar grips sit low and forward)
+  const knee = thrown ? [11, -7]   : [16, -2];
+  const foot = thrown ? [22, 2]    : [17, 12];
+  return `
+  <g>
+  <!-- rear leg, drawn first so the torso overlaps it -->
+  <path d="M${p(0,-2)} L${p(knee[0]-2,knee[1]+1)} L${p(foot[0]-2,foot[1])}"
+        fill="none" stroke="#1f2f3f" stroke-width="${6.5 * s}" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+  <!-- torso -->
+  <path d="M${p(0,-2)} L${p(sh[0],sh[1])}" fill="none" stroke="${kit}"
+        stroke-width="${13 * s}" stroke-linecap="round"/>
+  <!-- lifejacket over the torso, kept narrower than the torso so the kit colour
+       still reads at the edges — the kit is what tells the two riders apart -->
+  <path d="M${p(-1,-9)} L${p(sh[0]*0.85,sh[1]+3)}" fill="none" stroke="#f4d03f"
+        stroke-width="${8 * s}" stroke-linecap="round" opacity=".92"/>
+  <!-- front leg -->
+  <path d="M${p(0,-2)} L${p(knee[0],knee[1])} L${p(foot[0],foot[1])}"
+        fill="none" stroke="#2c3e50" stroke-width="${7 * s}" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- arm reaching for the bars, or flung up -->
+  <path d="M${p(sh[0],sh[1])} L${p(hand[0],hand[1])}" fill="none" stroke="${kit}"
+        stroke-width="${5.5 * s}" stroke-linecap="round"/>
+  <!-- head, helmet and visor -->
+  <circle cx="${hx + head[0] * s}" cy="${hy + head[1] * s}" r="${7.5 * s}" fill="#f5cba7"/>
+  <path d="M${p(head[0]-8,head[1]-1)} A${8*s},${8*s} 0 0 1 ${p(head[0]+8,head[1]-1)} L${p(head[0]+8,head[1]-3)} L${p(head[0]-8,head[1]-3)} Z"
+        fill="${kit}" opacity=".95"/>
+  <circle cx="${hx + head[0] * s}" cy="${hy + (head[1] - 1) * s}" r="${8 * s}"
+          fill="none" stroke="${kit}" stroke-width="${3 * s}" stroke-dasharray="${25 * s} ${100 * s}"/>
   </g>`;
 }
 
