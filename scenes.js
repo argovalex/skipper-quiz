@@ -6,6 +6,33 @@ const LETTERS_EN = ['A','B','C','D'];
 
 // ── Scenes SVG ─────────────────────────────────────────────────────────────
 const SCENES = {
+'תדלוק ואש': `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="246" width="360" height="174" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 292 Q90 284 180 292 Q270 300 360 292" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 344 Q90 336 180 344 Q270 352 360 344" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <!-- fuel dock, running off the left edge and standing in the water -->
+  <rect x="0" y="242" width="132" height="12" rx="2" fill="#8b7355"/>
+  <rect x="16" y="254" width="11" height="86" fill="#6b5a45"/><rect x="100" y="254" width="11" height="86" fill="#6b5a45"/>
+  <rect x="16" y="276" width="95" height="5" fill="#6b5a45" opacity="0.8"/>
+  <!-- extinguisher within reach -->
+  <g transform="translate(34,216)"><rect x="-9" y="0" width="18" height="26" rx="4" fill="#c0392b" stroke="#7b241c" stroke-width="1.5"/><rect x="-3" y="-6" width="6" height="7" fill="#7b241c"/><path d="M3 -3 L13 -8" stroke="#7b241c" stroke-width="2.5"/></g>
+  <text x="62" y="200" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מטף בהישג יד</text>
+  <text x="150" y="128" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">אוורר את תא המנוע לפני התנעה</text>
+  <!-- no naked flame / no smoking -->
+  <g transform="translate(150,168)">
+    <circle r="25" fill="none" stroke="#e74c3c" stroke-width="5"/>
+    <rect x="-13" y="-4" width="21" height="8" rx="2" fill="#fff"/><rect x="9" y="-4" width="5" height="8" rx="2" fill="#e67e22"/>
+    <line x1="-18" y1="18" x2="18" y2="-18" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="258" y="164" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="700">אסור עישון</text>
+  <text x="258" y="181" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="700">ואש גלויה</text>
+  <!-- hose from the dock to the filler -->
+  <path d="M126 250 Q182 250 232 268" fill="none" stroke="#2c3e50" stroke-width="5" stroke-linecap="round"/>
+  <rect x="228" y="264" width="12" height="8" rx="2" fill="#95a5a6"/>
+  <!-- the craft alongside -->
+  ${sideJetSki(248, 282, '#f1c40f', '#c8a000', 0.95)}
+  <text x="250" y="312" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">כבה מנוע לפני תדלוק</text>
+`,
 'משולש האש': `
   <rect width="360" height="420" fill="#0a1020"/>
   <circle cx="46" cy="130" r="1" fill="white" opacity=".35"/><circle cx="316" cy="140" r="1.2" fill="white" opacity=".3"/>
@@ -1846,6 +1873,46 @@ const BLAST_DUR = { L: 2.0, S: 1.0 };
 const BLAST_GAP = 1.0;
 
 // ── Boat drawing helpers ─────────────────────────────────────────────────────
+function sideJetSki(cx, by, color, dk, s) {
+  // Personal watercraft, bow→right, by=waterline. s scales around (cx,by).
+  color = color || '#f1c40f'; dk = dk || '#c8a000'; s = s || 1;
+  const p = (x, y) => `${cx + x * s},${by + y * s}`;
+  // Proportions measured off a side-on photo of a runabout PWC, normalised to
+  // a 100-unit length: deep hull, tall lifted bow, long saddle, and handlebars
+  // forward of centre with the storage hood ahead of them.
+  return `
+  <g>
+  <!-- Stern boarding platform -->
+  <path d="M${p(-57,-1)} L${p(-44,-3)} L${p(-44,3)} L${p(-55,2)} Z" fill="${dk}" opacity=".85"/>
+  <!-- Hull: deck line aft, rising to a tall bow, keel sweeping up at both ends -->
+  <path d="M${p(-46,-8)} L${p(34,-8)} Q${p(47,-9)} ${p(50,-13)}
+           Q${p(51,-3)} ${p(43,3)} Q${p(26,8)} ${p(-6,8)}
+           Q${p(-32,8)} ${p(-42,3)} Z"
+        fill="${color}" stroke="${dk}" stroke-width="${1.6 * s}" stroke-linejoin="round"/>
+  <!-- Waterline shading on the submerged part -->
+  <path d="M${p(-43,0)} L${p(46,0)} Q${p(26,8)} ${p(-6,8)} Q${p(-32,8)} ${p(-42,3)} Z"
+        fill="${dk}" opacity=".45"/>
+  <!-- Rubbing strake along the hull -->
+  <path d="M${p(-45,-4)} L${p(44,-5)}" stroke="${dk}" stroke-width="${1.5 * s}" opacity=".8"/>
+  <!-- Saddle: long, from the stern deck forward to the console -->
+  <path d="M${p(-40,-8)} Q${p(-40,-15)} ${p(-34,-18)} Q${p(-22,-21)} ${p(-8,-20)}
+           Q${p(3,-19)} ${p(10,-14)} L${p(12,-8)} Z"
+        fill="#2c3e50" stroke="#1a2530" stroke-width="${1.3 * s}" stroke-linejoin="round"/>
+  <!-- Front hood / storage, ahead of the rider, sloping to the bow -->
+  <path d="M${p(10,-14)} L${p(12,-21)} Q${p(20,-23)} ${p(30,-21)} Q${p(41,-19)} ${p(47,-12)}
+           L${p(46,-9)} Q${p(30,-11)} ${p(11,-12)} Z"
+        fill="${color}" stroke="${dk}" stroke-width="${1.4 * s}" stroke-linejoin="round"/>
+  <path d="M${p(30,-20)} Q${p(40,-18)} ${p(45,-13)}" fill="none" stroke="#fff" stroke-width="${1.6 * s}" opacity=".35"/>
+  <!-- Handlebars, sitting just aft of the hood -->
+  <path d="M${p(11,-26)} L${p(11,-17)}" stroke="#2c3e50" stroke-width="${2.4 * s}"/>
+  <path d="M${p(4,-26)} L${p(17,-27)}" stroke="#2c3e50" stroke-width="${3 * s}" stroke-linecap="round"/>
+  <circle cx="${cx + 3 * s}" cy="${by + -26 * s}" r="${2.6 * s}" fill="#1a2530"/>
+  <circle cx="${cx + 18 * s}" cy="${by + -27 * s}" r="${2.6 * s}" fill="#1a2530"/>
+  <!-- Jet nozzle -->
+  <rect x="${cx + -50 * s}" y="${by + -6 * s}" width="${7 * s}" height="${7 * s}" rx="${1.5 * s}" fill="#7f8c8d"/>
+  </g>`;
+}
+
 function sideBoat(cx, by, color, dk) {
   // Pilothouse motorboat, bow→right, stern (motor)→left. by=waterline.
   return `
