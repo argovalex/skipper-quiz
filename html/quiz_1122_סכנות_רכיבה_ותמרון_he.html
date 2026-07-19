@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="he"><head><meta charset="UTF-8">
-<title>Skipper Quiz #1120 — אופנוע ים - כללי</title>
+<title>Skipper Quiz #1122 — סכנות רכיבה ותמרון</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -29,39 +29,53 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
     
     <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
       
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="20" y="20" width="320" height="230" rx="8" fill="#0d2040" stroke="#2a4a6a" stroke-width="1.5"/>
-  <line x1="20" y1="135" x2="340" y2="135" stroke="#1e3a5a" stroke-width="1"/>
-  <line x1="180" y1="20" x2="180" y2="250" stroke="#1e3a5a" stroke-width="1"/>
-  <text x="180" y="40" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°N</text>
-  <text x="180" y="248" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°S</text>
-  <text x="25" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°W</text>
-  <text x="310" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°E</text>
-  <path d="M20,100 Q90,90 180,100 Q270,110 340,100" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,135 Q340,135 340,135" fill="none" stroke="#3a80b8" stroke-width="2"/>
-  <path d="M20,170 Q90,180 180,170 Q270,160 340,170" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,55 Q90,48 180,55 Q270,62 340,55" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <path d="M20,215 Q90,222 180,215 Q270,208 340,215" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <line x1="110" y1="20" x2="110" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <line x1="250" y1="20" x2="250" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <circle cx="180" cy="135" r="5" fill="#4a90d9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="180" cy="135" r="12" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M180,135 L230,85" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="235" y="82" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">B</text>
-  <text x="162" y="152" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">A</text>
-  <g transform="translate(20,265)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קורס: </text>
-    <text x="52" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">045°M</text>
-    <text x="120" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מהירות: </text>
-    <text x="178" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">6.2 kn</text>
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גלים גבוהים מהצד</text>
+
+  <!-- water, with the beam wave stacked up on the right -->
+  <path d="M0 420 L0 300 Q80 296 150 302 Q220 308 268 268 Q292 246 312 232
+           Q336 250 360 268 L360 420 Z" fill="#1a5276"/>
+  <path d="M312 232 Q330 246 344 262 Q324 252 308 254 Q306 242 312 232 Z" fill="#eaf4fb" opacity=".85"/>
+  <g opacity="0.12"><path d="M0 350 Q90 344 180 350 Q270 356 360 352" fill="none" stroke="white" stroke-width="1.5"/></g>
+
+  <!-- the craft end-on, already heeled away from the wave -->
+  <g transform="translate(168,296) rotate(-32)">
+    
+  <g>
+  <!-- hull below the waterline -->
+  <path d="M-33.6,-8.4 L33.6,-8.4 Q30.450000000000003,12.600000000000001 0,17.85 Q-30.450000000000003,12.600000000000001 -33.6,-8.4 Z"
+        fill="#c8a000" stroke="#8a7000" stroke-width="1.6800000000000002" stroke-linejoin="round"/>
+  <!-- deck / gunwales -->
+  <path d="M-35.7,-8.4 L35.7,-8.4 L31.5,-18.900000000000002 L-31.5,-18.900000000000002 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="1.6800000000000002" stroke-linejoin="round"/>
+  <!-- saddle -->
+  <rect x="-13.65" y="-26.25" width="27.3" height="8.4"
+        rx="3.1500000000000004" fill="#2c3e50"/>
+  <!-- handlebars seen end-on -->
+  <path d="M-15.75,-35.7 L15.75,-35.7" stroke="#2c3e50" stroke-width="3.1500000000000004" stroke-linecap="round"/>
+  <!-- rider: torso, arms out to the bars, helmeted head. Kept tall relative to
+       the hull — at true end-on proportions the figure reads as a stub. -->
+  <path d="M0,-27.3 L0,-52.5" stroke="#2980b9" stroke-width="14.700000000000001" stroke-linecap="round"/>
+  <path d="M0,-46.2 L-15.75,-36.75" stroke="#2980b9" stroke-width="5.775" stroke-linecap="round"/>
+  <path d="M0,-46.2 L15.75,-36.75" stroke="#2980b9" stroke-width="5.775" stroke-linecap="round"/>
+  <path d="M0,-30.450000000000003 L0,-49.35" stroke="#f4d03f" stroke-width="10.5" stroke-linecap="round" opacity=".92"/>
+  <circle cx="0" cy="-63" r="9.975" fill="#f5cba7"/>
+  <path d="M-9.975,-64.05 A9.975,9.975 0 0 1 9.975,-64.05 L9.975,-67.2 L-9.975,-67.2 Z" fill="#2980b9"/>
   </g>
-  <g transform="translate(20,290)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">N </text>
-    <text x="14" y="15" fill="#fff" font-size="11" font-family="Arial">32°04.5'</text>
-    <text x="105" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">E </text>
-    <text x="118" y="15" fill="#fff" font-size="11" font-family="Arial">34°46.2'</text>
   </g>
-  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט על מפת מרקטור</text>
+
+  <!-- the wave shoving the hull from the side -->
+  <path d="M268 272 L222 288" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M222 288 L233 284 L232 294 Z" fill="#e74c3c"/>
+
+  <!-- roll arrow over the top -->
+  <path d="M212 198 A50 50 0 0 0 128 220" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <path d="M128 220 L139 217 L134 227 Z" fill="#e74c3c"/>
+
+  <text x="180" y="176" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Heebo,sans-serif" font-weight="900">סכנת התהפכות</text>
+
+  <text x="284" y="316" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הגל בא מהצד</text>
+  <text x="180" y="338" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט וקבל את הגלים באלכסון</text>
 
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
@@ -73,15 +87,15 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
   </div>
   <div id="ftr">
     <div class="ql" id="ql">❓ השאלה</div>
-    <div class="qt" id="qt">למה עלול לגרום מעבר האופנוע בגלי חוף בעל מהירות גבוהה מדי?</div>
-    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>לאיבוד השליטה באופנוע הים כתוצאה מהנפילה לאחר מעבר הגל.</div><div class="opt" id="o1"><div class="ltr">ב</div>לירידה נוחה מהגל.</div><div class="opt" id="o2"><div class="ltr">ג</div>לתמרון טוב יותר של האופנוע כתוצאה מהמהירות הנצברת.</div><div class="opt" id="o3"><div class="ltr">ד</div>כל התשובות נכונות.</div></div>
+    <div class="qt" id="qt">מה הסכנה בהפלגה במהירות גבוהה כאשר באים גלים גבוהים מהצד?</div>
+    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>הנוהג יכול ליפול לים.</div><div class="opt" id="o1"><div class="ltr">ב</div>הנוסע יכול ליפול לים.</div><div class="opt" id="o2"><div class="ltr">ג</div>הנוסע מאחור יכול להחליק קדימה.</div><div class="opt" id="o3"><div class="ltr">ד</div>סכנת ההתהפכות של האופנוע.</div></div>
   </div>
 </div>
 <script>
-const C=0;
-const OPTS=["א. לאיבוד השליטה באופנוע הים כתוצאה מהנפילה לאחר מעבר הגל.","ב. לירידה נוחה מהגל.","ג. לתמרון טוב יותר של האופנוע כתוצאה מהמהירות הנצברת.","ד. כל התשובות נכונות."];
-const Q="למה עלול לגרום מעבר האופנוע בגלי חוף בעל מהירות גבוהה מדי?";
-const E="מעבר גלי חוף במהירות גבוהה גורם לנפילה מהגל ואיבוד שליטה מוחלט באופנוע.";
+const C=3;
+const OPTS=["א. הנוהג יכול ליפול לים.","ב. הנוסע יכול ליפול לים.","ג. הנוסע מאחור יכול להחליק קדימה.","ד. סכנת ההתהפכות של האופנוע."];
+const Q="מה הסכנה בהפלגה במהירות גבוהה כאשר באים גלים גבוהים מהצד?";
+const E="גלים גבוהים מהצד במהירות גבוהה יוצרים מומנט שעלול להפוך את האופנוע.";
 const LT=["א","ב","ג","ד"];
 
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)

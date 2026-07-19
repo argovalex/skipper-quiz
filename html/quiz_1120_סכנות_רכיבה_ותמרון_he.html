@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he"><head><meta charset="UTF-8">
+<title>Skipper Quiz #1120 — סכנות רכיבה ותמרון</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
+.htitle{color:#fff;font-size:18px;font-weight:900}
+#scene{flex:1;position:relative;overflow:hidden}
+#ftr{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.ql{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.qt{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.opt.correct .ltr{background:#2ecc71;color:#0d3d2a}
+.opt.wrong{background:#3d1a1a;border-color:#e74c3c;color:#e74c3c}
+.opt.wrong .ltr{background:#e74c3c;color:#fff}
+.opt.dim{opacity:0.3}
+#prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+</style></head><body>
+<div id="reel">
+  <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
+  <div id="scene">
+    
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
+      
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גלי חוף במהירות גבוהה מדי</text>
+
+  <!-- the sea, with one steep shore wave the craft has just cleared -->
+  <path d="M0 420 L0 322 Q52 320 96 300 Q126 286 150 250 Q168 276 200 296
+           Q246 320 300 318 Q334 317 360 320 L360 420 Z" fill="#1a5276"/>
+  <path d="M150 250 Q160 266 176 280 Q160 274 150 276 Q142 262 150 250 Z" fill="#eaf4fb" opacity=".85"/>
+  <g opacity="0.12">
+    <path d="M206 348 Q268 342 360 346" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 372 Q90 366 180 372 Q270 378 360 372" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+
+  <!-- flight path off the crest down to the slam -->
+  <path d="M158 244 Q212 200 268 262" fill="none" stroke="#e74c3c" stroke-width="2"
+        stroke-dasharray="6 5" opacity=".8"/>
+
+  <!-- airborne, bow already dropping -->
+  <g transform="translate(258,250) rotate(30)">
+    
+  <g>
+  <!-- Stern boarding platform -->
+  <path d="M-45.6,-0.8 L-35.2,-2.4000000000000004 L-35.2,2.4000000000000004 L-44,1.6 Z" fill="#c8a000" opacity=".85"/>
+  <!-- Hull: deck line aft, rising to a tall bow, keel sweeping up at both ends -->
+  <path d="M-36.800000000000004,-6.4 L27.200000000000003,-6.4 Q37.6,-7.2 40,-10.4
+           Q40.800000000000004,-2.4000000000000004 34.4,2.4000000000000004 Q20.8,6.4 -4.800000000000001,6.4
+           Q-25.6,6.4 -33.6,2.4000000000000004 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="1.2800000000000002" stroke-linejoin="round"/>
+  <!-- Waterline shading on the submerged part -->
+  <path d="M-34.4,0 L36.800000000000004,0 Q20.8,6.4 -4.800000000000001,6.4 Q-25.6,6.4 -33.6,2.4000000000000004 Z"
+        fill="#c8a000" opacity=".45"/>
+  <!-- Rubbing strake along the hull -->
+  <path d="M-36,-3.2 L35.2,-4" stroke="#c8a000" stroke-width="1.2000000000000002" opacity=".8"/>
+  <!-- Saddle: long, from the stern deck forward to the console -->
+  <path d="M-32,-6.4 Q-32,-12 -27.200000000000003,-14.4 Q-17.6,-16.8 -6.4,-16
+           Q2.4000000000000004,-15.200000000000001 8,-11.200000000000001 L9.600000000000001,-6.4 Z"
+        fill="#2c3e50" stroke="#1a2530" stroke-width="1.04" stroke-linejoin="round"/>
+  <!-- Front hood / storage, ahead of the rider, sloping to the bow -->
+  <path d="M8,-11.200000000000001 L9.600000000000001,-16.8 Q16,-18.400000000000002 24,-16.8 Q32.800000000000004,-15.200000000000001 37.6,-9.600000000000001
+           L36.800000000000004,-7.2 Q24,-8.8 8.8,-9.600000000000001 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="1.1199999999999999" stroke-linejoin="round"/>
+  <path d="M24,-16 Q32,-14.4 36,-10.4" fill="none" stroke="#fff" stroke-width="1.2800000000000002" opacity=".35"/>
+  <!-- Handlebars, sitting just aft of the hood -->
+  <path d="M8.8,-20.8 L8.8,-13.600000000000001" stroke="#2c3e50" stroke-width="1.92"/>
+  <path d="M3.2,-20.8 L13.600000000000001,-21.6" stroke="#2c3e50" stroke-width="2.4000000000000004" stroke-linecap="round"/>
+  <circle cx="2.4000000000000004" cy="-20.8" r="2.08" fill="#1a2530"/>
+  <circle cx="14.4" cy="-21.6" r="2.08" fill="#1a2530"/>
+  <!-- Jet nozzle -->
+  <rect x="-40" y="-4.800000000000001" width="5.6000000000000005" height="5.6000000000000005" rx="1.2000000000000002" fill="#7f8c8d"/>
+  </g>
+    
+  <g>
+  <!-- rear leg, drawn first so the torso overlaps it -->
+  <path d="M-2,-17.56 L8.92,-16.78 L9.700000000000001,-6.640000000000001"
+        fill="none" stroke="#1f2f3f" stroke-width="5.07" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+  <!-- torso -->
+  <path d="M-2,-17.56 L1.9000000000000004,-36.28" fill="none" stroke="#2980b9"
+        stroke-width="10.14" stroke-linecap="round"/>
+  <!-- lifejacket over the torso, kept narrower than the torso so the kit colour
+       still reads at the edges — the kit is what tells the two riders apart -->
+  <path d="M-2.7800000000000002,-23.02 L1.315,-33.94" fill="none" stroke="#f4d03f"
+        stroke-width="6.24" stroke-linecap="round" opacity=".92"/>
+  <!-- front leg -->
+  <path d="M-2,-17.56 L10.48,-17.56 L11.26,-6.640000000000001"
+        fill="none" stroke="#2c3e50" stroke-width="5.46" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- arm reaching for the bars, or flung up -->
+  <path d="M1.9000000000000004,-36.28 L13.600000000000001,-20.68" fill="none" stroke="#2980b9"
+        stroke-width="4.29" stroke-linecap="round"/>
+  <!-- head, helmet and visor -->
+  <circle cx="5.0200000000000005" cy="-42.519999999999996" r="5.8500000000000005" fill="#f5cba7"/>
+  <path d="M-1.22,-43.3 A6.24,6.24 0 0 1 11.26,-43.3 L11.26,-44.86 L-1.22,-44.86 Z"
+        fill="#2980b9" opacity=".95"/>
+  <circle cx="5.0200000000000005" cy="-43.3" r="6.24"
+          fill="none" stroke="#2980b9" stroke-width="2.34" stroke-dasharray="19.5 78"/>
+  </g>
+  </g>
+
+  <!-- impact burst where it comes down -->
+  <g opacity=".8">
+    <path d="M282 292 L288 276" stroke="#eaf4fb" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M296 296 L306 284" stroke="#eaf4fb" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M270 296 L264 282" stroke="#eaf4fb" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <text x="96" y="182" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">עובר את הגל</text>
+  <text x="96" y="198" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מהר מדי</text>
+
+  <text x="272" y="176" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">נופל אחרי הגל</text>
+  <text x="272" y="192" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">ומאבד שליטה</text>
+
+  <text x="180" y="336" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט לפני גלי החוף</text>
+
+      <g id="ov" opacity="0">
+        <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
+        <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
+      </g>
+      <text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>
+    </svg>
+    <div id="prog"></div>
+  </div>
+  <div id="ftr">
+    <div class="ql" id="ql">❓ השאלה</div>
+    <div class="qt" id="qt">למה עלול לגרום מעבר האופנוע בגלי חוף בעל מהירות גבוהה מדי?</div>
+    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>לאיבוד השליטה באופנוע הים כתוצאה מהנפילה לאחר מעבר הגל.</div><div class="opt" id="o1"><div class="ltr">ב</div>לירידה נוחה מהגל.</div><div class="opt" id="o2"><div class="ltr">ג</div>לתמרון טוב יותר של האופנוע כתוצאה מהמהירות הנצברת.</div><div class="opt" id="o3"><div class="ltr">ד</div>כל התשובות נכונות.</div></div>
+  </div>
+</div>
+<script>
+const C=0;
+const OPTS=["א. לאיבוד השליטה באופנוע הים כתוצאה מהנפילה לאחר מעבר הגל.","ב. לירידה נוחה מהגל.","ג. לתמרון טוב יותר של האופנוע כתוצאה מהמהירות הנצברת.","ד. כל התשובות נכונות."];
+const Q="למה עלול לגרום מעבר האופנוע בגלי חוף בעל מהירות גבוהה מדי?";
+const E="מעבר גלי חוף במהירות גבוהה גורם לנפילה מהגל ואיבוד שליטה מוחלט באופנוע.";
+const LT=["א","ב","ג","ד"];
+
+// AUTO-PLAY MODE — countdown then reveal (for screen recording)
+// Gated behind window.__startAutoPlay() instead of running on page load, so the
+// recorder (Puppeteer) can fire it the instant the screencast actually starts —
+// otherwise the timer head-starts before recording begins and drifts out of sync
+// with the audio track (which assumes recording-start == t=0).
+window.__startAutoPlay = function(){
+const prog=document.getElementById('prog');
+const DELAY=15000;
+prog.style.transition='none';prog.style.width='0%';
+setTimeout(()=>{prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);
+setTimeout(()=>{
+  document.querySelectorAll('.opt').forEach((o,j)=>{
+    o.style.transition='all 0.6s';
+    if(j===C)o.classList.add('correct'); else o.classList.add('dim');
+  });
+  const ov=document.getElementById('ov');
+  const txt=document.getElementById('ovText');
+  const rect=ov.querySelector('rect');
+  txt.textContent='✅ תשובה נכונה!';txt.setAttribute('fill','#2ecc71');
+  rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');
+  ov.setAttribute('opacity','1');
+  setTimeout(()=>{
+    document.getElementById('ql').textContent='✅ התשובה הנכונה:';
+    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
+    // Second countdown — next card (loop for batch recording)
+    const prog2=document.getElementById('prog');
+    prog2.style.transition='none';prog2.style.width='0%';
+    setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
+  },600);
+},DELAY+50);
+};
+
+
+</script></body></html>
