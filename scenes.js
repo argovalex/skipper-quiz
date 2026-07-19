@@ -1498,7 +1498,7 @@ SCENES_QA['mob_approach'] = `
 // scene's vertical safe band (the SVG is drawn with preserveAspectRatio slice,
 // which crops ~65 viewBox units off the top and bottom). Before shrinking, the
 // north/south vessels' yellow highlight circles fell outside the frame.
-const CR_CX = 180, CR_CY = 210, CR_R_TIP = 44, CR_R_BASE = 92, CR_R_LABEL = 108;
+const CR_CX = 180, CR_CY = 210, CR_R_TIP = 37, CR_R_BASE = 76, CR_R_LABEL = 88;
 const CR_LETTERS = 'ABCDEFGHIJKLMNOP'.split('');
 function crPos(angleDeg, radius) {
   const rad = (angleDeg - 90) * Math.PI / 180;
@@ -1520,7 +1520,7 @@ function crVessel(letter) {
 }
 function crHighlight(letter) {
   const p = crPos(CR_LETTERS.indexOf(letter) * 22.5, CR_R_LABEL);
-  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="22" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="18;24;18" dur="1.4s" repeatCount="indefinite"/></circle>`;
+  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="17" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle>`;
 }
 function crBowLine(letter, color) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, flip = letter === 'E' || letter === 'I';
@@ -1572,7 +1572,7 @@ function crDayShape(letter, shapeIds, withBall) {
   const ids = (Array.isArray(shapeIds) ? shapeIds : [shapeIds]).filter(id => CR_SHAPES[id]);
   if (!ids.length && !withBall) return '';
   const angle = CR_LETTERS.indexOf(letter) * 22.5;
-  const shapeR = CR_R_TIP - 22;
+  const shapeR = CR_R_TIP - 17;
   const p = crPos(angle, shapeR);
   const rows = ids.length + (withBall ? 1 : 0);
   const rowH = 36;
@@ -1655,7 +1655,7 @@ function generateCompassRoseScene(qText) {
     const SR=6, LW=30, LH=12, GAP=6, PAD=8;
     const contentW = signalPattern.reduce((s,b) => s + (b==='L' ? LW : SR*2), 0) + GAP*(signalPattern.length-1);
     const boxW = Math.max(contentW + PAD*2, 62);
-    const BX=16, BY=70, BH=36, LY=BY+13, SY=BY+26;
+    const BX=16, BY=104, BH=34, LY=BY+12, SY=BY+25;
     let sx = BX + (boxW - contentW)/2;
     svg += `<rect x="${BX}" y="${BY}" width="${boxW.toFixed(0)}" height="${BH}" rx="6" fill="#0c1a3a" stroke="#e74c3c" stroke-width="1"/>`;
     svg += `<text x="${(BX+boxW/2).toFixed(0)}" y="${LY}" text-anchor="middle" fill="#e74c3c" font-size="8" font-family="Heebo,sans-serif">תמונה ${shapeId}</text>`;
