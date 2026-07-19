@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he"><head><meta charset="UTF-8">
+<title>Skipper Quiz #1124 — ניווט</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
+.htitle{color:#fff;font-size:18px;font-weight:900}
+#scene{flex:1;position:relative;overflow:hidden}
+#ftr{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.ql{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.qt{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.opt.correct .ltr{background:#2ecc71;color:#0d3d2a}
+.opt.wrong{background:#3d1a1a;border-color:#e74c3c;color:#e74c3c}
+.opt.wrong .ltr{background:#e74c3c;color:#fff}
+.opt.dim{opacity:0.3}
+#prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+</style></head><body>
+<div id="reel">
+  <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
+  <div id="scene">
+    
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
+      
+  <rect width="360" height="420" fill="#060d18"/>
+  <path d="M0,260 Q180,228 360,260" fill="#0a1a2a" stroke="#2a6aae" stroke-width="2"/>
+  <rect x="0" y="260" width="360" height="80" fill="#0a1a2a"/>
+  <line x1="50" y1="260" x2="50" y2="210" stroke="#f39c12" stroke-width="2.5"/>
+  <circle cx="50" cy="206" r="7" fill="#f39c12"/>
+  <text x="65" y="214" fill="#f39c12" font-size="11" font-family="Arial" font-weight="700">h = 9m</text>
+  <line x1="42" y1="260" x2="58" y2="260" stroke="#f39c12" stroke-width="1.5"/>
+  <line x1="42" y1="210" x2="58" y2="210" stroke="#f39c12" stroke-width="1.5"/>
+  <line x1="50" y1="206" x2="295" y2="242" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <circle cx="295" cy="243" r="6" fill="#2ecc71"/>
+  <text x="300" y="238" fill="#2ecc71" font-size="9" font-family="Heebo,sans-serif">אופק</text>
+  <line x1="50" y1="263" x2="295" y2="263" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="172" y="277" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Arial" font-weight="700">≈ 6.1 NM</text>
+  <rect x="18" y="298" width="324" height="68" rx="8" fill="#0d1e38" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="180" y="318" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">נוסחת מרחק האופק:</text>
+  <text x="180" y="338" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial" font-weight="700">d(NM) = 2.03 × √h(m)</text>
+  <text x="180" y="358" text-anchor="middle" fill="#f39c12" font-size="13" font-family="Arial" font-weight="700">= 2.03 × √9 = 2.03 × 3 ≈ 6.1</text>
+  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">מרחק האופק</text>
+
+      <g id="ov" opacity="0">
+        <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
+        <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
+      </g>
+      <text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>
+    </svg>
+    <div id="prog"></div>
+  </div>
+  <div id="ftr">
+    <div class="ql" id="ql">❓ השאלה</div>
+    <div class="qt" id="qt">באיזה טווח ראות יוכל רוכב אופנוע ים הנמצא בגובה של 1 מטר מעל המים בראות טובה ים שקט לראות אופנוע ים אחר?</div>
+    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>כ-200 מטרים.</div><div class="opt" id="o1"><div class="ltr">ב</div>כ-2 מיל.</div><div class="opt" id="o2"><div class="ltr">ג</div>כ-600 מטרים.</div><div class="opt" id="o3"><div class="ltr">ד</div>כ-8 מיל.</div></div>
+  </div>
+</div>
+<script>
+const C=1;
+const OPTS=["א. כ-200 מטרים.","ב. כ-2 מיל.","ג. כ-600 מטרים.","ד. כ-8 מיל."];
+const Q="באיזה טווח ראות יוכל רוכב אופנוע ים הנמצא בגובה של 1 מטר מעל המים בראות טובה ים שקט לראות אופנוע ים אחר?";
+const E="מגובה של מטר אחד מעל המים, טווח הראייה האפקטי הוא כ-2 מיל בתנאים טובים.";
+const LT=["א","ב","ג","ד"];
+
+// AUTO-PLAY MODE — countdown then reveal (for screen recording)
+// Gated behind window.__startAutoPlay() instead of running on page load, so the
+// recorder (Puppeteer) can fire it the instant the screencast actually starts —
+// otherwise the timer head-starts before recording begins and drifts out of sync
+// with the audio track (which assumes recording-start == t=0).
+window.__startAutoPlay = function(){
+const prog=document.getElementById('prog');
+const DELAY=15000;
+prog.style.transition='none';prog.style.width='0%';
+setTimeout(()=>{prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);
+setTimeout(()=>{
+  document.querySelectorAll('.opt').forEach((o,j)=>{
+    o.style.transition='all 0.6s';
+    if(j===C)o.classList.add('correct'); else o.classList.add('dim');
+  });
+  const ov=document.getElementById('ov');
+  const txt=document.getElementById('ovText');
+  const rect=ov.querySelector('rect');
+  txt.textContent='✅ תשובה נכונה!';txt.setAttribute('fill','#2ecc71');
+  rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');
+  ov.setAttribute('opacity','1');
+  setTimeout(()=>{
+    document.getElementById('ql').textContent='✅ התשובה הנכונה:';
+    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
+    // Second countdown — next card (loop for batch recording)
+    const prog2=document.getElementById('prog');
+    prog2.style.transition='none';prog2.style.width='0%';
+    setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
+  },600);
+},DELAY+50);
+};
+
+
+</script></body></html>
