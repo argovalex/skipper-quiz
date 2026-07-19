@@ -2060,8 +2060,8 @@
     "answer": "ג",
     "answer_confirmed": true,
     "explanation": "רוח דרומית חזקה במפרץ אילת דוחפת את המים צפונה ויוצרת ים סוער בחוף הצפוני.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1093-eilat-south-wind.png",
+    "mediaType": "image",
     "approved_for_publish": false
   },
   {
@@ -2080,8 +2080,8 @@
     "answer": "א",
     "answer_confirmed": true,
     "explanation": "רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שקט.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1094-eilat-north-wind.png",
+    "mediaType": "image",
     "approved_for_publish": false
   },
   {
@@ -2100,8 +2100,8 @@
     "answer": "א",
     "answer_confirmed": true,
     "explanation": "מפרץ אילת צר ומוארך מצפון לדרום, וחופי הרחצה נמצאים בקצה הצפוני שלו. רוח מזרחית מנשבת מהיבשה שממזרח (ירדן, עקבה) לעבר המים, ולכן היא סוחפת מערבה, לכיוון בסיס חיל הים שנמצא בצד המערבי של המפרץ הצפוני. הסכנה כאן אינה הים הסוער אלא ההיסחפות לאזור סגור וצבאי. שים לב לכיוונים: החוף הצפוני חשוף לרוח דרומית שנושבת לאורך המפרץ וצוברת מרחק גלים, ולכן רוח דרומית היא זו שעושה אותו סוער. רוח מזרחית חוצה את המפרץ לרוחבו הצר ואינה בונה גלים משמעותיים.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1095-eilat-east-wind.png",
+    "mediaType": "image",
     "approved_for_publish": false
   },
   {
@@ -3146,8 +3146,8 @@
     "answer": "ב",
     "answer_confirmed": true,
     "explanation": "רוח דרום-מערבית מתחזקת - יש לחזור לנקודת המוצא (צפונה) כי הרוח והגלים יעזרו.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1145-carmel-tow.png",
+    "mediaType": "image",
     "approved_for_publish": false
   },
   {
@@ -3166,8 +3166,8 @@
     "answer": "ג",
     "answer_confirmed": true,
     "explanation": "רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1146-tlv-tow.png",
+    "mediaType": "image",
     "approved_for_publish": false
   },
   {
