@@ -1494,7 +1494,11 @@ SCENES_QA['mob_approach'] = `
 `;
 
 // ── Compass Rose (שושנה) for license-11 questions ────────────────────────────
-const CR_CX = 180, CR_CY = 210, CR_R_TIP = 55, CR_R_BASE = 120, CR_R_LABEL = 140;
+// Radii shrunk so the outermost labels + pulsing highlight stay inside the
+// scene's vertical safe band (the SVG is drawn with preserveAspectRatio slice,
+// which crops ~65 viewBox units off the top and bottom). Before shrinking, the
+// north/south vessels' yellow highlight circles fell outside the frame.
+const CR_CX = 180, CR_CY = 210, CR_R_TIP = 44, CR_R_BASE = 92, CR_R_LABEL = 108;
 const CR_LETTERS = 'ABCDEFGHIJKLMNOP'.split('');
 function crPos(angleDeg, radius) {
   const rad = (angleDeg - 90) * Math.PI / 180;
@@ -1516,7 +1520,7 @@ function crVessel(letter) {
 }
 function crHighlight(letter) {
   const p = crPos(CR_LETTERS.indexOf(letter) * 22.5, CR_R_LABEL);
-  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="26" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="20;28;20" dur="1.4s" repeatCount="indefinite"/></circle>`;
+  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="22" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="18;24;18" dur="1.4s" repeatCount="indefinite"/></circle>`;
 }
 function crBowLine(letter, color) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, flip = letter === 'E' || letter === 'I';
@@ -1568,7 +1572,7 @@ function crDayShape(letter, shapeIds, withBall) {
   const ids = (Array.isArray(shapeIds) ? shapeIds : [shapeIds]).filter(id => CR_SHAPES[id]);
   if (!ids.length && !withBall) return '';
   const angle = CR_LETTERS.indexOf(letter) * 22.5;
-  const shapeR = CR_R_TIP - 32;
+  const shapeR = CR_R_TIP - 22;
   const p = crPos(angle, shapeR);
   const rows = ids.length + (withBall ? 1 : 0);
   const rowH = 36;
@@ -1642,23 +1646,25 @@ function generateCompassRoseScene(qText) {
   const shapeId = shapeIds[0] || null;
   const hasShape = shapeIds.some(id => CR_SHAPES[id]) || withBall;
   const signalPattern = shapeId && SIGNAL_IMAGES[shapeId];
-  const headerText = hasShape
-    ? `${observer} מבחין ב-${target} המציג סימן יום`
-    : `${observer} ו-${target} — מיקום על השושנה`;
-  svg += `<rect x="30" y="18" width="300" height="30" rx="6" fill="#0c1a3a" stroke="#7eb8f7" stroke-width="1"/>`;
-  svg += `<text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">${headerText}</text>`;
+  // The in-SVG caption was dropped: it duplicated the footer question and lived
+  // in the cropped top band anyway. The signal pattern moves up into the safe
+  // band (was SY=385, below the crop line and invisible).
   if (signalPattern) {
-    const SR=7, LW=36, LH=14, GAP=8, SY=385;
-    const totalW = signalPattern.reduce((s,b) => s + (b==='L' ? LW : SR*2), 0) + GAP*(signalPattern.length-1);
-    let sx = 180 - totalW/2;
-    svg += `<rect x="30" y="${SY-18}" width="300" height="32" rx="6" fill="#0c1a3a" stroke="#e74c3c" stroke-width="1"/>`;
-    svg += `<text x="180" y="${SY-6}" text-anchor="middle" fill="#e74c3c" font-size="8" font-family="Heebo,sans-serif">תמונה ${shapeId}</text>`;
+    // Compact box wrapping its own content, anchored top-left where the rose
+    // leaves a corner free, so it never collides with the north vessel.
+    const SR=6, LW=30, LH=12, GAP=6, PAD=8;
+    const contentW = signalPattern.reduce((s,b) => s + (b==='L' ? LW : SR*2), 0) + GAP*(signalPattern.length-1);
+    const boxW = Math.max(contentW + PAD*2, 62);
+    const BX=16, BY=70, BH=36, LY=BY+13, SY=BY+26;
+    let sx = BX + (boxW - contentW)/2;
+    svg += `<rect x="${BX}" y="${BY}" width="${boxW.toFixed(0)}" height="${BH}" rx="6" fill="#0c1a3a" stroke="#e74c3c" stroke-width="1"/>`;
+    svg += `<text x="${(BX+boxW/2).toFixed(0)}" y="${LY}" text-anchor="middle" fill="#e74c3c" font-size="8" font-family="Heebo,sans-serif">תמונה ${shapeId}</text>`;
     signalPattern.forEach(b => {
       if (b==='L') {
-        svg += `<rect x="${sx}" y="${SY-1}" width="${LW}" height="${LH}" rx="3" fill="#e74c3c"/>`;
+        svg += `<rect x="${sx.toFixed(1)}" y="${SY-LH/2}" width="${LW}" height="${LH}" rx="3" fill="#e74c3c"/>`;
         sx += LW + GAP;
       } else {
-        svg += `<circle cx="${sx+SR}" cy="${SY+LH/2-1}" r="${SR}" fill="#e74c3c"/>`;
+        svg += `<circle cx="${(sx+SR).toFixed(1)}" cy="${SY}" r="${SR}" fill="#e74c3c"/>`;
         sx += SR*2 + GAP;
       }
     });
