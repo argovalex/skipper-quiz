@@ -6,6 +6,32 @@ const LETTERS_EN = ['A','B','C','D'];
 
 // ── Scenes SVG ─────────────────────────────────────────────────────────────
 const SCENES = {
+'משולש האש': `
+  <rect width="360" height="420" fill="#0a1020"/>
+  <circle cx="46" cy="130" r="1" fill="white" opacity=".35"/><circle cx="316" cy="140" r="1.2" fill="white" opacity=".3"/>
+  <!-- glow behind the triangle -->
+  <circle cx="180" cy="222" r="96" fill="#e74c3c" opacity="0.07"/>
+  <circle cx="180" cy="222" r="64" fill="#f39c12" opacity="0.08"/>
+  <!-- the triangle: heat / oxygen / fuel -->
+  <path d="M180 145 L255 275 L105 275 Z" fill="none" stroke="#e74c3c" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M180 145 L105 275" fill="none" stroke="#e74c3c" stroke-width="5"/>
+  <path d="M105 275 L255 275" fill="none" stroke="#f39c12" stroke-width="5"/>
+  <path d="M180 145 L255 275" fill="none" stroke="#3498db" stroke-width="5"/>
+  <!-- flame in the middle -->
+  <path d="M180 196 Q196 216 190 234 Q186 246 180 250 Q174 246 170 234 Q164 216 180 196 Z" fill="#f39c12"/>
+  <path d="M180 214 Q188 226 184 238 Q182 244 180 246 Q178 244 176 238 Q172 226 180 214 Z" fill="#ffe27a"/>
+  <!-- side labels, kept outside the triangle -->
+  <text x="80" y="200" text-anchor="middle" fill="#e74c3c" font-size="15" font-family="Heebo,sans-serif" font-weight="900">חום</text>
+  <text x="286" y="196" text-anchor="middle" fill="#3498db" font-size="15" font-family="Heebo,sans-serif" font-weight="900">חמצן</text>
+  <text x="180" y="297" text-anchor="middle" fill="#f39c12" font-size="15" font-family="Heebo,sans-serif" font-weight="900">חומר בעירה</text>
+  <!-- the extinguisher cuts the oxygen side -->
+  <g transform="translate(217,210) rotate(60)">
+    <line x1="-21" y1="0" x2="21" y2="0" stroke="#0a1020" stroke-width="9" stroke-linecap="round"/>
+    <line x1="-21" y1="0" x2="21" y2="0" stroke="#2ecc71" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+  <text x="286" y="216" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">המטף מנתק</text>
+  <text x="180" y="134" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" opacity="0.9">די לנתק צלע אחת</text>
+`,
 'אזורי שיט': `
   <rect width="360" height="420" fill="#1a5276"/>
   <g opacity="0.12"><path d="M0 70 Q90 60 180 70 Q270 80 360 70" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 170 Q90 160 180 170 Q270 180 360 170" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 270 Q90 260 180 270 Q270 280 360 270" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 370 Q90 360 180 370 Q270 380 360 370" fill="none" stroke="white" stroke-width="1.5"/></g>
