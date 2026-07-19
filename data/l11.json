@@ -2062,7 +2062,9 @@
     "explanation": "רוח דרומית חזקה במפרץ אילת דוחפת את המים צפונה ויוצרת ים סוער בחוף הצפוני.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1093-eilat-south-wind.png",
     "mediaType": "image",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784452369/skipper-quiz/eglqm3konessqdebkigm.mp4",
+    "rendered_at": "2026-07-19T09:12:50.122Z"
   },
   {
     "num": 1094,
@@ -2082,7 +2084,9 @@
     "explanation": "רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שקט.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1094-eilat-north-wind.png",
     "mediaType": "image",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784452407/skipper-quiz/dzgokwtnpbov5aoupf8w.mp4",
+    "rendered_at": "2026-07-19T09:13:28.054Z"
   },
   {
     "num": 1095,
@@ -2102,7 +2106,9 @@
     "explanation": "מפרץ אילת צר ומוארך מצפון לדרום, וחופי הרחצה נמצאים בקצה הצפוני שלו. רוח מזרחית מנשבת מהיבשה שממזרח (ירדן, עקבה) לעבר המים, ולכן היא סוחפת מערבה, לכיוון בסיס חיל הים שנמצא בצד המערבי של המפרץ הצפוני. הסכנה כאן אינה הים הסוער אלא ההיסחפות לאזור סגור וצבאי. שים לב לכיוונים: החוף הצפוני חשוף לרוח דרומית שנושבת לאורך המפרץ וצוברת מרחק גלים, ולכן רוח דרומית היא זו שעושה אותו סוער. רוח מזרחית חוצה את המפרץ לרוחבו הצר ואינה בונה גלים משמעותיים.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1095-eilat-east-wind.png",
     "mediaType": "image",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784452490/skipper-quiz/nyblfsykraggxswxemaf.mp4",
+    "rendered_at": "2026-07-19T09:14:51.772Z"
   },
   {
     "num": 1096,
@@ -2484,7 +2490,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784446186/skipper-quiz/rbikewqrobah5gpvifzm.mp4"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784446247/skipper-quiz/fmxbuf57tanfdiy1jjqm.mp4",
+    "rendered_at": "2026-07-19T07:30:47.803Z"
   },
   {
     "num": 1114,
@@ -3148,7 +3155,9 @@
     "explanation": "רוח דרום-מערבית מתחזקת - יש לחזור לנקודת המוצא (צפונה) כי הרוח והגלים יעזרו.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1145-carmel-tow.png",
     "mediaType": "image",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784452569/skipper-quiz/r657o5fgfzvyzn37dbr8.mp4",
+    "rendered_at": "2026-07-19T09:16:10.285Z"
   },
   {
     "num": 1146,
@@ -3168,7 +3177,9 @@
     "explanation": "רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1146-tlv-tow.png",
     "mediaType": "image",
-    "approved_for_publish": false
+    "approved_for_publish": false,
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784452650/skipper-quiz/rmfe5ikr0cq3yzmvnkft.mp4",
+    "rendered_at": "2026-07-19T09:17:31.454Z"
   },
   {
     "num": 1147,
