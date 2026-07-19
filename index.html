@@ -350,6 +350,16 @@ let quizAnswered = false;  // true after user clicks an option
 let LETTERS = LETTERS_HE;
 const TOPICS = ['כניסה לנמל','אורות ניווט','זכות מעבר','אותות מצוקה','אותות קוליים','עגינה','מזג אוויר','ניווט','ספנות','בטיחות','רדיו VHF','כללי','מצפן','GPS','מד עומק','הגה אוטומטי','קשר VHF','מכ"מ','ציוד הצלה','מיצוף','דגלים','תמרוני ספינה'];
 
+// TOPICS is a seed list, not the whole truth: topics get added to the bank
+// (אזורי שיט, תדלוק ואש, סכנות רכיבה ותמרון...) faster than this array does.
+// A <select> whose options omit the question's own topic selects its FIRST
+// option instead — כניסה לנמל — and the next saveCurrentToState writes that
+// back, silently retopicing the question. That is what ate 1068/1079/1076 on
+// 2026-07-16. Always offer the current topic and everything already in use.
+function topicOptions(current) {
+  return [...new Set([...TOPICS, ...questions.map(q=>q.topic), current].filter(Boolean))];
+}
+
 function setLang(l) {
   currentLang = l;
   LETTERS = l === 'he' ? LETTERS_HE : LETTERS_EN;
@@ -887,7 +897,7 @@ function renderEditor(q) {
     </div>
     <div class="field"><label>נושא</label>
       <select id="f-topic" onchange="if(currentIdx>=0){questions[currentIdx].topic=this.value;renderList();updatePreview();}">
-        ${TOPICS.map(t=>`<option${q.topic===t?' selected':''}>${t}</option>`).join('')}
+        ${topicOptions(q.topic).map(t=>`<option${q.topic===t?' selected':''}>${t}</option>`).join('')}
       </select>
     </div>
     <div class="field"><label>שאלה בעברית</label><textarea id="f-qhe" placeholder="טקסט השאלה בעברית...">${escHtml(q.q_he)}</textarea></div>
@@ -1026,8 +1036,12 @@ function saveCurrentToState() {
   q.explanation = document.getElementById('f-expl')?.value || '';
   q.answer_confirmed = document.getElementById('f-confirmed')?.checked || false;
   q.answer = LETTERS_HE[correctIdx]; // canonical storage form — see setCorrectBtn
+  // Second lock on the retopic bug: only trust the select if it was actually
+  // rendered for THIS question, i.e. it still offers q.topic. If it does not,
+  // the DOM is stale or the option list is short and its value is a default we
+  // never chose. Keep the stored topic rather than write a guess over it.
   const topicSel = document.getElementById('f-topic');
-  if(topicSel) q.topic = topicSel.value;
+  if(topicSel && [...topicSel.options].some(o => o.value === q.topic)) q.topic = topicSel.value;
   [0,1,2,3].forEach(i => {
     const val = document.getElementById('f-opt'+i)?.value || '';
     q.options[i] = `${LETTERS[i]}. ${val}`;
