@@ -2242,8 +2242,8 @@
     "answer": "ג",
     "answer_confirmed": true,
     "explanation": "אותו כלל בדיוק, בכנרת. אם אתה על החוף המזרחי של הכנרת, היבשה נמצאת ממזרח והמים ממערב. לכן רוח מזרחית נושבת מהיבשה שמאחוריך אל תוך האגם ודוחפת אותך לעומק, הרחק מהחוף. שים לב לזוג השאלות: החוף המזרחי מסוכן ברוח מזרחית והחוף המערבי מסוכן ברוח מערבית. אל תשנן את כיוון הרוח, תשנן את הכלל: הרוח שבאה מהגב שלך כשאתה מסתכל על המים היא הרוח שסוחפת אותך פנימה. רוח צפונית (תשובה ב) נעה לאורך ציר הכנרת ולא מרחיקה אותך מהחוף המזרחי.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1101-kinneret-east-shore.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784443733/skipper-quiz/c86x1ve6wgkmzoclq0cz.mp4"
   },
@@ -2263,8 +2263,8 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "השלישית בסדרה, ומשלימה את הכלל. על החוף המערבי של הכנרת היבשה נמצאת ממערב והמים ממזרח, ולכן רוח מערבית היא הרוח היבשתית שדוחפת אותך לעומק האגם. שלוש השאלות יחד בונות עיקרון אחד: הים התיכון פונה מערבה ולכן מסוכנת בו רוח מזרחית, החוף המזרחי בכנרת מסוכן ברוח מזרחית, והחוף המערבי בכנרת מסוכן ברוח מערבית. בכל מקרה זו הרוח שמגיעה מהיבשה. תשובה א (דרום מערבית) קרובה בכיוון אך אינה התשובה המסומנת, ותשובה ב (צפונית) נעה לאורך האגם.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1102-kinneret-west-shore.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784443820/skipper-quiz/uvnz1xlipkvukoi5gh4c.mp4"
   },
@@ -2543,8 +2543,8 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "שני עקרונות נפגשים כאן ושניהם מובילים לאותה תשובה. הראשון: לעולם אל תנטוש כלי שיט צף. האופנוע צף, הוא גדול, הוא בולט לעין ולמכ\"ם, והוא מקור המשענת היחיד שלך. אדם שוחה במים הוא כמעט בלתי נראה, במיוחד בדמדומים. השני: הרוח מערבית, כלומר היא נושבת מהחוף המערבי לכיוון החוף המזרחי, ואתה נמצא 1000 מטר מהחוף המזרחי. כלומר הרוח והגלים דוחפים אותך בדיוק לכיוון החוף שאליו אתה רוצה להגיע. ההיסחפות עובדת לטובתך ואינה עולה לך מאמץ. תשובה א שגויה ומסוכנת פעמיים: היא נוטשת את הכלי והיא שולחת אותך לשחות מרחק ארוך בחשכה מתקרבת, בעוד הרוח הייתה מביאה אותך לשם ממילא. תשובה ג מפצלת את הכוחות ומשאירה שוחה בודד בלילה.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1115-kinneret-drift-east.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784446432/skipper-quiz/bv0t7jdudsbuxjbfugcr.mp4"
   },
