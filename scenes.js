@@ -6,6 +6,37 @@ const LETTERS_EN = ['A','B','C','D'];
 
 // ── Scenes SVG ─────────────────────────────────────────────────────────────
 const SCENES = {
+'אזורי שיט': `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 70 Q90 60 180 70 Q270 80 360 70" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 170 Q90 160 180 170 Q270 180 360 170" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 270 Q90 260 180 270 Q270 280 360 270" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 370 Q90 360 180 370 Q270 380 360 370" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <!-- shore on the left: sand + waterline -->
+  <path d="M0 0 L64 0 Q72 60 66 120 Q60 200 70 280 Q76 360 64 420 L0 420 Z" fill="#d9c08a"/>
+  <path d="M64 0 Q72 60 66 120 Q60 200 70 280 Q76 360 64 420" fill="none" stroke="#f2e2b8" stroke-width="3" opacity="0.85"/>
+  <!-- 300 m band. Everything readable is kept inside y 120-305, the band that
+       actually survives the preserveAspectRatio="slice" crop in the reel. -->
+  <rect x="68" y="0" width="112" height="420" fill="white" opacity="0.09"/>
+  <line x1="180" y1="0" x2="180" y2="420" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="7,5" opacity="0.8"/>
+  <text x="243" y="300" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">300 מ' מקו החוף</text>
+  <!-- declared bathing beach -->
+  <rect x="66" y="132" width="26" height="62" fill="#e74c3c" opacity="0.32"/>
+  <g stroke="#e74c3c" stroke-width="2.5"><line x1="60" y1="132" x2="96" y2="132"/><line x1="60" y1="194" x2="96" y2="194"/></g>
+  <g fill="#e74c3c"><rect x="46" y="126" width="2.5" height="24"/><path d="M48.5 126 L63 132 L48.5 138 Z"/><rect x="46" y="188" width="2.5" height="24"/><path d="M48.5 188 L63 194 L48.5 200 Z"/></g>
+  <line x1="100" y1="158" x2="192" y2="158" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+  <text x="262" y="154" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="700">חוף רחצה מוכרז</text>
+  <text x="262" y="170" text-anchor="middle" fill="#e74c3c" font-size="10" font-family="Heebo,sans-serif" opacity="0.85">אסור בהשקה</text>
+  <!-- launch point on a non-bathing beach + perpendicular exit -->
+  <circle cx="72" cy="252" r="7" fill="#f1c40f" stroke="#0c1a3a" stroke-width="2"/>
+  <text x="122" y="286" text-anchor="middle" fill="#f1c40f" font-size="11" font-family="Heebo,sans-serif" font-weight="700">נקודת השקה</text>
+  <path d="M88 252 L300 252" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="8,5" marker-end="url(#arrZ)"/>
+  <defs><marker id="arrZ" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L9,3.2 z" fill="#2ecc71"/></marker></defs>
+  <path d="M98 232 L122 232 M98 232 L98 246" stroke="#2ecc71" stroke-width="2" opacity="0.9"/>
+  <text x="136" y="228" text-anchor="middle" fill="#2ecc71" font-size="10" font-family="Heebo,sans-serif" font-weight="700">90°</text>
+  <text x="248" y="230" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">עד 5 קשרים</text>
+  <g>
+    <g transform="translate(112,252) rotate(90)"><ellipse cx="0" cy="0" rx="11" ry="24" fill="#f1c40f" stroke="#c8a000" stroke-width="1.5"/><ellipse cx="0" cy="-8" rx="6" ry="9" fill="#ffe27a"/><circle cx="0" cy="-8" r="2.5" fill="#5a4a00"/></g>
+    <animateTransform attributeName="transform" type="translate" values="0,0;168,0;168,0" dur="5s" repeatCount="indefinite" keyTimes="0;0.7;1" calcMode="spline" keySplines="0.35 0 0.25 1;0 0 1 1"/>
+  </g>
+`,
 'כניסה לנמל': `
   <rect width="360" height="420" fill="#1a5276"/>
   <g opacity="0.12"><path d="M0 60 Q90 50 180 60 Q270 70 360 60" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 140 Q90 130 180 140 Q270 150 360 140" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 220 Q90 210 180 220 Q270 230 360 220" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 300 Q90 290 180 300 Q270 310 360 300" fill="none" stroke="white" stroke-width="1.5"/></g>
