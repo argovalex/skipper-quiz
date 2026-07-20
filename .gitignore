@@ -1,0 +1,12 @@
+.venv-crewai/
+node_modules/
+.env
+
+# תוצרי crew: מקומיים, לא נכסים
+crew/backups/
+crew/reports/
+crew/proposals.jsonl
+__pycache__/
+
+# publisher: ריפו נפרד (skipper-quiz-publisher), לא סאב-מודול
+publisher/
