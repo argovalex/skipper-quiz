@@ -1903,6 +1903,176 @@ SCENES_QA['pwc_slow_approach'] = `
   <text x="180" y="320" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דומם מנוע בקרבת כלי השיט</text>
 `;
 
+// חוקים ותקנות — תעודת משיט: התנאים, ומי רשאי לנהוג
+SCENES_QA['pwc_licence'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">תעודת משיט אופנוע ים</text>
+
+  <!-- the certificate -->
+  <rect x="52" y="150" width="256" height="96" rx="10" fill="#12203c" stroke="#7eb8f7" stroke-width="2"/>
+  <rect x="52" y="150" width="256" height="22" rx="10" fill="#1e3a6e"/>
+  <text x="180" y="166" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">רשיון 11</text>
+  ${tick(272, 190, 1.05)}
+  <text x="176" y="194" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">גיל 16 לפחות</text>
+  ${tick(272, 212, 1.05)}
+  <text x="176" y="216" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מבחן עיוני ומעשי</text>
+  ${tick(272, 234, 1.05)}
+  <text x="176" y="238" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">בריאות תקינה</text>
+
+  <!-- colour vision is explicitly not required -->
+  ${cross(272, 262, 1.05)}
+  <text x="172" y="266" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif">אבחנה בצבעים לא נדרשת</text>
+
+  <rect x="44" y="284" width="272" height="34" rx="8" fill="#2a1010" stroke="#e74c3c" stroke-width="2"/>
+  <text x="180" y="306" text-anchor="middle" fill="#e74c3c" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">רק משיט מוסמך רשאי לנהוג</text>
+`;
+
+// חוקים ותקנות — מסמכים שחובה לשאת ובדיקת כושר שייט
+SCENES_QA['docs_and_inspection'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="130" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מסמכים ובדיקה תקופתית</text>
+
+  <text x="180" y="156" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">חובה לשאת בהפלגה</text>
+  ${tick(268, 176, 1.05)}
+  <text x="168" y="180" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">תעודת משיט</text>
+  ${tick(268, 198, 1.05)}
+  <text x="168" y="202" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">רשיון כלי השיט</text>
+  ${tick(268, 220, 1.05)}
+  <text x="168" y="224" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">תעודת ביטוח</text>
+
+  <rect x="46" y="238" width="268" height="34" rx="8" fill="#2a1010" stroke="#e74c3c" stroke-width="2"/>
+  ${cross(290, 255, 1.15)}
+  <text x="164" y="260" text-anchor="middle" fill="#e74c3c" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">רשימת ציוד הצלה לא נדרשת</text>
+
+  <!-- the periodic inspection, badge and label side by side so neither sits on
+       top of the other -->
+  <g transform="translate(268,304)">
+    <circle r="24" fill="none" stroke="#f39c12" stroke-width="3"/>
+    <text y="-1" text-anchor="middle" fill="#f39c12" font-size="16" font-family="Heebo,sans-serif" font-weight="900">2</text>
+    <text y="13" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">שנים</text>
+  </g>
+  <text x="146" y="300" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Heebo,sans-serif" font-weight="700">בדיקת כושר שייט</text>
+  <text x="146" y="316" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Heebo,sans-serif" font-weight="700">אחת ל</text>
+`;
+
+// חוקים ותקנות — לבוש המשיט והנוסע: מכנס עבה מהמותניים עד הברכיים
+SCENES_QA['rider_clothing'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">לבוש חובה</text>
+  <text x="180" y="152" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif">חל על הנוהג ועל הנוסע מאחור כאחד</text>
+
+  <!-- a standing figure with the protected zone marked -->
+  <g transform="translate(180,180)">
+    <circle cy="16" r="15" fill="#f5cba7"/>
+    <path d="M-14,10 A14,14 0 0 1 14,10 L14,6 L-14,6 Z" fill="#2980b9"/>
+    <path d="M0,32 L0,74" stroke="#2980b9" stroke-width="30" stroke-linecap="round"/>
+    <path d="M-2,34 L-2,72" stroke="#f4d03f" stroke-width="20" stroke-linecap="round" opacity=".9"/>
+    <!-- the thick trousers, waist to knee -->
+    <rect x="-19" y="78" width="38" height="46" rx="6" fill="#34495e" stroke="#2ecc71" stroke-width="2.5"/>
+    <path d="M0,78 L0,124" stroke="#2c3e50" stroke-width="2"/>
+    <!-- bare shins below the knee -->
+    <path d="M-9,124 L-9,150" stroke="#f5cba7" stroke-width="11" stroke-linecap="round"/>
+    <path d="M9,124 L9,150" stroke="#f5cba7" stroke-width="11" stroke-linecap="round"/>
+  </g>
+
+  <!-- the span the regulation covers -->
+  <path d="M226 258 L226 304" stroke="#2ecc71" stroke-width="2"/>
+  <path d="M226 258 L222 266 L230 266 Z" fill="#2ecc71"/>
+  <path d="M226 304 L222 296 L230 296 Z" fill="#2ecc71"/>
+  <!-- All three lines live on the right of the figure. A bottom line here would
+       land on the footer at y=345. -->
+  <text x="278" y="252" text-anchor="middle" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">מכנס עבה</text>
+  <text x="278" y="274" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">מהמותניים</text>
+  <text x="278" y="290" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">עד הברכיים</text>
+`;
+
+// בטיחות אש — בדיקת תקינות מטף
+SCENES_QA['extinguisher_check'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">בדיקת תקינות מטף</text>
+
+  <!-- the extinguisher -->
+  <g transform="translate(96,232)">
+    <rect x="-24" y="-46" width="48" height="86" rx="10" fill="#c0392b" stroke="#7b241c" stroke-width="2"/>
+    <rect x="-8" y="-60" width="16" height="16" rx="3" fill="#7b241c"/>
+    <path d="M8,-54 L30,-62" stroke="#7b241c" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="0" cy="-24" r="11" fill="#12203c" stroke="#ecf0f1" stroke-width="2"/>
+    <path d="M0,-24 L6,-31" stroke="#2ecc71" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="-18" y="4" width="36" height="20" rx="3" fill="#7b241c" opacity=".6"/>
+  </g>
+
+  ${tick(292, 178, 1.1)}
+  <text x="196" y="182" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מד לחץ בתחום הירוק</text>
+  ${tick(292, 210, 1.1)}
+  <text x="196" y="214" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">החותם שלם</text>
+  ${tick(292, 242, 1.1)}
+  <text x="196" y="246" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">תוקף הבדיקה בתוקף</text>
+  ${tick(292, 274, 1.1)}
+  <text x="196" y="278" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">הגוף ללא חלודה ופגמים</text>
+
+  <text x="180" y="324" text-anchor="middle" fill="#fff" font-size="13" font-family="Heebo,sans-serif" font-weight="900">כל הבדיקות נדרשות יחד</text>
+`;
+
+// בטיחות אש — ציוד פירוטכני שפג תוקפו: מוסרים למשטרה
+SCENES_QA['expired_flares'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">פירוטכניקה שפג תוקפה</text>
+
+  <!-- the flares, stamped expired -->
+  <g transform="translate(104,214)">
+    <rect x="-26" y="-30" width="20" height="62" rx="4" fill="#e74c3c" stroke="#922b21" stroke-width="1.6"/>
+    <rect x="-2" y="-36" width="20" height="68" rx="4" fill="#e74c3c" stroke="#922b21" stroke-width="1.6"/>
+    <rect x="-26" y="-14" width="20" height="7" fill="#fff" opacity=".8"/>
+    <rect x="-2" y="-20" width="20" height="7" fill="#fff" opacity=".8"/>
+  </g>
+  <text x="100" y="266" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="900">פג תוקף</text>
+
+  <!-- the three wrong disposals -->
+  ${cross(300, 176, 1.05)}
+  <text x="216" y="180" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif">לא לזרוק לפח</text>
+  ${cross(300, 202, 1.05)}
+  <text x="216" y="206" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif">לא לזרוק לים</text>
+  ${cross(300, 228, 1.05)}
+  <text x="216" y="232" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif">לא לירות לשם ניסוי</text>
+
+  <!-- hand it in. Label sits above the badge, clear of it. -->
+  <text x="180" y="264" text-anchor="middle" fill="#2ecc71" font-size="15" font-family="Heebo,sans-serif" font-weight="900">מוסרים למשטרה</text>
+  <g transform="translate(180,304)">
+    <circle r="26" fill="#12203c" stroke="#7eb8f7" stroke-width="2.5"/>
+    <path d="M0,-15 L-12,-8 L-12,4 Q-12,14 0,19 Q12,14 12,4 L12,-8 Z"
+          fill="none" stroke="#7eb8f7" stroke-width="2.5" stroke-linejoin="round"/>
+  </g>
+`;
+
+// בטיחות אש — לפני הפלגה: להשאיר הודעה בחוף
+SCENES_QA['float_plan'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="238" width="360" height="182" fill="#1a5276"/>
+  <path d="M0 238 L96 238 L96 420 L0 420 Z" fill="#d9c08a"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">לפני יציאה להפלגה</text>
+
+  <!-- the note left ashore. Kept clear of x<32, which the slice crop removes,
+       and its label sits on the dark background rather than on the sand. -->
+  <text x="70" y="178" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">הודעה בחוף</text>
+  <g transform="translate(70,232)">
+    <rect x="-28" y="-38" width="56" height="70" rx="4" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1.6"/>
+    <path d="M-18,-22 L18,-22 M-18,-10 L18,-10 M-18,2 L10,2 M-18,14 L14,14" stroke="#5d6d7e" stroke-width="2"/>
+  </g>
+
+  <!-- what the note says -->
+  ${tick(300, 182, 1.05)}
+  <text x="212" y="186" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לאן אתה מפליג</text>
+  ${tick(300, 208, 1.05)}
+  <text x="212" y="212" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">זמן חזרה משוער</text>
+
+  <!-- the craft heading out -->
+  ${sideJetSki(238, 292, '#f1c40f', '#c8a000', 0.72)}
+  <path d="M282 268 L322 268" stroke="#7eb8f7" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M322 268 L313 263 L313 273 Z" fill="#7eb8f7"/>
+
+  <text x="180" y="330" text-anchor="middle" fill="#fff" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">כדי שידעו לחפש אותך אם לא חזרת</text>
+`;
+
 // תמרוני ספינה — גרירת סקי או בננה: מורשה ל-3, שניים על הכלי, קשר עין
 SCENES_QA['tow_skier'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2257,6 +2427,17 @@ function getScene(topic, qText) {
     if(!negated && /חוף רחצה|מוכרז/.test(q))          return SCENES_QA['zones_declared_beach'];
     if(negated || /200 מטר/.test(q))                  return SCENES_QA['zones_undeclared_beach'];
     // open sea, closed areas, Dead Sea, Eilat keep the general zones scene
+  }
+  if(topic==='חוקים ותקנות') {
+    if(/לבוש|מכנס/.test(q))                                  return SCENES_QA['rider_clothing'];
+    if(/תעודת משיט|מועמד|רשאי לנהוג|מוסמך/.test(q))          return SCENES_QA['pwc_licence'];
+    if(/מסמך|לשאת|כושר שייט|מפקח/.test(q))                   return SCENES_QA['docs_and_inspection'];
+  }
+  if(topic==='בטיחות אש') {
+    if(/מטף/.test(q))                                        return SCENES_QA['extinguisher_check'];
+    if(/פירוטכני|פג תוקפו/.test(q))                          return SCENES_QA['expired_flares'];
+    if(/הודעה בחוף|החלטת לשוט|זמן חזרה/.test(q))             return SCENES_QA['float_plan'];
+    if(/רשאי לאפשר|רשאי לנהוג|מוסמך/.test(q))                return SCENES_QA['pwc_licence'];
   }
   if(topic==='תמרוני ספינה') {
     // The two towing families share the word גרירה, so the craft-on-craft case
