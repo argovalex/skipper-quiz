@@ -1903,6 +1903,124 @@ SCENES_QA['pwc_slow_approach'] = `
   <text x="180" y="320" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דומם מנוע בקרבת כלי השיט</text>
 `;
 
+// תמרוני ספינה — גרירת סקי או בננה: מורשה ל-3, שניים על הכלי, קשר עין
+SCENES_QA['tow_skier'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276"/>
+  <g opacity="0.1">
+    <path d="M0 250 Q90 244 180 250 Q270 256 360 250" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 340 Q90 334 180 340 Q270 346 360 340" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גרירת סקי או בננה</text>
+
+  <!-- the towing craft, seen from above, running to the right -->
+  ${topJetSki(238, 214, 1, '#f1c40f', '#c8a000', 0)}
+  <circle cx="228" cy="208" r="5" fill="#2980b9"/>
+  <circle cx="212" cy="212" r="5" fill="#e67e22"/>
+  <text x="238" y="182" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">2 אנשים על הכלי</text>
+
+  <!-- tow rope back to the skier -->
+  <path d="M186 216 L104 240" stroke="#ecf0f1" stroke-width="2" opacity=".85"/>
+
+  <!-- the towed rider -->
+  <g transform="translate(94,244)">
+    <ellipse rx="15" ry="7" fill="#e74c3c" opacity=".9"/>
+    <circle cy="-11" r="6" fill="#f5cba7"/>
+  </g>
+  <text x="88" y="272" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הנגרר</text>
+
+  <!-- eye contact from the rear rider back to the towed rider -->
+  <path d="M206 216 Q158 220 110 234" fill="none" stroke="#2ecc71" stroke-width="1.6" stroke-dasharray="5 4" opacity=".85"/>
+  <text x="164" y="204" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קשר עין רצוף</text>
+
+  <text x="180" y="308" text-anchor="middle" fill="#fff" font-size="13" font-family="Heebo,sans-serif" font-weight="900">האופנוע חייב להיות מורשה ל-3 רוכבים</text>
+  <text x="180" y="326" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif">נהג + צופה לאחור = לפחות 2 על הכלי</text>
+`;
+
+// תמרוני ספינה — גרירת אופנוע ים אחר: נקודות הקשירה ואורך החבל
+SCENES_QA['tow_craft'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276"/>
+  <g opacity="0.1"><path d="M0 320 Q90 314 180 320 Q270 326 360 320" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">גרירת אופנוע ים</text>
+
+  <!-- the tug, ahead and to the right -->
+  ${topJetSki(268, 200, 0.82, '#f1c40f', '#c8a000', 0)}
+  <text x="268" y="172" text-anchor="middle" fill="#f1c40f" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הגורר</text>
+  <circle cx="248" cy="206" r="4.5" fill="#e74c3c"/>
+
+  <!-- the rope between them, label kept off the line -->
+  <path d="M230 206 L128 262" stroke="#ecf0f1" stroke-width="2" opacity=".85"/>
+  <text x="170" y="178" text-anchor="middle" fill="#2ecc71" font-size="15" font-family="Heebo,sans-serif" font-weight="900">40 מטר</text>
+  <text x="170" y="194" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">אורך החבל המומלץ</text>
+
+  <!-- the towed craft, astern and to the left -->
+  ${topJetSki(96, 270, 0.82, '#95a5a6', '#6b7778', 0)}
+  <text x="96" y="300" text-anchor="middle" fill="#95a5a6" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הנגרר</text>
+  <circle cx="130" cy="266" r="4.5" fill="#e74c3c"/>
+
+  <!-- the two attachment points, called out on separate lines low and clear -->
+  <text x="180" y="330" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">בנגרר: בתפס הקדמי</text>
+  <text x="180" y="314" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">אצלי: מסביב למושב או בתפס אחורי</text>
+`;
+
+// תמרוני ספינה — יישור אופנוע שהתהפך: לכיוון שהיצרן קבע
+SCENES_QA['right_capsized'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="176" width="360" height="244" fill="#1a5276"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">אופנוע ים שהתהפך</text>
+
+  <!-- Upside down: hull only. The rider is in the water in both questions here,
+       and rotating the full sternJetSki put a head under the boat that read as
+       a blob rather than as a capsize. -->
+  <g transform="translate(102,244)">
+    <path d="M-26,6 L26,6 Q23,-10 0,-14 Q-23,-10 -26,6 Z"
+          fill="#c8a000" stroke="#8a7000" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M-27,6 L27,6 L24,14 L-24,14 Z" fill="#f1c40f" stroke="#c8a000" stroke-width="1.4" stroke-linejoin="round"/>
+  </g>
+  <text x="102" y="278" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">הפוך</text>
+
+  <!-- the righting arc -->
+  <path d="M136 214 A54 54 0 0 1 224 214" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <path d="M224 214 L214 210 L218 220 Z" fill="#2ecc71"/>
+  <text x="180" y="196" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">לפי הוראת היצרן</text>
+
+  <!-- upright again -->
+  ${sternJetSki(262, 244, 0.8, '#2980b9')}
+  <text x="262" y="272" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ישר</text>
+
+  <rect x="44" y="292" width="272" height="34" rx="8" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2"/>
+  <text x="180" y="314" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">הכיוון מסומן על גוף האופנוע</text>
+`;
+
+// תמרוני ספינה — החפה: למקם את האופנוע בין שני גלים כדי לשמור שליטה
+SCENES_QA['beaching'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">החפה בגלי חוף</text>
+
+  <!-- shore on the right, sea to the left, two wave crests with a trough between -->
+  <path d="M0 420 L0 206 Q40 188 78 206 Q104 218 128 206 Q168 186 208 206
+           Q236 220 262 210 L262 420 Z" fill="#1a5276"/>
+  <path d="M262 210 Q290 218 318 234 L360 234 L360 420 L262 420 Z" fill="#d9c08a"/>
+  <path d="M78 206 Q92 196 104 210 Q92 204 78 206 Z" fill="#eaf4fb" opacity=".85"/>
+  <path d="M208 206 Q222 196 234 210 Q222 204 208 206 Z" fill="#eaf4fb" opacity=".85"/>
+
+  <text x="70" y="186" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">גל</text>
+  <text x="216" y="186" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">גל</text>
+
+  <!-- the craft sitting in the trough -->
+  ${sideJetSki(148, 224, '#f1c40f', '#c8a000', 0.7)}
+
+  <!-- the gap it sits in -->
+  <path d="M108 250 L188 250" stroke="#2ecc71" stroke-width="1.8"/>
+  <path d="M108 250 L116 246 L116 254 Z" fill="#2ecc71"/>
+  <path d="M188 250 L180 246 L180 254 Z" fill="#2ecc71"/>
+  <text x="148" y="270" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">בין שני גלים</text>
+
+  <text x="312" y="268" text-anchor="middle" fill="#8a7350" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">החוף</text>
+  <text x="180" y="312" text-anchor="middle" fill="#fff" font-size="13" font-family="Heebo,sans-serif" font-weight="900">כך נשמרת שליטה על האופנוע</text>
+`;
+
 // עזרה ראשונה — מחוסר הכרה: קודם כל נשימה ודופק
 SCENES_QA['firstaid_abc'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2140,6 +2258,14 @@ function getScene(topic, qText) {
     if(negated || /200 מטר/.test(q))                  return SCENES_QA['zones_undeclared_beach'];
     // open sea, closed areas, Dead Sea, Eilat keep the general zones scene
   }
+  if(topic==='תמרוני ספינה') {
+    // The two towing families share the word גרירה, so the craft-on-craft case
+    // has to be claimed by its own wording before the skier catch-all.
+    if(/חבל גרירה|גרירת אופנוע ים ע|לקשור/.test(q))         return SCENES_QA['tow_craft'];
+    if(/סקי|בננה|לגרור/.test(q))                             return SCENES_QA['tow_skier'];
+    if(/התהפך|לישר/.test(q))                                 return SCENES_QA['right_capsized'];
+    if(/החפה|בין שני גלים/.test(q))                          return SCENES_QA['beaching'];
+  }
   if(topic==='עזרה ראשונה') {
     if(/מדוזה|צריב/.test(q))                       return SCENES_QA['firstaid_jellyfish'];
     if(/מכת חום|חום.*נפגע|צל/.test(q))              return SCENES_QA['firstaid_heatstroke'];
@@ -2304,6 +2430,23 @@ function sideJetSki(cx, by, color, dk, s) {
   <circle cx="${cx + 18 * s}" cy="${by + -27 * s}" r="${2.6 * s}" fill="#1a2530"/>
   <!-- Jet nozzle -->
   <rect x="${cx + -50 * s}" y="${by + -6 * s}" width="${7 * s}" height="${7 * s}" rx="${1.5 * s}" fill="#7f8c8d"/>
+  </g>`;
+}
+
+function topJetSki(cx, cy, s, color, dk, heading) {
+  // PWC from above, bow→right by default. heading rotates it about (cx,cy).
+  // Towing questions are all about the geometry between two craft, which a
+  // profile view cannot show.
+  s = s || 1; color = color || '#f1c40f'; dk = dk || '#c8a000';
+  const p = (x, y) => `${cx + x * s},${cy + y * s}`;
+  return `
+  <g transform="rotate(${heading || 0},${cx},${cy})">
+  <path d="M${p(46,0)} Q${p(30,-13)} ${p(4,-15)} L${p(-34,-14)} Q${p(-44,-12)} ${p(-46,0)}
+           Q${p(-44,12)} ${p(-34,14)} L${p(4,15)} Q${p(30,13)} ${p(46,0)} Z"
+        fill="${color}" stroke="${dk}" stroke-width="${1.6 * s}" stroke-linejoin="round"/>
+  <ellipse cx="${cx - 8 * s}" cy="${cy}" rx="${20 * s}" ry="${9 * s}" fill="#2c3e50"/>
+  <path d="M${p(16,-8)} L${p(16,8)}" stroke="#2c3e50" stroke-width="${3 * s}" stroke-linecap="round"/>
+  <path d="M${p(-46,-5)} L${p(-52,0)} L${p(-46,5)} Z" fill="#7f8c8d"/>
   </g>`;
 }
 
