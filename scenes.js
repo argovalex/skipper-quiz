@@ -1925,24 +1925,29 @@ SCENES_QA['firstaid_abc'] = `
   <text x="180" y="326" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">רק אחר כך הנשמה או עיסוי</text>
 `;
 
-// עזרה ראשונה — הנשמה לנפגע טביעה: מה אין לעשות
+// עזרה ראשונה — נפגע טביעה שאינו נושם: מה אין לעשות
+// The bank's options still describe the mouth-to-mouth era. The answer stays as
+// the bank has it, but the order shown here follows current practice: call for
+// help first, and compress rather than ventilate. Alex's call, 2026-07-20.
 SCENES_QA['firstaid_drowning'] = `
   <rect width="360" height="420" fill="#0a1428"/>
-  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">הנשמה לנפגע טביעה</text>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">נפגע טביעה שאינו נושם</text>
 
-  ${tick(276, 168, 1.25)}
-  <text x="166" y="173" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">נקה את הפה משאריות</text>
-  ${tick(276, 196, 1.25)}
-  <text x="166" y="201" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">סתום את הנחיריים</text>
-  ${tick(276, 224, 1.25)}
-  <text x="166" y="229" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">השכב על הגב</text>
+  ${tick(276, 166, 1.25)}
+  <text x="164" y="171" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">הזעק עזרה רפואית</text>
+  ${tick(276, 192, 1.25)}
+  <text x="164" y="197" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">נקה את הפה משאריות</text>
+  ${tick(276, 218, 1.25)}
+  <text x="164" y="223" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">השכב על הגב</text>
+  ${tick(276, 244, 1.25)}
+  <text x="164" y="249" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">עסה את בית החזה</text>
 
-  <rect x="52" y="246" width="256" height="38" rx="8" fill="#2a1010" stroke="#e74c3c" stroke-width="2"/>
-  ${cross(286, 265, 1.3)}
-  <text x="164" y="270" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">אל תנסה להוציא מים מהריאות</text>
+  <rect x="52" y="266" width="256" height="38" rx="8" fill="#2a1010" stroke="#e74c3c" stroke-width="2"/>
+  ${cross(286, 285, 1.3)}
+  <text x="164" y="290" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">אל תנסה להוציא מים מהריאות</text>
 
-  <rect x="0" y="322" width="360" height="8" fill="#1a5276" opacity=".55"/>
-  ${lyingPerson(186, 322, 0.8)}
+  <rect x="0" y="326" width="360" height="6" fill="#1a5276" opacity=".55"/>
+  ${lyingPerson(186, 326, 0.7)}
 `;
 
 // עזרה ראשונה — צריבת מדוזה: חומץ, לא מים מתוקים ולא שפשוף
