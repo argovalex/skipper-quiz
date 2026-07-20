@@ -1772,7 +1772,7 @@ SCENES_QA['pwc_rider_risk'] = `
     <path d="M120 328 Q96 336 72 346" fill="none" stroke="#aed6f1" stroke-width="4" stroke-linecap="round"/>
     <path d="M120 317 Q94 318 68 322" fill="none" stroke="#aed6f1" stroke-width="2.5" stroke-linecap="round"/>
   </g>
-  <text x="74" y="344" text-anchor="middle" fill="#aed6f1" font-size="11" font-family="Heebo,sans-serif" font-weight="700">סילון המים</text>
+  <text x="74" y="306" text-anchor="middle" fill="#aed6f1" font-size="11" font-family="Heebo,sans-serif" font-weight="700">סילון המים</text>
 
   ${sideJetSki(200, 318, '#f1c40f', '#c8a000', 1.3)}
 
@@ -1835,7 +1835,7 @@ SCENES_QA['pwc_wave_launch'] = `
   <text x="272" y="176" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">נופל אחרי הגל</text>
   <text x="272" y="192" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif">ומאבד שליטה</text>
 
-  <text x="180" y="336" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט לפני גלי החוף</text>
+  <text x="180" y="320" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט לפני גלי החוף</text>
 `;
 
 // סכנות רכיבה ותמרון — גלים גבוהים מהצד: סכנת התהפכות
@@ -1865,7 +1865,7 @@ SCENES_QA['pwc_beam_capsize'] = `
   <text x="180" y="176" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Heebo,sans-serif" font-weight="900">סכנת התהפכות</text>
 
   <text x="284" y="316" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">הגל בא מהצד</text>
-  <text x="180" y="338" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט וקבל את הגלים באלכסון</text>
+  <text x="180" y="320" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">האט וקבל את הגלים באלכסון</text>
 `;
 
 // סכנות רכיבה ותמרון — גישה לכלי שיט אחר: לאט, נגד הרוח, בלי גלים
@@ -1900,7 +1900,7 @@ SCENES_QA['pwc_slow_approach'] = `
   <text x="82" y="196" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">כדי לא לייצר גלים</text>
   <path d="M90 204 Q96 218 100 230" fill="none" stroke="#2ecc71" stroke-width="1.6" opacity=".7"/>
 
-  <text x="180" y="336" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דומם מנוע בקרבת כלי השיט</text>
+  <text x="180" y="320" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דומם מנוע בקרבת כלי השיט</text>
 `;
 
 function getScene(topic, qText) {
