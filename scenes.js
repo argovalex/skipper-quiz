@@ -1903,11 +1903,153 @@ SCENES_QA['pwc_slow_approach'] = `
   <text x="180" y="320" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דומם מנוע בקרבת כלי השיט</text>
 `;
 
+// עזרה ראשונה — מחוסר הכרה: קודם כל נשימה ודופק
+SCENES_QA['firstaid_abc'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">נפגע מחוסר הכרה</text>
+
+  <rect x="58" y="158" width="244" height="42" rx="8" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2"/>
+  <text x="180" y="177" text-anchor="middle" fill="#2ecc71" font-size="15" font-family="Heebo,sans-serif" font-weight="900">בדוק נשימה ודופק</text>
+  <text x="180" y="193" text-anchor="middle" fill="#7fd8a8" font-size="11" font-family="Heebo,sans-serif">לפני כל פעולה אחרת</text>
+
+  <!-- deck he is lying on -->
+  <rect x="0" y="296" width="360" height="8" fill="#1a5276" opacity=".55"/>
+  ${lyingPerson(190, 296, 1.15)}
+
+  <!-- what to check, pointed at the mouth and the neck -->
+  <text x="98" y="236" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">נשימה</text>
+  <path d="M104 244 Q118 254 130 268" fill="none" stroke="#7eb8f7" stroke-width="1.6" opacity=".75"/>
+  <text x="242" y="236" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">דופק</text>
+  <path d="M232 244 Q198 256 172 272" fill="none" stroke="#7eb8f7" stroke-width="1.6" opacity=".75"/>
+
+  <text x="180" y="326" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="700">רק אחר כך הנשמה או עיסוי</text>
+`;
+
+// עזרה ראשונה — הנשמה לנפגע טביעה: מה אין לעשות
+SCENES_QA['firstaid_drowning'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">הנשמה לנפגע טביעה</text>
+
+  ${tick(276, 168, 1.25)}
+  <text x="166" y="173" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">נקה את הפה משאריות</text>
+  ${tick(276, 196, 1.25)}
+  <text x="166" y="201" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">סתום את הנחיריים</text>
+  ${tick(276, 224, 1.25)}
+  <text x="166" y="229" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">השכב על הגב</text>
+
+  <rect x="52" y="246" width="256" height="38" rx="8" fill="#2a1010" stroke="#e74c3c" stroke-width="2"/>
+  ${cross(286, 265, 1.3)}
+  <text x="164" y="270" text-anchor="middle" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">אל תנסה להוציא מים מהריאות</text>
+
+  <rect x="0" y="322" width="360" height="8" fill="#1a5276" opacity=".55"/>
+  ${lyingPerson(186, 322, 0.8)}
+`;
+
+// עזרה ראשונה — צריבת מדוזה: חומץ, לא מים מתוקים ולא שפשוף
+SCENES_QA['firstaid_jellyfish'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".35"/>
+  <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">צריבת מדוזה</text>
+
+  <!-- the jellyfish -->
+  <g transform="translate(92,206)">
+    <path d="M-30 6 Q-30 -22 0 -22 Q30 -22 30 6 Q16 12 0 12 Q-16 12 -30 6 Z" fill="#d6b3e8" opacity=".92"/>
+    <path d="M-30 6 Q-15 0 0 6 Q15 12 30 6" fill="none" stroke="#a97bc4" stroke-width="2"/>
+    <path d="M-20 10 Q-24 30 -16 46" fill="none" stroke="#d6b3e8" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M-7 12 Q-10 34 -2 52" fill="none" stroke="#d6b3e8" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M7 12 Q11 34 4 52" fill="none" stroke="#d6b3e8" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M20 10 Q25 30 17 46" fill="none" stroke="#d6b3e8" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- the stung forearm -->
+  <g transform="translate(244,206)">
+    <rect x="-38" y="-13" width="76" height="26" rx="13" fill="#f5cba7"/>
+    <path d="M-22 -4 L-6 4 M-4 -6 L12 2 M14 -3 L26 4" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="244" y="240" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">אזור הצריבה</text>
+
+  ${cross(300, 268, 1.2)}
+  <text x="214" y="272" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">לא לשפשף ולא לגרד</text>
+
+  <!-- vinegar -->
+  <g transform="translate(110,300)">
+    <rect x="-11" y="-24" width="22" height="34" rx="4" fill="#c9a227" stroke="#8a6f16" stroke-width="1.5"/>
+    <rect x="-4" y="-31" width="8" height="8" fill="#8a6f16"/>
+    <path d="M11 -14 Q30 -8 44 2" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+  </g>
+  <text x="180" y="326" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">שטוף בחומץ או באמוניה מהולה</text>
+`;
+
+// עזרה ראשונה — מכת חום: צל ומים
+SCENES_QA['firstaid_heatstroke'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">מכת חום</text>
+
+  <!-- sun beating down on the left -->
+  <g transform="translate(78,190)">
+    <circle r="20" fill="#f39c12"/>
+    <g stroke="#f39c12" stroke-width="3" stroke-linecap="round">
+      <path d="M0 -30 L0 -38"/><path d="M0 30 L0 38"/><path d="M-30 0 L-38 0"/><path d="M30 0 L38 0"/>
+      <path d="M-21 -21 L-27 -27"/><path d="M21 21 L27 27"/><path d="M-21 21 L-27 27"/><path d="M21 -21 L27 -27"/>
+    </g>
+  </g>
+
+  <!-- shade the casualty is moved into -->
+  <path d="M186 214 Q246 178 306 214 Z" fill="#2ecc71" opacity=".85"/>
+  <path d="M246 214 L246 268" stroke="#7f8c8d" stroke-width="3.5"/>
+  <text x="246" y="176" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">צל</text>
+
+  <!-- arrow from the sun to the shade -->
+  <path d="M116 218 Q152 244 186 246" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <path d="M186 246 L175 242 L177 252 Z" fill="#2ecc71"/>
+
+  <rect x="0" y="290" width="360" height="8" fill="#1a5276" opacity=".55"/>
+  ${lyingPerson(252, 290, 0.95)}
+
+  <!-- water -->
+  <g transform="translate(150,278)">
+    <rect x="-9" y="-22" width="18" height="30" rx="3" fill="#7eb8f7" opacity=".9"/>
+    <rect x="-3.5" y="-28" width="7" height="7" fill="#4a90d9"/>
+  </g>
+  <text x="150" y="306" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מים</text>
+
+  <text x="180" y="326" text-anchor="middle" fill="#fff" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">העבר לצל והשקה בהדרגה</text>
+`;
+
+// עזרה ראשונה — חשד לשבר: לא לפשוט בגדים ולא להזיז
+SCENES_QA['firstaid_fracture'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">חשד לשבר בגף</text>
+
+  <!-- the limb, with the break marked and a splint alongside -->
+  <g transform="translate(180,236)">
+    <rect x="-76" y="-15" width="152" height="30" rx="15" fill="#f5cba7"/>
+    <path d="M-4 -17 L4 -6 L-5 2 L4 15" fill="none" stroke="#e74c3c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="-70" y="20" width="140" height="9" rx="4" fill="#c9a227"/>
+    <rect x="-46" y="-22" width="12" height="56" rx="3" fill="#ecf0f1" opacity=".85"/>
+    <rect x="34" y="-22" width="12" height="56" rx="3" fill="#ecf0f1" opacity=".85"/>
+  </g>
+  <text x="180" y="288" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">תמוך באבר במצב שבו הוא נמצא</text>
+
+  <rect x="46" y="164" width="268" height="34" rx="8" fill="#2a1010" stroke="#e74c3c" stroke-width="2"/>
+  ${cross(292, 181, 1.3)}
+  <text x="162" y="186" text-anchor="middle" fill="#e74c3c" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">אל תפשוט בגדים ואל תזיז את האבר</text>
+
+  <text x="180" y="322" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif">הזזה מחמירה את הפגיעה</text>
+`;
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
     const compass = generateCompassRoseScene(q);
     if (compass) return compass;
+  }
+  if(topic==='עזרה ראשונה') {
+    if(/מדוזה|צריב/.test(q))                       return SCENES_QA['firstaid_jellyfish'];
+    if(/מכת חום|חום.*נפגע|צל/.test(q))              return SCENES_QA['firstaid_heatstroke'];
+    if(/שבר|גפ/.test(q))                            return SCENES_QA['firstaid_fracture'];
+    if(/טבע|הנשמה.*אינו נושם|מריאות/.test(q))       return SCENES_QA['firstaid_drowning'];
+    if(/מחוסר הכרה|דופק|נשימה/.test(q))             return SCENES_QA['firstaid_abc'];
   }
   if(topic==='סכנות רכיבה ותמרון') {
     // Order matters: the wave and approach questions also mention speed and
@@ -2067,6 +2209,33 @@ function sideJetSki(cx, by, color, dk, s) {
   <!-- Jet nozzle -->
   <rect x="${cx + -50 * s}" y="${by + -6 * s}" width="${7 * s}" height="${7 * s}" rx="${1.5 * s}" fill="#7f8c8d"/>
   </g>`;
+}
+
+function lyingPerson(cx, cy, s, kit) {
+  // Casualty supine, head to the left, lying on the line cy. Every first-aid
+  // question here is about what you do to someone in this position.
+  s = s || 1; kit = kit || '#e67e22';
+  const p = (x, y) => `${cx + x * s},${cy + y * s}`;
+  return `
+  <g>
+  <path d="M${p(4,-7)} L${p(46,-5)}" stroke="#2c3e50" stroke-width="${11 * s}" stroke-linecap="round"/>
+  <path d="M${p(-30,-9)} L${p(6,-8)}" stroke="${kit}" stroke-width="${17 * s}" stroke-linecap="round"/>
+  <path d="M${p(-18,-5)} L${p(0,3)}" stroke="${kit}" stroke-width="${6 * s}" stroke-linecap="round"/>
+  <circle cx="${cx - 42 * s}" cy="${cy - 11 * s}" r="${9.5 * s}" fill="#f5cba7"/>
+  </g>`;
+}
+
+function tick(x, y, s) {
+  s = s || 1;
+  return `<path d="M${x - 5 * s},${y} L${x - 1 * s},${y + 4 * s} L${x + 6 * s},${y - 5 * s}"
+    fill="none" stroke="#2ecc71" stroke-width="${3 * s}" stroke-linecap="round" stroke-linejoin="round"/>`;
+}
+
+function cross(x, y, s) {
+  s = s || 1;
+  return `<g stroke="#e74c3c" stroke-width="${3 * s}" stroke-linecap="round">
+    <path d="M${x - 5 * s},${y - 5 * s} L${x + 5 * s},${y + 5 * s}"/>
+    <path d="M${x + 5 * s},${y - 5 * s} L${x - 5 * s},${y + 5 * s}"/></g>`;
 }
 
 function sternJetSki(cx, by, s, kit) {
