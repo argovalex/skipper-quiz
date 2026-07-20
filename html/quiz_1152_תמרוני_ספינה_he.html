@@ -29,39 +29,60 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
     
     <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
       
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="20" y="20" width="320" height="230" rx="8" fill="#0d2040" stroke="#2a4a6a" stroke-width="1.5"/>
-  <line x1="20" y1="135" x2="340" y2="135" stroke="#1e3a5a" stroke-width="1"/>
-  <line x1="180" y1="20" x2="180" y2="250" stroke="#1e3a5a" stroke-width="1"/>
-  <text x="180" y="40" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°N</text>
-  <text x="180" y="248" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°S</text>
-  <text x="25" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°W</text>
-  <text x="310" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°E</text>
-  <path d="M20,100 Q90,90 180,100 Q270,110 340,100" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,135 Q340,135 340,135" fill="none" stroke="#3a80b8" stroke-width="2"/>
-  <path d="M20,170 Q90,180 180,170 Q270,160 340,170" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,55 Q90,48 180,55 Q270,62 340,55" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <path d="M20,215 Q90,222 180,215 Q270,208 340,215" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <line x1="110" y1="20" x2="110" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <line x1="250" y1="20" x2="250" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <circle cx="180" cy="135" r="5" fill="#4a90d9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="180" cy="135" r="12" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M180,135 L230,85" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="235" y="82" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">B</text>
-  <text x="162" y="152" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">A</text>
-  <g transform="translate(20,265)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קורס: </text>
-    <text x="52" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">045°M</text>
-    <text x="120" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מהירות: </text>
-    <text x="178" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">6.2 kn</text>
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">החפה בגלי חוף</text>
+
+  <!-- shore on the right, sea to the left, two wave crests with a trough between -->
+  <path d="M0 420 L0 206 Q40 188 78 206 Q104 218 128 206 Q168 186 208 206
+           Q236 220 262 210 L262 420 Z" fill="#1a5276"/>
+  <path d="M262 210 Q290 218 318 234 L360 234 L360 420 L262 420 Z" fill="#d9c08a"/>
+  <path d="M78 206 Q92 196 104 210 Q92 204 78 206 Z" fill="#eaf4fb" opacity=".85"/>
+  <path d="M208 206 Q222 196 234 210 Q222 204 208 206 Z" fill="#eaf4fb" opacity=".85"/>
+
+  <text x="70" y="186" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">גל</text>
+  <text x="216" y="186" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">גל</text>
+
+  <!-- the craft sitting in the trough -->
+  
+  <g>
+  <!-- Stern boarding platform -->
+  <path d="M108.1,223.3 L117.2,221.9 L117.2,226.1 L109.5,225.4 Z" fill="#c8a000" opacity=".85"/>
+  <!-- Hull: deck line aft, rising to a tall bow, keel sweeping up at both ends -->
+  <path d="M115.80000000000001,218.4 L171.8,218.4 Q180.9,217.7 183,214.9
+           Q183.7,221.9 178.1,226.1 Q166.2,229.6 143.8,229.6
+           Q125.6,229.6 118.6,226.1 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="1.1199999999999999" stroke-linejoin="round"/>
+  <!-- Waterline shading on the submerged part -->
+  <path d="M117.9,224 L180.2,224 Q166.2,229.6 143.8,229.6 Q125.6,229.6 118.6,226.1 Z"
+        fill="#c8a000" opacity=".45"/>
+  <!-- Rubbing strake along the hull -->
+  <path d="M116.5,221.2 L178.8,220.5" stroke="#c8a000" stroke-width="1.0499999999999998" opacity=".8"/>
+  <!-- Saddle: long, from the stern deck forward to the console -->
+  <path d="M120,218.4 Q120,213.5 124.2,211.4 Q132.6,209.3 142.4,210
+           Q150.1,210.7 155,214.2 L156.4,218.4 Z"
+        fill="#2c3e50" stroke="#1a2530" stroke-width="0.9099999999999999" stroke-linejoin="round"/>
+  <!-- Front hood / storage, ahead of the rider, sloping to the bow -->
+  <path d="M155,214.2 L156.4,209.3 Q162,207.9 169,209.3 Q176.7,210.7 180.9,215.6
+           L180.2,217.7 Q169,216.3 155.7,215.6 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="0.9799999999999999" stroke-linejoin="round"/>
+  <path d="M169,210 Q176,211.4 179.5,214.9" fill="none" stroke="#fff" stroke-width="1.1199999999999999" opacity=".35"/>
+  <!-- Handlebars, sitting just aft of the hood -->
+  <path d="M155.7,205.8 L155.7,212.1" stroke="#2c3e50" stroke-width="1.68"/>
+  <path d="M150.8,205.8 L159.9,205.1" stroke="#2c3e50" stroke-width="2.0999999999999996" stroke-linecap="round"/>
+  <circle cx="150.1" cy="205.8" r="1.8199999999999998" fill="#1a2530"/>
+  <circle cx="160.6" cy="205.1" r="1.8199999999999998" fill="#1a2530"/>
+  <!-- Jet nozzle -->
+  <rect x="113" y="219.8" width="4.8999999999999995" height="4.8999999999999995" rx="1.0499999999999998" fill="#7f8c8d"/>
   </g>
-  <g transform="translate(20,290)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">N </text>
-    <text x="14" y="15" fill="#fff" font-size="11" font-family="Arial">32°04.5'</text>
-    <text x="105" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">E </text>
-    <text x="118" y="15" fill="#fff" font-size="11" font-family="Arial">34°46.2'</text>
-  </g>
-  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט על מפת מרקטור</text>
+
+  <!-- the gap it sits in -->
+  <path d="M108 250 L188 250" stroke="#2ecc71" stroke-width="1.8"/>
+  <path d="M108 250 L116 246 L116 254 Z" fill="#2ecc71"/>
+  <path d="M188 250 L180 246 L180 254 Z" fill="#2ecc71"/>
+  <text x="148" y="270" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">בין שני גלים</text>
+
+  <text x="312" y="268" text-anchor="middle" fill="#8a7350" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">החוף</text>
+  <text x="180" y="312" text-anchor="middle" fill="#fff" font-size="13" font-family="Heebo,sans-serif" font-weight="900">כך נשמרת שליטה על האופנוע</text>
 
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
