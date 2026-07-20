@@ -2043,11 +2043,102 @@ SCENES_QA['firstaid_fracture'] = `
   <text x="180" y="322" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif">הזזה מחמירה את הפגיעה</text>
 `;
 
+
+// ── אזורי שיט ──────────────────────────────────────────────────────────────
+// Recovered from the hand-written html/ files of 2026-07-10 (commits d1bd5c6,
+// 2fb0ae3, 54afe73). Those were authored directly into html/ rather than into
+// this file, so the first regen.js run overwrote them with the generator's
+// single generic zones diagram and every one of these questions started
+// showing the same picture. Keeping them here means regen cannot lose them again.
+
+// חוף שאינו מוכרז: שיט חופשי עד מייל, עד 5 קשר בנתיב לחוף
+SCENES_QA['zones_undeclared_beach'] = `
+<defs>
+    <linearGradient id="szSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#041e3a"/><stop offset="45%" stop-color="#0c4a7a"/>
+      <stop offset="75%" stop-color="#1a7a8a"/><stop offset="100%" stop-color="#2ab5a5"/>
+    </linearGradient>
+    <linearGradient id="szSand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a96a"/><stop offset="100%" stop-color="#dcc48a"/>
+    </linearGradient>
+    <marker id="szArr" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7eb8f7"/>
+    </marker>
+    <marker id="szArrO" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#f39c12"/>
+    </marker>
+  </defs><rect width="360" height="310" fill="url(#szSea)"/><path d="M0,55 Q90,53 180,55 Q270,57 360,55" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.06">
+      <animate attributeName="d" values="M0,55 Q90,53 180,55 Q270,57 360,55;M0,57 Q90,59 180,57 Q270,54 360,57;M0,55 Q90,53 180,55 Q270,57 360,55" dur="5s" repeatCount="indefinite"/></path><path d="M0,100 Q90,98 180,100 Q270,102 360,100" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.08">
+      <animate attributeName="d" values="M0,100 Q90,98 180,100 Q270,102 360,100;M0,102 Q90,104 180,102 Q270,99 360,102;M0,100 Q90,98 180,100 Q270,102 360,100" dur="5s" repeatCount="indefinite"/></path><path d="M0,145 Q90,143 180,145 Q270,147 360,145" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.10">
+      <animate attributeName="d" values="M0,145 Q90,143 180,145 Q270,147 360,145;M0,147 Q90,149 180,147 Q270,144 360,147;M0,145 Q90,143 180,145 Q270,147 360,145" dur="5s" repeatCount="indefinite"/></path><path d="M0,190 Q90,188 180,190 Q270,192 360,190" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.11">
+      <animate attributeName="d" values="M0,190 Q90,188 180,190 Q270,192 360,190;M0,192 Q90,194 180,192 Q270,189 360,192;M0,190 Q90,188 180,190 Q270,192 360,190" dur="5s" repeatCount="indefinite"/></path><path d="M0,235 Q90,233 180,235 Q270,237 360,235" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.13">
+      <animate attributeName="d" values="M0,235 Q90,233 180,235 Q270,237 360,235;M0,237 Q90,239 180,237 Q270,234 360,237;M0,235 Q90,233 180,235 Q270,237 360,235" dur="5s" repeatCount="indefinite"/></path><path d="M0,280 Q90,278 180,280 Q270,282 360,280" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.15">
+      <animate attributeName="d" values="M0,280 Q90,278 180,280 Q270,282 360,280;M0,282 Q90,284 180,282 Q270,279 360,282;M0,280 Q90,278 180,280 Q270,282 360,280" dur="5s" repeatCount="indefinite"/></path><path d="M0,305 Q45,302 90,305 Q135,308 180,305 Q225,302 270,305 Q315,308 360,305" fill="none" stroke="#fff" stroke-width="1.8" opacity="0.5">
+    <animate attributeName="d" values="M0,305 Q45,302 90,306 Q135,308 180,305 Q225,302 270,306 Q315,308 360,305;M0,307 Q45,309 90,307 Q135,304 180,307 Q225,310 270,307 Q315,304 360,307;M0,305 Q45,302 90,306 Q135,308 180,305 Q225,302 270,306 Q315,308 360,305" dur="3.5s" repeatCount="indefinite"/></path><rect x="0" y="305" width="360" height="115" fill="url(#szSand)"/><rect x="0" y="125" width="360" height="180" fill="#2980b9" opacity="0.06"/><line x1="20" y1="125" x2="340" y2="125" stroke="#fff" stroke-width="2.5" stroke-dasharray="10,5" opacity="0.85"/><line x1="30" y1="125" x2="30" y2="305" stroke="#7eb8f7" stroke-width="1.5" marker-start="url(#szArr)" marker-end="url(#szArr)"/><text x="36" y="211" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">300</text><text x="36" y="225" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מטר</text><line x1="180" y1="300" x2="180" y2="130" stroke="#fff" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.8"/><polygon points="180,130 175,140 185,140" fill="#fff" opacity="0.7"/><text x="188" y="255" fill="#fff" font-size="10" font-family="Heebo,sans-serif" opacity="0.9">ניצב לחוף</text><rect x="125" y="193" width="70" height="32" rx="6" fill="#0c1a3a" stroke="#f39c12" stroke-width="1.5" opacity="0.9"/><text x="160" y="209" text-anchor="middle" fill="#f39c12" font-size="13" font-family="Heebo,sans-serif" font-weight="900">עד 5 קשר</text><text x="160" y="223" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif">(9 קמ״ש)</text><text x="180" y="105" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="700">שיט חופשי עד ל-1 מייל ⚓</text><g transform="translate(250,235) rotate(-15)">
+    <ellipse rx="5" ry="12" fill="#2c3e50" stroke="#445"/><ellipse cy="-6" rx="3.5" ry="4" fill="#e74c3c"/>
+    <circle cy="-1" r="2" fill="#f5d76e"/><path d="M-1.5,10 L0,16 L1.5,10" fill="#fff" opacity="0.5"/>
+  </g><text x="180" y="335" text-anchor="middle" fill="#8a7040" font-size="12" font-family="Heebo,sans-serif" font-weight="700">חוף שאינו חוף רחצה</text><text x="180" y="20" text-anchor="middle" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">אזורי שיט - חוף לא מוכרז</text><text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">מבט מלמעלה (אווירי)</text>
+`;
+
+// שפך נחל הירקון: אסור לאופנוע ים לשוט בנחלים
+SCENES_QA['zones_river_mouth'] = `
+<defs>
+      <linearGradient id="yrSea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7cbad6"/><stop offset="100%" stop-color="#a8d8ea"/>
+      </linearGradient>
+      <linearGradient id="yrRiver" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6bafd4"/><stop offset="100%" stop-color="#4a90b8"/>
+      </linearGradient>
+    </defs><rect width="360" height="420" fill="#e8e0d0"/><path d="M0,0 L0,280 Q30,260 60,270 Q100,285 130,260 L160,180 Q180,130 210,100 L260,60 L360,0 Z" fill="url(#yrSea)"/><path d="M180,280 Q220,250 280,260 Q330,270 350,300 L350,370 Q300,380 240,370 Q200,360 180,340 Z" fill="#3a8a3a" opacity="0.6"/><text x="270" y="320" text-anchor="middle" fill="#1a5a1a" font-size="11" font-family="Heebo,sans-serif" font-weight="700">פארק הירקון</text><path d="M350,350 Q300,340 260,310 Q220,280 190,260 Q160,240 140,220 Q120,200 110,170 Q100,140 80,120" fill="none" stroke="#4a90b8" stroke-width="28" stroke-linecap="round"/><path d="M350,350 Q300,340 260,310 Q220,280 190,260 Q160,240 140,220 Q120,200 110,170 Q100,140 80,120" fill="none" stroke="#6bb8e0" stroke-width="20" stroke-linecap="round"/><text x="95" y="110" text-anchor="middle" fill="#1a5080" font-size="10" font-family="Heebo,sans-serif" font-weight="700">שפך</text><text x="260" y="295" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">נחל הירקון</text><path d="M130,260 L130,420" stroke="#d4a830" stroke-width="5"/><path d="M0,350 L360,350" stroke="#999" stroke-width="3"/><path d="M160,180 L50,260" stroke="#d4a830" stroke-width="4"/><text x="260" y="30" fill="#555" font-size="10" font-family="Heebo,sans-serif">תחנת הכוח רדינג</text><rect x="245" y="40" width="30" height="20" fill="#888" opacity="0.4"/><rect x="0" y="300" width="40" height="50" fill="#5a7a9a" opacity="0.5"/><text x="20" y="330" text-anchor="middle" fill="#fff" font-size="8" font-family="Heebo,sans-serif">נמל ת״א</text><g transform="translate(180,170)"><circle r="32" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/><circle r="24" fill="#fff"/><rect x="-20" y="-5" width="40" height="10" rx="2" fill="#e74c3c"/></g><line x1="180" y1="202" x2="180" y2="240" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="180" y="262" text-anchor="middle" fill="#e74c3c" font-size="16" font-family="Heebo,sans-serif" font-weight="900">אסור לאופנוע ים</text><text x="180" y="280" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Heebo,sans-serif" font-weight="700">לשוט בנחלים!</text><g transform="translate(180,140)" opacity="0.5"><line x1="-15" y1="-15" x2="15" y2="15" stroke="#e74c3c" stroke-width="3"/><line x1="15" y1="-15" x2="-15" y2="15" stroke="#e74c3c" stroke-width="3"/></g><g transform="translate(100,90) rotate(-30)">
+    <ellipse rx="5" ry="12" fill="#2c3e50" stroke="#445"/><ellipse cy="-6" rx="3.5" ry="4" fill="#e74c3c"/>
+    <circle cy="-1" r="2" fill="#f5d76e"/><path d="M-1.5,10 L0,16 L1.5,10" fill="#fff" opacity="0.5"/>
+  </g><text x="40" y="50" fill="#1a5080" font-size="14" font-family="Heebo,sans-serif" font-weight="700">הים התיכון</text><text x="180" y="20" text-anchor="middle" fill="#333" font-size="15" font-family="Heebo,sans-serif" font-weight="900">שיט בנחלים - שפך הירקון</text>
+`;
+
+// חוף רחצה מוכרז: מבט אווירי עם הגבולות, אזורי החיץ ונתיב כלי השיט
+SCENES_QA['zones_declared_beach'] = `
+<defs>
+    <linearGradient id="szSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#041e3a"/><stop offset="45%" stop-color="#0c4a7a"/>
+      <stop offset="75%" stop-color="#1a7a8a"/><stop offset="100%" stop-color="#2ab5a5"/>
+    </linearGradient>
+    <linearGradient id="szSand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a96a"/><stop offset="100%" stop-color="#dcc48a"/>
+    </linearGradient>
+    <marker id="szArr" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7eb8f7"/>
+    </marker>
+    <marker id="szArrO" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#f39c12"/>
+    </marker>
+  </defs><rect width="360" height="310" fill="url(#szSea)"/><path d="M0,55 Q90,53 180,55 Q270,57 360,55" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.06">
+      <animate attributeName="d" values="M0,55 Q90,53 180,55 Q270,57 360,55;M0,57 Q90,59 180,57 Q270,54 360,57;M0,55 Q90,53 180,55 Q270,57 360,55" dur="5s" repeatCount="indefinite"/></path><path d="M0,100 Q90,98 180,100 Q270,102 360,100" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.08">
+      <animate attributeName="d" values="M0,100 Q90,98 180,100 Q270,102 360,100;M0,102 Q90,104 180,102 Q270,99 360,102;M0,100 Q90,98 180,100 Q270,102 360,100" dur="5s" repeatCount="indefinite"/></path><path d="M0,145 Q90,143 180,145 Q270,147 360,145" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.10">
+      <animate attributeName="d" values="M0,145 Q90,143 180,145 Q270,147 360,145;M0,147 Q90,149 180,147 Q270,144 360,147;M0,145 Q90,143 180,145 Q270,147 360,145" dur="5s" repeatCount="indefinite"/></path><path d="M0,190 Q90,188 180,190 Q270,192 360,190" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.11">
+      <animate attributeName="d" values="M0,190 Q90,188 180,190 Q270,192 360,190;M0,192 Q90,194 180,192 Q270,189 360,192;M0,190 Q90,188 180,190 Q270,192 360,190" dur="5s" repeatCount="indefinite"/></path><path d="M0,235 Q90,233 180,235 Q270,237 360,235" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.13">
+      <animate attributeName="d" values="M0,235 Q90,233 180,235 Q270,237 360,235;M0,237 Q90,239 180,237 Q270,234 360,237;M0,235 Q90,233 180,235 Q270,237 360,235" dur="5s" repeatCount="indefinite"/></path><path d="M0,280 Q90,278 180,280 Q270,282 360,280" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.15">
+      <animate attributeName="d" values="M0,280 Q90,278 180,280 Q270,282 360,280;M0,282 Q90,284 180,282 Q270,279 360,282;M0,280 Q90,278 180,280 Q270,282 360,280" dur="5s" repeatCount="indefinite"/></path><path d="M0,305 Q45,302 90,305 Q135,308 180,305 Q225,302 270,305 Q315,308 360,305" fill="none" stroke="#fff" stroke-width="1.8" opacity="0.5">
+    <animate attributeName="d" values="M0,305 Q45,302 90,306 Q135,308 180,305 Q225,302 270,306 Q315,308 360,305;M0,307 Q45,309 90,307 Q135,304 180,307 Q225,310 270,307 Q315,304 360,307;M0,305 Q45,302 90,306 Q135,308 180,305 Q225,302 270,306 Q315,308 360,305" dur="3.5s" repeatCount="indefinite"/></path><rect x="0" y="305" width="360" height="115" fill="url(#szSand)"/><rect x="82" y="125" width="196" height="180" fill="#e74c3c" opacity="0.07"/><rect x="49" y="125" width="33" height="180" fill="#f39c12" opacity="0.05"/><rect x="278" y="125" width="33" height="180" fill="#f39c12" opacity="0.05"/><line x1="49" y1="125" x2="311" y2="125" stroke="#fff" stroke-width="2.5" stroke-dasharray="10,5" opacity="0.85"/><line x1="82" y1="125" x2="82" y2="305" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.8"/><line x1="278" y1="125" x2="278" y2="305" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.8"/><line x1="49" y1="125" x2="49" y2="305" stroke="#f39c12" stroke-width="2" stroke-dasharray="7,4" opacity="0.7"/><line x1="311" y1="125" x2="311" y2="305" stroke="#f39c12" stroke-width="2" stroke-dasharray="7,4" opacity="0.7"/><line x1="34" y1="127" x2="34" y2="303" stroke="#7eb8f7" stroke-width="1.5" marker-start="url(#szArr)" marker-end="url(#szArr)"/><text x="34" y="215" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" font-weight="700" transform="rotate(-90,34,215)">300 מטר מהחוף</text><line x1="51" y1="287" x2="80" y2="287" stroke="#f39c12" stroke-width="1.5" marker-start="url(#szArrO)" marker-end="url(#szArrO)"/><text x="65.5" y="282" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">50 מ׳</text><line x1="280" y1="287" x2="309" y2="287" stroke="#f39c12" stroke-width="1.5" marker-start="url(#szArrO)" marker-end="url(#szArrO)"/><text x="294.5" y="282" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">50 מ׳</text><rect x="80" y="301" width="4" height="14" rx="1" fill="#e74c3c"/><rect x="276" y="301" width="4" height="14" rx="1" fill="#e74c3c"/><rect x="174" y="321" width="12" height="12" rx="1" fill="#8B4513" stroke="#6B3310" stroke-width="0.5"/><circle cx="180" cy="327" r="10" fill="#e74c3c" opacity="0.5"/><circle cx="180" cy="327" r="10" fill="none" stroke="#c0392b" stroke-width="1"/><line x1="180" y1="317" x2="180" y2="337" stroke="#8B4513" stroke-width="1.5"/><text x="180" y="345" text-anchor="middle" fill="#6B3310" font-size="9" font-family="Heebo,sans-serif" font-weight="700">סוכת מציל</text><text x="180" y="361" text-anchor="middle" fill="#7a6030" font-size="11" font-family="Heebo,sans-serif" font-weight="700">חוף רחצה מוכרז</text><line x1="86" y1="371" x2="172" y2="371" stroke="#9a8050" stroke-width="1" marker-start="url(#szArrO)" marker-end="url(#szArrO)"/><text x="131" y="383" text-anchor="middle" fill="#9a8050" font-size="9" font-family="Heebo,sans-serif">150 מ׳</text><line x1="188" y1="371" x2="274" y2="371" stroke="#9a8050" stroke-width="1" marker-start="url(#szArrO)" marker-end="url(#szArrO)"/><text x="229" y="383" text-anchor="middle" fill="#9a8050" font-size="9" font-family="Heebo,sans-serif">150 מ׳</text><circle cx="150" cy="293" r="2" fill="#f5d76e" opacity="0.6"/><circle cx="190" cy="287" r="2" fill="#f5d76e" opacity="0.6"/><circle cx="125" cy="297" r="2" fill="#f5d76e" opacity="0.6"/><circle cx="220" cy="291" r="2" fill="#f5d76e" opacity="0.6"/><circle cx="180" cy="281" r="2" fill="#f5d76e" opacity="0.6"/><circle cx="58.5" cy="150" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="72.5" cy="150" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="58.5" cy="190" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="72.5" cy="190" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="58.5" cy="230" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="72.5" cy="230" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="58.5" cy="270" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><circle cx="72.5" cy="270" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.8"/><text x="65.5" y="139" text-anchor="middle" fill="#f39c12" font-size="9" font-family="Heebo,sans-serif" font-weight="700">נתיב כלי שיט</text><g transform="translate(333,215) rotate(-20)">
+    <ellipse rx="5" ry="12" fill="#2c3e50" stroke="#445"/><ellipse cy="-6" rx="3.5" ry="4" fill="#e74c3c"/>
+    <circle cy="-1" r="2" fill="#f5d76e"/><path d="M-1.5,10 L0,16 L1.5,10" fill="#fff" opacity="0.5"/>
+  </g><rect x="8" y="45" width="8" height="8" fill="#e74c3c" opacity="0.25" stroke="#e74c3c" stroke-width="0.5"/><text x="20" y="53" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif">אסור לשיט</text><rect x="8" y="58" width="8" height="8" fill="#f39c12" opacity="0.25" stroke="#f39c12" stroke-width="0.5"/><text x="20" y="66" fill="#f39c12" font-size="9" font-family="Heebo,sans-serif">אזור חיץ 50 מ׳</text><circle cx="12" cy="77" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.6"/><text x="20" y="80" fill="#f39c12" font-size="9" font-family="Heebo,sans-serif">מצוף</text><text x="180" y="20" text-anchor="middle" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">אזורי שיט - חוף רחצה מוכרז</text><text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">מבט מלמעלה (אווירי)</text>
+`;
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
     const compass = generateCompassRoseScene(q);
     if (compass) return compass;
+  }
+  if(topic==='אזורי שיט') {
+    // "חוף שאינו חוף רחצה מוכרז" contains מוכרז, so the negation has to be
+    // tested first or every non-declared-beach question lands on the declared
+    // beach diagram.
+    const negated = /שאינו|שאיננו|לא מוכרז/.test(q);
+    if(/נחל|שפך/.test(q))                            return SCENES_QA['zones_river_mouth'];
+    if(!negated && /חוף רחצה|מוכרז/.test(q))          return SCENES_QA['zones_declared_beach'];
+    if(negated || /200 מטר/.test(q))                  return SCENES_QA['zones_undeclared_beach'];
+    // open sea, closed areas, Dead Sea, Eilat keep the general zones scene
   }
   if(topic==='עזרה ראשונה') {
     if(/מדוזה|צריב/.test(q))                       return SCENES_QA['firstaid_jellyfish'];
