@@ -1602,7 +1602,7 @@
     "num": 1073,
     "source": "ידני",
     "license": 11,
-    "topic": "בטיחות אש",
+    "topic": "אזורי שיט",
     "q_he": "האם מותר להפליג עם אופנוע – ים במרחק של 2 מיל מערבית לשטח אש 30 (עתלית)?",
     "q_en": "",
     "options": [
@@ -1694,7 +1694,7 @@
     "num": 1076,
     "source": "ידני",
     "license": 11,
-    "topic": "בטיחות אש",
+    "topic": "אזורי שיט",
     "q_he": "האם מותר להפליג עם אופנוע-ים מיפו לאשדוד במרחק של 1 מיל מהחוף?",
     "q_en": "",
     "options": [
@@ -1706,8 +1706,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1076-palmachim-fire-zone.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "voiceover_text": "שאלה מספר 1076. האם מותר להפליג עם אופנוע-ים מיפו לאשדוד במרחק של 1 מיל מהחוף?. [[PAUSE]] התשובה הנכונה היא: אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים. ... אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784538277/skipper-quiz/jq9vyl3rinzeedhzni8y.mp4",
