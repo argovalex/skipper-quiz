@@ -406,6 +406,10 @@ const VO_FIXES = [
   [/ק"מ/g,            'קילומטר'],
   [/ס"מ/g,            'סנטימטר'],
   [/(\d+)\s*מ'/g,     '$1 מטר'],
+  [/\bNUC\b/g,        'אן, יו, סי'],
+  [/\bSOS\b/g,        'אס, או, אס'],
+  [/\bCOLREGS\b/gi,   'קולרגס'],
+  [/\bAnnex\s+IV\b/g, 'נספח ארבע'],
   [/\bSOG\b/g,        'מהירות על הקרקע'],
   [/\bCOG\b/g,        'כיוון על הקרקע'],
   [/\bMMSI\b/g,       'אם, אם, אס, איי'],
@@ -419,6 +423,12 @@ const VO_FIXES = [
   // Must stay AFTER every named Latin rule above (m/s, km/h, NM...), otherwise
   // it would eat their letters first. Letters glued to other Latin text or a
   // hyphen (IALA-A, X-band, [[PAUSE]]) are deliberately left alone.
+  // A vessel letter hung off a Hebrew prefix ("מפנה ל-C", "קיי ו-C"). The general
+  // rule below skips anything touching a hyphen so it cannot break IALA-A or
+  // X-band, but there the hyphen follows Hebrew, so the letter is a vessel id and
+  // must be spoken. Restricted to a Hebrew char before the hyphen for that reason.
+  [/(?<=[֐-׿]-)([A-Za-z])(?![A-Za-z-])/g,
+                      (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
   [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g,
                       (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
   [/\b(\d+)%/g,       '$1 אחוז'],
