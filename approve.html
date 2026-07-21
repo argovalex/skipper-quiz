@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#081228">
+<title>⚓ אישור סופי — רישיון 11</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* Read-only approval surface for license 11. Displays only; the single write
+   it performs is the approved_for_publish flag. Built mobile-first: every
+   control is a full-width touch target and nothing depends on hover. */
+body { padding-bottom: 90px; -webkit-text-size-adjust: 100%; }
+
+header { background:#081228; border-bottom:2px solid var(--border); padding:10px 14px; position:sticky; top:0; z-index:100; display:flex; align-items:center; gap:10px; }
+header h1 { font-size:15px; color:var(--accent); font-weight:800; flex:1; }
+header .hbtn { background:transparent; border:1px solid var(--border); color:var(--dim); border-radius:8px; padding:6px 10px; font-size:13px; font-family:inherit; cursor:pointer; }
+
+/* Progress toward the publish gate */
+.progress { padding:10px 14px; background:var(--bg2); border-bottom:1px solid var(--border); }
+.prog-line { display:flex; justify-content:space-between; font-size:12px; color:var(--dim); margin-bottom:6px; }
+.prog-line b { color:var(--green); font-size:14px; }
+.prog-bar { height:8px; background:var(--bg3); border-radius:5px; overflow:hidden; }
+.prog-fill { height:100%; background:var(--green); border-radius:5px; transition:width .4s ease; }
+
+/* Token — collapsed by default; only needed to write an approval */
+details.tok { background:var(--bg3); border-bottom:1px solid var(--border); }
+details.tok summary { padding:8px 14px; font-size:12px; color:var(--dim); cursor:pointer; }
+details.tok .tok-body { padding:0 14px 10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+details.tok input { flex:1; min-width:180px; padding:8px 10px; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:13px; font-family:monospace; direction:ltr; }
+
+.filters { display:flex; gap:6px; padding:10px 14px; overflow-x:auto; background:var(--bg2); border-bottom:1px solid var(--border); -webkit-overflow-scrolling:touch; }
+.filters::-webkit-scrollbar { display:none; }
+.chip { flex:0 0 auto; padding:7px 14px; border-radius:18px; border:1px solid var(--border); background:transparent; color:var(--dim); font-size:13px; font-family:inherit; cursor:pointer; white-space:nowrap; }
+.chip.active { background:var(--accent); color:#081228; border-color:var(--accent); font-weight:700; }
+.search { padding:10px 14px 0; }
+.search input { width:100%; padding:10px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:15px; font-family:inherit; direction:rtl; }
+.search input:focus { outline:none; border-color:var(--accent); }
+
+#list { padding:12px 14px; display:flex; flex-direction:column; gap:12px; }
+.card { background:var(--bg2); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+.card.approved { border-color:rgba(61,220,132,0.55); }
+.card-top { display:flex; align-items:center; gap:8px; padding:10px 12px; background:var(--bg3); flex-wrap:wrap; }
+.num { font-size:12px; font-weight:800; color:var(--accent); background:var(--bg); padding:3px 9px; border-radius:6px; }
+.topic { font-size:12px; color:var(--dim); flex:1; }
+.tag { font-size:11px; padding:2px 8px; border-radius:9px; white-space:nowrap; }
+.tag.vid { background:rgba(61,220,132,0.15); color:var(--green); border:1px solid rgba(61,220,132,0.3); }
+.tag.novid { background:rgba(122,156,200,0.1); color:var(--dim); border:1px solid var(--border); }
+.tag.appr { background:rgba(61,220,132,0.25); color:var(--green); border:1px solid var(--green); font-weight:700; }
+.tag.unconf { background:rgba(245,166,35,0.15); color:var(--orange); border:1px solid rgba(245,166,35,0.35); }
+.card-body { padding:12px; }
+.qtext { font-size:15px; font-weight:700; line-height:1.5; margin-bottom:10px; }
+.opts { display:flex; flex-direction:column; gap:5px; margin-bottom:10px; }
+.opt { font-size:14px; line-height:1.45; padding:7px 10px; border-radius:8px; background:var(--bg3); color:var(--dim); }
+.opt.right { background:rgba(61,220,132,0.12); border:1px solid rgba(61,220,132,0.4); color:var(--text); font-weight:600; }
+.expl { font-size:13px; line-height:1.55; color:var(--dim); border-right:3px solid var(--border); padding:2px 10px; margin-bottom:10px; }
+video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-radius:10px; background:#000; }
+.novideo { text-align:center; font-size:13px; color:var(--dim); padding:16px; background:var(--bg3); border-radius:10px; margin-bottom:10px; }
+.btn-approve { width:100%; padding:14px; border-radius:11px; border:1px solid var(--green); background:rgba(61,220,132,0.16); color:var(--green); font-size:15px; font-weight:800; font-family:inherit; cursor:pointer; }
+.btn-approve:disabled { opacity:.4; cursor:not-allowed; }
+.btn-undo { width:100%; padding:12px; border-radius:11px; border:1px solid var(--border); background:transparent; color:var(--dim); font-size:14px; font-family:inherit; cursor:pointer; }
+
+.empty { text-align:center; padding:50px 20px; color:var(--dim); font-size:14px; line-height:1.6; }
+.toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1e3a6e; color:var(--text); padding:12px 20px; border-radius:11px; font-size:14px; z-index:999; display:none; border:1px solid var(--accent); max-width:92vw; text-align:center; }
+.toast.on { display:block; }
+.bar { position:fixed; bottom:0; left:0; right:0; background:#081228; border-top:2px solid var(--border); padding:10px 14px calc(10px + env(safe-area-inset-bottom)); font-size:12px; color:var(--dim); text-align:center; z-index:200; }
+@media (min-width:700px) { #list { max-width:640px; margin:0 auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <span style="font-size:19px">⚓</span>
+  <h1>אישור סופי — רישיון 11</h1>
+  <button class="hbtn" onclick="loadData()">↻</button>
+</header>
+
+<div class="progress">
+  <div class="prog-line">
+    <span>מאושר לפרסום: <b id="p-appr">—</b> מתוך <span id="p-total">—</span></span>
+    <span id="p-ready">—</span>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="p-fill" style="width:0%"></div></div>
+</div>
+
+<details class="tok" id="tokBox">
+  <summary id="tokSummary">🔑 GitHub Token</summary>
+  <div class="tok-body">
+    <input id="ghToken" type="password" placeholder="ghp_xxxxxxxx" oninput="saveTok()" autocomplete="off">
+    <span id="tokStatus" style="font-size:12px"></span>
+  </div>
+</details>
+
+<div class="search"><input id="search" type="search" placeholder="🔍 חפש לפי מספר / נושא / טקסט" oninput="renderList()"></div>
+
+<div class="filters">
+  <button class="chip active" id="f-review"   onclick="setFilter('review')">🎬 ממתין לאישור</button>
+  <button class="chip"        id="f-approved" onclick="setFilter('approved')">✅ מאושר</button>
+  <button class="chip"        id="f-novideo"  onclick="setFilter('novideo')">⬜ ללא סרטון</button>
+  <button class="chip"        id="f-all"      onclick="setFilter('all')">הכל</button>
+</div>
+
+<div id="list"><div class="empty">טוען...</div></div>
+
+<div class="toast" id="toast"></div>
+<div class="bar" id="bar">—</div>
+
+<script src="auth.js"></script>
+<script src="github-api.js"></script>
+<script>
+// The full bank stays in `questions` (all licenses) because saveQuestionsGH
+// partitions it per license and rebuilds the derived questions.json from it —
+// loading only l11 here would write a questions.json missing license 30.
+let questions   = [];
+let canWrite    = false;   // a token was present at load → saves are possible
+let filter      = 'review';
+const LIC = 11;
+
+function saveTok() {
+  localStorage.setItem('sq_gh_token', document.getElementById('ghToken').value.trim());
+  updateTokStatus();
+}
+function updateTokStatus() {
+  const t = getToken();
+  document.getElementById('tokStatus').innerHTML = t
+    ? '<span class="ok">✅ מוגדר</span>'
+    : '<span class="err">⚠ בלי טוקן אפשר רק לצפות</span>';
+  document.getElementById('tokSummary').textContent = t ? '🔑 GitHub Token ✅' : '🔑 GitHub Token — נדרש כדי לאשר';
+}
+
+async function loadData() {
+  setBar('טוען...');
+  document.getElementById('list').innerHTML = '<div class="empty">טוען...</div>';
+  if (getToken()) {
+    // Populates bankState (sha + snapshot per license) so an approval writes
+    // data/l11.json guarded — a parallel edit fails loudly instead of clobbering.
+    const { data } = await loadBank();
+    questions = data;
+    canWrite = questions.length > 0;
+  } else {
+    // No token: read the public copy straight from Pages/raw so the page is
+    // still usable for review. Approving stays disabled — no sha, no safe write.
+    canWrite = false;
+    try {
+      let res = await fetch(`data/l11.json?t=${Date.now()}`);
+      if (!res.ok) res = await fetch(`https://raw.githubusercontent.com/argovalex/skipper-quiz/main/data/l11.json?t=${Date.now()}`);
+      questions = await res.json();
+    } catch { questions = []; }
+    document.getElementById('tokBox').open = true;
+  }
+  updateTokStatus();
+  updateProgress();
+  renderList();
+  setBar(canWrite ? `✅ נטען מ-GitHub · ${inLicense().length} שאלות ברישיון 11` : `👁 מצב צפייה בלבד · ${inLicense().length} שאלות`);
+}
+
+function inLicense() { return questions.filter(q => Number(q.license ?? 30) === LIC); }
+
+function updateProgress() {
+  const all  = inLicense();
+  const appr = all.filter(q => q.approved_for_publish).length;
+  const ready = all.filter(q => q.videoUrl && !q.approved_for_publish).length;
+  document.getElementById('p-appr').textContent  = appr;
+  document.getElementById('p-total').textContent = all.length;
+  document.getElementById('p-ready').textContent = `${ready} ממתינות לאישור`;
+  document.getElementById('p-fill').style.width  = all.length ? (appr / all.length * 100).toFixed(1) + '%' : '0%';
+}
+
+function setFilter(f) {
+  filter = f;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('f-' + f).classList.add('active');
+  renderList();
+}
+
+function getFiltered() {
+  const s = document.getElementById('search').value.trim().toLowerCase();
+  return inLicense().filter(q => {
+    if (filter === 'review'   && (!q.videoUrl || q.approved_for_publish)) return false;
+    if (filter === 'approved' && !q.approved_for_publish)                 return false;
+    if (filter === 'novideo'  && q.videoUrl)                              return false;
+    if (s && !`${q.num} ${q.topic||''} ${q.q_he||''}`.toLowerCase().includes(s)) return false;
+    return true;
+  });
+}
+
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ANS_IDX = { 'א':0, 'ב':1, 'ג':2, 'ד':3 };
+
+function renderList() {
+  const list = document.getElementById('list');
+  const items = getFiltered();
+  if (!items.length) {
+    list.innerHTML = `<div class="empty">${filter === 'review'
+      ? 'אין שאלות שממתינות לאישור.<br>כל מה שיש לו סרטון כבר אושר.'
+      : 'אין תוצאות'}</div>`;
+    return;
+  }
+  list.innerHTML = items.map(q => {
+    const appr  = !!q.approved_for_publish;
+    const right = ANS_IDX[(q.answer || '').trim()] ?? -1;
+
+    const tags = [
+      appr ? '<span class="tag appr">✅ מאושר סופית</span>' : '',
+      q.videoUrl ? '<span class="tag vid">🎬 סרטון</span>' : '<span class="tag novid">⬜ אין סרטון</span>',
+      q.answer_confirmed ? '' : '<span class="tag unconf">⚠ תשובה לא מאומתת</span>'
+    ].join('');
+
+    const opts = (q.options || []).map((o, i) =>
+      `<div class="opt${i === right ? ' right' : ''}">${i === right ? '✓ ' : ''}${esc(o)}</div>`).join('');
+
+    // preload="none" so a list of 80 videos costs nothing until one is tapped.
+    const media = q.videoUrl
+      ? `<video controls playsinline preload="none" src="${esc(q.videoUrl)}"></video>`
+      : `<div class="novideo">אין סרטון עדיין — אי אפשר לאשר לפרסום</div>`;
+
+    const action = appr
+      ? `<button class="btn-undo" onclick="setApproved(${q.num}, false)" ${canWrite ? '' : 'disabled'}>↺ בטל אישור</button>`
+      : `<button class="btn-approve" onclick="setApproved(${q.num}, true)" ${(canWrite && q.videoUrl) ? '' : 'disabled'}>
+           ${canWrite ? (q.videoUrl ? '✅ אשר גרסה סופית' : 'ממתין לסרטון') : '🔑 הזן טוקן כדי לאשר'}</button>`;
+
+    return `<div class="card${appr ? ' approved' : ''}" id="c-${q.num}">
+      <div class="card-top"><span class="num">#${q.num}</span><span class="topic">${esc(q.topic)}</span>${tags}</div>
+      <div class="card-body">
+        <div class="qtext">${esc(q.q_he)}</div>
+        <div class="opts">${opts}</div>
+        ${q.explanation ? `<div class="expl">${esc(q.explanation)}</div>` : ''}
+        ${media}
+        ${action}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// The only write this page makes. Confirmed first because a mis-tap on a phone
+// is what puts an unverified answer in front of paying students.
+async function setApproved(num, value) {
+  if (!canWrite) { toast('⚠ צריך GitHub Token כדי לאשר'); return; }
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  if (value && !confirm(`לאשר סופית את שאלה #${num} לפרסום?`)) return;
+
+  const prev = q.approved_for_publish;
+  q.approved_for_publish = value;
+  updateProgress(); renderList();
+  toast('⏳ שומר...');
+
+  const ok = await saveQuestionsGH(`approve: Q#${num}`);
+  if (ok) {
+    toast(value ? `✅ #${num} מאושר סופית` : `↺ #${num} בוטל אישור`);
+  } else {
+    q.approved_for_publish = prev;   // GitHub rejected the write — don't show it as saved
+    updateProgress(); renderList();
+    toast('❌ השמירה נכשלה — רענן (↻) ונסה שוב');
+  }
+}
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('on'), 3500);
+}
+function setBar(msg) { document.getElementById('bar').textContent = msg; }
+
+window.onload = () => {
+  document.getElementById('ghToken').value = getToken();
+  loadData();
+};
+</script>
+</body>
+</html>
