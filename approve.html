@@ -7,9 +7,9 @@
 <title>⚓ אישור סופי — רישיון 11</title>
 <link rel="stylesheet" href="shared.css">
 <style>
-/* Read-only approval surface for license 11. Displays only; the single write
-   it performs is the approved_for_publish flag. Built mobile-first: every
-   control is a full-width touch target and nothing depends on hover. */
+/* Read-only approval surface for license 11, grouped by topic. Displays only;
+   the only writes are the approved_for_publish gate and fix_request text. Built
+   mobile-first: every control is a full-width touch target, nothing on hover. */
 body { padding-bottom: 90px; -webkit-text-size-adjust: 100%; }
 
 header { background:#081228; border-bottom:2px solid var(--border); padding:10px 14px; position:sticky; top:0; z-index:100; display:flex; align-items:center; gap:10px; }
@@ -37,9 +37,24 @@ details.tok input { flex:1; min-width:180px; padding:8px 10px; background:var(--
 .search input { width:100%; padding:10px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:15px; font-family:inherit; direction:rtl; }
 .search input:focus { outline:none; border-color:var(--accent); }
 
-#list { padding:12px 14px; display:flex; flex-direction:column; gap:12px; }
-.card { background:var(--bg2); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+#list { padding:12px 14px; }
+
+/* Topic group */
+.group { margin-bottom:14px; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:var(--bg2); }
+.group > summary { list-style:none; cursor:pointer; padding:12px 14px; background:var(--bg3); display:flex; align-items:center; gap:10px; user-select:none; }
+.group > summary::-webkit-details-marker { display:none; }
+.group > summary .caret { color:var(--dim); font-size:12px; transition:transform .2s; }
+.group[open] > summary .caret { transform:rotate(90deg); }
+.grp-name { font-size:15px; font-weight:800; color:var(--accent); flex:1; }
+.grp-counts { display:flex; gap:5px; align-items:center; }
+.grp-count { font-size:11px; padding:2px 8px; border-radius:9px; white-space:nowrap; }
+.grp-count.appr { background:rgba(61,220,132,0.18); color:var(--green); border:1px solid rgba(61,220,132,0.35); }
+.grp-count.tot  { background:var(--bg); color:var(--dim); border:1px solid var(--border); }
+.grp-body { padding:12px; display:flex; flex-direction:column; gap:12px; }
+
+.card { background:var(--bg); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
 .card.approved { border-color:rgba(61,220,132,0.55); }
+.card.needsfix { border-color:rgba(245,166,35,0.55); }
 .card-top { display:flex; align-items:center; gap:8px; padding:10px 12px; background:var(--bg3); flex-wrap:wrap; }
 .num { font-size:12px; font-weight:800; color:var(--accent); background:var(--bg); padding:3px 9px; border-radius:6px; }
 .topic { font-size:12px; color:var(--dim); flex:1; }
@@ -47,6 +62,7 @@ details.tok input { flex:1; min-width:180px; padding:8px 10px; background:var(--
 .tag.vid { background:rgba(61,220,132,0.15); color:var(--green); border:1px solid rgba(61,220,132,0.3); }
 .tag.novid { background:rgba(122,156,200,0.1); color:var(--dim); border:1px solid var(--border); }
 .tag.appr { background:rgba(61,220,132,0.25); color:var(--green); border:1px solid var(--green); font-weight:700; }
+.tag.fix { background:rgba(245,166,35,0.18); color:var(--orange); border:1px solid rgba(245,166,35,0.4); font-weight:700; }
 .tag.unconf { background:rgba(245,166,35,0.15); color:var(--orange); border:1px solid rgba(245,166,35,0.35); }
 .card-body { padding:12px; }
 .qtext { font-size:15px; font-weight:700; line-height:1.5; margin-bottom:10px; }
@@ -54,17 +70,42 @@ details.tok input { flex:1; min-width:180px; padding:8px 10px; background:var(--
 .opt { font-size:14px; line-height:1.45; padding:7px 10px; border-radius:8px; background:var(--bg3); color:var(--dim); }
 .opt.right { background:rgba(61,220,132,0.12); border:1px solid rgba(61,220,132,0.4); color:var(--text); font-weight:600; }
 .expl { font-size:13px; line-height:1.55; color:var(--dim); border-right:3px solid var(--border); padding:2px 10px; margin-bottom:10px; }
+.fixnote { font-size:12px; line-height:1.5; color:var(--orange); background:rgba(245,166,35,0.08); border:1px solid rgba(245,166,35,0.3); border-radius:8px; padding:8px 10px; margin-bottom:10px; }
 video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-radius:10px; background:#000; }
 .novideo { text-align:center; font-size:13px; color:var(--dim); padding:16px; background:var(--bg3); border-radius:10px; margin-bottom:10px; }
-.btn-approve { width:100%; padding:14px; border-radius:11px; border:1px solid var(--green); background:rgba(61,220,132,0.16); color:var(--green); font-size:15px; font-weight:800; font-family:inherit; cursor:pointer; }
+
+.actions { display:flex; gap:8px; }
+.btn-approve { flex:1; padding:14px 8px; border-radius:11px; border:1px solid var(--green); background:rgba(61,220,132,0.16); color:var(--green); font-size:15px; font-weight:800; font-family:inherit; cursor:pointer; }
 .btn-approve:disabled { opacity:.4; cursor:not-allowed; }
-.btn-undo { width:100%; padding:12px; border-radius:11px; border:1px solid var(--border); background:transparent; color:var(--dim); font-size:14px; font-family:inherit; cursor:pointer; }
+.btn-undo { flex:1; padding:12px 8px; border-radius:11px; border:1px solid var(--border); background:transparent; color:var(--dim); font-size:14px; font-family:inherit; cursor:pointer; }
+.btn-fix { flex:0 0 auto; padding:14px 16px; border-radius:11px; border:1px solid var(--orange); background:rgba(245,166,35,0.12); color:var(--orange); font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; }
+.btn-fix.has { background:rgba(245,166,35,0.28); }
+.btn-fix:disabled { opacity:.4; cursor:not-allowed; }
 
 .empty { text-align:center; padding:50px 20px; color:var(--dim); font-size:14px; line-height:1.6; }
 .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1e3a6e; color:var(--text); padding:12px 20px; border-radius:11px; font-size:14px; z-index:999; display:none; border:1px solid var(--accent); max-width:92vw; text-align:center; }
 .toast.on { display:block; }
 .bar { position:fixed; bottom:0; left:0; right:0; background:#081228; border-top:2px solid var(--border); padding:10px 14px calc(10px + env(safe-area-inset-bottom)); font-size:12px; color:var(--dim); text-align:center; z-index:200; }
-@media (min-width:700px) { #list { max-width:640px; margin:0 auto; } }
+
+/* Fix-request modal */
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,0.72); z-index:500; display:none; align-items:flex-end; justify-content:center; }
+.overlay.on { display:flex; }
+.sheet { background:var(--bg2); border:1px solid var(--border); border-radius:16px 16px 0 0; padding:20px 16px calc(20px + env(safe-area-inset-bottom)); width:100%; max-width:640px; }
+.sheet h3 { color:var(--orange); font-size:16px; margin-bottom:6px; }
+.sheet .mq { font-size:13px; color:var(--dim); margin-bottom:14px; line-height:1.4; border-right:3px solid var(--border); padding-right:10px; }
+.sheet textarea { width:100%; padding:11px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:15px; font-family:inherit; direction:rtl; resize:vertical; line-height:1.5; min-height:110px; }
+.sheet textarea:focus { outline:none; border-color:var(--orange); }
+.sheet-btns { display:flex; gap:8px; margin-top:16px; }
+.sheet-btns button { flex:1; padding:13px; border-radius:11px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; }
+.sb-cancel { background:transparent; border:1px solid var(--border); color:var(--dim); }
+.sb-clear { background:transparent; border:1px solid var(--red); color:var(--red); }
+.sb-save { background:rgba(245,166,35,0.16); border:1px solid var(--orange); color:var(--orange); }
+
+@media (min-width:700px) {
+  #list { max-width:640px; margin:0 auto; }
+  .overlay { align-items:center; }
+  .sheet { border-radius:16px; }
+}
 </style>
 </head>
 <body>
@@ -96,6 +137,7 @@ video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-r
 <div class="filters">
   <button class="chip active" id="f-review"   onclick="setFilter('review')">🎬 ממתין לאישור</button>
   <button class="chip"        id="f-approved" onclick="setFilter('approved')">✅ מאושר</button>
+  <button class="chip"        id="f-fix"      onclick="setFilter('fix')">🛠 לתיקון</button>
   <button class="chip"        id="f-novideo"  onclick="setFilter('novideo')">⬜ ללא סרטון</button>
   <button class="chip"        id="f-all"      onclick="setFilter('all')">הכל</button>
 </div>
@@ -104,6 +146,20 @@ video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-r
 
 <div class="toast" id="toast"></div>
 <div class="bar" id="bar">—</div>
+
+<!-- Fix-request bottom sheet -->
+<div class="overlay" id="fixOverlay">
+  <div class="sheet">
+    <h3>🛠 בקשת תיקון</h3>
+    <div class="mq" id="fix-q">—</div>
+    <textarea id="fix-text" placeholder="מה לתקן? למשל: התשובה הנכונה צריכה להיות ג', הסבר שגוי, טעות כתיב בשאלה, הסרטון מקריא ישן..."></textarea>
+    <div class="sheet-btns">
+      <button class="sb-cancel" onclick="closeFix()">ביטול</button>
+      <button class="sb-clear" id="fix-clear" onclick="clearFix()" style="display:none">מחק בקשה</button>
+      <button class="sb-save" onclick="saveFix()">💾 שמור</button>
+    </div>
+  </div>
+</div>
 
 <script src="auth.js"></script>
 <script src="github-api.js"></script>
@@ -132,14 +188,14 @@ async function loadData() {
   setBar('טוען...');
   document.getElementById('list').innerHTML = '<div class="empty">טוען...</div>';
   if (getToken()) {
-    // Populates bankState (sha + snapshot per license) so an approval writes
+    // Populates bankState (sha + snapshot per license) so a write goes to
     // data/l11.json guarded — a parallel edit fails loudly instead of clobbering.
     const { data } = await loadBank();
     questions = data;
     canWrite = questions.length > 0;
   } else {
     // No token: read the public copy straight from Pages/raw so the page is
-    // still usable for review. Approving stays disabled — no sha, no safe write.
+    // still usable for review. Writing stays disabled — no sha, no safe write.
     canWrite = false;
     try {
       let res = await fetch(`data/l11.json?t=${Date.now()}`);
@@ -178,6 +234,7 @@ function getFiltered() {
   return inLicense().filter(q => {
     if (filter === 'review'   && (!q.videoUrl || q.approved_for_publish)) return false;
     if (filter === 'approved' && !q.approved_for_publish)                 return false;
+    if (filter === 'fix'      && !q.fix_request)                          return false;
     if (filter === 'novideo'  && q.videoUrl)                              return false;
     if (s && !`${q.num} ${q.topic||''} ${q.q_he||''}`.toLowerCase().includes(s)) return false;
     return true;
@@ -186,6 +243,50 @@ function getFiltered() {
 
 const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ANS_IDX = { 'א':0, 'ב':1, 'ג':2, 'ד':3 };
+
+// Remembers which topic groups the user collapsed, so a re-render (after an
+// approve/fix) doesn't snap them all back open.
+const collapsed = new Set();
+
+function cardHTML(q) {
+  const appr  = !!q.approved_for_publish;
+  const fix   = !!q.fix_request;
+  const right = ANS_IDX[(q.answer || '').trim()] ?? -1;
+
+  const tags = [
+    appr ? '<span class="tag appr">✅ מאושר סופית</span>' : '',
+    fix  ? '<span class="tag fix">🛠 לתיקון</span>' : '',
+    q.videoUrl ? '<span class="tag vid">🎬 סרטון</span>' : '<span class="tag novid">⬜ אין סרטון</span>',
+    q.answer_confirmed ? '' : '<span class="tag unconf">⚠ תשובה לא מאומתת</span>'
+  ].join('');
+
+  const opts = (q.options || []).map((o, i) =>
+    `<div class="opt${i === right ? ' right' : ''}">${i === right ? '✓ ' : ''}${esc(o)}</div>`).join('');
+
+  // preload="none" so a page full of videos costs nothing until one is tapped.
+  const media = q.videoUrl
+    ? `<video controls playsinline preload="none" src="${esc(q.videoUrl)}"></video>`
+    : `<div class="novideo">אין סרטון עדיין — אי אפשר לאשר לפרסום</div>`;
+
+  const approveBtn = appr
+    ? `<button class="btn-undo" onclick="setApproved(${q.num}, false)" ${canWrite ? '' : 'disabled'}>↺ בטל אישור</button>`
+    : `<button class="btn-approve" onclick="setApproved(${q.num}, true)" ${(canWrite && q.videoUrl) ? '' : 'disabled'}>
+         ${canWrite ? (q.videoUrl ? '✅ אשר סופי' : 'ממתין לסרטון') : '🔑 הזן טוקן'}</button>`;
+
+  const fixBtn = `<button class="btn-fix${fix ? ' has' : ''}" onclick="openFix(${q.num})" ${canWrite ? '' : 'disabled'} title="בקשת תיקון">🛠 תיקון</button>`;
+
+  return `<div class="card${appr ? ' approved' : ''}${fix ? ' needsfix' : ''}" id="c-${q.num}">
+    <div class="card-top"><span class="num">#${q.num}</span><span class="topic">${esc(q.topic)}</span>${tags}</div>
+    <div class="card-body">
+      <div class="qtext">${esc(q.q_he)}</div>
+      <div class="opts">${opts}</div>
+      ${q.explanation ? `<div class="expl">${esc(q.explanation)}</div>` : ''}
+      ${fix ? `<div class="fixnote">🛠 בקשת תיקון: ${esc(q.fix_request)}</div>` : ''}
+      ${media}
+      <div class="actions">${approveBtn}${fixBtn}</div>
+    </div>
+  </div>`;
+}
 
 function renderList() {
   const list = document.getElementById('list');
@@ -196,44 +297,40 @@ function renderList() {
       : 'אין תוצאות'}</div>`;
     return;
   }
-  list.innerHTML = items.map(q => {
-    const appr  = !!q.approved_for_publish;
-    const right = ANS_IDX[(q.answer || '').trim()] ?? -1;
 
-    const tags = [
-      appr ? '<span class="tag appr">✅ מאושר סופית</span>' : '',
-      q.videoUrl ? '<span class="tag vid">🎬 סרטון</span>' : '<span class="tag novid">⬜ אין סרטון</span>',
-      q.answer_confirmed ? '' : '<span class="tag unconf">⚠ תשובה לא מאומתת</span>'
-    ].join('');
+  // Group by topic, preserving first-seen order of topics.
+  const groups = new Map();
+  for (const q of items) {
+    const t = q.topic || 'ללא נושא';
+    if (!groups.has(t)) groups.set(t, []);
+    groups.get(t).push(q);
+  }
 
-    const opts = (q.options || []).map((o, i) =>
-      `<div class="opt${i === right ? ' right' : ''}">${i === right ? '✓ ' : ''}${esc(o)}</div>`).join('');
-
-    // preload="none" so a list of 80 videos costs nothing until one is tapped.
-    const media = q.videoUrl
-      ? `<video controls playsinline preload="none" src="${esc(q.videoUrl)}"></video>`
-      : `<div class="novideo">אין סרטון עדיין — אי אפשר לאשר לפרסום</div>`;
-
-    const action = appr
-      ? `<button class="btn-undo" onclick="setApproved(${q.num}, false)" ${canWrite ? '' : 'disabled'}>↺ בטל אישור</button>`
-      : `<button class="btn-approve" onclick="setApproved(${q.num}, true)" ${(canWrite && q.videoUrl) ? '' : 'disabled'}>
-           ${canWrite ? (q.videoUrl ? '✅ אשר גרסה סופית' : 'ממתין לסרטון') : '🔑 הזן טוקן כדי לאשר'}</button>`;
-
-    return `<div class="card${appr ? ' approved' : ''}" id="c-${q.num}">
-      <div class="card-top"><span class="num">#${q.num}</span><span class="topic">${esc(q.topic)}</span>${tags}</div>
-      <div class="card-body">
-        <div class="qtext">${esc(q.q_he)}</div>
-        <div class="opts">${opts}</div>
-        ${q.explanation ? `<div class="expl">${esc(q.explanation)}</div>` : ''}
-        ${media}
-        ${action}
-      </div>
-    </div>`;
+  list.innerHTML = [...groups.entries()].map(([topic, qs]) => {
+    const appr = qs.filter(q => q.approved_for_publish).length;
+    const open = collapsed.has(topic) ? '' : ' open';
+    return `<details class="group"${open} data-topic="${esc(topic)}" ontoggle="onGroupToggle(this)">
+      <summary>
+        <span class="caret">▶</span>
+        <span class="grp-name">${esc(topic)}</span>
+        <span class="grp-counts">
+          <span class="grp-count appr">✅ ${appr}</span>
+          <span class="grp-count tot">${qs.length}</span>
+        </span>
+      </summary>
+      <div class="grp-body">${qs.map(cardHTML).join('')}</div>
+    </details>`;
   }).join('');
 }
 
-// The only write this page makes. Confirmed first because a mis-tap on a phone
-// is what puts an unverified answer in front of paying students.
+function onGroupToggle(el) {
+  const t = el.dataset.topic;
+  if (el.open) collapsed.delete(t); else collapsed.add(t);
+}
+
+// ── Approve (writes approved_for_publish) ─────────────────────────────────────
+// Confirmed first because a mis-tap on a phone is what puts an unverified answer
+// in front of paying students.
 async function setApproved(num, value) {
   if (!canWrite) { toast('⚠ צריך GitHub Token כדי לאשר'); return; }
   const q = questions.find(x => x.num === num);
@@ -251,6 +348,59 @@ async function setApproved(num, value) {
   } else {
     q.approved_for_publish = prev;   // GitHub rejected the write — don't show it as saved
     updateProgress(); renderList();
+    toast('❌ השמירה נכשלה — רענן (↻) ונסה שוב');
+  }
+}
+
+// ── Fix request (writes fix_request / fix_requested_at) ───────────────────────
+let fixNum = null;
+function openFix(num) {
+  if (!canWrite) { toast('⚠ צריך GitHub Token כדי לבקש תיקון'); return; }
+  const q = questions.find(x => x.num === num);
+  if (!q) return;
+  fixNum = num;
+  document.getElementById('fix-q').textContent = `#${num} — ${q.q_he}`;
+  document.getElementById('fix-text').value = q.fix_request || '';
+  document.getElementById('fix-clear').style.display = q.fix_request ? '' : 'none';
+  document.getElementById('fixOverlay').classList.add('on');
+}
+function closeFix() {
+  document.getElementById('fixOverlay').classList.remove('on');
+  fixNum = null;
+}
+async function saveFix() {
+  const q = questions.find(x => x.num === fixNum);
+  if (!q) return;
+  const text = document.getElementById('fix-text').value.trim();
+  if (!text) { toast('⚠ כתוב מה לתקן, או לחץ "מחק בקשה"'); return; }
+  const prevReq = q.fix_request, prevAt = q.fix_requested_at;
+  q.fix_request = text;
+  q.fix_requested_at = new Date().toISOString();
+  closeFix();
+  renderList();
+  toast('⏳ שומר...');
+  const ok = await saveQuestionsGH(`fix-request: Q#${q.num}`);
+  if (ok) { toast(`🛠 בקשת תיקון ל-#${q.num} נשמרה`); }
+  else {
+    q.fix_request = prevReq; q.fix_requested_at = prevAt;
+    renderList();
+    toast('❌ השמירה נכשלה — רענן (↻) ונסה שוב');
+  }
+}
+async function clearFix() {
+  const q = questions.find(x => x.num === fixNum);
+  if (!q) return;
+  const prevReq = q.fix_request, prevAt = q.fix_requested_at;
+  delete q.fix_request;
+  delete q.fix_requested_at;
+  closeFix();
+  renderList();
+  toast('⏳ מוחק בקשה...');
+  const ok = await saveQuestionsGH(`fix-request-clear: Q#${q.num}`);
+  if (ok) { toast(`🗑 בקשת תיקון ל-#${q.num} נמחקה`); }
+  else {
+    q.fix_request = prevReq; q.fix_requested_at = prevAt;
+    renderList();
     toast('❌ השמירה נכשלה — רענן (↻) ונסה שוב');
   }
 }
