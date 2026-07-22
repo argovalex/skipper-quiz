@@ -166,6 +166,8 @@
     "html_locked": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782811149/skipper-quiz/tklulhg9rn5xbyv4hdi4.mp4",
     "rendered_at": "2026-06-30T09:19:10.729Z",
+    "fix_request": "הצג על המפה איך נראת דקה על הצעגל הגדול",
+    "fix_requested_at": "2026-06-30T07:41:33.496Z",
     "scheduled_date": "2026-06-30",
     "license": 30
   },
@@ -4936,7 +4938,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784720040/skipper-quiz/voaj6egejj14i4qljw7l.mp4",
-    "rendered_at": "2026-07-22T11:34:01.673Z",
+    "rendered_at": "2026-07-22T11:34:03.083Z",
     "voiceover_text": "שאלה מספר 1002. אופנוע ים פי מבחין בספינת מפרש אייץ' ועליה סימן יום כמתואר בתמונה 20, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: פי יפנה ימינה וגם אייץ' יפנה ימינה. ... תמונה 20 משולש הפוך מפרשית תחת מנוע ממוכנת. שניהם ממוכנים, אותה משפחה. חזית מול חזית - שניהם פונים ימינה."
   },
   {
@@ -7038,8 +7040,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784712590/skipper-quiz/ar3hviwtkwq8xtgeptne.mp4",
-    "rendered_at": "2026-07-22T09:29:51.146Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784442534/skipper-quiz/kqykknpthpwslssnmli2.mp4"
   },
   {
     "num": 1097,
@@ -7060,8 +7061,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784712685/skipper-quiz/nprhgqzazp5gqt4yzcfy.mp4",
-    "rendered_at": "2026-07-22T09:31:26.178Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784442579/skipper-quiz/ao6n6tv5z72ubuk7kfre.mp4"
   },
   {
     "num": 1098,
@@ -7082,8 +7082,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784712739/skipper-quiz/qdpba4gz8anemv8tbx1t.mp4",
-    "rendered_at": "2026-07-22T09:32:21.364Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784442629/skipper-quiz/ojaltknxoev4is7xlcdr.mp4"
   },
   {
     "num": 1099,
@@ -7104,8 +7103,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784712849/skipper-quiz/z88qyb1uz8p5xjxnpnkp.mp4",
-    "rendered_at": "2026-07-22T09:34:10.816Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784442734/skipper-quiz/eqlzoh39dbrm3p5glnzt.mp4"
   },
   {
     "num": 1100,
@@ -7126,8 +7124,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784712938/skipper-quiz/hoqik7jypuxfspaswgpu.mp4",
-    "rendered_at": "2026-07-22T09:35:39.207Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784442824/skipper-quiz/ss2g4ntt8mlfhui5oqip.mp4"
   },
   {
     "num": 1101,
@@ -7192,8 +7189,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784713031/skipper-quiz/omtewdauksq9z5mm6eln.mp4",
-    "rendered_at": "2026-07-22T09:37:12.843Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784443919/skipper-quiz/vdo0y7ehjl2zjofvpdu0.mp4"
   },
   {
     "num": 1104,
@@ -7214,8 +7210,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784713090/skipper-quiz/lyeqvfhkduzszsfuzphc.mp4",
-    "rendered_at": "2026-07-22T09:38:11.181Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784443963/skipper-quiz/tkljjv3wnygxv7nckuuq.mp4"
   },
   {
     "num": 1105,
@@ -7236,8 +7231,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784713184/skipper-quiz/lrbieev23rmmw8opf0sj.mp4",
-    "rendered_at": "2026-07-22T09:39:45.429Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784445773/skipper-quiz/mowncamy33qnppk4rrxs.mp4"
   },
   {
     "num": 1106,
@@ -7258,8 +7252,7 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784713231/skipper-quiz/lbyrdy78c17vfb78pwfx.mp4",
-    "rendered_at": "2026-07-22T09:40:32.213Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784445817/skipper-quiz/fxbtqcorcb7oqjpngorf.mp4"
   },
   {
     "num": 1107,
