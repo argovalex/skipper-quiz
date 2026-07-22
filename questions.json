@@ -5751,9 +5751,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "explanation": "אות קולי בתמונה 114 (שלוש צפירות קצרות) = כלי שיט מטיל עוגן.",
-    "blastOverride": "",
-    "voiceover_text": "שאלה מספר 1039. במרינה אופנוע ים שומע את כלי השייט מלפניו משמיע אות קולי שבתמונה 114, מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא: כלי השייט פונה שמאלה. ... אות קולי בתמונה 114 שלוש צפירות קצרות כלי שיט מטיל עוגן.",
+    "explanation": "אות קולי בתמונה 114 הוא שתי צפירות קצרות. שתי צפירות קצרות פירושן שכלי השיט משנה את כיוונו לשמאל (כלל 34). לכן התשובה היא שהוא פונה שמאלה.",
+    "blastOverride": "2S",
+    "voiceover_text": "שאלה מספר 1039. במרינה אופנוע ים שומע את כלי השייט מלפניו משמיע אות קולי שבתמונה 114, מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא: כלי השייט פונה שמאלה. ... אות קולי בתמונה 114 הוא שתי צפירות קצרות. שתי צפירות קצרות פירושן שכלי השיט משנה את כיוונו לשמאל כלל 34. לכן התשובה היא שהוא פונה שמאלה.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784294822/skipper-quiz/ubkhoebq8wfrlylkmucn.mp4",
     "rendered_at": "2026-07-17T13:27:03.537Z"
   },
@@ -5777,7 +5777,7 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784642090/skipper-quiz/yto7sxcgkglw8k2oodyc.mp4",
     "rendered_at": "2026-07-21T13:54:51.837Z",
-    "blastOverride": "",
+    "blastOverride": "1S",
     "explanation": "צפירה אחת קצרה (תמונה 111) = אני פונה ימינה. שני כלי השיט משמיעים אות זהה, שניהם פונים ימינה."
   },
   {
@@ -6086,7 +6086,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "explanation": "זו שאלת מלכודת ואין בה אות אמיתי. אות הסכנה לפי כלל 34(ד) הוא חמש צפירות קצרות ומהירות לפחות, ולא צפירות ארוכות. אל תבלבל: שבע צפירות קצרות ואחריהן צפירה אחת ארוכה הוא אות הנטישה הכללי על סיפון אונייה, וגם הוא קצרות ולא ארוכות. רצף של שבע צפירות ארוכות אינו קיים בכללים כלל. תשובה ב מתארת את אות הסכנה שהוא חמש קצרות. תשובה ג מתארת תנועה לאחור שהיא שלוש צפירות קצרות. תשובה א ממציאה אות מצוקה שאינו קיים.",
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784315752/skipper-quiz/gy4rvgtko2p4xcwvkdqd.mp4"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784315752/skipper-quiz/gy4rvgtko2p4xcwvkdqd.mp4",
+    "blastOverride": "7L"
   },
   {
     "num": 1055,
@@ -6107,7 +6108,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "explanation": "צפירת ריוורס (תמונה 119) מסמנת מנועים אחורה - לא מצוקה. ייתכן שהצופר נתפס.",
-    "blastOverride": "",
+    "blastOverride": "3S",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784445095/skipper-quiz/o59bma2ujm70vud6lmi8.mp4",
     "rendered_at": "2026-07-19T07:11:36.360Z"
   },
@@ -6172,7 +6173,7 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "3 קצרות, 3 קצרות, 3 ארוכות - אות SOS בצפירות, מסמן בקשת עזרה.",
+    "explanation": "שלוש צפירות קצרות, שלוש ארוכות, שלוש קצרות - אות SOS בצפירות, מסמן בקשת עזרה.",
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -8319,7 +8320,8 @@
     "approved_for_publish": false,
     "explanation": "שלוש צפירות קצרות מסמנות מנועים אחורה, אבל אות זה אסור להשמיע בערפל.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784449013/skipper-quiz/te85dentf1jbs3xj7xxx.mp4",
-    "rendered_at": "2026-07-19T08:16:54.335Z"
+    "rendered_at": "2026-07-19T08:16:54.335Z",
+    "blastOverride": "3S"
   },
   {
     "num": 1156,

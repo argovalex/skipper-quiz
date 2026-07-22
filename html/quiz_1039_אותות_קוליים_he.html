@@ -70,7 +70,7 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
   <!-- Antenna on roof -->
   <line x1="145" y1="244" x2="145" y2="224" stroke="#c8a000" stroke-width="1.5"/>
   <line x1="141" y1="224" x2="149" y2="224" stroke="#c8a000" stroke-width="1"/>
-  <circle cx="146.0" cy="158" r="10" fill="#e74c3c" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.05s" fill="freeze"/></circle><text x="146.0" y="181.0" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה<animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.05s" fill="freeze"/></text><circle cx="180.0" cy="158" r="10" fill="#e74c3c" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="2.40s" dur="0.05s" fill="freeze"/></circle><text x="180.0" y="181.0" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה<animate attributeName="opacity" from="0" to="1" begin="2.40s" dur="0.05s" fill="freeze"/></text><circle cx="214.0" cy="158" r="10" fill="#e74c3c" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="4.40s" dur="0.05s" fill="freeze"/></circle><text x="214.0" y="181.0" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה<animate attributeName="opacity" from="0" to="1" begin="4.40s" dur="0.05s" fill="freeze"/></text>
+  <circle cx="163.0" cy="158" r="10" fill="#e74c3c" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.05s" fill="freeze"/></circle><text x="163.0" y="181.0" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה<animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.05s" fill="freeze"/></text><circle cx="197.0" cy="158" r="10" fill="#e74c3c" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="2.40s" dur="0.05s" fill="freeze"/></circle><text x="197.0" y="181.0" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif" opacity="0">קצרה<animate attributeName="opacity" from="0" to="1" begin="2.40s" dur="0.05s" fill="freeze"/></text>
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
         <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
@@ -89,7 +89,7 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
 const C=1;
 const OPTS=["א. כלי השייט פונה ימינה.","ב. כלי השייט פונה שמאלה.","ג. כלי השייט מטיל עוגן.","ד. כלי השייט מסמן מצוקה."];
 const Q="במרינה אופנוע ים שומע את כלי השייט מלפניו משמיע אות קולי שבתמונה 114, מה פרוש האות?";
-const E="אות קולי בתמונה 114 (שלוש צפירות קצרות) = כלי שיט מטיל עוגן.";
+const E="אות קולי בתמונה 114 הוא שתי צפירות קצרות. שתי צפירות קצרות פירושן שכלי השיט משנה את כיוונו לשמאל (כלל 34). לכן התשובה היא שהוא פונה שמאלה.";
 const LT=["א","ב","ג","ד"];
 
 // AUTO-PLAY MODE — countdown then reveal (for screen recording)
@@ -126,7 +126,7 @@ setTimeout(()=>{
 
 
 // ── Sound signal audio ──────────────────────────────────────────────────────
-const _BP=["S","S","S"];
+const _BP=["S","S"];
 const _BD={L:2,S:1},_BG=1;
 let _played=false;
 function _playBlasts(){
