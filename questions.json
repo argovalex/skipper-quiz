@@ -166,8 +166,6 @@
     "html_locked": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782811149/skipper-quiz/tklulhg9rn5xbyv4hdi4.mp4",
     "rendered_at": "2026-06-30T09:19:10.729Z",
-    "fix_request": "הצג על המפה איך נראת דקה על הצעגל הגדול",
-    "fix_requested_at": "2026-06-30T07:41:33.496Z",
     "scheduled_date": "2026-06-30",
     "license": 30
   },
@@ -4916,9 +4914,7 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784612787/skipper-quiz/qziy5ht5rhqgjov0vyeg.mp4",
     "rendered_at": "2026-07-21T05:46:28.060Z",
-    "voiceover_text": "שאלה מספר 1001. אופנוע ים קיי מבחין בכלי שייט ג'י המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: קיי מפנה ל-G, ג'י הוא כלי שיט ללא שליטה. ... תמונה 80 שני כדורים ללא שליטה NUC. ללא שליטה בראש ההיררכיה, כל כלי שיט חייב לפנות לו דרך.",
-    "fix_request": "הסרטון ישן",
-    "fix_requested_at": "2026-07-22T08:41:30.950Z"
+    "voiceover_text": "שאלה מספר 1001. אופנוע ים קיי מבחין בכלי שייט ג'י המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: קיי מפנה ל-G, ג'י הוא כלי שיט ללא שליטה. ... תמונה 80 שני כדורים ללא שליטה NUC. ללא שליטה בראש ההיררכיה, כל כלי שיט חייב לפנות לו דרך."
   },
   {
     "num": 1002,
@@ -4941,9 +4937,7 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784284061/skipper-quiz/cnunmqrzj7gc1wpklh98.mp4",
     "rendered_at": "2026-07-17T10:27:42.717Z",
-    "voiceover_text": "שאלה מספר 1002. אופנוע ים פי מבחין בספינת מפרש אייץ' ועליה סימן יום כמתואר בתמונה 20, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: פי יפנה ימינה וגם אייץ' יפנה ימינה. ... תמונה 20 משולש הפוך מפרשית תחת מנוע ממוכנת. שניהם ממוכנים, אותה משפחה. חזית מול חזית - שניהם פונים ימינה.",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:42:24.699Z"
+    "voiceover_text": "שאלה מספר 1002. אופנוע ים פי מבחין בספינת מפרש אייץ' ועליה סימן יום כמתואר בתמונה 20, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא: פי יפנה ימינה וגם אייץ' יפנה ימינה. ... תמונה 20 משולש הפוך מפרשית תחת מנוע ממוכנת. שניהם ממוכנים, אותה משפחה. חזית מול חזית - שניהם פונים ימינה."
   },
   {
     "num": 1003,
@@ -4987,9 +4981,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784612402/skipper-quiz/hl75gbac1owlf89cegu5.mp4",
-    "rendered_at": "2026-07-21T05:40:03.431Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:47:26.149Z"
+    "rendered_at": "2026-07-21T05:40:03.431Z"
   },
   {
     "num": 1005,
@@ -5011,9 +5003,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784612846/skipper-quiz/kcnqcyb8xdfph2btwnhh.mp4",
-    "rendered_at": "2026-07-21T05:47:27.597Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:47:36.357Z"
+    "rendered_at": "2026-07-21T05:47:27.597Z"
   },
   {
     "num": 1006,
@@ -5035,9 +5025,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784612909/skipper-quiz/jhyo1qm3ldv2stwbvhga.mp4",
-    "rendered_at": "2026-07-21T05:48:30.426Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:47:44.810Z"
+    "rendered_at": "2026-07-21T05:48:30.426Z"
   },
   {
     "num": 1007,
@@ -5059,9 +5047,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784612970/skipper-quiz/hfeqjt2x0pp9j2wx9gjw.mp4",
-    "rendered_at": "2026-07-21T05:49:30.902Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:48:03.230Z"
+    "rendered_at": "2026-07-21T05:49:30.902Z"
   },
   {
     "num": 1008,
@@ -5083,9 +5069,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784612467/skipper-quiz/chaswp2cympuleub6kvp.mp4",
-    "rendered_at": "2026-07-21T05:41:09.094Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:48:14.474Z"
+    "rendered_at": "2026-07-21T05:41:09.094Z"
   },
   {
     "num": 1009,
@@ -5107,9 +5091,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784613021/skipper-quiz/uvaajtpuuv2pduh9vww0.mp4",
-    "rendered_at": "2026-07-21T05:50:22.072Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:48:22.934Z"
+    "rendered_at": "2026-07-21T05:50:22.072Z"
   },
   {
     "num": 1010,
@@ -5131,9 +5113,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784613119/skipper-quiz/uryney0zxlegexsp0bcc.mp4",
-    "rendered_at": "2026-07-21T05:52:00.372Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:48:31.612Z"
+    "rendered_at": "2026-07-21T05:52:00.372Z"
   },
   {
     "num": 1011,
@@ -5773,9 +5753,7 @@
     "blastOverride": "2S",
     "voiceover_text": "שאלה מספר 1039. במרינה אופנוע ים שומע את כלי השייט מלפניו משמיע אות קולי שבתמונה 114, מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא: כלי השייט פונה שמאלה. ... אות קולי בתמונה 114 הוא שתי צפירות קצרות. שתי צפירות קצרות פירושן שכלי השיט משנה את כיוונו לשמאל כלל 34. לכן התשובה היא שהוא פונה שמאלה.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784703140/skipper-quiz/ydtephnyrkef84txykgc.mp4",
-    "rendered_at": "2026-07-22T06:52:21.554Z",
-    "fix_request": "סרטון ישן",
-    "fix_requested_at": "2026-07-22T08:51:46.134Z"
+    "rendered_at": "2026-07-22T06:52:21.554Z"
   },
   {
     "num": 1040,
@@ -6085,9 +6063,7 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784538119/skipper-quiz/tkpyi1fnvpks9hvlntjh.mp4",
-    "rendered_at": "2026-07-20T09:02:00.604Z",
-    "fix_request": "את הסימן ...---... יש להשמיע כמו קוד מורס.",
-    "fix_requested_at": "2026-07-22T08:39:59.349Z"
+    "rendered_at": "2026-07-20T09:02:00.604Z"
   },
   {
     "num": 1054,
@@ -8415,8 +8391,6 @@
     "mediaType": "",
     "approved_for_publish": false,
     "voiceover_text": "שאלה מספר 1159. עד לאיזה מרחק מותר להתקרב עם אופנוע ים אל חוף רחצה מוכרז?. [[PAUSE]] התשובה הנכונה היא: עד ל-50 מטרים מכל צד ו-300 מטרים מקו שפל המים. ... מותר להתקרב עד 50 מטר מצדי חוף רחצה מוכרז, ולא יותר מ-300 מטר מקו שפל.",
-    "fix_request": "",
-    "fix_requested_at": "",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784536733/skipper-quiz/xqd2g1mdu0fg1avyyn82.mp4",
     "rendered_at": "2026-07-20T08:38:54.512Z"
   },
