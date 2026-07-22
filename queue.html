@@ -535,6 +535,12 @@ function renderList() {
     const isPub    = publishedNums.has(q.num);
     const isRender = renderingNums.has(q.num);
     const isAppr   = !!q.approved_for_publish;
+    const vidStale = hasVid && q.content_updated_at && q.rendered_at &&
+                     new Date(q.content_updated_at) > new Date(q.rendered_at);
+    const renderDateStr = (hasVid && q.rendered_at)
+      ? new Date(q.rendered_at).toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem',
+          day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })
+      : '';
 
     const badge = isPub   ? '<span class="vid-badge published">✅ פורסם</span>'
                 : hasVid  ? '<span class="vid-badge has">🎬 יש סרטון</span>'
@@ -580,7 +586,7 @@ function renderList() {
       </div>
       <div>
         <div class="q-text">${q.q_he}</div>
-        <div class="q-sub" id="rp-${q.num}">${hasVid ? `<a href="${q.videoUrl}" target="_blank" style="color:var(--accent);font-size:12px">▶ צפה בסרטון</a>` : ''}</div>
+        <div class="q-sub" id="rp-${q.num}">${hasVid ? `<a href="${q.videoUrl}" target="_blank" style="color:var(--accent);font-size:12px">▶ צפה בסרטון</a><span style="font-size:11px;color:${vidStale?'#f5665a':'var(--muted)'};margin-inline-start:8px">🕒 ${renderDateStr}${vidStale?' · ⚠ ישן':''}</span>` : ''}</div>
         ${schedInfo}
       </div>
       <div class="q-actions">
