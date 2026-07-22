@@ -5107,7 +5107,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783580682/skipper-quiz/qkrf4bcorxncgsfxnkdi.mp4",
-    "rendered_at": "2026-07-09T07:04:50.786Z"
+    "rendered_at": "2026-07-09T07:04:50.786Z",
+    "fix_request": "סרטון ישן",
+    "fix_requested_at": "2026-07-22T08:48:22.934Z"
   },
   {
     "num": 1010,
