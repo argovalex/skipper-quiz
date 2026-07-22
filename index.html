@@ -332,6 +332,11 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 // ── State ──────────────────────────────────────────────────────────────────
 let questions = [];
 let currentIdx = -1;
+// num the editor form is currently rendered for. Guards against an index/form
+// desync: both render functions call renderEditor(q) after their async render,
+// and if the user navigated away meanwhile the form and currentIdx point at
+// different questions. See saveCurrentToState.
+let editingNum = null;
 let animTimer = null;
 let activeLicense = 30;
 function setLicense(lic) {
@@ -580,7 +585,7 @@ async function renderFromEditor() {
     await saveJSON();
     showToast(`✅ Q#${num} רונדר!`);
     setRenderStatus(`✅ Q#${num} מוכן לפרסום`);
-    renderEditor(q);
+    if (questions[currentIdx] === q) renderEditor(q); // don't stomp the form if the user navigated away mid-render
   } catch(e) {
     setRenderStatus('⚠ החיבור נפל — בודק אם הרינדור בעצם הסתיים בשרת...');
     let confirmed = false;
@@ -602,7 +607,7 @@ async function renderFromEditor() {
       await saveJSON();
       showToast(`✅ Q#${num} רונדר בכל זאת! (החיבור נפל אך השרת סיים)`);
       setRenderStatus(`✅ Q#${num} מוכן לפרסום`);
-      renderEditor(q);
+      if (questions[currentIdx] === q) renderEditor(q); // don't stomp the form if the user navigated away mid-render
     } else {
       showToast(`❌ ${e.message}`);
       setRenderStatus(`❌ ${e.message}`, true);
@@ -899,6 +904,7 @@ const escHtml = s => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 function renderEditor(q) {
+  editingNum = q.num;   // stamp the identity this form represents
   const ed = document.getElementById('editor');
   ed.innerHTML = `
     <div class="section-title">פרטי שאלה</div>
@@ -1037,6 +1043,15 @@ function contentFingerprint(q) {
 function saveCurrentToState() {
   if(currentIdx < 0) return;
   const q = questions[currentIdx];
+  // Identity guard: the on-screen form must belong to questions[currentIdx].
+  // Both render functions call renderEditor(q) when their async render finishes;
+  // if the user navigated to another question meanwhile, the form shows one
+  // question while currentIdx points at another. Writing now would push this
+  // form into the wrong slot and — because f-num is a free field — overwrite the
+  // neighbour's identity, duplicating a num and wiping a whole question. This is
+  // exactly how Q#1050 was clobbered into a second Q#1042 on 2026-07-22. Refuse
+  // the write when the form's origin no longer matches the slot.
+  if (editingNum != null && q.num !== editingNum) return;
   // Snapshot before the form overwrites the fields, so an edit can be detected.
   // Deliberately does NOT clear answer_confirmed/approved_for_publish: those are
   // Alex's judgement and re-earning them by hand is the work that got clobbered
@@ -1069,6 +1084,7 @@ function saveCurrentToState() {
   if (contentFingerprint(q) !== beforeFingerprint) {
     q.content_updated_at = new Date().toISOString();
   }
+  editingNum = q.num;   // keep the stamp in step with a legitimate num edit
 }
 
 // True once the question has been edited since its video was made. The publisher
@@ -1147,7 +1163,7 @@ async function saveFixAndRender() {
     renderingNums.delete(num);
     setStatus(saved ? `✅ Q#${num} נשמר ורונדר!` : `⚠ Q#${num} רונדר אבל לא נשמר ל-GitHub`);
     if (saved) showToast(`✅ Q#${num} נשמר ורונדר!`);
-    renderEditor(q);
+    if (questions[currentIdx] === q) renderEditor(q); // don't stomp the form if the user navigated away mid-render
   } catch(e) {
     renderingNums.delete(num);
     setStatus(`❌ ${e.message}`);
