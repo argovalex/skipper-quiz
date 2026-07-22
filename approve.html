@@ -7,9 +7,10 @@
 <title>⚓ אישור סופי — רישיון 11</title>
 <link rel="stylesheet" href="shared.css">
 <style>
-/* Read-only approval surface for license 11, grouped by topic. Displays only;
-   the only writes are the approved_for_publish gate and fix_request text. Built
-   mobile-first: every control is a full-width touch target, nothing on hover. */
+/* Read-only approval surface for license 11, grouped by topic. The ONLY write
+   back to the bank is the approved_for_publish gate; fix-requests are recorded
+   locally (localStorage) and exported to CSV, never committed. Built mobile-
+   first: every control is a full-width touch target, nothing on hover. */
 body { padding-bottom: 90px; -webkit-text-size-adjust: 100%; }
 
 header { background:#081228; border-bottom:2px solid var(--border); padding:10px 14px; position:sticky; top:0; z-index:100; display:flex; align-items:center; gap:10px; }
@@ -134,7 +135,7 @@ video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-r
 
 <!-- One-time, one-place token notice (viewing needs no token; only approving does) -->
 <div id="noTokBanner" style="display:none;padding:10px 14px;background:rgba(245,166,35,0.1);border-bottom:1px solid rgba(245,166,35,0.35);color:var(--orange);font-size:12.5px;line-height:1.5">
-  👁 מצב צפייה — הסרטונים נפתחים בלי טוקן. כדי <b>לאשר</b> או <b>לבקש תיקון</b> הדבק פעם אחת GitHub Token למעלה (נשמר במכשיר, לא צריך שוב).
+  👁 מצב צפייה — הסרטונים נפתחים בלי טוקן. <b>בקשת תיקון</b> נשמרת מקומית במכשיר בלי טוקן. כדי <b>לאשר לפרסום</b> הדבק פעם אחת GitHub Token למעלה (נשמר במכשיר, לא צריך שוב).
 </div>
 
 <div class="search"><input id="search" type="search" placeholder="🔍 חפש לפי מספר / נושא / טקסט" oninput="renderList()"></div>
@@ -145,6 +146,7 @@ video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-r
   <button class="chip"        id="f-fix"      onclick="setFilter('fix')">🛠 לתיקון</button>
   <button class="chip"        id="f-novideo"  onclick="setFilter('novideo')">⬜ ללא סרטון</button>
   <button class="chip"        id="f-all"      onclick="setFilter('all')">הכל</button>
+  <button class="chip"        id="f-export"   onclick="exportFixReport()" title="ייצוא דוח התיקונים ל-CSV (Excel/Sheets)">📤 ייצוא דוח</button>
 </div>
 
 <div id="list"><div class="empty">טוען...</div></div>
@@ -212,6 +214,7 @@ async function loadData() {
   }
   updateTokStatus();
   document.getElementById('noTokBanner').style.display = getToken() ? 'none' : 'block';
+  hydrateFix();
   updateProgress();
   renderList();
   setBar(canWrite ? `✅ נטען מ-GitHub · ${inLicense().length} שאלות ברישיון 11` : `👁 מצב צפייה בלבד · ${inLicense().length} שאלות`);
@@ -283,7 +286,7 @@ function cardHTML(q) {
     : `<button class="btn-approve" onclick="setApproved(${q.num}, true)" ${(canWrite && q.videoUrl) ? '' : 'disabled'}>
          ${q.videoUrl ? '✅ אשר סופי' : 'ממתין לסרטון'}</button>`;
 
-  const fixBtn = `<button class="btn-fix${fix ? ' has' : ''}" onclick="openFix(${q.num})" ${canWrite ? '' : 'disabled'} title="בקשת תיקון">🛠 תיקון</button>`;
+  const fixBtn = `<button class="btn-fix${fix ? ' has' : ''}" onclick="openFix(${q.num})" title="בקשת תיקון (מקומי)">🛠 תיקון</button>`;
 
   return `<div class="card${appr ? ' approved' : ''}${fix ? ' needsfix' : ''}" id="c-${q.num}">
     <div class="card-top"><span class="num">#${q.num}</span><span class="topic">${esc(q.topic)}</span>${tags}</div>
@@ -362,57 +365,89 @@ async function setApproved(num, value) {
   }
 }
 
-// ── Fix request (writes fix_request / fix_requested_at) ───────────────────────
+// ── Fix request = LOCAL report only ───────────────────────────────────────────
+// A fix-request must NEVER write to the bank. Saving the whole array from a
+// stale phone is exactly what clobbered 45 rendered videoUrls (Jul 2026). So a
+// fix-request now only records a note in localStorage on THIS device; nothing is
+// committed to GitHub. Alex exports the report to CSV (opens in Excel/Sheets),
+// sends it over, and we fix the flagged questions together from the report.
+const FIX_KEY = 'sq_fix_report';
+function loadFixReport() { try { return JSON.parse(localStorage.getItem(FIX_KEY) || '{}'); } catch { return {}; } }
+function saveFixReport(r) { localStorage.setItem(FIX_KEY, JSON.stringify(r)); }
+
+// Mirror the local report onto the in-memory questions (q.fix_request drives the
+// badge/filter/card). Also one-time-imports any fix_request already sitting in
+// the loaded data so earlier flags aren't lost, then the data field is ignored.
+function hydrateFix() {
+  const r = loadFixReport();
+  for (const q of questions) {
+    if (q.fix_request && !r[q.num]) {
+      r[q.num] = { num: q.num, topic: q.topic || '', q_he: q.q_he || '', note: q.fix_request, at: q.fix_requested_at || new Date().toISOString() };
+    }
+  }
+  saveFixReport(r);
+  for (const q of questions) {
+    const e = r[q.num];
+    q.fix_request = e ? e.note : undefined;
+    q.fix_requested_at = e ? e.at : undefined;
+  }
+}
+
 let fixNum = null;
 function openFix(num) {
-  if (!canWrite) { toast('⚠ צריך GitHub Token כדי לבקש תיקון'); return; }
   const q = questions.find(x => x.num === num);
   if (!q) return;
   fixNum = num;
   document.getElementById('fix-q').textContent = `#${num} — ${q.q_he}`;
-  document.getElementById('fix-text').value = q.fix_request || '';
-  document.getElementById('fix-clear').style.display = q.fix_request ? '' : 'none';
+  const e = loadFixReport()[num];
+  document.getElementById('fix-text').value = (e && e.note) || '';
+  document.getElementById('fix-clear').style.display = e ? '' : 'none';
   document.getElementById('fixOverlay').classList.add('on');
 }
 function closeFix() {
   document.getElementById('fixOverlay').classList.remove('on');
   fixNum = null;
 }
-async function saveFix() {
+function saveFix() {
   const q = questions.find(x => x.num === fixNum);
   if (!q) return;
   const text = document.getElementById('fix-text').value.trim();
   if (!text) { toast('⚠ כתוב מה לתקן, או לחץ "מחק בקשה"'); return; }
-  const prevReq = q.fix_request, prevAt = q.fix_requested_at;
-  q.fix_request = text;
-  q.fix_requested_at = new Date().toISOString();
+  const r = loadFixReport();
+  r[q.num] = { num: q.num, topic: q.topic || '', q_he: q.q_he || '', note: text, at: new Date().toISOString() };
+  saveFixReport(r);
+  q.fix_request = text; q.fix_requested_at = r[q.num].at;
   closeFix();
   renderList();
-  toast('⏳ שומר...');
-  const ok = await saveQuestionsGH(`fix-request: Q#${q.num}`);
-  if (ok) { toast(`🛠 בקשת תיקון ל-#${q.num} נשמרה`); }
-  else {
-    q.fix_request = prevReq; q.fix_requested_at = prevAt;
-    renderList();
-    toast('❌ השמירה נכשלה — רענן (↻) ונסה שוב');
-  }
+  toast(`📝 נרשם בדוח המקומי (#${q.num})`);
 }
-async function clearFix() {
+function clearFix() {
   const q = questions.find(x => x.num === fixNum);
   if (!q) return;
-  const prevReq = q.fix_request, prevAt = q.fix_requested_at;
-  delete q.fix_request;
-  delete q.fix_requested_at;
+  const r = loadFixReport();
+  delete r[q.num];
+  saveFixReport(r);
+  delete q.fix_request; delete q.fix_requested_at;
   closeFix();
   renderList();
-  toast('⏳ מוחק בקשה...');
-  const ok = await saveQuestionsGH(`fix-request-clear: Q#${q.num}`);
-  if (ok) { toast(`🗑 בקשת תיקון ל-#${q.num} נמחקה`); }
-  else {
-    q.fix_request = prevReq; q.fix_requested_at = prevAt;
-    renderList();
-    toast('❌ השמירה נכשלה — רענן (↻) ונסה שוב');
-  }
+  toast(`🗑 הוסר מהדוח (#${q.num})`);
+}
+
+// Export the local report as a UTF-8 (BOM) CSV so Hebrew opens cleanly in Excel
+// and Google Sheets. Nothing leaves the device except the file Alex chooses to send.
+function exportFixReport() {
+  const rows = Object.values(loadFixReport()).sort((a, b) => a.num - b.num);
+  if (!rows.length) { toast('אין בקשות תיקון בדוח'); return; }
+  const cell = s => '"' + String(s ?? '').replace(/"/g, '""') + '"';
+  const lines = [['מספר שאלה', 'נושא', 'השאלה', 'מה לתקן', 'זמן'].map(cell).join(',')];
+  for (const e of rows) lines.push([e.num, e.topic, e.q_he, e.note, e.at].map(cell).join(','));
+  const blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `skipper-fix-report-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast(`📤 יוצא דוח (${rows.length} שאלות)`);
 }
 
 let toastTimer;
