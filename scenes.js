@@ -2519,6 +2519,11 @@ function getScene(topic, qText) {
     return SCENES_QA['lights_power'];
   }
 
+  if(topic==='מזג אוויר') {
+    const w = generateWeatherScene(q);
+    if (w) return w;
+  }
+
   if(topic==='דגלים') return generateFlagScene(q);
 
   if(topic==='ספנות') {
@@ -2819,6 +2824,266 @@ const SIGNAL_FLAGS = {
      <rect x="${x}" y="${y+sh*4}" width="${w}" height="${sh}" fill="#2980b9"/>`;
   }},
 };
+
+// ── Weather / wind schematics (topic "מזג אוויר") ─────────────────────────────
+// A compass rose ("שושנת הרוחות") is the shared teaching element in every scene:
+// N up (צ), E right (מז), S down (ד), W left (מע). The highlighted arrow points
+// FROM the source direction toward the centre, because a wind is named after the
+// direction it comes from. RTL note: all text uses text-anchor="middle".
+function windRose(cx, cy, r, fromDir, hiColor) {
+  hiColor = hiColor || '#2ecc71';
+  const P = {
+    N:[0,-1], S:[0,1], E:[1,0], W:[-1,0],
+    NE:[0.7071,-0.7071], NW:[-0.7071,-0.7071], SE:[0.7071,0.7071], SW:[-0.7071,0.7071],
+  };
+  let s = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.5"/>`;
+  for (const k of Object.keys(P)) {
+    const [dx, dy] = P[k];
+    s += `<line x1="${cx}" y1="${cy}" x2="${(cx+dx*r).toFixed(1)}" y2="${(cy+dy*r).toFixed(1)}" stroke="#2a3f66" stroke-width="0.8"/>`;
+  }
+  const lbl = { N:['צ',0,-1], E:['מז',1,0], S:['ד',0,1], W:['מע',-1,0] };
+  for (const k of Object.keys(lbl)) {
+    const [t, dx, dy] = lbl[k];
+    s += `<text x="${(cx+dx*(r+11)).toFixed(1)}" y="${(cy+dy*(r+11)+4).toFixed(1)}" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">${t}</text>`;
+  }
+  s += `<path d="M${cx},${(cy-r+2).toFixed(1)} L${(cx-4)},${(cy-r+11).toFixed(1)} L${(cx+4)},${(cy-r+11).toFixed(1)} Z" fill="#e74c3c"/>`;
+  if (fromDir && P[fromDir]) {
+    const [dx, dy] = P[fromDir];
+    const x1 = cx + dx*(r-4), y1 = cy + dy*(r-4), x2 = cx + dx*(r*0.22), y2 = cy + dy*(r*0.22);
+    s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${hiColor}" stroke-width="4.5" stroke-linecap="round" marker-end="url(#wrArr)"/>`;
+    s += `<circle cx="${cx}" cy="${cy}" r="3.5" fill="${hiColor}"/>`;
+  }
+  return s;
+}
+
+// Barometric high (רמה, clockwise, blue) or low (שקע, counter-clockwise, red),
+// meteoblue-style: concentric isobars + a dashed flow ring with four tangential
+// arrowheads that make the rotation direction unambiguous. NH physics: a high
+// turns with the clock, a low against it.
+function pressureSystem(cx, cy, r, kind) {
+  const high = kind === 'high';
+  const col  = high ? '#3d7fd6' : '#d6473f';
+  const colL = high ? '#8fc0f7' : '#ff8f88';
+  let s = '';
+  for (const rr of [r, r*0.66, r*0.36]) {
+    s += `<circle cx="${cx}" cy="${cy}" r="${rr.toFixed(1)}" fill="none" stroke="${col}" stroke-width="1.4" opacity="0.75"/>`;
+  }
+  s += `<circle cx="${cx}" cy="${cy}" r="${(r*0.36).toFixed(1)}" fill="${col}" opacity="0.22"/>`;
+  s += `<text x="${cx}" y="${(cy+9).toFixed(1)}" text-anchor="middle" fill="${colL}" font-size="26" font-weight="900" font-family="Heebo,sans-serif">${high?'H':'L'}</text>`;
+  const mr = r * 0.83;
+  const pts = { N:[cx,cy-mr], E:[cx+mr,cy], S:[cx,cy+mr], W:[cx-mr,cy] };
+  const tan = high
+    ? { N:[1,0], E:[0,1], S:[-1,0], W:[0,-1] }
+    : { N:[-1,0], E:[0,-1], S:[1,0], W:[0,1] };
+  const mid = high ? 'rotHi' : 'rotLo';
+  for (const k of Object.keys(pts)) {
+    const [px,py] = pts[k], [tx,ty] = tan[k];
+    const x1 = px - tx*9, y1 = py - ty*9, x2 = px + tx*9, y2 = py + ty*9;
+    s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${col}" stroke-width="3" stroke-linecap="round" marker-end="url(#${mid})"/>`;
+  }
+  return s;
+}
+
+function generateWeatherScene(qText) {
+  const q = qText || '';
+  const bg = `<rect width="360" height="420" fill="#080f1a"/>`;
+  const defs = `<defs>
+    <marker id="wrArr" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto"><path d="M0,0 L11,5.5 L0,11 Z" fill="#2ecc71"/></marker>
+    <marker id="wBig" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M0,0 L16,8 L0,16 Z" fill="#2ecc71"/></marker>
+    <marker id="rotHi" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto"><path d="M0,0 L11,5.5 L0,11 Z" fill="#3d7fd6"/></marker>
+    <marker id="rotLo" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto"><path d="M0,0 L11,5.5 L0,11 Z" fill="#d6473f"/></marker>
+    <marker id="dngr" markerUnits="userSpaceOnUse" markerWidth="15" markerHeight="15" refX="11" refY="7.5" orient="auto"><path d="M0,0 L15,7.5 L0,15 Z" fill="#e67e22"/></marker>
+  </defs>`;
+
+  // 1099 — barometric HIGH (רמה) to the north: NH high turns clockwise, Israel
+  // sits on its south side, so surface air flows east→west = an easterly wind.
+  if (/רמה ברומטרית/.test(q) && /צפונ/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">רמה ברומטרית מצפון לישראל</text>
+      ${pressureSystem(180, 158, 42, 'high')}
+      <circle cx="180" cy="200" r="5" fill="#e8b04a" stroke="#fff" stroke-width="1"/>
+      <text x="180" y="213" text-anchor="middle" fill="#e8d3a8" font-size="10" font-family="Heebo,sans-serif" font-weight="700">ישראל (בדרום הרמה)</text>
+      <line x1="222" y1="232" x2="138" y2="232" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="180" y="225" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">רוח מזרחית</text>
+      ${windRose(60, 293, 27, 'E')}
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="272" text-anchor="middle" fill="#8fc0f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">רמה מצפון = זרימה עם כיוון השעון</text>
+      <text x="224" y="294" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">ישראל בצד הדרומי, האוויר זורם ממזרח</text>
+      <text x="224" y="315" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">רוח מזרחית: יבשתית, מסוכנת להיסחפות</text>
+    `;
+  }
+
+  // 1096 — sea breeze at noon: sun heats land → cool air drawn in from the sea =
+  // a westerly wind (sea is to the west of Israel's Mediterranean coast).
+  if (/בריזה/.test(q) && /צהר/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">בריזת ים בשעות הצהריים (קיץ)</text>
+      <rect x="0" y="116" width="150" height="120" fill="#0d2a4e"/>
+      <path d="M6,152 q11,-6 22,0 t22,0 t22,0 t22,0 t22,0 t22,0" fill="none" stroke="#2a6aae" stroke-width="1.2"/>
+      <path d="M6,182 q11,-6 22,0 t22,0 t22,0 t22,0 t22,0 t22,0" fill="none" stroke="#2a6aae" stroke-width="1.2"/>
+      <text x="62" y="226" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ים (מערב)</text>
+      <path d="M150,116 L360,116 L360,236 L150,236 Z" fill="#5c4325"/>
+      <path d="M150,236 L360,236 L360,210 Q296,188 236,208 Q192,220 150,206 Z" fill="#75592e"/>
+      <text x="262" y="228" text-anchor="middle" fill="#c9a86a" font-size="10" font-family="Heebo,sans-serif">יבשה (מזרח)</text>
+      <circle cx="312" cy="146" r="13" fill="#f4b942"/>
+      <g stroke="#f4b942" stroke-width="2" stroke-linecap="round">
+        <line x1="312" y1="126" x2="312" y2="118"/><line x1="312" y1="166" x2="312" y2="174"/>
+        <line x1="292" y1="146" x2="284" y2="146"/><line x1="332" y1="146" x2="340" y2="146"/>
+        <line x1="298" y1="132" x2="292" y2="126"/><line x1="326" y1="132" x2="332" y2="126"/>
+        <line x1="298" y1="160" x2="292" y2="166"/><line x1="326" y1="160" x2="332" y2="166"/>
+      </g>
+      <line x1="52" y1="182" x2="244" y2="182" stroke="#2ecc71" stroke-width="6" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="150" y="171" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">רוח מערבית</text>
+      ${windRose(180, 294, 30, 'W')}
+    `;
+  }
+
+  // 1097 — sea breeze in the morning: the sea breeze has not set in yet, the
+  // residual land flow is still south-easterly (offshore).
+  if (/בריזה/.test(q) && /בוקר/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">בריזה בשעות הבוקר (קיץ)</text>
+      <rect x="0" y="116" width="150" height="120" fill="#0d2a4e"/>
+      <path d="M6,150 q11,-6 22,0 t22,0 t22,0 t22,0 t22,0 t22,0" fill="none" stroke="#2a6aae" stroke-width="1.2"/>
+      <path d="M6,180 q11,-6 22,0 t22,0 t22,0 t22,0 t22,0 t22,0" fill="none" stroke="#2a6aae" stroke-width="1.2"/>
+      <text x="62" y="226" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ים (מערב)</text>
+      <path d="M150,116 L360,116 L360,236 L150,236 Z" fill="#3f4a63" opacity="0.85"/>
+      <path d="M150,236 L360,236 L360,212 Q296,192 236,210 Q192,222 150,208 Z" fill="#4a5568"/>
+      <text x="262" y="228" text-anchor="middle" fill="#9fb0c9" font-size="10" font-family="Heebo,sans-serif">יבשה קרירה (מזרח)</text>
+      <circle cx="336" cy="150" r="11" fill="#e8a94a" opacity="0.9"/>
+      <line x1="242" y1="214" x2="120" y2="156" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="180" y="136" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">רוח דרום-מזרחית</text>
+      ${windRose(180, 294, 30, 'SE')}
+    `;
+  }
+
+  // 1098 — deep barometric LOW to the north: NH low turns counter-clockwise,
+  // Israel on its south side → air flows west→east = a brisk westerly (onshore,
+  // rough sea).
+  if (/שקע ברומטרי/.test(q) && /צפונ/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">שקע ברומטרי עמוק מצפון לישראל</text>
+      ${pressureSystem(180, 158, 42, 'low')}
+      <circle cx="180" cy="200" r="5" fill="#e8b04a" stroke="#fff" stroke-width="1"/>
+      <text x="180" y="213" text-anchor="middle" fill="#e8d3a8" font-size="10" font-family="Heebo,sans-serif" font-weight="700">ישראל (בדרום השקע)</text>
+      <line x1="138" y1="232" x2="222" y2="232" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="180" y="225" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">רוח מערבית</text>
+      ${windRose(60, 293, 27, 'W')}
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="272" text-anchor="middle" fill="#ff8f88" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">שקע מצפון = זרימה נגד כיוון השעון</text>
+      <text x="224" y="294" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">ישראל בצד הדרומי, האוויר זורם מערבה</text>
+      <text x="224" y="315" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">רוח מערבית ערה עד חזקה: ים סוער</text>
+    `;
+  }
+
+  // 1106 — barometric HIGH to the south: NH high turns clockwise, Israel on its
+  // north side → air flows west→east = a westerly wind.
+  if (/רמה ברומטרית/.test(q) && /דרומ/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">רמה ברומטרית מדרום לישראל</text>
+      <circle cx="180" cy="126" r="5" fill="#e8b04a" stroke="#fff" stroke-width="1"/>
+      <text x="180" y="139" text-anchor="middle" fill="#e8d3a8" font-size="10" font-family="Heebo,sans-serif" font-weight="700">ישראל (בצפון הרמה)</text>
+      <line x1="138" y1="157" x2="222" y2="157" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="180" y="151" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">רוח מערבית</text>
+      ${pressureSystem(180, 205, 36, 'high')}
+      ${windRose(60, 293, 27, 'W')}
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="272" text-anchor="middle" fill="#8fc0f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">רמה מדרום = זרימה עם כיוון השעון</text>
+      <text x="224" y="294" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">ישראל בצד הצפוני, האוויר זורם מערבה</text>
+      <text x="224" y="315" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">רוח מערבית לאורך חוף ים התיכון</text>
+    `;
+  }
+
+  // 1100 — the dangerous drift direction on the Mediterranean coast is the
+  // offshore (easterly) wind: it blows from the land out to open sea.
+  if (/היסחפות/.test(q) && /ים התיכון/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">חוף ים התיכון: רוח ההיסחפות</text>
+      <rect x="0" y="116" width="190" height="120" fill="#0d2a4e"/>
+      <rect x="190" y="116" width="170" height="120" fill="#5c4325"/>
+      <path d="M190,116 L190,236" stroke="#c9a86a" stroke-width="2"/>
+      <text x="86" y="228" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ים פתוח (מערב)</text>
+      <text x="276" y="228" text-anchor="middle" fill="#c9a86a" font-size="10" font-family="Heebo,sans-serif">יבשה (מזרח)</text>
+      <circle cx="150" cy="188" r="4.5" fill="#fff"/><text x="150" y="205" text-anchor="middle" fill="#cfe0f5" font-size="8.5" font-family="Heebo,sans-serif">אופנוע</text>
+      <line x1="250" y1="164" x2="70" y2="164" stroke="#e67e22" stroke-width="6" stroke-linecap="round" marker-end="url(#dngr)"/>
+      <text x="176" y="152" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Heebo,sans-serif" font-weight="900">רוח מזרחית (יבשתית)</text>
+      ${windRose(60, 293, 27, 'E')}
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="272" text-anchor="middle" fill="#f39c12" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">רוח מזרחית דוחפת מהחוף אל הים</text>
+      <text x="224" y="294" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">קרוב לחוף נראה שקט ומטעה</text>
+      <text x="224" y="315" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">ככל שתתרחק, קשה לחזור נגד הרוח</text>
+    `;
+  }
+
+  // 1103 — easterly winds forecast: the calm near shore is deceptive.
+  if (/רוחות מזרחיות/.test(q) && /כיצד/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">רוחות מזרחיות ערות: זהירות</text>
+      <rect x="0" y="116" width="190" height="120" fill="#0d2a4e"/>
+      <rect x="140" y="116" width="50" height="120" fill="#123a5e" opacity="0.7"/>
+      <rect x="190" y="116" width="170" height="120" fill="#5c4325"/>
+      <path d="M190,116 L190,236" stroke="#c9a86a" stroke-width="2"/>
+      <text x="165" y="230" text-anchor="middle" fill="#7fd6c0" font-size="9" font-family="Heebo,sans-serif">שקט מדומה</text>
+      <path d="M20,150 q14,-4 28,0 t28,0 t28,0" fill="none" stroke="#4a8ac0" stroke-width="1.4"/>
+      <path d="M20,175 q14,-5 28,0 t28,0 t28,0" fill="none" stroke="#4a8ac0" stroke-width="1.4"/>
+      <text x="80" y="205" text-anchor="middle" fill="#4a8ac0" font-size="9.5" font-family="Heebo,sans-serif">ים סוער במרחק</text>
+      <line x1="250" y1="140" x2="70" y2="140" stroke="#e67e22" stroke-width="5" stroke-linecap="round" marker-end="url(#dngr)"/>
+      <text x="176" y="132" text-anchor="middle" fill="#f39c12" font-size="11" font-family="Heebo,sans-serif" font-weight="900">רוח מזרחית סוחפת לים</text>
+      ${windRose(60, 293, 27, 'E')}
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="278" text-anchor="middle" fill="#f1c40f" font-size="11" font-family="Heebo,sans-serif" font-weight="900">יש להיזהר!</text>
+      <text x="224" y="300" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">השקט בקרבת החוף מטעה</text>
+      <text x="224" y="320" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">מעבר לחוף מחכה רוח שסוחפת לים</text>
+    `;
+  }
+
+  // 1104 — westerly winds forecast: onshore wind builds a rough sea by the coast.
+  if (/רוחות מערביות/.test(q) && /כיצד/.test(q)) {
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">רוחות מערביות ערות: ים סוער</text>
+      <rect x="0" y="116" width="200" height="120" fill="#0d2a4e"/>
+      <rect x="200" y="116" width="160" height="120" fill="#5c4325"/>
+      <path d="M200,116 L200,236" stroke="#c9a86a" stroke-width="2"/>
+      <path d="M120,150 q10,-10 20,0 t20,0 t20,0 t20,0" fill="none" stroke="#7fb8e6" stroke-width="2"/>
+      <path d="M120,175 q10,-12 20,0 t20,0 t20,0 t20,0" fill="none" stroke="#a9d3f2" stroke-width="2.4"/>
+      <path d="M150,205 q9,-14 18,0 t18,0 t18,0" fill="none" stroke="#cfe6fb" stroke-width="2.6"/>
+      <text x="70" y="228" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ים סוער (מערב)</text>
+      <text x="280" y="228" text-anchor="middle" fill="#c9a86a" font-size="10" font-family="Heebo,sans-serif">יבשה (מזרח)</text>
+      <line x1="70" y1="138" x2="230" y2="138" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="150" y="131" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="900">רוח מערבית דוחפת לחוף</text>
+      ${windRose(60, 293, 27, 'W')}
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="278" text-anchor="middle" fill="#f1c40f" font-size="11" font-family="Heebo,sans-serif" font-weight="900">לא כדאי להגיע לים</text>
+      <text x="224" y="300" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">רוח מערבית ערה = ים סוער בקרבת החוף</text>
+      <text x="224" y="320" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">גלים גבוהים והשקה מסוכנת</text>
+    `;
+  }
+
+  // 1105 — three signs together herald an approaching storm (all correct).
+  if (/סימנים/.test(q) && /סערה/.test(q)) {
+    const panel = (x, title) => `<rect x="${x}" y="126" width="104" height="104" rx="7" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="${x+52}" y="222" text-anchor="middle" fill="#cfe0f5" font-size="8.8" font-family="Heebo,sans-serif" font-weight="700">${title}</text>`;
+    return `${bg}${defs}
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">סימני התקרבות סערה</text>
+      ${panel(12, 'עננים כהים ונמוכים')}
+      <ellipse cx="64" cy="160" rx="30" ry="13" fill="#4a5568"/><ellipse cx="50" cy="168" rx="20" ry="10" fill="#39424f"/><ellipse cx="78" cy="168" rx="18" ry="9" fill="#39424f"/>
+      <line x1="46" y1="184" x2="42" y2="196" stroke="#7fb8e6" stroke-width="1.6"/><line x1="60" y1="184" x2="56" y2="198" stroke="#7fb8e6" stroke-width="1.6"/><line x1="74" y1="184" x2="70" y2="196" stroke="#7fb8e6" stroke-width="1.6"/>
+      ${panel(128, 'לחץ אוויר יורד')}
+      <circle cx="180" cy="166" r="22" fill="none" stroke="#8fc0f7" stroke-width="2"/><circle cx="180" cy="166" r="2.5" fill="#8fc0f7"/>
+      <line x1="180" y1="166" x2="166" y2="154" stroke="#e74c3c" stroke-width="2.4" marker-end="url(#dngr)"/>
+      <text x="180" y="196" text-anchor="middle" fill="#ff8f88" font-size="14" font-family="Heebo,sans-serif" font-weight="900">↓</text>
+      ${panel(244, 'רוח מתחזקת מדרום-מערב')}
+      <line x1="266" y1="182" x2="322" y2="150" stroke="#2ecc71" stroke-width="3" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <line x1="266" y1="196" x2="326" y2="162" stroke="#2ecc71" stroke-width="4.5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <rect x="40" y="250" width="280" height="72" rx="6" fill="#0d3d2a" stroke="#2ecc71" stroke-width="1.4"/>
+      <text x="180" y="276" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">כל הסימנים יחד = סערה מתקרבת</text>
+      <text x="180" y="298" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">שלושתם מופיעים ביחד, ולכן הם אמינים</text>
+      <text x="180" y="317" text-anchor="middle" fill="#cfe0f5" font-size="10" font-family="Heebo,sans-serif">התשובה: כל התשובות נכונות</text>
+    `;
+  }
+
+  return null;
+}
 
 function generateFlagScene(qText) {
   const q = qText || '';

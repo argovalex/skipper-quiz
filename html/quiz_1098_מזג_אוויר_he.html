@@ -28,41 +28,25 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
   <div id="scene">
     
     <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
-      
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="20" y="20" width="320" height="230" rx="8" fill="#0d2040" stroke="#2a4a6a" stroke-width="1.5"/>
-  <line x1="20" y1="135" x2="340" y2="135" stroke="#1e3a5a" stroke-width="1"/>
-  <line x1="180" y1="20" x2="180" y2="250" stroke="#1e3a5a" stroke-width="1"/>
-  <text x="180" y="40" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°N</text>
-  <text x="180" y="248" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°S</text>
-  <text x="25" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°W</text>
-  <text x="310" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°E</text>
-  <path d="M20,100 Q90,90 180,100 Q270,110 340,100" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,135 Q340,135 340,135" fill="none" stroke="#3a80b8" stroke-width="2"/>
-  <path d="M20,170 Q90,180 180,170 Q270,160 340,170" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,55 Q90,48 180,55 Q270,62 340,55" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <path d="M20,215 Q90,222 180,215 Q270,208 340,215" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <line x1="110" y1="20" x2="110" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <line x1="250" y1="20" x2="250" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <circle cx="180" cy="135" r="5" fill="#4a90d9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="180" cy="135" r="12" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M180,135 L230,85" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="235" y="82" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">B</text>
-  <text x="162" y="152" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">A</text>
-  <g transform="translate(20,265)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קורס: </text>
-    <text x="52" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">045°M</text>
-    <text x="120" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מהירות: </text>
-    <text x="178" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">6.2 kn</text>
-  </g>
-  <g transform="translate(20,290)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">N </text>
-    <text x="14" y="15" fill="#fff" font-size="11" font-family="Arial">32°04.5'</text>
-    <text x="105" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">E </text>
-    <text x="118" y="15" fill="#fff" font-size="11" font-family="Arial">34°46.2'</text>
-  </g>
-  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט על מפת מרקטור</text>
-
+      <rect width="360" height="420" fill="#080f1a"/><defs>
+    <marker id="wrArr" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto"><path d="M0,0 L11,5.5 L0,11 Z" fill="#2ecc71"/></marker>
+    <marker id="wBig" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M0,0 L16,8 L0,16 Z" fill="#2ecc71"/></marker>
+    <marker id="rotHi" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto"><path d="M0,0 L11,5.5 L0,11 Z" fill="#3d7fd6"/></marker>
+    <marker id="rotLo" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto"><path d="M0,0 L11,5.5 L0,11 Z" fill="#d6473f"/></marker>
+    <marker id="dngr" markerUnits="userSpaceOnUse" markerWidth="15" markerHeight="15" refX="11" refY="7.5" orient="auto"><path d="M0,0 L15,7.5 L0,15 Z" fill="#e67e22"/></marker>
+  </defs>
+      <text x="180" y="104" text-anchor="middle" fill="#7eb8f7" font-size="13" font-family="Heebo,sans-serif" font-weight="900">שקע ברומטרי עמוק מצפון לישראל</text>
+      <circle cx="180" cy="158" r="42.0" fill="none" stroke="#d6473f" stroke-width="1.4" opacity="0.75"/><circle cx="180" cy="158" r="27.7" fill="none" stroke="#d6473f" stroke-width="1.4" opacity="0.75"/><circle cx="180" cy="158" r="15.1" fill="none" stroke="#d6473f" stroke-width="1.4" opacity="0.75"/><circle cx="180" cy="158" r="15.1" fill="#d6473f" opacity="0.22"/><text x="180" y="167.0" text-anchor="middle" fill="#ff8f88" font-size="26" font-weight="900" font-family="Heebo,sans-serif">L</text><line x1="189.0" y1="123.1" x2="171.0" y2="123.1" stroke="#d6473f" stroke-width="3" stroke-linecap="round" marker-end="url(#rotLo)"/><line x1="214.9" y1="167.0" x2="214.9" y2="149.0" stroke="#d6473f" stroke-width="3" stroke-linecap="round" marker-end="url(#rotLo)"/><line x1="171.0" y1="192.9" x2="189.0" y2="192.9" stroke="#d6473f" stroke-width="3" stroke-linecap="round" marker-end="url(#rotLo)"/><line x1="145.1" y1="149.0" x2="145.1" y2="167.0" stroke="#d6473f" stroke-width="3" stroke-linecap="round" marker-end="url(#rotLo)"/>
+      <circle cx="180" cy="200" r="5" fill="#e8b04a" stroke="#fff" stroke-width="1"/>
+      <text x="180" y="213" text-anchor="middle" fill="#e8d3a8" font-size="10" font-family="Heebo,sans-serif" font-weight="700">ישראל (בדרום השקע)</text>
+      <line x1="138" y1="232" x2="222" y2="232" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" marker-end="url(#wBig)"/>
+      <text x="180" y="225" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">רוח מערבית</text>
+      <circle cx="60" cy="293" r="27" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.5"/><line x1="60" y1="293" x2="60.0" y2="266.0" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="60.0" y2="320.0" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="87.0" y2="293.0" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="33.0" y2="293.0" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="79.1" y2="273.9" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="40.9" y2="273.9" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="79.1" y2="312.1" stroke="#2a3f66" stroke-width="0.8"/><line x1="60" y1="293" x2="40.9" y2="312.1" stroke="#2a3f66" stroke-width="0.8"/><text x="60.0" y="259.0" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">צ</text><text x="98.0" y="297.0" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מז</text><text x="60.0" y="335.0" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ד</text><text x="22.0" y="297.0" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מע</text><path d="M60,268.0 L56,277.0 L64,277.0 Z" fill="#e74c3c"/><line x1="37.0" y1="293.0" x2="54.1" y2="293.0" stroke="#2ecc71" stroke-width="4.5" stroke-linecap="round" marker-end="url(#wrArr)"/><circle cx="60" cy="293" r="3.5" fill="#2ecc71"/>
+      <rect x="102" y="252" width="244" height="78" rx="6" fill="#0d1e38" stroke="#2a4a8a" stroke-width="1.2"/>
+      <text x="224" y="272" text-anchor="middle" fill="#ff8f88" font-size="10.5" font-family="Heebo,sans-serif" font-weight="900">שקע מצפון = זרימה נגד כיוון השעון</text>
+      <text x="224" y="294" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Heebo,sans-serif">ישראל בצד הדרומי, האוויר זורם מערבה</text>
+      <text x="224" y="315" text-anchor="middle" fill="#e8b04a" font-size="10" font-family="Heebo,sans-serif">רוח מערבית ערה עד חזקה: ים סוער</text>
+    
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
         <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
