@@ -132,6 +132,11 @@ video { width:100%; max-width:330px; display:block; margin:0 auto 10px; border-r
   </div>
 </details>
 
+<!-- One-time, one-place token notice (viewing needs no token; only approving does) -->
+<div id="noTokBanner" style="display:none;padding:10px 14px;background:rgba(245,166,35,0.1);border-bottom:1px solid rgba(245,166,35,0.35);color:var(--orange);font-size:12.5px;line-height:1.5">
+  👁 מצב צפייה — הסרטונים נפתחים בלי טוקן. כדי <b>לאשר</b> או <b>לבקש תיקון</b> הדבק פעם אחת GitHub Token למעלה (נשמר במכשיר, לא צריך שוב).
+</div>
+
 <div class="search"><input id="search" type="search" placeholder="🔍 חפש לפי מספר / נושא / טקסט" oninput="renderList()"></div>
 
 <div class="filters">
@@ -175,6 +180,7 @@ const LIC = 11;
 function saveTok() {
   localStorage.setItem('sq_gh_token', document.getElementById('ghToken').value.trim());
   updateTokStatus();
+  document.getElementById('noTokBanner').style.display = getToken() ? 'none' : 'block';
 }
 function updateTokStatus() {
   const t = getToken();
@@ -205,6 +211,7 @@ async function loadData() {
     document.getElementById('tokBox').open = true;
   }
   updateTokStatus();
+  document.getElementById('noTokBanner').style.display = getToken() ? 'none' : 'block';
   updateProgress();
   renderList();
   setBar(canWrite ? `✅ נטען מ-GitHub · ${inLicense().length} שאלות ברישיון 11` : `👁 מצב צפייה בלבד · ${inLicense().length} שאלות`);
@@ -268,10 +275,13 @@ function cardHTML(q) {
     ? `<video controls playsinline preload="none" src="${esc(q.videoUrl)}"></video>`
     : `<div class="novideo">אין סרטון עדיין — אי אפשר לאשר לפרסום</div>`;
 
+  // Label stays "אשר סופי" even without a token (the button is just disabled) so
+  // a page full of cards doesn't read as if every video needs its own token —
+  // the one token prompt lives in the banner up top.
   const approveBtn = appr
     ? `<button class="btn-undo" onclick="setApproved(${q.num}, false)" ${canWrite ? '' : 'disabled'}>↺ בטל אישור</button>`
     : `<button class="btn-approve" onclick="setApproved(${q.num}, true)" ${(canWrite && q.videoUrl) ? '' : 'disabled'}>
-         ${canWrite ? (q.videoUrl ? '✅ אשר סופי' : 'ממתין לסרטון') : '🔑 הזן טוקן'}</button>`;
+         ${q.videoUrl ? '✅ אשר סופי' : 'ממתין לסרטון'}</button>`;
 
   const fixBtn = `<button class="btn-fix${fix ? ' has' : ''}" onclick="openFix(${q.num})" ${canWrite ? '' : 'disabled'} title="בקשת תיקון">🛠 תיקון</button>`;
 
