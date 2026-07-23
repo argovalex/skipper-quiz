@@ -670,10 +670,11 @@ function applyVoFixes(text) {
 function buildVoiceover(q) {
   const idx = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'א').trim()] ?? 0;
   const ans = ((q.options||[])[idx]||'').replace(/^[אבגד]\.\s*/,'');
+  const letter = (q.answer||'א').trim();   // name the answer option in the VO ("ב׳: ...")
   // [[PAUSE]] marks where the video reveals the answer — keep it; the server splits on it
   // so the answer/explanation only plays once the video transitions, not right after the question.
   let q1 = applyVoFixes(`שאלה מספר ${q.num}. ${q.q_he}.`);
-  let q2 = `התשובה הנכונה: ${ans}.`;
+  let q2 = `התשובה הנכונה היא ${letter}׳: ${ans}.`;
   if (q.explanation) q2 += ` ${q.explanation}`;
   return q1 + ' [[PAUSE]] ' + applyVoFixes(q2);
 }

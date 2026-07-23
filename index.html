@@ -448,8 +448,9 @@ function applyVoFixes(text) {
 function buildVoiceover(q) {
   const idx = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'א').trim()] ?? 0;
   const ans = ((q.options||[])[idx]||'').replace(/^[אבגד]\.\s*/,'');
+  const letter = (q.answer||'א').trim();   // name the answer option in the VO ("ב׳: ...")
   let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
-  let q2 = applyVoFixes(`התשובה הנכונה היא: ${ans}.`);
+  let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}׳: ${ans}.`);
   if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
   return q1 + ' [[PAUSE]] ' + q2;
 }
