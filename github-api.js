@@ -219,7 +219,12 @@ async function saveQuestionsGH(msg) {
   // Derived artifacts for legacy consumers — last-writer-wins is correct here.
   const combined = [];
   for (const lic of present) combined.push(...buckets[lic]);
-  await ghPutFile('questions.json', dumpCanonical(combined), `${message} [compat]`);
+  // questions.json is written with LF (not dumpCanonical's CRLF): the render
+  // server rewrites this file with LF, so forcing CRLF here flipped every line
+  // on each save (an ~8.5k-line no-op diff that ping-ponged with the server).
+  // Matching LF keeps the diff to just the questions that actually changed.
+  // The per-license bank files above stay CRLF-canonical.
+  await ghPutFile('questions.json', JSON.stringify(combined, null, 2), `${message} [compat]`);
   if (JSON.stringify(present) !== JSON.stringify(bankState.licenses)) {
     await ghPutFile(`${BANK_DIR}/manifest.json`, dumpCanonical(present), `${message} [manifest]`);
     bankState.licenses = present;
