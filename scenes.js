@@ -2578,6 +2578,34 @@ SCENES_QA['life_vests'] = `
   <text x="180" y="324" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">חגורת הצלה לכל נוסע מורשה</text>
 `;
 
+// אופנוע ים: אסור להפליג בחשיכה או בראות לקויה
+SCENES_QA['pwc_night_forbidden'] = `
+  <rect width="360" height="420" fill="#060d1c"/>
+  <text x="180" y="116" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">שיט בחשיכה או בראות לקויה</text>
+
+  <!-- crescent moon -->
+  <g><circle cx="292" cy="152" r="17" fill="#f3edcb" opacity=".9"/><circle cx="285" cy="148" r="14" fill="#060d1c"/></g>
+  <!-- stars -->
+  <g fill="#cdd6e8">
+    <circle cx="78" cy="146" r="1.6"/><circle cx="120" cy="126" r="1"/><circle cx="158" cy="150" r="1.3"/>
+    <circle cx="210" cy="134" r="1"/><circle cx="66" cy="180" r="1.2"/><circle cx="246" cy="128" r="1.4"/><circle cx="104" cy="164" r="1"/>
+  </g>
+
+  <!-- dark sea -->
+  <rect x="0" y="238" width="360" height="92" fill="#0a1a30"/>
+  <path d="M0 242 Q90 236 180 242 Q270 248 360 242" fill="none" stroke="#12314f" stroke-width="2"/>
+  <!-- dimmed jet ski, hard to see at night -->
+  <g opacity=".5">${sideJetSki(180, 256, '#3a4a5a', '#22303c', 1.1)}</g>
+
+  <!-- prohibition symbol over it -->
+  <g transform="translate(180,232)">
+    <circle r="50" fill="none" stroke="#e74c3c" stroke-width="8" opacity=".95"/>
+    <line x1="-35" y1="-35" x2="35" y2="35" stroke="#e74c3c" stroke-width="8" opacity=".95"/>
+  </g>
+
+  <text x="180" y="322" text-anchor="middle" fill="#e74c3c" font-size="14" font-family="Heebo,sans-serif" font-weight="900">אסור להפליג בחשיכה או בראות לקויה</text>
+`;
+
 // עזרה ראשונה — מכת חום: צל ומים
 SCENES_QA['firstaid_heatstroke'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2717,6 +2745,33 @@ SCENES_QA['zones_declared_beach'] = `
   </g><rect x="8" y="45" width="8" height="8" fill="#e74c3c" opacity="0.25" stroke="#e74c3c" stroke-width="0.5"/><text x="20" y="53" fill="#e74c3c" font-size="9" font-family="Heebo,sans-serif">אסור לשיט</text><rect x="8" y="58" width="8" height="8" fill="#f39c12" opacity="0.25" stroke="#f39c12" stroke-width="0.5"/><text x="20" y="66" fill="#f39c12" font-size="9" font-family="Heebo,sans-serif">אזור חיץ 50 מ׳</text><circle cx="12" cy="77" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="0.6"/><text x="20" y="80" fill="#f39c12" font-size="9" font-family="Heebo,sans-serif">מצוף</text><text x="180" y="20" text-anchor="middle" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">אזורי שיט - חוף רחצה מוכרז</text><text x="180" y="38" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">מבט מלמעלה (אווירי)</text>
 `;
 
+// אזורי שיט: אזורים סגורים לשיט מול שטחי אש של צה"ל (עתלית, פלמחים)
+SCENES_QA['zones_firing'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="92" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">אזורים סגורים לשיט</text>
+  <text x="180" y="110" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif">מול שטחי אש ואימונים של צה"ל</text>
+
+  <!-- sea (west) + land (east) -->
+  <rect x="0" y="120" width="360" height="200" fill="#1a5276"/>
+  <path d="M250,120 Q232,180 246,230 Q256,290 244,320 L360,320 L360,120 Z" fill="#c8b78a"/>
+  <path d="M250,120 Q232,180 246,230 Q256,290 244,320" fill="none" stroke="#e8d9a8" stroke-width="2"/>
+  <text x="312" y="222" text-anchor="middle" fill="#6b5a2a" font-size="12" font-family="Heebo,sans-serif" font-weight="900" transform="rotate(90,312,222)">ישראל</text>
+
+  <!-- Atlit firing zone (north) -->
+  <path d="M246,132 Q182,145 172,168 Q182,192 246,188 Z" fill="#e74c3c" opacity=".3" stroke="#e74c3c" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <g transform="translate(198,152)"><path d="M0,-8 L2,-2 L8,-2 L3,2 L5,8 L0,4 L-5,8 L-3,2 L-8,-2 L-2,-2 Z" fill="#f39c12" stroke="#e67e22" stroke-width="0.5"/></g>
+  <text x="206" y="178" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="900">עתלית</text>
+
+  <!-- Palmachim firing zone (south) -->
+  <path d="M244,236 Q178,250 168,276 Q180,302 244,298 Z" fill="#e74c3c" opacity=".3" stroke="#e74c3c" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <g transform="translate(196,260)"><path d="M0,-8 L2,-2 L8,-2 L3,2 L5,8 L0,4 L-5,8 L-3,2 L-8,-2 L-2,-2 Z" fill="#f39c12" stroke="#e67e22" stroke-width="0.5"/></g>
+  <text x="204" y="288" text-anchor="middle" fill="#fff" font-size="12" font-family="Heebo,sans-serif" font-weight="900">פלמחים</text>
+
+  <!-- legend -->
+  <rect x="20" y="302" width="12" height="12" fill="#e74c3c" opacity=".4" stroke="#e74c3c" stroke-width="1"/>
+  <text x="38" y="312" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">שטח אש - סגור לשיט</text>
+`;
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
@@ -2728,6 +2783,7 @@ function getScene(topic, qText) {
     // tested first or every non-declared-beach question lands on the declared
     // beach diagram.
     const negated = /שאינו|שאיננו|לא מוכרז/.test(q);
+    if(/סגורים לשיט|שטחי אש|אזורים הסגורים|אימון.*ירי|ירי/.test(q)) return SCENES_QA['zones_firing'];
     if(/נחל|שפך/.test(q))                            return SCENES_QA['zones_river_mouth'];
     if(!negated && /חוף רחצה|מוכרז/.test(q))          return SCENES_QA['zones_declared_beach'];
     if(negated || /200 מטר/.test(q))                  return SCENES_QA['zones_undeclared_beach'];
@@ -2788,6 +2844,7 @@ function getScene(topic, qText) {
     if(/נוסע מאחור|האצה|מדומם|אחיזה|נתון לסכנה/.test(q))   return SCENES_QA['pwc_rider_risk'];
   }
   if(topic==='אופנוע ים - כללי') {
+    if(/חשיכה|ראות לקויה/.test(q))                           return SCENES_QA['pwc_night_forbidden'];
     if(/דג ארסי|פגיעת.*ארס|ארסי/.test(q))                    return SCENES_QA['firstaid_venom'];
     if(/מערכת ההגה|ידית ההגה|תקינות.*הגה/.test(q))           return SCENES_QA['steering_check'];
     if(/מספר המרבי|כמה.*לשוט על אופנוע/.test(q))              return SCENES_QA['pwc_max_riders'];
