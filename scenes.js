@@ -2400,8 +2400,8 @@ SCENES_QA['firstaid_venom'] = `
   <text x="84" y="232" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">ארס חלבוני</text>
 
   <!-- wrong action: cooling the wound -->
-  ${cross(292, 182, 1.3)}
-  <text x="292" y="214" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">לא לקרר</text>
+  ${cross(288, 182, 1.3)}
+  <text x="280" y="214" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">לא לקרר</text>
 
   <!-- treatment: stung foot immersed in a basin of hot water -->
   <g transform="translate(176,288)">
@@ -2476,15 +2476,15 @@ SCENES_QA['pwc_max_riders'] = `
   ${sideRider(178, 272, 0.7, 'grip', '#27ae60')}
   ${sideRider(206, 272, 0.7, 'grip', '#8e44ad')}
 
-  <!-- the allowed count -->
-  <circle cx="306" cy="182" r="29" fill="none" stroke="#2ecc71" stroke-width="4"/>
-  <text x="306" y="194" text-anchor="middle" fill="#2ecc71" font-size="33" font-family="Heebo,sans-serif" font-weight="900">3</text>
-  ${tick(306, 222, 1.1)}
+  <!-- the allowed count (pulled in from the right edge so it is not clipped) -->
+  <circle cx="278" cy="182" r="25" fill="none" stroke="#2ecc71" stroke-width="4"/>
+  <text x="278" y="193" text-anchor="middle" fill="#2ecc71" font-size="30" font-family="Heebo,sans-serif" font-weight="900">3</text>
+  ${tick(278, 220, 1.1)}
 
   <!-- a fourth rider is not allowed -->
-  ${sideRider(66, 214, 0.62, 'grip', '#7f8c8d')}
-  ${cross(56, 188, 1.5)}
-  <text x="66" y="244" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לא רביעי</text>
+  ${sideRider(74, 214, 0.62, 'grip', '#7f8c8d')}
+  ${cross(66, 188, 1.5)}
+  <text x="74" y="244" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לא רביעי</text>
 
   <text x="180" y="322" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">לא יותר משלושה אנשים</text>
 `;
@@ -2500,13 +2500,14 @@ SCENES_QA['annual_inspection'] = `
     <text x="0" y="5" text-anchor="middle" fill="#f39c12" font-size="17" font-family="Heebo,sans-serif" font-weight="900">אחת לשנתיים</text>
   </g>
 
-  <!-- requirements checklist (kept inside the vertical safe band ~70-330) -->
-  ${tick(304, 178, 1)}<text x="290" y="182" text-anchor="end" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">גוף הכלי שלם ונגרר תקין</text>
-  ${tick(304, 202, 1)}<text x="290" y="206" text-anchor="end" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">לפיד עשן פירוטכני בתוקף</text>
-  ${tick(304, 226, 1)}<text x="290" y="230" text-anchor="end" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מראה איתות תקנית</text>
-  ${tick(304, 250, 1)}<text x="290" y="254" text-anchor="end" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">חליפות הצלה למספר הרוכבים</text>
-  ${tick(304, 274, 1)}<text x="290" y="278" text-anchor="end" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מספר דופן ברור, לפחות 10 ס"מ</text>
-  ${tick(304, 298, 1)}<text x="290" y="302" text-anchor="end" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מצפן 4 אינטש (בספינה בלבד)</text>
+  <!-- requirements checklist. Centred text (anchor=middle) so RTL strings do not
+       overflow the right edge; tick sits to the right of each row. Safe band ~70-330 -->
+  ${tick(276, 178, 1)}<text x="166" y="182" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">גוף הכלי שלם ונגרר תקין</text>
+  ${tick(276, 202, 1)}<text x="166" y="206" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">לפיד עשן פירוטכני בתוקף</text>
+  ${tick(276, 226, 1)}<text x="166" y="230" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מראה איתות תקנית</text>
+  ${tick(276, 250, 1)}<text x="166" y="254" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">חליפות הצלה למספר הרוכבים</text>
+  ${tick(276, 274, 1)}<text x="166" y="278" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מספר דופן ברור, לפחות 10 ס"מ</text>
+  ${tick(276, 298, 1)}<text x="166" y="302" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מצפן 4 אינטש (בספינה בלבד)</text>
 `;
 
 // עזרה ראשונה — מכת חום: צל ומים
