@@ -1808,35 +1808,39 @@ SCENES_QA['pwc_dive_tender'] = `
   </g>
   <text x="180" y="40" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">אופנוע ים כספינת-אם לצולל</text>
 
-  <!-- dive flag A (Alpha): white hoist + blue swallowtail, on a mast -->
-  <line x1="238" y1="252" x2="238" y2="150" stroke="#7f8c8d" stroke-width="3"/>
-  <g>
-    <animateTransform attributeName="transform" type="rotate" values="-2 238 153;2 238 153;-2 238 153" dur="3s" repeatCount="indefinite"/>
-    <rect x="238" y="153" width="27" height="30" fill="#fff"/>
-    <path d="M265 153 L293 153 L280 168 L293 183 L265 183 Z" fill="#1f6dc4"/>
-  </g>
-  <text x="252" y="205" text-anchor="middle" fill="#5dade2" font-size="12" font-family="Heebo,sans-serif" font-weight="900">דגל A</text>
-  <text x="252" y="220" text-anchor="middle" fill="#aed6f1" font-size="10" font-family="Heebo,sans-serif">יש צולל במים</text>
-
   <!-- jet ski + licensed operator staying aboard -->
   ${sideJetSki(150, 262, '#f1c40f', '#c8a000', 1.2)}
   ${sideRider(150, 238, 1.1, 'grip', '#27ae60')}
-  <text x="86" y="210" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="900">משיט מוסמך</text>
-  <text x="86" y="225" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">נשאר על הכלי</text>
-  <path d="M98 230 Q118 238 136 244" fill="none" stroke="#2ecc71" stroke-width="1.5" opacity=".7"/>
 
-  <!-- diver below the surface with rising bubbles -->
-  <g transform="translate(178,360) rotate(-8)" fill="#0e3550" stroke="#0a2536" stroke-width="1">
-    <ellipse cx="0" cy="0" rx="20" ry="7"/>
-    <circle cx="18" cy="-2" r="6"/>
-    <rect x="14" y="-5" width="7" height="4" rx="1" fill="#0a2536"/>
-    <circle cx="-15" cy="-6" r="3.5"/>
-    <path d="M-20 0 L-33 -7 L-31 2 L-33 9 Z"/>
+  <!-- small dive flag A (Alpha) attached to the bow -->
+  <line x1="205" y1="247" x2="205" y2="215" stroke="#7f8c8d" stroke-width="2.5"/>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="-3 205 217;3 205 217;-3 205 217" dur="3s" repeatCount="indefinite"/>
+    <rect x="205" y="217" width="9" height="14" fill="#fff"/>
+    <path d="M214 217 L223 217 L218 224 L223 231 L214 231 Z" fill="#1f6dc4"/>
   </g>
-  <g fill="#aed6f1" opacity=".65">
-    <circle cx="196" cy="352" r="2.5"><animate attributeName="cy" values="352;295" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="2.6s" repeatCount="indefinite"/></circle>
-    <circle cx="202" cy="346" r="1.8"><animate attributeName="cy" values="346;292" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="3s" repeatCount="indefinite"/></circle>
-    <circle cx="192" cy="357" r="2"><animate attributeName="cy" values="357;300" dur="3.3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="3.3s" repeatCount="indefinite"/></circle>
+  <text x="236" y="223" text-anchor="middle" fill="#5dade2" font-size="11" font-family="Heebo,sans-serif" font-weight="900">דגל A</text>
+  <text x="236" y="236" text-anchor="middle" fill="#aed6f1" font-size="9" font-family="Heebo,sans-serif">יש צולל</text>
+
+  <text x="82" y="210" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="900">משיט מוסמך</text>
+  <text x="82" y="225" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">נשאר על הכלי</text>
+  <path d="M94 230 Q114 238 134 244" fill="none" stroke="#2ecc71" stroke-width="1.5" opacity=".7"/>
+
+  <!-- scuba diver below the surface: tank, mask, arm, two finned legs -->
+  <g transform="translate(165,356) rotate(6)" stroke="#0a2536" stroke-width="1" fill="#123c54">
+    <rect x="-24" y="-8" width="9" height="15" rx="4" fill="#0a2536"/>
+    <path d="M-18 -6 Q-2 -10 16 -5 Q21 0 16 5 Q-2 10 -18 7 Z"/>
+    <circle cx="20" cy="-4" r="6.5"/>
+    <rect x="22" y="-7" width="6" height="4.5" rx="1.5" fill="#8fd0ee"/>
+    <path d="M4 -3 Q16 -12 28 -15" fill="none" stroke="#123c54" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M-16 4 Q-28 7 -39 3" fill="none" stroke="#123c54" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M-16 6 Q-28 12 -41 13" fill="none" stroke="#123c54" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M-38 1 L-52 -4 L-49 4 L-52 10 Z"/>
+    <path d="M-40 13 L-54 10 L-51 17 L-54 22 Z"/>
+  </g>
+  <g fill="#aed6f1" opacity=".6">
+    <circle cx="188" cy="350" r="2.4"><animate attributeName="cy" values="350;296" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="2.6s" repeatCount="indefinite"/></circle>
+    <circle cx="194" cy="345" r="1.7"><animate attributeName="cy" values="345;294" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="3s" repeatCount="indefinite"/></circle>
   </g>
 `;
 
