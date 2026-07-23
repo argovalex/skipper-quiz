@@ -3203,7 +3203,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784448404/skipper-quiz/tdjvplesla554zte01yc.mp4"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784448404/skipper-quiz/tdjvplesla554zte01yc.mp4",
+    "voiceover_text": "שאלה מספר 1142. מהי התקנה בדבר מדומם חירום באופנוע ים?. [[PAUSE]] התשובה הנכונה היא ג׳: יש לחבר את המדומם לנוהג. ... מדומם חירום Kill Switch חייב להיות מחובר לגוף הנוהג למניעת בריחת אופנוע ללא נוהג.",
+    "content_updated_at": "2026-07-23T14:49:58.689Z"
   },
   {
     "num": 1143,
@@ -3224,7 +3226,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784448460/skipper-quiz/dhsrvbbyacfcvvdzrlwv.mp4"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784448460/skipper-quiz/dhsrvbbyacfcvvdzrlwv.mp4",
+    "voiceover_text": "שאלה מספר 1143. מה הגודל המינימלי של מספר הזיהוי על האופנוע ים?. [[PAUSE]] התשובה הנכונה היא א׳: 10 סנטימטר. ... מספר הזיהוי חייב להיות בגודל מינימלי של 10 סנטימטר כדי להיות קריא מרחוק.",
+    "content_updated_at": "2026-07-23T14:52:33.912Z"
   },
   {
     "num": 1144,
@@ -3245,7 +3249,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784448514/skipper-quiz/ygq0myr9oxooj8nuykgk.mp4"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784448514/skipper-quiz/ygq0myr9oxooj8nuykgk.mp4",
+    "voiceover_text": "שאלה מספר 1144. מה הכמות המינימלית של חגורות הצלה לאופנוע ים המורשה לשאת 3 אנשים, לבדיקות כושר שייט?. [[PAUSE]] התשובה הנכונה היא ג׳: 3 חגורות. ... מספר חגורות ההצלה חייב להתאים למספר הנוסעים המורשה - 3 חגורות ל-3 אנשים.",
+    "content_updated_at": "2026-07-23T14:49:29.294Z"
   },
   {
     "num": 1145,
