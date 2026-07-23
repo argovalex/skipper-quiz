@@ -2381,6 +2381,52 @@ SCENES_QA['firstaid_jellyfish'] = `
   <text x="180" y="326" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">שטוף בחומץ או באמוניה מהולה</text>
 `;
 
+// עזרה ראשונה: פגיעת דג ארסי - השריה במים חמים לפירוק הארס (החום מפרק חלבון)
+SCENES_QA['firstaid_venom'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".35"/>
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="17" font-family="Heebo,sans-serif" font-weight="900">פגיעת דג ארסי</text>
+
+  <!-- venomous fish (lionfish), the source of the protein venom -->
+  <g transform="translate(84,206)">
+    <ellipse cx="0" cy="0" rx="22" ry="12" fill="#e67e22"/>
+    <path d="M20 0 L34 -9 L34 9 Z" fill="#e67e22"/>
+    <g stroke="#e74c3c" stroke-width="2.6" stroke-linecap="round">
+      <path d="M-6 -11 L-11 -30"/><path d="M0 -12 L0 -32"/><path d="M6 -11 L12 -29"/>
+      <path d="M-12 -8 L-22 -22"/><path d="M12 -8 L22 -20"/>
+    </g>
+    <circle cx="-14" cy="-2" r="2.6" fill="#0a1428"/>
+  </g>
+  <text x="84" y="248" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">ארס חלבוני</text>
+
+  <!-- wrong action: cooling the wound -->
+  ${cross(292, 194, 1.3)}
+  <text x="292" y="228" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">לא לקרר</text>
+
+  <!-- treatment: stung foot immersed in a basin of hot water -->
+  <g transform="translate(176,318)">
+    <path d="M-62 4 Q-56 44 0 44 Q56 44 62 4 Z" fill="#3498db" opacity=".5"/>
+    <ellipse cx="0" cy="4" rx="62" ry="13" fill="#5dade2" opacity=".7"/>
+    <ellipse cx="0" cy="4" rx="62" ry="13" fill="none" stroke="#7f8c8d" stroke-width="3"/>
+    <rect x="-13" y="-50" width="26" height="50" rx="10" fill="#f5cba7"/>
+    <path d="M-13 -4 Q-13 18 8 20 L16 17 L16 -4 Z" fill="#f5cba7"/>
+    <path d="M-7 -22 L3 -14 M5 -24 L14 -16" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+    <g stroke="#e74c3c" stroke-width="2.5" fill="none" stroke-linecap="round">
+      <path d="M-30 0 q7 -13 0 -24 q-7 -11 0 -22"><animate attributeName="opacity" values=".2;.9;.2" dur="2.2s" repeatCount="indefinite"/></path>
+      <path d="M0 0 q7 -13 0 -24 q-7 -11 0 -22"><animate attributeName="opacity" values=".9;.2;.9" dur="2.4s" repeatCount="indefinite"/></path>
+      <path d="M30 0 q7 -13 0 -24 q-7 -11 0 -22"><animate attributeName="opacity" values=".2;.9;.2" dur="2.6s" repeatCount="indefinite"/></path>
+    </g>
+    <g transform="translate(80,-4)">
+      <rect x="-5" y="-46" width="10" height="46" rx="5" fill="#ecf0f1" stroke="#7f8c8d" stroke-width="1.5"/>
+      <rect x="-3" y="-26" width="6" height="24" fill="#e74c3c"/>
+      <circle cx="0" cy="4" r="8" fill="#e74c3c"/>
+      <text x="0" y="-52" text-anchor="middle" fill="#f1948a" font-size="11" font-family="Heebo,sans-serif" font-weight="900">42°</text>
+    </g>
+  </g>
+
+  <text x="180" y="404" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">השרה במים חמים 40-45° והחום מפרק את הארס</text>
+`;
+
 // עזרה ראשונה — מכת חום: צל ומים
 SCENES_QA['firstaid_heatstroke'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2591,6 +2637,7 @@ function getScene(topic, qText) {
     if(/נוסע מאחור|האצה|מדומם|אחיזה|נתון לסכנה/.test(q))   return SCENES_QA['pwc_rider_risk'];
   }
   if(topic==='אופנוע ים - כללי') {
+    if(/דג ארסי|פגיעת.*ארס|ארסי/.test(q))                    return SCENES_QA['firstaid_venom'];
     if(/ספינת אם|צולל/.test(q))                              return SCENES_QA['pwc_dive_tender'];
     if(/עשן שחור|עשן.{0,4}סמיך/.test(q))                     return SCENES_QA['pwc_smoke_fire'];
     if(/סוער וגשום|מזג אוויר סוער/.test(q))                  return SCENES_QA['pwc_low_visibility'];
