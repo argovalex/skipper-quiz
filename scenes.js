@@ -2516,25 +2516,22 @@ SCENES_QA['kill_switch'] = `
   <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
   <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מדומם חירום</text>
 
-  <rect x="0" y="286" width="360" height="6" fill="#1a5276" opacity=".7"/>
-  ${sideJetSki(172, 286, '#f1c40f', '#c8a000', 1.05)}
-  ${sideRider(168, 272, 0.82, 'grip', '#2980b9')}
+  <rect x="0" y="288" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  ${sideJetSki(184, 288, '#f1c40f', '#c8a000', 1.25)}
+  ${sideRider(146, 272, 0.85, 'grip', '#2980b9')}
 
-  <!-- kill-switch button on the console -->
-  <rect x="193" y="246" width="12" height="9" rx="2" fill="#e74c3c" stroke="#7b241c" stroke-width="1.5"/>
-  <!-- coiled lanyard from the button to the rider's wrist -->
-  <g stroke="#e74c3c" stroke-width="2.4" fill="none">
-    <ellipse cx="197" cy="252" rx="6" ry="3.4"/>
-    <ellipse cx="192" cy="253" rx="6" ry="3.4"/>
-    <ellipse cx="187" cy="254" rx="6" ry="3.4"/>
-  </g>
+  <!-- kill-switch button on the console, forward of the rider -->
+  <rect x="214" y="246" width="13" height="10" rx="2" fill="#e74c3c" stroke="#7b241c" stroke-width="1.5"/>
+  <!-- coiled lanyard spanning the gap from the button to the rider's wrist -->
+  <path d="${coilPath(214, 252, 166, 266, 7, 5)}" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
   <!-- red band on the rider's wrist -->
-  <circle cx="184" cy="255" r="5" fill="none" stroke="#e74c3c" stroke-width="3"/>
-  <!-- callout to the wrist -->
-  <path d="M150 210 L180 250" stroke="#2ecc71" stroke-width="1.6" stroke-dasharray="4 4"/>
-  <text x="150" y="204" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מחובר ליד הנוהג</text>
+  <circle cx="164" cy="267" r="5" fill="none" stroke="#e74c3c" stroke-width="2.6"/>
 
-  ${tick(250, 300, 1.1)}
+  <!-- callout to the wrist -->
+  <path d="M120 224 L160 262" stroke="#2ecc71" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <text x="118" y="218" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מחובר ליד הנוהג</text>
+
+  ${tick(244, 300, 1.1)}
   <text x="180" y="322" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">הפתיל מחובר לפרק כף היד של הנוהג</text>
 `;
 
@@ -2544,18 +2541,18 @@ SCENES_QA['id_number'] = `
   <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
   <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מספר הזיהוי על האופנוע</text>
 
-  <rect x="0" y="302" width="360" height="6" fill="#1a5276" opacity=".7"/>
-  ${sideJetSki(168, 302, '#f1c40f', '#c8a000', 1.25)}
-  <!-- large identification number on the hull -->
-  <text x="150" y="296" text-anchor="middle" fill="#1a2530" font-size="30" font-family="Heebo,sans-serif" font-weight="900">1234</text>
+  <rect x="0" y="300" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  ${sideJetSki(158, 300, '#f1c40f', '#c8a000', 1.5)}
+  <!-- identification number on the forward hull section (bow), dark on light -->
+  <text x="204" y="300" text-anchor="middle" fill="#1a2530" font-size="19" font-family="Heebo,sans-serif" font-weight="900">1234</text>
 
-  <!-- height dimension >= 10 cm -->
-  <g stroke="#2ecc71" stroke-width="2.2">
-    <path d="M236 272 L236 300"/>
-    <path d="M232 277 L236 271 L240 277"/>
-    <path d="M232 295 L236 301 L240 295"/>
+  <!-- height dimension >= 10 cm, just left of the number -->
+  <g stroke="#2ecc71" stroke-width="2">
+    <path d="M180 286 L180 306"/>
+    <path d="M176 291 L180 285 L184 291"/>
+    <path d="M176 301 L180 307 L184 301"/>
   </g>
-  <text x="266" y="290" text-anchor="middle" fill="#2ecc71" font-size="14" font-family="Heebo,sans-serif" font-weight="900">10 ס״מ</text>
+  <text x="152" y="301" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">10 ס״מ</text>
 
   <text x="180" y="330" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">גובה הספרות לפחות 10 סנטימטר</text>
 `;
@@ -3003,6 +3000,22 @@ function cross(x, y, s) {
   return `<g stroke="#e74c3c" stroke-width="${3 * s}" stroke-linecap="round">
     <path d="M${x - 5 * s},${y - 5 * s} L${x + 5 * s},${y + 5 * s}"/>
     <path d="M${x + 5 * s},${y - 5 * s} L${x - 5 * s},${y + 5 * s}"/></g>`;
+}
+
+function coilPath(x0, y0, x1, y1, loops, r) {
+  // A curly lanyard / spring cord between two points. x oscillates so the loops
+  // actually curl back on themselves and read as a coil, not a wavy line.
+  loops = loops || 6; r = r || 5;
+  const n = loops * 16;
+  let d = '';
+  for (let i = 0; i <= n; i++) {
+    const t = i / n;
+    const ph = t * loops * 2 * Math.PI;
+    const x = x0 + t * (x1 - x0) + r * Math.cos(ph);
+    const y = y0 + t * (y1 - y0) + r * 0.6 * Math.sin(ph);
+    d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+  }
+  return d;
 }
 
 function sternJetSki(cx, by, s, kit) {
