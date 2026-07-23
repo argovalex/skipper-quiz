@@ -1798,6 +1798,48 @@ SCENES_QA['pwc_rider_risk'] = `
   <path d="M96 198 Q106 208 112 218" fill="none" stroke="#e74c3c" stroke-width="1.6" opacity=".7"/>
 `;
 
+// אופנוע ים - כללי — אופנוע ים כספינת-אם לצולל: מותר עם דגל A ומשיט מוסמך על הכלי
+SCENES_QA['pwc_dive_tender'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="250" width="360" height="170" fill="#1a5276"/>
+  <g opacity="0.12">
+    <path d="M0 292 Q90 284 180 292 Q270 300 360 292" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 340 Q90 332 180 340 Q270 348 360 340" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="180" y="40" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">אופנוע ים כספינת-אם לצולל</text>
+
+  <!-- dive flag A (Alpha): white hoist + blue swallowtail, on a mast -->
+  <line x1="238" y1="252" x2="238" y2="150" stroke="#7f8c8d" stroke-width="3"/>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="-2 238 153;2 238 153;-2 238 153" dur="3s" repeatCount="indefinite"/>
+    <rect x="238" y="153" width="27" height="30" fill="#fff"/>
+    <path d="M265 153 L293 153 L280 168 L293 183 L265 183 Z" fill="#1f6dc4"/>
+  </g>
+  <text x="252" y="205" text-anchor="middle" fill="#5dade2" font-size="12" font-family="Heebo,sans-serif" font-weight="900">דגל A</text>
+  <text x="252" y="220" text-anchor="middle" fill="#aed6f1" font-size="10" font-family="Heebo,sans-serif">יש צולל במים</text>
+
+  <!-- jet ski + licensed operator staying aboard -->
+  ${sideJetSki(150, 262, '#f1c40f', '#c8a000', 1.2)}
+  ${sideRider(150, 238, 1.1, 'grip', '#27ae60')}
+  <text x="86" y="210" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="900">משיט מוסמך</text>
+  <text x="86" y="225" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif">נשאר על הכלי</text>
+  <path d="M98 230 Q118 238 136 244" fill="none" stroke="#2ecc71" stroke-width="1.5" opacity=".7"/>
+
+  <!-- diver below the surface with rising bubbles -->
+  <g transform="translate(178,360) rotate(-8)" fill="#0e3550" stroke="#0a2536" stroke-width="1">
+    <ellipse cx="0" cy="0" rx="20" ry="7"/>
+    <circle cx="18" cy="-2" r="6"/>
+    <rect x="14" y="-5" width="7" height="4" rx="1" fill="#0a2536"/>
+    <circle cx="-15" cy="-6" r="3.5"/>
+    <path d="M-20 0 L-33 -7 L-31 2 L-33 9 Z"/>
+  </g>
+  <g fill="#aed6f1" opacity=".65">
+    <circle cx="196" cy="352" r="2.5"><animate attributeName="cy" values="352;295" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="2.6s" repeatCount="indefinite"/></circle>
+    <circle cx="202" cy="346" r="1.8"><animate attributeName="cy" values="346;292" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="3s" repeatCount="indefinite"/></circle>
+    <circle cx="192" cy="357" r="2"><animate attributeName="cy" values="357;300" dur="3.3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="3.3s" repeatCount="indefinite"/></circle>
+  </g>
+`;
+
 // סכנות רכיבה ותמרון — מעבר גלי חוף במהירות: עף מעל הגל ונוחת בלי שליטה
 SCENES_QA['pwc_wave_launch'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2481,6 +2523,9 @@ function getScene(topic, qText) {
     if(/גישה לכלי|להתקרב|לעצור לידו|מהירות איטית|למנוע גלים|ליד כלי/.test(q))
                                                             return SCENES_QA['pwc_slow_approach'];
     if(/נוסע מאחור|האצה|מדומם|אחיזה|נתון לסכנה/.test(q))   return SCENES_QA['pwc_rider_risk'];
+  }
+  if(topic==='אופנוע ים - כללי') {
+    if(/ספינת אם|צולל/.test(q))                              return SCENES_QA['pwc_dive_tender'];
   }
   if(topic==='זכות מעבר' && /מפרש|sail/i.test(q)) return SCENES['זכות_מעבר_מפרש'];
   if(/VHF|רדיו|קשר/.test(topic)) return SCENES['קשר VHF'];
