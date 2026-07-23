@@ -1844,6 +1844,68 @@ SCENES_QA['pwc_dive_tender'] = `
   </g>
 `;
 
+// אופנוע ים - כללי — עשן שחור וסמיך מאופנוע של חבר = סכנת שריפה: נטוש, אסוף את הרוכב, התרחק
+SCENES_QA['pwc_smoke_fire'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="300" width="360" height="120" fill="#1a5276"/>
+  <g opacity="0.12">
+    <path d="M0 340 Q90 332 180 340 Q270 348 360 340" fill="none" stroke="white" stroke-width="1.5"/>
+    <path d="M0 384 Q90 376 180 384 Q270 392 360 384" fill="none" stroke="white" stroke-width="1.5"/>
+  </g>
+  <text x="180" y="38" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">עשן שחור וסמיך מאופנוע ים</text>
+
+  <!-- friend's jet ski on the right, on fire with heavy black smoke -->
+  ${sideJetSki(250, 314, '#e67e22', '#a04000', 1.15)}
+  <g>
+    <path d="M244 302 Q240 288 250 282 Q248 294 258 290 Q256 302 262 298 Q260 310 250 310 Q244 310 244 302 Z" fill="#e74c3c"><animate attributeName="opacity" values="0.9;0.5;0.9" dur="0.5s" repeatCount="indefinite"/></path>
+    <path d="M248 302 Q246 292 253 288 Q252 298 259 295 Q257 306 250 306 Z" fill="#f39c12"><animate attributeName="opacity" values="0.6;1;0.6" dur="0.4s" repeatCount="indefinite"/></path>
+  </g>
+  <g>
+    <g opacity=".85" fill="#2b2b2b"><animateTransform attributeName="transform" type="translate" values="0 0;-16 -12;0 0" dur="5s" repeatCount="indefinite"/>
+      <circle cx="252" cy="266" r="16"/><circle cx="266" cy="254" r="14"/><circle cx="240" cy="252" r="13"/><circle cx="256" cy="240" r="15"/></g>
+    <g opacity=".7" fill="#3d3d3d"><animateTransform attributeName="transform" type="translate" values="0 0;-26 -18;0 0" dur="6s" repeatCount="indefinite"/>
+      <circle cx="258" cy="222" r="17"/><circle cx="242" cy="214" r="14"/><circle cx="272" cy="210" r="13"/><circle cx="256" cy="198" r="16"/></g>
+    <g opacity=".5" fill="#555"><animateTransform attributeName="transform" type="translate" values="0 0;-34 -20;0 0" dur="7s" repeatCount="indefinite"/>
+      <circle cx="250" cy="180" r="18"/><circle cx="270" cy="172" r="14"/><circle cx="234" cy="170" r="13"/></g>
+  </g>
+  <text x="306" y="158" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="900">סכנת</text>
+  <text x="306" y="174" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="900">שריפה</text>
+
+  <!-- your jet ski on the left, approach to collect the rider then move away -->
+  ${sideJetSki(86, 326, '#3498db', '#1f6391', 1.0)}
+  ${sideRider(86, 307, 0.95, 'grip', '#2ecc71')}
+  <text x="92" y="372" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">נטוש · אסוף · התרחק</text>
+`;
+
+// אופנוע ים - כללי — מזג אוויר סוער וגשום: מעבר לים הגבוה, סכנה נוספת היא ירידה בראות
+SCENES_QA['pwc_low_visibility'] = `
+  <defs>
+    <linearGradient id="lv_sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2530"/><stop offset="1" stop-color="#2c3e50"/></linearGradient>
+    <linearGradient id="lv_haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8194a6" stop-opacity="0"/><stop offset="1" stop-color="#8194a6" stop-opacity="0.5"/></linearGradient>
+  </defs>
+  <rect width="360" height="420" fill="url(#lv_sky)"/>
+  <rect x="0" y="300" width="360" height="120" fill="#33495e"/>
+
+  <g fill="#141c26" opacity=".9">
+    <circle cx="72" cy="72" r="34"/><circle cx="112" cy="58" r="40"/><circle cx="160" cy="74" r="32"/><circle cx="60" cy="90" r="24"/>
+    <circle cx="286" cy="62" r="36"/><circle cx="322" cy="78" r="26"/><circle cx="250" cy="76" r="24"/></g>
+  <path d="M152 98 L140 140 L152 138 L136 182" fill="none" stroke="#f7dc6f" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;0;1;0;0;0;0" dur="4.5s" repeatCount="indefinite"/></path>
+
+  <text x="180" y="34" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">מזג אוויר סוער — ירידה בראות</text>
+
+  <g stroke="#9fb6cc" stroke-width="1.3" opacity=".5">
+    ${Array.from({length:24},(_,i)=>'<line x1="'+(8+i*15)+'" y1="116" x2="'+(8+i*15-10)+'" y2="144"><animateTransform attributeName="transform" type="translate" values="0 0;16 46" dur="'+(0.55+(i%5)*0.07)+'s" repeatCount="indefinite"/></line>').join('')}
+  </g>
+
+  ${sideJetSki(140, 330, '#f1c40f', '#c8a000', 1.15)}
+  ${sideRider(140, 309, 1.05, 'grip', '#2980b9')}
+
+  <g opacity=".2">${sideJetSki(300, 322, '#cfd8dc', '#90a4ae', 0.9)}</g>
+
+  <rect x="0" y="150" width="360" height="270" fill="url(#lv_haze)"/>
+  <text x="180" y="232" text-anchor="middle" fill="#ffd479" font-size="15" font-family="Heebo,sans-serif" font-weight="900">ראות ירודה</text>
+`;
+
 // סכנות רכיבה ותמרון — מעבר גלי חוף במהירות: עף מעל הגל ונוחת בלי שליטה
 SCENES_QA['pwc_wave_launch'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2530,6 +2592,8 @@ function getScene(topic, qText) {
   }
   if(topic==='אופנוע ים - כללי') {
     if(/ספינת אם|צולל/.test(q))                              return SCENES_QA['pwc_dive_tender'];
+    if(/עשן שחור|עשן.{0,4}סמיך/.test(q))                     return SCENES_QA['pwc_smoke_fire'];
+    if(/סוער וגשום|מזג אוויר סוער/.test(q))                  return SCENES_QA['pwc_low_visibility'];
   }
   if(topic==='זכות מעבר' && /מפרש|sail/i.test(q)) return SCENES['זכות_מעבר_מפרש'];
   if(/VHF|רדיו|קשר/.test(topic)) return SCENES['קשר VHF'];
