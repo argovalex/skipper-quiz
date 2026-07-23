@@ -2427,6 +2427,72 @@ SCENES_QA['firstaid_venom'] = `
   <text x="180" y="404" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">השרה במים חמים 40-45° והחום מפרק את הארס</text>
 `;
 
+// אופנוע ים: בדיקת הגה לפני יציאה - סיבוב הידית ומבט בנחיר הסילון
+SCENES_QA['steering_check'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".25"/>
+  <text x="180" y="126" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">בדיקת הגה לפני יציאה</text>
+
+  <!-- handlebars, turned side to side -->
+  <g transform="translate(112,196)">
+    <path d="M-36 0 L36 0" stroke="#2c3e50" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="-36" cy="0" r="6" fill="#1a2530"/>
+    <circle cx="36" cy="0" r="6" fill="#1a2530"/>
+    <path d="M-28 -20 A34 34 0 0 1 28 -20" fill="none" stroke="#2ecc71" stroke-width="3"/>
+    <path d="M28 -20 l1 -9 l8 6 Z" fill="#2ecc71"/>
+    <path d="M-28 -20 l-1 -9 l-8 6 Z" fill="#2ecc71"/>
+  </g>
+  <text x="112" y="238" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">סובב את ידית ההגה</text>
+
+  <!-- steering cable linking the bars to the nozzle -->
+  <path d="M150 206 Q244 250 250 300" fill="none" stroke="#7eb8f7" stroke-width="2.5" stroke-dasharray="6 5"/>
+
+  <!-- jet nozzle at the stern, must turn in sync -->
+  <g transform="translate(244,316)">
+    <rect x="-18" y="-15" width="20" height="30" rx="4" fill="#5d6d7e" stroke="#34495e" stroke-width="2"/>
+    <path d="M2 -11 L20 -16 L20 16 L2 11 Z" fill="#95a5a6" stroke="#34495e" stroke-width="1.5"/>
+    <path d="M20 0 q18 -5 34 2" fill="none" stroke="#5dade2" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M8 -22 A24 24 0 0 1 8 22" fill="none" stroke="#2ecc71" stroke-width="3"/>
+    <path d="M8 22 l-8 2 l4 -9 Z" fill="#2ecc71"/>
+    <path d="M8 -22 l-8 -2 l4 9 Z" fill="#2ecc71"/>
+  </g>
+
+  <!-- eye: watch the nozzle actually move -->
+  <g transform="translate(306,300)">
+    <path d="M-16 0 Q0 -13 16 0 Q0 13 -16 0 Z" fill="#ecf0f1"/>
+    <circle cx="0" cy="0" r="6" fill="#2c3e50"/>
+    <circle cx="2" cy="-2" r="2" fill="#fff"/>
+  </g>
+  <text x="252" y="360" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">ובדוק שהנחיר זז בהתאם</text>
+
+  <text x="180" y="404" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">סיבוב ההגה יחד עם מבט בנחיר הפליטה</text>
+`;
+
+// אופנוע ים: מספר מרבי - עד 3 אנשים
+SCENES_QA['pwc_max_riders'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="128" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מספר מרבי על אופנוע ים</text>
+
+  <rect x="0" y="306" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  ${sideJetSki(180, 306, '#f1c40f', '#c8a000', 1.15)}
+  ${sideRider(150, 290, 0.7, 'grip', '#2980b9')}
+  ${sideRider(178, 290, 0.7, 'grip', '#27ae60')}
+  ${sideRider(206, 290, 0.7, 'grip', '#8e44ad')}
+
+  <!-- the allowed count -->
+  <circle cx="306" cy="198" r="30" fill="none" stroke="#2ecc71" stroke-width="4"/>
+  <text x="306" y="210" text-anchor="middle" fill="#2ecc71" font-size="34" font-family="Heebo,sans-serif" font-weight="900">3</text>
+  ${tick(306, 240, 1.1)}
+
+  <!-- a fourth rider is not allowed -->
+  ${sideRider(66, 232, 0.62, 'grip', '#7f8c8d')}
+  ${cross(56, 206, 1.5)}
+  <text x="66" y="262" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="700">לא רביעי</text>
+
+  <text x="180" y="404" text-anchor="middle" fill="#2ecc71" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">לא יותר משלושה אנשים</text>
+`;
+
 // עזרה ראשונה — מכת חום: צל ומים
 SCENES_QA['firstaid_heatstroke'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2638,6 +2704,9 @@ function getScene(topic, qText) {
   }
   if(topic==='אופנוע ים - כללי') {
     if(/דג ארסי|פגיעת.*ארס|ארסי/.test(q))                    return SCENES_QA['firstaid_venom'];
+    if(/מערכת ההגה|ידית ההגה|תקינות.*הגה/.test(q))           return SCENES_QA['steering_check'];
+    if(/מספר המרבי|כמה.*לשוט על אופנוע/.test(q))              return SCENES_QA['pwc_max_riders'];
+    if(/לשאת בעת|מהתעודות|ביקורת כושר שייט|כושר שייט תקופתית/.test(q)) return SCENES_QA['docs_and_inspection'];
     if(/ספינת אם|צולל/.test(q))                              return SCENES_QA['pwc_dive_tender'];
     if(/עשן שחור|עשן.{0,4}סמיך/.test(q))                     return SCENES_QA['pwc_smoke_fire'];
     if(/סוער וגשום|מזג אוויר סוער/.test(q))                  return SCENES_QA['pwc_low_visibility'];
