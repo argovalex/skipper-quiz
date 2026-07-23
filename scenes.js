@@ -2454,6 +2454,25 @@ function getScene(topic, qText) {
     if(/טבע|הנשמה.*אינו נושם|מריאות/.test(q))       return SCENES_QA['firstaid_drowning'];
     if(/מחוסר הכרה|דופק|נשימה/.test(q))             return SCENES_QA['firstaid_abc'];
   }
+  // Merged safety topic. On 2026-07-23 four topics (תדלוק ואש, משולש האש,
+  // בטיחות אש, עזרה ראשונה) were folded into a single 'בטיחות' for a cleaner
+  // topic list. getScene is the only place topic drove the visual, so this
+  // dispatches back to each original sub-scene by wording — otherwise a re-render
+  // of any merged question would fall through to the navigation default.
+  if(topic==='בטיחות') {
+    if(/תדלוק|דלק/.test(q))                          return SCENES['תדלוק ואש'];
+    if(/משולש/.test(q))                              return SCENES['משולש האש'];
+    if(/מדוזה|צריב/.test(q))                         return SCENES_QA['firstaid_jellyfish'];
+    if(/מכת חום|חום.*נפגע|צל/.test(q))                return SCENES_QA['firstaid_heatstroke'];
+    if(/שבר|גפ/.test(q))                             return SCENES_QA['firstaid_fracture'];
+    if(/טבע|הנשמה.*אינו נושם|מריאות/.test(q))         return SCENES_QA['firstaid_drowning'];
+    if(/מחוסר הכרה|דופק|נשימה/.test(q))              return SCENES_QA['firstaid_abc'];
+    if(/מטף/.test(q))                                return SCENES_QA['extinguisher_check'];
+    if(/פירוטכני|פג תוקפו/.test(q))                  return SCENES_QA['expired_flares'];
+    if(/הודעה בחוף|החלטת לשוט|זמן חזרה/.test(q))     return SCENES_QA['float_plan'];
+    if(/רשאי לאפשר|רשאי לנהוג|מוסמך/.test(q))        return SCENES_QA['pwc_licence'];
+    return SCENES['תדלוק ואש']; // safe fire default, never navigation
+  }
   if(topic==='סכנות רכיבה ותמרון') {
     // Order matters: the wave and approach questions also mention speed and
     // danger, so they have to be claimed before the rider-risk catch-all.
