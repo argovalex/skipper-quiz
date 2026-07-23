@@ -29,39 +29,82 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
     
     <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
       
-  <rect width="360" height="420" fill="#0a1a30"/>
-  <rect x="20" y="20" width="320" height="230" rx="8" fill="#0d2040" stroke="#2a4a6a" stroke-width="1.5"/>
-  <line x1="20" y1="135" x2="340" y2="135" stroke="#1e3a5a" stroke-width="1"/>
-  <line x1="180" y1="20" x2="180" y2="250" stroke="#1e3a5a" stroke-width="1"/>
-  <text x="180" y="40" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°N</text>
-  <text x="180" y="248" text-anchor="middle" fill="#4a8ac0" font-size="9" font-family="Arial">90°S</text>
-  <text x="25" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°W</text>
-  <text x="310" y="138" fill="#4a8ac0" font-size="9" font-family="Arial">180°E</text>
-  <path d="M20,100 Q90,90 180,100 Q270,110 340,100" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,135 Q340,135 340,135" fill="none" stroke="#3a80b8" stroke-width="2"/>
-  <path d="M20,170 Q90,180 180,170 Q270,160 340,170" fill="none" stroke="#2e6ea6" stroke-width="1.5"/>
-  <path d="M20,55 Q90,48 180,55 Q270,62 340,55" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <path d="M20,215 Q90,222 180,215 Q270,208 340,215" fill="none" stroke="#1e5080" stroke-width="1"/>
-  <line x1="110" y1="20" x2="110" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <line x1="250" y1="20" x2="250" y2="250" stroke="#1a3a58" stroke-width="0.8"/>
-  <circle cx="180" cy="135" r="5" fill="#4a90d9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="180" cy="135" r="12" fill="none" stroke="#4a90d9" opacity="0.5"><animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/></circle>
-  <path d="M180,135 L230,85" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="235" y="82" fill="#7eb8f7" font-size="11" font-family="Arial" font-weight="700">B</text>
-  <text x="162" y="152" fill="#2ecc71" font-size="11" font-family="Arial" font-weight="700">A</text>
-  <g transform="translate(20,265)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קורס: </text>
-    <text x="52" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">045°M</text>
-    <text x="120" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">מהירות: </text>
-    <text x="178" y="15" fill="#fff" font-size="11" font-family="Arial" font-weight="700">6.2 kn</text>
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מדומם חירום</text>
+
+  <rect x="0" y="288" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  
+  <g>
+  <!-- Stern boarding platform -->
+  <path d="M112.75,286.75 L129,284.25 L129,291.75 L115.25,290.5 Z" fill="#c8a000" opacity=".85"/>
+  <!-- Hull: deck line aft, rising to a tall bow, keel sweeping up at both ends -->
+  <path d="M126.5,278 L226.5,278 Q242.75,276.75 246.5,271.75
+           Q247.75,284.25 237.75,291.75 Q216.5,298 176.5,298
+           Q144,298 131.5,291.75 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Waterline shading on the submerged part -->
+  <path d="M130.25,288 L241.5,288 Q216.5,298 176.5,298 Q144,298 131.5,291.75 Z"
+        fill="#c8a000" opacity=".45"/>
+  <!-- Rubbing strake along the hull -->
+  <path d="M127.75,283 L239,281.75" stroke="#c8a000" stroke-width="1.875" opacity=".8"/>
+  <!-- Saddle: long, from the stern deck forward to the console -->
+  <path d="M134,278 Q134,269.25 141.5,265.5 Q156.5,261.75 174,263
+           Q187.75,264.25 196.5,270.5 L199,278 Z"
+        fill="#2c3e50" stroke="#1a2530" stroke-width="1.625" stroke-linejoin="round"/>
+  <!-- Front hood / storage, ahead of the rider, sloping to the bow -->
+  <path d="M196.5,270.5 L199,261.75 Q209,259.25 221.5,261.75 Q235.25,264.25 242.75,273
+           L241.5,276.75 Q221.5,274.25 197.75,273 Z"
+        fill="#f1c40f" stroke="#c8a000" stroke-width="1.75" stroke-linejoin="round"/>
+  <path d="M221.5,263 Q234,265.5 240.25,271.75" fill="none" stroke="#fff" stroke-width="2" opacity=".35"/>
+  <!-- Handlebars, sitting just aft of the hood -->
+  <path d="M197.75,255.5 L197.75,266.75" stroke="#2c3e50" stroke-width="3"/>
+  <path d="M189,255.5 L205.25,254.25" stroke="#2c3e50" stroke-width="3.75" stroke-linecap="round"/>
+  <circle cx="187.75" cy="255.5" r="3.25" fill="#1a2530"/>
+  <circle cx="206.5" cy="254.25" r="3.25" fill="#1a2530"/>
+  <!-- Jet nozzle -->
+  <rect x="121.5" y="280.5" width="8.75" height="8.75" rx="1.875" fill="#7f8c8d"/>
   </g>
-  <g transform="translate(20,290)">
-    <text x="0" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">N </text>
-    <text x="14" y="15" fill="#fff" font-size="11" font-family="Arial">32°04.5'</text>
-    <text x="105" y="15" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">E </text>
-    <text x="118" y="15" fill="#fff" font-size="11" font-family="Arial">34°46.2'</text>
+  
+  <g>
+  <!-- rear leg, drawn first so the torso overlaps it -->
+  <path d="M146,270.3 L157.9,271.15 L158.75,282.2"
+        fill="none" stroke="#1f2f3f" stroke-width="5.5249999999999995" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+  <!-- torso -->
+  <path d="M146,270.3 L150.25,249.9" fill="none" stroke="#2980b9"
+        stroke-width="11.049999999999999" stroke-linecap="round"/>
+  <!-- lifejacket over the torso, kept narrower than the torso so the kit colour
+       still reads at the edges — the kit is what tells the two riders apart -->
+  <path d="M145.15,264.35 L149.6125,252.45" fill="none" stroke="#f4d03f"
+        stroke-width="6.8" stroke-linecap="round" opacity=".92"/>
+  <!-- front leg -->
+  <path d="M146,270.3 L159.6,270.3 L160.45,282.2"
+        fill="none" stroke="#2c3e50" stroke-width="5.95" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- arm reaching for the bars, or flung up -->
+  <path d="M150.25,249.9 L163,266.9" fill="none" stroke="#2980b9"
+        stroke-width="4.675" stroke-linecap="round"/>
+  <!-- head, helmet and visor -->
+  <circle cx="153.65" cy="243.1" r="6.375" fill="#f5cba7"/>
+  <path d="M146.85,242.25 A6.8,6.8 0 0 1 160.45,242.25 L160.45,240.55 L146.85,240.55 Z"
+        fill="#2980b9" opacity=".95"/>
+  <circle cx="153.65" cy="242.25" r="6.8"
+          fill="none" stroke="#2980b9" stroke-width="2.55" stroke-dasharray="21.25 85"/>
   </g>
-  <text x="180" y="360" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">ניווט על מפת מרקטור</text>
+
+  <!-- kill-switch button on the console, forward of the rider -->
+  <rect x="214" y="246" width="13" height="10" rx="2" fill="#e74c3c" stroke="#7b241c" stroke-width="1.5"/>
+  <!-- coiled lanyard spanning the gap from the button to the rider's wrist -->
+  <path d="M219.0 252.0 L218.2 253.3 L216.7 254.4 L214.6 255.1 L212.3 255.5 L209.9 255.4 L207.9 254.9 L206.4 254.0 L205.6 253.0 L205.5 252.0 L206.2 251.1 L207.4 250.6 L208.9 250.5 L210.3 250.9 L211.5 251.6 L212.2 252.7 L212.1 254.0 L211.3 255.3 L209.8 256.4 L207.8 257.1 L205.4 257.5 L203.1 257.4 L201.0 256.9 L199.5 256.0 L198.7 255.0 L198.7 254.0 L199.3 253.1 L200.5 252.6 L202.0 252.5 L203.5 252.9 L204.7 253.6 L205.3 254.7 L205.3 256.0 L204.5 257.3 L203.0 258.4 L200.9 259.1 L198.6 259.5 L196.2 259.4 L194.2 258.9 L192.7 258.0 L191.9 257.0 L191.8 256.0 L192.5 255.1 L193.7 254.6 L195.1 254.5 L196.6 254.9 L197.8 255.6 L198.5 256.7 L198.4 258.0 L197.6 259.3 L196.1 260.4 L194.1 261.1 L191.7 261.5 L189.4 261.4 L187.3 260.9 L185.8 260.0 L185.0 259.0 L185.0 258.0 L185.6 257.1 L186.8 256.6 L188.3 256.5 L189.8 256.9 L191.0 257.6 L191.6 258.7 L191.6 260.0 L190.8 261.3 L189.2 262.4 L187.2 263.1 L184.9 263.5 L182.5 263.4 L180.5 262.9 L179.0 262.0 L178.1 261.0 L178.1 260.0 L178.8 259.1 L179.9 258.6 L181.4 258.5 L182.9 258.9 L184.1 259.6 L184.8 260.7 L184.7 262.0 L183.9 263.3 L182.4 264.4 L180.3 265.1 L178.0 265.5 L175.7 265.4 L173.6 264.9 L172.1 264.0 L171.3 263.0 L171.2 262.0 L171.9 261.1 L173.1 260.6 L174.6 260.5 L176.1 260.9 L177.2 261.6 L177.9 262.7 L177.9 264.0 L177.0 265.3 L175.5 266.4 L173.5 267.1 L171.1 267.5 L168.8 267.4 L166.8 266.9 L165.2 266.0 L164.4 265.0 L164.4 264.0 L165.0 263.1 L166.2 262.6 L167.7 262.5 L169.2 262.9 L170.4 263.6 L171.0 264.7 L171.0 266.0" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
+  <!-- red band on the rider's wrist -->
+  <circle cx="164" cy="267" r="5" fill="none" stroke="#e74c3c" stroke-width="2.6"/>
+
+  <!-- callout to the wrist -->
+  <path d="M120 224 L160 262" stroke="#2ecc71" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <text x="118" y="218" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מחובר ליד הנוהג</text>
+
+  <path d="M238.5,300 L242.9,304.4 L250.6,294.5"
+    fill="none" stroke="#2ecc71" stroke-width="3.3000000000000003" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="180" y="322" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">הפתיל מחובר לפרק כף היד של הנוהג</text>
 
       <g id="ov" opacity="0">
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
