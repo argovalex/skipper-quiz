@@ -2510,6 +2510,77 @@ SCENES_QA['annual_inspection'] = `
   ${tick(276, 298, 1)}<text x="166" y="302" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מצפן 4 אינטש (בספינה בלבד)</text>
 `;
 
+// אופנוע ים: מדומם חירום (Kill Switch) - הפתיל מחובר לפרק כף היד של הנוהג
+SCENES_QA['kill_switch'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מדומם חירום</text>
+
+  <rect x="0" y="286" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  ${sideJetSki(172, 286, '#f1c40f', '#c8a000', 1.05)}
+  ${sideRider(168, 272, 0.82, 'grip', '#2980b9')}
+
+  <!-- kill-switch button on the console -->
+  <rect x="193" y="246" width="12" height="9" rx="2" fill="#e74c3c" stroke="#7b241c" stroke-width="1.5"/>
+  <!-- coiled lanyard from the button to the rider's wrist -->
+  <g stroke="#e74c3c" stroke-width="2.4" fill="none">
+    <ellipse cx="197" cy="252" rx="6" ry="3.4"/>
+    <ellipse cx="192" cy="253" rx="6" ry="3.4"/>
+    <ellipse cx="187" cy="254" rx="6" ry="3.4"/>
+  </g>
+  <!-- red band on the rider's wrist -->
+  <circle cx="184" cy="255" r="5" fill="none" stroke="#e74c3c" stroke-width="3"/>
+  <!-- callout to the wrist -->
+  <path d="M150 210 L180 250" stroke="#2ecc71" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <text x="150" y="204" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מחובר ליד הנוהג</text>
+
+  ${tick(250, 300, 1.1)}
+  <text x="180" y="322" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">הפתיל מחובר לפרק כף היד של הנוהג</text>
+`;
+
+// אופנוע ים: מספר הזיהוי - גובה ספרות מינימלי 10 ס"מ
+SCENES_QA['id_number'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מספר הזיהוי על האופנוע</text>
+
+  <rect x="0" y="302" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  ${sideJetSki(168, 302, '#f1c40f', '#c8a000', 1.25)}
+  <!-- large identification number on the hull -->
+  <text x="150" y="296" text-anchor="middle" fill="#1a2530" font-size="30" font-family="Heebo,sans-serif" font-weight="900">1234</text>
+
+  <!-- height dimension >= 10 cm -->
+  <g stroke="#2ecc71" stroke-width="2.2">
+    <path d="M236 272 L236 300"/>
+    <path d="M232 277 L236 271 L240 277"/>
+    <path d="M232 295 L236 301 L240 295"/>
+  </g>
+  <text x="266" y="290" text-anchor="middle" fill="#2ecc71" font-size="14" font-family="Heebo,sans-serif" font-weight="900">10 ס״מ</text>
+
+  <text x="180" y="330" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">גובה הספרות לפחות 10 סנטימטר</text>
+`;
+
+// אופנוע ים: חגורות הצלה - חגורה לכל נוסע מורשה, 3 ל-3 אנשים
+SCENES_QA['life_vests'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">חגורות הצלה על אופנוע ים</text>
+  <text x="180" y="144" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">אופנוע מורשה ל-3 אנשים</text>
+
+  ${[112,180,248].map(x=>`
+  <g transform="translate(${x},208)">
+    <path d="M-15 -12 L-8 -16 L-5 -12 L5 -12 L8 -16 L15 -12 L15 16 L-15 16 Z" fill="#e67e22" stroke="#b5551f" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M-5 -12 L-5 16 M5 -12 L5 16" stroke="#b5551f" stroke-width="1.3"/>
+    <rect x="-15" y="1" width="30" height="4.5" fill="#2c3e50"/>
+    <rect x="-15" y="9" width="30" height="4.5" fill="#2c3e50"/>
+  </g>`).join('')}
+
+  <circle cx="180" cy="272" r="24" fill="none" stroke="#2ecc71" stroke-width="4"/>
+  <text x="180" y="282" text-anchor="middle" fill="#2ecc71" font-size="28" font-family="Heebo,sans-serif" font-weight="900">3</text>
+
+  <text x="180" y="324" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">חגורת הצלה לכל נוסע מורשה</text>
+`;
+
 // עזרה ראשונה — מכת חום: צל ומים
 SCENES_QA['firstaid_heatstroke'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2725,6 +2796,11 @@ function getScene(topic, qText) {
     if(/מספר המרבי|כמה.*לשוט על אופנוע/.test(q))              return SCENES_QA['pwc_max_riders'];
     if(/ביקורת כושר שייט|כושר שייט תקופתית/.test(q))          return SCENES_QA['annual_inspection'];
     if(/לשאת בעת|מהתעודות/.test(q))                          return SCENES_QA['docs_and_inspection'];
+    if(/רשאי לאפשר|רשאי לנהוג|מוסמך/.test(q))                return SCENES_QA['pwc_licence'];
+    if(/הודעה בחוף|החלטת לשוט|זמן חזרה/.test(q))             return SCENES_QA['float_plan'];
+    if(/מדומם/.test(q))                                      return SCENES_QA['kill_switch'];
+    if(/מספר הזיהוי|מספר זיהוי|מספר דופן/.test(q))            return SCENES_QA['id_number'];
+    if(/חגורות הצלה|חגורת הצלה/.test(q))                      return SCENES_QA['life_vests'];
     if(/ספינת אם|צולל/.test(q))                              return SCENES_QA['pwc_dive_tender'];
     if(/עשן שחור|עשן.{0,4}סמיך/.test(q))                     return SCENES_QA['pwc_smoke_fire'];
     if(/סוער וגשום|מזג אוויר סוער/.test(q))                  return SCENES_QA['pwc_low_visibility'];
