@@ -2819,6 +2819,42 @@ SCENES_QA['zones_firing'] = `
   <text x="38" y="312" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">שטח אש - סגור לשיט</text>
 `;
 
+// אזורי שיט: הרצועה המותרת לאופנוע ים בים הפתוח - מ-300 מ' עד 1 מייל (קנה מידה פרופורציונלי)
+SCENES_QA['zones_open_band'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="98" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">רצועת השיט המותרת לאופנוע ים</text>
+
+  <!-- beyond 1 mile: not for a jet ski -->
+  <rect x="0" y="110" width="360" height="14" fill="#7f8c8d" opacity=".28"/>
+  <!-- permitted band 300 m .. 1 mile (green) -->
+  <rect x="0" y="124" width="360" height="152" fill="#2ecc71" opacity=".16"/>
+  <!-- 0..300 m near shore (red, bathers) -->
+  <rect x="0" y="276" width="360" height="26" fill="#e74c3c" opacity=".3"/>
+  <!-- sand / coast -->
+  <rect x="0" y="302" width="360" height="28" fill="#dcc48a"/>
+  <g opacity=".5"><circle cx="70" cy="316" r="2" fill="#c8a55a"/><circle cx="150" cy="320" r="2" fill="#c8a55a"/><circle cx="250" cy="315" r="2" fill="#c8a55a"/></g>
+
+  <!-- boundary lines -->
+  <line x1="0" y1="124" x2="360" y2="124" stroke="#fff" stroke-width="2" stroke-dasharray="10 6" opacity=".85"/>
+  <line x1="0" y1="276" x2="360" y2="276" stroke="#fff" stroke-width="2" stroke-dasharray="10 6" opacity=".85"/>
+  <line x1="0" y1="302" x2="360" y2="302" stroke="#c8a55a" stroke-width="2.5"/>
+
+  <!-- distance scale on the left -->
+  <line x1="26" y1="124" x2="26" y2="302" stroke="#7eb8f7" stroke-width="1.5"/>
+  <text x="40" y="121" text-anchor="start" fill="#dfe6ee" font-size="13" font-family="Heebo,sans-serif" font-weight="900">1 מייל</text>
+  <text x="40" y="292" text-anchor="start" fill="#e74c3c" font-size="13" font-family="Heebo,sans-serif" font-weight="900">300 מ׳</text>
+  <text x="40" y="316" text-anchor="start" fill="#8a6d3b" font-size="11" font-family="Heebo,sans-serif" font-weight="700">קו החוף</text>
+
+  <!-- zone labels -->
+  <text x="200" y="119" text-anchor="middle" fill="#cfd6dd" font-size="10.5" font-family="Heebo,sans-serif" font-weight="700">מעבר ל-1 מייל: לא לאופנוע ים</text>
+  <text x="210" y="205" text-anchor="middle" fill="#2ecc71" font-size="16" font-family="Heebo,sans-serif" font-weight="900">מותר לאופנוע ים</text>
+  <text x="210" y="226" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מ-300 מ׳ עד 1 מייל</text>
+  <text x="200" y="293" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">0-300 מ׳: אזור מתרחצים, אסור</text>
+
+  <!-- jet ski in the permitted band -->
+  ${topJetSki(215, 255, 1.15, '#f1c40f', '#c8a000', 0)}
+`;
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
@@ -2833,7 +2869,7 @@ function getScene(topic, qText) {
     if(/סגורים לשיט|שטחי אש|אזורים הסגורים|אימון.*ירי|ירי/.test(q)) return SCENES_QA['zones_firing'];
     if(/נחל|שפך/.test(q))                            return SCENES_QA['zones_river_mouth'];
     if(/היכן.*ים הפתוח/.test(q))                      return SCENES_QA['zones_undeclared_beach'];
-    if(/ים הפתוח/.test(q))                           return SCENES_QA['zones_declared_beach'];
+    if(/ים הפתוח/.test(q))                           return SCENES_QA['zones_open_band'];
     if(!negated && /חוף רחצה|מוכרז/.test(q))          return SCENES_QA['zones_declared_beach'];
     if(negated || /200 מטר/.test(q))                  return SCENES_QA['zones_undeclared_beach'];
     // open sea, closed areas, Dead Sea, Eilat keep the general zones scene
