@@ -2832,6 +2832,7 @@ function getScene(topic, qText) {
     const negated = /שאינו|שאיננו|לא מוכרז/.test(q);
     if(/סגורים לשיט|שטחי אש|אזורים הסגורים|אימון.*ירי|ירי/.test(q)) return SCENES_QA['zones_firing'];
     if(/נחל|שפך/.test(q))                            return SCENES_QA['zones_river_mouth'];
+    if(/ים הפתוח/.test(q))                           return SCENES_QA['zones_declared_beach'];
     if(!negated && /חוף רחצה|מוכרז/.test(q))          return SCENES_QA['zones_declared_beach'];
     if(negated || /200 מטר/.test(q))                  return SCENES_QA['zones_undeclared_beach'];
     // open sea, closed areas, Dead Sea, Eilat keep the general zones scene
