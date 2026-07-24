@@ -2851,8 +2851,8 @@ SCENES_QA['zones_open_band'] = `
   <text x="210" y="226" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="700">מ-300 מ׳ עד 1 מייל</text>
   <text x="200" y="293" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">0-300 מ׳: אזור מתרחצים, אסור</text>
 
-  <!-- jet ski in the permitted band -->
-  ${topJetSki(215, 255, 1.15, '#f1c40f', '#c8a000', 0)}
+  <!-- jet ski in the permitted band, bow pointing out to sea (up), small to scale -->
+  ${topJetSki(215, 262, 0.5, '#f1c40f', '#c8a000', -90)}
 `;
 
 function getScene(topic, qText) {

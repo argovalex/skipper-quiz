@@ -326,8 +326,8 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 <div id="toast">✅ נשמר!</div>
 
 <script src="auth.js"></script>
-<script src="scenes.js?v=8"></script>
-<script src="github-api.js?v=8"></script>
+<script src="scenes.js?v=9"></script>
+<script src="github-api.js?v=9"></script>
 <script>
 // ── State ──────────────────────────────────────────────────────────────────
 let questions = [];
@@ -341,6 +341,7 @@ let animTimer = null;
 let activeLicense = 30;
 function setLicense(lic) {
   activeLicense = lic;
+  localStorage.setItem('sq_license', lic);
   document.getElementById('lic-30').classList.toggle('active', lic === 30);
   document.getElementById('lic-11').classList.toggle('active', lic === 11);
   currentIdx = -1;
@@ -723,7 +724,8 @@ async function loadQuestions() {
   populateTopicFilter();
   renderList();
   updateCount();
-  showToast(`✅ ${questions.length} שאלות נטענו${offline ? ' (אופליין)' : ''}`);
+  const inLic = questions.filter(q => (q.license ?? 30) === activeLicense).length;
+  showToast(`✅ ${inLic} שאלות ברישיון ${activeLicense} נטענו${offline ? ' (אופליין)' : ''}`);
   if(questions.length > 0) selectQuestion(0);
   loadPublishedNums();
 }
@@ -775,6 +777,10 @@ function populateTopicFilter() {
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function initApp() {
+  const savedLic = parseInt(localStorage.getItem('sq_license'), 10);
+  if (savedLic === 11 || savedLic === 30) activeLicense = savedLic;
+  document.getElementById('lic-30').classList.toggle('active', activeLicense === 30);
+  document.getElementById('lic-11').classList.toggle('active', activeLicense === 11);
   document.getElementById('ghToken').value = localStorage.getItem('sq_gh_token') || '';
   const railwayInput = document.getElementById('railwayUrl');
   if (railwayInput) railwayInput.value = localStorage.getItem('sq_railway_url') || '';
