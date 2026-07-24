@@ -1,0 +1,5 @@
+# questions.json is the derived compat monolith. The editor (github-api.js) and
+# the render server both write it with LF via the GitHub API. Pin it to LF here
+# so core.autocrlf on a Windows working tree can never flip it back to CRLF and
+# reintroduce the ~8.5k-line no-op churn on every commit.
+questions.json text eol=lf
