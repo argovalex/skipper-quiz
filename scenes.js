@@ -2102,32 +2102,43 @@ SCENES_QA['docs_and_inspection'] = `
 // חוקים ותקנות — לבוש המשיט והנוסע: מכנס עבה מהמותניים עד הברכיים
 SCENES_QA['rider_clothing'] = `
   <rect width="360" height="420" fill="#0a1428"/>
-  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">לבוש חובה</text>
-  <text x="180" y="152" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif">חל על הנוהג ועל הנוסע מאחור כאחד</text>
+  <text x="180" y="120" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">לבוש חובה</text>
+  <text x="180" y="140" text-anchor="middle" fill="#7eb8f7" font-size="11.5" font-family="Heebo,sans-serif">חל על הנוהג ועל הנוסע מאחור כאחד</text>
 
-  <!-- a standing figure with the protected zone marked -->
-  <g transform="translate(180,180)">
-    <circle cy="16" r="15" fill="#f5cba7"/>
-    <path d="M-14,10 A14,14 0 0 1 14,10 L14,6 L-14,6 Z" fill="#2980b9"/>
-    <path d="M0,32 L0,74" stroke="#2980b9" stroke-width="30" stroke-linecap="round"/>
-    <path d="M-2,34 L-2,72" stroke="#f4d03f" stroke-width="20" stroke-linecap="round" opacity=".9"/>
-    <!-- the thick trousers, waist to knee -->
-    <rect x="-19" y="78" width="38" height="46" rx="6" fill="#34495e" stroke="#2ecc71" stroke-width="2.5"/>
-    <path d="M0,78 L0,124" stroke="#2c3e50" stroke-width="2"/>
-    <!-- bare shins below the knee -->
-    <path d="M-9,124 L-9,150" stroke="#f5cba7" stroke-width="11" stroke-linecap="round"/>
-    <path d="M9,124 L9,150" stroke="#f5cba7" stroke-width="11" stroke-linecap="round"/>
+  <!-- standing rider, front view -->
+  <!-- head + helmet -->
+  <circle cx="180" cy="168" r="14" fill="#f5cba7"/>
+  <path d="M166 167 A14 14 0 0 1 194 167 L194 160 L166 160 Z" fill="#2980b9"/>
+  <!-- torso (rash-guard) with a life vest over it -->
+  <path d="M164 186 Q180 180 196 186 L199 240 L161 240 Z" fill="#1f6f8b" stroke="#155b73" stroke-width="1.5"/>
+  <rect x="169" y="189" width="22" height="49" rx="5" fill="#f4d03f" opacity=".92"/>
+  <path d="M180 189 L180 238" stroke="#d4b32e" stroke-width="1.5"/>
+  <!-- arms -->
+  <path d="M166 190 L151 236" stroke="#1f6f8b" stroke-width="11" stroke-linecap="round"/>
+  <path d="M194 190 L209 236" stroke="#1f6f8b" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="150" cy="239" r="5.5" fill="#f5cba7"/>
+  <circle cx="210" cy="239" r="5.5" fill="#f5cba7"/>
+
+  <!-- THICK PANTS, waist to knee: two distinct trouser legs (the answer) -->
+  <rect x="158" y="238" width="44" height="9" rx="2" fill="#2c3e50" stroke="#2ecc71" stroke-width="2"/>
+  <path d="M159 246 L161 296 L177 296 L179 246 Z" fill="#3b4a5a" stroke="#2ecc71" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M181 246 L183 296 L199 296 L201 246 Z" fill="#3b4a5a" stroke="#2ecc71" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- bare shins + feet below the knees -->
+  <path d="M167 297 L167 320" stroke="#f5cba7" stroke-width="11" stroke-linecap="round"/>
+  <path d="M193 297 L193 320" stroke="#f5cba7" stroke-width="11" stroke-linecap="round"/>
+  <ellipse cx="165" cy="324" rx="10" ry="4.5" fill="#2c3e50"/>
+  <ellipse cx="195" cy="324" rx="10" ry="4.5" fill="#2c3e50"/>
+
+  <!-- regulation span: waist to knee -->
+  <g stroke="#2ecc71" stroke-width="2">
+    <path d="M232 240 L232 296"/>
+    <path d="M228 246 L232 240 L236 246"/>
+    <path d="M228 290 L232 296 L236 290"/>
   </g>
-
-  <!-- the span the regulation covers -->
-  <path d="M226 258 L226 304" stroke="#2ecc71" stroke-width="2"/>
-  <path d="M226 258 L222 266 L230 266 Z" fill="#2ecc71"/>
-  <path d="M226 304 L222 296 L230 296 Z" fill="#2ecc71"/>
-  <!-- All three lines live on the right of the figure. A bottom line here would
-       land on the footer at y=345. -->
-  <text x="278" y="252" text-anchor="middle" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">מכנס עבה</text>
-  <text x="278" y="274" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">מהמותניים</text>
-  <text x="278" y="290" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">עד הברכיים</text>
+  <text x="272" y="258" text-anchor="middle" fill="#fff" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">מכנס עבה</text>
+  <text x="272" y="277" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">מהמותניים</text>
+  <text x="272" y="292" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">עד הברכיים</text>
 `;
 
 // בטיחות אש — בדיקת תקינות מטף
