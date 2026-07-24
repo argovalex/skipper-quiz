@@ -1798,6 +1798,42 @@ SCENES_QA['pwc_rider_risk'] = `
   <path d="M96 198 Q106 208 112 218" fill="none" stroke="#e74c3c" stroke-width="1.6" opacity=".7"/>
 `;
 
+// סכנות רכיבה: המדומם ניתלש במהירות גבוהה - עצירה פתאומית, הנוהג נזרק קדימה ונחבט בהגה
+SCENES_QA['pwc_helm_impact'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="292" width="360" height="128" fill="#1a5276"/>
+  <text x="180" y="116" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">המדומם ניתלש - פגיעה מההגה</text>
+
+  <!-- speed lines behind, then a sudden stop -->
+  <g stroke="#7eb8f7" stroke-width="3" stroke-linecap="round" opacity=".55">
+    <path d="M62 244 L104 244"/><path d="M56 262 L102 262"/><path d="M66 280 L108 280"/>
+  </g>
+  <text x="86" y="228" text-anchor="middle" fill="#7eb8f7" font-size="11" font-family="Heebo,sans-serif" font-weight="700">עצירה פתאומית</text>
+
+  ${sideJetSki(188, 284, '#f1c40f', '#c8a000', 1.25)}
+
+  <!-- the driver pitched forward, head/chest into the handlebar in front of him -->
+  <g>
+    <path d="M180 266 L168 282 L156 288" fill="none" stroke="#1f2f3f" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+    <path d="M180 266 L197 247" fill="none" stroke="#2980b9" stroke-width="14" stroke-linecap="round"/>
+    <path d="M178 262 L193 246" fill="none" stroke="#f4d03f" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+    <path d="M180 266 L190 281 L184 292" fill="none" stroke="#2c3e50" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M197 247 L210 254" fill="none" stroke="#2980b9" stroke-width="5.5" stroke-linecap="round"/>
+    <circle cx="203" cy="245" r="8" fill="#f5cba7"/>
+    <path d="M195 244 A8 8 0 0 1 211 244 L211 241 L195 241 Z" fill="#2980b9"/>
+  </g>
+
+  <!-- impact burst where the driver meets the handlebar -->
+  <g transform="translate(210,250)"><path d="M0,-12 L3,-3 L12,-3 L4,3 L8,12 L0,5 L-8,12 L-4,3 L-12,-3 L-3,-3 Z" fill="#e74c3c" stroke="#f39c12" stroke-width="1"/></g>
+
+  <!-- torn-off kill-switch lanyard flying free -->
+  <path d="M224 236 q12 -6 20 0 q7 5 2 13" fill="none" stroke="#e74c3c" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="246" cy="252" r="4.5" fill="none" stroke="#e74c3c" stroke-width="2.6"/>
+  <text x="256" y="230" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">המדומם ניתלש</text>
+
+  <text x="180" y="322" text-anchor="middle" fill="#e74c3c" font-size="13.5" font-family="Heebo,sans-serif" font-weight="900">הנוהג נזרק קדימה ונפגע מההגה</text>
+`;
+
 // אופנוע ים - כללי — אופנוע ים כספינת-אם לצולל: מותר עם דגל A ומשיט מוסמך על הכלי
 SCENES_QA['pwc_dive_tender'] = `
   <rect width="360" height="420" fill="#0a1428"/>
@@ -2839,6 +2875,7 @@ function getScene(topic, qText) {
     // danger, so they have to be claimed before the rider-risk catch-all.
     if(/גלי חוף|מעבר.*גל|לאחר מעבר/.test(q))              return SCENES_QA['pwc_wave_launch'];
     if(/מהצד|התהפכות|גלים גבוהים/.test(q))                 return SCENES_QA['pwc_beam_capsize'];
+    if(/מדומם.{0,8}ניתלש|ניתלש.{0,8}ממקומו/.test(q))        return SCENES_QA['pwc_helm_impact'];
     if(/גישה לכלי|להתקרב|לעצור לידו|מהירות איטית|למנוע גלים|ליד כלי/.test(q))
                                                             return SCENES_QA['pwc_slow_approach'];
     if(/נוסע מאחור|האצה|מדומם|אחיזה|נתון לסכנה/.test(q))   return SCENES_QA['pwc_rider_risk'];
