@@ -10,3 +10,6 @@ __pycache__/
 
 # publisher: ריפו נפרד (skipper-quiz-publisher), לא סאב-מודול
 publisher/
+
+# html/: 355 קבצים מיוצרים ע"י src/generate-all-l11.js + generate-compass-reel.js
+html/
