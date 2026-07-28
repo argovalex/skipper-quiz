@@ -129,6 +129,7 @@
         <label class="hint" style="display:flex;align-items:center;gap:8px;justify-content:center">
           <input type="checkbox" id="shuffle" checked> ערבב את סדר השאלות
         </label>
+        <div class="topic-pick" id="topic-pick"></div>
       </div>
       <div class="foot">© מבחן סקיפר · תרגול לרישיון שיט</div>
     </div>
@@ -150,6 +151,13 @@
 .tb-bar i.mid{background:#e0a83b}
 .tb-bar i.low{background:#d9534f}
 .tb-num{flex:0 0 auto;min-width:44px;text-align:left;opacity:.8;font-variant-numeric:tabular-nums}
+.topic-pick{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.topic-pick .tp-title{flex:0 0 100%;text-align:center;font-size:13px;opacity:.7;margin-bottom:2px}
+.tp-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:inherit;border-radius:999px;padding:7px 12px;font-size:13px;cursor:pointer}
+.tp-btn:hover{background:rgba(255,255,255,.16)}
+.tp-btn small{opacity:.6;margin-inline-start:5px}
+.hud-scores{gap:8px;margin-top:6px}
+.chip.sc{font-size:12px;padding:3px 9px;font-variant-numeric:tabular-nums}
 </style>
 <div id="screen-quiz">
   <video id="qvideo" playsinline preload="auto"></video>
@@ -157,6 +165,10 @@
     <div class="hud-row">
       <span>שאלה <b id="cur">1</b> / <b id="tot">0</b></span>
       <span class="chip" id="topic">—</span>
+    </div>
+    <div class="hud-row hud-scores">
+      <span class="chip sc" id="hud-total">סה"כ 0/0</span>
+      <span class="chip sc" id="hud-topic-score">נושא 0/0</span>
     </div>
     <div class="bar"><i id="progress"></i></div>
   </div>
@@ -214,6 +226,7 @@ async function boot(){
   }
   $("#s-count").textContent=ALL.length;
   $("#s-topics").textContent=new Set(ALL.map(q=>q.topic)).size;
+  buildTopicPicker();
   const v=vid();
   v.addEventListener("timeupdate",onTime);
   v.addEventListener("ended",onEnded);
@@ -223,6 +236,32 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 
 function startQuiz(pool){quiz=pool;idx=0;answers=[];$("#tot").textContent=quiz.length;show("quiz");render();}
 
+function buildTopicPicker(){
+  const counts={};
+  for(const q of ALL){const t=q.topic||"—";counts[t]=(counts[t]||0)+1;}
+  const topics=Object.keys(counts).sort((a,b)=>a.localeCompare(b,"he"));
+  const wrap=$("#topic-pick");
+  wrap.innerHTML='<div class="tp-title">או בחר נושא לתרגול:</div>'+topics.map(t=>
+    '<button class="tp-btn" data-topic="'+t.replace(/"/g,"&quot;")+'">'+t+'<small>'+counts[t]+'</small></button>'
+  ).join("");
+  wrap.querySelectorAll(".tp-btn").forEach(b=>b.onclick=()=>startTopic(b.dataset.topic));
+}
+function startTopic(topic){
+  const pool=ALL.filter(q=>(q.topic||"—")===topic);
+  startQuiz($("#shuffle").checked?shuffle(pool):pool.slice());
+}
+function updateHudScore(){
+  const curTopic=curQ&&curQ.topic||"—";
+  let tr=0,tn=0,cr=0,cn=0;
+  quiz.forEach((q,i)=>{
+    const a=answers[i];if(!a)return;
+    tn++;if(a.isRight)tr++;
+    if((q.topic||"—")===curTopic){cn++;if(a.isRight)cr++;}
+  });
+  $("#hud-total").textContent='סה"כ '+tr+"/"+tn;
+  $("#hud-topic-score").textContent="נושא "+cr+"/"+cn;
+}
+
 function render(){
   curQ=quiz[idx];
   const prev=answers[idx];
@@ -230,6 +269,7 @@ function render(){
   $("#cur").textContent=idx+1;
   $("#progress").style.width=(idx/quiz.length*100)+"%";
   $("#topic").textContent=curQ.topic||"—";
+  updateHudScore();
 
   const box=$("#opts");box.innerHTML="";box.classList.add("hidden");
   curQ.options.forEach(opt=>{
@@ -289,6 +329,7 @@ function choose(btn,L){
   answered=true;
   answers[idx]={chosen:L,isRight:L===curQ.answer};
   markOptions(L);
+  updateHudScore();
   const v=vid();
   v.controls=true;
   if(curQ.resumeAt!=null&&isFinite(curQ.resumeAt))v.currentTime=curQ.resumeAt;
