@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he"><head><meta charset="UTF-8">
+<title>Skipper Quiz #1001 — זכות מעבר</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
+.htitle{color:#fff;font-size:18px;font-weight:900}
+#scene{flex:1;position:relative;overflow:hidden}
+#ftr{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.ql{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.qt{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.opt.correct .ltr{background:#2ecc71;color:#0d3d2a}
+.opt.wrong{background:#3d1a1a;border-color:#e74c3c;color:#e74c3c}
+.opt.wrong .ltr{background:#e74c3c;color:#fff}
+.opt.dim{opacity:0.3}
+#prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+</style></head><body>
+<div id="reel">
+  <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
+  <div id="scene">
+    
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
+      <rect x="10" y="10" width="340" height="400" fill="#fff" stroke="#0c1a3a" stroke-width="2"/><line x1="180" y1="102" x2="180" y2="318" stroke="#333" stroke-width="0.6" stroke-dasharray="2,2"/><line x1="72" y1="210" x2="288" y2="210" stroke="#333" stroke-width="0.6" stroke-dasharray="2,2"/><line x1="104" y1="134" x2="256" y2="286" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/><line x1="256" y1="134" x2="104" y2="286" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/><polygon points="180.0,173.0 173.4,134.3 186.6,134.3" fill="#1a3fd6" stroke="#000" stroke-width="1.2"/><rect x="169.0" y="111.0" width="22" height="22" fill="#fff" stroke="#1a3fd6" stroke-width="2.2"/><text x="180.0" y="127.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#1a3fd6">A</text><polygon points="194.2,175.8 202.9,137.5 215.1,142.6" fill="#8a8a8a" stroke="#000" stroke-width="1.2"/><rect x="202.7" y="117.7" width="22" height="22" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/><text x="213.7" y="133.7" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#8a8a8a">B</text><polygon points="206.2,183.8 228.9,151.8 238.2,161.1" fill="#2ecc40" stroke="#000" stroke-width="1.2"/><rect x="231.2" y="136.8" width="22" height="22" fill="#fff" stroke="#2ecc40" stroke-width="2.2"/><text x="242.2" y="152.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#2ecc40">C</text><polygon points="214.2,195.8 247.4,174.9 252.5,187.1" fill="#ff8c1a" stroke="#000" stroke-width="1.2"/><rect x="250.3" y="165.3" width="22" height="22" fill="#fff" stroke="#ff8c1a" stroke-width="2.2"/><text x="261.3" y="181.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#ff8c1a">D</text><polygon points="256.0,210.0 216.9,206.8 216.9,213.2" fill="#e6007a" stroke="#000" stroke-width="1.2"/><rect x="257.0" y="199.0" width="22" height="22" fill="#fff" stroke="#e6007a" stroke-width="2.2"/><text x="268.0" y="215.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#e6007a">E</text><polygon points="214.2,224.2 252.5,232.9 247.4,245.1" fill="#ff8c1a" stroke="#000" stroke-width="1.2"/><rect x="250.3" y="232.7" width="22" height="22" fill="#fff" stroke="#ff8c1a" stroke-width="2.2"/><text x="261.3" y="248.7" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#ff8c1a">F</text><polygon points="206.2,236.2 238.2,258.9 228.9,268.2" fill="#2ecc40" stroke="#000" stroke-width="1.2"/><rect x="231.2" y="261.2" width="22" height="22" fill="#fff" stroke="#2ecc40" stroke-width="2.2"/><text x="242.2" y="277.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#2ecc40">G</text><polygon points="194.2,244.2 215.1,277.4 202.9,282.5" fill="#8a8a8a" stroke="#000" stroke-width="1.2"/><rect x="202.7" y="280.3" width="22" height="22" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/><text x="213.7" y="296.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#8a8a8a">H</text><polygon points="180.0,286.0 183.2,246.9 176.8,246.9" fill="#e6007a" stroke="#000" stroke-width="1.2"/><rect x="169.0" y="287.0" width="22" height="22" fill="#fff" stroke="#e6007a" stroke-width="2.2"/><text x="180.0" y="303.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#e6007a">I</text><polygon points="165.8,244.2 157.1,282.5 144.9,277.4" fill="#8a8a8a" stroke="#000" stroke-width="1.2"/><rect x="135.3" y="280.3" width="22" height="22" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/><text x="146.3" y="296.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#8a8a8a">J</text><polygon points="153.8,236.2 131.1,268.2 121.8,258.9" fill="#2ecc40" stroke="#000" stroke-width="1.2"/><rect x="106.8" y="261.2" width="22" height="22" fill="#fff" stroke="#2ecc40" stroke-width="2.2"/><text x="117.8" y="277.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#2ecc40">K</text><polygon points="145.8,224.2 112.6,245.1 107.5,232.9" fill="#ff8c1a" stroke="#000" stroke-width="1.2"/><rect x="87.7" y="232.7" width="22" height="22" fill="#fff" stroke="#ff8c1a" stroke-width="2.2"/><text x="98.7" y="248.7" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#ff8c1a">L</text><polygon points="143.0,210.0 104.3,216.6 104.3,203.4" fill="#1a3fd6" stroke="#000" stroke-width="1.2"/><rect x="81.0" y="199.0" width="22" height="22" fill="#fff" stroke="#1a3fd6" stroke-width="2.2"/><text x="92.0" y="215.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#1a3fd6">M</text><polygon points="145.8,195.8 107.5,187.1 112.6,174.9" fill="#ff8c1a" stroke="#000" stroke-width="1.2"/><rect x="87.7" y="165.3" width="22" height="22" fill="#fff" stroke="#ff8c1a" stroke-width="2.2"/><text x="98.7" y="181.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#ff8c1a">N</text><polygon points="153.8,183.8 121.8,161.1 131.1,151.8" fill="#2ecc40" stroke="#000" stroke-width="1.2"/><rect x="106.8" y="136.8" width="22" height="22" fill="#fff" stroke="#2ecc40" stroke-width="2.2"/><text x="117.8" y="152.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#2ecc40">O</text><polygon points="165.8,175.8 144.9,142.6 157.1,137.5" fill="#8a8a8a" stroke="#000" stroke-width="1.2"/><rect x="135.3" y="117.7" width="22" height="22" fill="#fff" stroke="#8a8a8a" stroke-width="2.2"/><text x="146.3" y="133.7" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#8a8a8a">P</text><ellipse cx="194.1" cy="224.1" rx="34" ry="32.0" fill="#fff" stroke="#333" stroke-width="1.5" opacity="0.92"/><g transform="translate(194.14213562373095,224.14213562373095)"><circle cx="0" cy="-12" r="6" fill="#111"/><circle cx="0" cy="12" r="6" fill="#111"/><line x1="0" y1="-20" x2="0" y2="20" stroke="#111" stroke-width="2"/></g><rect x="137.5" y="191.7" width="62.4" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/><text x="168.7" y="202.7" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">G | תמונה 80</text><line x1="153.8" y1="236.2" x2="185.7" y2="204.3" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/><line x1="206.2" y1="236.2" x2="174.3" y2="204.3" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/><circle cx="117.8" cy="272.2" r="17" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle><circle cx="242.2" cy="272.2" r="17" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle>
+      <g id="ov" opacity="0">
+        <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
+        <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
+      </g>
+      <text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>
+    </svg>
+    <div id="prog"></div>
+  </div>
+  <div id="ftr">
+    <div class="ql" id="ql">❓ השאלה</div>
+    <div class="qt" id="qt">אופנוע ים (K) מבחין בכלי שייט (G) המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?</div>
+    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>G עוגן, אין סכנה, K יכול להמשיך.</div><div class="opt" id="o1"><div class="ltr">ב</div>K מפנה ל-G, G הוא כלי שיט ללא שליטה.</div><div class="opt" id="o2"><div class="ltr">ג</div>G על שרטון, K ינהג בזהירות רבה, יתרחק בצורה היעילה ביותר מהשרטון.</div><div class="opt" id="o3"><div class="ltr">ד</div>G מבקש עזרה, על K לגשת אליו ולעזור לו.</div></div>
+  </div>
+</div>
+<script>
+const C=1;
+const OPTS=["א. G עוגן, אין סכנה, K יכול להמשיך.","ב. K מפנה ל-G, G הוא כלי שיט ללא שליטה.","ג. G על שרטון, K ינהג בזהירות רבה, יתרחק בצורה היעילה ביותר מהשרטון.","ד. G מבקש עזרה, על K לגשת אליו ולעזור לו."];
+const Q="אופנוע ים (K) מבחין בכלי שייט (G) המציג סימן יום כמתואר בתמונה 80, מהי הפעולה הנדרשת?";
+const E="תמונה 80 היא שני כדורים, זה ללא שליטה . ללא שליטה בראש ההיררכיה, כל כלי שיט חייב לפנות לו דרך.";
+const LT=["א","ב","ג","ד"];
+
+// AUTO-PLAY MODE — countdown then reveal (for screen recording)
+// Gated behind window.__startAutoPlay() instead of running on page load, so the
+// recorder (Puppeteer) can fire it the instant the screencast actually starts —
+// otherwise the timer head-starts before recording begins and drifts out of sync
+// with the audio track (which assumes recording-start == t=0).
+window.__startAutoPlay = function(){
+const prog=document.getElementById('prog');
+const DELAY=15000;
+prog.style.transition='none';prog.style.width='0%';
+setTimeout(()=>{prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);
+setTimeout(()=>{
+  document.querySelectorAll('.opt').forEach((o,j)=>{
+    o.style.transition='all 0.6s';
+    if(j===C)o.classList.add('correct'); else o.classList.add('dim');
+  });
+  const ov=document.getElementById('ov');
+  const txt=document.getElementById('ovText');
+  const rect=ov.querySelector('rect');
+  txt.textContent='✅ תשובה נכונה!';txt.setAttribute('fill','#2ecc71');
+  rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');
+  ov.setAttribute('opacity','1');
+  setTimeout(()=>{
+    document.getElementById('ql').textContent='✅ התשובה הנכונה:';
+    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
+    // Second countdown — next card (loop for batch recording)
+    const prog2=document.getElementById('prog');
+    prog2.style.transition='none';prog2.style.width='0%';
+    setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
+  },600);
+},DELAY+50);
+};
+
+
+</script></body></html>
