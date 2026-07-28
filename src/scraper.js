@@ -26,14 +26,14 @@ async function scrapeUrl(url) {
     .text()
     .replace(/\s+/g, ' ')
     .trim()
-    .substring(0, 3000);
+    .substring(0, 1200);
 
   return { url, title, h1, body };
 }
 
 async function rewriteAsSkipperQuestion(scraped) {
   const response = await client.messages.create({
-    model: 'claude-opus-4-6',
+    model: 'claude-haiku-4-5-20251001',
     max_tokens: 1000,
     messages: [
       {

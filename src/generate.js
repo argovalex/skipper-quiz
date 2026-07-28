@@ -20,7 +20,7 @@ async function generateQuestion() {
   const topic = TOPICS[Math.floor(Math.random() * TOPICS.length)];
 
   const response = await client.messages.create({
-    model: 'claude-opus-4-6',
+    model: 'claude-haiku-4-5-20251001',
     max_tokens: 1000,
     messages: [
       {
