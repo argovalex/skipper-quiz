@@ -136,6 +136,21 @@
 </div>
 
 <!-- QUIZ (full-bleed) -->
+<style>
+.nav-row{display:flex;gap:8px}
+.nav-row .btn{flex:1}
+#btn-back{flex:0 0 auto;min-width:96px}
+.per-topic{margin:14px 0;text-align:right}
+.tb-title{font-size:15px;margin:0 0 8px;opacity:.85}
+.tb-row{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:14px}
+.tb-topic{flex:0 0 42%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-bar{flex:1;height:8px;background:rgba(255,255,255,.12);border-radius:6px;overflow:hidden}
+.tb-bar i{display:block;height:100%;border-radius:6px}
+.tb-bar i.good{background:var(--ok)}
+.tb-bar i.mid{background:#e0a83b}
+.tb-bar i.low{background:#d9534f}
+.tb-num{flex:0 0 auto;min-width:44px;text-align:left;opacity:.8;font-variant-numeric:tabular-nums}
+</style>
 <div id="screen-quiz">
   <video id="qvideo" playsinline preload="auto"></video>
   <div class="hud-top">
@@ -149,7 +164,10 @@
   <div class="hud-bottom">
     <div class="phase" id="phase"></div>
     <div class="opts hidden" id="opts"></div>
-    <button class="btn" id="btn-next" disabled>הבא ←</button>
+    <div class="nav-row">
+      <button class="btn ghost" id="btn-back" style="display:none">חזור →</button>
+      <button class="btn" id="btn-next" disabled>הבא ←</button>
+    </div>
   </div>
 </div>
 
@@ -167,6 +185,7 @@
           <div class="stat"><b id="e-wrong">0</b><small>שגויות</small></div>
           <div class="stat"><b id="e-tot">0</b><small>סה״כ</small></div>
         </div>
+        <div id="per-topic" class="per-topic"></div>
         <div class="upsell"><b>זו רק ההתחלה.</b> הגרסה המלאה כוללת את כל מאגר השאלות, מעקב התקדמות אישי וחזרה ממוקדת על טעויות.</div>
         <div class="actions">
           <button class="btn ghost" id="btn-review" style="display:none">חזור על הטעויות</button>
@@ -182,7 +201,7 @@
 
 <script>
 const DATA_URL="quiz-data-l11.json";
-let ALL=[],quiz=[],idx=0,right=0,wrong=0,answered=false,wrongPool=[],curQ=null,paused=false;
+let ALL=[],quiz=[],idx=0,answered=false,curQ=null,paused=false,answers=[];
 const $=s=>document.querySelector(s);
 const letterOf=o=>(o||"").trim().charAt(0);
 const vid=()=>$("#qvideo");
@@ -202,11 +221,12 @@ async function boot(){
 
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-function startQuiz(pool){quiz=pool;idx=0;right=0;wrong=0;wrongPool=[];$("#tot").textContent=quiz.length;show("quiz");render();}
+function startQuiz(pool){quiz=pool;idx=0;answers=[];$("#tot").textContent=quiz.length;show("quiz");render();}
 
 function render(){
-  answered=false;paused=false;
   curQ=quiz[idx];
+  const prev=answers[idx];
+  answered=!!prev;paused=false;
   $("#cur").textContent=idx+1;
   $("#progress").style.width=(idx/quiz.length*100)+"%";
   $("#topic").textContent=curQ.topic||"—";
@@ -221,19 +241,29 @@ function render(){
     box.appendChild(b);
   });
 
-  const nb=$("#btn-next");nb.disabled=true;nb.classList.remove("show");
-  setPhase("▶ צפה בשאלה…",false);
-
+  $("#btn-back").style.display=idx>0?"":"none";
+  const nb=$("#btn-next");
   const v=vid();
-  v.controls=false;
   v.pause();
   v.src=curQ.videoUrl||"";
   v.currentTime=0;
   $("#overlay").classList.remove("show");
+
+  if(prev){
+    // reviewing an already-answered question: reveal marks, no gating, allow nav
+    markOptions(prev.chosen);
+    v.controls=true;v.muted=false;
+    nb.disabled=false;nb.classList.add("show");
+    nb.textContent=(idx+1<quiz.length)?"הבא ←":"לתוצאות ←";
+    setPhase("",false);
+  }else{
+    v.controls=false;
+    nb.disabled=true;nb.classList.remove("show");
+    setPhase("▶ צפה בשאלה…",false);
+  }
   const p=v.play();
   if(p&&p.catch)p.catch(()=>$("#overlay").classList.add("show"));
-
-  if(curQ.pauseAt==null)revealOptions();
+  if(!prev&&curQ.pauseAt==null)revealOptions();
 }
 
 function onTime(){
@@ -244,17 +274,21 @@ function onTime(){
 
 function revealOptions(){$("#opts").classList.remove("hidden");setPhase("בחר את התשובה הנכונה",true);}
 
-function choose(btn,L){
-  if(answered)return;
-  answered=true;
-  const correct=curQ.answer,isRight=L===correct;
-  isRight?right++:(wrong++,wrongPool.push(curQ));
+function markOptions(chosen){
+  $("#opts").classList.remove("hidden");
   document.querySelectorAll(".opt").forEach(el=>{
     el.disabled=true;
     const l=el.querySelector(".badge").textContent;
-    if(l===correct)el.classList.add("correct");
-    else if(el===btn)el.classList.add("wrong");
+    if(l===curQ.answer)el.classList.add("correct");
+    else if(l===chosen)el.classList.add("wrong");
   });
+}
+
+function choose(btn,L){
+  if(answered)return;
+  answered=true;
+  answers[idx]={chosen:L,isRight:L===curQ.answer};
+  markOptions(L);
   const v=vid();
   v.controls=true;
   if(curQ.resumeAt!=null&&isFinite(curQ.resumeAt))v.currentTime=curQ.resumeAt;
@@ -275,16 +309,38 @@ function onEnded(){
 function setPhase(t,waiting){const el=$("#phase");el.textContent=t;el.className="phase"+(waiting?" wait":"");}
 
 function next(){if(!answered)return;idx++;if(idx<quiz.length)render();else finish();}
+function prev(){if(idx>0){idx--;render();}}
 
 function finish(){
   vid().pause();
+  const right=answers.filter(a=>a&&a.isRight).length;
+  const wrong=answers.filter(a=>a&&!a.isRight).length;
   const tot=right+wrong,pct=tot?Math.round(right/tot*100):0;
   const el=$("#final-score");el.textContent=pct+"%";
   el.className="score-big "+(pct>=80?"good":pct>=55?"mid":"low");
-  $("#final-line").textContent=pct>=80?"מצוין, אתה מוכן.":pct>=55?"כמעט שם. עוד קצת תרגול.":"כדאי לחזור על החומר.";
+  $("#final-line").textContent=pct>=90?"מצוין! שליטה מלאה בחומר, אתה מוכן למבחן. 🎉":pct>=80?"מצוין, אתה מוכן.":pct>=55?"כמעט שם. עוד קצת תרגול.":"כדאי לחזור על החומר.";
   $("#e-right").textContent=right;$("#e-wrong").textContent=wrong;$("#e-tot").textContent=tot;
-  $("#btn-review").style.display=wrongPool.length?"block":"none";
+  renderTopicBreakdown();
+  const wrongPool=quiz.filter((q,i)=>answers[i]&&!answers[i].isRight);
+  const rv=$("#btn-review");
+  rv.style.display=wrongPool.length?"block":"none";
+  rv.onclick=()=>startQuiz(shuffle(wrongPool));
   show("end");
+}
+
+function renderTopicBreakdown(){
+  const map={};
+  quiz.forEach((q,i)=>{
+    const a=answers[i];if(!a)return;
+    const t=q.topic||"—";
+    (map[t]=map[t]||{r:0,n:0}).n++;if(a.isRight)map[t].r++;
+  });
+  const rows=Object.entries(map).sort((a,b)=>a[0].localeCompare(b[0],"he")).map(([t,s])=>{
+    const p=Math.round(s.r/s.n*100);
+    const cls=p>=80?"good":p>=55?"mid":"low";
+    return '<div class="tb-row"><span class="tb-topic">'+t+'</span><span class="tb-bar"><i class="'+cls+'" style="width:'+p+'%"></i></span><span class="tb-num">'+s.r+'/'+s.n+'</span></div>';
+  }).join("");
+  $("#per-topic").innerHTML=rows?'<h3 class="tb-title">ציון לפי נושא</h3>'+rows:"";
 }
 
 function show(name){
@@ -296,8 +352,8 @@ function show(name){
 
 $("#btn-start").onclick=()=>startQuiz($("#shuffle").checked?shuffle(ALL):ALL.slice());
 $("#btn-next").onclick=next;
+$("#btn-back").onclick=prev;
 $("#btn-again").onclick=()=>startQuiz($("#shuffle").checked?shuffle(ALL):ALL.slice());
-$("#btn-review").onclick=()=>startQuiz(shuffle(wrongPool));
 $("#overlay").onclick=()=>{$("#overlay").classList.remove("show");const p=vid().play();if(p&&p.catch)p.catch(()=>{});};
 
 boot();
