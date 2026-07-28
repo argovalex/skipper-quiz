@@ -17,7 +17,22 @@ detected from silence gaps in each rendered video's audio.
   needed every time). 161 L11 entries.
 - **detect.sh** — original silencedetect helper; superseded by build-pausemap.js.
 
-## Run order
+## One command (recommended): update-question.js
+After you want a question's video refreshed, this does the whole cycle —
+re-render, sync the new videoUrl into data/l11.json, recompute the pause point,
+rebuild quiz-data-l11.json + the quiz-app.html embed, commit and push:
+```
+node tools/quiz-app/update-question.js 1042            # render + propagate + push
+node tools/quiz-app/update-question.js 1042 1057 1080  # several at once
+node tools/quiz-app/update-question.js 1042 --no-push  # stop before pushing
+node tools/quiz-app/update-question.js 1042 --no-render # you already rendered in the editor; just propagate
+```
+It renders via the render API (`vo.js` reproduces the editor's exact VO), so the
+new video matches what the editor would produce. `questions.json` is left alone —
+the render server auto-commits the videoUrl there itself, and the script's
+`git pull --rebase` absorbs that commit before pushing.
+
+## Manual run order (what update-question does internally)
 ```
 # 1. (re-)render the affected videos from the editor / render API first
 # 2. recompute pause points, then rebuild the public data + app:
