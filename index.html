@@ -396,6 +396,13 @@ const VO_FIXES = [
   [/\.{2,}/g,         '.'],
   [/\s{2,}/g,         ' '],
   [/קוי/g,            'קווי'],
+  // Targeted niqqud for words edge-tts mis-vowels (verified by ear against the
+  // editor). Un-vocalised elsewhere; only these words are pointed.
+  [/מפרשית/g,         'מִפְרָשִׂית'],
+  [/התכוון/g,         'התַכְוִין'],
+  [/כשתכוון/g,        'כְּשֶׁתַכְוִן'],
+  [/המצפן/g,          'הַמַּצְפֵּן'],
+  [/מצפן/g,           'מַצְפֵּן'],
   // Commas between the spelled-out letters: without them the TTS runs the
   // letters together into one unintelligible burst.
   [/\bVHF\b/g,        'וי, אייץ\', אף'],
@@ -450,9 +457,11 @@ function applyVoFixes(text) {
 function buildVoiceover(q) {
   const idx = {'א':0,'ב':1,'ג':2,'ד':3}[(q.answer||'א').trim()] ?? 0;
   const ans = ((q.options||[])[idx]||'').replace(/^[אבגד]\.\s*/,'');
-  const letter = (q.answer||'א').trim();   // name the answer option in the VO ("ב׳: ...")
+  const letter = (q.answer||'א').trim();   // name the answer option in the VO ("ב: ...")
   let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
-  let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}׳: ${ans}.`);
+  // NO geresh after the letter: edge-tts drops the letter's sound when a geresh (׳)
+  // follows it. Bare "ב:" is pronounced; "ב׳:" is not. (verified via /tts A/B, 2026-07)
+  let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
   if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
   return q1 + ' [[PAUSE]] ' + q2;
 }
