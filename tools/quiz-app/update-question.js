@@ -21,6 +21,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { buildVoiceover } = require('./vo.js');
+const { genHtml } = require('./scene-html.js');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const HERE = __dirname;
@@ -41,13 +42,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function render(num, q) {
   const vo = buildVoiceover(q);
+  const html = genHtml(q); // question-specific visual — REQUIRED, else the server renders a generic anchor
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 180000);
   try {
     const res = await fetch(`${RENDER_URL}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: vo, force: true }),
+      body: JSON.stringify({ voiceover_text: vo, force: true, html }),
       signal: ctrl.signal,
     });
     const data = await res.json().catch(() => ({}));

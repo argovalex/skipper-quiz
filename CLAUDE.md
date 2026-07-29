@@ -9,6 +9,8 @@
 
 ## איך לרנדר תוצרים
 - `html/` מיוצר ע"י `node src/generate-all-l11.js` (ו-`src/generate-compass-reel.js` לריל). הרץ אחרי שינוי תוכן; אל תערוך את `html/` ביד.
+- **רינדור וידאו של שאלה: השתמש ב-`node tools/quiz-app/update-question.js <num>`.** הוא מרנדר עם ה-VO והויזואל הנכונים ומפיץ לכל המקומות (data/l11.json, quiz-data-l11.json, quiz-app.html).
+- **קריטי:** רינדור דרך ה-API של השרת **חייב לשלוח את פרמטר `html`** (הויזואל מ-`scenes.js`, דרך `tools/quiz-app/scene-html.js`). `html/` לא tracked, אז השרת לא יכול למשוך אותו — בלי `html` הסרטון יוצא **גנרי** (עוגן במקום הדיאגרמה). לעולם אל תשלח `/render` רק עם `voiceover_text`.
 
 ## API
 - קריאות ה-LLM ב-`src/generate.js` ו-`src/scraper.js` משתמשות ב-Haiku (`claude-haiku-4-5-20251001`). השאלות הן JSON פשוט — אין צורך ב-Opus.
