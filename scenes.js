@@ -3138,6 +3138,157 @@ SCENES_QA['pwc_no_alcohol'] = `
   <text x="180" y="344" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">גם הנוהג וגם הנוסע חייבים להיות לא שתויים</text>
 `;
 
+// ── זכות מעבר (right of way) question-specific scenes ──────────────────────
+
+// 1030 — you are the STAND-ON vessel: keep course and speed
+SCENES_QA['standon_keep_course'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="60" width="360" height="330" fill="#1a5276" opacity=".3"/>
+  <defs>
+    <marker id="skgrn" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2ecc71"/></marker>
+    <marker id="skgry" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#95a5a6"/></marker>
+  </defs>
+  <text x="180" y="40" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">כלי שיט אחר חייב לפנות לך</text>
+  ${topJetSki(140, 300, 1.0, '#2ecc71', '#1e8f52', -90)}
+  <path d="M140 268 L140 118" stroke="#2ecc71" stroke-width="4" marker-end="url(#skgrn)"/>
+  <text x="140" y="336" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">אתה</text>
+  ${topJetSki(288, 150, 0.78, '#95a5a6', '#6d7b7d', 205)}
+  <path d="M274 166 Q248 208 300 250" stroke="#95a5a6" stroke-width="2.5" stroke-dasharray="6,4" fill="none" marker-end="url(#skgry)"/>
+  <text x="292" y="120" text-anchor="middle" fill="#c9d4dc" font-size="10.5" font-family="Heebo,sans-serif">הוא מפנה</text>
+  <text x="180" y="382" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">שמור על אורח ומהירות</text>
+`;
+
+// 1031 — you are the GIVE-WAY vessel: alter course/speed clearly
+SCENES_QA['giveway_alter_course'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="60" width="360" height="330" fill="#1a5276" opacity=".3"/>
+  <defs>
+    <marker id="gayel" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f1c40f"/></marker>
+    <marker id="gagry" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#95a5a6"/></marker>
+  </defs>
+  <text x="180" y="40" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">איך מפנים דרך?</text>
+  ${topJetSki(120, 150, 0.78, '#95a5a6', '#6d7b7d', -90)}
+  <path d="M120 132 L120 92" stroke="#95a5a6" stroke-width="2.5" marker-end="url(#gagry)"/>
+  <text x="120" y="185" text-anchor="middle" fill="#c9d4dc" font-size="10" font-family="Heebo,sans-serif">הוא ממשיך</text>
+  ${topJetSki(232, 322, 1.0, '#f1c40f', '#c8a000', -52)}
+  <path d="M240 296 Q256 214 300 168" stroke="#f1c40f" stroke-width="4" fill="none" marker-end="url(#gayel)"/>
+  <text x="232" y="360" text-anchor="middle" fill="#f1c40f" font-size="12" font-family="Heebo,sans-serif" font-weight="900">אתה</text>
+  <text x="180" y="392" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">שנה אורח ו/או מהירות — בבירור, שיראו זאת</text>
+`;
+
+// 1032, 1035 — collision risk = compass bearing stays constant (CBDR)
+SCENES_QA['cbdr_collision_risk'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="55" width="360" height="335" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="36" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">מתי קיימת סכנת התנגשות?</text>
+  <g stroke="#f1c40f" stroke-width="1.8" stroke-dasharray="5,4">
+    <path d="M110 335 L280 265"/>
+    <path d="M190 215 L283 177"/>
+  </g>
+  <g opacity="0.3">${topJetSki(110, 335, 0.72, '#2ecc71', '#1e8f52', -56)}</g>
+  ${topJetSki(190, 215, 0.9, '#2ecc71', '#1e8f52', -56)}
+  <text x="150" y="345" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="900">אתה</text>
+  <g opacity="0.3">${topJetSki(280, 265, 0.72, '#95a5a6', '#6d7b7d', -88)}</g>
+  ${topJetSki(283, 177, 0.9, '#95a5a6', '#6d7b7d', -88)}
+  <text x="240" y="150" text-anchor="middle" fill="#e74c3c" font-size="24">⚠</text>
+  <text x="150" y="252" fill="#f1c40f" font-size="10.5" font-family="Heebo,sans-serif" font-weight="700" transform="rotate(-22,150,252)">כיוון מצפן קבוע</text>
+  <text x="180" y="386" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="900">כיוון המצפן לא משתנה והטווח קטֵן — סכנה</text>
+`;
+
+// 1033 — "בדרך" (underway) = not moored, not anchored, not aground
+SCENES_QA['underway_definition'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="34" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">כלי שיט "בדרך" — מה זה?</text>
+  <line x1="180" y1="55" x2="180" y2="330" stroke="#274a78" stroke-width="1"/>
+  <line x1="24" y1="192" x2="336" y2="192" stroke="#274a78" stroke-width="1"/>
+  <text x="95" y="78" text-anchor="middle" fill="#c9d4dc" font-size="11" font-family="Heebo,sans-serif">רתוק לחוף</text>
+  <rect x="38" y="150" width="118" height="13" fill="#c8a86a"/>
+  <ellipse cx="106" cy="130" rx="29" ry="10" fill="#95a5a6" stroke="#6d7b7d" stroke-width="1.5"/>
+  <line x1="80" y1="134" x2="52" y2="150" stroke="#e8c15a" stroke-width="2"/>
+  ${cross(95, 108, 1.4)}
+  <text x="265" y="78" text-anchor="middle" fill="#c9d4dc" font-size="11" font-family="Heebo,sans-serif">בעיגון</text>
+  <ellipse cx="265" cy="120" rx="29" ry="10" fill="#95a5a6" stroke="#6d7b7d" stroke-width="1.5"/>
+  <line x1="265" y1="128" x2="265" y2="162" stroke="#e8c15a" stroke-width="2"/>
+  <path d="M258 156 Q265 168 272 156 M259 164 L271 164" stroke="#e8c15a" stroke-width="2" fill="none"/>
+  ${cross(265, 100, 1.4)}
+  <text x="95" y="216" text-anchor="middle" fill="#c9d4dc" font-size="11" font-family="Heebo,sans-serif">על שרטון</text>
+  <path d="M42 302 Q95 260 148 302 Z" fill="#c8a86a"/>
+  <g transform="rotate(-12,95,280)"><ellipse cx="95" cy="280" rx="29" ry="10" fill="#95a5a6" stroke="#6d7b7d" stroke-width="1.5"/></g>
+  ${cross(95, 244, 1.4)}
+  <rect x="186" y="204" width="164" height="120" fill="#2ecc71" opacity="0.09"/>
+  <text x="265" y="216" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">"בדרך"</text>
+  <defs><marker id="uwarr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2ecc71"/></marker></defs>
+  <ellipse cx="252" cy="278" rx="29" ry="10" fill="#f1c40f" stroke="#c8a000" stroke-width="1.5"/>
+  <path d="M288 278 L322 278" stroke="#2ecc71" stroke-width="3" marker-end="url(#uwarr)"/>
+  ${tick(265, 244, 1.6)}
+  <text x="180" y="362" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">בדרך = לא רתוק, לא עוגן, לא על שרטון</text>
+`;
+
+// 1034 — an OVERTAKING vessel keeps clear, even one restricted in ability to maneuver
+SCENES_QA['overtaking_gives_way'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="55" width="360" height="335" fill="#1a5276" opacity=".3"/>
+  <defs><marker id="ovarr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f1c40f"/></marker></defs>
+  <text x="180" y="36" text-anchor="middle" fill="#fff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">מוגבל בתמרון שמשיג מאחור — מפנה</text>
+  ${topJetSki(150, 145, 0.9, '#f1c40f', '#c8a000', -90)}
+  <path d="M150 125 L150 90" stroke="#f1c40f" stroke-width="3" marker-end="url(#ovarr)"/>
+  <text x="150" y="182" text-anchor="middle" fill="#f1c40f" font-size="10.5" font-family="Heebo,sans-serif" font-weight="700">אופנוע ים</text>
+  ${tick(198, 145, 1.3)}
+  <g fill="#0a1428" stroke="#e8e8e8" stroke-width="1">
+    <circle cx="150" cy="250" r="4.5"/>
+    <path d="M150 258 L157 268 L150 278 L143 268 Z"/>
+    <circle cx="150" cy="286" r="4.5"/>
+  </g>
+  <line x1="150" y1="290" x2="150" y2="308" stroke="#8a97a3" stroke-width="1.5"/>
+  <g transform="translate(150,335)">
+    <path d="M-33 -28 Q0 -42 33 -28 L29 40 Q0 52 -29 40 Z" fill="#5d6d7e" stroke="#34495e" stroke-width="2"/>
+    <rect x="-15" y="-20" width="30" height="26" rx="3" fill="#34495e"/>
+  </g>
+  <path d="M116 316 Q74 256 116 196" stroke="#f1c40f" stroke-width="2.5" stroke-dasharray="6,4" fill="none" marker-end="url(#ovarr)"/>
+  <text x="180" y="386" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="900">המשיג מפנה דרך — גם כלי מוגבל בתמרון</text>
+`;
+
+// 1036 — lookout by sight and hearing, at all times
+SCENES_QA['lookout_always'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="46" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">חובת תצפית</text>
+  <g transform="translate(112,150)">
+    <path d="M-42 0 Q0 -32 42 0 Q0 32 -42 0 Z" fill="none" stroke="#7eb8f7" stroke-width="3"/>
+    <circle r="15" fill="#7eb8f7"/><circle r="6" fill="#0a1428"/>
+  </g>
+  <text x="112" y="212" text-anchor="middle" fill="#cfe0f2" font-size="12" font-family="Heebo,sans-serif" font-weight="700">ראייה</text>
+  <g transform="translate(248,150)" fill="none" stroke="#7eb8f7" stroke-width="3" stroke-linecap="round">
+    <path d="M-14 24 Q-24 0 -8 -14 Q14 -28 24 -4 Q28 10 8 13 Q-2 15 0 26"/>
+  </g>
+  <text x="248" y="212" text-anchor="middle" fill="#cfe0f2" font-size="12" font-family="Heebo,sans-serif" font-weight="700">שמיעה</text>
+  <g transform="translate(180,288)">
+    <circle r="44" fill="none" stroke="#2ecc71" stroke-width="3"/>
+    <text x="0" y="-3" text-anchor="middle" fill="#2ecc71" font-size="18" font-family="Heebo,sans-serif" font-weight="900">בכל עת</text>
+    <text x="0" y="20" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif">ובכל מצב</text>
+  </g>
+  <text x="180" y="386" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">תצפית בראייה ובשמיעה — תמיד</text>
+`;
+
+// 1046 — parallel craft, constant bearing AND constant range = NO collision risk
+SCENES_QA['parallel_no_collision'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="55" width="360" height="335" fill="#1a5276" opacity=".3"/>
+  <defs><marker id="pnarr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2ecc71"/></marker></defs>
+  <text x="180" y="38" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">מקבילים, טווח קבוע</text>
+  ${topJetSki(128, 300, 0.9, '#f1c40f', '#c8a000', -90)}
+  <path d="M128 278 L128 112" stroke="#2ecc71" stroke-width="3.5" marker-end="url(#pnarr)"/>
+  ${topJetSki(232, 300, 0.9, '#f1c40f', '#c8a000', -90)}
+  <path d="M232 278 L232 112" stroke="#2ecc71" stroke-width="3.5" marker-end="url(#pnarr)"/>
+  <g stroke="#7eb8f7" stroke-width="2">
+    <path d="M150 205 L210 205"/>
+    <path d="M156 200 L149 205 L156 210"/>
+    <path d="M204 200 L211 205 L204 210"/>
+  </g>
+  <text x="180" y="196" text-anchor="middle" fill="#7eb8f7" font-size="10.5" font-family="Heebo,sans-serif" font-weight="700">טווח קבוע</text>
+  ${tick(180, 336, 1.8)}
+  <text x="180" y="386" text-anchor="middle" fill="#2ecc71" font-size="11.5" font-family="Heebo,sans-serif" font-weight="900">אותה מהירות, אין התקרבות — אין סכנה</text>
+`;
+
 // Route signal questions to the specific pattern; null = keep generic fallback.
 function generateSignalScene(topic, q) {
   if (topic === 'אותות מצוקה') return SCENES_QA['distress_mirror_sos'];
@@ -3248,7 +3399,16 @@ function getScene(topic, qText) {
     if(/עשן שחור|עשן.{0,4}סמיך/.test(q))                     return SCENES_QA['pwc_smoke_fire'];
     if(/סוער וגשום|מזג אוויר סוער/.test(q))                  return SCENES_QA['pwc_low_visibility'];
   }
-  if(topic==='זכות מעבר' && /מפרש|sail/i.test(q)) return SCENES['זכות_מעבר_מפרש'];
+  if(topic==='זכות מעבר') {
+    if(/אחר חייב לפנות לך|חייב לפנות לך את הדרך/.test(q))          return SCENES_QA['standon_keep_course'];
+    if(/איך אתה מפנה|איך מפנים|כיצד.*מפנה/.test(q))                return SCENES_QA['giveway_alter_course'];
+    if(/הגדר.*בדרך|כלי שיט "?בדרך"?/.test(q))                     return SCENES_QA['underway_definition'];
+    if(/משיג|מאחוריו|מוגבל בכושרו|מוגבל בתמרון/.test(q))          return SCENES_QA['overtaking_gives_way'];
+    if(/תצפית/.test(q))                                           return SCENES_QA['lookout_always'];
+    if(/מקביל|טווח לא משתנה|לא קיימת סכנת/.test(q))               return SCENES_QA['parallel_no_collision'];
+    if(/סכנת התנגשות|כיוון המצפן|תכוון המצפן/.test(q))            return SCENES_QA['cbdr_collision_risk'];
+    if(/מפרש|sail/i.test(q))                                      return SCENES['זכות מעבר'];
+  }
   if(/VHF|רדיו|קשר/.test(topic)) return SCENES['קשר VHF'];
   if(/מכ.מ|radar/i.test(topic)) return SCENES['מכ"מ'];
 
