@@ -3000,6 +3000,48 @@ SCENES_QA['distress_mirror_sos'] = `
   <text x="180" y="398" text-anchor="middle" fill="#cfe8dd" font-size="11" font-family="Heebo,sans-serif">אמצעי יעיל: אינו דורש חשמל, סוללה או ציוד</text>
 `;
 
+// כניסה/יציאה לנמל — IALA-A lateral buoys. Bird's-eye, bow UP (= heading out to
+// sea), so the boat's starboard/port line up with the viewer's right/left:
+// on EXIT the red mark is on the right, the green mark on the left (reverse of
+// entering). Shared by 1125 (harbour) and 1154 (marina mouth).
+SCENES_QA['port_exit_buoys'] = `
+  <defs><linearGradient id="peSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d3a5c"/><stop offset="1" stop-color="#12507e"/></linearGradient></defs>
+  <rect width="360" height="420" fill="url(#peSea)"/>
+  <!-- open sea label -->
+  <text x="180" y="30" text-anchor="middle" fill="#bfe0f5" font-size="13" font-family="Heebo,sans-serif" font-weight="700">הים הפתוח</text>
+  <!-- harbour land left & right, forming the mouth at the bottom -->
+  <path d="M0,300 Q70,290 110,320 L110,420 L0,420 Z" fill="#7a6a4a" stroke="#5f5238" stroke-width="1.5"/>
+  <path d="M360,300 Q290,290 250,320 L250,420 L360,420 Z" fill="#7a6a4a" stroke="#5f5238" stroke-width="1.5"/>
+  <rect x="14" y="340" width="34" height="20" rx="2" fill="#9a8a63" opacity="0.7"/>
+  <rect x="312" y="340" width="34" height="20" rx="2" fill="#9a8a63" opacity="0.7"/>
+  <text x="180" y="405" text-anchor="middle" fill="#e8dcc0" font-size="12" font-family="Heebo,sans-serif" font-weight="700">מרינה / נמל</text>
+  <!-- channel centre line + exit arrow (up = out to sea) -->
+  <line x1="180" y1="330" x2="180" y2="120" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="7,6" opacity="0.6"/>
+  <path d="M180,110 l-9,16 l9,-6 l9,6 z" fill="#7eb8f7"/>
+  <text x="205" y="150" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700">יציאה</text>
+  <!-- GREEN mark on the LEFT (viewer left = boat port on exit) -->
+  <g transform="translate(112,210)">
+    <circle r="18" fill="#1e9e4a" stroke="#0d6e30" stroke-width="2.5"/>
+    <polygon points="0,-11 9,6 -9,6" fill="#0d6e30"/>
+    <text x="0" y="42" text-anchor="middle" fill="#8fe6ac" font-size="12" font-family="Heebo,sans-serif" font-weight="900">ירוק · שמאל</text>
+  </g>
+  <!-- RED mark on the RIGHT (viewer right = boat starboard on exit) -->
+  <g transform="translate(248,210)">
+    <circle r="18" fill="#e23b3b" stroke="#a82121" stroke-width="2.5"/>
+    <rect x="-9" y="-9" width="18" height="18" rx="2" fill="#a82121"/>
+    <text x="0" y="42" text-anchor="middle" fill="#ffb3b3" font-size="12" font-family="Heebo,sans-serif" font-weight="900">אדום · ימין</text>
+  </g>
+  <!-- boat, bird's-eye, bow up (exiting) -->
+  <g transform="translate(180,280)">
+    <path d="M0,-30 Q12,-14 12,10 Q12,24 0,30 Q-12,24 -12,10 Q-12,-14 0,-30 Z" fill="#f1f3f5" stroke="#334" stroke-width="2"/>
+    <path d="M0,-24 Q7,-12 7,8 L-7,8 Q-7,-12 0,-24 Z" fill="#3a5a8a" opacity="0.85"/>
+    <circle cx="0" cy="16" r="3.5" fill="#334"/>
+  </g>
+  <!-- title -->
+  <rect x="30" y="46" width="300" height="34" rx="9" fill="#08243c" opacity="0.85" stroke="#7eb8f7" stroke-width="1"/>
+  <text x="180" y="68" text-anchor="middle" fill="#dcefff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">ביציאה מהנמל: אדום מימין, ירוק משמאל</text>
+`;
+
 // Route signal questions to the specific pattern; null = keep generic fallback.
 function generateSignalScene(topic, q) {
   if (topic === 'אותות מצוקה') return SCENES_QA['distress_mirror_sos'];
@@ -3021,6 +3063,7 @@ function getScene(topic, qText) {
     const s = generateSignalScene(topic, q);
     if (s) return s;
   }
+  if(topic==='כניסה לנמל') return SCENES_QA['port_exit_buoys'];
   if(topic==='אזורי שיט') {
     // "חוף שאינו חוף רחצה מוכרז" contains מוכרז, so the negation has to be
     // tested first or every non-declared-beach question lands on the declared
