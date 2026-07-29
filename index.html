@@ -459,6 +459,9 @@ function buildVoiceover(q) {
   const ans = ((q.options||[])[idx]||'').replace(/^[אבגד]\.\s*/,'');
   const letter = (q.answer||'א').trim();   // name the answer option in the VO ("ב: ...")
   let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
+  // Explicit "what's the correct answer?" cue right before the pause for select
+  // questions (keep in sync with tools/quiz-app/vo.js ANSWER_PROMPT_NUMS).
+  if (new Set([1053, 1054]).has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   // NO geresh after the letter: edge-tts drops the letter's sound when a geresh (׳)
   // follows it. Bare "ב:" is pronounced; "ב׳:" is not. (verified via /tts A/B, 2026-07)
   let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
