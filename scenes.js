@@ -2855,11 +2855,171 @@ SCENES_QA['zones_open_band'] = `
   ${topJetSki(215, 262, 0.5, '#f1c40f', '#c8a000', -90)}
 `;
 
+// ── Sound-signal scenes (topics 'אותות קוליים' / 'אותות מצוקה') ─────────────
+// Each question is a SPECIFIC blast pattern; the old generic horn showed the
+// same picture for all of them. Short blast ≈ 1s, prolonged ("ארוכה") ≈ 4-6s
+// (COLREGS Rule 32/34). Glyph: rounded pill, wide = long, narrow = short.
+function sigBlastRow(items, y, opts) {
+  opts = opts || {};
+  const sh = opts.sh || 20, lo = opts.lo || 54, gap = opts.gap || 12, h = opts.h || 24;
+  const cx = opts.cx || 180, label = opts.label !== false;
+  const widths = items.map(t => t === 'l' ? lo : sh);
+  const total = widths.reduce((a, b) => a + b, 0) + gap * (items.length - 1);
+  let x = cx - total / 2, out = '';
+  items.forEach((t, i) => {
+    const w = widths[i], fill = t === 'l' ? '#3a7ec2' : '#7ec8ff';
+    out += `<rect x="${x.toFixed(1)}" y="${y}" width="${w}" height="${h}" rx="${(h/2).toFixed(1)}" fill="${fill}" stroke="#bfe4ff" stroke-width="1.2"/>`;
+    if (label) out += `<text x="${(x+w/2).toFixed(1)}" y="${y+h+16}" text-anchor="middle" fill="#8fb4d8" font-size="10.5" font-family="Heebo,sans-serif">${t==='l'?'ארוכה':'קצרה'}</text>`;
+    x += w + gap;
+  });
+  return out;
+}
+function sigBase(inner) {
+  return `
+  <rect width="360" height="420" fill="#050d1a"/>
+  <circle cx="40" cy="25" r="1" fill="#fff" opacity=".5"/><circle cx="120" cy="16" r="1.2" fill="#fff" opacity=".6"/><circle cx="230" cy="28" r="1" fill="#fff" opacity=".4"/><circle cx="315" cy="20" r="1.3" fill="#fff" opacity=".7"/>
+  <rect x="0" y="360" width="360" height="60" fill="#0a1f3a"/>
+  <path d="M0 364 Q90 358 180 364 Q270 370 360 364" fill="none" stroke="#1a4a6a" stroke-width="1.2" opacity=".6"/>
+  <g transform="translate(300,350)">
+    <ellipse cx="0" cy="12" rx="38" ry="8" fill="#14264a" stroke="#2a4a8a" stroke-width="1"/>
+    <rect x="-24" y="-4" width="48" height="16" rx="3" fill="#16294e" stroke="#2a4a8a" stroke-width="1"/>
+    <line x1="-14" y1="-4" x2="-14" y2="-32" stroke="#3a5a8a" stroke-width="2"/>
+    <rect x="-22" y="-32" width="14" height="8" rx="2" fill="#4a90d9"/>
+    <g transform="translate(-24,-28)">
+      <path d="M0,0 Q-9,-9 -9,0 Q-9,9 0,0" fill="none" stroke="#4a90d9" stroke-width="2" opacity="0"><animate attributeName="opacity" values="0;0.9;0" dur="1.6s" repeatCount="indefinite"/></path>
+      <path d="M0,0 Q-18,-18 -18,0 Q-18,18 0,0" fill="none" stroke="#7eb8f7" stroke-width="1.3" opacity="0"><animate attributeName="opacity" values="0;0.6;0" dur="1.6s" repeatCount="indefinite" begin="0.3s"/></path>
+    </g>
+  </g>
+  ${inner}
+`;
+}
+function sigTitle(t) {
+  return `<rect x="24" y="18" width="312" height="34" rx="8" fill="#0c1a3a" stroke="#1e3a6e" stroke-width="1"/>
+  <text x="180" y="40" text-anchor="middle" fill="#8fc0f0" font-size="15" font-family="Heebo,sans-serif" font-weight="900">${t}</text>`;
+}
+function sigMeaning(lines, color) {
+  color = color || '#2ecc71';
+  const y = 262, h = 24 + lines.length * 21;
+  return `<rect x="26" y="${y}" width="308" height="${h}" rx="10" fill="#0b1f16" stroke="${color}" stroke-width="1.5"/>
+  ${lines.map((l, i) => `<text x="180" y="${y+24+i*21}" text-anchor="middle" fill="${i===0?color:'#cfe8dd'}" font-size="${i===0?14:11.5}" font-family="Heebo,sans-serif" font-weight="${i===0?900:600}">${l}</text>`).join('')}`;
+}
+
+// 1039 — תמונה 114 = שתי צפירות קצרות → פונה שמאלה (כלל 34)
+SCENES_QA['signal_turn_left'] = sigBase(
+  sigTitle('אות קולי — תמונה 114') +
+  `<text x="180" y="120" text-anchor="middle" fill="#7eb8f7" font-size="12.5" font-family="Heebo,sans-serif">שתי צפירות קצרות</text>` +
+  sigBlastRow(['s', 's'], 145) +
+  sigMeaning(['ב. כלי השייט פונה שמאלה', 'כלל 34 — שתי צפירות קצרות = שינוי כיוון שמאלה'])
+);
+
+// 1052 — תמונה 119 = צפירה ארוכה אחת → לפי המאגר: מצוקה
+SCENES_QA['signal_one_prolonged'] = sigBase(
+  sigTitle('אות קולי — תמונה 119') +
+  `<text x="180" y="120" text-anchor="middle" fill="#7eb8f7" font-size="12.5" font-family="Heebo,sans-serif">צפירה ארוכה אחת</text>` +
+  sigBlastRow(['l'], 145) +
+  sigMeaning(['ג. כלי השייט במצוקה', 'לפי המאגר הרשמי: צפירה ארוכה אחת = אות מצוקה'], '#e74c3c')
+);
+
+// 1054 — מלכודת: 7 צפירות ארוכות ברצף אינו אות קיים
+SCENES_QA['signal_seven_long_trap'] = sigBase(
+  sigTitle('7 צפירות ארוכות ברצף') +
+  sigBlastRow(['l','l','l','l','l','l','l'], 130, { lo: 30, gap: 7, label: false }) +
+  `<text x="180" y="120" text-anchor="middle" fill="#8fb4d8" font-size="11" font-family="Heebo,sans-serif">7 × ארוכה</text>
+  <g transform="translate(180,142)" opacity="0.9"><line x1="-120" y1="-22" x2="120" y2="26" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/></g>` +
+  sigMeaning(['ד. אות כזה אינו קיים', 'אות סכנה = חמש צפירות קצרות (כלל 34ד), לא ארוכות'], '#f39c12')
+);
+
+// 1058 — ...‏—‏—‏—‏... (3 קצרות, 3 ארוכות, 3 קצרות) = SOS בצפירות → מבקש עזרה
+SCENES_QA['signal_sos_whistle'] = sigBase(
+  sigTitle('קצרות · ארוכות · קצרות') +
+  sigBlastRow(['s','s','s','l','l','l','s','s','s'], 145, { sh: 15, lo: 32, gap: 6, label: false }) +
+  `<text x="70" y="128" text-anchor="middle" fill="#e74c3c" font-size="18" font-family="Arial" font-weight="900">S</text>
+  <text x="180" y="128" text-anchor="middle" fill="#e74c3c" font-size="18" font-family="Arial" font-weight="900">O</text>
+  <text x="290" y="128" text-anchor="middle" fill="#e74c3c" font-size="18" font-family="Arial" font-weight="900">S</text>
+  <text x="180" y="196" text-anchor="middle" fill="#8fb4d8" font-size="10.5" font-family="Heebo,sans-serif">שלוש קצרות · שלוש ארוכות · שלוש קצרות</text>` +
+  sigMeaning(['ג. אות SOS — מבקש עזרה', 'תבנית ...‏—‏—‏—‏... בצפירות = בקשת עזרה'], '#e74c3c')
+);
+
+// 1155 — 3 צפירות קצרות = מנוע לאחור, אך אסור להשמיע בערפל
+SCENES_QA['signal_three_short_fog'] = sigBase(
+  `<rect width="360" height="420" fill="#0a1420" opacity="0.55"/>
+  <g opacity="0.18" fill="#cdd8e2"><ellipse cx="90" cy="175" rx="80" ry="20"/><ellipse cx="270" cy="205" rx="90" ry="22"/><ellipse cx="180" cy="235" rx="110" ry="20"/></g>` +
+  sigTitle('3 צפירות קצרות — בערפל') +
+  `<text x="180" y="120" text-anchor="middle" fill="#7eb8f7" font-size="12.5" font-family="Heebo,sans-serif">שלוש צפירות קצרות</text>` +
+  sigBlastRow(['s','s','s'], 145) +
+  sigMeaning(['ב. מנוע לאחור — אך אסור בערפל', 'שלוש קצרות = מנוע לאחור; בערפל אסור להשמיע אות זה'], '#f39c12')
+);
+
+// 1053 — אות מצוקה חזותי: מראת איתות מנצנצת SOS (...‏—‏—‏—‏...)
+SCENES_QA['distress_mirror_sos'] = `
+  <defs><linearGradient id="mrSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc4ec"/><stop offset="1" stop-color="#cfe6f5"/></linearGradient></defs>
+  <rect width="360" height="420" fill="url(#mrSky)"/>
+  <!-- sun -->
+  <g transform="translate(300,60)"><circle r="26" fill="#fff3b0"/><circle r="18" fill="#ffe259"/>
+    ${[0,45,90,135,180,225,270,315].map(a=>`<line x1="${Math.cos(a*Math.PI/180)*30}" y1="${Math.sin(a*Math.PI/180)*30}" x2="${Math.cos(a*Math.PI/180)*42}" y2="${Math.sin(a*Math.PI/180)*42}" stroke="#ffe259" stroke-width="3" stroke-linecap="round"/>`).join('')}
+  </g>
+  <!-- sea -->
+  <rect x="0" y="300" width="360" height="120" fill="#2f7bb0"/>
+  <path d="M0 306 Q60 300 120 306 Q180 312 240 306 Q300 300 360 306" fill="none" stroke="#5a9fce" stroke-width="2"/>
+  <path d="M0 330 Q90 324 180 330 Q270 336 360 330" fill="none" stroke="#4a90c0" stroke-width="1.5" opacity=".7"/>
+  <!-- jet ski (profile) + rider -->
+  <g transform="translate(150,300)">
+    <path d="M-70 6 Q-60 26 -20 28 L55 28 Q78 24 82 6 Q40 16 -70 6 Z" fill="#e23b3b" stroke="#b02a2a" stroke-width="2"/>
+    <path d="M-30 6 Q-20 -6 10 -8 L40 -8 Q54 -6 58 6 Z" fill="#2b2b33" stroke="#111" stroke-width="1.5"/>
+    <rect x="8" y="-24" width="10" height="20" rx="3" fill="#333"/>
+    <line x1="13" y1="-22" x2="-6" y2="-30" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+    <!-- rider -->
+    <g transform="translate(-2,-26)">
+      <ellipse cx="0" cy="-2" rx="12" ry="16" fill="#f2b134"/>
+      <circle cx="2" cy="-22" r="9" fill="#f0c090"/>
+      <path d="M-6 -30 Q2 -36 10 -30 L10 -24 Q2 -27 -6 -24 Z" fill="#e23b3b"/>
+      <!-- raised arm holding mirror -->
+      <line x1="6" y1="-10" x2="26" y2="-34" stroke="#f0c090" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  </g>
+  <!-- signalling mirror + flash toward sun -->
+  <g transform="translate(174,236) rotate(-30)">
+    <rect x="-11" y="-11" width="22" height="22" rx="2" fill="#e8f4ff" stroke="#9bbdd6" stroke-width="1.5"/>
+    <line x1="-11" y1="-11" x2="11" y2="11" stroke="#fff" stroke-width="1"/>
+  </g>
+  <g stroke="#fffbe0" stroke-width="3" stroke-linecap="round" opacity="0.95">
+    <line x1="186" y1="230" x2="290" y2="70"><animate attributeName="opacity" values="0;1;0.9;0" dur="1.3s" repeatCount="indefinite"/></line>
+    <line x1="192" y1="234" x2="296" y2="78" stroke-width="1.5"><animate attributeName="opacity" values="0;1;0;1;0" dur="1.3s" repeatCount="indefinite"/></line>
+  </g>
+  <!-- SOS morse card -->
+  <rect x="26" y="20" width="200" height="52" rx="9" fill="#0c2035" opacity="0.9" stroke="#7eb8f7" stroke-width="1"/>
+  <text x="126" y="40" text-anchor="middle" fill="#8fc0f0" font-size="12" font-family="Heebo,sans-serif" font-weight="900">מראת איתות — SOS</text>
+  <g transform="translate(0,58)" fill="#fff">
+    ${[40,50,60].map(x=>`<circle cx="${x}" cy="0" r="3.5"/>`).join('')}
+    ${[80,100,120].map(x=>`<rect x="${x-8}" y="-3" width="16" height="6" rx="3"/>`).join('')}
+    ${[144,154,164].map(x=>`<circle cx="${x}" cy="0" r="3.5"/>`).join('')}
+    <text x="200" y="4" text-anchor="middle" fill="#8fb4d8" font-size="9" font-family="Arial">...‏—‏—‏—‏...</text>
+  </g>
+  <rect x="40" y="360" width="280" height="46" rx="10" fill="#0b1f16" opacity="0.92" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="180" y="380" text-anchor="middle" fill="#2ecc71" font-size="14" font-family="Heebo,sans-serif" font-weight="900">ג. נצנוץ SOS במראת איתות</text>
+  <text x="180" y="398" text-anchor="middle" fill="#cfe8dd" font-size="11" font-family="Heebo,sans-serif">אמצעי יעיל: אינו דורש חשמל, סוללה או ציוד</text>
+`;
+
+// Route signal questions to the specific pattern; null = keep generic fallback.
+function generateSignalScene(topic, q) {
+  if (topic === 'אותות מצוקה') return SCENES_QA['distress_mirror_sos'];
+  if (/תמונה\s*114/.test(q)) return SCENES_QA['signal_turn_left'];
+  if (/תמונה\s*119/.test(q)) return SCENES_QA['signal_one_prolonged'];
+  if (/שבע צפירות ארוכות|7 צפירות ארוכות/.test(q)) return SCENES_QA['signal_seven_long_trap'];
+  if (/קצרות.*ארוכות.*קצרות|3 צפירות קצרות.*3 צפירות ארוכות/.test(q)) return SCENES_QA['signal_sos_whistle'];
+  if (/ערפל/.test(q) && /3 צפירות קצרות|שלוש צפירות קצרות/.test(q)) return SCENES_QA['signal_three_short_fog'];
+  return null;
+}
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
     const compass = generateCompassRoseScene(q);
     if (compass) return compass;
+  }
+  if(topic==='אותות קוליים' || topic==='אותות מצוקה') {
+    const s = generateSignalScene(topic, q);
+    if (s) return s;
   }
   if(topic==='אזורי שיט') {
     // "חוף שאינו חוף רחצה מוכרז" contains מוכרז, so the negation has to be
