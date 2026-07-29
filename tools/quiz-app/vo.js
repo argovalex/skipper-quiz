@@ -64,11 +64,18 @@ function applyVoFixes(text) {
   return t.replace(/\s{2,}/g, ' ').trim();
 }
 
+// Questions whose pre-pause narration gets an explicit "מה התשובה הנכונה?" cue
+// right before the pause, so the viewer has a clear prompt to answer (and the
+// silencedetect pass gets a clean gap to lock the pause onto). Keep in sync with
+// index.html / queue.html buildVoiceover.
+const ANSWER_PROMPT_NUMS = new Set([1053, 1054]);
+
 function buildVoiceover(q) {
   const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
   const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '');
   const letter = (q.answer || 'א').trim();
   let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
+  if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
   if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
   return q1 + ' [[PAUSE]] ' + q2;

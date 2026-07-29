@@ -676,6 +676,9 @@ function buildVoiceover(q) {
   // so the answer/explanation only plays once the video transitions, not right after the question.
   // NO geresh after the letter: edge-tts drops the letter's sound when a geresh (׳) follows it.
   let q1 = applyVoFixes(`שאלה מספר ${q.num}. ${q.q_he}.`);
+  // Explicit "what's the correct answer?" cue before the pause for select
+  // questions (keep in sync with tools/quiz-app/vo.js ANSWER_PROMPT_NUMS).
+  if (new Set([1053, 1054]).has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   let q2 = `התשובה הנכונה היא ${letter}: ${ans}.`;
   if (q.explanation) q2 += ` ${q.explanation}`;
   return q1 + ' [[PAUSE]] ' + applyVoFixes(q2);
