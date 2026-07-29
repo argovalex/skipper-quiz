@@ -830,8 +830,8 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785305931/skipper-quiz/iyaslvvdvqjpvwfymcjd.mp4",
     "rendered_at": "2026-07-24T09:10:33.000Z",
-    "voiceover_text": "",
-    "content_updated_at": "2026-07-23T11:07:23.604Z"
+    "voiceover_text": "שאלה מספר 1037. האם מותר לאופנוע ים להפליג בשעות החשיכה או בשעת ראות לקוויה?. [[PAUSE]] התשובה הנכונה היא ד: אסור להפליג. ... אופנוע ים אסור בהפלגה בשעות החשיכה ובראות לקוויה. אין לו אורות ניווט תקניים, אין לו תצפית לאחור, והוא נמוך וקטן מכדי שיבחינו בו. האיסור מוחלט ואינו ניתן לריפוי באמצעות מרחק מהחוף, אמצעי השמעת קול או נוסע נוסף. שלוש התשובות הראשונות מציעות \"תנאי\" שיכשיר את ההפלגה, ואין תנאי כזה. שים לב לעקביות עם תנאי הרישיון: לרישיון 11 לא נדרשת אבחנה בצבעים, ודווקא משום שאין הפלגה בלילה ואין צורך להבחין בצבעי אורות ניווט.",
+    "content_updated_at": "2026-07-29T12:24:48.168Z"
   },
   {
     "num": 1038,
@@ -1453,8 +1453,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785304745/skipper-quiz/fxctijmyssndtyv6dx2u.mp4",
-    "voiceover_text": "",
-    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "voiceover_text": "שאלה מספר 1064. האם מותר לאופנוע ים לשמש כספינת אם לצולל?. [[PAUSE]] התשובה הנכונה היא ג: מותר אם יניף את הדגל שבתמונה 98, ועל האופנוע נשאר תמיד משיט מוסמך כדין. ... מותר לאופנוע ים לשמש כספינת אם לצולל בתנאי שמניפים דגל איי תמונה 98 ונשאר משיט מוסמך.",
+    "content_updated_at": "2026-07-29T12:24:50.426Z",
     "rendered_at": "2026-07-23T11:28:52.872Z"
   },
   {
@@ -1570,10 +1570,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "voiceover_text": "",
+    "voiceover_text": "שאלה מספר 1069. מהו טווח המרחק מחוף שאינו חוף רחצה מוכרז המותר להפלגת אופנוע ים ללא הגבלות?. [[PAUSE]] התשובה הנכונה היא ג: במרחק עד 1 מייל מהחוף אך לא פחות מ-300 מטרים מנקודת שפל המים. ... במרחק עד 1 מייל מהחוף אך לא פחות מ-300 מטרים מנקודת שפל המים.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785306640/skipper-quiz/h2horxw6xnsinczamuqe.mp4",
     "rendered_at": "2026-07-23T12:09:37.110Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-29T12:31:35.349Z"
   },
   {
     "num": 1070,
@@ -1642,7 +1642,8 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785306822/skipper-quiz/esrkr6uacvh4z4pzjbir.mp4",
     "rendered_at": "2026-07-24T09:12:12.000Z",
-    "voiceover_text": ""
+    "voiceover_text": "שאלה מספר 1072. היכן מותר לאופנוע ים להפליג בים הפתוח?. [[PAUSE]] התשובה הנכונה היא א: בכל מקום שאינו סגור לשייט וברצועה שמעבר ל-300 מטרים מקו שפל המים. ... הרצועה של 300 מטר מקו שפל המים היא האזור שממנו אופנוע הים צריך להתרחק, לא האזור שבו מותר לו לשוט. שם נמצאים המתרחצים והשחיינים. לכן השיט מותר מעבר ל-300 מטר מקו שפל המים, ובכל מקום שאינו סגור לשיט מסיבה אחרת כמו שטח אש, אזור צלילה, נמל או בסיס. שים לב שיש גם תקרה: אופנוע ים לא יפליג מעבר למייל אחד מהחוף, למעט הכינרת. כלומר הרצועה המותרת בפועל היא בין 300 מטר למייל אחד, ותשובה א היא הנכונה מבין הארבע. תשובה ג הופכת את הכלל בדיוק ומכניסה אותך לרצועת המתרחצים. תשובה ב מתעלמת מהאזורים הסגורים, ותשובה ד ממציאה מבחן של \"קו חוף נראה לעין\" שאינו קיים בתקנות.",
+    "content_updated_at": "2026-07-29T12:31:36.294Z"
   },
   {
     "num": 1073,
@@ -1686,10 +1687,10 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1074-yarkon-river-mouth.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "voiceover_text": "",
+    "voiceover_text": "שאלה מספר 1074. האם מותר להכנס לתוך שפך נחל \"הירקון\" על מנת לעלות נוסע?. [[PAUSE]] התשובה הנכונה היא ג: חל איסור לאופנוע-ים לשוט בנחלים.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785306853/skipper-quiz/ipdcz49hjakcx4uqnujq.mp4",
     "rendered_at": "2026-07-24T09:12:49.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-29T12:31:44.141Z"
   },
   {
     "num": 1075,
@@ -1710,10 +1711,10 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1075-dead-sea.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "voiceover_text": "",
+    "voiceover_text": "שאלה מספר 1075. האם מותר להפליג עם אופנוע ים בים המלח?. [[PAUSE]] התשובה הנכונה היא א: מותר באותם תנאים כמו בים התיכון. ... בים המלח חלים אותם תנאי שיט כמו בים התיכון - אין הקלות מיוחדות.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785306892/skipper-quiz/qqrusvnkpclc9wya765r.mp4",
     "rendered_at": "2026-07-24T09:13:34.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-29T12:31:47.207Z"
   },
   {
     "num": 1079,
@@ -1725,8 +1726,8 @@
     "options": [
       "א. חוף שבו מתרחצים אנשים, בין 200 עד 400 מטרים מהחוף.",
       "ב. חוף עירוני שיש בו מצילים, שירותים ומלתחות, וגבולותיו יהיו כפי שתקבע העירייה.",
-      "ג.  חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  60 מטרים מכל צד של השטח המיועד לרחצה.",
-      "ד.  חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  50 מטרים מכל צד של השטח המיועד לרחצה."
+      "ג. חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  60 מטרים מכל צד של השטח המיועד לרחצה.",
+      "ד. חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן  50 מטרים מכל צד של השטח המיועד לרחצה."
     ],
     "answer": "ד",
     "answer_confirmed": true,
@@ -1734,10 +1735,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "voiceover_text": "",
+    "voiceover_text": "שאלה מספר 1079. מהו \"חוף רחצה מוכרז\" ומה הם גבולותיו?. [[PAUSE]] התשובה הנכונה היא ד: חוף רחצה שהוכרז עליו ב\"רשומות\" וגבולותיו מקו שיא הגיאות ועד 300 מטרים מקו זה וכן 50 מטרים מכל צד של השטח המיועד לרחצה. ... ג. חוף רחצה מוכרז הוא: מקו שיא הגיאות עד 300 מטר, ו-50 מטר מכל צד של שטח הרחצה.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785307053/skipper-quiz/bojwzhtmodbxzu1dwpji.mp4",
     "rendered_at": "2026-07-24T10:00:28.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-29T12:31:48.767Z"
   },
   {
     "num": 1076,
@@ -1758,10 +1759,10 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1076-palmachim-fire-zone.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "voiceover_text": "",
+    "voiceover_text": "שאלה מספר 1076. האם מותר להפליג עם אופנוע-ים מיפו לאשדוד במרחק של 1 מיל מהחוף?. [[PAUSE]] התשובה הנכונה היא ג: אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים. ... אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785306930/skipper-quiz/p2ojsomadjkmfqtlpcxb.mp4",
     "rendered_at": "2026-07-24T10:01:13.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-29T14:04:26.517Z"
   },
   {
     "num": 1077,
@@ -1926,7 +1927,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784806188/skipper-quiz/stqjaylbscojprkx7igp.mp4",
-    "rendered_at": "2026-07-23T11:29:49.747Z"
+    "rendered_at": "2026-07-23T11:29:49.747Z",
+    "voiceover_text": "שאלה מספר 1084. במהלך שייט עם אופנוע ים נוסף, הבחנת כי עשן שחור וסמיך החל לצאת מהאופנוע של חברך, מה תעשה?. [[PAUSE]] התשובה הנכונה היא א: תסמן לנטוש את האופנוע, תאסוף אותו ותתרחק מהכלי. ... עשן שחור סמיך מאופנוע ים מסמן סכנת שריפה. יש לנטוש מיד, לאסוף את הרוכב ולהתרחק.",
+    "content_updated_at": "2026-07-29T12:24:52.293Z"
   },
   {
     "num": 1085,
@@ -2137,8 +2140,8 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785307460/skipper-quiz/kumxki2hcm0wfjrsbukv.mp4",
     "rendered_at": "2026-07-24T10:07:17.000Z",
-    "voiceover_text": "",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "voiceover_text": "שאלה מספר 1093. מה המשמעות של רוח דרומית חזקה במפרץ אילת?. [[PAUSE]] התשובה הנכונה היא ג: הים יעלה ויהיה סוער מאוד בחוף הצפוני. ... רוח דרומית חזקה במפרץ אילת דוחפת את המים צפונה ויוצרת ים סוער בחוף הצפוני.",
+    "content_updated_at": "2026-07-29T12:31:26.573Z"
   },
   {
     "num": 1094,
@@ -2160,7 +2163,9 @@
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785077799/skipper-quiz/ywcpzpaxmdtlm1bkxwua.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר 1094. מה המשמעות של רוח צפונית במפרץ אילת?. [[PAUSE]] התשובה הנכונה היא א: הים יישאר שקט ותוכל לשוט בבטחה. ... רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שקט.",
+    "content_updated_at": "2026-07-29T12:31:33.841Z"
   },
   {
     "num": 1095,
@@ -2448,7 +2453,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1784806239/skipper-quiz/nzyfkczcjqnvhnu64crs.mp4",
-    "rendered_at": "2026-07-23T11:30:40.638Z"
+    "rendered_at": "2026-07-23T11:30:40.638Z",
+    "voiceover_text": "שאלה מספר 1107. בנוסף לסכנה של ים גבוה במזג אוויר סוער וגשום, קיימת סכנה בטיחותית נוספת שהיא. [[PAUSE]] התשובה הנכונה היא א: ירידה משמעותית בראות. ... בנוסף לים גבוה, מזג אוויר סוער וגשום גורם לירידה משמעותית בראות - סכנה בטיחותית חמורה.",
+    "content_updated_at": "2026-07-29T12:24:55.519Z"
   },
   {
     "num": 1108,
@@ -2564,8 +2571,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785307839/skipper-quiz/kuxdcpwfrptvr2cwuhuj.mp4",
-    "voiceover_text": "",
-    "content_updated_at": "2026-07-23T12:01:13.638Z",
+    "voiceover_text": "שאלה מספר 1112. מהו הטיפול הנדרש כתוצאה מפגיעת דג ארסי?. [[PAUSE]] התשובה הנכונה היא א: חימום איזור הפגיעה. ... ארס של יצורים ימיים כמו מדוזה, דג אריה או דורבן בנוי מחלבונים, וחלבונים מתפרקים בחום. לכן הטיפול המקובל בפגיעת ארס ימי הוא חימום אזור הפגיעה, בדרך כלל השריה במים חמים ככל שניתן לסבול, בסביבות 40 עד 45 מעלות, למשך כ-30 עד 90 דקות. החום מנטרל את הארס ומשכך כאב. קירור תשובה ב אינו מפרק את הארס ואף עלול להאט את פירוקו הטבעי. תשובה ג, השקיה בנוזלים, מטפלת בהתייבשות ולא בארס. תשובה ד, חומץ, רלוונטית לסוגים מסוימים של מדוזות קופסה כדי לנטרל תאי צריבה שלא נורו, ואינה הטיפול הכללי. שים לב שניסוח השאלה במאגר משובש \"גז ארסי\" ותוקן ל\"דג ארסי\", והכוונה לפגיעת ארס של יצור ימי.",
+    "content_updated_at": "2026-07-29T12:25:00.552Z",
     "rendered_at": "2026-07-23T14:31:56.000Z"
   },
   {
@@ -2881,10 +2888,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "voiceover_text": "",
+    "voiceover_text": "שאלה מספר 1127. האם משיט אופנוע – ים רשאי לאפשר לכל אדם לנהוג באופנוע – כאשר המשיט משיג מחוף?. [[PAUSE]] התשובה הנכונה היא ג: לא, רק משיט מוסמך רשאי לנהוג באופנוע-ים. ... רק משיט מוסמך רשאי לנהוג באופנוע ים. השגחה מהחוף אינה מספיקה.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785308005/skipper-quiz/hmg0siohzjnag30jvp2e.mp4",
     "rendered_at": "2026-07-23T14:54:58.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-29T12:31:23.701Z"
   },
   {
     "num": 1128,
@@ -2930,7 +2937,9 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785059360/skipper-quiz/ibrtaurhs2xhpa6mhs5z.mp4",
-    "rendered_at": "2026-07-26T09:54:11.860Z"
+    "rendered_at": "2026-07-26T09:54:11.860Z",
+    "voiceover_text": "שאלה מספר 1129. האם מותרת גרירת סקי על ידי אופנוע ים?. [[PAUSE]] התשובה הנכונה היא א: כן, בתנאי שהאופנוע מורשה ל-3 מפליגים ועליו יהיו לפחות 2 אנשי צוות. ... גרירת סקי מותרת רק אם האופנוע מורשה ל-3 ועליו לפחות 2 נוהג ו צופה. אשר מביט לאחור על הנגרר",
+    "content_updated_at": "2026-07-29T14:05:16.297Z"
   },
   {
     "num": 1130,
@@ -3326,7 +3335,9 @@
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785078971/skipper-quiz/pnld9ajon0hldauyvrbb.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר 1146. השקת את אופנוע הים שלך ליד המרינה בהרצליה. הפלגת דרומה במקביל לאופנוע ים אחר, במרחק של כ-1000 מטר מהחוף. אתם בערך מול חוף תל-ברוך, צפונית לתחנת הכח רידינג וכ-3 קילומטר מנקודת המוצא. השמים התקדרו, רוח צפונית חזקה מתפתחת והים מתחיל להעלות גלים. אופנוע הים של חברך דמם ולא ניתן להתניעו. החלטתם לגרור אותו לחוף. להיכן תגרור אותו?. [[PAUSE]] התשובה הנכונה היא ג: למעגן תל אביב. ... רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
+    "content_updated_at": "2026-07-29T12:24:45.829Z"
   },
   {
     "num": 1147,
