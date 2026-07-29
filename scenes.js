@@ -3042,6 +3042,102 @@ SCENES_QA['port_exit_buoys'] = `
   <text x="180" y="68" text-anchor="middle" fill="#dcefff" font-size="14" font-family="Heebo,sans-serif" font-weight="900">ביציאה מהנמל: אדום מימין, ירוק משמאל</text>
 `;
 
+// ── אופנוע ים - כללי: three gaps that had no dedicated visual ───────────────
+function pwcGearCard(cx, cy, label, icon) {
+  return `<g transform="translate(${cx},${cy})">
+    <rect x="-47" y="-40" width="94" height="80" rx="10" fill="#0e1f38" stroke="#274a78" stroke-width="1.5"/>
+    <g transform="translate(0,-8)">${icon}</g>
+    ${tick(30, -26, 0.85)}
+    <text x="0" y="30" text-anchor="middle" fill="#cfe0f2" font-size="10.5" font-family="Heebo,sans-serif" font-weight="700">${label}</text>
+  </g>`;
+}
+function naBadge(cx, cy, s) {
+  s = s || 1;
+  // "no alcohol" prohibition badge: a beer mug inside a red circle+slash. Drawn
+  // on a dark disc so it reads as a sign, never as a rider's head.
+  return `<g transform="translate(${cx},${cy}) scale(${s})">
+    <circle r="17" fill="#0a1428" stroke="#274a78" stroke-width="1.5"/>
+    <g transform="translate(-1,0)">
+      <rect x="-6" y="-6" width="11" height="13" rx="1.5" fill="#e8c15a" stroke="#b8912f" stroke-width="1"/>
+      <rect x="5" y="-4" width="4.5" height="7" rx="2.2" fill="none" stroke="#b8912f" stroke-width="1.4"/>
+      <rect x="-6" y="-6" width="11" height="3.5" fill="#fff" opacity="0.85"/>
+    </g>
+    <circle r="15" fill="none" stroke="#e23b3b" stroke-width="3"/>
+    <line x1="-10.6" y1="10.6" x2="10.6" y2="-10.6" stroke="#e23b3b" stroke-width="3"/>
+  </g>`;
+}
+
+// 1150 / 1153 — required safety/rescue kit for a PWC
+SCENES_QA['pwc_required_gear'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="46" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">ציוד בטיחות והצלה — חובה</text>
+  ${pwcGearCard(70, 120, 'חגורת הצלה', `
+    <path d="M-15 -12 L-8 -16 L-5 -12 L5 -12 L8 -16 L15 -12 L15 16 L-15 16 Z" fill="#e67e22" stroke="#b5551f" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M-5 -12 L-5 16 M5 -12 L5 16" stroke="#b5551f" stroke-width="1.3"/>
+    <rect x="-15" y="2" width="30" height="4" fill="#2c3e50"/>`)}
+  ${pwcGearCard(180, 120, 'מצוף/ידנית עשן', `
+    <rect x="-9" y="-14" width="18" height="28" rx="3" fill="#e67e22" stroke="#a5551f" stroke-width="1.5"/>
+    <rect x="-9" y="-14" width="18" height="7" rx="3" fill="#c0392b"/>
+    <path d="M0 -16 Q-8 -26 -3 -34 Q3 -30 0 -40" fill="none" stroke="#e67e22" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path d="M4 -16 Q10 -24 6 -32" fill="none" stroke="#d35400" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>`)}
+  ${pwcGearCard(290, 120, 'מדומם מנוע', `
+    <rect x="-8" y="-10" width="16" height="12" rx="2" fill="#e74c3c" stroke="#7b241c" stroke-width="1.5"/>
+    <path d="${coilPath(-6, 2, 8, 12, 5, 4)}" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="10" cy="13" r="4" fill="none" stroke="#e74c3c" stroke-width="2.2"/>`)}
+  ${pwcGearCard(125, 245, 'מראת איתות', `
+    <g transform="rotate(-18)"><rect x="-12" y="-12" width="24" height="24" rx="2" fill="#e8f4ff" stroke="#9bbdd6" stroke-width="1.5"/><line x1="-12" y1="-12" x2="12" y2="12" stroke="#fff" stroke-width="1.5"/></g>
+    <g stroke="#fffbe0" stroke-width="2.5" stroke-linecap="round"><line x1="10" y1="-8" x2="30" y2="-22"/><line x1="13" y1="-4" x2="33" y2="-16" stroke-width="1.3"/></g>`)}
+  ${pwcGearCard(235, 245, 'תעודות', `
+    <rect x="-13" y="-15" width="26" height="30" rx="2" fill="#f4f6f8" stroke="#b7c3cf" stroke-width="1.5"/>
+    <line x1="-8" y1="-8" x2="8" y2="-8" stroke="#8aa" stroke-width="1.6"/>
+    <line x1="-8" y1="-2" x2="8" y2="-2" stroke="#8aa" stroke-width="1.6"/>
+    <line x1="-8" y1="4" x2="3" y2="4" stroke="#8aa" stroke-width="1.6"/>
+    <circle cx="7" cy="8" r="4" fill="#e0b23c"/>`)}
+  <text x="180" y="336" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">חגורות הצלה · מצוף עשן · מדומם מנוע · מראת איתות · תעודות</text>
+`;
+
+// 1151 — minimum safe depth to run a PWC engine: at least 60 cm
+SCENES_QA['pwc_min_depth'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="180" fill="#1a5276" opacity=".45"/>
+  <rect x="0" y="330" width="360" height="90" fill="#c8a86a"/>
+  <path d="M0 330 Q90 322 180 330 Q270 338 360 330 L360 340 L0 340 Z" fill="#b5945a"/>
+  <text x="180" y="118" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">עומק מינימלי להפעלת מנוע</text>
+  <line x1="0" y1="205" x2="360" y2="205" stroke="#7eb8f7" stroke-width="1.5" stroke-dasharray="6,5" opacity="0.7"/>
+  ${sideJetSki(150, 205, '#f1c40f', '#c8a000', 1.35)}
+  <!-- jet intake under the hull -->
+  <path d="M150 214 L142 232 L158 232 Z" fill="#2c3e50" stroke="#1a2530" stroke-width="1"/>
+  <text x="120" y="252" text-anchor="middle" fill="#cfe0f2" font-size="9.5" font-family="Heebo,sans-serif">מדחף / יניקת מים</text>
+  <!-- depth dimension from surface to seabed -->
+  <g stroke="#2ecc71" stroke-width="2">
+    <path d="M300 205 L300 330"/>
+    <path d="M295 211 L300 204 L305 211"/>
+    <path d="M295 324 L300 331 L305 324"/>
+  </g>
+  <text x="300" y="272" text-anchor="middle" fill="#2ecc71" font-size="14" font-family="Heebo,sans-serif" font-weight="900" transform="rotate(-90,300,270)">לפחות 60 ס״מ</text>
+  <text x="180" y="368" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">מתחת ל-60 ס״מ המדחף שואב חול ופוגע בקרקעית</text>
+`;
+
+// 1157 — alcohol ban applies to BOTH the driver and the passenger
+SCENES_QA['pwc_no_alcohol'] = `
+  <rect width="360" height="420" fill="#0a1428"/>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276" opacity=".3"/>
+  <text x="180" y="118" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">איסור אלכוהול — נוהג ונוסע</text>
+  <rect x="0" y="300" width="360" height="6" fill="#1a5276" opacity=".7"/>
+  ${sideJetSki(188, 300, '#f1c40f', '#c8a000', 1.4)}
+  ${sideRider(150, 282, 0.85, 'grip', '#7f8c8d')}
+  ${sideRider(196, 282, 0.85, 'grip', '#2980b9')}
+  <!-- prohibition badges up top, leader line down to each rider (heads stay visible) -->
+  <line x1="146" y1="196" x2="150" y2="250" stroke="#e23b3b" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.7"/>
+  <line x1="214" y1="196" x2="204" y2="250" stroke="#e23b3b" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.7"/>
+  ${naBadge(146, 178, 1.2)}
+  ${naBadge(214, 178, 1.2)}
+  <text x="146" y="212" text-anchor="middle" fill="#ff9e9e" font-size="11" font-family="Heebo,sans-serif" font-weight="700">נוסע</text>
+  <text x="214" y="212" text-anchor="middle" fill="#ff9e9e" font-size="11" font-family="Heebo,sans-serif" font-weight="700">נוהג</text>
+  <text x="180" y="344" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">גם הנוהג וגם הנוסע חייבים להיות לא שתויים</text>
+`;
+
 // Route signal questions to the specific pattern; null = keep generic fallback.
 function generateSignalScene(topic, q) {
   if (topic === 'אותות מצוקה') return SCENES_QA['distress_mirror_sos'];
@@ -3133,6 +3229,10 @@ function getScene(topic, qText) {
     if(/נוסע מאחור|האצה|מדומם|אחיזה|נתון לסכנה/.test(q))   return SCENES_QA['pwc_rider_risk'];
   }
   if(topic==='אופנוע ים - כללי') {
+    if(/שתוי|שתויים|אלכוהול/.test(q))                        return SCENES_QA['pwc_no_alcohol'];
+    if(/עומק/.test(q))                                       return SCENES_QA['pwc_min_depth'];
+    if(/ציוד/.test(q) && /בטיחות|חובה|הצלה|לקחת|דרוש/.test(q)) return SCENES_QA['pwc_required_gear'];
+    if(/למי מותר להשיט|מותר להשיט|למי מותר לנהוג/.test(q))    return SCENES_QA['pwc_licence'];
     if(/חשיכה|ראות לקויה/.test(q))                           return SCENES_QA['pwc_night_forbidden'];
     if(/דג ארסי|פגיעת.*ארס|ארסי/.test(q))                    return SCENES_QA['firstaid_venom'];
     if(/מערכת ההגה|ידית ההגה|תקינות.*הגה/.test(q))           return SCENES_QA['steering_check'];
