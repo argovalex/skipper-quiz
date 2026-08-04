@@ -1631,6 +1631,7 @@ const CR_SHAPES = {
   10: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crBall(0,0,6)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="2"/></g>`,
   77: (cx,cy) => crBall(cx,cy,10),
   20: (cx,cy) => crConeDown(cx,cy,10),
+  82: (cx,cy) => crConeDown(cx,cy,10),  // official key numbers the inverted-triangle (מפרשית תחת מנוע) as 82; alias of 20
   75: (cx,cy) => `<rect x="${cx-9}" y="${cy-14}" width="18" height="28" rx="3" fill="#111"/>`,
   76: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-14,6)}${crBall(-14,10,6)}${crBall(14,10,6)}<line x1="0" y1="-20" x2="0" y2="4" stroke="#111" stroke-width="2"/><line x1="-14" y1="4" x2="14" y2="4" stroke="#111" stroke-width="2"/></g>`,
   79: (cx,cy) => `<g transform="translate(${cx},${cy})">${crBall(0,-16,6)}${crDiamond(0,0,7)}${crBall(0,16,6)}<line x1="0" y1="-24" x2="0" y2="24" stroke="#111" stroke-width="1.5"/></g>`,
