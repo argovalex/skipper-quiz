@@ -70,11 +70,29 @@ function applyVoFixes(text) {
 // index.html / queue.html buildVoiceover.
 const ANSWER_PROMPT_NUMS = new Set([1053, 1054]);
 
+// Question ids are 4-digit (e.g. 1002); edge-tts misreads the digit string
+// ("1002" -> "10020"), so spell the number in Hebrew words for the narration.
+function heNum(n){
+  n=Number(n);
+  if(!Number.isInteger(n)||n<1||n>9999) return String(n);
+  const o=['','אחד','שניים','שלושה','ארבעה','חמישה','שישה','שבעה','שמונה','תשעה'];
+  const teen=['עשרה','אחד עשר','שנים עשר','שלושה עשר','ארבעה עשר','חמישה עשר','שישה עשר','שבעה עשר','שמונה עשר','תשעה עשר'];
+  const t=['','','עשרים','שלושים','ארבעים','חמישים','שישים','שבעים','שמונים','תשעים'];
+  const hd=['','מאה','מאתיים','שלוש מאות','ארבע מאות','חמש מאות','שש מאות','שבע מאות','שמונה מאות','תשע מאות'];
+  const thc=['','','','שלושת','ארבעת','חמשת','ששת','שבעת','שמונת','תשעת'];
+  const p=[]; const th=Math.floor(n/1000); n%=1000;
+  if(th===1)p.push('אלף'); else if(th===2)p.push('אלפיים'); else if(th>=3)p.push(thc[th]+' אלפים');
+  const h=Math.floor(n/100); n%=100; if(h>0)p.push(hd[h]);
+  if(n>=10&&n<20){p.push(teen[n-10]);} else {const tt=Math.floor(n/10),oo=n%10; if(tt>0)p.push(t[tt]); if(oo>0)p.push(o[oo]);}
+  if(p.length>1)p[p.length-1]='ו'+p[p.length-1];
+  return p.join(' ');
+}
+
 function buildVoiceover(q) {
   const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
   const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '');
   const letter = (q.answer || 'א').trim();
-  let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
+  let q1 = applyVoFixes(`שאלה מספר ${heNum(q.num)}... ${q.q_he}.`);
   if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
   if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
