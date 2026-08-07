@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<title>Skipper Quiz Studio ⚓</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0f1e;color:#fff;font-family:'Heebo',sans-serif;direction:rtl;min-height:100vh;display:flex;gap:0}
+
+/* LEFT: Editor */
+#editor{width:420px;min-width:420px;background:#0c1a3a;border-left:2px solid #1e3a6e;padding:24px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
+#editor h1{font-size:20px;color:#7eb8f7;border-bottom:1px solid #1e3a6e;padding-bottom:12px}
+.field label{display:block;font-size:12px;color:#7eb8f7;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;background:#0a1528;border:1px solid #2a4a8a;border-radius:8px;padding:10px 12px;color:#fff;font-family:'Heebo',sans-serif;font-size:14px;outline:none;transition:border 0.2s}
+.field input:focus,.field textarea:focus{border-color:#4a90d9}
+.field textarea{resize:vertical;min-height:70px}
+.opts-grid{display:flex;flex-direction:column;gap:8px}
+.opt-row{display:flex;gap:8px;align-items:center}
+.opt-letter{background:#1e3a6e;color:#7eb8f7;font-weight:900;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.opt-row input{flex:1}
+.correct-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.correct-btn{background:#1a2f5e;border:1px solid #2a4a8a;color:#7eb8f7;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:13px;transition:all 0.2s}
+.correct-btn.active{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.topic-select{display:flex;gap:8px;flex-wrap:wrap}
+.topic-btn{background:#1a2f5e;border:1px solid #2a4a8a;color:#7eb8f7;padding:5px 12px;border-radius:16px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:12px}
+.topic-btn.active{background:#1e3a6e;border-color:#4a90d9;color:#fff}
+.btn-main{background:#4a90d9;color:#fff;border:none;padding:12px;border-radius:10px;font-family:'Heebo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;width:100%;transition:background 0.2s}
+.btn-main:hover{background:#357abd}
+.btn-dl{background:#0d3d2a;color:#2ecc71;border:1px solid #2ecc71;padding:12px;border-radius:10px;font-family:'Heebo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-top:6px;transition:all 0.2s}
+.btn-dl:hover{background:#1a5c3a}
+.tip{background:#0a1528;border-radius:8px;padding:10px 12px;font-size:12px;color:#7eb8f7;line-height:1.6}
+
+/* RIGHT: Preview */
+#preview-area{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;background:#060d1a}
+#preview-area h2{color:#7eb8f7;font-size:14px;letter-spacing:2px;margin-bottom:20px;font-weight:700}
+#reel{width:360px;height:640px;background:#0c1a3a;border-radius:16px;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+#r-header{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.r-brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
+.r-title{color:#fff;font-size:17px;font-weight:900}
+#r-scene{flex:1;position:relative;overflow:hidden}
+#r-footer{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.r-qlabel{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.r-qtext{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.r-opts{display:flex;flex-direction:column;gap:5px}
+.r-opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.r-opt .ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.r-opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.r-opt.correct .ltr{background:#2ecc71;color:#0d3d2a}
+.r-opt.dim{opacity:0.3}
+#r-prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+.phase-indicator{display:flex;gap:6px;margin-top:12px}
+.ph-dot{width:8px;height:8px;border-radius:50%;background:#1e3a6e;transition:background 0.3s}
+.ph-dot.on{background:#4a90d9}
+</style>
+</head>
+<body>
+
+<!-- EDITOR -->
+<div id="editor">
+  <h1>⚓ Skipper Quiz Studio</h1>
+
+  <div class="field">
+    <label>שאלה</label>
+    <textarea id="qText" placeholder="כתוב את השאלה כאן...">מהם סימני הזיהוי לכניסה למרינה בישראל בגישה מהים?</textarea>
+  </div>
+
+  <div class="field">
+    <label>אפשרויות תשובה</label>
+    <div class="opts-grid">
+      <div class="opt-row"><div class="opt-letter">א</div><input id="opt0" value="אור ירוק מימין ואור אדום משמאל"></div>
+      <div class="opt-row"><div class="opt-letter">ב</div><input id="opt1" value="דגל אדום מימין + אורות מהבהבים משמאל"></div>
+      <div class="opt-row"><div class="opt-letter">ג</div><input id="opt2" value="ירוק מהבהב מימין, אדום מהבהב משמאל"></div>
+      <div class="opt-row"><div class="opt-letter">ד</div><input id="opt3" value="אדום מהבהב מימין, ירוק מהבהב משמאל"></div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>תשובה נכונה</label>
+    <div class="correct-row">
+      <button class="correct-btn" onclick="setCorrect(0)">א</button>
+      <button class="correct-btn" onclick="setCorrect(1)">ב</button>
+      <button class="correct-btn active" onclick="setCorrect(2)">ג</button>
+      <button class="correct-btn" onclick="setCorrect(3)">ד</button>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>הסבר (יוצג בסוף)</label>
+    <textarea id="expl" placeholder="הסבר קצר על התשובה הנכונה...">IALA אזור A — ישראל ואירופה: ירוק = Starboard (ימין) בכניסה לנמל</textarea>
+  </div>
+
+  <div class="field">
+    <label>נושא / איור</label>
+    <div class="topic-select" id="topicBtns">
+      <button class="topic-btn active" onclick="setTopic('marina',event)">כניסה לנמל</button>
+      <button class="topic-btn" onclick="setTopic('lights',event)">אורות לילה</button>
+      <button class="topic-btn" onclick="setTopic('rightofway',event)">זכות מעבר</button>
+      <button class="topic-btn" onclick="setTopic('distress',event)">מצוקה</button>
+      <button class="topic-btn" onclick="setTopic('anchor',event)">עגינה</button>
+    </div>
+  </div>
+
+  <button class="btn-main" onclick="updatePreview()">▶ תצוגה מקדימה</button>
+  <button class="btn-dl" onclick="downloadHTML()">⬇ הורד HTML להקלטה</button>
+
+  <div class="tip">
+    💡 <strong>איך מקליטים:</strong><br>
+    1. לחץ "הורד HTML" → פתח בדפדפן<br>
+    2. לחץ <strong>Win + G</strong> → התחל הקלטה<br>
+    3. האנימציה רצה אוטומטית (~18 שניות)<br>
+    4. עצור הקלטה → קובץ MP4 מוכן
+  </div>
+</div>
+
+<!-- PREVIEW -->
+<div id="preview-area">
+  <h2>תצוגה מקדימה — 9:16</h2>
+  <div id="reel">
+    <div id="r-header">
+      <div class="r-brand">⚓ SKIPPER QUIZ</div>
+      <div class="r-title">מבחן הסקיפר היומי</div>
+    </div>
+    <div id="r-scene">
+      <svg id="r-svg" width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice"></svg>
+      <div id="r-prog"></div>
+    </div>
+    <div id="r-footer">
+      <div class="r-qlabel" id="r-qlabel">❓ השאלה</div>
+      <div class="r-qtext" id="r-qtext"></div>
+      <div class="r-opts" id="r-opts"></div>
+    </div>
+  </div>
+  <div class="phase-indicator" id="phaseDots">
+    <div class="ph-dot on"></div>
+    <div class="ph-dot"></div>
+    <div class="ph-dot"></div>
+    <div class="ph-dot"></div>
+  </div>
+</div>
+
+<script>
+let correctIdx = 2;
+let currentTopic = 'marina';
+let animTimer = null;
+const LETTERS = ['א','ב','ג','ד'];
+
+const SCENES = {
+marina: `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 60 Q90 50 180 60 Q270 70 360 60" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 140 Q90 130 180 140 Q270 150 360 140" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 220 Q90 210 180 220 Q270 230 360 220" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 300 Q90 290 180 300 Q270 310 360 300" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 380 Q90 370 180 380 Q270 390 360 380" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <rect x="40" y="0" width="22" height="240" rx="6" fill="#2c5282"/><rect x="298" y="0" width="22" height="240" rx="6" fill="#2c5282"/>
+  <rect x="0" y="0" width="40" height="250" fill="#1a3a1a" opacity="0.6"/><rect x="320" y="0" width="40" height="250" fill="#1a3a1a" opacity="0.6"/>
+  <rect x="0" y="0" width="360" height="28" fill="#1a3a1a" opacity="0.7"/>
+  <circle cx="319" cy="248" r="16" fill="#1a4a2a"/><circle cx="319" cy="248" r="13" fill="#27ae60"><animate attributeName="opacity" values="1;0.1;1" dur="1.4s" repeatCount="indefinite"/></circle>
+  <circle cx="319" cy="248" r="22" fill="#2ecc71" opacity="0"><animate attributeName="opacity" values="0;0.35;0" dur="1.4s" repeatCount="indefinite"/></circle>
+  <text x="319" y="274" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ירוק</text>
+  <text x="319" y="287" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial">Starboard</text>
+  <circle cx="41" cy="248" r="16" fill="#4a1a1a"/><circle cx="41" cy="248" r="13" fill="#c0392b"><animate attributeName="opacity" values="1;0.1;1" dur="1.4s" repeatCount="indefinite" begin="0.7s"/></circle>
+  <circle cx="41" cy="248" r="22" fill="#e74c3c" opacity="0"><animate attributeName="opacity" values="0;0.35;0" dur="1.4s" repeatCount="indefinite" begin="0.7s"/></circle>
+  <text x="41" y="274" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Heebo,sans-serif" font-weight="700">אדום</text>
+  <text x="41" y="287" text-anchor="middle" fill="#7eb8f7" font-size="9" font-family="Arial">Port</text>
+  <text x="180" y="228" text-anchor="middle" fill="#7eb8f7" font-size="10" font-family="Heebo,sans-serif" opacity="0.8">— כניסה למרינה —</text>
+  <g><ellipse cx="180" cy="390" rx="18" ry="36" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/><ellipse cx="180" cy="370" rx="10" ry="13" fill="#ccc"/><circle cx="180" cy="370" r="3" fill="#666"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;0,-155;0,-155" dur="5s" repeatCount="indefinite" keyTimes="0;0.65;1" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1"/></g>
+`,
+lights: `
+  <rect width="360" height="420" fill="#050d1a"/>
+  <circle cx="50" cy="40" r="1.5" fill="white" opacity="0.8"/><circle cx="120" cy="20" r="1" fill="white" opacity="0.7"/><circle cx="200" cy="50" r="1.5" fill="white" opacity="0.9"/><circle cx="280" cy="30" r="1" fill="white" opacity="0.6"/><circle cx="320" cy="70" r="2" fill="white" opacity="0.8"/>
+  <g transform="translate(180,230)">
+    <ellipse cx="0" cy="0" rx="24" ry="50" fill="#1a2a3a" stroke="#2a4a6a" stroke-width="1.5"/>
+    <ellipse cx="0" cy="-15" rx="14" ry="18" fill="#1a2a3a" stroke="#2a4a6a" stroke-width="1"/>
+    <circle cx="22" cy="-5" r="7" fill="#27ae60"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+    <circle cx="22" cy="-5" r="14" fill="#2ecc71" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="2s" repeatCount="indefinite"/></circle>
+    <circle cx="-22" cy="-5" r="7" fill="#c0392b"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1s"/></circle>
+    <circle cx="-22" cy="-5" r="14" fill="#e74c3c" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="2s" repeatCount="indefinite" begin="1s"/></circle>
+    <line x1="0" y1="-50" x2="0" y2="10" stroke="#555" stroke-width="2"/>
+    <circle cx="0" cy="-55" r="7" fill="#fffacd"><animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/></circle>
+  </g>
+  <text x="205" y="225" fill="#2ecc71" font-size="10" font-family="Arial">Green/Starboard</text>
+  <text x="100" y="225" fill="#e74c3c" font-size="10" font-family="Arial">Red/Port</text>
+`,
+rightofway: `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 80 Q90 70 180 80 Q270 90 360 80" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 200 Q90 190 180 200 Q270 210 360 200" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 320 Q90 310 180 320 Q270 330 360 320" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <g transform="translate(70,210) rotate(90)"><ellipse cx="0" cy="0" rx="16" ry="34" fill="#e8d8b0" stroke="#999" stroke-width="1"/><ellipse cx="0" cy="-12" rx="9" ry="12" fill="#d4c090"/><circle cx="0" cy="-12" r="3" fill="#666"/></g>
+  <text x="70" y="258" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">A</text>
+  <path d="M95 210 L165 210" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr)"/>
+  <g transform="translate(250,100)"><ellipse cx="0" cy="0" rx="16" ry="34" fill="#e8e8e8" stroke="#999" stroke-width="1"/><ellipse cx="0" cy="-12" rx="9" ry="12" fill="#ccc"/><circle cx="0" cy="-12" r="3" fill="#666"/></g>
+  <text x="250" y="148" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">B</text>
+  <path d="M250 138 L250 200" stroke="#7eb8f7" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr)"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#7eb8f7"/></marker></defs>
+  <text x="180" y="210" text-anchor="middle" fill="#ff0" font-size="32">⚠</text>
+`,
+distress: `
+  <rect width="360" height="420" fill="#1a3a5c"/>
+  <g opacity="0.12"><path d="M0 100 Q90 90 180 100 Q270 110 360 100" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 250 Q90 240 180 250 Q270 260 360 250" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <g transform="translate(180,280) rotate(12)">
+    <ellipse cx="0" cy="0" rx="40" ry="18" fill="#8b4513" stroke="#6b3410" stroke-width="2"/>
+    <rect x="-15" y="-30" width="4" height="32" fill="#555"/>
+    <g transform="translate(20,-40)">
+      <line x1="0" y1="0" x2="0" y2="-60" stroke="#e74c3c" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;1;0.8;0" dur="1.5s" repeatCount="indefinite"/></line>
+      <circle cx="0" cy="-60" r="10" fill="#ff4500" opacity="0"><animate attributeName="opacity" values="0;1;0.8;0" dur="1.5s" repeatCount="indefinite"/></circle>
+      <circle cx="0" cy="-60" r="22" fill="#ff6b00" opacity="0"><animate attributeName="opacity" values="0;0.5;0" dur="1.5s" repeatCount="indefinite"/></circle>
+    </g>
+  </g>
+  <text x="180" y="390" text-anchor="middle" fill="#e74c3c" font-size="16" font-family="Heebo,sans-serif" font-weight="900">MAYDAY ⚠</text>
+`,
+anchor: `
+  <rect width="360" height="420" fill="#1a5276"/>
+  <g opacity="0.12"><path d="M0 80 Q90 70 180 80 Q270 90 360 80" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 200 Q90 190 180 200 Q270 210 360 200" fill="none" stroke="white" stroke-width="1.5"/><path d="M0 320 Q90 310 180 320 Q270 330 360 320" fill="none" stroke="white" stroke-width="1.5"/></g>
+  <rect x="0" y="380" width="360" height="50" fill="#8b7355" opacity="0.6"/>
+  <line x1="180" y1="220" x2="180" y2="385" stroke="#aaa" stroke-width="2" stroke-dasharray="8,4"/>
+  <g transform="translate(180,390)"><circle cx="0" cy="-5" r="8" fill="none" stroke="#aaa" stroke-width="2.5"/><line x1="0" y1="-13" x2="0" y2="8" stroke="#aaa" stroke-width="2.5"/><line x1="-10" y1="8" x2="10" y2="8" stroke="#aaa" stroke-width="2.5"/></g>
+  <g transform="translate(180,200)"><ellipse cx="0" cy="0" rx="20" ry="42" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/><ellipse cx="0" cy="-14" rx="11" ry="15" fill="#ccc"/><line x1="0" y1="-44" x2="0" y2="12" stroke="#888" stroke-width="1.5"/><circle cx="0" cy="-14" r="3" fill="#666"/><circle cx="0" cy="-52" r="7" fill="white" stroke="#888" stroke-width="1"/></g>
+  <text x="240" y="310" fill="#7eb8f7" font-size="11" font-family="Arial">5m depth</text>
+  <text x="240" y="360" fill="#7eb8f7" font-size="11" font-family="Arial">chain = ?</text>
+`
+};
+
+function setCorrect(i) {
+  correctIdx = i;
+  document.querySelectorAll('.correct-btn').forEach((b,j) => b.classList.toggle('active', j===i));
+  updatePreview();
+}
+
+function setTopic(t, e) {
+  currentTopic = t;
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+  if(e && e.target) e.target.classList.add('active');
+  updatePreview();
+}
+
+function getValues() {
+  return {
+    q: document.getElementById('qText').value,
+    opts: [0,1,2,3].map(i => document.getElementById('opt'+i).value),
+    correct: correctIdx,
+    expl: document.getElementById('expl').value,
+    topic: currentTopic
+  };
+}
+
+function updatePreview() {
+  const v = getValues();
+  document.getElementById('r-svg').innerHTML = SCENES[v.topic] + getAnswerOverlaySVG(v);
+  document.getElementById('r-qtext').textContent = v.q;
+  document.getElementById('r-qlabel').textContent = '❓ השאלה';
+  const optsEl = document.getElementById('r-opts');
+  optsEl.innerHTML = '';
+  v.opts.forEach((opt, i) => {
+    const d = document.createElement('div');
+    d.className = 'r-opt';
+    d.id = 'ro'+i;
+    d.innerHTML = `<div class="ltr">${LETTERS[i]}</div>${opt}`;
+    optsEl.appendChild(d);
+  });
+  runAnim(v);
+}
+
+function getAnswerOverlaySVG(v) {
+  return `<g id="answerOverlay" opacity="0">
+    <rect width="360" height="420" fill="#0c1a3a" opacity="0.92"/>
+    <text x="180" y="130" text-anchor="middle" fill="#2ecc71" font-size="60">✅</text>
+    <text x="180" y="185" text-anchor="middle" fill="#fff" font-size="18" font-family="Heebo,sans-serif" font-weight="900">תשובה נכונה!</text>
+    <foreignObject x="30" y="200" width="300" height="80">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="color:#2ecc71;font-size:14px;font-family:Heebo,sans-serif;font-weight:700;text-align:center;direction:rtl;line-height:1.5">${v.opts[v.correct]}</div>
+    </foreignObject>
+    <rect x="30" y="290" width="300" height="70" rx="10" fill="#1a2f5e" stroke="#4a90d9" stroke-width="1.5"/>
+    <foreignObject x="40" y="298" width="280" height="60">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="color:#fff;font-size:12px;font-family:Heebo,sans-serif;text-align:center;direction:rtl;line-height:1.5">${v.expl}</div>
+    </foreignObject>
+    <text x="180" y="385" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif">⚓ עקבו למבחן הסקיפר היומי</text>
+  </g>`;
+}
+
+const phases = [
+  {dur:2800, label:'❓ השאלה', showOpts:true, correct:-1, overlay:false},
+  {dur:4500, label:'💭 חשוב על התשובה...', showOpts:true, correct:-1, overlay:false},
+  {dur:3000, label:'✅ התשובה הנכונה', showOpts:true, correct:0, overlay:false},
+  {dur:4500, label:'💡 הסבר', showOpts:false, correct:-1, overlay:true},
+];
+
+function runAnim(v) {
+  clearTimeout(animTimer);
+  const dots = document.querySelectorAll('.ph-dot');
+  function runPhase(i) {
+    if(i >= phases.length) return;
+    const ph = phases[i];
+    dots.forEach((d,j) => d.classList.toggle('on', j===i));
+    document.getElementById('r-qlabel').textContent = ph.label;
+    document.getElementById('r-opts').style.display = ph.showOpts ? 'flex' : 'none';
+    if(ph.showOpts) {
+      for(let j=0;j<4;j++) {
+        const el = document.getElementById('ro'+j);
+        if(!el) continue;
+        el.classList.remove('correct','dim');
+        if(ph.correct >= 0) {
+          if(j === v.correct) el.classList.add('correct');
+          else el.classList.add('dim');
+        }
+      }
+    }
+    const ov = document.getElementById('answerOverlay');
+    if(ov) ov.setAttribute('opacity', ph.overlay ? '1' : '0');
+    document.getElementById('r-qtext').textContent = ph.overlay ? v.expl : v.q;
+    const p = document.getElementById('r-prog');
+    p.style.transition='none'; p.style.width='0%';
+    setTimeout(()=>{ p.style.transition='width '+ph.dur+'ms linear'; p.style.width='100%'; },30);
+    animTimer = setTimeout(()=>runPhase(i+1), ph.dur);
+  }
+  runPhase(0);
+}
+
+function downloadHTML() {
+  const v = getValues();
+  const scene = SCENES[v.topic];
+  const html = `<!DOCTYPE html>
+<html dir="rtl" lang="he"><head><meta charset="UTF-8"><title>Skipper Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+#reel{width:390px;height:693px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}.htitle{color:#fff;font-size:18px;font-weight:900}
+#scene{flex:1;position:relative;overflow:hidden}
+#ftr{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.ql{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}.qt{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:5px}.opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}.opt.correct .ltr{background:#2ecc71;color:#0d3d2a}.opt.dim{opacity:0.3}
+#prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}</style></head><body>
+<div id="reel">
+  <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי</div></div>
+  <div id="scene">
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice">
+      ${scene}
+      <g id="ov" opacity="0">
+        <rect width="360" height="420" fill="#0c1a3a" opacity="0.92"/>
+        <text x="180" y="130" text-anchor="middle" fill="#2ecc71" font-size="60">✅</text>
+        <text x="180" y="185" text-anchor="middle" fill="#fff" font-size="18" font-family="Heebo,sans-serif" font-weight="900">תשובה נכונה!</text>
+        <foreignObject x="30" y="200" width="300" height="80"><div xmlns="http://www.w3.org/1999/xhtml" style="color:#2ecc71;font-size:14px;font-family:Heebo,sans-serif;font-weight:700;text-align:center;direction:rtl;line-height:1.5">${v.opts[v.correct]}</div></foreignObject>
+        <rect x="30" y="290" width="300" height="70" rx="10" fill="#1a2f5e" stroke="#4a90d9" stroke-width="1.5"/>
+        <foreignObject x="40" y="298" width="280" height="60"><div xmlns="http://www.w3.org/1999/xhtml" style="color:#fff;font-size:12px;font-family:Heebo,sans-serif;text-align:center;direction:rtl;line-height:1.5">${v.expl}</div></foreignObject>
+        <text x="180" y="385" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif">⚓ עקבו למבחן הסקיפר היומי</text>
+      </g>
+    </svg>
+    <div id="prog"></div>
+  </div>
+  <div id="ftr">
+    <div class="ql" id="ql">❓ השאלה</div>
+    <div class="qt" id="qt">${v.q}</div>
+    <div class="opts" id="opts">
+      ${v.opts.map((o,i)=>`<div class="opt" id="o${i}"><div class="ltr">${['א','ב','ג','ד'][i]}</div>${o}</div>`).join('')}
+    </div>
+  </div>
+</div>
+<script>
+const C=${v.correct};const Q=${JSON.stringify(v.q)};const E=${JSON.stringify(v.expl)};
+const phases=[{dur:2800,label:'❓ השאלה',opts:true,c:-1,ov:false},{dur:4500,label:'💭 חשוב על התשובה...',opts:true,c:-1,ov:false},{dur:3000,label:'✅ התשובה הנכונה',opts:true,c:C,ov:false},{dur:4500,label:'💡 הסבר',opts:false,c:-1,ov:true}];
+function run(n){if(n>=phases.length)return;const ph=phases[n];
+document.getElementById('ql').textContent=ph.label;document.getElementById('qt').textContent=ph.ov?E:Q;
+document.getElementById('opts').style.display=ph.opts?'flex':'none';
+if(ph.opts){for(let j=0;j<4;j++){const el=document.getElementById('o'+j);if(!el)continue;el.classList.remove('correct','dim');if(ph.c>=0){if(j===C)el.classList.add('correct');else el.classList.add('dim');}}}
+document.getElementById('ov').setAttribute('opacity',ph.ov?'1':'0');
+const p=document.getElementById('prog');p.style.transition='none';p.style.width='0%';
+setTimeout(()=>{p.style.transition='width '+ph.dur+'ms linear';p.style.width='100%';},30);
+setTimeout(()=>run(n+1),ph.dur);}
+run(0);
+<\/script></body></html>`;
+
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'skipper_quiz.html';
+  a.click();
+}
+
+updatePreview();
+</script>
+</body>
+</html>

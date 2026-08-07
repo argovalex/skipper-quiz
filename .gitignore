@@ -13,3 +13,30 @@ publisher/
 
 # html/: 355 קבצים מיוצרים ע"י src/generate-all-l11.js + generate-compass-reel.js
 html/
+
+# scratch: סקריפטים ותוצרים חד-פעמיים, לא נכסים
+scratch_*
+
+# caches ותוצרי build/עיבוד מקומיים
+graphify-out/
+.tilecache/
+.review-data.json
+quiz_videos/
+media/preview/
+chk.mp3
+
+# ארכיון מקומי (סקריפטים ישנים)
+_archive/
+
+# וידאו: תוצרים כבדים, נשמרים מקומית/OneDrive לא ב-git (הטקסט והאיורים של lessons/ כן נעקבים)
+*.mp4
+video course/
+
+# inputs מקוריים וניסויים מקומיים
+*.pdf
+*.xlsx
+FB profile.jpg
+723085307_*.jpg
+questions-Alex.json
+raspen_5_diverse.json
+references/*.patch

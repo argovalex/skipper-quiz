@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>רשיון שיט 11 — עבור את המבחן מהנייד | סקיפר</title>
+<meta name="description" content="הכנה למבחן רשיון שיט 11 (אופנוע ים): 161 שאלות עם סרטוני הסבר, מבחני דמה ומד מוכנות. עבור את המבחן מהפעם הראשונה, מהנייד.">
+<meta property="og:title" content="רשיון שיט 11 — עבור את המבחן מהנייד">
+<meta property="og:description" content="161 שאלות • סרטוני הסבר • מבחני דמה • אחריות מעבר">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --navy:#07142e; --navy2:#0c1f45; --card:#112750;
+    --line:#1e3a6a; --blue:#4fa3ff; --blue-soft:#8fc2ff;
+    --ink:#eaf2ff; --muted:#9fb6d8;
+    --accent:#ff6a3d; --accent2:#ff8a5b; --gold:#ffd166; --green:#2ecc71;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Heebo','Segoe UI',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap');
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;
+       border:none;border-radius:999px;cursor:pointer;font-size:17px;padding:15px 28px;transition:transform .15s,box-shadow .15s}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 30px rgba(255,106,61,.35)}
+  .btn-primary:hover{box-shadow:0 14px 40px rgba(255,106,61,.5)}
+  .btn-ghost{background:rgba(255,255,255,.08);color:var(--ink);border:1px solid var(--line)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(7,20,46,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:14px;height:62px}
+  .logo{font-weight:900;font-size:20px;color:var(--blue-soft);display:flex;align-items:center;gap:8px}
+  nav .spacer{margin-right:auto}
+  nav .btn{padding:9px 18px;font-size:14px}
+  @media(max-width:640px){nav .nav-cta{display:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:56px 0 40px;background:
+        radial-gradient(1200px 500px at 80% -10%,rgba(79,163,255,.25),transparent),
+        radial-gradient(900px 500px at 0% 10%,rgba(255,106,61,.18),transparent)}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(79,163,255,.14);color:var(--blue-soft);
+        border:1px solid rgba(79,163,255,.35);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+  h1{font-size:clamp(30px,6vw,52px);font-weight:900;line-height:1.08;margin:16px 0 14px;letter-spacing:-.5px}
+  h1 .hl{background:linear-gradient(120deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:18px;color:var(--muted);max-width:520px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .hero-mini{margin-top:16px;font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+  .hero-mini b{color:var(--ink)}
+  .phone{justify-self:center;width:min(300px,80vw);aspect-ratio:9/18;background:linear-gradient(160deg,#0e2350,#0a1a3c);
+         border:8px solid #05101f;border-radius:38px;box-shadow:0 30px 70px rgba(0,0,0,.5);position:relative;overflow:hidden}
+  .phone .scr{position:absolute;inset:0;padding:22px 16px;display:flex;flex-direction:column;gap:12px}
+  .phone .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .phone .q .t{font-size:13px;font-weight:700;margin-bottom:10px}
+  .phone .opt{font-size:12px;color:var(--muted);background:var(--navy);border:1px solid var(--line);border-radius:9px;padding:8px 10px;margin-bottom:6px}
+  .phone .opt.ok{background:rgba(46,204,113,.12);border-color:var(--green);color:#b6f5cd;font-weight:700}
+  .phone .vid{margin-top:auto;height:92px;border-radius:12px;background:linear-gradient(135deg,#123a72,#0c2650);display:flex;align-items:center;justify-content:center;font-size:30px}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr;text-align:center}.sub{margin:0 auto}.hero-cta{justify-content:center}.hero-mini{justify-content:center}.phone{margin-top:10px}}
+
+  /* TRUST STRIP */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--navy2)}
+  .trust .wrap{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;padding:16px 20px;font-size:14px;font-weight:700;color:var(--blue-soft)}
+  .trust span{display:flex;align-items:center;gap:8px}
+
+  /* SECTION */
+  section{padding:64px 0}
+  .eyebrow{color:var(--accent);font-weight:800;letter-spacing:1px;font-size:13px;text-transform:uppercase}
+  h2{font-size:clamp(24px,4.5vw,36px);font-weight:900;margin:8px 0 8px;letter-spacing:-.4px}
+  .lead{color:var(--muted);font-size:17px;max-width:640px}
+  .center{text-align:center}.center .lead{margin:0 auto}
+
+  /* FEATURES */
+  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .15s,border-color .15s}
+  .feat:hover{transform:translateY(-3px);border-color:var(--blue)}
+  .feat .ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;
+            background:linear-gradient(135deg,rgba(79,163,255,.2),rgba(255,106,61,.15));margin-bottom:14px}
+  .feat h3{font-size:19px;font-weight:800;margin-bottom:6px}
+  .feat p{color:var(--muted);font-size:15px}
+  @media(max-width:640px){.features{grid-template-columns:1fr}}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;counter-reset:s}
+  .step{background:var(--navy2);border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-16px;inset-inline-start:20px;width:36px;height:36px;
+                background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff}
+  .step h3{margin:10px 0 6px;font-size:18px}
+  .step p{color:var(--muted);font-size:15px}
+  @media(max-width:640px){.steps{grid-template-columns:1fr;gap:26px}}
+
+  /* PRICING */
+  .price-wrap{display:flex;justify-content:center;margin-top:36px}
+  .price{background:linear-gradient(180deg,var(--card),var(--navy2));border:1px solid var(--blue);border-radius:24px;
+         padding:34px;max-width:440px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.4);position:relative}
+  .price .tag{position:absolute;top:-14px;inset-inline-start:50%;transform:translateX(50%);
+              background:var(--gold);color:#3a2a00;font-weight:900;font-size:13px;padding:6px 16px;border-radius:999px}
+  .price h3{font-size:22px;font-weight:900;text-align:center}
+  .amount{text-align:center;margin:16px 0 6px}
+  .amount .was{color:var(--muted);text-decoration:line-through;font-size:20px;margin-inline-end:8px}
+  .amount .now{font-size:52px;font-weight:900;color:#fff}
+  .amount .cur{font-size:26px;font-weight:800}
+  .amount .once{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+  .plist{list-style:none;margin:20px 0;display:grid;gap:10px}
+  .plist li{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+  .plist li::before{content:"✓";color:var(--green);font-weight:900}
+  .coupon{display:flex;gap:8px;margin:8px 0 18px}
+  .coupon input{flex:1;background:var(--navy);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:12px 14px;font-size:15px;direction:ltr;text-align:center;letter-spacing:1px}
+  .coupon input:focus{outline:none;border-color:var(--blue)}
+  .coupon button{background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:0 16px;font-weight:800;cursor:pointer}
+  .coupon-msg{font-size:13px;text-align:center;min-height:18px;margin-bottom:10px}
+  .coupon-msg.ok{color:var(--green)}.coupon-msg.err{color:var(--accent2)}
+  .price .btn{width:100%}
+  .guarantee{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:16px;color:var(--blue-soft);font-size:14px;font-weight:700}
+
+  /* FAQ */
+  .faq{max-width:720px;margin:36px auto 0}
+  details{background:var(--navy2);border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:12px}
+  summary{cursor:pointer;font-weight:800;font-size:16px;padding:14px 0;list-style:none;display:flex;justify-content:space-between}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--accent);font-weight:900}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);padding:0 0 16px;font-size:15px}
+
+  /* FINAL CTA */
+  .final{background:linear-gradient(135deg,rgba(255,106,61,.16),rgba(79,163,255,.16));border-top:1px solid var(--line)}
+  .final .wrap{text-align:center;padding:64px 20px}
+
+  /* FOOTER */
+  footer{background:#050e20;border-top:1px solid var(--line);padding:40px 0}
+  footer .wrap{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+  .social{display:flex;gap:14px}
+  .social a{width:46px;height:46px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s}
+  .social a:hover{transform:translateY(-3px);background:var(--blue);border-color:var(--blue)}
+  .social svg{width:22px;height:22px;fill:var(--ink)}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:13px;color:var(--muted)}
+  .disclaimer{font-size:12px;color:#5f7398;max-width:640px}
+
+  /* STICKY MOBILE BAR */
+  .sticky-cta{position:fixed;bottom:0;inset-inline:0;z-index:60;background:rgba(7,20,46,.95);backdrop-filter:blur(10px);
+              border-top:1px solid var(--line);padding:10px 16px;display:none;gap:10px;align-items:center}
+  .sticky-cta .p{font-weight:900;font-size:17px;white-space:nowrap}
+  .sticky-cta .p small{color:var(--muted);text-decoration:line-through;font-size:13px;font-weight:600}
+  .sticky-cta .btn{flex:1;padding:13px}
+  @media(max-width:820px){.sticky-cta{display:flex}body{padding-bottom:74px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav><div class="wrap">
+  <div class="logo">⚓ סקיפר <span style="color:var(--muted);font-weight:700;font-size:13px">רשיון 11</span></div>
+  <div class="spacer"></div>
+  <a href="#free" class="btn btn-ghost nav-cta">10 שאלות חינם</a>
+  <a href="#price" class="btn btn-primary">רכוש עכשיו</a>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="pill">🌊 רשיון שיט 11 · אופנוע ים</span>
+    <h1>עבור את מבחן השיט <span class="hl">מהפעם הראשונה</span>, מהנייד</h1>
+    <p class="sub">161 שאלות עם סרטוני הסבר קצרים, מבחני דמה בפורמט האמיתי, ומד מוכנות שאומר לך בדיוק מתי אתה מוכן לגשת.</p>
+    <div class="hero-cta">
+      <a href="#free" class="btn btn-primary">התחל חינם — 10 שאלות ›</a>
+      <a href="#how" class="btn btn-ghost">איך זה עובד</a>
+    </div>
+    <div class="hero-mini">
+      <span>⭐ <b>אחריות מעבר</b> או כספך בחזרה</span>
+      <span>📱 עובד מכל נייד</span>
+      <span>🎬 סרטון לכל שאלה</span>
+    </div>
+  </div>
+  <div class="phone"><div class="scr">
+    <div class="q">
+      <div class="t">שתי ספינות מפרש מתקרבות. מי נותן זכות מעבר?</div>
+      <div class="opt">א. הגדולה יותר</div>
+      <div class="opt ok">ב. זו עם הרוח מ-Port ✓</div>
+      <div class="opt">ג. שתיהן מאטות</div>
+    </div>
+    <div class="vid">▶️ סרטון הסבר</div>
+  </div></div>
+</div></header>
+
+<!-- TRUST -->
+<div class="trust"><div class="wrap">
+  <span>✅ 161 שאלות מהבנק הרשמי</span>
+  <span>🎬 סרטוני הסבר</span>
+  <span>📝 מבחני דמה</span>
+  <span>📊 מד מוכנות</span>
+  <span>💰 אחריות מעבר</span>
+</div></div>
+
+<!-- FEATURES -->
+<section id="features"><div class="wrap">
+  <div class="center">
+    <span class="eyebrow">למה סקיפר</span>
+    <h2>לא עוד רשימת שאלות משעממת</h2>
+    <p class="lead">בנינו את זה בשביל מי שרוצה לעבור, לא בשביל מי שאוהב ללמוד. קצר, ויזואלי, מהנייד.</p>
+  </div>
+  <div class="features">
+    <div class="feat"><div class="ic">🎬</div><h3>סרטון לכל שאלה</h3><p>הסבר ויזואלי קצר לכל תשובה — מבינים למה, לא רק משננים.</p></div>
+    <div class="feat"><div class="ic">📝</div><h3>מבחן דמה אמיתי</h3><p>אותו מבנה, אותו מספר שאלות, טיימר וציון עובר — כמו ביום המבחן.</p></div>
+    <div class="feat"><div class="ic">🔁</div><h3>חוזרים על מה שטעית</h3><p>שאלה שטעית בה חוזרת אליך שוב עד שאתה שולט בה. ככה לומדים מהר.</p></div>
+    <div class="feat"><div class="ic">📊</div><h3>מד מוכנות</h3><p>רואה בדיוק כמה שלטת בכל נושא ומה הסיכוי שלך לעבור — לפני שאתה משלם על מבחן.</p></div>
+  </div>
+</div></section>
+
+<!-- HOW -->
+<section id="how" style="background:var(--navy2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="center"><span class="eyebrow">3 צעדים</span><h2>מהנייד למבחן</h2></div>
+  <div class="steps">
+    <div class="step"><h3>מתרגלים</h3><p>עוברים על השאלות לפי נושא, צופים בסרטון, מסמנים תשובה.</p></div>
+    <div class="step"><h3>עושים מבחן דמה</h3><p>בודקים איפה עומדים בפורמט המבחן האמיתי, שוב ושוב.</p></div>
+    <div class="step"><h3>ניגשים בביטחון</h3><p>כשמד המוכנות ירוק — יודעים שאתם מוכנים לגשת למבחן.</p></div>
+  </div>
+</div></section>
+
+<!-- FREE + PRICE -->
+<section id="price"><div class="wrap">
+  <div class="center" id="free">
+    <span class="eyebrow">התחלה חינם</span>
+    <h2>10 שאלות ראשונות עלינו</h2>
+    <p class="lead">טעם מלא מהמוצר — שאלות אמיתיות עם סרטונים. אהבת? פתח את כל ה-161 + מבחני הדמה.</p>
+    <div style="margin-top:22px"><a href="#" class="btn btn-ghost" onclick="return false">▶️ נסה 10 שאלות חינם</a></div>
+  </div>
+
+  <div class="price-wrap"><div class="price">
+    <div class="tag">🔥 מחיר השקה</div>
+    <h3>רשיון 11 — הכל כלול</h3>
+    <div class="amount">
+      <span class="was">₪149</span>
+      <span class="cur">₪</span><span class="now" id="priceNow">99</span>
+      <span class="once">תשלום חד-פעמי · גישה עד המבחן</span>
+    </div>
+    <ul class="plist">
+      <li>כל 161 השאלות של רשיון 11</li>
+      <li>סרטון הסבר לכל שאלה</li>
+      <li>מבחני דמה ללא הגבלה</li>
+      <li>מד מוכנות + מעקב התקדמות לפי נושא</li>
+      <li>חזרה חכמה על שאלות שטעית בהן</li>
+    </ul>
+    <div class="coupon">
+      <input id="couponInput" type="text" placeholder="קוד קופון" maxlength="20" oninput="this.value=this.value.toUpperCase()">
+      <button onclick="applyCoupon()">החל</button>
+    </div>
+    <div class="coupon-msg" id="couponMsg"></div>
+    <a href="#" class="btn btn-primary" id="buyBtn" onclick="return checkout()">רכוש עכשיו ›</a>
+    <div class="guarantee">🛟 לא עברת? מקבל את הכסף בחזרה</div>
+  </div></div>
+</div></section>
+
+<!-- FAQ -->
+<section style="background:var(--navy2);border-top:1px solid var(--line)"><div class="wrap">
+  <div class="center"><span class="eyebrow">שאלות נפוצות</span><h2>מה שרוצים לדעת</h2></div>
+  <div class="faq">
+    <details><summary>זה מתאים לרשיון 11 (אופנוע ים)?</summary><p>כן, כל 161 השאלות הן של שאלון רשיון 11. שאלונים נוספים יתווספו בהמשך.</p></details>
+    <details><summary>המחיר הוא חד-פעמי או מנוי?</summary><p>חד-פעמי. משלמים פעם אחת ומקבלים גישה מלאה עד שעוברים את המבחן.</p></details>
+    <details><summary>איך עובדת אחריות המעבר?</summary><p>אם עברת את כל התוכן, ניגשת למבחן ולא עברת — מחזירים לך את הכסף. פשוט.</p></details>
+    <details><summary>אפשר מהנייד?</summary><p>הכל בנוי קודם כל לנייד. פותחים בדפדפן, בלי להוריד אפליקציה.</p></details>
+    <details><summary>יש לי קוד ממשפיען/חבר</summary><p>מזינים אותו בשדה "קוד קופון" בכרטיס הרכישה וההנחה מתעדכנת אוטומטית.</p></details>
+  </div>
+</div></section>
+
+<!-- FINAL CTA -->
+<div class="final"><div class="wrap">
+  <h2 style="max-width:640px;margin:0 auto 10px">מוכן לעבור את מבחן השיט?</h2>
+  <p class="lead" style="margin:0 auto 24px">התחל עם 10 שאלות חינם — בלי כרטיס אשראי.</p>
+  <a href="#free" class="btn btn-primary">התחל חינם ›</a>
+</div></div>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="logo">⚓ סקיפר</div>
+  <div class="social">
+    <a href="#" data-net="facebook" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9H16l-.4 2.9h-2.1v7A10 10 0 0022 12z"/></svg></a>
+    <a href="#" data-net="youtube" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 001.8-1.8C23 15.2 23 12 23 12zM9.8 15V9l5.2 3-5.2 3z"/></svg></a>
+    <a href="#" data-net="tiktok" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 3c.3 2 1.6 3.6 3.5 3.9v2.7c-1.3 0-2.6-.4-3.7-1v6.1a5.9 5.9 0 11-5.9-5.9c.3 0 .6 0 .9.1v2.9a3 3 0 102.1 2.9V3h3.1z"/></svg></a>
+    <a href="#" data-net="instagram" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.4a4.6 4.6 0 100 9.2 4.6 4.6 0 000-9.2zm0 7.6a3 3 0 110-6 3 3 0 010 6zm4.8-7.8a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0zM20 7.5c-.1-1.4-.4-2.6-1.4-3.6S16.4 2.6 15 2.5C13.6 2.4 10.4 2.4 9 2.5c-1.4.1-2.6.4-3.6 1.4S3.6 6.1 3.5 7.5C3.4 8.9 3.4 12.1 3.5 13.5c.1 1.4.4 2.6 1.4 3.6s2.2 1.3 3.6 1.4c1.4.1 4.6.1 6 0 1.4-.1 2.6-.4 3.6-1.4s1.3-2.2 1.4-3.6c.1-1.4.1-4.6 0-6zm-1.9 7.5a3 3 0 01-1.7 1.7c-1.2.5-4 .4-5.4.4s-4.2.1-5.4-.4a3 3 0 01-1.7-1.7c-.5-1.2-.4-4-.4-5.4s-.1-4.2.4-5.4a3 3 0 011.7-1.7c1.2-.5 4-.4 5.4-.4s4.2-.1 5.4.4a3 3 0 011.7 1.7c.5 1.2.4 4 .4 5.4s.1 4.2-.4 5.4z"/></svg></a>
+  </div>
+  <div class="foot-links">
+    <a href="#">תנאי שימוש</a><a href="#">מדיניות פרטיות</a><a href="#">מדיניות ביטולים</a><a href="mailto:argovalexander@gmail.com">צור קשר</a>
+  </div>
+  <p class="disclaimer">סקיפר הוא חומר תרגול עצמאי ואינו גוף רשמי של רשות הספנות והנמלים. השאלות מבוססות על בנק השאלות הפומבי. אין באמור כדי להבטיח מעבר מבחן.</p>
+  <p style="font-size:12px;color:#4a5d80">© <span id="yr"></span> סקיפר · רשיון שיט 11</p>
+</div></footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <div class="p">₪<span id="stickyPrice">99</span> <small>₪149</small></div>
+  <a href="#price" class="btn btn-primary">רכוש עכשיו</a>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ---- Config (placeholders — wire to your real values) ----
+const BASE_PRICE = 99;              // מחיר רשיון 11
+const TRANZILA_TERMINAL = "YOUR_TERMINAL"; // שם הטרמינל ב-Tranzila
+// קופונים לדמו/תצוגה בלבד. האמת נקבעת בשרת (Railway) בזמן הסליקה!
+// type: 'percent' (אחוז הנחה) או 'fixed' (מחיר סופי קבוע)
+const COUPONS = {
+  "SKIPPER10": {type:"percent", value:10, label:"10% הנחה"},
+  "INSTA20":   {type:"percent", value:20, label:"20% הנחה — שת\"פ אינסטגרם"},
+  "TIKTOK25":  {type:"percent", value:25, label:"25% הנחה — שת\"פ טיקטוק"},
+  "FRIEND":    {type:"fixed",   value:79, label:"מחיר חבר — ₪79"}
+};
+
+let appliedCoupon = null;
+
+function currentPrice(){
+  if(!appliedCoupon) return BASE_PRICE;
+  const c = COUPONS[appliedCoupon];
+  if(c.type === "percent") return Math.round(BASE_PRICE * (1 - c.value/100));
+  return c.value;
+}
+function refreshPrice(){
+  const p = currentPrice();
+  document.getElementById('priceNow').textContent = p;
+  document.getElementById('stickyPrice').textContent = p;
+}
+function applyCoupon(){
+  const code = document.getElementById('couponInput').value.trim().toUpperCase();
+  const msg = document.getElementById('couponMsg');
+  if(!code){ msg.className="coupon-msg"; msg.textContent=""; appliedCoupon=null; refreshPrice(); return; }
+  if(COUPONS[code]){
+    appliedCoupon = code;
+    msg.className = "coupon-msg ok";
+    msg.textContent = "✓ קופון הוחל: " + COUPONS[code].label;
+  } else {
+    appliedCoupon = null;
+    msg.className = "coupon-msg err";
+    msg.textContent = "קוד לא תקין";
+  }
+  refreshPrice();
+}
+function checkout(){
+  // MVP: שולח לסליקת Tranzila עם המחיר והקופון. השרת מאמת קופון ומחיר סופית.
+  const price = currentPrice();
+  const params = new URLSearchParams({
+    supplier: TRANZILA_TERMINAL,
+    sum: price,
+    currency: 1,            // 1 = ILS
+    product: "SKIPPER-L11",
+    coupon: appliedCoupon || ""
+  });
+  // TODO: להחליף בכתובת דף הסליקה האמיתי של Tranzila
+  const url = "https://direct.tranzila.com/" + TRANZILA_TERMINAL + "/iframenew.php?" + params.toString();
+  console.log("checkout →", url);
+  alert("חיבור הסליקה מוגדר בשרת. מחיר לתשלום: ₪" + price + (appliedCoupon? " (קופון "+appliedCoupon+")":""));
+  return false; // החלף ל: window.location = url;
+}
+</script>
+</body>
+</html>
