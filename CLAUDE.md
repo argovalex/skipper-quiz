@@ -34,7 +34,7 @@
 - אל תרנדר/תיצור נגזרות משאלה שלא אומתה מול מפתח התשובות הרשמי. אימות תוכן קודם, רינדור אחר כך.
 - אל תרג'נרט את `data/l11.json`/`questions.json` בסקריפטים חד-פעמיים. ערוך in-place ושמר את כל השדות הקיימים, במיוחד `mediaUrl`.
 - לפני רג'נרוט bulk: הרץ diff ברמת שדה מול HEAD ודווח אילו מפתחות נוספו/נמחקו.
-- התאם EOL פר-קובץ מול HEAD (`git ls-files --eol <file>`); אל תכפה LF גורף. ה-HEAD מעורב: `scenes.js` ו-`tools/quiz-app/vo.js` הם CRLF, רוב השאר LF. כלי Edit/Write כותבים CRLF במכונה הזו, לכן נרמל את עץ-העבודה ל-EOL של ה-HEAD אחרי כל עריכה (byte-level), ואמת עם `git diff --ignore-cr-at-eol --stat` שהשינוי האמיתי קטן. `core.autocrlf=false`.
+- EOL נאכף עכשיו ע"י `.gitattributes` — אין יותר ריקוד ידני. מקור (`*.js/*.html/*.css/*.md/*.py/*.json`) = **LF**, `data/*.json` = **-text** (בייטים גולמיים, CRLF כמו שה-editor כותב דרך ה-API), `questions.json` = LF. כלי Edit/Write כותבים CRLF בעץ-העבודה אבל git מנרמל ל-LF ב-commit, אז אין churn. **אל תוסיף חוק `text` על `data/*.json`** — זה יאחסן blob ב-LF ויתנגש עם הכתיבה הגולמית של github-api.js. `core.autocrlf=false`. אם משהו נראה מוזר, אמת עם `git diff --ignore-cr-at-eol --stat`.
 
 ## Shell על Windows
 - **אל תשתמש ב-heredocs של bash (`<<EOF`)** — הם קרסו סשנים חזור על המכונה הזו. כתוב סקריפט לקובץ `.py`/`.js` עם Write והרץ אותו.

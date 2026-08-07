@@ -1,5 +1,45 @@
-# questions.json is the derived compat monolith. The editor (github-api.js) and
-# the render server both write it with LF via the GitHub API. Pin it to LF here
-# so core.autocrlf on a Windows working tree can never flip it back to CRLF and
-# reintroduce the ~8.5k-line no-op churn on every commit.
+# EOL policy — pins each file group to the line ending its writer produces, so
+# neither core.autocrlf nor a CRLF-writing editor can flip a whole file and
+# reintroduce the no-op churn that used to hit questions.json and the source.
+# See CLAUDE.md ("Shell על Windows" / data-layer) and [[questions-json-eol-churn]].
+
+# ── Binary assets: never normalize (protects them from renormalize) ──
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.mp3  binary
+*.mp4  binary
+*.pdf  binary
+*.xlsx binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+
+# ── Source + derived text: LF-canonical ──
+*.js   text eol=lf
+*.mjs  text eol=lf
+*.cjs  text eol=lf
+*.html text eol=lf
+*.css  text eol=lf
+*.md   text eol=lf
+*.py   text eol=lf
+*.sh   text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.json text eol=lf
+
+# questions.json: derived compat monolith; the editor (github-api.js) and the
+# render server both write it with LF. Keep it LF so a Windows working tree can
+# never flip it back to CRLF (~8.5k-line no-op churn on every commit).
 questions.json text eol=lf
+
+# ── Per-license bank: CRLF bytes preserved exactly ──
+# github-api.js dumpCanonical writes data/lXX.json to GitHub as raw CRLF bytes
+# and the sha-guarded save compares the file byte-for-byte. Mark them -text so
+# git stores the EXACT bytes the API writes and never normalizes (a `text` rule
+# would store an LF blob, which then differs from every editor save = churn).
+# Must come AFTER the generic *.json rule to win.
+data/*.json -text
