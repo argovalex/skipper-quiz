@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>עורך VO — ניקוד והאזנה</title>
+<style>
+  :root{
+    --bg:#0f1419; --panel:#1a222c; --border:#2a3441; --fg:#e6edf3;
+    --muted:#8b98a5; --accent:#2f81f7; --green:#2ea043; --red:#f85149;
+    --amber:#d29922;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1120px;margin:0 auto;padding:20px}
+  .layout{display:flex;gap:16px;align-items:flex-start}
+  .main{flex:1;min-width:0;order:2}
+  .side{width:290px;flex:none;position:sticky;top:16px;order:1}
+  @media(max-width:620px){.layout{flex-direction:column}.side{width:100%;position:static}}
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 16px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+  input[type=text]{background:var(--panel);border:1px solid var(--border);
+    color:var(--fg);border-radius:6px;padding:8px 10px;font-size:14px}
+  textarea{width:100%;background:var(--panel);border:1px solid var(--border);
+    color:var(--fg);border-radius:8px;padding:12px;font-size:18px;line-height:1.9;
+    resize:vertical;min-height:360px;font-family:inherit}
+  .btn{background:var(--panel);border:1px solid var(--border);color:var(--fg);
+    border-radius:6px;padding:8px 14px;font-size:14px;cursor:pointer}
+  .btn:hover{border-color:var(--accent)}
+  .btn:disabled{opacity:.5;cursor:default}
+  .btn-accent{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-green{background:var(--green);border-color:var(--green);color:#fff}
+  .btn-red-o{color:var(--red);border-color:var(--red)}
+  .btn-amber{color:var(--amber);border-color:var(--amber)}
+  .group{border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:12px}
+  .group h2{font-size:13px;color:var(--muted);margin:0 0 8px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.5px}
+  /* compact controls for האזנה + ניקוד so the lexicon/textarea get the room */
+  .group.compact{padding:8px 10px;margin-bottom:8px}
+  .group.compact h2{margin:0 0 6px;font-size:11px}
+  .group.compact .btn{padding:5px 10px;font-size:13px}
+  .group.compact audio{height:34px;margin-top:8px}
+  .status{min-height:20px;font-size:14px;color:var(--muted);margin-top:8px}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+  kbd{background:#000;border:1px solid var(--border);border-radius:4px;
+    padding:1px 5px;font-size:12px}
+  audio{width:100%;margin-top:10px}
+  .lex-grid{display:flex;flex-wrap:wrap;gap:6px;max-height:calc(100vh - 190px);
+    overflow-y:auto;padding-left:4px}
+  .saved-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;
+    color:var(--green);border:1px solid var(--green);border-radius:20px;
+    padding:3px 10px;white-space:nowrap;opacity:0;transition:opacity .2s}
+  .saved-badge.on{opacity:1}
+  .lex-chip{display:inline-flex;align-items:center;gap:6px;background:var(--panel);
+    border:1px solid var(--border);border-radius:20px;padding:3px 4px 3px 10px}
+  .lex-chip .word{cursor:pointer;font-size:17px;padding:2px 2px}
+  .lex-chip .word:hover{color:var(--accent)}
+  .lex-chip .say{background:none;border:none;color:var(--muted);cursor:pointer;
+    font-size:14px;border-radius:50%;width:26px;height:26px;line-height:1}
+  .lex-chip .say:hover{color:var(--green)}
+  .nk-keys{display:flex;flex-wrap:wrap;gap:6px}
+  .nk-key{background:var(--panel);border:1px solid var(--border);color:var(--fg);
+    border-radius:6px;min-width:42px;height:40px;font-size:20px;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+  .nk-key:hover{border-color:var(--accent)}
+  .nk-key small{font-size:9px;color:var(--muted)}
+  .nk-key.wide{min-width:auto;padding:0 12px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>עורך VO — ניקוד והאזנה</h1>
+  <p class="sub">הדבק טקסט VO, נקד/ערוך, האזן, ואז העתק חזרה לשדה ה-VO בעורך הראשי. אותה לוגיקה (Dicta + edge-tts דרך Railway) כמו ב-index.html.</p>
+
+  <div class="row">
+    <input id="railwayUrl" type="text" placeholder="Railway URL (ל-TTS)" style="flex:1;min-width:220px"
+      oninput="localStorage.setItem('sq_railway_url', this.value.trim().replace(/\/$/,''))">
+  </div>
+
+  <div class="layout">
+    <div class="main">
+      <textarea id="vo" placeholder="הדבק כאן את טקסט ה-VO..." spellcheck="false"></textarea>
+      <div class="hint">סמן (highlight) קטע כדי לעבוד רק עליו. בלי סימון — הפעולה חלה על כל הטקסט. הסמן <kbd>[[PAUSE]]</kbd> נשמר בניקוד.</div>
+
+      <div class="row" style="margin-top:12px">
+        <button class="btn btn-green" onclick="saveDraft(true)" title="שמור טיוטה מקומית">💾 שמור</button>
+        <button class="btn btn-accent" onclick="copyVo()">📋 העתק הכל</button>
+        <button class="btn" onclick="document.getElementById('voFile').click()" title="טען קובץ VO (‎.txt‎) מהדיסק">📂 טען קובץ</button>
+        <input type="file" id="voFile" accept=".txt,text/plain" style="display:none" onchange="loadVoFile(this)">
+        <button class="btn btn-red-o" onclick="clearDraft()" title="מחק את הטקסט ואת הטיוטה השמורה">🗑 נקה</button>
+        <span class="saved-badge" id="savedInfo"></span>
+      </div>
+
+      <div class="group compact">
+        <h2>האזנה</h2>
+        <div class="row" style="margin-bottom:0">
+          <button class="btn btn-green" id="playBtn" onclick="playVo()">🔊 האזן (מסומן / הכל)</button>
+          <button class="btn" onclick="stopVo()">⏹ עצור</button>
+        </div>
+        <audio id="audio" controls></audio>
+      </div>
+
+      <div class="group compact">
+        <h2>ניקוד</h2>
+        <div class="row" style="margin-bottom:0">
+          <button class="btn" onclick="doNikud(false, this)" title="ניקוד אוטומטי לכל הטקסט">אָ נקד הכל</button>
+          <button class="btn btn-accent" onclick="doNikud(true, this)" title="ניקוד רק לקטע המסומן">אָ נקד מסומן</button>
+          <button class="btn btn-amber" onclick="stripNikud(true)" title="מחק ניקוד רק מהקטע המסומן">מחק ניקוד ממסומן</button>
+          <button class="btn btn-red-o" onclick="stripNikud(false)" title="מחק ניקוד מכל הטקסט">מחק ניקוד הכל</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>מקלדת ניקוד — הצב סמן אחרי אות, לחץ תנועה כדי לנקד אותה</h2>
+        <div class="nk-keys" id="nkKeys"></div>
+        <div class="hint">כל לחיצה מוסיפה סימן לאות שלפני הסמן. אפשר לערום כמה סימנים על אותה אות (דגש + תנועה + שין). <kbd>⌫ ניקוד</kbd> מסיר סימן אחד.</div>
+      </div>
+
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="side">
+      <div class="group" style="margin-bottom:0">
+        <h2>מילון ניקוד</h2>
+        <div class="row" style="margin-bottom:8px">
+          <input id="lexSearch" type="text" placeholder="חפש במילון..." style="flex:1;min-width:0"
+            oninput="renderLex(this.value)">
+        </div>
+        <div class="hint" style="margin:0 0 8px">לחץ מילה כדי להוסיף בסמן · 🔊 להאזנה</div>
+        <div class="lex-grid" id="lexGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Railway URL (shared with index.html via the same localStorage key) ─────────
+// Default so playback works out of the box on any origin/browser without setup.
+const DEFAULT_RAILWAY_URL = 'https://skipper-quiz-publisher-production.up.railway.app';
+function getRailwayUrl() {
+  let u = (localStorage.getItem('sq_railway_url') || DEFAULT_RAILWAY_URL).trim().replace(/\/$/, '');
+  if (u && !/^https?:\/\//i.test(u)) u = 'https://' + u;
+  return u;
+}
+
+// ── Dicta Nakdan (identical to index.html) ─────────────────────────────────────
+const DICTA_NAKDAN_URL = 'https://nakdan-5-3.loadbalancer.dicta.org.il/api';
+async function dictaNikud(text) {
+  const res = await fetch(DICTA_NAKDAN_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ task: 'nakdan', genre: 'modern', data: text,
+      addmorph: true, keepqq: false, nodageshdefault: false, patachma: false, keepmetagim: true })
+  });
+  if (!res.ok) throw new Error(`Dicta HTTP ${res.status}`);
+  const tokens = await res.json();
+  return tokens.map(t => t.sep ? t.word
+    : (t.options && t.options[0] ? t.options[0][0].replace(/\|/g, '') : t.word)).join('');
+}
+// Vocalise while preserving the [[PAUSE]] control marker.
+async function nikudText(text) {
+  const parts = text.split('[[PAUSE]]');
+  const out = [];
+  for (const p of parts) out.push(p.trim() ? await dictaNikud(p) : p);
+  return out.join('[[PAUSE]]');
+}
+
+// ── Selection helpers ──────────────────────────────────────────────────────────
+const ta = () => document.getElementById('vo');
+const setStatus = (m, kind) => {
+  const el = document.getElementById('status');
+  el.textContent = m;
+  el.style.color = kind === 'err' ? 'var(--red)' : kind === 'ok' ? 'var(--green)' : 'var(--muted)';
+};
+function hasSelection() {
+  const t = ta();
+  return t.selectionEnd > t.selectionStart;
+}
+// Replace the current selection (or the whole field) with newText, then re-select it.
+function replaceRange(useSelection, newText) {
+  const t = ta();
+  if (useSelection && hasSelection()) {
+    const s = t.selectionStart, e = t.selectionEnd;
+    t.value = t.value.slice(0, s) + newText + t.value.slice(e);
+    t.selectionStart = s; t.selectionEnd = s + newText.length;
+  } else {
+    t.value = newText;
+    t.selectionStart = 0; t.selectionEnd = newText.length;
+  }
+  t.focus();
+  saveDraft();
+}
+function currentText(useSelection) {
+  const t = ta();
+  if (useSelection && hasSelection()) return t.value.substring(t.selectionStart, t.selectionEnd);
+  return t.value;
+}
+
+// ── Niqqud ───────────────────────────────────────────────────────────────────
+async function doNikud(useSelection, btn) {
+  const src = currentText(useSelection).trim();
+  if (!src) { setStatus('אין טקסט לניקוד', 'err'); return; }
+  if (useSelection && !hasSelection()) { setStatus('לא סומן קטע — סמן טקסט קודם, או השתמש ב"נקד הכל"', 'err'); return; }
+  btn.disabled = true;
+  setStatus(useSelection ? '⏳ מנקד קטע מסומן...' : '⏳ מנקד...');
+  try {
+    const out = await nikudText(src);
+    replaceRange(useSelection, out);
+    setStatus('✅ נוקד — עברו על התוצאה ותקנו ידנית אם צריך', 'ok');
+  } catch (e) {
+    setStatus('❌ ניקוד נכשל: ' + e.message, 'err');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── Remove niqqud ──────────────────────────────────────────────────────────────
+// Strips Hebrew points + cantillation (U+0591–U+05C7). Leaves geresh/gershayim
+// (U+05F3/U+05F4) and the [[PAUSE]] marker untouched.
+function stripNikudStr(s) { return s.replace(/[֑-ׇ]/g, ''); }
+function stripNikud(useSelection) {
+  if (useSelection && !hasSelection()) { setStatus('לא סומן קטע — סמן טקסט קודם, או השתמש ב"מחק ניקוד הכל"', 'err'); return; }
+  const src = currentText(useSelection);
+  replaceRange(useSelection, stripNikudStr(src));
+  setStatus(useSelection ? '✅ נוקה ניקוד מהקטע המסומן' : '✅ נוקה ניקוד מכל הטקסט', 'ok');
+}
+
+// ── TTS (shared by playVo and the lexicon 🔊 buttons) ────────────────────────────
+async function speak(text) {
+  const railwayUrl = getRailwayUrl();
+  if (!railwayUrl) throw new Error('הכנס Railway URL');
+  const res = await fetch(`${railwayUrl}/tts`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text })
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const blob = await res.blob();
+  const audio = document.getElementById('audio');
+  audio.src = URL.createObjectURL(blob);
+  await audio.play();
+  return audio;
+}
+
+// ── Playback (selection only, or whole text) ────────────────────────────────────
+async function playVo() {
+  const selected = hasSelection();
+  const text = currentText(true).trim();
+  if (!text) { setStatus('אין טקסט להשמעה', 'err'); return; }
+  const btn = document.getElementById('playBtn');
+  btn.disabled = true;
+  setStatus(selected ? '⏳ מייצר קטע נבחר...' : '⏳ מייצר...');
+  try {
+    const audio = await speak(text);
+    setStatus(selected ? '🔊 מנגן קטע נבחר...' : '🔊 מנגן...');
+    audio.onended = () => setStatus('✅ סיים', 'ok');
+  } catch (e) {
+    setStatus('❌ ' + e.message, 'err');
+  } finally {
+    btn.disabled = false;
+  }
+}
+function stopVo() {
+  const audio = document.getElementById('audio');
+  audio.pause();
+  audio.currentTime = 0;
+  setStatus('⏹ נעצר');
+}
+
+// ── Load a VO .txt file from disk (reliable under file://) ───────────────────────
+function loadVoFile(input) {
+  const file = input.files && input.files[0];
+  if (!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    ta().value = r.result;
+    ta().selectionStart = ta().selectionEnd = 0;
+    saveDraft(true);
+    setStatus('📂 נטען: ' + file.name, 'ok');
+  };
+  r.onerror = () => setStatus('❌ טעינת הקובץ נכשלה', 'err');
+  r.readAsText(file, 'utf-8');
+  input.value = '';  // allow re-loading the same file
+}
+
+// ── Copy ─────────────────────────────────────────────────────────────────────
+async function copyVo() {
+  const text = ta().value;
+  try {
+    await navigator.clipboard.writeText(text);
+    setStatus('📋 הועתק — הדבק בשדה ה-VO בעורך הראשי', 'ok');
+  } catch {
+    ta().select(); document.execCommand('copy');
+    setStatus('📋 הועתק', 'ok');
+  }
+}
+
+// ── Niqqud keyboard (per-letter manual vocalisation, like Nakdan edit mode) ──────
+// Each key is a combining mark that attaches to the base letter before the caret.
+const NIQQUD_KEYS = [
+  ['ְ', 'שווא'], ['ַ', 'פתח'], ['ָ', 'קמץ'], ['ֶ', 'סגול'], ['ֵ', 'צירי'],
+  ['ִ', 'חיריק'], ['ֹ', 'חולם'], ['ֻ', 'קובוץ'], ['ּ', 'דגש/מפיק'],
+  ['ׁ', 'שין ימנית'], ['ׂ', 'שין שמאלית'],
+  ['ֱ', 'חטף סגול'], ['ֲ', 'חטף פתח'], ['ֳ', 'חטף קמץ'],
+];
+// Insert a single character at the caret (used for combining niqqud marks).
+function insertRaw(ch) {
+  const t = ta();
+  const s = t.selectionStart, e = t.selectionEnd;
+  t.value = t.value.slice(0, s) + ch + t.value.slice(e);
+  t.selectionStart = t.selectionEnd = s + ch.length;
+  t.focus();
+  saveDraft();
+}
+// Backspace one niqqud mark before the caret (leaves base letters alone).
+function removeMarkBeforeCaret() {
+  const t = ta();
+  const p = t.selectionStart;
+  if (p > 0 && /[֑-ׇ]/.test(t.value[p - 1])) {
+    t.value = t.value.slice(0, p - 1) + t.value.slice(p);
+    t.selectionStart = t.selectionEnd = p - 1;
+  }
+  t.focus();
+  saveDraft();
+}
+function renderNkKeys() {
+  const box = document.getElementById('nkKeys');
+  box.innerHTML = '';
+  for (const [mark, name] of NIQQUD_KEYS) {
+    const b = document.createElement('button');
+    b.className = 'nk-key';
+    b.title = name;
+    // ◌ (dotted circle) carries the mark so it is visible on the key.
+    b.innerHTML = '<span>◌' + mark + '</span><small>' + name + '</small>';
+    // preventDefault on mousedown keeps the textarea's caret/selection intact.
+    b.addEventListener('mousedown', ev => { ev.preventDefault(); insertRaw(mark); });
+    box.appendChild(b);
+  }
+  const del = document.createElement('button');
+  del.className = 'nk-key wide';
+  del.textContent = '⌫ ניקוד';
+  del.title = 'הסר סימן ניקוד אחד מהאות שלפני הסמן';
+  del.addEventListener('mousedown', ev => { ev.preventDefault(); removeMarkBeforeCaret(); });
+  box.appendChild(del);
+}
+
+// ── Niqqud lexicon (mirror of references/niqqud-lexicon.md) ──────────────────────
+// When Alex hands back a new vocalised word, add it here too.
+const LEXICON = [
+  { plain: 'שכלי',   nikud: 'שֶׁכְּלי' },
+  { plain: 'כלי',    nikud: 'כְּלי' },
+  { plain: 'כלי שיט', nikud: 'כְּלֶיִ שיט' },
+  { plain: 'נמצא',   nikud: 'נִמְצָא' },
+  { plain: 'זיהית',  nikud: 'זִיֽהִיתָ' },
+  { plain: 'שזיהית', nikud: 'שֶׁזִּיֽהִיתָ' },
+  { plain: 'זכור',   nikud: 'זְכֹוֽר' },
+  { plain: 'וזכור',  nikud: 'וּזְכֹוֽר' },
+  { plain: 'בקשר',   nikud: 'בָּקֶשֶׁר' },
+  { plain: 'פה',     nikud: 'פֶּה' },
+  { plain: 'מצוף',   nikud: 'מָצוֹף' },
+  { plain: 'לרוכב',  nikud: 'לְרוֹכֶב' },
+  { plain: 'לפנות',  nikud: 'לֵפַנוֹת' },
+  { plain: 'מצפן',   nikud: 'מַצְפֵּן' },
+  { plain: 'המצפן',  nikud: 'הַמַּצְפֵּן' },
+  { plain: 'מפרשית', nikud: 'מִפְרָשִׂית' },
+  { plain: 'עוגן',    nikud: 'עֹגֶן' },
+  { plain: 'חבל העוגן', nikud: 'חֶבֶל הָעֹגֶן' },
+  { plain: 'סכנה',    nikud: 'סַכָּנָה' },
+  { plain: 'ממוכן',   nikud: 'ממוכָּן' },
+  { plain: 'בדיג',    nikud: 'בַּדַּיג' },
+  { plain: 'מכמורתן', nikud: 'מִכְמֹורתן' },
+  { plain: 'שוקע',    nikud: 'שוֹקָעֲ' },
+  { plain: 'צילינדר', nikud: 'צֵלִינְדֵּר' },
+  { plain: 'ירכתי',   nikud: 'יַרְכִּתֵי' },
+  { plain: 'מפנים',   nikud: 'מֵפַנִיִם' },
+  { plain: 'בואו',    nikud: 'בּוֹאוּ' },
+  { plain: 'המפרש',   nikud: 'הַמִּפְרָשׂ' },
+  { plain: 'בחפירה',  nikud: 'בַּחַפִרה' },
+  { plain: 'מיידיי', nikud: 'מֵיִדֵיי' },
+  { plain: 'פירוטכניים', nikud: 'פִּרוּטְכ-נִים' },
+];
+
+// Insert vocalised word at the caret (replacing any selection).
+function insertAtCursor(text) {
+  const t = ta();
+  const s = t.selectionStart, e = t.selectionEnd;
+  t.value = t.value.slice(0, s) + text + t.value.slice(e);
+  const pos = s + text.length;
+  t.selectionStart = t.selectionEnd = pos;
+  t.focus();
+  saveDraft();
+}
+
+function renderLex(filter = '') {
+  const q = filter.trim();
+  const grid = document.getElementById('lexGrid');
+  grid.innerHTML = '';
+  const items = LEXICON.filter(it =>
+    !q || it.plain.includes(q) || stripNikudStr(it.nikud).includes(q));
+  if (!items.length) { grid.innerHTML = '<span class="hint">אין התאמה במילון</span>'; return; }
+  for (const it of items) {
+    const chip = document.createElement('span');
+    chip.className = 'lex-chip';
+    const word = document.createElement('span');
+    word.className = 'word';
+    word.textContent = it.nikud;
+    word.title = 'הוסף בסמן';
+    word.onclick = () => { insertAtCursor(it.nikud); setStatus('הוסף: ' + it.nikud, 'ok'); };
+    const say = document.createElement('button');
+    say.className = 'say';
+    say.textContent = '🔊';
+    say.title = 'האזן למילה';
+    say.onclick = async () => {
+      say.disabled = true;
+      setStatus('⏳ ' + it.nikud + '...');
+      try { const a = await speak(it.nikud); a.onended = () => setStatus('✅', 'ok'); setStatus('🔊 ' + it.nikud); }
+      catch (err) { setStatus('❌ ' + err.message, 'err'); }
+      finally { say.disabled = false; }
+    };
+    chip.append(word, say);
+    grid.appendChild(chip);
+  }
+}
+
+// ── Temporary draft save (survives refresh / accidental close) ───────────────────
+const DRAFT_KEY = 'sq_voeditor_draft';
+let _badgeTimer;
+function saveDraft(explicit) {
+  try { localStorage.setItem(DRAFT_KEY, ta().value); } catch {}
+  const el = document.getElementById('savedInfo');
+  if (!el) return;
+  el.textContent = '💾 נשמר ' + new Date().toLocaleTimeString('he-IL');
+  el.classList.add('on');
+  if (explicit) { clearTimeout(_badgeTimer); _badgeTimer = setTimeout(() => el.classList.remove('on'), 2500); }
+}
+function clearDraft() {
+  if (!confirm('למחוק את הטקסט ואת הטיוטה השמורה?')) return;
+  localStorage.removeItem(DRAFT_KEY);
+  ta().value = '';
+  document.getElementById('savedInfo').textContent = '';
+  setStatus('🗑 הטיוטה נוקתה');
+  ta().focus();
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+document.getElementById('railwayUrl').value = localStorage.getItem('sq_railway_url') || DEFAULT_RAILWAY_URL;
+const _draft = localStorage.getItem(DRAFT_KEY);
+if (_draft) { ta().value = _draft; const b = document.getElementById('savedInfo'); b.textContent = '💾 טיוטה שוחזרה'; b.classList.add('on'); }
+
+// Auto-load the current lesson VO if the editor is empty (works when the browser
+// allows local fetch; in Chrome under file:// it is blocked — use 📂 טען קובץ).
+const DEFAULT_VO = 'scratch_vo_u6b.txt';
+(async () => {
+  if (ta().value.trim()) return;                 // keep any restored draft
+  try {
+    const r = await fetch(DEFAULT_VO);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const t = await r.text();
+    if (!ta().value.trim()) { ta().value = t; saveDraft(true); setStatus('📂 נטען אוטומטית: ' + DEFAULT_VO, 'ok'); }
+  } catch (e) {
+    setStatus('הדפדפן חוסם טעינה אוטומטית של קובץ מקומי — לחץ 📂 טען קובץ ובחר ' + DEFAULT_VO);
+  }
+})();
+let _draftTimer;
+ta().addEventListener('input', () => { clearTimeout(_draftTimer); _draftTimer = setTimeout(saveDraft, 400); });
+renderNkKeys();
+renderLex();
+</script>
+</body>
+</html>
