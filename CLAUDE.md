@@ -34,7 +34,7 @@
 - אל תרנדר/תיצור נגזרות משאלה שלא אומתה מול מפתח התשובות הרשמי. אימות תוכן קודם, רינדור אחר כך.
 - אל תרג'נרט את `data/l11.json`/`questions.json` בסקריפטים חד-פעמיים. ערוך in-place ושמר את כל השדות הקיימים, במיוחד `mediaUrl`.
 - לפני רג'נרוט bulk: הרץ diff ברמת שדה מול HEAD ודווח אילו מפתחות נוספו/נמחקו.
-- הריפו LF-only. ודא `git config core.autocrlf false` ואל תיתן לסקריפט להפוך שורות — זה כבר דרס קבצים חזור.
+- התאם EOL פר-קובץ מול HEAD (`git ls-files --eol <file>`); אל תכפה LF גורף. ה-HEAD מעורב: `scenes.js` ו-`tools/quiz-app/vo.js` הם CRLF, רוב השאר LF. כלי Edit/Write כותבים CRLF במכונה הזו, לכן נרמל את עץ-העבודה ל-EOL של ה-HEAD אחרי כל עריכה (byte-level), ואמת עם `git diff --ignore-cr-at-eol --stat` שהשינוי האמיתי קטן. `core.autocrlf=false`.
 
 ## Shell על Windows
 - **אל תשתמש ב-heredocs של bash (`<<EOF`)** — הם קרסו סשנים חזור על המכונה הזו. כתוב סקריפט לקובץ `.py`/`.js` עם Write והרץ אותו.

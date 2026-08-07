@@ -1,4 +1,4 @@
-// ── Extracted from index.html — single source for both index.html and queue.html ──
+// ── Extracted from index.html — shared scene source for the editor and render tools ──
 // Edit scenes here; both editor tools load this file via <script src="scenes.js">.
 
 const LETTERS_HE = ['א','ב','ג','ד'];
