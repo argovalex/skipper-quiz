@@ -1,5 +1,5 @@
 // Shared GitHub Contents API read-modify-write helpers.
-// Used by index.html, queue.html and fix-requests.html instead of each
+// Used by index.html and fix-requests.html instead of each
 // keeping its own copy of the fetch-sha → base64-encode → PUT sequence.
 const REPO = 'argovalex/skipper-quiz';
 

@@ -67,7 +67,7 @@ function applyVoFixes(text) {
 // Questions whose pre-pause narration gets an explicit "מה התשובה הנכונה?" cue
 // right before the pause, so the viewer has a clear prompt to answer (and the
 // silencedetect pass gets a clean gap to lock the pause onto). Keep in sync with
-// index.html / queue.html buildVoiceover.
+// index.html buildVoiceover.
 const ANSWER_PROMPT_NUMS = new Set([1053, 1054]);
 
 // Question ids are 4-digit (e.g. 1002); edge-tts misreads the digit string
@@ -99,4 +99,11 @@ function buildVoiceover(q) {
   return q1 + ' [[PAUSE]] ' + q2;
 }
 
-module.exports = { buildVoiceover, applyVoFixes };
+// Dual-use module. In Node (update-question.js, render-with-html.js) it exports
+// via CommonJS. In the browser editor (index.html) it is loaded with <script src>;
+// the top-level const/function declarations above then live in the shared global
+// scope where index.html's inline scripts resolve buildVoiceover/applyVoFixes by
+// name. Guard the export so the browser doesn't throw on `module` being undefined.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { buildVoiceover, applyVoFixes, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
+}
