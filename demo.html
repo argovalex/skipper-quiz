@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SkipperQuiz — הדגמה</title>
+<style>
+  :root{
+    --bg:#04121f; --card:#0e2c46; --line:#1c496e;
+    --ink:#eaf4ff; --muted:#8fb2ce; --accent:#37c0ff; --gold:#ffcf5c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(120% 80% at 50% 0%,#0a2440 0%,var(--bg) 60%);
+    color:var(--ink);
+    font-family:"Segoe UI",Arial,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding:0 0 48px;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 16px}
+  header{text-align:center;padding:28px 16px 12px}
+  .brand{font-size:15px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+  h1{font-size:26px;margin:10px 0 6px;line-height:1.25}
+  .sub{color:var(--muted);font-size:15px;margin:0}
+
+  .hero{
+    margin:20px auto 6px;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 18px 50px rgba(0,0,0,.45);
+    background:#000;
+  }
+  .hero video{display:block;width:100%;height:auto}
+
+  .label{
+    display:flex;align-items:center;gap:10px;
+    margin:34px 4px 14px;font-size:14px;color:var(--muted);
+    letter-spacing:.04em;
+  }
+  .label::before,.label::after{content:"";height:1px;background:var(--line);flex:1}
+
+  .card{
+    background:linear-gradient(180deg,var(--card),#0b2338);
+    border:1px solid var(--line);border-radius:16px;
+    overflow:hidden;margin:14px 0;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  .card video{display:block;width:100%;height:auto;background:#000}
+  .meta{display:flex;align-items:center;justify-content:space-between;padding:12px 14px}
+  .topic{font-weight:700;font-size:16px}
+  .qnum{
+    font-size:12px;color:#04121f;background:var(--gold);
+    border-radius:999px;padding:3px 10px;font-weight:700;
+  }
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:36px}
+  footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">SKIPPERQUIZ</div>
+      <h1>הכנה חכמה למבחן התאוריה<br>ברשיון אופנוע ים</h1>
+      <p class="sub">כל שאלה הופכת לסרטון קצר עם הסבר מצויר וקריינות.</p>
+    </header>
+
+    <div class="hero">
+      <video src="media/intro-meshit11.mp4" controls playsinline
+             preload="metadata"></video>
+    </div>
+
+    <div class="label">שלוש דוגמאות מהמערכת</div>
+
+    <div class="card">
+      <video src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1785834720/skipper-quiz/yhjrbw5zjjgy1m6yq60p.mp4"
+             controls playsinline preload="metadata"
+             poster="https://res.cloudinary.com/dzmyg9pel/video/upload/so_2/skipper-quiz/yhjrbw5zjjgy1m6yq60p.jpg"></video>
+      <div class="meta"><span class="topic">זכות מעבר</span><span class="qnum">שאלה 1002</span></div>
+    </div>
+
+    <div class="card">
+      <video src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1785077285/skipper-quiz/stsphupn7caivaxhr13m.mp4"
+             controls playsinline preload="metadata"
+             poster="https://res.cloudinary.com/dzmyg9pel/video/upload/so_2/skipper-quiz/stsphupn7caivaxhr13m.jpg"></video>
+      <div class="meta"><span class="topic">אזורי שיט</span><span class="qnum">שאלה 1073</span></div>
+    </div>
+
+    <div class="card">
+      <video src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1785307539/skipper-quiz/zxfyn9d8tmekgun5rf6i.mp4"
+             controls playsinline preload="metadata"
+             poster="https://res.cloudinary.com/dzmyg9pel/video/upload/so_2/skipper-quiz/zxfyn9d8tmekgun5rf6i.jpg"></video>
+      <div class="meta"><span class="topic">מזג אוויר</span><span class="qnum">שאלה 1095</span></div>
+    </div>
+
+    <footer>SkipperQuiz · הדגמה · <b>רשיון אופנוע ים</b></footer>
+  </div>
+</body>
+</html>
