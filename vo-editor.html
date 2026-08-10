@@ -124,11 +124,20 @@
     <div class="side">
       <div class="group" style="margin-bottom:0">
         <h2>מילון ניקוד</h2>
+        <div id="lexSuggest" style="display:none;margin-bottom:10px"></div>
+        <div class="row" style="margin-bottom:6px">
+          <input id="lexAdd" type="text" placeholder="הדבק מילה מנוקדת..." style="flex:1;min-width:0"
+            onkeydown="if(event.key==='Enter')addToLexicon(this.value)">
+          <button class="btn btn-green" onclick="addToLexicon(document.getElementById('lexAdd').value)"
+            title="הוסף את המילה המנוקדת למילון">➕ הוסף</button>
+          <button class="btn btn-green" onclick="addToLexicon(currentText(true))"
+            title="הוסף את הקטע המסומן בטקסט למילון">הוסף מסומן</button>
+        </div>
         <div class="row" style="margin-bottom:8px">
           <input id="lexSearch" type="text" placeholder="חפש במילון..." style="flex:1;min-width:0"
             oninput="renderLex(this.value)">
         </div>
-        <div class="hint" style="margin:0 0 8px">לחץ מילה כדי להוסיף בסמן · 🔊 להאזנה</div>
+        <div class="hint" style="margin:0 0 8px">סמן מילה בטקסט לקבל הצעת החלפה · או חפש כאן · ➕ מוסיף מילה מנוקדת למילון (דרך :8899)</div>
         <div class="lex-grid" id="lexGrid"></div>
       </div>
     </div>
@@ -346,9 +355,11 @@ function renderNkKeys() {
   box.appendChild(del);
 }
 
-// ── Niqqud lexicon (mirror of references/niqqud-lexicon.md) ──────────────────────
-// When Alex hands back a new vocalised word, add it here too.
-const LEXICON = [
+// ── Niqqud lexicon — loaded LIVE from references/niqqud-lexicon.md ────────────────
+// The array below is only an offline fallback (used under file:// where fetch is
+// blocked). When served on :8899 the real file is fetched and always wins, so a
+// word added to the .md shows up here with no code change.
+const LEXICON_FALLBACK = [
   { plain: 'שכלי',   nikud: 'שֶׁכְּלי' },
   { plain: 'כלי',    nikud: 'כְּלי' },
   { plain: 'כלי שיט', nikud: 'כְּלֶיִ שיט' },
@@ -381,6 +392,102 @@ const LEXICON = [
   { plain: 'מיידיי', nikud: 'מֵיִדֵיי' },
   { plain: 'פירוטכניים', nikud: 'פִּרוּטְכ-נִים' },
 ];
+let LEXICON = LEXICON_FALLBACK.slice();
+let LEX_INDEX = new Map();               // consonants(plain) -> nikud
+const lexKey = s => stripNikudStr(s).replace(/\s+/g, ' ').trim();
+function buildLexIndex() {
+  LEX_INDEX = new Map();
+  for (const it of LEXICON) LEX_INDEX.set(lexKey(it.plain), it.nikud);
+}
+// Parse the markdown table rows: | plain | niqud |  (skip header / separator / annotations)
+function parseLexiconMd(md) {
+  const out = [];
+  for (const ln of md.split(/\r?\n/)) {
+    const m = ln.match(/^\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*$/);
+    if (!m) continue;
+    let plain = m[1], niq = m[2];
+    if (plain.includes('---') || plain === 'רגיל') continue;
+    plain = stripNikudStr(plain.split('(')[0].trim());   // match on consonants only
+    if (!plain || !niq) continue;
+    out.push({ plain, nikud: niq });
+  }
+  return out;
+}
+async function loadLexicon() {
+  try {
+    const r = await fetch('references/niqqud-lexicon.md');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const parsed = parseLexiconMd(await r.text());
+    if (parsed.length) LEXICON = parsed;
+    setStatus('📖 מילון נטען: ' + LEXICON.length + ' מילים', 'ok');
+  } catch (e) {
+    setStatus('מילון: משתמש בעותק מקומי (' + LEXICON.length + ') — הגש דרך :8899 לעדכון חי');
+  }
+  buildLexIndex();
+  const s = document.getElementById('lexSearch');
+  renderLex(s ? s.value : '');
+}
+
+// Add a vocalised word to references/niqqud-lexicon.md via the local :8899 server.
+async function addToLexicon(raw) {
+  const nikud = (raw || '').trim();
+  if (!nikud) { setStatus('אין מילה להוספה — הדבק מילה מנוקדת או סמן קטע', 'err'); return; }
+  if (!/[֑-ׇ]/.test(nikud)) { setStatus('המילה אינה מנוקדת', 'err'); return; }
+  try {
+    const r = await fetch('/api/lexicon', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nikud })
+    });
+    const j = await r.json();
+    if (!r.ok || j.status === 'error') throw new Error(j.message || ('HTTP ' + r.status));
+    const msg = { added: '✅ נוסף למילון', updated: '✅ עודכן במילון', exists: 'כבר קיים במילון' }[j.status] || '✅';
+    setStatus(msg + ': ' + j.plain + ' → ' + j.nikud, 'ok');
+    document.getElementById('lexAdd').value = '';
+    await loadLexicon();                              // refresh the live list + index
+    renderLex(document.getElementById('lexSearch').value);
+  } catch (e) {
+    setStatus('❌ הוספה נכשלה (' + e.message + ') — ודא שהעורך מוגש דרך :8899 (node tools/vo-editor-server.js)', 'err');
+  }
+}
+
+// Show a one-click replacement when the selected text is a lexicon word.
+function updateLexSuggest() {
+  const box = document.getElementById('lexSuggest');
+  if (!box) return;
+  const t = ta();
+  const s = t.selectionStart, e = t.selectionEnd;
+  const sel = e > s ? t.value.substring(s, e) : '';
+  const niq = sel ? LEX_INDEX.get(lexKey(sel)) : null;
+  if (!niq || sel === niq) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  box.innerHTML = '';
+  const lbl = document.createElement('div');
+  lbl.className = 'hint'; lbl.style.margin = '0 0 6px';
+  lbl.textContent = 'נמצא במילון — החלף את "' + stripNikudStr(sel) + '":';
+  const chip = document.createElement('span');
+  chip.className = 'lex-chip';
+  const w = document.createElement('span');
+  w.className = 'word'; w.textContent = niq;
+  const rep = document.createElement('button');
+  rep.className = 'btn btn-green'; rep.textContent = 'החלף'; rep.style.padding = '3px 12px';
+  rep.addEventListener('mousedown', ev => {           // mousedown+preventDefault keeps the selection
+    ev.preventDefault();
+    t.value = t.value.slice(0, s) + niq + t.value.slice(e);
+    t.selectionStart = s; t.selectionEnd = s + niq.length;
+    t.focus(); saveDraft();
+    setStatus('✅ הוחלף: ' + niq, 'ok');
+    box.style.display = 'none'; box.innerHTML = '';
+  });
+  const say = document.createElement('button');
+  say.className = 'say'; say.textContent = '🔊'; say.title = 'האזן';
+  say.addEventListener('mousedown', async ev => {
+    ev.preventDefault();
+    try { const a = await speak(niq); a.onended = () => setStatus('✅', 'ok'); setStatus('🔊 ' + niq); }
+    catch (err) { setStatus('❌ ' + err.message, 'err'); }
+  });
+  chip.append(w, rep, say);
+  box.append(lbl, chip);
+  box.style.display = '';
+}
 
 // Insert vocalised word at the caret (replacing any selection).
 function insertAtCursor(text) {
@@ -397,6 +504,7 @@ function renderLex(filter = '') {
   const q = filter.trim();
   const grid = document.getElementById('lexGrid');
   grid.innerHTML = '';
+  if (!q) { grid.innerHTML = '<span class="hint">סמן מילה בטקסט לקבל הצעת החלפה, או הקלד כאן כדי לחפש.</span>'; return; }
   const items = LEXICON.filter(it =>
     !q || it.plain.includes(q) || stripNikudStr(it.nikud).includes(q));
   if (!items.length) { grid.innerHTML = '<span class="hint">אין התאמה במילון</span>'; return; }
@@ -466,7 +574,12 @@ const DEFAULT_VO = 'scratch_vo_u6b.txt';
 let _draftTimer;
 ta().addEventListener('input', () => { clearTimeout(_draftTimer); _draftTimer = setTimeout(saveDraft, 400); });
 renderNkKeys();
+buildLexIndex();
 renderLex();
+loadLexicon();   // fetch the live lexicon from references/niqqud-lexicon.md
+// Offer a one-click replacement whenever a lexicon word is selected in the textarea.
+['select', 'keyup', 'mouseup', 'input', 'click'].forEach(ev => ta().addEventListener(ev, updateLexSuggest));
+document.addEventListener('selectionchange', () => { if (document.activeElement === ta()) updateLexSuggest(); });
 </script>
 </body>
 </html>
