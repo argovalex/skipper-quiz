@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "editor",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "http-server", "-p", "8899", "-c-1", "--silent"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["tools/vo-editor-server.js"],
       "port": 8899
     },
     {
