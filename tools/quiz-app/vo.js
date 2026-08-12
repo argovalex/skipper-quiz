@@ -11,6 +11,12 @@ const LATIN_LETTER_HE = {
 };
 
 const VO_FIXES = [
+  // Drop parenthetical Latin-word glosses like (underway), (bearing), (Kill Switch):
+  // the Hebrew term precedes them and is already spoken. Require 2+ consecutive
+  // Latin letters so single-letter vessel/flag labels like (K), (G), (A) are kept
+  // (the bracket-strip below then exposes them for LATIN_LETTER_HE conversion).
+  // Must run before that bracket-strip, which would otherwise leave the word inline.
+  [/\([^)]*[A-Za-z]{2,}[^)]*\)/g, ''],
   [/=/g,              ' '],
   [/[(){}\[\]]/g,     ''],
   [/[_|]/g,           ' '],
@@ -23,6 +29,23 @@ const VO_FIXES = [
   [/כשתכוון/g,        'כְּשֶׁתַכְוִן'],
   [/המצפן/g,          'הַמַּצְפֵּן'],
   [/מצפן/g,           'מַצְפֵּן'],
+  // Approved niqqud forms from the Hebrew-TTS niqqud dictionary, applied to the
+  // words that actually occur in the quiz bank. A leading prefix (ב/ה/ל/מ/ו/ש/כ)
+  // is captured and re-emitted so prefixed forms (בחרטום, למתרחצים) keep it, and
+  // the Hebrew-letter lookarounds keep us from matching inside longer inflections
+  // (עוגן gets niqqud, the verb עוגנת is left alone). Longer forms precede shorter.
+  [/(?<![א-ת])([בהלמושכו]?)חבל(?![א-ת])/g,      '$1חֶבֶל'],
+  [/(?<![א-ת])([בהלמושכו]?)חרטום(?![א-ת])/g,    '$1חַרְטוֹם'],
+  [/(?<![א-ת])([בהלמושכו]?)מתרחצים(?![א-ת])/g,  '$1מִתְרַחֲצִים'],
+  [/(?<![א-ת])([בהלמושכו]?)עוגן(?![א-ת])/g,     '$1עֹגֶן'],
+  [/(?<![א-ת])([בהלמושכו]?)קרקעית(?![א-ת])/g,   '$1קַרְקָעִית'],
+  [/(?<![א-ת])([בהלמושכו]?)מדחף(?![א-ת])/g,     '$1מַדְחֵף'],
+  [/(?<![א-ת])([בהלמושכו]?)מצוף(?![א-ת])/g,      '$1מָצוֹף'],
+  [/(?<![א-ת])([בהלמושכו]?)פירוטכני(?![א-ת])/g, '$1פֵּירוּטְכְנִי'],
+  [/(?<![א-ת])([בהלמושכו]?)רוכב(?![א-ת])/g,      '$1רוֹכֵב'],
+  [/(?<![א-ת])([בהלמושכו]?)דיג(?![א-ת])/g,       '$1דַּיג'],
+  [/(?<![א-ת])([בהלמושכו]?)מדוזה(?![א-ת])/g,     '$1מֵדוּזָה'],
+  [/(?<![א-ת])([בהלמושכו]?)בריזה(?![א-ת])/g,     '$1בְּרִיזָה'],
   [/\bVHF\b/g,        'וי, אייץ\', אף'],
   [/\bUTC\b/g,        'יו, טי, סי'],
   [/\bGPS\b/g,        'ג\'י, פי, אס'],
@@ -39,18 +62,26 @@ const VO_FIXES = [
   [/\bSOS\b/g,        'אס, או, אס'],
   [/\bCOLREGS\b/gi,   'קולרגס'],
   [/\bAnnex\s+IV\b/g, 'נספח ארבע'],
+  [/\bIV\b/g,         'ארבע'],
+  [/\bmaking way\b/gi, 'מפליג במים'],
+  [/\bunderway\b/gi,  'בדרך'],
   [/\bSOG\b/g,        'מהירות על הקרקע'],
   [/\bCOG\b/g,        'כיוון על הקרקע'],
   [/\bMMSI\b/g,       'אם, אם, אס, איי'],
   [/\bDSC\b/g,        'די, אס, סי'],
   [/\bMOB\b/g,        'אם, או, בי'],
-  [/\bNM\b/g,         'מִיל ימי'],
-  [/(?<![א-ת])מייל(?![א-ת])/g, 'מִיל'],
-  [/(?<![א-ת])מיל(?![א-ת])/g,  'מִיל'],
+  [/מכ"ם/g,           'מכמ'],
+  [/נק'/g,            'נקודה'],
+  [/\bAlpha\b/gi,     'אלפא'],
+  [/\bOscar\b/gi,     'אוסקר'],
+  [/\bNC\b/g,         'אן, סי'],
+  [/\bNM\b/g,         'מייל ימי'],
+  [/(?<![א-ת])מיל(?![א-ת])/g,  'מייל'],
   [/\bm\/s\b/g,       'מטר לשנייה'],
   [/\bkm\/h\b/gi,     'קילומטר לשעה'],
   [/°/g,              ' מעלות '],
   [/\bknots?\b/gi,    'קשרים'],
+  [/"/g,              ''],
   [/(?<=[֐-׿]-)([A-Za-z])(?![A-Za-z-])/g,
                       (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
   [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g,
