@@ -486,6 +486,22 @@ async function renderFromEditor() {
   const railwayUrl = getRailwayUrl();
   if (!railwayUrl) { showToast('⚠ הכנס Railway URL'); return; }
 
+  // Preflight: verify the render server is reachable before we push HTML and lock
+  // the question. A jammed/down Railway (the EAGAIN wall) otherwise fails silently
+  // after a stray HTML commit, leaving the video stale with no clear reason.
+  setRenderStatus('⏳ בודק שהשרת פעיל...');
+  try {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), 8000);
+    const ping = await fetch(`${railwayUrl}/status/${num}`, { signal: ctrl.signal });
+    clearTimeout(to);
+    if (!ping.ok) throw new Error(`HTTP ${ping.status}`);
+  } catch (e) {
+    showToast('❌ שרת הרינדור לא מגיב — עשה redeploy ל-Railway ונסה שוב');
+    setRenderStatus('❌ שרת הרינדור לא מגיב (redeploy נדרש)', true);
+    return;
+  }
+
   q.voiceover_text = document.getElementById('rm-vo').value.trim();
   q.html_locked     = document.getElementById('fix-locked')?.checked || false;
   const priorRenderedAt = q.rendered_at || null;
@@ -512,7 +528,13 @@ async function renderFromEditor() {
     });
     if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
     const data = await res.json();
-    if (data.videoUrl) { q.videoUrl = data.videoUrl; q.rendered_at = new Date().toISOString(); }
+    // A real render always yields a fresh Cloudinary URL. If the server hands back
+    // the same URL (or none), nothing actually rendered — treat it as a failure so
+    // the catch below re-checks /status instead of falsely reporting success.
+    if (!data.videoUrl || data.videoUrl === q.videoUrl) {
+      throw new Error('השרת לא החזיר סרטון חדש (רינדור לא בוצע)');
+    }
+    q.videoUrl = data.videoUrl; q.rendered_at = new Date().toISOString();
     renderingNums.delete(num);
     await saveJSON();
     showToast(`✅ Q#${num} רונדר!`);
