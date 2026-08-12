@@ -23,6 +23,9 @@ const VO_FIXES = [
   [/\s*[,;]\s*/g,     ', '],
   [/\.{2,}/g,         '.'],
   [/\s{2,}/g,         ' '],
+  // "אופנוע-ים" / "אופנוע – ים": the dash is read aloud by the TTS. Collapse both
+  // the tight hyphen and the spaced en-dash variants to a plain space.
+  [/אופנוע\s*[-–]\s*ים/g, 'אופנוע ים'],
   [/קוי/g,            'קווי'],
   [/מפרשית/g,         'מִפְרָשִׂית'],
   [/התכוון/g,         'התַכְוִין'],
@@ -76,6 +79,17 @@ const VO_FIXES = [
   [/\bOscar\b/gi,     'אוסקר'],
   [/\bNC\b/g,         'אן, סי'],
   [/\bNM\b/g,         'מייל ימי'],
+  // "מיל"/"מייל" (nautical mile) is masculine, so a preceding digit must be spelled
+  // in the masculine form, and "1" is post-posed ("מייל אחד"). edge-tts otherwise
+  // reads the bare digit as the feminine "שתיים", "שלוש"... Runs before the
+  // מיל->מייל normalization below so the output is already the doubled-yod spelling.
+  [/(?<![א-ת0-9])([0-9]{1,2})\s*מיי?ל(?![א-ת])/g, (m, d) => {
+    const masc = { 1:'אחד', 2:'שני', 3:'שלושה', 4:'ארבעה', 5:'חמישה',
+      6:'שישה', 7:'שבעה', 8:'שמונה', 9:'תשעה', 10:'עשרה' };
+    const n = Number(d);
+    if (n === 1) return 'מייל אחד';
+    return masc[n] ? masc[n] + ' מייל' : d + ' מייל';
+  }],
   [/(?<![א-ת])מיל(?![א-ת])/g,  'מייל'],
   [/\bm\/s\b/g,       'מטר לשנייה'],
   [/\bkm\/h\b/gi,     'קילומטר לשעה'],
