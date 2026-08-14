@@ -511,12 +511,19 @@ async function renderFromEditor() {
   // Skip the overwrite when the scene was hand-fixed and locked — otherwise a
   // routine re-render silently wipes out manual SVG fixes (this is what kept
   // happening to Q102/Q105 before the lock existed).
+  let renderHTML = null;
   if (q.html_locked) {
     setRenderStatus('🔒 HTML נעול — לא נדרס, משתמש בעיצוב הקיים...');
   } else {
     setRenderStatus('⏳ דוחף HTML ל-GitHub...');
     const pushed = await ghPushHTML(q);
     if (!pushed) setRenderStatus('⚠ HTML לא נדחף — ממשיך בכל זאת...');
+    // Also send the scene HTML INLINE with the render request. html/ is not
+    // tracked, so if ghPushHTML doesn't land the server can't pull it and renders
+    // a generic anchor instead of the diagram (this is what happened to Q#1005).
+    // Sending it here guarantees the real scene is used. When locked we send null
+    // so the server keeps the existing (hand-fixed) HTML.
+    renderHTML = generateQuizHTML(q, 'he', true);
   }
   setRenderStatus('⏳ שולח לRailway...');
 
@@ -524,7 +531,7 @@ async function renderFromEditor() {
     const res = await fetch(`${railwayUrl}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: q.voiceover_text, force: !!q.videoUrl })
+      body: JSON.stringify({ voiceover_text: q.voiceover_text, force: !!q.videoUrl, html: renderHTML })
     });
     if (!res.ok) { const e = await res.json().catch(()=>({error:`HTTP ${res.status}`})); throw new Error(e.error || `HTTP ${res.status}`); }
     const data = await res.json();
