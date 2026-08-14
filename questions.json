@@ -22,7 +22,8 @@
     "rendered_at": "2026-08-14T09:07:53.046Z",
     "scheduled_date": "2026-06-28",
     "scheduled_time": "10:31",
-    "license": 30
+    "license": 30,
+    "html_locked": true
   },
   {
     "num": 102,
