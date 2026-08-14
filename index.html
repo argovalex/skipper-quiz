@@ -959,7 +959,7 @@ function renderEditor(q) {
     </div>
 
     <div class="confirmed-row">
-      <input type="checkbox" id="f-confirmed" ${q.answer_confirmed?'checked':''} onchange="saveCurrentToState();renderList()">
+      <input type="checkbox" id="f-confirmed" ${q.answer_confirmed?'checked':''} onchange="saveConfirmedState()">
       <label for="f-confirmed">✅ תשובה מאושרת — תשובה נכונה בדוקה</label>
     </div>
 
@@ -1080,6 +1080,19 @@ async function saveLockState(checked) {
   q.html_locked = checked;
   await saveJSON();
   showToast(checked ? `🔒 Q#${q.num} ננעל` : `🔓 Q#${q.num} נפתח`);
+}
+
+// Toggling ✅ תשובה מאושרת must PERSIST like the lock does — otherwise the
+// "⚠ לא מאושר" badge comes back on refresh. Write q.answer_confirmed and save to
+// GitHub immediately so a re-confirmed answer sticks on the question itself.
+async function saveConfirmedState() {
+  if(currentIdx < 0) return;
+  saveCurrentToState();
+  renderList();
+  const q = questions[currentIdx];
+  const ok = await saveJSON();
+  if (ok) showToast(q.answer_confirmed ? `✅ Q#${q.num} אושר ונשמר` : `↩ Q#${q.num} בוטל אישור`);
+  else showToast('⚠ שמירה ל-GitHub נכשלה');
 }
 
 async function saveFixAndRender() {
