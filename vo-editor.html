@@ -137,7 +137,7 @@
           <input id="lexSearch" type="text" placeholder="חפש במילון..." style="flex:1;min-width:0"
             oninput="renderLex(this.value)">
         </div>
-        <div class="hint" style="margin:0 0 8px">סמן מילה בטקסט לקבל הצעת החלפה · או חפש כאן · ➕ מוסיף מילה מנוקדת למילון (דרך :8899)</div>
+        <div class="hint" style="margin:0 0 8px">כל המילון מוצג למטה · לחיצה על מילה מוסיפה בסמן · 📋 מעתיק ללוח · 🔊 מקריא · חפש לסינון · ➕ מוסיף מילה מנוקדת (דרך :8899)</div>
         <div class="lex-grid" id="lexGrid"></div>
       </div>
     </div>
@@ -500,14 +500,33 @@ function insertAtCursor(text) {
   saveDraft();
 }
 
+// Copy a vocalised word to the clipboard (with an execCommand fallback for
+// non-secure origins). Lets you grab a lexicon word and paste it straight into
+// the main editor's VO field.
+async function copyWord(text) {
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const tmp = document.createElement('textarea');
+    tmp.value = text; tmp.style.position = 'fixed'; tmp.style.opacity = '0';
+    document.body.appendChild(tmp); tmp.select(); document.execCommand('copy'); tmp.remove();
+  }
+  setStatus('📋 הועתק: ' + text, 'ok');
+}
+
 function renderLex(filter = '') {
   const q = filter.trim();
   const grid = document.getElementById('lexGrid');
   grid.innerHTML = '';
-  if (!q) { grid.innerHTML = '<span class="hint">סמן מילה בטקסט לקבל הצעת החלפה, או הקלד כאן כדי לחפש.</span>'; return; }
+  // No filter -> show the WHOLE lexicon so you can browse and copy/insert any word
+  // without having to type a search first.
   const items = LEXICON.filter(it =>
     !q || it.plain.includes(q) || stripNikudStr(it.nikud).includes(q));
-  if (!items.length) { grid.innerHTML = '<span class="hint">אין התאמה במילון</span>'; return; }
+  if (!items.length) {
+    grid.innerHTML = LEXICON.length
+      ? '<span class="hint">אין התאמה במילון</span>'
+      : '<span class="hint">המילון נטען...</span>';
+    return;
+  }
   for (const it of items) {
     const chip = document.createElement('span');
     chip.className = 'lex-chip';
@@ -516,6 +535,11 @@ function renderLex(filter = '') {
     word.textContent = it.nikud;
     word.title = 'הוסף בסמן';
     word.onclick = () => { insertAtCursor(it.nikud); setStatus('הוסף: ' + it.nikud, 'ok'); };
+    const cp = document.createElement('button');
+    cp.className = 'say';
+    cp.textContent = '📋';
+    cp.title = 'העתק מילה ללוח';
+    cp.onclick = () => copyWord(it.nikud);
     const say = document.createElement('button');
     say.className = 'say';
     say.textContent = '🔊';
@@ -527,7 +551,7 @@ function renderLex(filter = '') {
       catch (err) { setStatus('❌ ' + err.message, 'err'); }
       finally { say.disabled = false; }
     };
-    chip.append(word, say);
+    chip.append(word, cp, say);
     grid.appendChild(chip);
   }
 }
