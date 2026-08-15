@@ -2293,30 +2293,37 @@ SCENES_QA['tow_craft'] = `
 // תמרוני ספינה — יישור אופנוע שהתהפך: לכיוון שהיצרן קבע
 SCENES_QA['right_capsized'] = `
   <rect width="360" height="420" fill="#0a1428"/>
-  <rect x="0" y="176" width="360" height="244" fill="#1a5276"/>
-  <text x="180" y="134" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">אופנוע ים שהתהפך</text>
+  <rect x="0" y="150" width="360" height="270" fill="#1a5276"/>
+  <text x="180" y="130" text-anchor="middle" fill="#fff" font-size="16" font-family="Heebo,sans-serif" font-weight="900">אופנוע ים שהתהפך</text>
 
-  <!-- Upside down: hull only. The rider is in the water in both questions here,
-       and rotating the full sternJetSki put a head under the boat that read as
-       a blob rather than as a capsize. -->
-  <g transform="translate(102,244)">
-    <path d="M-26,6 L26,6 Q23,-10 0,-14 Q-23,-10 -26,6 Z"
-          fill="#c8a000" stroke="#8a7000" stroke-width="1.4" stroke-linejoin="round"/>
-    <path d="M-27,6 L27,6 L24,14 L-24,14 Z" fill="#f1c40f" stroke="#c8a000" stroke-width="1.4" stroke-linejoin="round"/>
+  <!-- Wind runs along the craft's length onto the bow (right). Orienting the
+       hull bow-to-wind is the manoeuvre the VO describes; the arrow shows it. -->
+  <g stroke="#7eb8f7" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M330 178 L150 178"/>
+    <path d="M162 172 L150 178 L162 184"/>
+    <path d="M232 172 L220 178 L232 184"/>
   </g>
-  <text x="102" y="278" text-anchor="middle" fill="#e74c3c" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">הפוך</text>
+  <text x="336" y="182" text-anchor="end" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="900">רוח</text>
+  <text x="180" y="204" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">אורכו מול הרוח, חרטום לרוח</text>
 
-  <!-- the righting arc -->
-  <path d="M136 214 A54 54 0 0 1 224 214" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6 5"/>
-  <path d="M224 214 L214 210 L218 220 Z" fill="#2ecc71"/>
-  <text x="180" y="196" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">לפי הוראת היצרן</text>
+  <!-- The craft, capsized: the existing side profile flipped about its waterline
+       (hull up, saddle down), bow still to the right facing the wind. -->
+  <g transform="translate(0,500) scale(1,-1)">
+    ${sideJetSki(190, 250, '#f1c40f', '#c8a000', 1.25)}
+  </g>
+  <text x="268" y="238" text-anchor="middle" fill="#e74c3c" font-size="12" font-family="Heebo,sans-serif" font-weight="900">הפוך</text>
 
-  <!-- upright again -->
-  ${sternJetSki(262, 244, 0.8, '#2980b9')}
-  <text x="262" y="272" text-anchor="middle" fill="#2ecc71" font-size="11" font-family="Heebo,sans-serif" font-weight="700">ישר</text>
+  <!-- Rider in the water beside the stern -->
+  <g stroke-linecap="round">
+    <path d="M70 268 L100 266" stroke="#e67e22" stroke-width="10"/>
+    <path d="M90 266 L99 256" stroke="#e67e22" stroke-width="5"/>
+    <circle cx="64" cy="266" r="7" fill="#f5cba7"/>
+  </g>
+  <text x="80" y="290" text-anchor="middle" fill="#cfe6ff" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">האיש במים</text>
 
-  <rect x="44" y="292" width="272" height="34" rx="8" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2"/>
-  <text x="180" y="314" text-anchor="middle" fill="#2ecc71" font-size="12.5" font-family="Heebo,sans-serif" font-weight="900">הכיוון מסומן על גוף האופנוע</text>
+  <rect x="30" y="316" width="300" height="60" rx="10" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2"/>
+  <text x="180" y="340" text-anchor="middle" fill="#2ecc71" font-size="13" font-family="Heebo,sans-serif" font-weight="900">הופכים לפי הוראת היצרן, מתניעים מיד</text>
+  <text x="180" y="362" text-anchor="middle" fill="#7fd8a8" font-size="11.5" font-family="Heebo,sans-serif" font-weight="700">הכיוון מסומן על גוף האופנוע</text>
 `;
 
 // תמרוני ספינה — החפה: למקם את האופנוע בין שני גלים כדי לשמור שליטה
