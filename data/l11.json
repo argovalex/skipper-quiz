@@ -163,7 +163,7 @@
       "ד. אין סכנת התנגשות."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "תמונה 86 היא יהלום, זה גורר מעל 200 מטר (ממוכן). שניהם ממוכנים, אותה משפחה. הרואה מימין מפנה - O מימין C, לכן C מפנה ל-O.",
     "mediaUrl": "",
     "mediaType": "",
