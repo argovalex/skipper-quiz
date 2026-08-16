@@ -236,7 +236,7 @@
       "ד. E יפנה ל-M, ספינה מפנה לאופנוע."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "כלי שיט עוקף חייב תמיד לפנות דרך לנעקף, ללא קשר לסוג הכלי. כלל העקיפה גובר.",
     "mediaUrl": "",
     "mediaType": "",
