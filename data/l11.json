@@ -212,7 +212,7 @@
       "ד. E יפנה ל-M, מה שבטוח, בטוח!"
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "כשלא קיימת סכנת התנגשות, אין חובה לבצע שינוי בקורס או במהירות.",
     "mediaUrl": "",
     "mediaType": "",
@@ -242,7 +242,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785060605/skipper-quiz/xxli0yhr95qoulpvmus4.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר אלף ועשר. כלי שייט אֶם המציג סימן יום כמתואר בתמונה 84 משיג ועובר את אופנוע ים אִי, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ב: אֶם יפנה ל-אִי. כלי השייט העוקף יפנה. ... כלי שיט עוקף חייב תמיד לֵפַנוֹת דרך לנעקף, ללא קשר לסוג הכלי והמשפחה. כלל העקיפה גובר."
   },
   {
     "num": 1011,
