@@ -1663,14 +1663,15 @@ function crDayShape(letter, shapeIds, withBall) {
   const rowH = 36;
   const top = -(rows - 1) * rowH / 2;
   const ry = 32 + (rows - 1) * rowH / 2;
-  let svg = `<ellipse cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" rx="34" ry="${ry.toFixed(1)}" fill="#fff" stroke="#333" stroke-width="1.5" opacity="0.92"/>`;
+  let svg = `<ellipse cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" rx="34" ry="${ry.toFixed(1)}" fill="#fff" stroke="#333" stroke-width="1.5"/>`;
   ids.forEach((id, i) => { svg += CR_SHAPES[id](p.x, p.y + top + i * rowH); });
   if (withBall) svg += crBall(p.x, p.y + top + ids.length * rowH, 9);
-  const lp = crPos(angle, shapeR - 36 - (rows - 1) * rowH / 2);
+  // Label sits clearly below the white card, never across the day-shape.
+  const ly = p.y + ry + 11;
   const label = `${letter} | תמונה ${ids.join('+')}${withBall ? '+כדור' : ''}`;
   const lw = Math.max(60, label.length * 5.2);
-  svg += `<rect x="${(lp.x-lw/2).toFixed(1)}" y="${(lp.y-7).toFixed(1)}" width="${lw.toFixed(1)}" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
-  svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y+4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${label}</text>`;
+  svg += `<rect x="${(p.x-lw/2).toFixed(1)}" y="${(ly-7).toFixed(1)}" width="${lw.toFixed(1)}" height="14" rx="3" fill="#0c1a3a" opacity="0.85"/>`;
+  svg += `<text x="${p.x.toFixed(1)}" y="${(ly+4).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${label}</text>`;
   return svg;
 }
 const SIGNAL_IMAGES = {
