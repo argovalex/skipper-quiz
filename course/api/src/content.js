@@ -118,4 +118,17 @@ function freeSubset(lessons) {
   return out;
 }
 
-module.exports = { load, freeSubset };
+// Raw canonical array (data/l11.json) from local/remote — bypasses the DB source.
+// Used by the admin bank-import endpoint to seed/refresh Postgres from the repo.
+async function fetchCanonical() {
+  const preferLocal = !process.env.FORCE_REMOTE && fs.existsSync(LOCAL);
+  if (preferLocal) {
+    try { return JSON.parse(fs.readFileSync(LOCAL, 'utf8')); }
+    catch (e) { console.warn('fetchCanonical: local read failed (' + e.message + '), trying remote'); }
+  }
+  const res = await fetch(DATA_URL, { cache: 'no-store' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return await res.json();
+}
+
+module.exports = { load, freeSubset, fetchCanonical };
