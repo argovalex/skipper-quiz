@@ -280,6 +280,30 @@ app.post('/api/admin/reload', async (req, res) => {
   res.json({ ok: true, reloaded: true });
 });
 
+// Seed/refresh the Postgres `bank` table from the canonical data/l11.json (repo),
+// running inside Railway so the internal DATABASE_URL works — no local DB access needed.
+// Body: { nums?: number[] } to upsert only those; omitted = full import. Then reloads cache.
+app.post('/api/admin/bank-import', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, error: 'no DATABASE_URL' });
+  try {
+    const rows = await content.fetchCanonical();
+    const only = Array.isArray(req.body && req.body.nums) ? new Set(req.body.nums.map(String)) : null;
+    let n = 0;
+    for (const q of rows) {
+      if (q.num == null || (only && !only.has(String(q.num)))) continue;
+      await db.q('insert into bank(num, data, updated_at) values ($1,$2,now()) on conflict(num) do update set data=$2, updated_at=now()', [q.num, q]);
+      n++;
+    }
+    await content.load(true);
+    res.json({ ok: true, imported: n });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
 const PORT = process.env.PORT || 8080;
 db.init()
   .then(() => settings.seed())
