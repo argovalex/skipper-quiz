@@ -259,7 +259,7 @@
       "ד. B ללא שליטה אך הניף דגל במקום הכדור השני- ולכן צריך לשים לב!"
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "דגל B (תמונה 95) עם כדור שחור בחרטום מסמן עגינה עם חומרים מסוכנים. יש לעבור בזהירות מרבית.",
     "mediaUrl": "",
     "mediaType": "",
@@ -289,7 +289,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1786515592/skipper-quiz/zlorvetd3lxnziknuvbt.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר אלף ושנים עשר. אופנוע ים סי מבחין בכלי שייט אן המציג סימן יום כמתואר בתמונה 77, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ב: אן קשור לעֹגֶן, סי יכול להמשיך להפליג. ... כדור שחור תמונה 77 מסמן עגינה. כלי שיט עֹגֶן אינו מהווה סכנה, ניתן להמשיך בהפלגה."
   },
   {
     "num": 1013,
