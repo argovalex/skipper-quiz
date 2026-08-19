@@ -117,8 +117,11 @@ function applyVoFixes(text) {
 // index.html buildVoiceover.
 const ANSWER_PROMPT_NUMS = new Set([1053, 1054]);
 
-// Question ids are 4-digit (e.g. 1002); edge-tts misreads the digit string
-// ("1002" -> "10020"), so spell the number in Hebrew words for the narration.
+// heNum spells a number in Hebrew words. It USED to wrap the question number in
+// buildVoiceover because edge-tts once misread the digit string ("1002" ->
+// "10020"). Alex's decision (2026-08-19): the narration says the number in
+// DIGITS ("שאלה מספר 1024"), not words — verify one render if edge-tts ever
+// regresses. heNum is kept exported for any caller that still wants words.
 function heNum(n){
   n=Number(n);
   if(!Number.isInteger(n)||n<1||n>9999) return String(n);
@@ -139,7 +142,7 @@ function buildVoiceover(q) {
   const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
   const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '');
   const letter = (q.answer || 'א').trim();
-  let q1 = applyVoFixes(`שאלה מספר ${heNum(q.num)}... ${q.q_he}.`);
+  let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
   if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
   if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
