@@ -13,6 +13,9 @@
 //               on the NEW video -> fresh pauseAt/resumeAt)
 //   4. embed  : run merge-inject.js -> rebuild quiz-data-l11.json + quiz-app.html embed
 //   5. ship   : git add the 4 files, commit, pull --rebase, push (unless --no-push)
+//   6. course : upsert data/l11.json into the course Postgres `bank` table and reload
+//               the course API, so the PAID app serves the new video (unless --no-db).
+//               Needs course/api/.env with DATABASE_URL (+ ADMIN_TOKEN for instant reload).
 //
 // questions.json is intentionally NOT touched here: the render server auto-commits
 // the videoUrl to it on GitHub. The pull --rebase in step 5 absorbs that commit.
@@ -30,6 +33,7 @@ const RENDER_URL = process.env.RENDER_URL || 'https://skipper-quiz-publisher-pro
 const args = process.argv.slice(2);
 const noPush = args.includes('--no-push');
 const noRender = args.includes('--no-render');
+const noDb = args.includes('--no-db');
 const nums = args.filter(a => /^\d+$/.test(a));
 if (!nums.length) {
   console.error('usage: node tools/quiz-app/update-question.js <num> [num...] [--no-push] [--no-render]');
@@ -66,6 +70,48 @@ function git(...a) {
 function node(script) {
   const r = spawnSync(process.execPath, [path.join(HERE, script)], { cwd: ROOT, encoding: 'utf8', stdio: 'inherit' });
   if (r.status !== 0) throw new Error(`${script} failed`);
+}
+
+// minimal .env parser (same shape as course/api/src/loadenv.js) — read secrets
+// from course/api/.env without importing them into this process.
+function readEnvFile(file) {
+  const out = {};
+  try {
+    for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+      if (line.trim().startsWith('#')) continue;
+      const m = line.match(/^\s*([A-Za-z0-9_]+)\s*=\s*(.*?)\s*$/);
+      if (!m) continue;
+      let v = m[2];
+      if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1);
+      out[m[1]] = v;
+    }
+  } catch { /* no file — fine */ }
+  return out;
+}
+
+// Step 6: mirror data/l11.json into the course Postgres and reload the paid API.
+// Best-effort: a missing DB config or an unreachable API warns but never fails the run.
+async function propagateToCourseDb(done) {
+  if (noDb) { console.log('--no-db: skipping course DB propagation'); return; }
+  const apiDir = path.join(ROOT, 'course', 'api');
+  const env = readEnvFile(path.join(apiDir, '.env'));
+  if (!(process.env.DATABASE_URL || env.DATABASE_URL)) {
+    console.log('course DB: no DATABASE_URL in course/api/.env — skipping (paid app keeps old video)');
+    return;
+  }
+  process.stdout.write(`course DB: bank import ... `);
+  // admin.js loads course/api/.env via its own __dirname, so cwd doesn't matter for DATABASE_URL.
+  const r = spawnSync(process.execPath, [path.join(apiDir, 'admin.js'), 'bank', 'import'], { cwd: apiDir, encoding: 'utf8' });
+  if (r.status !== 0) { console.log(`FAIL\n${(r.stderr || r.stdout || '').trim()}`); return; }
+  const m = (r.stdout || '').match(/imported\s+(\d+)/i);
+  console.log(m ? `ok (${m[1]} questions)` : 'ok');
+  const apiUrl = (process.env.COURSE_API_URL || env.COURSE_API_URL || 'https://skipper-quiz-production.up.railway.app').replace(/\/$/, '');
+  const token = process.env.ADMIN_TOKEN || env.ADMIN_TOKEN;
+  if (!token) { console.log('course API: no ADMIN_TOKEN — server refreshes within 5 min (cache TTL)'); return; }
+  try {
+    const res = await fetch(`${apiUrl}/api/admin/reload`, { method: 'POST', headers: { 'x-admin': token } });
+    console.log(res.ok ? 'course API: reloaded (paid app now serves new video)' : `course API: reload HTTP ${res.status} — refreshes within 5 min`);
+  } catch (e) { console.log(`course API: reload failed (${e.message}) — refreshes within 5 min`); }
 }
 
 (async () => {
@@ -127,12 +173,17 @@ function node(script) {
   if (!staged) { console.log('no changes to commit'); return; }
   git('commit', '-m', `update-question ${done.join(',')}: re-render + propagate to course data`);
   console.log(`committed ${done.length} question(s)`);
-  if (noPush) { console.log('--no-push: leaving commit local'); return; }
+  if (noPush) {
+    console.log('--no-push: leaving commit local');
+    await propagateToCourseDb(done);
+    return;
+  }
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       try { git('pull', '--rebase'); } catch (e) { /* nothing to pull / diverged handled by push retry */ }
       git('push');
       console.log('pushed to origin/main');
+      await propagateToCourseDb(done);
       return;
     } catch (e) {
       console.log(`push attempt ${attempt} failed, retrying...`);
