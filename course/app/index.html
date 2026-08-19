@@ -59,7 +59,7 @@ const LETTERS=['א','ב','ג','ד','ה'];
 
 /* ===== API (course server) ===== */
 let API_BASE = (localStorage.getItem('sq_api')||'http://localhost:8099').replace(/\/$/,'');
-let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=99;
+let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null;
 function deviceId(){let d;try{d=localStorage.getItem('sq_device');if(!d){d=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():'d'+Math.random().toString(36).slice(2)+Date.now();localStorage.setItem('sq_device',d);}}catch(e){d='d'+Math.random().toString(36).slice(2);}return d;}
 function storedCode(){try{return localStorage.getItem('sq_code')||'';}catch(e){return '';}}
 function storeCode(c){try{localStorage.setItem('sq_code',c);}catch(e){}}
@@ -82,7 +82,7 @@ async function handleReturn(){
   history.replaceState({},'',u.pathname);toast('לא התקבל אישור תשלום. אם חויבת, הקוד נשלח למייל.');return false;
 }
 async function bootstrap(){
-  try{const cfg=await apiConfig();if(cfg&&cfg.ok){BRAND=cfg.brand_name||BRAND;PRODUCT=cfg.product_title||PRODUCT;PRICE=cfg.price_ils||PRICE;}}catch(e){}
+  try{const cfg=await apiConfig();if(cfg&&cfg.ok){BRAND=cfg.brand_name||BRAND;PRODUCT=cfg.product_title||PRODUCT;PRICE=cfg.price_ils||PRICE;PRICING=cfg.pricing||PRICING;}}catch(e){}
   if(await handleReturn())return;
   const code=storedCode();
   if(code){const r=await apiContent(code);if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown(code);return;}clearCode();}
@@ -287,10 +287,18 @@ function vOnboard(){return `
     ${['13 שיעורים אינטראקטיביים לפי סילבוס המבחן','בנק שאלות מלא עם הסברים לכל תשובה','מעקב התקדמות עד המבחן המסכם'].map(t=>`<div style="display:flex;align-items:center;gap:10px"><span style="color:${C.ok};font-size:15px">✓</span><span style="font-size:13.5px">${t}</span></div>`).join('')}
   </div>
   <div style="flex:1;min-height:20px"></div>
+  ${(PRICING&&PRICING.is_founders)?`
+  <div style="background:${C.okBg};border:1px solid ${C.ok};border-radius:16px;padding:16px 20px;text-align:center;margin-bottom:14px">
+    <div style="color:${C.okT};font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:4px">מחיר מייסדים · נותרו ${PRICING.founders_left} מקומות</div>
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:10px">
+      <div style="font-size:26px;font-weight:900;color:${C.ok}">₪${PRICE}</div>
+      <div style="font-size:15px;color:${C.mut};text-decoration:line-through">₪${PRICING.price_regular}</div>
+    </div>
+  </div>`:`
   <div style="background:${C.okBg};border:1px solid ${C.ok};border-radius:16px;padding:16px 20px;text-align:center;margin-bottom:14px">
     <div style="color:${C.okT};font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:2px">תשלום חד פעמי</div>
     <div style="font-size:26px;font-weight:900;color:${C.ok}">₪${PRICE}</div>
-  </div>
+  </div>`}
   <button data-act="buy" style="background:${C.gold};color:${C.navy};border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:900;cursor:pointer">רכוש גישה מלאה · ₪${PRICE}</button>
   <div data-act="start" style="text-align:center;margin-top:12px;font-size:12.5px;color:${C.mut};font-weight:700;cursor:pointer">התחל חינם — טעימה של 10 שאלות</div>
   <div data-act="havecode" style="text-align:center;margin-top:14px;font-size:12.5px;color:${C.blue};font-weight:700;cursor:pointer">יש לי גישה — הזן קוד</div>

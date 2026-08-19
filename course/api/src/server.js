@@ -34,8 +34,11 @@ app.get('/health', (req, res) => res.json({ ok: true, db: db.hasDb(), ts: Date.n
 
 // ── Public config (brand name + price, editable via admin) ────────────────────
 app.get('/api/config', async (req, res) => {
-  try { res.json({ ok: true, ...(await settings.all()) }); }
-  catch (e) { res.status(500).json({ ok: false, error: e.message }); }
+  try {
+    const [cfg, pr] = await Promise.all([settings.all(), settings.pricing()]);
+    // price_ils reflects the current effective price (founders → regular) for display.
+    res.json({ ok: true, ...cfg, price_ils: pr.price, pricing: pr });
+  } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
 });
 
 // Update brand/price without redeploy. Protected by ADMIN_TOKEN.
@@ -44,7 +47,7 @@ app.post('/api/config', async (req, res) => {
     return res.status(403).json({ ok: false });
   }
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
-  const allowed = ['brand_name', 'product_title', 'price_ils'];
+  const allowed = ['brand_name', 'product_title', 'price_ils', 'price_founders', 'price_regular', 'founders_slots'];
   for (const k of allowed) if (req.body[k] != null) await settings.set(k, req.body[k]);
   res.json({ ok: true, ...(await settings.all()) });
 });
@@ -62,8 +65,8 @@ app.get('/api/content', async (req, res) => {
   const v = await gate(req);
   if (!v.ok) return res.status(403).json({ ok: false, reason: v.reason });
   try {
-    const [lessons, cfg] = await Promise.all([content.load(), settings.all()]);
-    res.json({ ok: true, price_ils: cfg.price_ils, brand_name: cfg.brand_name, product_title: cfg.product_title, lessons });
+    const [lessons, cfg, pr] = await Promise.all([content.load(), settings.all(), settings.pricing()]);
+    res.json({ ok: true, price_ils: pr.price, brand_name: cfg.brand_name, product_title: cfg.product_title, lessons });
   } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
 });
 
@@ -178,8 +181,8 @@ app.post('/api/checkout', async (req, res) => {
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
   const { email: buyer, coupon, return_url } = req.body || {};
   if (!buyer || !/.+@.+/.test(buyer)) return res.status(400).json({ ok: false, reason: 'bad-email' });
-  const cfg = await settings.all();
-  let amount = cfg.price_ils, couponRow = null, partner = null;
+  const pr = await settings.pricing();
+  let amount = pr.price, couponRow = null, partner = null;
   if (coupon) {
     const r = await db.q('select * from coupons where lower(code)=lower($1) and active=true', [coupon]);
     if (r.rows.length) {
