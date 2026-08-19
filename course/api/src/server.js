@@ -289,8 +289,13 @@ app.post('/api/admin/bank-import', async (req, res) => {
   }
   if (!db.hasDb()) return res.status(503).json({ ok: false, error: 'no DATABASE_URL' });
   try {
-    const rows = await content.fetchCanonical();
-    const only = Array.isArray(req.body && req.body.nums) ? new Set(req.body.nums.map(String)) : null;
+    const body = req.body || {};
+    // Fresh question objects in the body (from update-question) upsert directly — no GitHub
+    // fetch, no cache lag. Otherwise pull the canonical repo copy (optionally filtered by nums).
+    const rows = (Array.isArray(body.questions) && body.questions.length)
+      ? body.questions
+      : await content.fetchCanonical();
+    const only = (!body.questions && Array.isArray(body.nums)) ? new Set(body.nums.map(String)) : null;
     let n = 0;
     for (const q of rows) {
       if (q.num == null || (only && !only.has(String(q.num)))) continue;
