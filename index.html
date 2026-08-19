@@ -331,6 +331,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 <script src="scenes.js?v=9"></script>
 <script src="github-api.js?v=9"></script>
 <script src="tools/quiz-app/vo.js?v=12"></script>
+<script src="tools/quiz-app/vo-lexicon.js?v=1"></script>
 <script>
 // ── State ──────────────────────────────────────────────────────────────────
 let questions = [];
@@ -468,6 +469,38 @@ async function applyNikud(btn) {
   } finally {
     btn.disabled = false;
   }
+}
+
+// Applies Alex's own lexicon (references/niqqud-lexicon.md -> vo-lexicon.js) to the
+// VO text, client-side, so his verified vocalisations win over Dicta's generic
+// niqqud for domain words (מָצוֹף, מֶמוּכַּנִים, עֹגֶן...). Whole-word only. The base
+// letters are matched THROUGH any existing niqqud (each letter may carry marks),
+// so a domain word already vocalised by Dicta is re-set to Alex's form — that is
+// why clicking 📖 after Dicta lets his forms win. Short collision-prone words are
+// already filtered out of vo-lexicon.js; [[PAUSE]] survives untouched. Alex
+// reviews the result before saving.
+const HE_MARKS = '[\\u0591-\\u05C7]*';
+function applyLexiconText(text) {
+  const lex = (typeof VO_LEXICON !== 'undefined') ? VO_LEXICON : [];
+  for (const [src, dst] of lex) {
+    const body = [...src].map(ch =>
+      /[א-ת]/.test(ch) ? ch + HE_MARKS
+      : /\s/.test(ch) ? '\\s+'
+      : ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    ).join('');
+    const pat = new RegExp(`(?<![\\u05D0-\\u05EA\\u0591-\\u05C7])${body}(?![\\u05D0-\\u05EA\\u0591-\\u05C7])`, 'g');
+    text = text.replace(pat, dst);
+  }
+  return text;
+}
+function applyLexicon(btn) {
+  const ta = document.getElementById('rm-vo');
+  const statusEl = document.getElementById('rm-preview-status');
+  const text = ta.value;
+  if (!text.trim()) return;
+  ta.value = applyLexiconText(text);
+  if (currentIdx >= 0) questions[currentIdx].voiceover_text = ta.value;
+  statusEl.textContent = '✅ הוחל המילון שלך — עברו על התוצאה, תקנו ידנית אם צריך, ואז 🔊 האזן';
 }
 
 const renderingNums = new Set();
@@ -938,6 +971,7 @@ function renderEditor(q) {
       <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center">
         <button class="btn btn-ghost btn-sm" onclick="resetVoiceover()">↻ שחזר ברירת מחדל</button>
         <button class="btn btn-ghost btn-sm" onclick="applyNikud(this)" title="הוסף ניקוד אוטומטי (Dicta) לשיפור ההגייה. אפשר לתקן ידנית אחרי כן, ואז להאזין.">אָ ניקוד</button>
+        <button class="btn btn-ghost btn-sm" onclick="applyLexicon(this)" title="החל את מילון הניקוד שלך (references/niqqud-lexicon.md) על מילים שהוא מכיר. משלים את Dicta — לחץ אחריו כדי שהצורות שלך ינצחו.">📖 מילון</button>
         <button class="btn btn-ghost btn-sm" onclick="previewVoiceover()" title="סמן קטע בטקסט כדי לשמוע רק אותו, או השאר בלי סימון לשמוע הכל">🔊 האזן</button>
         <span id="rm-preview-status" style="font-size:12px;color:var(--muted)"></span>
         <audio id="rm-audio" style="display:none"></audio>
