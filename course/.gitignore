@@ -1,0 +1,2 @@
+# Videos live on Cloudinary, never in git history.
+*.mp4
