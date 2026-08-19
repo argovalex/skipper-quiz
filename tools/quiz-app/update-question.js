@@ -99,12 +99,13 @@ async function propagateToCourseDb(done) {
     console.log('course DB: no DATABASE_URL in course/api/.env — skipping (paid app keeps old video)');
     return;
   }
-  process.stdout.write(`course DB: bank import ... `);
+  process.stdout.write(`course DB: bank upsert ${done.join(',')} ... `);
   // admin.js loads course/api/.env via its own __dirname, so cwd doesn't matter for DATABASE_URL.
-  const r = spawnSync(process.execPath, [path.join(apiDir, 'admin.js'), 'bank', 'import'], { cwd: apiDir, encoding: 'utf8' });
+  // upsert only the changed nums (not all 161) — fast per-question path.
+  const r = spawnSync(process.execPath, [path.join(apiDir, 'admin.js'), 'bank', 'upsert', ...done], { cwd: apiDir, encoding: 'utf8' });
   if (r.status !== 0) { console.log(`FAIL\n${(r.stderr || r.stdout || '').trim()}`); return; }
-  const m = (r.stdout || '').match(/imported\s+(\d+)/i);
-  console.log(m ? `ok (${m[1]} questions)` : 'ok');
+  const m = (r.stdout || '').match(/upserted\s+(\d+)/i);
+  console.log(m ? `ok (${m[1]} question(s))` : 'ok');
   const apiUrl = (process.env.COURSE_API_URL || env.COURSE_API_URL || 'https://skipper-quiz-production.up.railway.app').replace(/\/$/, '');
   const token = process.env.ADMIN_TOKEN || env.ADMIN_TOKEN;
   if (!token) { console.log('course API: no ADMIN_TOKEN — server refreshes within 5 min (cache TTL)'); return; }

@@ -78,6 +78,19 @@ async function main() {
       n++;
     }
     console.log(`bank: imported ${n} questions from ${file}`);
+  } else if (group === 'bank' && cmd === 'upsert') {
+    // Upsert only the given question numbers from data/l11.json (fast per-question path).
+    const fs = require('fs'), path = require('path');
+    const want = new Set(a.filter(x => /^\d+$/.test(x)));
+    if (!want.size) { console.error('usage: bank upsert <num> [num...]'); process.exit(1); }
+    const rows = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'l11.json'), 'utf8'));
+    let n = 0;
+    for (const q of rows) {
+      if (q.num == null || !want.has(String(q.num))) continue;
+      await db.q('insert into bank(num, data, updated_at) values ($1,$2,now()) on conflict(num) do update set data=$2, updated_at=now()', [q.num, q]);
+      n++;
+    }
+    console.log(`bank: upserted ${n}/${want.size} question(s)`);
   } else if (group === 'bank' && cmd === 'count') {
     const r = await db.q('select count(*)::int n from bank');
     console.log('bank rows:', r.rows[0].n);
@@ -85,7 +98,7 @@ async function main() {
     console.log('usage: config get | config set <key> <value>');
     console.log('       coupon add <code> <kind> <value> [partner] [maxUses] | coupon list | coupon on|off|del <code>');
     console.log('       instructor add <email> | instructor list | instructor revoke <code>');
-    console.log('       bank import [file] | bank count');
+    console.log('       bank import [file] | bank upsert <num...> | bank count');
   }
   process.exit(0);
 }
