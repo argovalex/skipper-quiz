@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>אלכס ארגוב · הכנה לתאוריה בשיט</title>
+<meta name="description" content="הכנה למבחן התאוריה של אופנוע ים. כל שאלות המאגר הרשמי, הסבר בקול רם לכל שאלה, ומבחני דמה. לא עברת? קבל את כספך בחזרה.">
+<meta name="theme-color" content="#0a1428">
+<meta name="sq-api" content="https://api.alargov.com"><!-- כתובת ה-API. עדכן לכתובת השרת בפרודקשן; ריק = טקסט סטטי בלבד. -->
+<meta property="og:title" content="אלכס ארגוב · הכנה לתאוריה בשיט">
+<meta property="og:description" content="לא עברת? קבל את כספך בחזרה. כל שאלות המאגר, בליווי מערכי שיעור שמסבירים לעומק כל שאלה.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1428; --navy2:#0d1a33; --panel:#101f3d;
+    --ink:#eaf1fc; --dim:#a7bbdd; --faint:#63799f;
+    --gold:#f3c24c; --gold-deep:#e0a92f;
+    --sail:#d3e0f5; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --wrap:1140px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--navy);color:var(--ink);
+    font-family:'Heebo',system-ui,sans-serif;font-weight:400;
+    line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--gold);
+    display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);opacity:.6}
+  h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.02em;line-height:1.06}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:30;background:rgba(10,20,40,.72);
+    backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.02rem}
+  .brand svg{width:26px;height:26px;flex:0 0 auto}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-cta a.tel{color:var(--dim);font-weight:700;font-size:.92rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:inherit;font-weight:800;font-size:.95rem;cursor:pointer;border:0;
+    border-radius:12px;padding:12px 20px;transition:transform .12s ease,background .2s ease,border-color .2s}
+  .btn:active{transform:translateY(1px)}
+  .btn-gold{background:var(--gold);color:#20160a}
+  .btn-gold:hover{background:var(--gold-deep)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn-sm{padding:10px 16px;font-size:.9rem;border-radius:10px}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+    min-height:calc(100dvh - 66px);padding:40px 0 60px}
+  .hero-copy .eyebrow{margin-bottom:20px;font-size:clamp(1.15rem,2.6vw,1.45rem);
+    letter-spacing:.01em;font-weight:800}
+  .hero-copy .eyebrow::before{width:34px;height:2px}
+  .hero h1{font-size:clamp(2.5rem,6.4vw,4.6rem)}
+  .hero h1 .accent{color:var(--gold)}
+  .hero p.sub{color:var(--dim);font-size:clamp(1.05rem,1.6vw,1.28rem);
+    margin:22px 0 34px;max-width:30ch}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{margin-top:18px;color:var(--faint);font-size:.9rem}
+  .hero-art{position:relative}
+  .hero-art img{width:100%;height:auto;display:block;
+    filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+  .hero-art svg.boat{width:100%;height:auto;display:block;max-width:520px;margin:0 auto;
+    filter:drop-shadow(0 24px 50px rgba(0,0,0,.45))}
+  .vframe{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line2);
+    box-shadow:0 30px 60px -24px rgba(0,0,0,.6);background:#000;aspect-ratio:16/9}
+  .vframe video{width:100%;height:100%;display:block;object-fit:cover}
+  .hero-art .vframe{max-width:560px;margin:0 auto}
+  .vframe--portrait{aspect-ratio:9/16;max-width:300px;margin:0 auto}
+  .vcap{margin-top:12px;text-align:center;color:var(--faint);font-size:.82rem;font-weight:700;letter-spacing:.02em}
+  .vcap b{color:var(--gold)}
+  .founders{display:inline-block;margin:6px 0 24px;max-width:44ch;
+    border:1px solid var(--line2);border-inline-start:3px solid var(--gold);
+    border-radius:12px;padding:12px 17px;background:rgba(243,194,76,.05);
+    font-weight:600;font-size:1.02rem;line-height:1.55;color:var(--ink)}
+  .founders b{color:var(--gold);font-weight:800}
+  .founders .spots-live{display:none;margin-top:8px;color:var(--gold);font-weight:800;font-size:.92rem}
+  .founders .spots-live.on{display:block}
+  .amount s{color:var(--faint);font-size:.42em;font-weight:800;margin-inline-start:14px;
+    text-decoration-thickness:2px;vertical-align:middle}
+  .spots-tag{display:inline-block;margin-top:8px;color:var(--gold);font-weight:800;
+    font-size:.82rem;letter-spacing:.14em}
+  .founders-terms{max-width:520px;margin:22px auto 0;text-align:right;color:var(--dim)}
+  .founders-terms .lead-in{font-weight:800;color:var(--ink);margin-bottom:12px}
+  .founders-terms ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .founders-terms li{position:relative;padding-inline-start:24px;font-size:1.02rem}
+  .founders-terms li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;
+    width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  .hero-art .glow{position:absolute;inset:8% 12%;z-index:-1;
+    background:radial-gradient(closest-side,rgba(126,184,247,.18),transparent 70%)}
+
+  /* WAVES divider */
+  .waves{display:flex;flex-direction:column;gap:7px;opacity:.5;margin:0 auto;width:120px}
+  .waves span{height:2px;border-radius:2px;background:var(--sail)}
+  .waves span:nth-child(1){width:100%;opacity:.9}
+  .waves span:nth-child(2){width:70%;opacity:.6}
+  .waves span:nth-child(3){width:45%;opacity:.4}
+
+  section{padding:clamp(44px,6vw,80px) 0}
+  .lead{font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:900;letter-spacing:-.02em;
+    line-height:1.15;max-width:16ch}
+  .lead .g{color:var(--gold)}
+  .section-head{max-width:640px;margin-bottom:56px}
+  .section-head p{color:var(--dim);margin:16px 0 0;font-size:1.08rem}
+
+  /* WHAT — numbered editorial rows, not cards */
+  .rows{border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:baseline;
+    padding:26px 4px;border-bottom:1px solid var(--line)}
+  .row .num{font-size:.9rem;font-weight:800;color:var(--gold);letter-spacing:.08em;
+    font-variant-numeric:tabular-nums;padding-top:6px}
+  .row h3{font-size:1.3rem;margin-bottom:6px}
+  .row p{color:var(--dim);margin:0;font-size:1.02rem;max-width:52ch}
+
+  /* METHOD — image + text */
+  .method{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+  .method-img img{width:100%;height:auto;display:block;border-radius:18px;
+    border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+  .method h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+  .method h2 .g{color:var(--gold)}
+  .method p{color:var(--dim);font-size:1.1rem;margin:20px 0 0}
+  .stat{display:flex;gap:28px;margin-top:30px}
+  .stat b{display:block;font-size:2rem;font-weight:900;color:var(--ink);line-height:1}
+  .stat span{color:var(--faint);font-size:.86rem;font-weight:600}
+  .triad{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .triad span{border:1px solid var(--line2);border-radius:999px;padding:9px 20px;font-weight:800;color:var(--ink);font-size:.98rem}
+  .pull{margin-top:26px;font-size:clamp(1.15rem,2vw,1.4rem);font-weight:900;color:var(--ink);line-height:1.4;letter-spacing:-.01em}
+  .pull .g{color:var(--gold)}
+
+  /* EXAMS */
+  .exam-main{display:flex;align-items:center;justify-content:space-between;gap:24px;
+    background:linear-gradient(120deg,var(--panel),var(--navy2));
+    border:1px solid var(--line2);border-radius:20px;padding:30px 34px;margin-bottom:22px;flex-wrap:wrap}
+  .exam-main .l{display:flex;align-items:center;gap:20px}
+  .exam-main .tag{font-size:.7rem;font-weight:800;letter-spacing:.14em;color:#0a1428;
+    background:var(--gold);border-radius:999px;padding:6px 12px}
+  .exam-main h3{font-size:1.6rem}
+  .exam-main .sub{color:var(--dim);font-size:.95rem;margin-top:4px}
+  .soon-label{color:var(--faint);font-size:.8rem;font-weight:700;letter-spacing:.16em;margin:26px 0 14px}
+  .soon{display:flex;gap:12px;flex-wrap:wrap}
+  .soon .chip{border:1px dashed var(--line2);border-radius:12px;padding:14px 20px;
+    color:var(--dim);min-width:120px}
+  .soon .chip b{display:block;font-size:1.15rem;font-weight:900;color:var(--ink)}
+  .soon .chip span{font-size:.74rem;color:var(--faint);letter-spacing:.12em;font-weight:700}
+
+  /* PRICE */
+  .price{text-align:center;max-width:620px;margin:0 auto}
+  .price .amount{font-size:clamp(3rem,8vw,5rem);font-weight:900;color:var(--gold);line-height:1}
+  .price .amount small{font-size:1.4rem;color:var(--ink);font-weight:800}
+  .price h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:14px}
+  .price p{color:var(--dim);font-size:1.1rem;margin:8px 0}
+  .guarantee{display:inline-flex;align-items:center;gap:10px;margin-top:8px;
+    color:var(--ink);font-weight:700;border:1px solid var(--line2);border-radius:999px;padding:9px 18px}
+  .guarantee b{color:var(--gold)}
+  .grt{max-width:560px;margin:28px auto 0;border:1px solid var(--line2);border-radius:18px;
+    padding:24px 28px;background:rgba(243,194,76,.05)}
+  .grt h3{font-size:clamp(1.2rem,2.6vw,1.5rem);color:var(--gold)}
+  .grt p{color:var(--dim);font-size:1.02rem;margin:10px 0 0}
+  .close-line{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:900;color:var(--ink);
+    letter-spacing:-.01em;margin:30px 0 0}
+  .close-line .g{color:var(--gold)}
+  .price .btn{margin-top:22px;padding:16px 40px;font-size:1.05rem}
+  .ast{color:var(--gold);font-weight:900;font-size:.58em;vertical-align:super;margin-inline-start:2px}
+  .refund-note{max-width:660px;margin:26px auto 0;color:var(--faint);font-size:.8rem;line-height:1.65;text-align:right}
+  .refund-note a{color:var(--dim);text-decoration:underline;text-underline-offset:2px}
+
+  /* VOICE — spoken explanations */
+  .voice{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+  .voice h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+  .voice h2 .g{color:var(--gold)}
+  .voice p{color:var(--dim);font-size:1.12rem;margin:20px 0 0;max-width:46ch}
+  .player{background:linear-gradient(150deg,var(--panel),var(--navy2));
+    border:1px solid var(--line2);border-radius:20px;padding:22px;
+    box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
+  .player .screen{position:relative;aspect-ratio:16/10;border-radius:12px;
+    background:radial-gradient(120% 120% at 30% 20%,#16294d,#0a1428);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .player .q{position:absolute;top:14px;right:16px;left:16px;color:var(--dim);font-size:.82rem;font-weight:700}
+  .player .play{width:64px;height:64px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(243,194,76,.4)}
+  .player .play::before{content:"";border-style:solid;border-width:11px 0 11px 19px;
+    border-color:transparent transparent transparent #20160a;margin-inline-start:5px}
+  .player .wave{position:absolute;bottom:16px;right:18px;left:18px;display:flex;align-items:flex-end;justify-content:space-between;gap:3px;height:28px}
+  .player .wave i{flex:1;background:var(--sail);opacity:.55;border-radius:2px}
+  .player .bar{margin-top:16px;display:flex;align-items:center;gap:12px;color:var(--faint);font-size:.78rem;font-weight:700}
+  .player .track{flex:1;height:4px;border-radius:4px;background:var(--line2);position:relative}
+  .player .track::before{content:"";position:absolute;inset:0 55% 0 0;background:var(--gold);border-radius:4px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:60px 0 40px;background:var(--navy2)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+  .foot .brand{margin-bottom:14px}
+  .foot p{color:var(--dim);margin:0;font-size:.96rem;max-width:34ch}
+  .foot h4{margin:0 0 14px;font-size:.74rem;letter-spacing:.16em;color:var(--faint);font-weight:800}
+  .foot a{display:block;color:var(--dim);padding:5px 0;font-weight:600}
+  .foot a:hover{color:var(--gold)}
+  .legal{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    color:var(--faint);font-size:.82rem}
+  .legal .disc{max-width:52ch}
+
+  [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  [data-reveal].in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;gap:24px;min-height:auto;padding:34px 0 40px;text-align:center}
+    .hero .eyebrow{justify-content:center}
+    .hero p.sub{margin-inline:auto}
+    .hero-actions{justify-content:center}
+    .hero-art{order:-1;max-width:420px;margin:0 auto}
+    .method{grid-template-columns:1fr;gap:30px}
+    .method-img{order:-1;max-width:460px;margin:0 auto}
+    .voice{grid-template-columns:1fr;gap:30px;text-align:center}
+    .voice .eyebrow{justify-content:center}
+    .voice p{margin-inline:auto}
+    .voice .hero-actions{justify-content:center}
+    .refund-note{text-align:center}
+    .foot{grid-template-columns:1fr;gap:28px}
+    .nav-cta a.tel{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    [data-reveal]{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="אלכס ארגוב">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 5 L20 27 M20 8 L31 25 L20 25 Z" stroke="#f3c24c" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M8 29 h24 l-3 5 H11 Z" stroke="#d3e0f5" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M6 37 h28" stroke="#d3e0f5" stroke-width="1.6" opacity=".5"/>
+      </svg>
+      אלכס ארגוב
+    </a>
+    <div class="nav-cta">
+      <a class="tel" href="tel:+972523682486">052-368-2486</a>
+      <a class="btn btn-gold btn-sm" href="https://app.alargov.com/">התחל חינם</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="wrap">
+  <div class="hero">
+    <div class="hero-copy" data-reveal>
+      <span class="eyebrow">קורס הכנה למבחן התאוריה · אופנוע ים</span>
+      <h1>לא עברת? קבל את <span class="accent">כספך בחזרה.<span class="ast">*</span></span></h1>
+      <p class="sub">כל שאלות המאגר, בליווי מערכי שיעור מסודרים שמסבירים לעומק כל שאלה ושאלה. לומדים, מתרגלים ומוודאים הבנה מלאה עד שמרגישים בטוחים, ניגשים למבחן ועוברים בהצלחה.</p>
+      <div class="founders">
+        10 הנרשמים הראשונים מקבלים גישה מלאה ב־<b>₪199</b>. לאחר מכן המחיר עולה ל־<b>₪349</b>.
+        <span class="spots-live" id="spotsHero"></span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
+        <a class="btn btn-ghost" href="#voice">ראה איך זה עובד</a>
+      </div>
+      <div class="hero-note">10 השאלות הראשונות חינם, בלי הרשמה.</div>
+    </div>
+    <div class="hero-art" data-reveal>
+      <div class="glow"></div>
+      <div class="vframe">
+        <video controls preload="none" playsinline poster="assets/intro-poster.jpg">
+          <source src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1787133698/skipper-quiz/site/intro.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vcap">צפייה מהירה: <b>איך הקורס עובד</b></div>
+    </div>
+  </div>
+</header>
+
+<section id="method" style="background:var(--navy2)">
+  <div class="wrap">
+    <div class="method">
+      <div class="method-img" data-reveal>
+        <div class="vframe"><video controls preload="none" playsinline poster="assets/lesson-poster.jpg"><source src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1787133707/skipper-quiz/site/lesson-daysigns.mp4" type="video/mp4"></video></div>
+        <div class="vcap">דוגמה לשיעור מלא · <b>סימני יום</b></div>
+      </div>
+      <div data-reveal>
+        <span class="eyebrow">השיטה</span>
+        <h2 style="margin-top:18px">9 שנים של ניסיון שהפכו לשיטה שעובדת. <span class="g">עכשיו בנייד שלך.</span></h2>
+        <p>אלכס ארגוב מלמד שיט מעשי ותאוריה כבר תשע שנים. לאורך הדרך פיתחנו שיטה שמבוססת על דבר אחד: להבין את החומר באמת, לא לשנן אותו בעל־פה. אתה לומד את העקרונות, את ההיגיון ואת הקשר בין הדברים, כך שגם כששאלה מנוסחת אחרת אתה מגיע לתשובה מתוך הבנה.</p>
+        <p>בתשע שנות הוראה זיהינו איפה תלמידים מתקשים, מה מבלבל ואילו טעויות חוזרות. את כל זה הפכנו לשיטה מסודרת, פשוטה ומעשית, זמינה בכל מקום.</p>
+        <div class="triad"><span>להבין</span><span>לתרגל</span><span>לדעת</span></div>
+        <p class="pull">המטרה היא לא שתדע את השאלות. <span class="g">המטרה שתדע את החומר.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <div class="voice">
+      <div data-reveal>
+        <span class="eyebrow">הסברים בקול רם</span>
+        <h2 style="margin-top:18px">לא רק לקרוא את התשובה. <span class="g">להבין אותה.</span></h2>
+        <p>לכל שאלה יש הסבר קולי קצר וברור: המדריך מסביר למה התשובה נכונה, איך לחשוב על השאלה, ולמה האחרות עלולות להטעות אותך במבחן. אפשר לעצור, לחזור ולהקשיב שוב, בקצב שלך. כמו שיעור פרטי, רק שהמורה זמין בכל רגע בנייד.</p>
+        <div class="hero-actions" style="margin-top:28px">
+          <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="vframe vframe--portrait">
+          <video controls preload="none" playsinline
+            poster="https://res.cloudinary.com/dzmyg9pel/video/upload/v1786890599/skipper-quiz/keldctmwhd0mrbmn7qns.jpg">
+            <source src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1786890599/skipper-quiz/keldctmwhd0mrbmn7qns.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vcap">שאלה לדוגמה · <b>זכות מעבר</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">מה מקבלים</span>
+      <h2 class="lead" style="margin-top:18px">לא עוד קובץ שאלות. <span class="g">מערכת שמכינה אותך למבחן.</span></h2>
+    </div>
+    <div class="rows" data-reveal>
+      <div class="row"><div class="num">01</div><div><h3>מאגר רספ״ן המלא</h3><p>כל השאלות מהמאגר הרשמי, בכתיב מדויק, מסודרות לפי נושאי הסילבוס.</p></div></div>
+      <div class="row"><div class="num">02</div><div><h3>הסבר בקול רם לכל שאלה</h3><p>המדריך מסביר בקול למה התשובה נכונה, ולמה השאר מפילות. קול, לא רק טקסט.</p></div></div>
+      <div class="row"><div class="num">03</div><div><h3>מבחני דמה בפורמט האמיתי</h3><p>מספר שאלות, טיימר, ציון עובר ומד מוכנות שאומר לך מתי אתה מוכן.</p></div></div>
+      <div class="row"><div class="num">04</div><div><h3>חזרה חכמה על טעויות</h3><p>שאלה שטעית בה חוזרת שוב, במרווחים, עד שאתה שולט בה.</p></div></div>
+      <div class="row"><div class="num">05</div><div><h3>לומדים מכל מכשיר</h3><p>הטלפון, הטאבלט, בכל זמן. ההתקדמות נשמרת ועוברת איתך.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="exams">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">המבחנים</span>
+      <h2 class="lead" style="margin-top:18px">מבחן התאוריה לאופנוע ים. <span class="g">מעולם לא היה קל יותר.</span></h2>
+      <p>לא צריך לשנן מאות תשובות. כל שאלות המאגר בקורס, לכל אחת הסבר קולי, ואתה מתרגל וחוזר על מה שלא ברור עד שהכול מתחבר.</p>
+    </div>
+    <div class="exam-main" data-reveal>
+      <div class="l">
+        <span class="tag">זמין עכשיו</span>
+        <div>
+          <h3>רישיון אופנוע ים <span style="color:var(--faint);font-weight:700">(11)</span></h3>
+          <div class="sub">הקורס המלא: שיעורים, בנק שאלות וסרטונים, ומבחני דמה.</div>
+        </div>
+      </div>
+      <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
+    </div>
+    <div class="soon-label" data-reveal>בקרוב, אותה שיטה</div>
+    <div class="soon" data-reveal>
+      <div class="chip"><b>12</b><span>בקרוב</span></div>
+      <div class="chip"><b>30</b><span>בקרוב</span></div>
+      <div class="chip"><b>40</b><span>בקרוב</span></div>
+      <div class="chip"><b>60</b><span>בקרוב</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="price" style="background:var(--navy2)">
+  <div class="wrap price" data-reveal>
+    <div class="waves" style="margin-bottom:30px"><span></span><span></span><span></span></div>
+    <span class="eyebrow" style="justify-content:center">הצעת מייסדים</span>
+    <h2 style="margin-top:14px">10 מקומות במחיר מייסדים.</h2>
+    <div class="amount"><small>₪</small>199 <s>₪349</s></div>
+    <span class="spots-tag" id="spotsPrice">10 מקומות בלבד</span>
+    <p>10 הנרשמים הראשונים מקבלים גישה מלאה ב-₪199. אחרי 10 המקומות המחיר עולה ל-₪349.</p>
+    <div class="founders-terms">
+      <div class="lead-in">בתמורה נבקש שלושה דברים קטנים:</div>
+      <ul>
+        <li>המלצה כתובה על הקורס.</li>
+        <li>רשות להשתמש בסיפור שלך כ-case study.</li>
+        <li>פידבק שיעזור לנו לשפר.</li>
+      </ul>
+    </div>
+    <div class="grt">
+      <h3>לא עברת? הכסף חוזר אליך.<span class="ast">*</span></h3>
+      <p>אנחנו מאמינים בשיטה שפיתחנו לאורך תשע שנים, ולכן מוכנים להחזיר לך את הכסף אם לא עברת.</p>
+    </div>
+    <p class="close-line">לומדים עד שמבינים. ניגשים כשמוכנים. <span class="g">עוברים.</span></p>
+    <div><a class="btn btn-gold" href="https://app.alargov.com/">התחל עכשיו</a></div>
+    <p style="color:var(--faint);font-size:.9rem;margin-top:16px">10 השאלות הראשונות חינם, בלי הרשמה.</p>
+    <p class="refund-note"><span style="color:var(--dim)">*</span> בכפוף לתנאי ההחזר. <a href="/legal/refund-policy">פרטים מלאים במדיניות הביטולים</a>.</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div data-reveal>
+        <div class="brand">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" style="width:26px;height:26px">
+            <path d="M20 5 L20 27 M20 8 L31 25 L20 25 Z" stroke="#f3c24c" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M8 29 h24 l-3 5 H11 Z" stroke="#d3e0f5" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          אלכס ארגוב
+        </div>
+        <p>מדריך שיט מעשי ותאוריה. הכנה למבחני התאוריה בשיט.</p>
+      </div>
+      <div data-reveal>
+        <h4>צור קשר</h4>
+        <a href="tel:+972523682486">052-368-2486</a>
+        <a href="https://wa.me/972523682486">וואטסאפ</a>
+        <a href="mailto:alex@alargov.com">alex@alargov.com</a>
+      </div>
+      <div data-reveal>
+        <h4>מידע</h4>
+        <a href="/legal/terms-of-service">תנאי שימוש</a>
+        <a href="/legal/privacy-policy">מדיניות פרטיות</a>
+        <a href="/legal/refund-policy">ביטולים והחזרים</a>
+      </div>
+    </div>
+    <div class="legal">
+      <div class="disc">חומר תרגול עצמאי. איננו רשות רשמית ואיננו קשורים לרשות הספנות והנמלים. אין הבטחת מעבר.</div>
+      <div>© <span id="yr"></span> alargov.com</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // reveal on scroll (justified: entrance hierarchy). honors prefers-reduced-motion via CSS.
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+    document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+  }else{document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));}
+
+  // Live founders seats from the API. Graceful: on any failure the static text stays.
+  (function(){
+    var meta=document.querySelector('meta[name=sq-api]');
+    var API=(localStorage.getItem('sq_api')||(meta&&meta.content)||'').replace(/\/$/,'');
+    if(!API) return;
+    fetch(API+'/api/config').then(function(r){return r.json();}).then(function(j){
+      var p=j&&j.pricing; if(!p) return;
+      var left=Number(p.founders_left), taken=Number(p.founders_taken), slots=Number(p.founders_slots);
+      var txt = left>0
+        ? ('נותרו '+left+' מקומות מתוך '+slots+(taken>0?(' · '+taken+' כבר נרשמו'):''))
+        : ('המקומות אזלו · המחיר עלה ל־₪'+p.price_regular);
+      var h=document.getElementById('spotsHero'); if(h){h.textContent=txt;h.classList.add('on');}
+      var pr=document.getElementById('spotsPrice'); if(pr){pr.textContent=txt;}
+    }).catch(function(){});
+  })();
+</script>
+</body>
+</html>
