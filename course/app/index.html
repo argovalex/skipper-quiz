@@ -58,7 +58,7 @@ const VIDEO_DATA = window.__VIDEO_DATA__ || {};
 const LETTERS=['א','ב','ג','ד','ה'];
 
 /* ===== API (course server) ===== */
-let API_BASE = (localStorage.getItem('sq_api')||'http://localhost:8099').replace(/\/$/,'');
+let API_BASE = (localStorage.getItem('sq_api')||'https://api.alargov.com').replace(/\/$/,'');
 let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null;
 function deviceId(){let d;try{d=localStorage.getItem('sq_device');if(!d){d=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():'d'+Math.random().toString(36).slice(2)+Date.now();localStorage.setItem('sq_device',d);}}catch(e){d='d'+Math.random().toString(36).slice(2);}return d;}
 function storedCode(){try{return localStorage.getItem('sq_code')||'';}catch(e){return '';}}
