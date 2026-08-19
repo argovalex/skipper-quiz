@@ -89,30 +89,32 @@ function readEnvFile(file) {
   return out;
 }
 
-// Step 6: mirror data/l11.json into the course Postgres and reload the paid API.
-// Best-effort: a missing DB config or an unreachable API warns but never fails the run.
+// Step 6: push the changed questions into the course Postgres via the server's
+// admin endpoint (runs inside Railway — no local DB access needed). Sends the FRESH
+// objects from data/l11.json so there is no GitHub cache lag. The endpoint reloads
+// the content cache itself. Best-effort: missing token or unreachable API warns only.
 async function propagateToCourseDb(done) {
-  if (noDb) { console.log('--no-db: skipping course DB propagation'); return; }
-  const apiDir = path.join(ROOT, 'course', 'api');
-  const env = readEnvFile(path.join(apiDir, '.env'));
-  if (!(process.env.DATABASE_URL || env.DATABASE_URL)) {
-    console.log('course DB: no DATABASE_URL in course/api/.env — skipping (paid app keeps old video)');
-    return;
-  }
-  process.stdout.write(`course DB: bank upsert ${done.join(',')} ... `);
-  // admin.js loads course/api/.env via its own __dirname, so cwd doesn't matter for DATABASE_URL.
-  // upsert only the changed nums (not all 161) — fast per-question path.
-  const r = spawnSync(process.execPath, [path.join(apiDir, 'admin.js'), 'bank', 'upsert', ...done], { cwd: apiDir, encoding: 'utf8' });
-  if (r.status !== 0) { console.log(`FAIL\n${(r.stderr || r.stdout || '').trim()}`); return; }
-  const m = (r.stdout || '').match(/upserted\s+(\d+)/i);
-  console.log(m ? `ok (${m[1]} question(s))` : 'ok');
+  if (noDb) { console.log('--no-db: skipping course propagation'); return; }
+  const env = readEnvFile(path.join(ROOT, 'course', 'api', '.env'));
   const apiUrl = (process.env.COURSE_API_URL || env.COURSE_API_URL || 'https://skipper-quiz-production.up.railway.app').replace(/\/$/, '');
   const token = process.env.ADMIN_TOKEN || env.ADMIN_TOKEN;
-  if (!token) { console.log('course API: no ADMIN_TOKEN — server refreshes within 5 min (cache TTL)'); return; }
+  if (!token) { console.log('course: no ADMIN_TOKEN (course/api/.env) — paid app refreshes within 5 min (cache TTL)'); return; }
+  // re-read the file we just wrote so the objects carry the new videoUrl
+  const all = JSON.parse(fs.readFileSync(p('data/l11.json'), 'utf8'));
+  const want = new Set(done.map(String));
+  const questions = all.filter(q => q.num != null && want.has(String(q.num)));
+  process.stdout.write(`course: bank-import ${done.join(',')} ... `);
   try {
-    const res = await fetch(`${apiUrl}/api/admin/reload`, { method: 'POST', headers: { 'x-admin': token } });
-    console.log(res.ok ? 'course API: reloaded (paid app now serves new video)' : `course API: reload HTTP ${res.status} — refreshes within 5 min`);
-  } catch (e) { console.log(`course API: reload failed (${e.message}) — refreshes within 5 min`); }
+    const res = await fetch(`${apiUrl}/api/admin/bank-import`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin': token },
+      body: JSON.stringify({ questions }),
+    });
+    const data = await res.json().catch(() => ({}));
+    console.log((res.ok && data.ok)
+      ? `ok (${data.imported} upserted — paid app updated)`
+      : `FAIL: HTTP ${res.status} ${data.error || ''}`);
+  } catch (e) { console.log(`FAIL: ${e.message} (paid app refreshes within 5 min)`); }
 }
 
 (async () => {
