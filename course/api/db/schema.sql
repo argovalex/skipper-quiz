@@ -69,6 +69,18 @@ create table if not exists settings (
   updated_at timestamptz not null default now()
 );
 
+-- Free-trial leads: an email captured before the 10-question sampler. Lets us
+-- measure conversion (a paid purchase whose email also appears here = a lead that
+-- converted). Deduped by email; source records where the signup came from.
+create table if not exists trial_leads (
+  id         serial primary key,
+  email      text not null unique,
+  anon_id    text,                 -- random client id, ties repeat visits together
+  source     text,                 -- e.g. landing-hero, landing-price, app
+  created_at timestamptz not null default now()
+);
+create index if not exists idx_trial_leads_created on trial_leads(created_at);
+
 create table if not exists coupons (
   code        text primary key,
   kind        text not null default 'percent',     -- percent | fixed | full (free access, no checkout)
