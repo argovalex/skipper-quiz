@@ -81,6 +81,24 @@ create table if not exists trial_leads (
 );
 create index if not exists idx_trial_leads_created on trial_leads(created_at);
 
+-- Instructor/promo directory: metadata for each comp code minted from the hub.
+create table if not exists instructors (
+  code       text primary key references access_codes(code) on delete cascade,
+  name       text,
+  school     text,
+  email      text,
+  phone      text,
+  created_at timestamptz not null default now()
+);
+
+-- One row per session-start (a "visit") — powers the usage stats in the hub.
+create table if not exists code_visits (
+  id   bigserial primary key,
+  code text not null,
+  ts   timestamptz not null default now()
+);
+create index if not exists idx_code_visits_code_ts on code_visits(code, ts desc);
+
 create table if not exists coupons (
   code        text primary key,
   kind        text not null default 'percent',     -- percent | fixed | full (free access, no checkout)

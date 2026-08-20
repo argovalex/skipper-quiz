@@ -23,6 +23,17 @@ app.use(express.urlencoded({ extended: true })); // Tranzila posts urlencoded
 const ALLOW = (process.env.ALLOWED_ORIGINS || '*').split(',').map(s => s.trim()).filter(Boolean);
 const pickOrigin = o => (o && (ALLOW.includes('*') || ALLOW.includes(o))) ? o : null;
 app.use((req, res, next) => {
+  // Admin endpoints are gated by the x-admin token and never use the sid cookie, so
+  // they may be called from any origin — including the local file:// hub (Origin: null).
+  // No credentials are allowed here, so a stray origin can do nothing without the token.
+  if (req.path.startsWith('/api/admin/')) {
+    res.set('Access-Control-Allow-Origin', req.headers.origin || '*');
+    res.set('Vary', 'Origin');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, x-admin');
+    res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    if (req.method === 'OPTIONS') return res.sendStatus(204);
+    return next();
+  }
   const o = pickOrigin(req.headers.origin);
   if (o) {
     res.set('Access-Control-Allow-Origin', o);
@@ -136,6 +147,7 @@ app.post('/api/session/start', rateStart, async (req, res) => {
   const r = await session.start(code, prior);
   if (!r.ok) return res.status(r.reason === 'device-limit' || r.reason === 'revoked' ? 403 : 400).json({ ok: false, reason: r.reason });
   setSid(req, res, r.sid);
+  if (code && !r.dev) db.q('insert into code_visits(code) values ($1)', [String(code).trim()]).catch(() => {}); // usage stats
   res.json({ ok: true });
 });
 
@@ -415,6 +427,8 @@ app.post('/api/admin/promo', async (req, res) => {
         [String(email)]
       );
       const code = await codes.issueCode(String(email), p.rows[0].id, deviceLimit);
+      await db.q('insert into instructors(code, name, school, email, phone) values ($1,$2,$3,$4,$5)',
+        [code, b.name || null, b.school || null, String(email), b.phone || null]);
       out.push({ email, code });
     }
     console.error(`🎫 promo minted ${out.length} code(s), device_limit=${deviceLimit}`);
@@ -422,6 +436,42 @@ app.post('/api/admin/promo', async (req, res) => {
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message });
   }
+});
+
+// Instructor directory + usage stats (for hub.html). Protected by ADMIN_TOKEN.
+app.get('/api/admin/instructors', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  try {
+    const r = await db.q(`
+      select i.code, i.name, i.school, i.email, i.phone, i.created_at,
+             ac.device_limit, ac.revoked,
+             (select count(*)::int from code_visits v where v.code = i.code) as visits,
+             (select max(ts) from code_visits v where v.code = i.code) as last_seen,
+             (select count(distinct device_id)::int from code_devices d where d.code = i.code) as devices,
+             (select json_agg(t.ts) from (select ts from code_visits where code = i.code order by ts desc limit 20) t) as recent
+      from instructors i
+      left join access_codes ac on ac.code = i.code
+      order by i.created_at desc`);
+    res.json({ ok: true, instructors: r.rows });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
+// Revoke a code (kills access + all its sessions). Protected by ADMIN_TOKEN.
+app.post('/api/admin/revoke', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  const code = req.body && req.body.code;
+  if (!code) return res.status(400).json({ ok: false, reason: 'no-code' });
+  await db.q('update access_codes set revoked=true where code=$1', [code]);
+  await db.q('update sessions set active=false, rotated_at=now() where code=$1', [code]);
+  res.json({ ok: true });
 });
 
 const PORT = process.env.PORT || 8080;
