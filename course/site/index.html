@@ -41,8 +41,22 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
   .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.02rem}
   .brand svg{width:26px;height:26px;flex:0 0 auto}
-  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-cta{display:flex;align-items:center;gap:14px}
   .nav-cta a.tel{color:var(--dim);font-weight:700;font-size:.92rem}
+  /* Section jump-nav: inline links on desktop, a hamburger dropdown on mobile so
+     the 6 sections are reachable without scrolling the whole page. */
+  .nav-menu{display:flex;align-items:center;gap:22px}
+  .nav-menu a{color:var(--dim);font-weight:700;font-size:.95rem;white-space:nowrap}
+  .nav-menu a:hover{color:var(--gold)}
+  .nav-menu a.wa-inline{display:none}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;background:transparent;border:0;
+    cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;
+    transition:transform .2s ease,opacity .2s ease}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  section[id],header[id]{scroll-margin-top:80px}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
     font-family:inherit;font-weight:800;font-size:.95rem;cursor:pointer;border:0;
     border-radius:12px;padding:12px 20px;transition:transform .12s ease,background .2s ease,border-color .2s}
@@ -207,6 +221,50 @@
     color:var(--faint);font-size:.82rem}
   .legal .disc{max-width:52ch}
 
+  /* Floating WhatsApp button — always reachable, so mobile users never scroll to find contact */
+  .wa-fab{position:fixed;z-index:60;bottom:20px;right:20px;
+    display:inline-flex;align-items:center;gap:10px;
+    background:#25d366;color:#fff;font-weight:800;
+    border-radius:999px;padding:13px 20px 13px 15px;
+    box-shadow:0 14px 34px rgba(37,211,102,.4),0 4px 12px rgba(0,0,0,.35);
+    transition:transform .15s ease,background .2s ease}
+  .wa-fab:hover{background:#1ebe5b;transform:translateY(-2px)}
+  .wa-fab svg{width:26px;height:26px;flex:0 0 auto;fill:#fff}
+  .wa-fab .lbl{font-size:.98rem;white-space:nowrap}
+  @media(max-width:860px){
+    .wa-fab{bottom:calc(18px + env(safe-area-inset-bottom));right:16px;
+      width:60px;height:60px;padding:0;justify-content:center;gap:0}
+    .wa-fab .lbl{display:none}
+  }
+  @media(prefers-reduced-motion:no-preference){
+    .wa-fab{animation:wafab-in .45s ease .8s both}
+    @keyframes wafab-in{from{opacity:0;transform:translateY(16px) scale(.85)}to{opacity:1;transform:none}}
+  }
+
+  /* Free-trial email modal — opened by every CTA; captures the lead before the sampler */
+  .modal-overlay{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
+    background:rgba(5,10,22,.72);backdrop-filter:blur(6px);padding:20px}
+  .modal-overlay.open{display:flex}
+  .modal-card{position:relative;width:100%;max-width:430px;text-align:center;
+    background:linear-gradient(150deg,var(--panel),var(--navy2));
+    border:1px solid var(--line2);border-radius:20px;padding:30px 26px;
+    box-shadow:0 40px 80px -20px rgba(0,0,0,.7)}
+  .modal-card h3{font-size:1.5rem;font-weight:900;margin-bottom:8px}
+  .modal-card p{color:var(--dim);font-size:1rem;margin:0 0 18px}
+  .modal-card form{display:flex;flex-direction:column;gap:10px}
+  .modal-card input{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line2);
+    background:rgba(0,0,0,.25);color:var(--ink);font-family:inherit;font-size:1rem;text-align:right}
+  .modal-card input:focus{outline:none;border-color:var(--gold)}
+  .modal-card .btn{width:100%;padding:15px;font-size:1.05rem;margin-top:2px}
+  .modal-card .err{color:#ff8a8a;font-size:.9rem;min-height:1.1em;text-align:right}
+  .modal-card .fine{color:var(--faint);font-size:.8rem;margin:14px 0 0;line-height:1.6}
+  .modal-card .fine a{color:var(--dim);text-decoration:underline}
+  .modal-close{position:absolute;top:14px;inset-inline-start:18px;color:var(--faint);
+    background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer}
+  .modal-ok{display:none}
+  .modal-card.done .modal-form{display:none}
+  .modal-card.done .modal-ok{display:block}
+
   [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
   [data-reveal].in{opacity:1;transform:none}
 
@@ -225,6 +283,14 @@
     .refund-note{text-align:center}
     .foot{grid-template-columns:1fr;gap:28px}
     .nav-cta a.tel{display:none}
+    .nav-toggle{display:flex}
+    .nav-menu{position:fixed;top:66px;inset-inline:0;flex-direction:column;align-items:stretch;
+      gap:0;background:rgba(10,20,40,.98);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);max-height:0;overflow:hidden;
+      transition:max-height .3s ease;text-align:right}
+    .nav-menu.open{max-height:82vh}
+    .nav-menu a{padding:15px 24px;font-size:1.08rem;border-top:1px solid var(--line);color:var(--ink)}
+    .nav-menu a.wa-inline{display:block;color:#25d366}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -244,9 +310,18 @@
       </svg>
       אלכס ארגוב
     </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="#method">השיטה</a>
+      <a href="#voice">הסברים בקול</a>
+      <a href="#what">מה מקבלים</a>
+      <a href="#exams">המבחנים</a>
+      <a href="#price">מחיר</a>
+      <a href="#contact">צור קשר</a>
+      <a class="wa-inline" href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ · 052-368-2486</a>
+    </div>
     <div class="nav-cta">
-      <a class="tel" href="tel:+972523682486">052-368-2486</a>
-      <a class="btn btn-gold btn-sm" href="https://app.alargov.com/">התחל חינם</a>
+      <a class="btn btn-gold btn-sm" href="#" data-trial>התחל חינם</a>
+      <button class="nav-toggle" id="navToggle" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
@@ -262,7 +337,7 @@
         <span class="spots-live" id="spotsHero"></span>
       </div>
       <div class="hero-actions">
-        <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
+        <a class="btn btn-gold" href="#" data-trial>התחל חינם</a>
         <a class="btn btn-ghost" href="#voice">ראה איך זה עובד</a>
       </div>
       <div class="hero-note">10 השאלות הראשונות חינם, בלי הרשמה.</div>
@@ -306,7 +381,7 @@
         <h2 style="margin-top:18px">לא רק לקרוא את התשובה. <span class="g">להבין אותה.</span></h2>
         <p>לכל שאלה יש הסבר קולי קצר וברור: המדריך מסביר למה התשובה נכונה, איך לחשוב על השאלה, ולמה האחרות עלולות להטעות אותך במבחן. אפשר לעצור, לחזור ולהקשיב שוב, בקצב שלך. כמו שיעור פרטי, רק שהמורה זמין בכל רגע בנייד.</p>
         <div class="hero-actions" style="margin-top:28px">
-          <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
+          <a class="btn btn-gold" href="#" data-trial>התחל חינם</a>
         </div>
       </div>
       <div data-reveal>
@@ -353,7 +428,7 @@
           <div class="sub">הקורס המלא: שיעורים, בנק שאלות וסרטונים, ומבחני דמה.</div>
         </div>
       </div>
-      <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
+      <a class="btn btn-gold" href="#" data-trial>התחל חינם</a>
     </div>
     <div class="soon-label" data-reveal>בקרוב, אותה שיטה</div>
     <div class="soon" data-reveal>
@@ -386,9 +461,9 @@
       <p>אנחנו מאמינים בשיטה שפיתחנו לאורך תשע שנים, ולכן מוכנים להחזיר לך את הכסף אם לא עברת.</p>
     </div>
     <p class="close-line">לומדים עד שמבינים. ניגשים כשמוכנים. <span class="g">עוברים.</span></p>
-    <div><a class="btn btn-gold" href="https://app.alargov.com/">התחל עכשיו</a></div>
+    <div><a class="btn btn-gold" href="#" data-trial>התחל עכשיו</a></div>
     <p style="color:var(--faint);font-size:.9rem;margin-top:16px">10 השאלות הראשונות חינם, בלי הרשמה.</p>
-    <p class="refund-note"><span style="color:var(--dim)">*</span> בכפוף לתנאי ההחזר. <a href="/legal/refund-policy">פרטים מלאים במדיניות הביטולים</a>.</p>
+    <p class="refund-note"><span style="color:var(--dim)">*</span> בכפוף לתנאי ההחזר. <a href="/legal/refund-policy.html">פרטים מלאים במדיניות הביטולים</a>.</p>
   </div>
 </section>
 
@@ -407,15 +482,16 @@
       </div>
       <div data-reveal>
         <h4>צור קשר</h4>
-        <a href="tel:+972523682486">052-368-2486</a>
-        <a href="https://wa.me/972523682486">וואטסאפ</a>
+        <a href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ · 052-368-2486</a>
+        <a href="tel:+972523682486">להתקשר · 052-368-2486</a>
         <a href="mailto:alex@alargov.com">alex@alargov.com</a>
       </div>
       <div data-reveal>
         <h4>מידע</h4>
-        <a href="/legal/terms-of-service">תנאי שימוש</a>
-        <a href="/legal/privacy-policy">מדיניות פרטיות</a>
-        <a href="/legal/refund-policy">ביטולים והחזרים</a>
+        <a href="/legal/terms-of-service.html">תנאי שימוש</a>
+        <a href="/legal/privacy-policy.html">מדיניות פרטיות</a>
+        <a href="/legal/refund-policy.html">ביטולים והחזרים</a>
+        <a href="/legal/accessibility-statement.html">הצהרת נגישות</a>
       </div>
     </div>
     <div class="legal">
@@ -425,13 +501,96 @@
   </div>
 </footer>
 
+<div class="modal-overlay" id="trialModal" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
+  <div class="modal-card" id="trialCard">
+    <button class="modal-close" type="button" aria-label="סגור" onclick="closeTrial()">×</button>
+    <div class="modal-form">
+      <h3 id="trialTitle">טעימה חינם · 10 שאלות</h3>
+      <p>השאירו מייל ונפתח לכם 10 שאלות מהמאגר, עם הסבר קולי לכל אחת. בלי תשלום.</p>
+      <form onsubmit="return submitTrial(event)">
+        <input id="trialEmail" type="email" inputmode="email" autocomplete="email" placeholder="האימייל שלכם" required>
+        <div class="err" id="trialErr"></div>
+        <button class="btn btn-gold" type="submit" id="trialSubmit">קבל גישה לטעימה</button>
+      </form>
+      <p class="fine">בהשארת המייל אתם מאשרים שנשמור אותו כדי לפתוח את הטעימה וליצור קשר. ראו <a href="/legal/privacy-policy.html" target="_blank" rel="noopener">מדיניות פרטיות</a>.</p>
+    </div>
+    <div class="modal-ok">
+      <h3>הכול מוכן 🎉</h3>
+      <p>פתחנו לכם טעימה של 10 שאלות מהמאגר. אפשר להתחיל.</p>
+      <a class="btn btn-gold" id="trialGo" href="#">המשך לטעימה ←</a>
+    </div>
+  </div>
+</div>
+
+<a class="wa-fab" href="https://wa.me/972523682486?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%94%D7%9B%D7%A0%D7%94%20%D7%9C%D7%9E%D7%91%D7%97%D7%9F%20%D7%94%D7%AA%D7%90%D7%95%D7%A8%D7%99%D7%94%20%D7%9C%D7%90%D7%95%D7%A4%D7%A0%D7%95%D7%A2%20%D7%99%D7%9D"
+   target="_blank" rel="noopener" aria-label="דברו איתנו בוואטסאפ">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.4 1.7 6.3L3 29l6.9-1.8c1.8 1 3.9 1.5 6.1 1.5 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.6c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4C5.3 19.9 4.8 18 4.8 16 4.8 9.8 9.8 4.8 16 4.8S27.2 9.8 27.2 16 22.2 26.6 16 26.6zm6.3-8.1c-.3-.2-2-1-2.4-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.3-3.9-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 1 4.1.9.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.2-.6-.4z"/></svg>
+  <span class="lbl">דברו איתנו בוואטסאפ</span>
+</a>
+
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Mobile section-nav: hamburger toggles the dropdown; any link closes it.
+  (function(){
+    var toggle=document.getElementById('navToggle'), menu=document.getElementById('navMenu');
+    if(!toggle||!menu) return;
+    function close(){menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+    toggle.addEventListener('click',function(){
+      var open=menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  })();
   // reveal on scroll (justified: entrance hierarchy). honors prefers-reduced-motion via CSS.
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
     document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
   }else{document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));}
+
+  // Free-trial lead capture: every CTA opens the email modal; on submit we POST the
+  // email to /api/lead (saved in the DB) and reveal the "continue to the sampler" link.
+  (function(){
+    var meta=document.querySelector('meta[name=sq-api]');
+    var API=(localStorage.getItem('sq_api')||(meta&&meta.content)||'').replace(/\/$/,'');
+    var APP_URL='https://app.alargov.com/';
+    var EMAIL_RE=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    var modal=document.getElementById('trialModal'), card=document.getElementById('trialCard'), source='landing';
+    function anon(){try{var a=localStorage.getItem('sq_anon');if(!a){a='a'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('sq_anon',a);}return a;}catch(e){return null;}}
+    window.openTrial=function(src){
+      source=src||'landing';
+      card.classList.remove('done');
+      document.getElementById('trialErr').textContent='';
+      modal.classList.add('open');
+      setTimeout(function(){var i=document.getElementById('trialEmail');if(i)i.focus();},60);
+    };
+    window.closeTrial=function(){modal.classList.remove('open');};
+    modal.addEventListener('click',function(e){if(e.target===modal)closeTrial();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTrial();});
+    document.querySelectorAll('a[data-trial]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        var sec=a.closest('section,header,nav');
+        openTrial(sec&&sec.id?sec.id:'landing');
+      });
+    });
+    window.submitTrial=function(e){
+      e.preventDefault();
+      var email=(document.getElementById('trialEmail').value||'').trim().toLowerCase();
+      var err=document.getElementById('trialErr'), btn=document.getElementById('trialSubmit');
+      if(!EMAIL_RE.test(email)){err.textContent='נא להזין אימייל תקין';return false;}
+      err.textContent='';btn.disabled=true;btn.textContent='רגע...';
+      try{localStorage.setItem('sq_lead',email);}catch(_){}
+      function done(){document.getElementById('trialGo').href=APP_URL;card.classList.add('done');btn.disabled=false;btn.textContent='קבל גישה לטעימה';}
+      if(!API){done();return false;}
+      fetch(API+'/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email,source:source,anon_id:anon()})})
+        .then(function(r){return r.json().catch(function(){return {};});})
+        .then(function(){done();})
+        .catch(function(){done();}); // API not up yet: email kept locally, still show success
+      return false;
+    };
+  })();
 
   // Live founders seats from the API. Graceful: on any failure the static text stays.
   (function(){
