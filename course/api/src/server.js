@@ -9,6 +9,8 @@ const codes = require('./codes');
 const settings = require('./settings');
 const email = require('./email');
 const invoice = require('./invoice');
+const session = require('./session');
+const media = require('./media');
 const crypto = require('crypto');
 
 const app = express();
@@ -16,18 +18,65 @@ app.use(express.json({ limit: '256kb' }));
 app.use(express.urlencoded({ extended: true })); // Tranzila posts urlencoded
 
 // ── CORS (PWA is a different origin) ────────────────────────────────────────
-const ORIGINS = process.env.ALLOWED_ORIGINS || '*';
+// Credentialed requests (the sid cookie travels cross-origin) require echoing the
+// exact origin — never `*` — plus Allow-Credentials. Set ALLOWED_ORIGINS in prod.
+const ALLOW = (process.env.ALLOWED_ORIGINS || '*').split(',').map(s => s.trim()).filter(Boolean);
+const pickOrigin = o => (o && (ALLOW.includes('*') || ALLOW.includes(o))) ? o : null;
 app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', ORIGINS);
-  res.set('Access-Control-Allow-Headers', 'Content-Type, x-code, x-device, x-admin');
+  const o = pickOrigin(req.headers.origin);
+  if (o) {
+    res.set('Access-Control-Allow-Origin', o);
+    res.set('Vary', 'Origin');
+    res.set('Access-Control-Allow-Credentials', 'true');
+  }
+  res.set('Access-Control-Allow-Headers', 'Content-Type, x-code, x-admin');
   res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
 
-const codeOf = req => req.header('x-code') || req.query.code || (req.body && req.body.code);
-const deviceOf = req => req.header('x-device') || req.query.device || (req.body && req.body.device);
-const gate = async req => codes.validate(codeOf(req), deviceOf(req));
+// ── Cookies (sid session) ─────────────────────────────────────────────────────
+function readCookie(req, name) {
+  const raw = req.headers.cookie;
+  if (!raw) return null;
+  for (const part of raw.split(';')) {
+    const i = part.indexOf('=');
+    if (i > -1 && part.slice(0, i).trim() === name) return decodeURIComponent(part.slice(i + 1).trim());
+  }
+  return null;
+}
+const isHttps = req => req.secure || (req.headers['x-forwarded-proto'] || '').split(',')[0].trim() === 'https';
+function setSid(req, res, sid) {
+  const attrs = ['sid=' + encodeURIComponent(sid), 'Path=/', 'Max-Age=' + 60 * 60 * 24 * 30, 'HttpOnly'];
+  if (isHttps(req)) attrs.push('Secure', 'SameSite=None'); else attrs.push('SameSite=Lax');
+  res.append('Set-Cookie', attrs.join('; '));
+}
+function clearSid(req, res) {
+  const attrs = ['sid=', 'Path=/', 'Max-Age=0', 'HttpOnly'];
+  if (isHttps(req)) attrs.push('Secure', 'SameSite=None'); else attrs.push('SameSite=Lax');
+  res.append('Set-Cookie', attrs.join('; '));
+}
+
+// Cookie-based gate: resolve the sid, write back a rotated cookie when needed.
+async function gate(req, res) {
+  const sid = readCookie(req, 'sid');
+  const r = await session.resolve(sid);
+  if (r.ok && r.sid && r.sid !== sid) setSid(req, res, r.sid);
+  return r;
+}
+const gateStatus = reason => (reason === 'revoked' ? 403 : 401); // superseded/no-session → 401 (client re-starts)
+
+// ── Rate limit (in-memory) for session start — slows code brute force ──────────
+const startHits = new Map();
+function rateStart(req, res, next) {
+  const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim();
+  const now = Date.now();
+  const recent = (startHits.get(ip) || []).filter(t => now - t < 5 * 60 * 1000);
+  recent.push(now);
+  startHits.set(ip, recent);
+  if (recent.length > 30) return res.status(429).json({ ok: false, reason: 'rate' });
+  next();
+}
 
 // ── Health ──────────────────────────────────────────────────────────────────
 app.get('/health', (req, res) => res.json({ ok: true, db: db.hasDb(), ts: Date.now() }));
@@ -56,38 +105,54 @@ app.post('/api/config', async (req, res) => {
 app.get('/api/free', async (req, res) => {
   try {
     const lessons = await content.load();
-    res.json({ ok: true, lessons: content.freeSubset(lessons) });
+    res.json({ ok: true, lessons: media.signLessons(content.freeSubset(lessons)) });
   } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
 });
 
-// ── Paid content (code-gated) ─────────────────────────────────────────────────
+// ── Session: exchange a code for an httpOnly rotating cookie ───────────────────
+app.post('/api/session/start', rateStart, async (req, res) => {
+  const code = req.header('x-code') || (req.body && req.body.code) || '';
+  const prior = readCookie(req, 'sid');
+  const r = await session.start(code, prior);
+  if (!r.ok) return res.status(r.reason === 'device-limit' || r.reason === 'revoked' ? 403 : 400).json({ ok: false, reason: r.reason });
+  setSid(req, res, r.sid);
+  res.json({ ok: true });
+});
+
+app.post('/api/session/end', async (req, res) => {
+  await session.end(readCookie(req, 'sid'));
+  clearSid(req, res);
+  res.json({ ok: true });
+});
+
+// ── Paid content (session-gated) ──────────────────────────────────────────────
 app.get('/api/content', async (req, res) => {
-  const v = await gate(req);
-  if (!v.ok) return res.status(403).json({ ok: false, reason: v.reason });
+  const v = await gate(req, res);
+  if (!v.ok) return res.status(gateStatus(v.reason)).json({ ok: false, reason: v.reason });
   try {
     const [lessons, cfg, pr] = await Promise.all([content.load(), settings.all(), settings.pricing()]);
-    res.json({ ok: true, price_ils: pr.price, brand_name: cfg.brand_name, product_title: cfg.product_title, lessons });
+    res.json({ ok: true, price_ils: pr.price, brand_name: cfg.brand_name, product_title: cfg.product_title, lessons: media.signLessons(lessons) });
   } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
 });
 
-// ── Progress (per code) ────────────────────────────────────────────────────────
+// ── Progress (per session's code) ──────────────────────────────────────────────
 app.get('/api/progress', async (req, res) => {
-  const v = await gate(req);
-  if (!v.ok) return res.status(403).json({ ok: false, reason: v.reason });
+  const v = await gate(req, res);
+  if (!v.ok) return res.status(gateStatus(v.reason)).json({ ok: false, reason: v.reason });
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
-  const r = await db.q('select data from progress where code=$1', [codeOf(req)]);
+  const r = await db.q('select data from progress where code=$1', [v.code]);
   res.json({ ok: true, data: r.rows[0] ? r.rows[0].data : {} });
 });
 
 app.post('/api/progress', async (req, res) => {
-  const v = await gate(req);
-  if (!v.ok) return res.status(403).json({ ok: false, reason: v.reason });
+  const v = await gate(req, res);
+  if (!v.ok) return res.status(gateStatus(v.reason)).json({ ok: false, reason: v.reason });
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
   const data = (req.body && req.body.data) || {};
   await db.q(
     `insert into progress(code, data, updated_at) values ($1, $2, now())
      on conflict(code) do update set data=$2, updated_at=now()`,
-    [codeOf(req), data]
+    [v.code, data]
   );
   res.json({ ok: true });
 });

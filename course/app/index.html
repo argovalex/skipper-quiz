@@ -74,21 +74,26 @@ const LETTERS=['א','ב','ג','ד','ה'];
 /* ===== API (course server) ===== */
 let API_BASE = (localStorage.getItem('sq_api')||'https://api.alargov.com').replace(/\/$/,'');
 let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null;
-function deviceId(){let d;try{d=localStorage.getItem('sq_device');if(!d){d=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():'d'+Math.random().toString(36).slice(2)+Date.now();localStorage.setItem('sq_device',d);}}catch(e){d='d'+Math.random().toString(36).slice(2);}return d;}
 function storedCode(){try{return localStorage.getItem('sq_code')||'';}catch(e){return '';}}
 function storeCode(c){try{localStorage.setItem('sq_code',c);}catch(e){}}
 function clearCode(){try{localStorage.removeItem('sq_code');}catch(e){}}
-async function apiJson(path,opts){const r=await fetch(API_BASE+path,opts||{});return r.json().catch(()=>({ok:false,reason:'bad-json'}));}
+// The httpOnly sid cookie is the working credential; every call sends it. The raw
+// code is kept only to (re)open a session if the cookie is lost or superseded.
+async function apiJson(path,opts){opts=opts||{};opts.credentials='include';const r=await fetch(API_BASE+path,opts);return r.json().catch(()=>({ok:false,reason:'bad-json'}));}
 async function apiConfig(){return apiJson('/api/config');}
 async function apiFree(){return apiJson('/api/free');}
-async function apiContent(code){return apiJson('/api/content',{headers:{'x-code':code,'x-device':deviceId()}});}
-async function apiGetProgress(code){return apiJson('/api/progress?code='+encodeURIComponent(code),{headers:{'x-device':deviceId()}});}
-async function apiSaveProgress(code,data){return apiJson('/api/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code,data})});}
+async function sessionStart(code){return apiJson('/api/session/start',{method:'POST',headers:{'x-code':code}});}
+// One silent retry: a superseded cookie (a copy grabbed the slot) or an expired one
+// re-opens a session from the stored code, then repeats the call.
+async function authed(path,opts){let r=await apiJson(path,opts);if(r&&r.reason&&/superseded|no-session/.test(r.reason)){const c=storedCode();if(c){const s=await sessionStart(c);if(s&&s.ok)r=await apiJson(path,opts);}}return r;}
+async function apiContent(){return authed('/api/content');}
+async function apiGetProgress(){return authed('/api/progress');}
+async function apiSaveProgress(data){return authed('/api/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data})});}
 function applyContent(resp){LESSON_Q={};const L=(resp&&resp.lessons)||{};for(const k in L)LESSON_Q[k]=(L[k].questions||[]);rebuildIndex();}
-async function unlockWithCode(code){const r=await apiContent(code);if(r&&r.ok){storeCode(code);applyContent(r);st.owned=true;await syncProgressDown(code);toast('נפתחה גישה מלאה 🎉');go('home');}else{const m=r&&r.reason==='device-limit'?'הקוד כבר בשימוש במכשיר אחר':r&&r.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין';toast(m);}return r;}
+async function unlockWithCode(code){const s=await sessionStart(code);if(!(s&&s.ok)){const m=s&&s.reason==='device-limit'?'הקוד כבר בשימוש במספר המכשירים המרבי':s&&s.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין';toast(m);return s;}storeCode(code);const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;await syncProgressDown();toast('נפתחה גישה מלאה 🎉');go('home');}else{toast(r&&r.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין');}return r;}
 function promptCode(){const c=prompt('הזן קוד גישה (מהרכישה או מהמדריך):');if(c&&c.trim())unlockWithCode(c.trim());}
-async function syncProgressDown(code){try{const r=await apiGetProgress(code);if(r&&r.ok&&r.data){const d=r.data;if(typeof d.xp==='number')st.xp=Math.max(st.xp,d.xp);if(d.srs)st.srs=Object.assign({},d.srs,st.srs);if(d.topicStats)st.topicStats=Object.assign({},d.topicStats,st.topicStats);if(Array.isArray(d.done))d.done.forEach(x=>st.done.add(x));persist();render();}}catch(e){}}
-let _pushT;function pushProgress(){if(!st.owned)return;const code=storedCode();if(!code)return;clearTimeout(_pushT);_pushT=setTimeout(()=>{apiSaveProgress(code,{xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound});},700);}
+async function syncProgressDown(){try{const r=await apiGetProgress();if(r&&r.ok&&r.data){const d=r.data;if(typeof d.xp==='number')st.xp=Math.max(st.xp,d.xp);if(d.srs)st.srs=Object.assign({},d.srs,st.srs);if(d.topicStats)st.topicStats=Object.assign({},d.topicStats,st.topicStats);if(Array.isArray(d.done))d.done.forEach(x=>st.done.add(x));persist();render();}}catch(e){}}
+let _pushT;function pushProgress(){if(!st.owned)return;if(!storedCode())return;clearTimeout(_pushT);_pushT=setTimeout(()=>{apiSaveProgress({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound});},700);}
 async function handleReturn(){
   const u=new URL(location.href);const token=u.searchParams.get('token');if(!token)return false;
   toast('מאמת תשלום…');
@@ -99,7 +104,7 @@ async function bootstrap(){
   try{const cfg=await apiConfig();if(cfg&&cfg.ok){BRAND=cfg.brand_name||BRAND;PRODUCT=cfg.product_title||PRODUCT;PRICE=cfg.price_ils||PRICE;PRICING=cfg.pricing||PRICING;}}catch(e){}
   if(await handleReturn())return;
   const code=storedCode();
-  if(code){const r=await apiContent(code);if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown(code);return;}clearCode();}
+  if(code){const s=await sessionStart(code);if(s&&s.ok){const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown();return;}}clearCode();}
   try{const f=await apiFree();if(f&&f.ok)applyContent(f);else toast('לא הצלחתי לטעון תוכן מהשרת');}catch(e){toast('אין חיבור לשרת');}
   st.owned=false;render();
 }
