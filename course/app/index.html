@@ -72,7 +72,7 @@ const VIDEO_DATA = window.__VIDEO_DATA__ || {};
 const LETTERS=['א','ב','ג','ד','ה'];
 
 /* ===== API (course server) ===== */
-let API_BASE = (localStorage.getItem('sq_api')||'https://skipper-quiz-production.up.railway.app').replace(/\/$/,'');
+let API_BASE = (localStorage.getItem('sq_api')||'https://api.alargov.com').replace(/\/$/,'');
 let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null;
 function storedCode(){try{return localStorage.getItem('sq_code')||'';}catch(e){return '';}}
 function storeCode(c){try{localStorage.setItem('sq_code',c);}catch(e){}}
