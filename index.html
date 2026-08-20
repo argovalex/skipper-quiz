@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>⚓ Skipper Quiz Manager</title>
+<script>
+// Opened as a local file? localStorage is keyed per-origin, so a file:// page
+// can't see the GitHub token stored under http://localhost:8899 (where the
+// editor is served). Without the token every save silently falls back to the
+// local cache ("נשמר מקומית") and never reaches GitHub. Bounce to the served
+// editor so the token + saving to GitHub always work. tools/vo-editor-server.js
+// (autostarted at login) serves every project file on :8899.
+if (location.protocol === 'file:') {
+  location.replace('http://localhost:8899/index.html' + location.search + location.hash);
+}
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -188,9 +199,16 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
   <div style="font-size:60px">⚓</div>
   <div style="color:#7eb8f7;font-size:24px;font-weight:900">Skipper Quiz Manager</div>
   <div style="color:#aac4e8;font-size:15px;text-align:center;line-height:1.7">
-    הדביק <strong style="color:#fff">GitHub Token</strong> בשדה שמופיע מעל.<br>
+    הדבק כאן <strong style="color:#fff">GitHub Token</strong> ולחץ "טען שאלות".<br>
     כל השמירות/טעינות יילכו ישירות ל-GitHub (questions.json בריפו skipper-quiz),<br>
     עם עותק מקומי שמאפשר לעבוד גם בלי רשת.
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <input id="ghTokenSetup" type="password" placeholder="ghp_..." autofocus
+      style="width:320px;padding:11px;border-radius:8px;border:1px solid #1e3a6e;background:#0c1a3a;color:#fff;font-size:14px;text-align:center;font-family:monospace"
+      oninput="document.getElementById('ghToken').value=this.value.trim();saveToken();"
+      onkeydown="if(event.key==='Enter')loadQuestions();">
+    <button class="tbtn green" style="padding:11px 24px;font-size:14px" onclick="loadQuestions()">טען שאלות ↺</button>
   </div>
 </div>
 
@@ -1149,7 +1167,7 @@ async function saveFixAndRender() {
   if (!saved) setStatus('⚠ שמירה ל-GitHub נכשלה — ממשיך לרנדר');
 
   const railwayUrl = getRailwayUrl();
-  if (!railwayUrl) { setStatus('⚠ הכנס Railway URL'); return; }
+  if (!railwayUrl) { setStatus(saved ? '✅ נשמר ל-GitHub · ⚠ הכנס Railway URL לרינדור וידאו' : '⚠ הכנס Railway URL'); return; }
 
   const num = q.num;
   if (renderingNums.has(num)) { setStatus('⏳ כבר ברינדור...'); return; }
