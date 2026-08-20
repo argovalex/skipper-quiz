@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he"><head><meta charset="UTF-8">
+<title>Skipper Quiz #1033 — זכות מעבר</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+#reel{width:390px;height:625px;background:#0c1a3a;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:'Heebo',sans-serif;direction:rtl}
+#hdr{background:#0c1a3a;padding:14px 16px 10px;flex-shrink:0;border-bottom:2px solid #1e3a6e;text-align:center}
+.brand{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:2px}
+.htitle{color:#fff;font-size:18px;font-weight:900}
+#scene{flex:1;position:relative;overflow:hidden}
+#ftr{background:#0c1a3a;padding:12px 16px;flex-shrink:0;border-top:2px solid #1e3a6e}
+.ql{color:#7eb8f7;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.qt{color:#fff;font-size:13px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{background:#1a2f5e;border:1px solid #2a4a8a;border-radius:7px;padding:7px 10px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;transition:all 0.5s}
+.ltr{background:#0c1a3a;color:#7eb8f7;font-size:11px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.opt.correct{background:#0d3d2a;border-color:#2ecc71;color:#2ecc71}
+.opt.correct .ltr{background:#2ecc71;color:#0d3d2a}
+.opt.wrong{background:#3d1a1a;border-color:#e74c3c;color:#e74c3c}
+.opt.wrong .ltr{background:#e74c3c;color:#fff}
+.opt.dim{opacity:0.3}
+#prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+</style></head><body>
+<div id="reel">
+  <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">מבחן הסקיפר היומי של אלכס ארגוב</div></div>
+  <div id="scene">
+    
+    <svg width="100%" height="100%" viewBox="0 0 360 420" preserveAspectRatio="xMidYMid slice" style="">
+      
+  <rect width="360" height="420" fill="#0a1428"/>
+  <text x="180" y="34" text-anchor="middle" fill="#fff" font-size="15" font-family="Heebo,sans-serif" font-weight="900">כלי שיט "בדרך" — מה זה?</text>
+  <line x1="180" y1="55" x2="180" y2="330" stroke="#274a78" stroke-width="1"/>
+  <line x1="24" y1="192" x2="336" y2="192" stroke="#274a78" stroke-width="1"/>
+  <text x="95" y="78" text-anchor="middle" fill="#c9d4dc" font-size="11" font-family="Heebo,sans-serif">רתוק לחוף</text>
+  <rect x="38" y="150" width="118" height="13" fill="#c8a86a"/>
+  <ellipse cx="106" cy="130" rx="29" ry="10" fill="#95a5a6" stroke="#6d7b7d" stroke-width="1.5"/>
+  <line x1="80" y1="134" x2="52" y2="150" stroke="#e8c15a" stroke-width="2"/>
+  <g stroke="#e74c3c" stroke-width="4.199999999999999" stroke-linecap="round">
+    <path d="M88,101 L102,115"/>
+    <path d="M102,101 L88,115"/></g>
+  <text x="265" y="78" text-anchor="middle" fill="#c9d4dc" font-size="11" font-family="Heebo,sans-serif">בעיגון</text>
+  <ellipse cx="265" cy="120" rx="29" ry="10" fill="#95a5a6" stroke="#6d7b7d" stroke-width="1.5"/>
+  <line x1="265" y1="128" x2="265" y2="162" stroke="#e8c15a" stroke-width="2"/>
+  <path d="M258 156 Q265 168 272 156 M259 164 L271 164" stroke="#e8c15a" stroke-width="2" fill="none"/>
+  <g stroke="#e74c3c" stroke-width="4.199999999999999" stroke-linecap="round">
+    <path d="M258,93 L272,107"/>
+    <path d="M272,93 L258,107"/></g>
+  <text x="95" y="216" text-anchor="middle" fill="#c9d4dc" font-size="11" font-family="Heebo,sans-serif">על שרטון</text>
+  <path d="M42 302 Q95 260 148 302 Z" fill="#c8a86a"/>
+  <g transform="rotate(-12,95,280)"><ellipse cx="95" cy="280" rx="29" ry="10" fill="#95a5a6" stroke="#6d7b7d" stroke-width="1.5"/></g>
+  <g stroke="#e74c3c" stroke-width="4.199999999999999" stroke-linecap="round">
+    <path d="M88,237 L102,251"/>
+    <path d="M102,237 L88,251"/></g>
+  <rect x="186" y="204" width="164" height="120" fill="#2ecc71" opacity="0.09"/>
+  <text x="265" y="216" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">"בדרך"</text>
+  <defs><marker id="uwarr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2ecc71"/></marker></defs>
+  <ellipse cx="252" cy="278" rx="29" ry="10" fill="#f1c40f" stroke="#c8a000" stroke-width="1.5"/>
+  <path d="M288 278 L322 278" stroke="#2ecc71" stroke-width="3" marker-end="url(#uwarr)"/>
+  <path d="M257,244 L263.4,250.4 L274.6,236"
+    fill="none" stroke="#2ecc71" stroke-width="4.800000000000001" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="180" y="362" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">בדרך = לא רתוק, לא עוגן, לא על שרטון</text>
+
+      <g id="ov" opacity="0">
+        <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
+        <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
+      </g>
+      <text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>
+    </svg>
+    <div id="prog"></div>
+  </div>
+  <div id="ftr">
+    <div class="ql" id="ql">❓ השאלה</div>
+    <div class="qt" id="qt">הגדרת כלי שיט "בדרך" היא:</div>
+    <div class="opts" id="opts"><div class="opt" id="o0"><div class="ltr">א</div>כלי שיט שאיננו רתוק לחוף, אינו במצב עגינה ואינו על שרטון.</div><div class="opt" id="o1"><div class="ltr">ב</div>כלי שיט המתקדם במים בעזרת מנועים, מפרשים או משוטים.</div><div class="opt" id="o2"><div class="ltr">ג</div>כלי שיט שאינו מתקדם בעזרת מנועים או מפרשים אלא ניסחף ברוח ובזורם.</div><div class="opt" id="o3"><div class="ltr">ד</div>כלי שיט המפליג מנקודה אחת לנקודה אחרת.</div></div>
+  </div>
+</div>
+<script>
+const C=0;
+const OPTS=["א. כלי שיט שאיננו רתוק לחוף, אינו במצב עגינה ואינו על שרטון.","ב. כלי שיט המתקדם במים בעזרת מנועים, מפרשים או משוטים.","ג. כלי שיט שאינו מתקדם בעזרת מנועים או מפרשים אלא ניסחף ברוח ובזורם.","ד. כלי שיט המפליג מנקודה אחת לנקודה אחרת."];
+const Q="הגדרת כלי שיט \"בדרך\" היא:";
+const E="שאלה מספר 1033. הגדרת כלי שיט בדרך היא. [[PAUSE]] התשובה הנכונה היא א: כלי שיט שאיננו רַתוּק לַרַצִיף, אינו במצב עגינה ואינו על שרטון. ... כלי שיט בדרך מוגדר כלי שיט שאינו בעגינה, אינו קשור לַרַצִיף ואינו על שרטון.  כלי אשר נסחף ברוח בלי הנעה של מנוע או מִּפְרָשׂ ככלל הוא עדיין בדרך, וכל כללי זכות המעבר חלים עליו. אל תבלבל בין בדרך לבין מפליג במים, שפירושו שיש לכלי יכולת הנעה וניווט במים. אפשר להיות בדרך בלי להפליג, למשל כלי שייט שהמנוע שלו הדמים ונסחף בזרם הגלים והרוח. תשובה ב מגדירה מפליג במים, לא בדרך. תשובה ג מתארת מצב שהוא כן בדרך, אז היא הפוכה. תשובה ד ממציאה הגדרה שלא קיימת בכללים.";
+const LT=["א","ב","ג","ד"];
+
+// AUTO-PLAY MODE — countdown then reveal (for screen recording)
+// Gated behind window.__startAutoPlay() instead of running on page load, so the
+// recorder (Puppeteer) can fire it the instant the screencast actually starts —
+// otherwise the timer head-starts before recording begins and drifts out of sync
+// with the audio track (which assumes recording-start == t=0).
+window.__startAutoPlay = function(){
+const prog=document.getElementById('prog');
+const DELAY=15000;
+prog.style.transition='none';prog.style.width='0%';
+setTimeout(()=>{prog.style.transition='width '+DELAY+'ms linear';prog.style.width='100%';},30);
+setTimeout(()=>{
+  document.querySelectorAll('.opt').forEach((o,j)=>{
+    o.style.transition='all 0.6s';
+    if(j===C)o.classList.add('correct'); else o.classList.add('dim');
+  });
+  const ov=document.getElementById('ov');
+  const txt=document.getElementById('ovText');
+  const rect=ov.querySelector('rect');
+  txt.textContent='✅ תשובה נכונה!';txt.setAttribute('fill','#2ecc71');
+  rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');
+  ov.setAttribute('opacity','1');
+  setTimeout(()=>{
+    document.getElementById('ql').textContent='✅ התשובה הנכונה:';
+    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
+    // Second countdown — next card (loop for batch recording)
+    const prog2=document.getElementById('prog');
+    prog2.style.transition='none';prog2.style.width='0%';
+    setTimeout(()=>{prog2.style.transition='width 4000ms linear';prog2.style.width='100%';},30);
+  },600);
+},DELAY+50);
+};
+
+
+</script></body></html>
