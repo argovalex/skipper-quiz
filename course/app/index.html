@@ -361,6 +361,12 @@ function vHome(){
     <button data-act="review" style="flex:1;background:${dueN?'rgba(241,196,15,.12)':C.card};border:1px solid ${dueN?C.gold:C.bd2};color:${dueN?C.gold:C.dim};border-radius:12px;padding:12px;font-size:12.5px;font-weight:900;cursor:pointer">🔁 חזרה חכמה${dueN?` · ${dueN}`:''}</button>
     <button data-act="reinforce" style="flex:1;background:${weakN?'rgba(241,196,15,.12)':C.card};border:1px solid ${weakN?C.gold:C.bd2};color:${weakN?C.gold:C.dim};border-radius:12px;padding:12px;font-size:12.5px;font-weight:900;cursor:pointer">🎯 מבחן חיזוק</button>
   </div>
+  <div style="font-size:11px;color:${C.mut};line-height:1.65;margin-bottom:14px;background:${C.card};border:1px solid ${C.bd};border-radius:10px;padding:10px 12px">
+    <div style="color:${C.blue};font-weight:700;margin-bottom:3px">איך זה עובד</div>
+    🔁 <b style="color:#cdd9ef">חזרה חכמה</b> — המערכת מתזמנת לך לחזרה בדיוק את השאלות שנוטים לשכוח, במרווחים גדלים.<br>
+    🎯 <b style="color:#cdd9ef">מבחן חיזוק</b> — מתרגל אותך רק על הנושאים שבהם טעית הכי הרבה.<br>
+    📊 <b style="color:#cdd9ef">נושאים חלשים · לחזרה היום</b> — נבנים לבד מהתשובות שלך, כדי שתדע איפה להתמקד.
+  </div>
   <div style="background:${C.card2};border:1px solid ${C.gold};border-radius:16px;padding:18px;margin:14px 0 22px;display:flex;flex-direction:column;gap:10px">
     <div style="color:${C.gold};font-size:11px;font-weight:700;letter-spacing:1px">המשך מאיפה שהפסקת</div>
     <div style="font-size:17px;font-weight:900">שיעור ${cur.id} · ${cur.title}</div>
