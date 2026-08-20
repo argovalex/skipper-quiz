@@ -39,6 +39,22 @@ create table if not exists progress (
   updated_at timestamptz not null default now()
 );
 
+-- Server-issued rotating sessions. The httpOnly `sid` cookie is the working
+-- credential (not the raw code). Rotation + reuse detection make a copied cookie
+-- jar fight with its origin: only one session per device_id stays active, so a
+-- shared/cloned credential is usable by one client at a time. See session.js.
+create table if not exists sessions (
+  sid        text primary key,
+  code       text not null references access_codes(code) on delete cascade,
+  device_id  text not null,                        -- server-generated, never exposed to the client
+  active     boolean not null default true,
+  created_at timestamptz not null default now(),
+  last_seen  timestamptz not null default now(),
+  rotated_at timestamptz
+);
+create index if not exists idx_sessions_code on sessions(code);
+create index if not exists idx_sessions_device_active on sessions(device_id, active);
+
 -- private question bank (served from DB, not from the public repo URL). See DATA_SOURCE=db.
 create table if not exists bank (
   num        int primary key,

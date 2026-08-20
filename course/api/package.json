@@ -9,6 +9,7 @@
     "dev": "node src/server.js"
   },
   "dependencies": {
+    "cloudinary": "^2.10.1",
     "express": "^4.19.2",
     "pg": "^8.12.0"
   },

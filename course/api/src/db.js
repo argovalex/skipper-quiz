@@ -18,6 +18,24 @@ async function q(text, params) {
   return pool.query(text, params);
 }
 
+// Run fn inside a transaction with its own client. Used where a read-then-write
+// must be atomic (e.g. claiming a device slot against device_limit).
+async function tx(fn) {
+  if (!pool) throw new Error('DATABASE_URL not set');
+  const client = await pool.connect();
+  try {
+    await client.query('begin');
+    const r = await fn(client);
+    await client.query('commit');
+    return r;
+  } catch (e) {
+    try { await client.query('rollback'); } catch (_) {}
+    throw e;
+  } finally {
+    client.release();
+  }
+}
+
 async function init() {
   if (!pool) {
     console.warn('⚠️  DATABASE_URL not set — codes/progress/coupons/notify disabled (503). File endpoints still work.');
@@ -28,4 +46,4 @@ async function init() {
   console.error('✅ DB schema ready');
 }
 
-module.exports = { hasDb, q, init };
+module.exports = { hasDb, q, tx, init };

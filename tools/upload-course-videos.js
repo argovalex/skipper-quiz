@@ -38,7 +38,7 @@ const LANDING = [
 async function up(file, folder, public_id, label) {
   process.stderr.write(`↑ ${label} ... `);
   const r = await cloudinary.uploader.upload(file, {
-    resource_type: 'video', folder, public_id, overwrite: true, invalidate: true,
+    resource_type: 'video', type: 'authenticated', folder, public_id, overwrite: true, invalidate: true,
   });
   process.stderr.write('ok\n');
   return r.secure_url;
