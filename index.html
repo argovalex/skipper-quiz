@@ -4,17 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>⚓ Skipper Quiz Manager</title>
-<script>
-// Opened as a local file? localStorage is keyed per-origin, so a file:// page
-// can't see the GitHub token stored under http://localhost:8899 (where the
-// editor is served). Without the token every save silently falls back to the
-// local cache ("נשמר מקומית") and never reaches GitHub. Bounce to the served
-// editor so the token + saving to GitHub always work. tools/vo-editor-server.js
-// (autostarted at login) serves every project file on :8899.
-if (location.protocol === 'file:') {
-  location.replace('http://localhost:8899/index.html' + location.search + location.hash);
-}
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
