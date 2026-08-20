@@ -394,6 +394,36 @@ app.post('/api/admin/bank-import', async (req, res) => {
   }
 });
 
+// Mint promo/instructor access codes over the API (no local DB access needed).
+// They are `comp` purchases, so they never consume a founders seat and aren't counted
+// as paid buyers. Protected by ADMIN_TOKEN. Body: { email } or { emails:[...] }, optional
+// device_limit (default 1). Returns { codes:[{email,code}] }.
+app.post('/api/admin/promo', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  const b = req.body || {};
+  const emails = Array.isArray(b.emails) ? b.emails : (b.email ? [b.email] : []);
+  const deviceLimit = Number(b.device_limit) > 0 ? Number(b.device_limit) : 1;
+  if (!emails.length) return res.status(400).json({ ok: false, reason: 'no-email' });
+  try {
+    const out = [];
+    for (const email of emails) {
+      const p = await db.q(
+        "insert into purchases(email, amount_ils, partner_ref, status) values ($1, 0, 'instructor', 'comp') returning id",
+        [String(email)]
+      );
+      const code = await codes.issueCode(String(email), p.rows[0].id, deviceLimit);
+      out.push({ email, code });
+    }
+    console.error(`🎫 promo minted ${out.length} code(s), device_limit=${deviceLimit}`);
+    res.json({ ok: true, codes: out });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
 const PORT = process.env.PORT || 8080;
 db.init()
   .then(() => settings.seed())

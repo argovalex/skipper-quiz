@@ -104,15 +104,15 @@ async function load(force) {
   return cache.lessons;
 }
 
-// Free window: first question of lessons 1..10, up to 10 total (the viral sampler).
+// Free window: the first question of each of the 13 topics — one sample per type.
+// A fixed deterministic set (identical for everyone, every time), so re-registering
+// with a new email never yields different questions — no farming the whole bank.
 function freeSubset(lessons) {
   const out = {};
-  let n = 0;
-  for (let i = 1; i <= 13 && n < 10; i++) {
+  for (let i = 1; i <= 13; i++) {
     const l = lessons[String(i)];
     if (l && l.questions.length) {
       out[String(i)] = { id: l.id, title: l.title, questions: [l.questions[0]] };
-      n++;
     }
   }
   return out;
