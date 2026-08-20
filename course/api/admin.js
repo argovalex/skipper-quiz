@@ -94,11 +94,29 @@ async function main() {
   } else if (group === 'bank' && cmd === 'count') {
     const r = await db.q('select count(*)::int n from bank');
     console.log('bank rows:', r.rows[0].n);
+  } else if (group === 'stats') {
+    // Free→paid conversion: leads = free-trial email signups; paid_from_leads = paid
+    // purchases whose email also signed up for the free trial.
+    const r = await db.q(`
+      select
+        (select count(*)::int from trial_leads) as leads,
+        (select count(*)::int from purchases where status='paid') as paid,
+        (select count(distinct p.email)::int from purchases p
+           where p.status='paid'
+             and exists (select 1 from trial_leads l where lower(l.email)=lower(p.email))) as paid_from_leads
+    `);
+    const s = r.rows[0];
+    const conv = s.leads ? ((s.paid_from_leads / s.leads) * 100).toFixed(1) : '0.0';
+    console.log(`נסיון חינם (leads):        ${s.leads}`);
+    console.log(`שילמו (paid):              ${s.paid}`);
+    console.log(`שילמו מתוך נסיון חינם:      ${s.paid_from_leads}`);
+    console.log(`המרה (paid_from_leads/leads): ${conv}%`);
   } else {
     console.log('usage: config get | config set <key> <value>');
     console.log('       coupon add <code> <kind> <value> [partner] [maxUses] | coupon list | coupon on|off|del <code>');
     console.log('       instructor add <email> | instructor list | instructor revoke <code>');
     console.log('       bank import [file] | bank upsert <num...> | bank count');
+    console.log('       stats   # free→paid conversion (trial leads vs purchases)');
   }
   process.exit(0);
 }

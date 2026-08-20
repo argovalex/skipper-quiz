@@ -109,6 +109,26 @@ app.get('/api/free', async (req, res) => {
   } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
 });
 
+// ── Trial lead capture (email before the free sampler) ────────────────────────
+// Stores the email so we can measure free→paid conversion (see `admin.js stats`).
+// Deduped by email; safe to call repeatedly for the same visitor.
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+app.post('/api/lead', rateStart, async (req, res) => {
+  const email = String((req.body && req.body.email) || '').trim().toLowerCase();
+  const anon = (req.body && req.body.anon_id) ? String(req.body.anon_id).slice(0, 64) : null;
+  const source = (req.body && req.body.source) ? String(req.body.source).slice(0, 40) : 'landing';
+  if (!EMAIL_RE.test(email) || email.length > 254) return res.status(400).json({ ok: false, reason: 'bad-email' });
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  try {
+    await db.q(
+      `insert into trial_leads(email, anon_id, source) values ($1,$2,$3)
+       on conflict(email) do nothing`,
+      [email, anon, source]
+    );
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
+});
+
 // ── Session: exchange a code for an httpOnly rotating cookie ───────────────────
 app.post('/api/session/start', rateStart, async (req, res) => {
   const code = req.header('x-code') || (req.body && req.body.code) || '';
