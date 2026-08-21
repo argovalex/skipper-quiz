@@ -66,13 +66,9 @@
   </div>
 
   <div class="card">
-    <h2>מדריכים ושימוש <button class="ghost" style="float:left;padding:5px 12px;font-size:12px" onclick="load()">רענן</button></h2>
-    <div id="tableWrap"><div class="sub">שמור טוקן ולחץ רענן.</div></div>
-  </div>
-
-  <div class="card">
-    <h2>רוכשים ונרשמים <button class="ghost" style="float:left;padding:5px 12px;font-size:12px" onclick="loadBuyers()">רענן</button></h2>
-    <div id="buyersWrap"><div class="sub">מי שילם, מי התחיל תשלום ולא סיים, ומי השאיר דוא"ל לטעימה בלבד.</div></div>
+    <h2>רשומות</h2>
+    <div class="sub" style="margin-bottom:10px">כל המדריכים, הרוכשים והנרשמים בטבלה אחת — סינון, מיון, סימון וייצוא CSV.</div>
+    <a href="records.html"><button>פתח מסך רשומות ←</button></a>
   </div>
 </div>
 
@@ -106,7 +102,6 @@
         $('codeOut').innerHTML='<div class="codebox"><span>'+code+'</span><button class="ghost" style="padding:5px 12px" onclick="copy(\''+code+'\')">העתק</button></div>';
         msg('mintMsg','נוצר קוד ל'+(body.name||email),'ok');
         ['name','school','phone','email'].forEach(id=>$(id).value='');
-        load();
       } else { msg('mintMsg','שגיאה: '+((r&&r.reason)||(r&&r.error)||'לא ידוע'),'err'); }
     }catch(e){ msg('mintMsg','אין חיבור ל-API (בדוק כתובת/CORS): '+e.message,'err'); }
     $('mintBtn').disabled=false;
@@ -114,89 +109,9 @@
 
   function copy(t){ navigator.clipboard.writeText(t).catch(()=>{}); }
   function msg(id,t,cls){ const e=$(id); e.textContent=t; e.className='msg '+(cls||''); }
-
-  async function revoke(code){
-    if(!confirm('לבטל את הקוד '+code+'? הגישה תיחסם מיד.')) return;
-    const r=await apiCall('/api/admin/revoke',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
-    if(r&&r.ok) load(); else alert('שגיאה בביטול');
-  }
-
-  function toggleHist(code){ const el=$('h_'+code); if(el) el.style.display = el.style.display==='none'?'block':'none'; }
-
-  async function load(){
-    if(!tok()){ $('tableWrap').innerHTML='<div class="sub err">חסר ADMIN_TOKEN.</div>'; return; }
-    $('tableWrap').innerHTML='<div class="sub">טוען…</div>';
-    let r;
-    try{ r=await apiCall('/api/admin/instructors'); }
-    catch(e){ $('tableWrap').innerHTML='<div class="sub err">אין חיבור ל-API: '+e.message+'</div>'; return; }
-    if(!(r&&r.ok)){ $('tableWrap').innerHTML='<div class="sub err">שגיאה: '+((r&&r.reason)||'—')+' (טוקן שגוי?)</div>'; return; }
-    const rows=r.instructors||[];
-    if(!rows.length){ $('tableWrap').innerHTML='<div class="sub">עדיין אין מדריכים.</div>'; return; }
-    let html='<table><thead><tr><th>שם</th><th>בית ספר</th><th>דוא"ל</th><th>טלפון</th><th>קוד</th><th>מכשירים</th><th>שימושים</th><th>אחרון</th><th></th></tr></thead><tbody>';
-    for(const i of rows){
-      const cls=i.revoked?' class="revoked"':'';
-      html+='<tr'+cls+'>'
-        +'<td>'+(esc(i.name)||'—')+'</td>'
-        +'<td>'+(esc(i.school)||'—')+'</td>'
-        +'<td>'+(esc(i.email)||'—')+'</td>'
-        +'<td>'+(esc(i.phone)||'—')+'</td>'
-        +'<td class="code">'+i.code+(i.revoked?' <span class="pill">מבוטל</span>':'')+'</td>'
-        +'<td>'+(i.devices||0)+'/'+(i.device_limit||1)+'</td>'
-        +'<td><b>'+(i.visits||0)+'</b></td>'
-        +'<td>'+fmt(i.last_seen)+'</td>'
-        +'<td class="row-actions">'
-          +'<button class="ghost" style="padding:4px 9px;font-size:11px" onclick="toggleHist(\''+i.code+'\')">זמנים</button>'
-          +(i.revoked?'':'<button class="danger" onclick="revoke(\''+i.code+'\')">בטל</button>')
-        +'</td></tr>';
-      const rec=(i.recent||[]);
-      html+='<tr id="h_'+i.code+'" style="display:none"><td colspan="9"><div class="hist">'
-        +(rec.length? rec.map(fmt).join(' · ') : 'אין ביקורים עדיין')
-        +'</div></td></tr>';
-    }
-    html+='</tbody></table>';
-    $('tableWrap').innerHTML=html;
-  }
   function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
-  function moneyTable(title, rows, cols){
-    if(!rows.length) return '<div class="sub" style="margin:6px 0 14px">'+title+': אין רשומות.</div>';
-    let h='<div style="margin:10px 0 4px;color:var(--blue);font-weight:700;font-size:12.5px">'+title+' ('+rows.length+')</div>';
-    h+='<table><thead><tr>'+cols.map(c=>'<th>'+c[0]+'</th>').join('')+'</tr></thead><tbody>';
-    for(const r of rows){ h+='<tr>'+cols.map(c=>'<td'+(c[2]||'')+'>'+c[1](r)+'</td>').join('')+'</tr>'; }
-    return h+'</tbody></table>';
-  }
-
-  async function loadBuyers(){
-    if(!tok()){ $('buyersWrap').innerHTML='<div class="sub err">חסר ADMIN_TOKEN.</div>'; return; }
-    $('buyersWrap').innerHTML='<div class="sub">טוען…</div>';
-    let r;
-    try{ r=await apiCall('/api/admin/buyers'); }
-    catch(e){ $('buyersWrap').innerHTML='<div class="sub err">אין חיבור ל-API: '+e.message+'</div>'; return; }
-    if(!(r&&r.ok)){ $('buyersWrap').innerHTML='<div class="sub err">שגיאה: '+((r&&r.reason)||'—')+' (טוקן שגוי?)</div>'; return; }
-    const money=x=>x==null?'—':'₪'+Number(x);
-    let html='';
-    html+=moneyTable('שילמו', r.paid||[], [
-      ['דוא"ל', x=>esc(x.email)||'—'],
-      ['סכום', x=>money(x.amount_ils)],
-      ['קופון', x=>esc(x.coupon_code)||'—'],
-      ['קוד', x=>x.code?'<span style="font-family:monospace;color:var(--gold)">'+x.code+'</span>':'—', ' class="code"'],
-      ['תאריך', x=>fmt(x.created_at)],
-    ]);
-    html+=moneyTable('התחילו תשלום ולא סיימו', r.pending||[], [
-      ['דוא"ל', x=>esc(x.email)||'—'],
-      ['סכום', x=>money(x.amount_ils)],
-      ['תאריך', x=>fmt(x.created_at)],
-    ]);
-    html+=moneyTable('דוא"ל לטעימה בלבד (לא רכשו)', r.leads||[], [
-      ['דוא"ל', x=>esc(x.email)||'—'],
-      ['מקור', x=>esc(x.source)||'—'],
-      ['תאריך', x=>fmt(x.created_at)],
-    ]);
-    $('buyersWrap').innerHTML=html;
-  }
-
   loadCfg();
-  if(tok()){ load(); loadBuyers(); }
 </script>
 </body>
 </html>
