@@ -87,8 +87,6 @@
     return r.json().catch(()=>({ok:false,reason:'bad-json'}));
   }
 
-  function fmt(ts){ if(!ts) return '—'; try{ return new Date(ts).toLocaleString('he-IL',{timeZone:'Asia/Jerusalem',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }catch(e){ return ts; } }
-
   async function mint(){
     const email=$('email').value.trim();
     if(!tok()){ msg('mintMsg','חסר ADMIN_TOKEN (שמור בהגדרות)','err'); return; }
@@ -109,7 +107,6 @@
 
   function copy(t){ navigator.clipboard.writeText(t).catch(()=>{}); }
   function msg(id,t,cls){ const e=$(id); e.textContent=t; e.className='msg '+(cls||''); }
-  function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
   loadCfg();
 </script>

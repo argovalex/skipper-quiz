@@ -190,7 +190,7 @@ app.post('/api/progress', async (req, res) => {
 });
 
 // ── Coupon validation (server-side pricing + attribution) ──────────────────────
-app.post('/api/coupon/validate', async (req, res) => {
+app.post('/api/coupon/validate', rateStart, async (req, res) => {
   const code = req.body && req.body.coupon;
   if (!code) return res.status(400).json({ ok: false, reason: 'missing' });
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
@@ -202,7 +202,7 @@ app.post('/api/coupon/validate', async (req, res) => {
 });
 
 // ── Coupon redeem: full-access (instructors). Issues a code without checkout. ──
-app.post('/api/coupon/redeem', async (req, res) => {
+app.post('/api/coupon/redeem', rateStart, async (req, res) => {
   const coupon = req.body && req.body.coupon;
   const email = req.body && req.body.email;
   if (!coupon || !email) return res.status(400).json({ ok: false, reason: 'missing' });
@@ -274,7 +274,7 @@ async function finalizeById(id, txn) {
 }
 
 // Start a checkout: price it (coupon applied server-side), create a pending order, return checkout URL.
-app.post('/api/checkout', async (req, res) => {
+app.post('/api/checkout', rateStart, async (req, res) => {
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
   const { email: buyer, coupon, return_url } = req.body || {};
   if (!buyer || !/.+@.+/.test(buyer)) return res.status(400).json({ ok: false, reason: 'bad-email' });
