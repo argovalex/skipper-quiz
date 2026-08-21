@@ -953,7 +953,7 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787297117/skipper-quiz/ayiege8159qvcla31ew9.mp4",
     "rendered_at": "2026-08-21T07:25:20.794Z",
     "content_updated_at": "2026-07-23T10:07:01.669Z",
-    "html_locked": false
+    "html_locked": true
   },
   {
     "num": 1040,
@@ -976,7 +976,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785076012/skipper-quiz/dlcnectl2tjwjegxroid.mp4",
     "rendered_at": "2026-07-26T15:37:00.346Z",
     "blastOverride": "1S",
-    "explanation": "צפירה אחת קצרה (תמונה 111) היא אני פונה ימינה. שני כלי השיט משמיעים אות זהה, שניהם פונים ימינה."
+    "explanation": "צפירה אחת קצרה (תמונה 111) היא אני פונה ימינה. שני כלי השיט משמיעים אות זהה, שניהם פונים ימינה.",
+    "voiceover_text": "שאלה מספר 1040. כלי שייט די משמיע צפירה שבתמונה 111, כלי השייט אל משמיע את אותו הצפירה. מה המשמעות?. [[PAUSE]] התשובה הנכונה היא ד: הם מסמנים שיש סכנת התנגשות ולכן כל אחד פונה ימינה. ... צפירה אחת קצרה תמונה 111 היא אני פונה ימינה. שני כלי השיט משמיעים אות זהה, שניהם פונים ימינה."
   },
   {
     "num": 1041,
