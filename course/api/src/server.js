@@ -408,8 +408,8 @@ app.post('/api/admin/bank-import', async (req, res) => {
 
 // Mint promo/instructor access codes over the API (no local DB access needed).
 // They are `comp` purchases, so they never consume a founders seat and aren't counted
-// as paid buyers. Protected by ADMIN_TOKEN. Body: { email } or { emails:[...] }, optional
-// device_limit (default 1). Returns { codes:[{email,code}] }.
+// as paid buyers. Protected by ADMIN_TOKEN. Body: { email } or { emails:[...] }.
+// Every code is one device only (policy). Returns { codes:[{email,code}] }.
 app.post('/api/admin/promo', async (req, res) => {
   if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
     return res.status(403).json({ ok: false });
@@ -417,7 +417,7 @@ app.post('/api/admin/promo', async (req, res) => {
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
   const b = req.body || {};
   const emails = Array.isArray(b.emails) ? b.emails : (b.email ? [b.email] : []);
-  const deviceLimit = Number(b.device_limit) > 0 ? Number(b.device_limit) : 1;
+  const deviceLimit = 1; // policy: one device per code, no exceptions
   if (!emails.length) return res.status(400).json({ ok: false, reason: 'no-email' });
   try {
     const out = [];
@@ -456,6 +456,38 @@ app.get('/api/admin/instructors', async (req, res) => {
       left join access_codes ac on ac.code = i.code
       order by i.created_at desc`);
     res.json({ ok: true, instructors: r.rows });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
+// Registrations report (for hub.html): who paid, who started checkout but didn't pay,
+// and free-trial leads who left an email. Protected by ADMIN_TOKEN.
+app.get('/api/admin/buyers', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  try {
+    // Buyers = real money (paid). Pending = started checkout, never finalized.
+    // Comp/instructor codes are excluded here — they live in the instructors table.
+    const purchases = await db.q(`
+      select p.email, p.amount_ils, p.coupon_code, p.status, p.created_at,
+             (select code from access_codes ac where ac.purchase_id = p.id limit 1) as code
+      from purchases p
+      where coalesce(p.partner_ref,'') <> 'instructor'
+      order by p.created_at desc`);
+    const paid = purchases.rows.filter(r => r.status === 'paid' || r.status === 'comp');
+    const pending = purchases.rows.filter(r => r.status === 'pending');
+    // Trial leads that never turned into a paid purchase.
+    const leads = await db.q(`
+      select l.email, l.source, l.created_at
+      from trial_leads l
+      where not exists (
+        select 1 from purchases p where lower(p.email)=lower(l.email) and p.status in ('paid','comp')
+      )
+      order by l.created_at desc`);
+    res.json({ ok: true, paid, pending, leads: leads.rows });
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message });
   }
