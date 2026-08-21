@@ -5840,7 +5840,7 @@
       "ד. כלי השייט מסמן מצוקה."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
@@ -5850,7 +5850,7 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787297117/skipper-quiz/ayiege8159qvcla31ew9.mp4",
     "rendered_at": "2026-08-21T07:25:20.794Z",
     "content_updated_at": "2026-07-23T10:07:01.669Z",
-    "html_locked": false
+    "html_locked": true
   },
   {
     "num": 1040,
