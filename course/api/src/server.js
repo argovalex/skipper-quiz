@@ -89,6 +89,14 @@ function rateStart(req, res, next) {
   next();
 }
 
+// Purchases are open only once a real payment terminal is wired (TRANZILA_TERMINAL),
+// or when explicitly opened for local sim testing (CHECKOUT_OPEN=1). Until then the
+// buy flow is closed so a shared link can't hand out free access via the simulator.
+const checkoutOpen = () => !!process.env.TRANZILA_TERMINAL || process.env.CHECKOUT_OPEN === '1';
+
+// Uniform 500: log the real error server-side, return a generic body (no internals to the client).
+const srv500 = (res, e) => { console.error('500:', e && e.message); return res.status(500).json({ ok: false, error: 'server-error' }); };
+
 // ── Health ──────────────────────────────────────────────────────────────────
 app.get('/health', (req, res) => res.json({ ok: true, db: db.hasDb(), ts: Date.now() }));
 
@@ -97,8 +105,8 @@ app.get('/api/config', async (req, res) => {
   try {
     const [cfg, pr] = await Promise.all([settings.all(), settings.pricing()]);
     // price_ils reflects the current effective price (founders → regular) for display.
-    res.json({ ok: true, ...cfg, price_ils: pr.price, pricing: pr });
-  } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
+    res.json({ ok: true, ...cfg, price_ils: pr.price, pricing: pr, checkout_open: checkoutOpen() });
+  } catch (e) { srv500(res, e); }
 });
 
 // Update brand/price without redeploy. Protected by ADMIN_TOKEN.
@@ -117,7 +125,7 @@ app.get('/api/free', async (req, res) => {
   try {
     const lessons = await content.load();
     res.json({ ok: true, lessons: media.signLessons(content.freeSubset(lessons)) });
-  } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
+  } catch (e) { srv500(res, e); }
 });
 
 // ── Trial lead capture (email before the free sampler) ────────────────────────
@@ -137,7 +145,7 @@ app.post('/api/lead', rateStart, async (req, res) => {
       [email, anon, source]
     );
     res.json({ ok: true });
-  } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
+  } catch (e) { srv500(res, e); }
 });
 
 // ── Session: exchange a code for an httpOnly rotating cookie ───────────────────
@@ -164,7 +172,7 @@ app.get('/api/content', async (req, res) => {
   try {
     const [lessons, cfg, pr] = await Promise.all([content.load(), settings.all(), settings.pricing()]);
     res.json({ ok: true, price_ils: pr.price, brand_name: cfg.brand_name, product_title: cfg.product_title, lessons: media.signLessons(lessons) });
-  } catch (e) { res.status(500).json({ ok: false, error: e.message }); }
+  } catch (e) { srv500(res, e); }
 });
 
 // ── Progress (per session's code) ──────────────────────────────────────────────
@@ -224,7 +232,7 @@ app.post('/api/coupon/redeem', rateStart, async (req, res) => {
     res.json({ ok: true, code });
   } catch (e) {
     console.error('redeem error', e.message);
-    res.status(500).json({ ok: false, error: e.message });
+    srv500(res, e);
   }
 });
 
@@ -275,6 +283,7 @@ async function finalizeById(id, txn) {
 
 // Start a checkout: price it (coupon applied server-side), create a pending order, return checkout URL.
 app.post('/api/checkout', rateStart, async (req, res) => {
+  if (!checkoutOpen()) return res.status(503).json({ ok: false, reason: 'checkout-closed' });
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
   const { email: buyer, coupon, return_url } = req.body || {};
   if (!buyer || !/.+@.+/.test(buyer)) return res.status(400).json({ ok: false, reason: 'bad-email' });
@@ -343,7 +352,7 @@ app.post('/api/tranzila/notify', async (req, res) => {
 
 // ── Simulated Tranzila hosted page (disabled once a real terminal is configured) ─
 app.get('/api/dev/checkout', (req, res) => {
-  if (process.env.TRANZILA_TERMINAL) return res.status(404).send('disabled');
+  if (process.env.TRANZILA_TERMINAL || !checkoutOpen()) return res.status(404).send('disabled');
   const { token, amount, email: buyer, ret } = req.query;
   const j = JSON.stringify;
   res.set('Content-Type', 'text/html; charset=utf-8').send(`<!doctype html><meta charset=utf-8>
@@ -360,7 +369,7 @@ await fetch('/api/dev/pay?token='+encodeURIComponent(${j(token)}),{method:'POST'
 var r=${j(ret)};location.href=r+(r.indexOf('?')>-1?'&':'?')+'token='+encodeURIComponent(${j(token)});};</script></body>`);
 });
 app.post('/api/dev/pay', async (req, res) => {
-  if (process.env.TRANZILA_TERMINAL) return res.status(404).send('disabled');
+  if (process.env.TRANZILA_TERMINAL || !checkoutOpen()) return res.status(404).send('disabled');
   const token = req.query.token;
   const r = await db.q('select id from purchases where token=$1', [token]);
   if (!r.rows.length) return res.status(404).send('no-order');
@@ -402,7 +411,7 @@ app.post('/api/admin/bank-import', async (req, res) => {
     await content.load(true);
     res.json({ ok: true, imported: n });
   } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+    srv500(res, e);
   }
 });
 
@@ -434,7 +443,7 @@ app.post('/api/admin/promo', async (req, res) => {
     console.error(`🎫 promo minted ${out.length} code(s), device_limit=${deviceLimit}`);
     res.json({ ok: true, codes: out });
   } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+    srv500(res, e);
   }
 });
 
@@ -457,7 +466,7 @@ app.get('/api/admin/instructors', async (req, res) => {
       order by i.created_at desc`);
     res.json({ ok: true, instructors: r.rows });
   } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+    srv500(res, e);
   }
 });
 
@@ -489,7 +498,7 @@ app.get('/api/admin/buyers', async (req, res) => {
       order by l.created_at desc`);
     res.json({ ok: true, paid, pending, leads: leads.rows });
   } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+    srv500(res, e);
   }
 });
 

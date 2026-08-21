@@ -73,7 +73,7 @@ const LETTERS=['א','ב','ג','ד','ה'];
 
 /* ===== API (course server) ===== */
 let API_BASE = (localStorage.getItem('sq_api')||'https://api.alargov.com').replace(/\/$/,'');
-let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null;
+let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null, CHECKOUT_OPEN=false;
 function storedCode(){try{return localStorage.getItem('sq_code')||'';}catch(e){return '';}}
 function storeCode(c){try{localStorage.setItem('sq_code',c);}catch(e){}}
 function clearCode(){try{localStorage.removeItem('sq_code');}catch(e){}}
@@ -101,7 +101,7 @@ async function handleReturn(){
   history.replaceState({},'',u.pathname);toast('לא התקבל אישור תשלום. אם חויבת, הקוד נשלח למייל.');return false;
 }
 async function bootstrap(){
-  try{const cfg=await apiConfig();if(cfg&&cfg.ok){BRAND=cfg.brand_name||BRAND;PRODUCT=cfg.product_title||PRODUCT;PRICE=cfg.price_ils||PRICE;PRICING=cfg.pricing||PRICING;}}catch(e){}
+  try{const cfg=await apiConfig();if(cfg&&cfg.ok){BRAND=cfg.brand_name||BRAND;PRODUCT=cfg.product_title||PRODUCT;PRICE=cfg.price_ils||PRICE;PRICING=cfg.pricing||PRICING;CHECKOUT_OPEN=!!cfg.checkout_open;}}catch(e){}
   if(await handleReturn())return;
   const code=storedCode();
   if(code){const s=await sessionStart(code);if(s&&s.ok){const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown();return;}}clearCode();}
@@ -263,6 +263,7 @@ function selectAns(i){
 function nextQ(){if(st.qIndex>=st.pool.length-1){stopSpeak();st.done.add(st.lessonId);go('results');}else{st.qIndex++;st.selected=null;st.qvTime=0;render();const q=st.pool[st.qIndex];if(q&&!q.vid)speak(q.q);}}
 function toggleVo(){const l=byId(st.lessonId);const card=buildCards(l)[st.cardIndex];st.vo=!st.vo;if(st.vo)speak(strip(card.body||(card.bullets||[]).join('. ')));else stopSpeak();render();}
 async function buy(){
+  if(!CHECKOUT_OPEN){toast('הרכישה נפתחת בקרוב');return;}
   const buyer=prompt('אימייל לקבלת קוד הגישה והחשבונית:');
   if(!buyer||!/.+@.+/.test(buyer)){toast('צריך אימייל תקין');return;}
   const coupon=(prompt('קוד קופון (יש? הקלד. אין? השאר ריק):')||'').trim();
@@ -306,6 +307,7 @@ function vOnboard(){return `
     ${['13 שיעורים אינטראקטיביים לפי סילבוס המבחן','בנק שאלות מלא עם הסברים לכל תשובה','מעקב התקדמות עד המבחן המסכם'].map(t=>`<div style="display:flex;align-items:center;gap:10px"><span style="color:${C.ok};font-size:15px">✓</span><span style="font-size:13.5px">${t}</span></div>`).join('')}
   </div>
   <div style="flex:1;min-height:20px"></div>
+  ${CHECKOUT_OPEN?`
   ${(PRICING&&PRICING.is_founders)?`
   <div style="background:${C.okBg};border:1px solid ${C.ok};border-radius:16px;padding:16px 20px;text-align:center;margin-bottom:14px">
     <div style="color:${C.okT};font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:4px">מחיר מייסדים · נותרו ${PRICING.founders_left} מקומות</div>
@@ -318,7 +320,11 @@ function vOnboard(){return `
     <div style="color:${C.okT};font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:2px">תשלום חד פעמי</div>
     <div style="font-size:26px;font-weight:900;color:${C.ok}">₪${PRICE}</div>
   </div>`}
-  <button data-act="buy" style="background:${C.gold};color:${C.navy};border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:900;cursor:pointer">רכוש גישה מלאה · ₪${PRICE}</button>
+  <button data-act="buy" style="background:${C.gold};color:${C.navy};border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:900;cursor:pointer">רכוש גישה מלאה · ₪${PRICE}</button>`:`
+  <div style="background:${C.card};border:1px solid ${C.bd};border-radius:16px;padding:16px 20px;text-align:center;margin-bottom:14px">
+    <div style="color:${C.blue};font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:4px">הרכישה נפתחת בקרוב</div>
+    <div style="font-size:13px;color:${C.mut};line-height:1.6">בינתיים אפשר להתחיל בטעימה חינם, או להזין קוד גישה שקיבלת מהמדריך.</div>
+  </div>`}
   <div data-act="start" style="text-align:center;margin-top:12px;font-size:12.5px;color:${C.mut};font-weight:700;cursor:pointer">התחל חינם — טעימה של 13 שאלות (אחת מכל נושא)</div>
   <div data-act="havecode" style="text-align:center;margin-top:14px;font-size:12.5px;color:${C.blue};font-weight:700;cursor:pointer">יש לי גישה — הזן קוד</div>
   <div style="text-align:center;margin-top:18px;font-size:10.5px;color:${C.dim};line-height:1.7">
