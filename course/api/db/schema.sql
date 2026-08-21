@@ -15,11 +15,14 @@ create table if not exists access_codes (
   code         text primary key,
   email        text not null,
   purchase_id  int references purchases(id),
-  device_limit int not null default 2,
+  device_limit int not null default 1,
   revoked      boolean not null default false,
   created_at   timestamptz not null default now()
 );
 create index if not exists idx_access_codes_email on access_codes(email);
+-- Policy: one device per code, no exceptions. Fix the default and any legacy rows.
+alter table access_codes alter column device_limit set default 1;
+update access_codes set device_limit = 1 where device_limit <> 1;
 
 -- checkout order token (links a pending checkout to its notify callback)
 alter table purchases add column if not exists token text;
