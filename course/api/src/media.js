@@ -38,8 +38,6 @@ try {
   cld = null;
 }
 
-const enabled = () => !!cld;
-
 // Pull { resource_type, public_id } out of a stored Cloudinary delivery URL.
 // e.g. https://res.cloudinary.com/dzmyg9pel/video/upload/v1786890419/skipper-quiz/abc.mp4
 //   -> { resource_type: 'video', public_id: 'skipper-quiz/abc' }
@@ -81,4 +79,4 @@ function signLessons(lessons) {
   return out;
 }
 
-module.exports = { sign, signLessons, enabled, TTL };
+module.exports = { sign, signLessons, TTL };
