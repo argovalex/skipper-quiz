@@ -1116,7 +1116,7 @@
       "ד. לא ניתן לדעת על פי הנתונים בשאלה אם יהיה סכנת התנגשות."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "כשתכוון (bearing) והטווח (range) לכלי שיט אחר אינם משתנים ומקביל, לא קיימת סכנת התנגשות ואין צורך בפעולה.",
     "mediaUrl": "",
     "mediaType": "",
