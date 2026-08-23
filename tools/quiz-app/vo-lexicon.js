@@ -1,6 +1,6 @@
 // AUTO-GENERATED from references/niqqud-lexicon.md by
 // tools/quiz-app/gen-vo-lexicon.js. Do NOT edit by hand — edit the .md and re-run.
-// 147 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
+// 155 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
 const VO_LEXICON = [
   ["חבל העוגן","חֶבֶל הָעֹגֶן"],
   ["שנים עשרה","שְׁנֵים עֶשְׂרֵה"],
@@ -89,6 +89,8 @@ const VO_LEXICON = [
   ["שתראה","שתִרַאה"],
   ["לרציף","לַרַצִיף"],
   ["למעגל","לָמָעָגל"],
+  ["כיוון","כִּוּוּן"],
+  ["שרטון","שִׂרְטוֹן"],
   ["שכלי","שֶׁכְּלי"],
   ["נמצא","נִמְצָא"],
   ["זכור","זְכֹוֽר"],
@@ -135,6 +137,9 @@ const VO_LEXICON = [
   ["רתוק","רַתוּק"],
   ["מפרש","מִּפְרָשׂ"],
   ["יפנו","יפֶנו"],
+  ["מעגן","מַעֲגָן"],
+  ["כושר","כֹּשֶׁר"],
+  ["ראות","רְאוּת"],
   ["כלי","כְּלי"],
   ["דיג","דַיַג"],
   ["פנה","פָּנָה"],
@@ -149,5 +154,8 @@ const VO_LEXICON = [
   ["תפס","תֶּפֶס"],
   ["חבל","חֶבֶל"],
   ["קיי","קֶיי"],
+  ["זרם","זֶרֶם"],
+  ["שפל","שֵׁפֶל"],
+  ["דלק","דֶּלֶק"],
 ];
 if (typeof module !== 'undefined' && module.exports) module.exports = { VO_LEXICON };
