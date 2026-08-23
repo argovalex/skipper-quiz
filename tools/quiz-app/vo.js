@@ -1,11 +1,20 @@
-// Verbatim port of index.html buildVoiceover (the editor's VO builder).
-// Keep in sync with index.html lines ~383-467 (LATIN_LETTER_HE, VO_FIXES,
-// applyVoFixes, buildVoiceover). Used by update-question.js to render the exact
-// same VO the editor would, headlessly. Validated byte-identical against Q1001.
+// Shared VO builder for the editor (index.html loads this via <script src>) and
+// the headless renderers (update-question.js, render-with-html.js require it).
+// buildVoiceover now auto-vocalises its output: flag letters via LATIN_LETTER_HE
+// and content words via applyLexiconText (Alex's lexicon), so every render is
+// niqqud'd with no manual pass. LATIN_LETTER_HE / VO_FIXES / applyVoFixes are the
+// canonical copy — index.html has no separate copy of them.
+// Flag/vessel letters. The niqqud'd forms come from Alex's lexicon
+// (references/niqqud-lexicon.md) and are baked in HERE, at the Latin->Hebrew
+// conversion, because that only fires for real flag letters (a Latin source
+// char) — never for the identical-looking Hebrew words (אם=if, אי=cannot,
+// אף=none, די=enough, פי=mouth). That sidesteps the homograph trap that keeps
+// these letters OUT of the whole-word lexicon. Letters Alex hasn't vocalised yet
+// stay plain. Keep in sync with the lexicon's single-letter entries.
 const LATIN_LETTER_HE = {
-  A: 'איי', B: 'בי',  C: 'סי',   D: 'די',  E: 'אי',   F: 'אף',
-  G: "ג'י", H: "אייץ'", I: 'איי', J: "ג'יי", K: 'קיי', L: 'אל',
-  M: 'אם',  N: 'אן',  O: 'או',   P: 'פי',  Q: 'קיו',  R: 'אר',
+  A: 'אֶיּי', B: 'ביִ',  C: 'סִי',   D: 'דִי',  E: 'אֶיּ',   F: 'אֶף',
+  G: "ג'יִ", H: "אייץ'", I: 'אֶיּי', J: "ג'יי", K: 'קֶיי', L: 'אֶל',
+  M: 'אֶם',  N: 'אֶן',  O: 'או',   P: 'פִי',  Q: 'קיו',  R: 'אר',
   S: 'אס',  T: 'טי',  U: 'יו',   V: 'וי',  W: 'דאבליו', X: 'אקס',
   Y: 'וואי', Z: 'זי',
 };
@@ -111,6 +120,31 @@ function applyVoFixes(text) {
   return t.replace(/\s{2,}/g, ' ').trim();
 }
 
+// Applies Alex's niqqud lexicon (references/niqqud-lexicon.md -> vo-lexicon.js)
+// to content words (מָצוֹף, מֶמוּכַּנִים, סִימָן, עֹגֶן...), so every render is
+// vocalised automatically without a manual pass. Whole-word, matched THROUGH any
+// existing niqqud so a form is re-set to Alex's. Collision-prone shorts and the
+// multi-letter homographs (למנוע/צופה) are already filtered out of vo-lexicon.js;
+// flag letters are handled separately in LATIN_LETTER_HE above. [[PAUSE]] has no
+// Hebrew so it survives untouched. Same logic as index.html's applyLexiconText.
+const HE_MARKS = '[\\u0591-\\u05C7]*';
+function lexiconPairs() {
+  if (typeof VO_LEXICON !== 'undefined') return VO_LEXICON;          // browser global (vo-lexicon.js)
+  try { return require('./vo-lexicon.js').VO_LEXICON; } catch (e) { return []; }  // Node
+}
+function applyLexiconText(text) {
+  for (const [src, dst] of lexiconPairs()) {
+    const body = [...src].map(ch =>
+      /[א-ת]/.test(ch) ? ch + HE_MARKS
+      : /\s/.test(ch) ? '\\s+'
+      : ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    ).join('');
+    const pat = new RegExp(`(?<![\\u05D0-\\u05EA\\u0591-\\u05C7])${body}(?![\\u05D0-\\u05EA\\u0591-\\u05C7])`, 'g');
+    text = text.replace(pat, dst);
+  }
+  return text;
+}
+
 // Questions whose pre-pause narration gets an explicit "מה התשובה הנכונה?" cue
 // right before the pause, so the viewer has a clear prompt to answer (and the
 // silencedetect pass gets a clean gap to lock the pause onto). Keep in sync with
@@ -146,6 +180,10 @@ function buildVoiceover(q) {
   if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
   if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
+  // Auto-niqqud content words from Alex's lexicon (flag letters already done via
+  // LATIN_LETTER_HE inside applyVoFixes) so every render is vocalised, no manual pass.
+  q1 = applyLexiconText(q1);
+  q2 = applyLexiconText(q2);
   return q1 + ' [[PAUSE]] ' + q2;
 }
 
@@ -155,5 +193,5 @@ function buildVoiceover(q) {
 // scope where index.html's inline scripts resolve buildVoiceover/applyVoFixes by
 // name. Guard the export so the browser doesn't throw on `module` being undefined.
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { buildVoiceover, applyVoFixes, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
+  module.exports = { buildVoiceover, applyVoFixes, applyLexiconText, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
 }
