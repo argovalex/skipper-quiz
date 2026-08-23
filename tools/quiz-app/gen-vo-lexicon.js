@@ -21,6 +21,13 @@ const OUT = path.join(ROOT, 'tools', 'quiz-app', 'vo-lexicon.js');
 const MARK = /[֑-ׇ]/;                 // niqqud / cantillation
 const heLetters = s => (s.match(/[א-ת]/g) || []).length;
 
+// Multi-letter homographs whose lexicon form is only correct in the LESSON
+// pipeline but WRONG in the quiz corpus, so they must not be blanket-applied at
+// question render: למנוע=to-prevent (lexicon לָמָנוע = "to the engine"),
+// צופה=observer/צוֹפֶה (lexicon צוּפה = "coated"). The 1-2 letter homographs
+// (אם/אי/אף...) are already dropped by the heLetters<3 rule below.
+const DENY = new Set(['למנוע', 'צופה']);
+
 const md = fs.readFileSync(LEXICON, 'utf8');
 const lines = md.split(/\r?\n/);
 let inWords = false;
@@ -39,6 +46,7 @@ for (const raw of lines) {
   if (!src || !dst) continue;
   if (!MARK.test(dst)) continue;                          // dst must be vocalised
   if (heLetters(src) < 3) continue;                       // skip collision-prone shorts
+  if (DENY.has(src)) continue;                            // skip multi-letter homographs
   if (seen.has(src)) continue;                            // first wins on dupes
   seen.add(src);
   pairs.push([src, dst]);
