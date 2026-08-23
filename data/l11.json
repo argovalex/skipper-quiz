@@ -1097,8 +1097,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785076213/skipper-quiz/ydmf5fkapqoqzyzfmeuk.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787487105/skipper-quiz/dowiyxzoj3onqtvab7ja.mp4",
+    "rendered_at": "2026-08-23T12:11:49.329Z",
     "voiceover_text": "שאלה מספר 1045. אופנוע ים דִי מבחין באופנוע ים אֶל, מה הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא א: כל אחד פונה ימינה. ... שני אופנועי ים הם אותה משפחה מֶמוּכַּנִים. חזית מול חזית - שניהם פונים ימינה."
   },
   {
@@ -1332,7 +1332,8 @@
     "explanation": "תמונה 119 היא צפירה ארוכה אחת, המציינת לפי המאגר שכלי השיט C במצוקה. לכן על האופנוע לגשת ולסייע.",
     "blastOverride": "1L",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785076649/skipper-quiz/piokfafs64svza3qlgbb.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר 1055. אופנוע ים פי מבחין בכלי שייט סי המשמיע אות קולי שבתמונה 119, מה תהיה פעולתו של האופנוע?. [[PAUSE]] התשובה הנכונה היא ג: סי במצוקה, האופנוע חייב לגשת. ... תמונה 119 היא צפירה ארוכה אחת, המציינת לפי המאגר שכלי השיט סי במצוקה. לכן על האופנוע לגשת ולסייע."
   },
   {
     "num": 1056,
