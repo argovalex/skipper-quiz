@@ -1068,7 +1068,7 @@
       "ד. שני כלי השייט יפנו שמאלה על מנת למנוע התנגשות."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "דגל O (תמונה 104) הוא אדם בים. יש להפליג בזהירות שלא לפגוע באדם שבמים.",
     "mediaUrl": "",
     "mediaType": "",
@@ -1097,7 +1097,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785076213/skipper-quiz/ydmf5fkapqoqzyzfmeuk.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר 1045. אופנוע די מבחין באופנוע ים אל, מה הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא א: כל אחד פונה ימינה. ... שני אופנועי ים הם אותה משפחה ממוכנים. חזית מול חזית - שניהם פונים ימינה."
   },
   {
     "num": 1046,
@@ -1119,7 +1120,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1786516058/skipper-quiz/sri0negpmjyheosiispq.mp4",
-    "rendered_at": "2026-07-26T15:37:00.346Z"
+    "rendered_at": "2026-07-26T15:37:00.346Z",
+    "voiceover_text": "שאלה מספר 1046. אופנוע ים מפליג צפונה, מקביל אליו אופנוע ים נוסף, התַכְוִין לאופנוע הנוסף לא משתנה והטווח לא משתנה וכן. [[PAUSE]] התשובה הנכונה היא ב: לא קיימת סכנת התנגשות. ... כְּשֶׁתַכְוִן והטווח לכלי שיט אחר אינם משתנים ומקביל, לא קיימת סכנת התנגשות ואין צורך בפעולה."
   },
   {
     "num": 1047,
