@@ -1092,7 +1092,7 @@
       "ד. שני האופנועים יעצרו."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "שני אופנועי ים הם אותה משפחה (ממוכנים). חזית מול חזית - שניהם פונים ימינה.",
     "mediaUrl": "",
     "mediaType": "",
