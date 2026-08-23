@@ -478,28 +478,11 @@ async function applyNikud(btn) {
   }
 }
 
-// Applies Alex's own lexicon (references/niqqud-lexicon.md -> vo-lexicon.js) to the
-// VO text, client-side, so his verified vocalisations win over Dicta's generic
-// niqqud for domain words (מָצוֹף, מֶמוּכַּנִים, עֹגֶן...). Whole-word only. The base
-// letters are matched THROUGH any existing niqqud (each letter may carry marks),
-// so a domain word already vocalised by Dicta is re-set to Alex's form — that is
-// why clicking 📖 after Dicta lets his forms win. Short collision-prone words are
-// already filtered out of vo-lexicon.js; [[PAUSE]] survives untouched. Alex
-// reviews the result before saving.
-const HE_MARKS = '[\\u0591-\\u05C7]*';
-function applyLexiconText(text) {
-  const lex = (typeof VO_LEXICON !== 'undefined') ? VO_LEXICON : [];
-  for (const [src, dst] of lex) {
-    const body = [...src].map(ch =>
-      /[א-ת]/.test(ch) ? ch + HE_MARKS
-      : /\s/.test(ch) ? '\\s+'
-      : ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    ).join('');
-    const pat = new RegExp(`(?<![\\u05D0-\\u05EA\\u0591-\\u05C7])${body}(?![\\u05D0-\\u05EA\\u0591-\\u05C7])`, 'g');
-    text = text.replace(pat, dst);
-  }
-  return text;
-}
+// applyLexiconText + HE_MARKS now live in the shared tools/quiz-app/vo.js
+// (loaded above), which buildVoiceover also uses to auto-vocalise every render.
+// Declaring them again here would be a duplicate top-level `const` in the same
+// global scope — a SyntaxError that breaks the whole editor script — so this
+// file just reuses the shared globals.
 function applyLexicon(btn) {
   const ta = document.getElementById('rm-vo');
   const statusEl = document.getElementById('rm-preview-status');
