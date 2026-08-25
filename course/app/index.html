@@ -728,7 +728,10 @@ function bindActions(){
   const tv=document.getElementById('tourVideo');
   if(tv){
     stopSpeak();
-    tv.ontimeupdate=()=>{if(tv.currentTime>=30){tv.pause();}};
+    let advanced=false;
+    const toQ=()=>{if(advanced||st.tourPhase!=='intro')return;advanced=true;try{tv.pause();}catch(e){}tourToQuestion();};
+    tv.ontimeupdate=()=>{if(tv.currentTime>=30)toQ();}; // 30s taster → jump to the question
+    tv.onended=toQ;                                     // shorter clip → same
     if(tv.play)tv.play().catch(()=>{});
   }
   const qv=document.getElementById('quizVideo');
