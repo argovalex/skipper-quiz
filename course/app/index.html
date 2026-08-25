@@ -92,6 +92,7 @@ async function apiSaveProgress(data){return authed('/api/progress',{method:'POST
 function applyContent(resp){LESSON_Q={};const L=(resp&&resp.lessons)||{};for(const k in L)LESSON_Q[k]=(L[k].questions||[]);rebuildIndex();}
 async function unlockWithCode(code){const s=await sessionStart(code);if(!(s&&s.ok)){const m=s&&s.reason==='device-limit'?'הקוד כבר בשימוש במספר המכשירים המרבי':s&&s.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין';toast(m);return s;}storeCode(code);const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;await syncProgressDown();toast('נפתחה גישה מלאה 🎉');go('home');}else{toast(r&&r.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין');}return r;}
 function promptCode(){const c=prompt('הזן קוד גישה (מהרכישה או מהמדריך):');if(c&&c.trim())unlockWithCode(c.trim());}
+async function logout(){clearCode();st.owned=false;st.done=new Set();try{await apiJson('/api/session/end',{method:'POST'});}catch(e){}try{const f=await apiFree();if(f&&f.ok)applyContent(f);}catch(e){}stopSpeak();go('onboarding');toast('התנתקת — חזרת למצב טעימה');}
 async function syncProgressDown(){try{const r=await apiGetProgress();if(r&&r.ok&&r.data){const d=r.data;if(typeof d.xp==='number')st.xp=Math.max(st.xp,d.xp);if(d.srs)st.srs=Object.assign({},d.srs,st.srs);if(d.topicStats)st.topicStats=Object.assign({},d.topicStats,st.topicStats);if(Array.isArray(d.done))d.done.forEach(x=>st.done.add(x));persist();render();}}catch(e){}}
 let _pushT;function pushProgress(){if(!st.owned)return;if(!storedCode())return;clearTimeout(_pushT);_pushT=setTimeout(()=>{apiSaveProgress({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound});},700);}
 async function handleReturn(){
@@ -644,6 +645,7 @@ function vProfile(){
   </div>
   <button data-act="sound" style="width:100%;background:transparent;border:1px solid ${C.bd};color:#fff;border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer;margin-bottom:10px">${st.sound?'🔊 צלילים: פעיל':'🔇 צלילים: כבוי'}</button>
   <button data-act="manage" style="width:100%;background:transparent;border:1px solid ${C.bd};color:#fff;border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer">ניהול מנוי</button>
+  ${st.owned?`<button data-act="logout" style="width:100%;background:transparent;border:1px solid ${C.bd};color:${C.dim};border-radius:12px;padding:13px;font-size:12.5px;font-weight:700;cursor:pointer;margin-top:10px">התנתק · נקה גישה במכשיר</button>`:''}
 </div>`;}
 
 function vPractice(){
@@ -713,6 +715,7 @@ function bindActions(){
       else if(a==='profile'){stopSpeak();go('profile');}
       else if(a==='sound'){st.sound=!st.sound;persist();toast(st.sound?'🔊 צלילים פעילים':'🔇 צלילים כבויים');render();}
       else if(a==='manage')toast('ניהול מנוי — יחובר למערכת החיוב (Tranzila).');
+      else if(a==='logout')logout();
       else if(a==='havecode')promptCode();
       else if(a==='buy')buy();
     };
