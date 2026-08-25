@@ -287,7 +287,8 @@ async function startTour(){
   st.tour=s;st.tourIdx=0;st.tourPhase='intro';st.selected=null;stopSpeak();go('tour');document.getElementById('scroll').scrollTop=0;
 }
 function tourToQuestion(){st.tourPhase='q';st.selected=null;const tv=document.getElementById('tourVideo');if(tv)tv.pause();render();document.getElementById('scroll').scrollTop=0;}
-function tourAns(i){if(st.selected!==null)return;st.selected=i;stopSpeak();render();}
+const TOUR_PITCH='הירשם לקורס המלא. לא עברת את מבחן התאוריה? קבל את כספך בחזרה.';
+function tourAns(i){if(st.selected!==null)return;st.selected=i;render();if(st.sound)speak(TOUR_PITCH);}
 function tourNext(){if(st.tourIdx>=st.tour.length-1){go('home');return;}st.tourIdx++;st.tourPhase='intro';st.selected=null;stopSpeak();render();document.getElementById('scroll').scrollTop=0;}
 function startReview(){const p=buildReviewPool();if(!p.length){toast('אין שאלות לחזרה כרגע — כל הכבוד! 🎉');return;}beginQuiz(p,'review');}
 function startReinforcement(){const p=buildReinforcePool();if(!p.length){toast('עדיין אין מספיק נתונים — תרגל עוד קצת ואבנה לך מבחן חיזוק ממוקד.');return;}beginQuiz(p,'reinforce');}
@@ -544,8 +545,9 @@ function vQuiz(){
 
 function tourCtaHtml(last){return `
   <div style="background:${C.card2};border:1px solid ${C.gold};border-radius:14px;padding:16px;margin-top:16px;text-align:center">
-    <div style="font-size:13.5px;font-weight:900;margin-bottom:4px">רוצה את כל בנק השאלות?</div>
-    <div style="font-size:12px;color:${C.mut};line-height:1.6;margin-bottom:12px">הטעימה היא שאלה אחת לכל נושא. הגרסה המלאה פותחת את כל השיעורים ובנק השאלות, עם מעקב התקדמות עד המבחן.</div>
+    <div style="font-size:13.5px;font-weight:900;margin-bottom:4px">הירשם לקורס המלא</div>
+    <div style="font-size:12px;color:${C.mut};line-height:1.6;margin-bottom:10px">הטעימה היא שאלה אחת לכל נושא. הגרסה המלאה פותחת את כל השיעורים ובנק השאלות המלא, עם מעקב עד מבחן התאוריה.</div>
+    <div style="background:${C.okBg};border:1px solid ${C.ok};border-radius:10px;padding:9px 11px;font-size:12px;font-weight:800;color:${C.okT};line-height:1.5;margin-bottom:12px">🛡️ לא עברת את מבחן התאוריה? מקבל את הכסף בחזרה.</div>
     <button data-act="buy" style="width:100%;background:${C.gold};color:${C.navy};border:none;border-radius:11px;padding:12px;font-size:13.5px;font-weight:900;cursor:pointer;margin-bottom:9px">פתח את הקורס${CHECKOUT_OPEN?` · ₪${PRICE}`:''}</button>
     <div data-act="havecode" style="font-size:12px;color:${C.blue};font-weight:700;cursor:pointer">יש לי קוד גישה</div>
   </div>`;}
