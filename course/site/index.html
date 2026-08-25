@@ -548,12 +548,32 @@
     document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
   }else{document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));}
 
+  // Referral tracking: ?ref=<source> from partner links (schools/instructors) is kept
+  // in localStorage and attached to WhatsApp links, the app hand-off, and the lead POST.
+  var REF=(function(){
+    try{
+      var r=new URLSearchParams(location.search).get('ref');
+      if(r){r=r.replace(/[^\w-]/g,'').slice(0,32);if(r)localStorage.setItem('sq_ref',r);}
+      return localStorage.getItem('sq_ref')||'';
+    }catch(e){return '';}
+  })();
+  if(REF){
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+      try{
+        var u=new URL(a.href);
+        var t=u.searchParams.get('text')||'\u05d4\u05d9\u05d9, \u05d0\u05e0\u05d9 \u05de\u05e2\u05d5\u05e0\u05d9\u05d9\u05df \u05d1\u05e4\u05e8\u05d8\u05d9\u05dd \u05e2\u05dc \u05e7\u05d5\u05e8\u05e1 \u05d4\u05d4\u05db\u05e0\u05d4 \u05dc\u05de\u05d1\u05d7\u05df \u05d4\u05ea\u05d0\u05d5\u05e8\u05d9\u05d4 \u05dc\u05d0\u05d5\u05e4\u05e0\u05d5\u05e2 \u05d9\u05dd';
+        u.searchParams.set('text',t+' (\u05d4\u05d2\u05e2\u05ea\u05d9 \u05d3\u05e8\u05da '+REF+')');
+        a.href=u.toString();
+      }catch(e){}
+    });
+  }
+
   // Free-trial lead capture: every CTA opens the email modal; on submit we POST the
   // email to /api/lead (saved in the DB) and reveal the "continue to the sampler" link.
   (function(){
     var meta=document.querySelector('meta[name=sq-api]');
     var API=(localStorage.getItem('sq_api')||(meta&&meta.content)||'').replace(/\/$/,'');
-    var APP_URL='https://app.alargov.com/';
+    var APP_URL='https://app.alargov.com/'+(REF?('?ref='+encodeURIComponent(REF)):'');
     var EMAIL_RE=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
     var modal=document.getElementById('trialModal'), card=document.getElementById('trialCard'), source='landing';
     function anon(){try{var a=localStorage.getItem('sq_anon');if(!a){a='a'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('sq_anon',a);}return a;}catch(e){return null;}}
@@ -583,7 +603,7 @@
       function done(){document.getElementById('trialGo').href=APP_URL;card.classList.add('done');btn.disabled=false;btn.textContent='קבל גישה לטעימה';}
       if(!API){done();return false;}
       fetch(API+'/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:email,source:source,anon_id:anon()})})
+        body:JSON.stringify({email:email,source:(REF?source+':'+REF:source),anon_id:anon(),ref:REF||null})})
         .then(function(r){return r.json().catch(function(){return {};});})
         .then(function(){done();})
         .catch(function(){done();}); // API not up yet: email kept locally, still show success
