@@ -1140,7 +1140,7 @@
       "ד. שני כלי השייט יפנו ימינה."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "כשתכוון המצפן משתנה בצורה ניכרת (גדל או קטן) - אין סכנת התנגשות. סכנה קיימת רק כשהתכוון נשאר קבוע.",
     "mediaUrl": "",
     "mediaType": "",
