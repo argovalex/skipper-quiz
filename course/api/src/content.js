@@ -104,9 +104,11 @@ async function load(force) {
   return cache.lessons;
 }
 
-// Free window: the first question of each of the 13 topics — one sample per type.
-// A fixed deterministic set (identical for everyone, every time), so re-registering
-// with a new email never yields different questions — no farming the whole bank.
+// Free trial (Alex 2026-08-25): a fixed guided sampler — exactly ONE question per
+// topic (13 total), the same every visit (questions[0] is deterministic). The app
+// (app/index.html vTour) plays a ~30s lesson intro before each and shows a signup
+// CTA after each. Full content stays locked until payment. This reverses the brief
+// "open the full set" window in favour of a controlled, repeatable taster funnel.
 function freeSubset(lessons) {
   const out = {};
   for (let i = 1; i <= 13; i++) {
