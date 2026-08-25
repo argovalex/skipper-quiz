@@ -567,12 +567,11 @@
     window.closeTrial=function(){modal.classList.remove('open');};
     modal.addEventListener('click',function(e){if(e.target===modal)closeTrial();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTrial();});
+    // Taster needs no signup/email — every CTA goes straight to the app tour.
+    // Email is captured only at the permanent (paid) registration inside the app.
     document.querySelectorAll('a[data-trial]').forEach(function(a){
-      a.addEventListener('click',function(e){
-        e.preventDefault();
-        var sec=a.closest('section,header,nav');
-        openTrial(sec&&sec.id?sec.id:'landing');
-      });
+      a.setAttribute('href',APP_URL);
+      a.addEventListener('click',function(e){e.preventDefault();location.href=APP_URL;});
     });
     window.submitTrial=function(e){
       e.preventDefault();
