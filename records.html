@@ -42,6 +42,12 @@
   .revoked{opacity:.45}
   .selcol{width:34px;text-align:center;cursor:default}
   .empty{padding:26px;text-align:center;color:var(--mut)}
+  .att{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:2px 8px;margin:2px;font-size:11.5px;font-weight:700;white-space:nowrap}
+  .att.pass{background:rgba(46,204,113,.14);color:var(--ok);border:1px solid rgba(46,204,113,.4)}
+  .att.fail{background:rgba(231,76,60,.12);color:var(--bad);border:1px solid rgba(231,76,60,.35)}
+  .att .d{color:var(--mut);font-weight:600}
+  .elig{background:rgba(46,204,113,.15);color:var(--ok);border:1px solid var(--ok)}
+  .noelig{background:rgba(157,180,220,.1);color:var(--mut);border:1px solid var(--bd)}
 </style>
 </head>
 <body>
@@ -61,7 +67,12 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="chips" style="margin-bottom:14px">
+    <span class="chip on" id="view-records" onclick="setView('records')">רשומות</span>
+    <span class="chip" id="view-exams" onclick="setView('exams')">תוצאות מבחני דמה</span>
+  </div>
+
+  <div class="card" id="recordsCard">
     <div class="chips" id="chips"></div>
     <div class="toolbar">
       <div class="grow"><input id="search" placeholder="חיפוש: שם / דוא&quot;ל / בית ספר / טלפון / קוד" oninput="render()"></div>
@@ -69,6 +80,17 @@
       <span class="count" id="selInfo"></span>
     </div>
     <div class="tblwrap"><div id="tbl"><div class="empty">טען טוקן ולחץ "טען רשומות".</div></div></div>
+  </div>
+
+  <div class="card" id="examsCard" style="display:none">
+    <div class="sub" style="margin-bottom:10px">מבחני דמה (סימולציה 50 דק׳). זכאות להחזר = ‏3 מבחנים לפחות, כל אחד ‏85%+, בתוך חלון של 30 יום. התיעוד מתחיל מרגע עליית הגרסה — מבחנים קודמים אינם מתועדים.</div>
+    <div class="chips" id="examChips"></div>
+    <div class="toolbar">
+      <div class="grow"><input id="examSearch" placeholder="חיפוש: דוא&quot;ל / קוד" oninput="renderExams()"></div>
+      <button class="ghost" onclick="exportExamsCsv()">ייצוא CSV</button>
+      <span class="count" id="examCount"></span>
+    </div>
+    <div class="tblwrap"><div id="examTbl"><div class="empty">טען טוקן ולחץ "טען רשומות".</div></div></div>
   </div>
 </div>
 
@@ -216,8 +238,102 @@
     setTimeout(()=>URL.revokeObjectURL(url), 2000);
   }
 
+  // ── Exam results view ──────────────────────────────────────────────────
+  let VIEW = 'records';           // records | exams
+  let EXAMS = [];                 // rows from /api/admin/exams
+  let EXAM_FILTER = 'all';        // all | eligible
+  let examsLoaded = false;
+
+  function setView(v){
+    VIEW = v;
+    $('view-records').className = 'chip'+(v==='records'?' on':'');
+    $('view-exams').className   = 'chip'+(v==='exams'?' on':'');
+    $('recordsCard').style.display = v==='records'?'':'none';
+    $('examsCard').style.display   = v==='exams'?'':'none';
+    if(v==='exams' && !examsLoaded && tok()) loadExams();
+  }
+
+  async function loadExams(){
+    if(!tok()){ $('examTbl').innerHTML='<div class="empty" style="color:var(--bad)">חסר ADMIN_TOKEN.</div>'; return; }
+    $('examTbl').innerHTML='<div class="empty">טוען…</div>';
+    let r;
+    try{ r = await apiCall('/api/admin/exams'); }
+    catch(e){ $('examTbl').innerHTML='<div class="empty" style="color:var(--bad)">אין חיבור ל-API: '+esc(e.message)+'</div>'; return; }
+    if(!(r&&r.ok)){ $('examTbl').innerHTML='<div class="empty" style="color:var(--bad)">שגיאה: '+esc((r&&r.reason)||'—')+'</div>'; return; }
+    EXAMS = r.students||[];
+    examsLoaded = true;
+    renderExamChips(); renderExams();
+  }
+
+  function renderExamChips(){
+    const elig = EXAMS.filter(s=>s.eligible).length;
+    $('examChips').innerHTML =
+      '<span class="chip'+(EXAM_FILTER==='all'?' on':'')+'" onclick="setExamFilter(\'all\')">הכל <b>'+EXAMS.length+'</b></span>'+
+      '<span class="chip'+(EXAM_FILTER==='eligible'?' on':'')+'" onclick="setExamFilter(\'eligible\')">זכאים להחזר <b>'+elig+'</b></span>';
+  }
+  function setExamFilter(k){ EXAM_FILTER=k; renderExamChips(); renderExams(); }
+
+  function examFiltered(){
+    const q = $('examSearch').value.trim().toLowerCase();
+    let rows = EXAMS.filter(s => EXAM_FILTER==='all' || s.eligible);
+    if(q) rows = rows.filter(s => (s.email||'').toLowerCase().includes(q) || (s.code||'').toLowerCase().includes(q));
+    // eligible first, then by most recent attempt
+    rows.sort((a,b)=> (b.eligible-a.eligible) || ((b.last_ts||'')<(a.last_ts||'')?-1:1));
+    return rows;
+  }
+
+  function attHtml(a){
+    const d = fmt(a.ts);
+    return '<span class="att '+(a.passed?'pass':'fail')+'" title="'+esc(d)+'">'+(a.passed?'✓':'✗')+' '+a.pct+'%'
+      +(a.timeUp?' ⏰':'')+' <span class="d">'+esc(d)+'</span></span>';
+  }
+
+  function renderExams(){
+    if(!examsLoaded){ $('examTbl').innerHTML='<div class="empty">טען טוקן ולחץ "טען רשומות".</div>'; return; }
+    const rows = examFiltered();
+    let h='<table><thead><tr>'
+      +'<th class="nosort">דוא"ל</th><th class="nosort">קוד</th><th class="nosort">מבחנים</th>'
+      +'<th class="nosort">עברו 85%+</th><th class="nosort">הכי טוב</th><th class="nosort">זכאות</th>'
+      +'<th class="nosort">פירוט (תאריך + ציון)</th></tr></thead><tbody>';
+    if(!rows.length){ h+='<tr><td colspan="7" class="empty">אין תלמידים עם מבחני דמה מתועדים.</td></tr>'; }
+    for(const s of rows){
+      h+='<tr>'
+        +'<td>'+esc(s.email)+'</td>'
+        +'<td class="code">'+esc(s.code)+'</td>'
+        +'<td>'+s.total_attempts+'</td>'
+        +'<td>'+s.passed_count+'</td>'
+        +'<td>'+(s.best_pct||0)+'%</td>'
+        +'<td><span class="tag '+(s.eligible?'elig':'noelig')+'">'+(s.eligible?'✅ זכאי':'—')+'</span></td>'
+        +'<td style="white-space:normal;max-width:520px">'+(s.attempts||[]).map(attHtml).join('')+'</td>'
+        +'</tr>';
+    }
+    h+='</tbody></table>';
+    $('examTbl').innerHTML=h;
+    $('examCount').textContent = rows.length+' תלמידים';
+  }
+
+  function exportExamsCsv(){
+    const rows = examFiltered();
+    if(!rows.length){ flash('אין נתונים לייצוא','err'); return; }
+    // One line per attempt, so each dated result is its own row.
+    const head = ['דוא"ל','קוד','זכאי להחזר','תאריך מבחן','ציון %','נכונות','מתוך','עבר','נגמר הזמן'];
+    const cell = v => { v=(v==null?'':String(v)); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; };
+    const lines = [head.join(',')];
+    for(const s of rows){
+      for(const a of (s.attempts||[])){
+        lines.push([s.email,s.code,s.eligible?'כן':'',fmt(a.ts),a.pct,a.correct,a.total,a.passed?'כן':'',a.timeUp?'כן':''].map(cell).join(','));
+      }
+    }
+    const blob = new Blob(['﻿'+lines.join('\r\n')], { type:'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href=url; a.download='skipperquiz-exams-'+new Date().toISOString().slice(0,10)+'.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 2000);
+  }
+
   loadCfg();
-  if(tok()) loadAll();
+  if(tok()){ loadAll(); loadExams(); }
 </script>
 </body>
 </html>

@@ -94,8 +94,8 @@ function applyContent(resp){LESSON_Q={};const L=(resp&&resp.lessons)||{};for(con
 async function unlockWithCode(code){const s=await sessionStart(code);if(!(s&&s.ok)){const m=s&&s.reason==='device-limit'?'הקוד כבר בשימוש במספר המכשירים המרבי':s&&s.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין';toast(m);return s;}storeCode(code);const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;await syncProgressDown();toast('נפתחה גישה מלאה 🎉');go('home');}else{toast(r&&r.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין');}return r;}
 function promptCode(){const c=prompt('הזן קוד גישה (מהרכישה או מהמדריך):');if(c&&c.trim())unlockWithCode(c.trim());}
 async function logout(){clearCode();st.owned=false;st.done=new Set();try{await apiJson('/api/session/end',{method:'POST'});}catch(e){}try{const f=await apiFree();if(f&&f.ok)applyContent(f);}catch(e){}stopSpeak();go('onboarding');toast('התנתקת — חזרת למצב טעימה');}
-async function syncProgressDown(){try{const r=await apiGetProgress();if(r&&r.ok&&r.data){const d=r.data;if(typeof d.xp==='number')st.xp=Math.max(st.xp,d.xp);if(d.srs)st.srs=Object.assign({},d.srs,st.srs);if(d.topicStats)st.topicStats=Object.assign({},d.topicStats,st.topicStats);if(Array.isArray(d.done))d.done.forEach(x=>st.done.add(x));persist();render();}}catch(e){}}
-let _pushT;function pushProgress(){if(!st.owned)return;if(!storedCode())return;clearTimeout(_pushT);_pushT=setTimeout(()=>{apiSaveProgress({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound});},700);}
+async function syncProgressDown(){try{const r=await apiGetProgress();if(r&&r.ok&&r.data){const d=r.data;if(typeof d.xp==='number')st.xp=Math.max(st.xp,d.xp);if(d.srs)st.srs=Object.assign({},d.srs,st.srs);if(d.topicStats)st.topicStats=Object.assign({},d.topicStats,st.topicStats);if(Array.isArray(d.done))d.done.forEach(x=>st.done.add(x));if(Array.isArray(d.examLog)){const seen=new Set((st.examLog||[]).map(e=>e.ts));d.examLog.forEach(e=>{if(e&&!seen.has(e.ts)){seen.add(e.ts);st.examLog.push(e);}});st.examLog.sort((a,b)=>(a.ts<b.ts?-1:1));if(st.examLog.length>50)st.examLog=st.examLog.slice(-50);}persist();render();}}catch(e){}}
+let _pushT;function pushProgress(){if(!st.owned)return;if(!storedCode())return;clearTimeout(_pushT);_pushT=setTimeout(()=>{apiSaveProgress({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound,examLog:st.examLog});},700);}
 async function handleReturn(){
   const u=new URL(location.href);const token=u.searchParams.get('token');if(!token)return false;
   toast('מאמת תשלום…');
@@ -171,7 +171,7 @@ function lessonLocked(id){return !st.owned;}
 /* ===== STATE ===== */
 const st={screen:'onboarding',lessonId:11,cardIndex:0,qIndex:0,selected:null,score:0,vo:false,videoEnded:false,qvTime:0,
   done:new Set(),owned:false,pool:[],
-  xp:0,streak:0,hearts:5,heartsOn:false,mode:'practice',srs:{},topicStats:{},sound:true,fx:null,gameOver:false,
+  xp:0,streak:0,hearts:5,heartsOn:false,mode:'practice',srs:{},topicStats:{},sound:true,fx:null,gameOver:false,examLog:[],
   paused:false,timed:false,secLeft:0,timeUp:false,
   tour:[],tourIdx:0,tourPhase:'intro'};
 
@@ -220,8 +220,8 @@ function floaty(txt,color){const p=document.querySelector('.phone')||document.bo
 function burst(){const p=document.querySelector('.phone')||document.body;for(let i=0;i<14;i++){const e=document.createElement('div');const cs=['#f1c40f','#2ecc71','#7eb8f7','#fb7185'];e.style.cssText=`position:absolute;top:130px;left:50%;width:8px;height:8px;border-radius:2px;background:${cs[i%4]};z-index:79;pointer-events:none`;p.appendChild(e);const dx=(Math.random()*2-1)*140,dy=-(60+Math.random()*160),rot=Math.random()*360;e.animate([{transform:'translate(-50%,0) rotate(0)',opacity:1},{transform:`translate(calc(-50% + ${dx}px),${dy}px) rotate(${rot}deg)`,opacity:0}],{duration:900+Math.random()*400,easing:'cubic-bezier(.2,.7,.3,1)'});setTimeout(()=>e.remove(),1300);}}
 
 /* ===== שמירה מתמשכת (localStorage עם fallback) ===== */
-function persist(){try{localStorage.setItem('sq_state',JSON.stringify({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound}));}catch(e){}pushProgress();}
-function loadPersist(){try{const d=JSON.parse(localStorage.getItem('sq_state')||'null');if(d){st.xp=d.xp||0;st.srs=d.srs||{};st.topicStats=d.topicStats||{};if(d.done)st.done=new Set(d.done);if(d.sound!==undefined)st.sound=d.sound;}}catch(e){}}
+function persist(){try{localStorage.setItem('sq_state',JSON.stringify({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound,examLog:st.examLog}));}catch(e){}pushProgress();}
+function loadPersist(){try{const d=JSON.parse(localStorage.getItem('sq_state')||'null');if(d){st.xp=d.xp||0;st.srs=d.srs||{};st.topicStats=d.topicStats||{};if(d.done)st.done=new Set(d.done);if(d.sound!==undefined)st.sound=d.sound;if(Array.isArray(d.examLog))st.examLog=d.examLog;}}catch(e){}}
 
 function showPauseHint(){
   if(document.getElementById('pauseHint'))return;
@@ -247,13 +247,26 @@ function stopSpeak(){if('speechSynthesis'in window)speechSynthesis.cancel();}
 
 /* ===== NAV ===== */
 let _examTimer=null;
-function go(s){if(s!=='quiz')stopExamTimer();if(s!=='tour'&&typeof stopPitch==='function')stopPitch();st.screen=s;render();}
+// Log one full timed mock-exam attempt (the 50-min simulation). Refund policy
+// needs a dated history of these, so we append {ts,pct,passed} and sync it up.
+// Only mode==='timed' counts as a "מבחן דמה"; practice/review/reinforce/final don't.
+function logExamAttempt(){
+  if(st.mode!=='timed'||st._examLogged)return;
+  st._examLogged=true;
+  const total=st.pool.length||1;
+  const passed=st.score>=Math.ceil(total*0.85);
+  if(!Array.isArray(st.examLog))st.examLog=[];
+  st.examLog.push({ts:new Date().toISOString(),pct:Math.round(st.score/total*100),correct:st.score,total,passed,timeUp:!!st.timeUp});
+  if(st.examLog.length>50)st.examLog=st.examLog.slice(-50);
+  persist();
+}
+function go(s){if(s!=='quiz')stopExamTimer();if(s!=='tour'&&typeof stopPitch==='function')stopPitch();if(s==='results')logExamAttempt();st.screen=s;render();}
 function openLesson(id){if(lessonLocked(id)){toast('🔒 השיעור זמין בגרסה המלאה — פתח את הקורס');return;}const l=byId(id);if(l.final){startQuiz(id);return;}st.lessonId=id;st.cardIndex=0;st.vo=false;st.videoEnded=false;stopSpeak();go('lesson');document.getElementById('scroll').scrollTop=0;}
 function videoCtaHtml(l){return `<div style="background:${C.card2};border:1px solid ${C.gold};border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center">
     <div style="font-size:13.5px;font-weight:900;margin-bottom:9px">🎯 סיימת את הסרטון — הזמן לתרגל</div>
     <button data-act="toquiz" style="width:100%;background:${C.gold};color:${C.navy};border:none;border-radius:11px;padding:11px;font-size:13px;font-weight:900;cursor:pointer">שאלות מבנק השאלות · ${l.title}</button>
   </div>`;}
-function beginQuiz(pool,mode,opts){opts=opts||{};st.pool=pool;st.qIndex=0;st.selected=null;st.score=0;st.qvTime=0;st.streak=0;st.gameOver=false;st.mode=mode;st.heartsOn=(mode==='exam'||mode==='review'||mode==='reinforce');st.hearts=5;st.paused=false;st.timeUp=false;st.timed=!!opts.timed;st.secLeft=opts.seconds||0;stopExamTimer();go('quiz');document.getElementById('scroll').scrollTop=0;if(st.timed)startExamTimer();const q0=pool[0];if(q0&&!q0.vid)speak(q0.q);}
+function beginQuiz(pool,mode,opts){opts=opts||{};st.pool=pool;st.qIndex=0;st.selected=null;st.score=0;st.qvTime=0;st.streak=0;st.gameOver=false;st._examLogged=false;st.mode=mode;st.heartsOn=(mode==='exam'||mode==='review'||mode==='reinforce');st.hearts=5;st.paused=false;st.timeUp=false;st.timed=!!opts.timed;st.secLeft=opts.seconds||0;stopExamTimer();go('quiz');document.getElementById('scroll').scrollTop=0;if(st.timed)startExamTimer();const q0=pool[0];if(q0&&!q0.vid)speak(q0.q);}
 function startQuiz(id,mode){const l=byId(id);st.lessonId=id;beginQuiz(quizFor(l),mode||(l&&l.final?'exam':'practice'));}
 
 /* ===== מבחן אקראי / רציף + טיימר + עצירה ===== */

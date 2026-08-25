@@ -502,6 +502,69 @@ app.get('/api/admin/buyers', async (req, res) => {
   }
 });
 
+// Mock-exam results per student, for the money-back guarantee (hub → records.html).
+// Reads the examLog array the app writes into progress.data. Computes refund
+// eligibility: ≥3 mock exams each ≥85%, all within a single 30-day window.
+// Protected by ADMIN_TOKEN.
+app.get('/api/admin/exams', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  try {
+    // email comes from the code's purchase (buyer) or the instructor directory.
+    const r = await db.q(`
+      select pr.code,
+             coalesce(p.email, i.email) as email,
+             coalesce(p.status, case when i.code is not null then 'comp' end) as status,
+             pr.data->'examLog' as exam_log,
+             pr.updated_at
+      from progress pr
+      left join access_codes ac on ac.code = pr.code
+      left join purchases   p  on p.id     = ac.purchase_id
+      left join instructors i  on i.code   = pr.code
+      where pr.data ? 'examLog'
+        and jsonb_array_length(coalesce(pr.data->'examLog','[]'::jsonb)) > 0
+      order by pr.updated_at desc`);
+
+    const WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
+    const rows = r.rows.map(row => {
+      const log = Array.isArray(row.exam_log) ? row.exam_log : [];
+      const attempts = log
+        .filter(e => e && e.ts)
+        .map(e => ({ ts: e.ts, pct: Number(e.pct) || 0, correct: e.correct, total: e.total, passed: !!e.passed, timeUp: !!e.timeUp }))
+        .sort((a, b) => (a.ts < b.ts ? -1 : 1));
+      const passing = attempts.filter(a => a.passed);
+      // Eligible: some 30-day window contains ≥3 passing attempts. Sliding window
+      // over the passing attempts sorted by date.
+      let eligible = false;
+      for (let i = 0; i < passing.length && !eligible; i++) {
+        const t0 = new Date(passing[i].ts).getTime();
+        let n = 0;
+        for (let j = i; j < passing.length; j++) {
+          if (new Date(passing[j].ts).getTime() - t0 <= WINDOW_MS) n++;
+        }
+        if (n >= 3) eligible = true;
+      }
+      return {
+        code: row.code,
+        email: row.email || '',
+        status: row.status || '',
+        attempts,
+        total_attempts: attempts.length,
+        passed_count: passing.length,
+        best_pct: attempts.reduce((m, a) => Math.max(m, a.pct), 0),
+        first_ts: attempts.length ? attempts[0].ts : null,
+        last_ts: attempts.length ? attempts[attempts.length - 1].ts : null,
+        eligible
+      };
+    });
+    res.json({ ok: true, students: rows });
+  } catch (e) {
+    srv500(res, e);
+  }
+});
+
 // Revoke a code (kills access + all its sessions). Protected by ADMIN_TOKEN.
 app.post('/api/admin/revoke', async (req, res) => {
   if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
