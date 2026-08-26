@@ -6335,7 +6335,7 @@
       "ד. כלי השייט M מפעיל מסך עשן."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "עשן כתום סמיך הוא אות מצוקה מוכר בינלאומית (COLREGS Annex IV). חובה להגיש סיוע מיידי.",
     "mediaUrl": "",
     "mediaType": "",
@@ -6343,7 +6343,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787494517/skipper-quiz/yu3mqorjwqq2xsed4vnj.mp4",
     "rendered_at": "2026-07-24T09:55:13.000Z",
     "voiceover_text": "שאלה מספר 1059. אופנוע ים אֶיּי מבחין בכלי שייט אֶם ולידו כְּלי השייט עשן כתום סמיך. מה תהיה פעולתו של האופנוע?. [[PAUSE]] התשובה הנכונה היא ג: כְּלי השייט אֶם במצוקה ולכן אגש לעזור. ... עשן כתום סמיך הוא אות מצוקה מוכר בינלאומית . חובה להגיש סיוע מיידי.",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1060,
