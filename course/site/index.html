@@ -104,7 +104,16 @@
   .vframe .vplay:focus-visible{outline:3px solid #fff;outline-offset:3px}
   .vframe .vplay svg{width:30px;height:30px;margin-inline-start:4px;display:block}
   .vframe.playing .vplay{display:none}
-  @media (prefers-reduced-motion:reduce){.vframe .vplay{transition:none}}
+  /* unmute pill: shown only while the intro video autoplays muted */
+  .vframe .vsound{position:absolute;top:12px;inset-inline-start:12px;z-index:3;display:none;
+    align-items:center;gap:7px;padding:8px 13px;border:none;border-radius:999px;cursor:pointer;
+    background:var(--gold);color:#20160a;font-weight:800;font-size:.82rem;
+    box-shadow:0 6px 20px rgba(0,0,0,.4);transition:background .15s ease}
+  .vframe .vsound:hover{background:var(--gold-deep)}
+  .vframe .vsound:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .vframe .vsound svg{width:16px;height:16px;display:block}
+  .vframe.sound-off.playing .vsound{display:flex}
+  @media (prefers-reduced-motion:reduce){.vframe .vplay,.vframe .vsound{transition:none}}
   .vcap{margin-top:12px;text-align:center;color:var(--faint);font-size:.82rem;font-weight:700;letter-spacing:.02em}
   .vcap b{color:var(--gold)}
   .founders{display:inline-block;margin:6px 0 24px;max-width:44ch;
@@ -360,11 +369,12 @@
     </div>
     <div class="hero-art" data-reveal>
       <div class="glow"></div>
-      <div class="vframe">
-        <video controls preload="none" playsinline poster="assets/intro-poster.jpg">
+      <div class="vframe" data-autoplay>
+        <video controls autoplay muted playsinline preload="auto" poster="assets/intro-poster.jpg">
           <source src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1787133698/skipper-quiz/site/intro.mp4" type="video/mp4">
         </video>
         <button class="vplay" type="button" aria-label="נגן סרטון"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+        <button class="vsound" type="button" aria-label="הפעל קול"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 10v4h4l5 5V5L7 10H3zm11.5 2a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 14.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z"/></svg>הפעל קול</button>
       </div>
       <div class="vcap">צפייה מהירה: <b>איך הקורס עובד</b></div>
     </div>
@@ -571,9 +581,22 @@
   document.querySelectorAll('.vframe').forEach(function(f){
     var v=f.querySelector('video'), b=f.querySelector('.vplay');
     if(!v||!b) return;
-    b.addEventListener('click',function(){var p=v.play();if(p&&p.catch)p.catch(function(){});});
+    // clicking the gold button means "watch it" -> play with sound
+    b.addEventListener('click',function(){v.muted=false;f.classList.remove('sound-off');var p=v.play();if(p&&p.catch)p.catch(function(){});});
     v.addEventListener('play',function(){f.classList.add('playing');});
     v.addEventListener('ended',function(){f.classList.remove('playing');});
+  });
+
+  // Intro video: muted autoplay on page load (with sound blocked, muted is the only
+  // reliable way). While it plays muted, an "הפעל קול" pill lets the viewer turn sound on.
+  document.querySelectorAll('.vframe[data-autoplay]').forEach(function(f){
+    var v=f.querySelector('video'), s=f.querySelector('.vsound');
+    if(!v) return;
+    function tryPlay(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    if(v.readyState>=2)tryPlay(); else v.addEventListener('canplay',tryPlay,{once:true});
+    v.addEventListener('play',function(){if(v.muted)f.classList.add('sound-off');});
+    v.addEventListener('volumechange',function(){if(!v.muted)f.classList.remove('sound-off');});
+    if(s)s.addEventListener('click',function(){v.muted=false;f.classList.remove('sound-off');if(v.paused)tryPlay();});
   });
 
   // Referral tracking: ?ref=<source> from partner links (schools/instructors) is kept
