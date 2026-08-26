@@ -1421,7 +1421,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787494459/skipper-quiz/oueksen9xq9txfgl7vo7.mp4",
     "rendered_at": "2026-07-26T15:37:00.346Z",
     "voiceover_text": "שאלה מספר 1058. כְּלי שייט בטווח ראִייתְּךָ, משמיע 3 צְפִירוֹת קצרות, ו-3 צְפִירוֹת ארוכות, 3 צְפִירוֹת קצרות. מהו פירוש האות?. [[PAUSE]] התשובה הנכונה היא ג: שהוא מבקש עזרה. ... שלוש צְפִירוֹת קצרות, שלוש ארוכות, שלוש קצרות - אות אס, או, אס בצפירות, מסמן בקשת עזרה.",
-    "blastOverride": "s s s l l l s s s"
+    "blastOverride": "s s s l l l s s s",
+    "html_locked": true
   },
   {
     "num": 1059,
