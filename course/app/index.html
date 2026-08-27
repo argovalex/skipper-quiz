@@ -109,6 +109,8 @@ async function bootstrap(){
   if(code){const s=await sessionStart(code);if(s&&s.ok){const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown();return;}}clearCode();}
   try{const f=await apiFree();if(f&&f.ok)applyContent(f);else toast('לא הצלחתי לטעון תוכן מהשרת');}catch(e){toast('אין חיבור לשרת');}
   st.owned=false;render();
+  // Arriving from the landing "רכוש עכשיו" button (?buy=1): open the purchase flow.
+  const bu=new URL(location.href);if(bu.searchParams.get('buy')&&CHECKOUT_OPEN&&!st.owned){history.replaceState({},'',bu.pathname);buy();}
 }
 
 /* ===== תוכן השיעורים (מהמערכים) ===== */
