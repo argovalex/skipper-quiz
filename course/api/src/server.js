@@ -334,7 +334,9 @@ app.post('/api/tranzila/notify', async (req, res) => {
   }
   const token = b.token || b.uid || null;
   const txn = b.Tempref || b.ConfirmationCode || b.index || ('TZ-' + Date.now());
-  const approved = b.Response === '000' || b.approved === '1' || !process.env.TRANZILA_TERMINAL || !!b.Tempref;
+  // Live terminal: only Response 000 is an approval. Without a terminal (dev), notify isn't
+  // the finalize path (/api/dev/pay is), so accept to stay permissive for local testing.
+  const approved = process.env.TRANZILA_TERMINAL ? (b.Response === '000') : true;
   if (!approved) return res.send('OK');
   try {
     let purchase = null;
