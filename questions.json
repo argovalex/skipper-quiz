@@ -6434,7 +6434,7 @@
       "ד. תמונה 93."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "דגל Alpha (תמונה 98) - דגל כחול-לבן המסמן צוללים במים.",
     "mediaUrl": "",
     "mediaType": "",
@@ -6442,7 +6442,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787494674/skipper-quiz/bs0crs7ft0wf8kr8czez.mp4",
     "rendered_at": "2026-07-24T09:57:32.000Z",
     "voiceover_text": "שאלה מספר 1063. איזה מהדגלים הבאים מסמן שיש צולֶלים במים?. [[PAUSE]] התשובה הנכונה היא ג: תמונה 98. ... דגל אלפא תמונה 98 - דגל כחול-לבן המסמן צולֶלים במים.",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1064,
