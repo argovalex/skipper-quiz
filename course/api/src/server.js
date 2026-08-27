@@ -246,7 +246,7 @@ function applyCoupon(base, c) {
 }
 const selfBase = req => (process.env.PUBLIC_URL || (req.protocol + '://' + req.get('host'))).replace(/\/$/, '');
 function buildCheckoutUrl(req, token, amount, buyer, ret) {
-  const term = process.env.TRANZILA_TERMINAL;
+  const term = (process.env.TRANZILA_TERMINAL || '').toLowerCase(); // Tranzila URL path is case-sensitive, lowercase only
   const returnTo = ret || selfBase(req);
   const success = returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + encodeURIComponent(token);
   if (term) {
