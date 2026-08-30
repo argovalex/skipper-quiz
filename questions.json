@@ -6731,7 +6731,7 @@
       "ד. רק באישור המועצה האזורית."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "בים המלח חלים אותם תנאי שיט כמו בים התיכון - אין הקלות מיוחדות.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1075-dead-sea.png",
     "mediaType": "image",
