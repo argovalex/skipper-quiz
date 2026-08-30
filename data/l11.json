@@ -1809,7 +1809,7 @@
       "ד. רק באישור העירייה."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1074-yarkon-river-mouth.png",
     "mediaType": "image",
