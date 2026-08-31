@@ -7201,7 +7201,7 @@
       "ד. אפשר לשוט בבטחה ובלבד שלא תתרחק יותר מ-500 מ' מהחוף הצפוני."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שקט.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1094-eilat-north-wind.png",
     "mediaType": "image",
@@ -7209,7 +7209,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788182202/skipper-quiz/pv4yujnrmr13qroeuqd7.mp4",
     "rendered_at": "2026-08-31T13:16:46.254Z",
     "voiceover_text": "שאלה מספר 1094. מה המשמעות של רוח צפונית במפרץ אילת?. [[PAUSE]] התשובה הנכונה היא א: הים יישאר שַקֶּט ותוכל לשוּט בבטחה. ... רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שַקֶּט.",
-    "content_updated_at": "2026-07-29T12:31:33.841Z"
+    "content_updated_at": "2026-07-29T12:31:33.841Z",
+    "html_locked": true
   },
   {
     "num": 1095,
