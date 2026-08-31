@@ -1967,7 +1967,7 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787495393/skipper-quiz/m1lgy65owdlascqywcnk.mp4",
     "rendered_at": "2026-07-24T10:01:56.000Z",
     "content_updated_at": "2026-07-23T10:07:01.669Z",
-    "html_locked": false
+    "html_locked": true
   },
   {
     "num": 1081,
@@ -1983,7 +1983,7 @@
       "ד. בכל מקום מורשה, במרחק מעל 300 מטרים מהחוף עד מרחק של 1 מייל."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "אופנוע ים מותר בים הפתוח במרחק 300 מ' עד מיל מהחוף, בכל מקום מורשה.",
     "mediaUrl": "",
     "mediaType": "",
