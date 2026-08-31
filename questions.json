@@ -7151,7 +7151,7 @@
       "ד. כל התשובות נכונות."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "מטף אבקה יוצר שכבה שמנתקת את החמצן מהאש.",
     "mediaUrl": "",
     "mediaType": "",
@@ -7159,7 +7159,8 @@
     "voiceover_text": "שאלה מספר 1092. איזה צלע של משולש האש מנתק מַטַף אבקה?. [[PAUSE]] התשובה הנכונה היא א: את החמצן. ... מַטַף אבקה יוצר שכבה שמנתקת את החמצן מהאש.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787495693/skipper-quiz/m8xepjr4hcxsfkmuot9o.mp4",
     "rendered_at": "2026-07-24T10:06:35.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1093,
