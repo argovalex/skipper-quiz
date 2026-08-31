@@ -2304,7 +2304,7 @@
       "ד. אפשר לשוט בבטחה ובלבד שלא תתרחק יותר מ-500 מ' מהחוף הצפוני."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "רוח צפונית במפרץ אילת דוחפת את המים דרומה, מה שמשאיר את הצד הצפוני שקט.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1094-eilat-north-wind.png",
     "mediaType": "image",
