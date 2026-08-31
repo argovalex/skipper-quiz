@@ -7028,7 +7028,7 @@
       "ד. להפעיל מטפה גז (CO2) ולזרוק אותו אל מרכז השטח הבוער."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "קצף הוא האמצעי היעיל ביותר לכיבוי שריפת דלק - הוא מכסה ומחניק את האש.",
     "mediaUrl": "",
     "mediaType": "",
@@ -7036,7 +7036,8 @@
     "voiceover_text": "שאלה מספר 1087. בעת תדלוק האופנוע, מהו האופן היעיל ביותר לכיבוי שריפת דֶּלֶק?. [[PAUSE]] התשובה הנכונה היא א: התזת קֶצֶף ממטפה קֶצֶף. ... קֶצֶף הוא האמצעי היעיל ביותר לכיבוי שריפת דֶּלֶק - הוא מכסה ומחניק את האש.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787495561/skipper-quiz/bqktggmhzxgiiozcoeti.mp4",
     "rendered_at": "2026-07-24T10:04:32.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1088,
