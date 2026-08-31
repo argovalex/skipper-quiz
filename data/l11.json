@@ -1957,7 +1957,7 @@
       "ד. כן, אך לא פחות מ-50 מטר מצדי חוף רחצה."
     ],
     "answer": "ד",
-    "answer_confirmed": true,
+    "answer_confirmed": false,
     "explanation": "מותר להתקרב לחוף רחצה לאיסוף נוסע, אך לא פחות מ-50 מ' מצדי החוף.",
     "mediaUrl": "",
     "mediaType": "",
@@ -1966,7 +1966,7 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787495393/skipper-quiz/m1lgy65owdlascqywcnk.mp4",
     "rendered_at": "2026-07-24T10:01:56.000Z",
     "content_updated_at": "2026-07-23T10:07:01.669Z",
-    "html_locked": true
+    "html_locked": false
   },
   {
     "num": 1081,
