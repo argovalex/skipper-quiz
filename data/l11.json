@@ -2229,7 +2229,7 @@
       "ד. כל התשובות נכונות."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "בדיקת מטף כוללת: תאריך תוקף, לחץ תקין, חותמת שלמה, ומצב חיצוני תקין.",
     "mediaUrl": "",
     "mediaType": "",
