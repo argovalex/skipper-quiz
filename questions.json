@@ -6880,7 +6880,7 @@
       "ד. בכל מקום מורשה, במרחק מעל 300 מטרים מהחוף עד מרחק של 1 מייל."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "אופנוע ים מותר בים הפתוח במרחק 300 מ' עד מיל מהחוף, בכל מקום מורשה.",
     "mediaUrl": "",
     "mediaType": "",
@@ -6888,7 +6888,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1786608768/skipper-quiz/leyoubnzlgzjxejofbfj.mp4",
     "rendered_at": "2026-08-13T08:12:50.452Z",
     "voiceover_text": "שאלה מספר 1081. באיזה מקומות או תנאים מוּתָּר לאופנוע ים להפליג בים הפתוח?. [[PAUSE]] התשובה הנכונה היא ד: בכל מקום מורשה, במרחק מעל 300 מטרים מהחוף עַד מרחק של מייל אחד.",
-    "content_updated_at": "2026-07-28T14:44:36.483Z"
+    "content_updated_at": "2026-07-28T14:44:36.483Z",
+    "html_locked": true
   },
   {
     "num": 1082,
