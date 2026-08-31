@@ -6781,7 +6781,7 @@
       "ד. מותר להפליג בתנאי שאופנוע הים יתרחק משטח האש מערבה 7 מיל."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "אסור להפליג, מכיוון שנכנסים לשטח אש מול פלמחים.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1076-palmachim-fire-zone.png",
     "mediaType": "image",
