@@ -2180,7 +2180,7 @@
       "ד. רק אם ננתק את החמצן נצליח לכבות את השריפה."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "מספיק לנתק מרכיב אחד ממשולש האש (חום/חמצן/דלק) כדי לכבות שריפה.",
     "mediaUrl": "",
     "mediaType": "",
