@@ -7077,7 +7077,7 @@
       "ד. רק אם ננתק את החמצן נצליח לכבות את השריפה."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "מספיק לנתק מרכיב אחד ממשולש האש (חום/חמצן/דלק) כדי לכבות שריפה.",
     "mediaUrl": "",
     "mediaType": "",
@@ -7085,7 +7085,8 @@
     "voiceover_text": "שאלה מספר 1089. איזה מרכיב ממשולש האש יש לנתק כדי לכבות את השריפה?. [[PAUSE]] התשובה הנכונה היא ג: מספיק אם נֶנָתֶק מרכיב אחד. ... מספיק לנתק מרכיב אחד ממשולש האש חוֹם או חמצן או דֶּלֶק כדי לכבות שריפה.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788180007/skipper-quiz/bpvjeqtd1hvwfypbvdvq.mp4",
     "rendered_at": "2026-08-31T12:40:09.880Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1090,
