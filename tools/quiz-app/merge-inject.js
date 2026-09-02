@@ -1,8 +1,10 @@
-// Merge pause-map into the public data file, then embed it into quiz-app.html.
+// Merge pause-map into the public data file, then embed it into the player.
+// License-aware: `node merge-inject.js [--license N]` (default 11).
 const fs = require("fs");
-const ROOT = "C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz";
-const bank = JSON.parse(fs.readFileSync(ROOT + "/data/l11.json", "utf8"));
-const pmap = JSON.parse(fs.readFileSync(__dirname + "/pause-map.json", "utf8"));
+const { paths, parseLicense } = require("./paths");
+const P = paths(parseLicense());
+const bank = JSON.parse(fs.readFileSync(P.bank, "utf8"));
+const pmap = fs.existsSync(P.pauseMap) ? JSON.parse(fs.readFileSync(P.pauseMap, "utf8")) : {};
 
 const pub = bank.map(q => {
   const pm = pmap[q.num] || {};
@@ -21,15 +23,20 @@ const pub = bank.map(q => {
 });
 
 const dataStr = JSON.stringify(pub, null, 0);
-fs.writeFileSync(ROOT + "/quiz-data-l11.json", dataStr, "utf8");
-
-let html = fs.readFileSync(ROOT + "/quiz-app.html", "utf8");
-const safe = dataStr.replace(/<\//g, "<\\/");
-const re = /(<script id="quiz-data" type="application\/json">)([\s\S]*?)(<\/script>)/;
-if (re.test(html)) html = html.replace(re, "$1" + safe + "$3");
-else html = html.replace("__QUIZ_DATA__", safe);
-fs.writeFileSync(ROOT + "/quiz-app.html", html, "utf8");
+fs.writeFileSync(P.quizData, dataStr, "utf8");
 
 const withPause = pub.filter(q => q.pauseAt != null).length;
-console.log(`public data: ${pub.length} questions, ${withPause} with pause point, ${pub.length - withPause} without`);
-console.log(`html size: ${(fs.statSync(ROOT + "/quiz-app.html").size / 1024).toFixed(1)} KB`);
+console.log(`public data (l${P.license}): ${pub.length} questions, ${withPause} with pause point, ${pub.length - withPause} without`);
+
+// Embed into the player. l11 uses quiz-app.html; other licenses expect quiz-app-l<N>.html.
+if (fs.existsSync(P.quizApp)) {
+  let html = fs.readFileSync(P.quizApp, "utf8");
+  const safe = dataStr.replace(/<\//g, "<\\/");
+  const re = /(<script id="quiz-data" type="application\/json">)([\s\S]*?)(<\/script>)/;
+  if (re.test(html)) html = html.replace(re, "$1" + safe + "$3");
+  else html = html.replace("__QUIZ_DATA__", safe);
+  fs.writeFileSync(P.quizApp, html, "utf8");
+  console.log(`embedded into ${require("path").basename(P.quizApp)} (${(fs.statSync(P.quizApp).size / 1024).toFixed(1)} KB)`);
+} else {
+  console.log(`player ${require("path").basename(P.quizApp)} not found — wrote ${require("path").basename(P.quizData)} only (create the player to embed)`);
+}

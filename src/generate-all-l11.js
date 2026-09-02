@@ -1,7 +1,11 @@
+// License-aware question-visual generator: `node src/generate-all-l11.js [--license N]`
+// (default 11). Filters questions.json by license and writes per-license HTMLs.
 const fs = require('fs');
 const path = require('path');
 const questions = require('../questions.json');
 const vm = require('vm');
+const { paths, parseLicense } = require('../tools/quiz-app/paths');
+const P = paths(parseLicense());
 
 // Load scenes.js in a sandboxed context with browser-like globals
 const scenesCode = fs.readFileSync(path.join(__dirname, '..', 'scenes.js'), 'utf8');
@@ -24,12 +28,12 @@ const sandbox = {
 vm.createContext(sandbox);
 vm.runInContext(scenesCode, sandbox);
 
-const outDir = path.join(__dirname, '..', 'html');
+const outDir = P.htmlDir;
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 
-const l11 = questions.filter(q => q.license === 11);
+const list = questions.filter(q => q.license === P.license);
 let count = 0;
-for (const q of l11) {
+for (const q of list) {
   try {
     const html = sandbox.generateQuizHTML(q, 'he', true);
     const topic = (q.topic || 'quiz').replace(/[\s\/]/g, '_');
@@ -40,4 +44,4 @@ for (const q of l11) {
     console.error(`FAIL Q${q.num}: ${e.message}`);
   }
 }
-console.log(`Done: ${count}/${l11.length} license-11 HTMLs generated in html/`);
+console.log(`Done: ${count}/${list.length} license-${P.license} HTMLs generated in ${path.basename(outDir)}/`);
