@@ -3572,7 +3572,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788343893/skipper-quiz/eqpen9nyi8h1zafw9ski.mp4",
     "voiceover_text": "שאלה מספר 1144. מה הכמות המינימלית של חגורות הַצָּלָה לאופנוע ים המורשה לשאת 3 אנשים, לבדיקות כֹּשֶׁר שייט?. [[PAUSE]] התשובה הנכונה היא ג: 3 חגורות. ... מספר חגורות ההצלה חייב להתאים למספר הנוסעים המורשה - 3 חגורות ל-3 אנשים.",
     "content_updated_at": "2026-07-23T14:49:29.294Z",
-    "rendered_at": "2026-09-02T10:11:38.776Z"
+    "rendered_at": "2026-09-02T10:11:38.776Z",
+    "html_locked": true
   },
   {
     "num": 1145,
@@ -3588,7 +3589,7 @@
       "ד. חוף נחשולים."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "רוח דרום-מערבית מתחזקת - יש לחזור לנקודת המוצא (צפונה) כי הרוח והגלים יעזרו.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1145-carmel-tow.png",
     "mediaType": "image",
