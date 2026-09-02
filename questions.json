@@ -8707,7 +8707,7 @@
       "ד. אף תשובה לא נכונה."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "ביציאה מפתח מרינה: ירוק בשמאל, אדום בימין - הפוך מהכניסה.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8715,7 +8715,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498866/skipper-quiz/co5uhgjmshd7a2fxb0et.mp4",
     "rendered_at": "2026-07-24T10:17:44.000Z",
     "voiceover_text": "שאלה מספר 1154. ביציאה מפתח מָרִינָה באיזה צד יש לעבור את מצופי הכניסה?. [[PAUSE]] התשובה הנכונה היא ב: ירוק מצד שמאל של הסירה ואדום מצד ימין של הסירה. ... ביציאה מפתח מָרִינָה: ירוק בשמאל, אדום בימין - הפוך מהכניסה.",
-    "content_updated_at": "2026-07-24T08:36:07.882Z"
+    "content_updated_at": "2026-07-24T08:36:07.882Z",
+    "html_locked": true
   },
   {
     "num": 1155,
