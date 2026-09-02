@@ -1,0 +1,3 @@
+# Rendered per-run artifacts (videos already covered by root *.mp4); keep out of git.
+*
+!.gitignore

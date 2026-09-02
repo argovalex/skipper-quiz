@@ -1,0 +1,10 @@
+# Python deps for the free vertical-video pipeline (video/make_question_video.py).
+# Run with the machine's default `python` (3.14) — that interpreter already has
+# edge-tts; the lesson pipeline uses it too. FFmpeg/ffprobe must be on PATH, and
+# the canonical visuals come from Node + puppeteer (root node_modules), not Python.
+#
+# NOTE: python-bidi / arabic-reshaper are intentionally NOT required — the card
+# visuals are rendered by the browser (RTL handled natively) and burned captions
+# use libass (fribidi), so no Python-side Hebrew shaping is needed. See
+# docs/video-pipeline.md ("Deviations from the original spec").
+edge-tts>=7.2.8

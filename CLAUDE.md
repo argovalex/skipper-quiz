@@ -35,6 +35,18 @@
 - **המיתוג הוא קוד קבוע, לא תיאור לשחזר: הרץ `python tools/lesson/brand.py <lesson.mp4> [branded.mp4]`.** הוא בונה את כרטיסי הלוגו (פתיח 3ש׳ / סיום 4ש׳ עם "תודה שצפיתם") ומטביע את סימן המים לכל האורך. אל תרכיב מיתוג ב-scratch מחדש ואל תשאל את אלכס איך — זה כבר נקבע וקומפל לכלי.
 - הרפרנס המחייב הוא כל מערך קיים, למשל `cards/דגל צולל/דגל צולל.mp4` (מתחיל בכרטיס הלוגו), **לא** גרסה שמקדימה וידאו. (הכלי הוצא מ-`scratch_brand_u12.py`, שהיה נמחק עם ה-scratchpad וגרם לבקשה החוזרת.)
 
+## סרטון אנכי חינמי לשאלה (מקומי, בלי ענן בתשלום)
+- `python -m video.make_question_video <num> [--voice avri|hila] [--all] [--bg-clip <path>] [--license 11]` מפיק סרטון 9:16 לשאלה בלי שרת Railway ובלי Cloudinary. פלט ב-`output/videos/q<num>.{mp4,srt,mp3}`.
+- הויזואל הוא ה**קנוני** מ-`scenes.js` (מרונדר מקומית עם puppeteer דרך `video/render_frames.js`) — לא כרטיסי Pillow חדשים. הקריינות היא `buildVoiceover(q)` הקנוני (מנוקד, עם אות התשובה), edge-tts (Avri/Hila). אל תפצל מחדש את התסריט — `[[PAUSE]]` כבר מפריד שאלה מתשובה.
+- זה **נוסף** לצינור הקיים (`tools/quiz-app/update-question.js` דרך השרת), לא מחליף אותו. פרטים והחלטות ב-`docs/video-pipeline.md`.
+
+## ויזואל רשיון 12 (שרשרת עדיפויות ב-scenes.js)
+`scenes.js` מנתב ויזואל של l12 (מוגן `q.license === 12`, לא נוגע ב-11) לפי:
+1. **שאלת "תמונה N"** → `mediaUrl` לתמונת חוברת הסימנים הרשמית ב-`media/signs/tmuna_NNN.png` (מוגש דרך raw.githubusercontent). `mediaUrl` דורס את הסצנה. 117 שאלות מחוברות. התמונות 1-126 = אורות לילה (1-74), סימני יום (75-90), דגלים (91-110), אותות קוליים (111-126). חולצו מ-`חוברת סימנים.pdf` (G:\My Drive\Sailor\zoom) עם PyMuPDF.
+2. **שאלת שושנה/כיוון** → `generateCompassRoseScene`. 3. **זכות מעבר תיאורית** → `getScene` (מצב שיט). 4. **אחרת** → כרטיס נקי `neutralSceneL12()` (גלגל הצלה + עוגן).
+- `data/l12.json`: `topic` סווג לטקסונומיית l11 (מותאם לסירת מנוע, נושא כללי = "סירת מנוע - כללי") ו-`mediaUrl`/`mediaType` הוצמדו — הכל in-place, byte-identical ל-`dumpCanonical`.
+- ⚠️ תשובות l12 עדיין `answer_confirmed:false` — אמת מול המפתח הרשמי לפני רינדור לפרסום. אין `explanation` (0/315).
+
 ## API
 - קריאות ה-LLM ב-`src/generate.js` ו-`src/scraper.js` משתמשות ב-Haiku (`claude-haiku-4-5-20251001`). השאלות הן JSON פשוט — אין צורך ב-Opus.
 

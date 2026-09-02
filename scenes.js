@@ -4353,6 +4353,26 @@ function generateSoundSignalScene(pattern, qText, answerText) {
   ${blastEls}`;
 }
 
+// License 12 (סירת מנוע) questions carry no topic/diagram (all "כללי", no media),
+// so routing them through getScene yields mismatched l11 diagrams. Show a clean,
+// neutral branded emblem instead — the question + options in the footer carry the
+// content. Guarded on license===12 in generateQuizHTML, so l11 is never affected.
+function neutralSceneL12() {
+  return `
+    <g opacity="0.55">
+      <path d="M0,300 Q60,288 120,300 T240,300 T360,300" fill="none" stroke="#1e3a6e" stroke-width="2"/>
+      <path d="M0,325 Q60,313 120,325 T240,325 T360,325" fill="none" stroke="#1e3a6e" stroke-width="2"/>
+      <path d="M0,350 Q60,338 120,350 T240,350 T360,350" fill="none" stroke="#1e3a6e" stroke-width="2"/>
+    </g>
+    <g transform="translate(180,168)">
+      <circle r="62" fill="none" stroke="#2a4a8a" stroke-width="20"/>
+      <circle r="62" fill="none" stroke="#eaf2ff" stroke-width="20" stroke-dasharray="49 48.5" stroke-dashoffset="24"/>
+      <circle r="40" fill="#0c1a3a" stroke="#1e3a6e" stroke-width="2"/>
+      <text x="0" y="16" text-anchor="middle" font-size="44" font-family="Heebo,sans-serif">⚓</text>
+    </g>
+    <text x="180" y="270" text-anchor="middle" fill="#7eb8f7" font-size="15" font-family="Heebo,sans-serif" font-weight="700">מבחן תאוריה · סירת מנוע</text>`;
+}
+
 function generateQuizHTML(q, lang, autoPlay=false) {
   lang = lang || currentLang || 'he';
   const isEn = lang === 'en';
@@ -4365,9 +4385,23 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   const isSoundSignal = q.topic === 'אותות קוליים';
   const blastPattern = isSoundSignal ? parseBlastPatternMulti(correctText, qText, expl, q.blastOverride||'') : null;
   const hasVesselLetters = /\([A-P]\)/.test(qText) || /(?:כלי.(?:ה)?שייט|אופנוע.ים|מפרשית)\s+[A-P]\b/.test(qText);
-  const scene = (isSoundSignal && !hasVesselLetters)
-    ? generateSoundSignalScene(blastPattern, qText, correctText)
-    : getScene(q.topic, q.q_he||q.q_en);
+  // License 12 visual routing (getScene is l11-tuned and mismatches most l12):
+  //   1. "תמונה N" questions carry a mediaUrl (official booklet image) that overrides
+  //      the scene below entirely — handled by the mediaUrl branch further down.
+  //   2. compass-rose (flag/bearing) questions -> generateCompassRoseScene.
+  //   3. right-of-way (זכות מעבר) questions -> getScene situation diagram.
+  //   4. everything else -> clean neutral card.
+  let scene;
+  if (q.license === 12) {
+    const rose = generateCompassRoseScene(q.q_he || '');
+    scene = rose ? rose
+      : (q.topic === 'זכות מעבר') ? getScene('זכות מעבר', q.q_he || '')
+      : neutralSceneL12();
+  } else {
+    scene = (isSoundSignal && !hasVesselLetters)
+      ? generateSoundSignalScene(blastPattern, qText, correctText)
+      : getScene(q.topic, q.q_he||q.q_en);
+  }
   const optsHtml = opts.slice(0,4).map((o,i)=>{
     const t = o.replace(/^[אבגדABCDabcd]\.\s*/,'');
     return `<div class="opt" id="o${i}"><div class="ltr">${LT[i]}</div>${t}</div>`;
