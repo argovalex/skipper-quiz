@@ -3392,7 +3392,7 @@
       "ד. לא יותר בשני אישים."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "מספר מרבי של 3 אנשים על אופנוע ים, בהתאם לקיבולת המאושרת של כלי השיט.",
     "mediaUrl": "",
     "mediaType": "",
