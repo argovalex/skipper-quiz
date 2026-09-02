@@ -8012,7 +8012,7 @@
       "ד. אין חשיבות לצבע המצוף, אלה רק לאורות בלילה."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "ביציאה מנמל: מצוף אדום בימין (סטארבורד), מצוף ירוק בשמאל (פורט).",
     "mediaUrl": "",
     "mediaType": "",
@@ -8020,7 +8020,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1786618841/skipper-quiz/nyoqmyjjpfgc0byocavo.mp4",
     "rendered_at": "2026-08-13T11:00:44.317Z",
     "voiceover_text": "שאלה מספר 1125. ביציאה מהנמל אילו מְצוֹפִים ימצאו בצד ימין ושמאל?. [[PAUSE]] התשובה הנכונה היא א: בצד ימין מָצוֹף אדום, בצד שמאל מָצוֹף ירוק. ... ביציאה מנמל: מָצוֹף אדום בימין , מָצוֹף ירוק בשמאל .",
-    "content_updated_at": "2026-07-24T08:35:52.072Z"
+    "content_updated_at": "2026-07-24T08:35:52.072Z",
+    "html_locked": true
   },
   {
     "num": 1127,
