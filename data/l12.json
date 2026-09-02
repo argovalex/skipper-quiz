@@ -3127,7 +3127,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2142. מתי חייב כְּלי שייט הנמצא בדרך לקיים תצפית בראיה ובשמיעה?. [[PAUSE]] התשובה הנכונה היא ג: בכל עתבכל סוג של כְּלי שייט."
   },
   {
     "num": 2143,
@@ -3149,7 +3150,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2143. איזה כְּלי שייט ממוכָּן יחשב לִכְלִי שייט שהוא ללא שליטה?. [[PAUSE]] התשובה הנכונה היא ד: כְּלי שייט שאיבד הגה או מַדְחֵף."
   },
   {
     "num": 2144,
