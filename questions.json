@@ -8509,7 +8509,7 @@
       "ד. לנמל יפו."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1146-tlv-tow.png",
     "mediaType": "image",
@@ -8517,7 +8517,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788347221/skipper-quiz/uvgws84nnikdyhdkncdk.mp4",
     "rendered_at": "2026-09-02T11:07:03.769Z",
     "voiceover_text": "שאלה מספר 1146. השקת את אופנוע הים שלך ליד המרינה בהרצליה. הפלגת דרומה במקביל לאופנוע ים אחר, במרחק של כ-1000 מטר מהחוף. אתם בערך מול חוף תֵּל-בָּרוּךְ, צפונית לתחנת הכח רידינג וכ-שלושה קילומטר מנקודת המוצא. השמים התקדרו, רוח צפונית חזקה מתפתחת והים מתחיל להעלות גלים. אופנוע הים של חברך דמם ולא ניתן להתניעו. החלטתם לגרור אותו לחוף. להיכן תגרור אותו?. [[PAUSE]] התשובה הנכונה היא ג: למעגן תל אביב. ... רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
-    "content_updated_at": "2026-07-29T12:24:45.829Z"
+    "content_updated_at": "2026-07-29T12:24:45.829Z",
+    "html_locked": true
   },
   {
     "num": 1147,
