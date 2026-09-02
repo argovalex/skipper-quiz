@@ -8386,7 +8386,7 @@
       "ד. אחת לשנה."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "ביקורת כושר שייט לאופנוע ים פרטי מתבצעת אחת לשנתיים.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8394,7 +8394,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498192/skipper-quiz/ypngl00ylhikztj9xtbh.mp4",
     "voiceover_text": "שאלה מספר 1141. בכול כמה זמן תתבצע ביקורת כֹּשֶׁר שייט תקופתית לרישוי אופנוע ים המשמש ליעוד פרטי?. [[PAUSE]] התשובה הנכונה היא א: אחת לשנתיים. ... ביקורת כֹּשֶׁר שייט לאופנוע ים פרטי מתבצעת אחת לשנתיים.",
     "content_updated_at": "2026-07-23T14:10:50.894Z",
-    "rendered_at": "2026-07-23T14:36:02.000Z"
+    "rendered_at": "2026-07-23T14:36:02.000Z",
+    "html_locked": true
   },
   {
     "num": 1142,
