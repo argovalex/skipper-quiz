@@ -19,7 +19,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2001. באילו תנאים מותר להשיט סירת מנוע?. [[PAUSE]] התשובה הנכונה היא א: גיל המשיט 16 שנה ובסירה נִמְצָא משיט מוסמך."
   },
   {
     "num": 2002,
@@ -41,7 +42,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2002. מי רשאי להשיט סירת מנוע?. [[PAUSE]] התשובה הנכונה היא ד: גיל המשיט 16 שנה ובסירה נִמְצָא משיט מוסמך."
   },
   {
     "num": 2003,
