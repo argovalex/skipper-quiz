@@ -7940,7 +7940,7 @@
       "ד. סכנת ההתהפכות של האופנוע."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "גלים גבוהים מהצד במהירות גבוהה יוצרים מומנט שעלול להפוך את האופנוע.",
     "mediaUrl": "",
     "mediaType": "",
@@ -7948,7 +7948,8 @@
     "voiceover_text": "שאלה מספר 1122. מה הסכנה בהפלגה במהירות גבוהה כאשר באים גלים גבוהים מהצד?. [[PAUSE]] התשובה הנכונה היא ד: סכנת ההתהפכות של האופנוע. ... גלים גבוהים מהצד במהירות גבוהה יוצרים מוֹמֶנְט שעלול להפוך את האופנוע.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787497278/skipper-quiz/vpe816fvoux0yndeyjc5.mp4",
     "rendered_at": "2026-07-24T08:30:43.149Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1123,
