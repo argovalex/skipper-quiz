@@ -2,7 +2,9 @@
 // update-question.js — one command to re-render a question and propagate the new
 // video EVERYWHERE the course reads from.
 //
-//   node tools/quiz-app/update-question.js <num> [num...] [--no-push] [--no-render]
+//   node tools/quiz-app/update-question.js <num> [num...] [--license N] [--no-push] [--no-render]
+//   --license N (default 11) selects the bank/derived files: data/l<N>.json,
+//   quiz-data-l<N>.json, pause-map[-l<N>].json, quiz-app[-l<N>].html.
 //
 // Steps per run:
 //   1. render : build the exact editor VO and POST /render/:num (force) -> new videoUrl
@@ -25,6 +27,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { buildVoiceover } = require('./vo.js');
 const { genHtml } = require('./scene-html.js');
+const { paths, parseLicense } = require('./paths');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const HERE = __dirname;
@@ -34,9 +37,16 @@ const args = process.argv.slice(2);
 const noPush = args.includes('--no-push');
 const noRender = args.includes('--no-render');
 const noDb = args.includes('--no-db');
-const nums = args.filter(a => /^\d+$/.test(a));
+const LICENSE = parseLicense(args);
+const P = paths(LICENSE);
+// repo-relative paths (for git add / p()/load()); default license 11 keeps the old names
+const rel = f => path.relative(ROOT, f).replace(/\\/g, '/');
+const BANK = rel(P.bank), QUIZDATA = rel(P.quizData), PAUSEMAP = rel(P.pauseMap), QUIZAPP = rel(P.quizApp);
+// nums = digit args, minus the value that follows --license
+const li = args.indexOf('--license');
+const nums = args.filter((a, i) => /^\d+$/.test(a) && !(li !== -1 && i === li + 1));
 if (!nums.length) {
-  console.error('usage: node tools/quiz-app/update-question.js <num> [num...] [--no-push] [--no-render]');
+  console.error('usage: node tools/quiz-app/update-question.js <num> [num...] [--license N] [--no-push] [--no-render]');
   process.exit(1);
 }
 
@@ -67,8 +77,8 @@ function git(...a) {
   if (r.status !== 0) throw new Error(`git ${a.join(' ')} failed:\n${r.stderr || r.stdout}`);
   return (r.stdout || '').trim();
 }
-function node(script) {
-  const r = spawnSync(process.execPath, [path.join(HERE, script)], { cwd: ROOT, encoding: 'utf8', stdio: 'inherit' });
+function node(script, extra = []) {
+  const r = spawnSync(process.execPath, [path.join(HERE, script), ...extra], { cwd: ROOT, encoding: 'utf8', stdio: 'inherit' });
   if (r.status !== 0) throw new Error(`${script} failed`);
 }
 
@@ -100,7 +110,7 @@ async function propagateToCourseDb(done) {
   const token = process.env.ADMIN_TOKEN || env.ADMIN_TOKEN;
   if (!token) { console.log('course: no ADMIN_TOKEN (course/api/.env) — paid app refreshes within 5 min (cache TTL)'); return; }
   // re-read the file we just wrote so the objects carry the new videoUrl
-  const all = JSON.parse(fs.readFileSync(p('data/l11.json'), 'utf8'));
+  const all = JSON.parse(fs.readFileSync(p(BANK), 'utf8'));
   const want = new Set(done.map(String));
   const questions = all.filter(q => q.num != null && want.has(String(q.num)));
   process.stdout.write(`course: bank-import ${done.join(',')} ... `);
@@ -118,7 +128,7 @@ async function propagateToCourseDb(done) {
 }
 
 (async () => {
-  const bank = load('data/l11.json');
+  const bank = load(BANK);
   const questions = load('questions.json');
   const qById = new Map(questions.map(q => [String(q.num), q]));
   const newUrls = {};
@@ -126,7 +136,7 @@ async function propagateToCourseDb(done) {
   // 1) render (or read new url from questions.json if --no-render)
   for (const num of nums) {
     const q = bank.find(x => String(x.num) === num);
-    if (!q) { console.error(`! ${num} not in data/l11.json — skipping`); continue; }
+    if (!q) { console.error(`! ${num} not in ${BANK} — skipping`); continue; }
     if (noRender) {
       const u = qById.get(num) && qById.get(num).videoUrl;
       if (!u) { console.error(`! ${num} has no videoUrl in questions.json — skipping`); continue; }
@@ -145,33 +155,34 @@ async function propagateToCourseDb(done) {
   const done = Object.keys(newUrls);
   if (!done.length) { console.error('nothing rendered; aborting'); process.exit(1); }
 
-  // 2) sync new videoUrl into data/l11.json (surgical raw replace; old urls are unique)
-  let raw = fs.readFileSync(p('data/l11.json')).toString('utf8'); // preserves CRLF
-  const l11 = new Map(bank.map(q => [String(q.num), q]));
+  // 2) sync new videoUrl into the bank (surgical raw replace; old urls are unique)
+  let raw = fs.readFileSync(p(BANK)).toString('utf8'); // preserves CRLF
+  const byNum = new Map(bank.map(q => [String(q.num), q]));
   let synced = 0;
   for (const num of done) {
-    const oldUrl = l11.get(num) && l11.get(num).videoUrl;
+    const oldUrl = byNum.get(num) && byNum.get(num).videoUrl;
     const newUrl = newUrls[num];
     if (oldUrl && oldUrl !== newUrl && raw.includes(`"${oldUrl}"`)) { raw = raw.replace(`"${oldUrl}"`, `"${newUrl}"`); synced++; }
     else if (oldUrl === newUrl) synced++;
-    else console.error(`! ${num}: old url not found in data/l11.json`);
+    else console.error(`! ${num}: old url not found in ${BANK}`);
   }
-  fs.writeFileSync(p('data/l11.json'), raw);
-  console.log(`videoUrl synced into data/l11.json: ${synced}/${done.length}`);
+  fs.writeFileSync(p(BANK), raw);
+  console.log(`videoUrl synced into ${BANK}: ${synced}/${done.length}`);
 
   // 3) invalidate pause-map for these nums, then recompute
-  const PM = path.join(HERE, 'pause-map.json');
-  const pm = JSON.parse(fs.readFileSync(PM, 'utf8'));
+  const PM = P.pauseMap;
+  const pm = fs.existsSync(PM) ? JSON.parse(fs.readFileSync(PM, 'utf8')) : {};
   for (const num of done) delete pm[num];
   fs.writeFileSync(PM, JSON.stringify(pm, null, 0));
   console.log(`pause-map invalidated: ${done.join(',')}`);
-  node('build-pausemap.js');
+  node('build-pausemap.js', ['--license', String(LICENSE)]);
 
   // 4) rebuild public data + embed
-  node('merge-inject.js');
+  node('merge-inject.js', ['--license', String(LICENSE)]);
 
-  // 5) ship
-  git('add', 'data/l11.json', 'quiz-data-l11.json', 'quiz-app.html', 'tools/quiz-app/pause-map.json');
+  // 5) ship (only stage files that actually exist — e.g. a license may have no player yet)
+  const toAdd = [BANK, QUIZDATA, QUIZAPP, PAUSEMAP].filter(f => fs.existsSync(p(f)));
+  git('add', ...toAdd);
   const staged = git('diff', '--cached', '--name-only');
   if (!staged) { console.log('no changes to commit'); return; }
   git('commit', '-m', `update-question ${done.join(',')}: re-render + propagate to course data`);

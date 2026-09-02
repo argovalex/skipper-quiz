@@ -1,12 +1,15 @@
-// Detect the [[PAUSE]] boundary in each L11 video via ffmpeg silencedetect.
-// Output: pause-map.json  { "1001": {pauseAt, resumeAt, dur}, ... }  (resume-safe)
+// Detect the [[PAUSE]] boundary in each video via ffmpeg silencedetect.
+// Output: pause-map[-l<N>].json  { "1001": {pauseAt, resumeAt, dur}, ... }  (resume-safe)
+// License-aware: `node build-pausemap.js [--license N]` (default 11).
 const { spawnSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
+const { paths, parseLicense } = require("./paths");
 
 const FF = "C:/Users/argov/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.2-full_build/bin/ffmpeg.exe";
-const BANK = "C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz/data/l11.json";
-const OUT = path.join(__dirname, "pause-map.json");
+const P = paths(parseLicense());
+const BANK = P.bank;
+const OUT = P.pauseMap;
 
 const data = JSON.parse(fs.readFileSync(BANK, "utf8"));
 const vids = data.filter(q => q.videoUrl);
