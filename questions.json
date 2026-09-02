@@ -8493,8 +8493,7 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498418/skipper-quiz/mwjvvf9rgqexm0sldvw1.mp4",
     "rendered_at": "2026-07-26T15:37:00.346Z",
-    "voiceover_text": "שאלה מספר 1145. השקת את אופנוע הים שלך דרומית מחוף הבונים והתחלת להפליג דרומה כאשר חברך מפליג על אופנוע ים אחר כ-20 מטרים ממך ובמקביל כ-1000 מטרים מהחוף. אתם בערך מול חוף קבוץ נחשולים, כ-3 קילומטר מנקודת המוצא. השמים התקדרו, רוח דרום מערבית מתחזקת ומתפתחת והים מתחיל להעלות גלים. לפתע דמם המנוע של האופנוע של חברך ולא ניתן להתניעו מחדש. החלטתם לגרור אותו לחוף, לאיזה חוף?. [[PAUSE]] התשובה הנכונה היא ב: נקודה המוצא בחוף הבונים. ... רוח דרום-מערבית מתחזקת - יש לחזור לנקודת המוצא צפונה כי הרוח והגלים יעזרו.",
-    "html_locked": true
+    "voiceover_text": "שאלה מספר 1145. השקת את אופנוע הים שלך דרומית מחוף הבונים והתחלת להפליג דרומה כאשר חברך מפליג על אופנוע ים אחר כ-20 מטרים ממך ובמקביל כ-1000 מטרים מהחוף. אתם בערך מול חוף קבוץ נחשולים, כ-3 קילומטר מנקודת המוצא. השמים התקדרו, רוח דרום מערבית מתחזקת ומתפתחת והים מתחיל להעלות גלים. לפתע דמם המנוע של האופנוע של חברך ולא ניתן להתניעו מחדש. החלטתם לגרור אותו לחוף, לאיזה חוף?. [[PAUSE]] התשובה הנכונה היא ב: נקודה המוצא בחוף הבונים. ... רוח דרום-מערבית מתחזקת - יש לחזור לנקודת המוצא צפונה כי הרוח והגלים יעזרו."
   },
   {
     "num": 1146,
@@ -8517,7 +8516,7 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785078971/skipper-quiz/pnld9ajon0hldauyvrbb.mp4",
     "rendered_at": "2026-07-26T15:37:00.346Z",
-    "voiceover_text": "שאלה מספר 1146. השקת את אופנוע הים שלך ליד המרינה בהרצליה. הפלגת דרומה במקביל לאופנוע ים אחר, במרחק של כ-1000 מטר מהחוף. אתם בערך מול חוף תל-ברוך, צפונית לתחנת הכח רידינג וכ-3 קילומטר מנקודת המוצא. השמים התקדרו, רוח צפונית חזקה מתפתחת והים מתחיל להעלות גלים. אופנוע הים של חברך דמם ולא ניתן להתניעו. החלטתם לגרור אותו לחוף. להיכן תגרור אותו?. [[PAUSE]] התשובה הנכונה היא ג: למעגן תל אביב. ... רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
+    "voiceover_text": "שאלה מספר 1146. השקת את אופנוע הים שלך ליד המרינה בהרצליה. הפלגת דרומה במקביל לאופנוע ים אחר, במרחק של כ-1000 מטר מהחוף. אתם בערך מול חוף תֵּל-בָּרוּךְ, צפונית לתחנת הכח רידינג וכ-שלושה קילומטר מנקודת המוצא. השמים התקדרו, רוח צפונית חזקה מתפתחת והים מתחיל להעלות גלים. אופנוע הים של חברך דמם ולא ניתן להתניעו. החלטתם לגרור אותו לחוף. להיכן תגרור אותו?. [[PAUSE]] התשובה הנכונה היא ג: למעגן תל אביב. ... רוח צפונית חזקה דוחפת דרומה. מעגן תל אביב הוא המקום המוגן הקרוב ביותר.",
     "content_updated_at": "2026-07-29T12:24:45.829Z"
   },
   {
@@ -8908,7 +8907,7 @@
     "official_num": 1,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "באילו תנאים מותר להשיט סירת מנוע?",
     "q_en": "",
     "options": [
@@ -8931,7 +8930,7 @@
     "official_num": 2,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "מי רשאי להשיט סירת מנוע?",
     "q_en": "",
     "options": [
@@ -8954,7 +8953,7 @@
     "official_num": 3,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהי המהירות המרבית המותרת בתוך נמל או מ עגנה בהתאם לכללי הימאות הטובה?",
     "q_en": "",
     "options": [
@@ -8976,7 +8975,7 @@
     "official_num": 4,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "באיז ו מהירות מותר להפליג בתוך מעגנה או נמל?",
     "q_en": "",
     "options": [
@@ -8998,7 +8997,7 @@
     "official_num": 5,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "באיזה מהמקרים חייב משיט כלי שייט לדווח על תאונה?",
     "q_en": "",
     "options": [
@@ -9020,7 +9019,7 @@
     "official_num": 6,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "באיזה מהמקרים חייב משיט כלי שייט לקיים תצפית ראייה ושמיעה?",
     "q_en": "",
     "options": [
@@ -9042,7 +9041,7 @@
     "official_num": 7,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "באיזה נסיבות חייבים לקיים תצפית ראיה ושמיעה?",
     "q_en": "",
     "options": [
@@ -9064,7 +9063,7 @@
     "official_num": 8,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ו מה המרחק שיש להתרחק מסירה המניפה דגל צוללים?",
     "q_en": "",
     "options": [
@@ -9079,14 +9078,15 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2008. ו מה המרחק שיש להתרחק מסירה המניפה דגל צולֶלים?. [[PAUSE]] התשובה הנכונה היא ב: 200 מטרים."
   },
   {
     "num": 2009,
     "official_num": 9,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כיצד תפעל בראותך סירה המניפה דגל צוללים?",
     "q_en": "",
     "options": [
@@ -9108,7 +9108,7 @@
     "official_num": 10,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהם האזורים המוגדרים כאסורים לשייט?",
     "q_en": "",
     "options": [
@@ -9130,7 +9130,7 @@
     "official_num": 11,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מי מהבאים הוא כלי שייט ללא שליטה?",
     "q_en": "",
     "options": [
@@ -9145,14 +9145,15 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2011. מי מהבאים הוא כְּלי שייט ללא שליטה?. [[PAUSE]] התשובה הנכונה היא ג: שאינו יכול לתמרן."
   },
   {
     "num": 2012,
     "official_num": 12,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מתי חייב כלי שייט להציג סימני\"ללא שליטה \"?",
     "q_en": "",
     "options": [
@@ -9174,7 +9175,7 @@
     "official_num": 13,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מי מהבאים הוא כלי שייט בדרך?",
     "q_en": "",
     "options": [
@@ -9196,7 +9197,7 @@
     "official_num": 14,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "באיזה מצבים נתייחס לכלי שייט כ כלי שייט בדרך?",
     "q_en": "",
     "options": [
@@ -9218,7 +9219,7 @@
     "official_num": 15,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "איזה מסמכים חייבים להימצא בכלי שייט בעת ההפלגה?",
     "q_en": "",
     "options": [
@@ -9240,7 +9241,7 @@
     "official_num": 16,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "אלו מה מסמכים הבאים חייב להימצא בכלי שייט בעת ההפלגה?",
     "q_en": "",
     "options": [
@@ -9262,7 +9263,7 @@
     "official_num": 17,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "האם מותר למשיט בעל רישיון 12 (סירת מנוע )להשיט סירת נוסעים בשכר?",
     "q_en": "",
     "options": [
@@ -9284,7 +9285,7 @@
     "official_num": 18,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "למי מותר להשיט סיר ה המוגדרת כמסחרית?",
     "q_en": "",
     "options": [
@@ -9306,7 +9307,7 @@
     "official_num": 19,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהי מהירות ה הפלג ה של כלי שייט החייב על פי התקנות לעבור ב תוך תחום 300 מטרים מהחוף?",
     "q_en": "",
     "options": [
@@ -9328,7 +9329,7 @@
     "official_num": 20,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "באיזה מהירות מרבית תפליג סירה החייבת לעבור במרחק 300 מטרים מהחוף?",
     "q_en": "",
     "options": [
@@ -9350,7 +9351,7 @@
     "official_num": 21,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "למי יש לדווח על תאונה בה נגרמו נזקים לספינה ול מזח,אך ללא נפגעים?",
     "q_en": "",
     "options": [
@@ -9372,7 +9373,7 @@
     "official_num": 22,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "למי תדווח על א י רוע בו נגרם נזק לסירה ולרציף?",
     "q_en": "",
     "options": [
@@ -9394,7 +9395,7 @@
     "official_num": 23,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "מה פרוש ה אות ה קולי כמתואר בתמונה 113?",
     "q_en": "",
     "options": [
@@ -9406,8 +9407,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_113.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9416,7 +9417,7 @@
     "official_num": 24,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כ לי שייט ממוכן השט בסמוך משמיע אות קולי כמתואר בתמונה 114, מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -9428,8 +9429,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_114.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9438,7 +9439,7 @@
     "official_num": 25,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי שייט מאחוריך משמיע אות קולי כמתואר בתמונה 115, מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -9450,8 +9451,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_115.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9460,7 +9461,7 @@
     "official_num": 26,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "מה פרוש ה אות קולי כמתואר בתמונה 115?",
     "q_en": "",
     "options": [
@@ -9472,8 +9473,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_115.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9482,7 +9483,7 @@
     "official_num": 27,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בערפל/ראות מוגבלת שמעת לפני החרטום,במחזוריות של כ- 2 דקות, אות קולי כמתואר בתמונה 118, מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -9494,8 +9495,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_118.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9504,7 +9505,7 @@
     "official_num": 28,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "מה פרוש האות הקולי כמתואר בתמונ ה 112 המושמע בערפל כל שתי דקות?",
     "q_en": "",
     "options": [
@@ -9526,7 +9527,7 @@
     "official_num": 29,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בתעלה צרה, כלי שייט השמיע לכלי שייט המפליג לפניו אות וקולי כמתואר בתמונה 116, כלי השייט שמלפנים עונה בהשמעת אות קולי כמתואר בתמונה 117, מה פרוש האות( 117 )?",
     "q_en": "",
     "options": [
@@ -9538,8 +9539,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_116.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9548,7 +9549,7 @@
     "official_num": 30,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "מה משמעות ה אות ה קולי כמתואר בתמונה 121 המושמע על ידי כלי שייט בתעלה צרה לכלי שייט המפליג לפניו?",
     "q_en": "",
     "options": [
@@ -9560,8 +9561,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_121.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9570,7 +9571,7 @@
     "official_num": 31,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי שייט משמיע רצף אותות קוליים: 3 קצרים,3 ארוכים ו- 3 קצרים. מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -9592,7 +9593,7 @@
     "official_num": 32,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "מה משמעות צפירה ממושכת ורצופה מכלי שייט?",
     "q_en": "",
     "options": [
@@ -9614,7 +9615,7 @@
     "official_num": 33,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( K ) מבחינה בסירת מנוע( G ) הצופרת כמתואר בתמונה 113,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -9626,17 +9627,18 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_113.png",
+    "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2033. סירת מנוע קֶיי מבחינה בסירת מנוע ג'יִ הצופרת כמתואר בתמונה 113, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ד: אין סכנת התנגשות, ג'יִ שילב מנועיו אחורה, קֶיי יכול להמשיך."
   },
   {
     "num": 2034,
     "official_num": 34,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( K )מבחינה בסירת מנוע ( B ) הצופרת כמתואר בתמונה 111,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -9648,8 +9650,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_111.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9658,7 +9660,7 @@
     "official_num": 35,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "עת ב הפל גה בראות לקויה, שמעת אות קולי כמתואר בתמונה 118,במחזוריות של שתי דקות.מהו כלי שייט?",
     "q_en": "",
     "options": [
@@ -9670,8 +9672,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_118.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9680,7 +9682,7 @@
     "official_num": 36,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בלילה, הבחנת בצד ימין בקבוצה של 6 נצנוצים קצרים ומהירים, ושמעת קבוצה של 8 צפירות קצרות. כיצד תגיב?",
     "q_en": "",
     "options": [
@@ -9702,7 +9704,7 @@
     "official_num": 37,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בלילה,אתה שומע צפירה מתמשכת ללא הפסק, מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -9724,7 +9726,7 @@
     "official_num": 38,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בלילה אתה שומע מאחור רצף של שלוש צפירות קצרות,שלוש ארוכות,שלוש קצרות. מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -9746,7 +9748,7 @@
     "official_num": 39,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי השייט שלידך משמיע צפירה כמתואר בתמונה 111,מה פירוש הצפירה?",
     "q_en": "",
     "options": [
@@ -9758,8 +9760,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_111.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9768,7 +9770,7 @@
     "official_num": 40,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי שייט מאחורי הירכתיים שלך צופר צפירה קצרה אחת.מה פרוש הצפירה?",
     "q_en": "",
     "options": [
@@ -9790,7 +9792,7 @@
     "official_num": 41,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בערפל, כלי שייט שבקרבתך משמיע צפירה כמתואר בתמונה 112,מה פירוש הצפירה?",
     "q_en": "",
     "options": [
@@ -9802,8 +9804,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_112.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9812,7 +9814,7 @@
     "official_num": 42,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "ב ראות לקויה, כלי שייט שבקרבתך משמיע צפירה ארוכה אחת כל שתי דקות,מה פירוש הצפירה?",
     "q_en": "",
     "options": [
@@ -9834,7 +9836,7 @@
     "official_num": 43,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בערפל השמיע כלי שייט אות קולי כמתואר בתמונה 122,מה כוונתו?",
     "q_en": "",
     "options": [
@@ -9846,8 +9848,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_122.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9856,7 +9858,7 @@
     "official_num": 44,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בערפל השמיע כלי שייט צפירה אחת ארוכה ו שתי צפירות קצרות כל שתי דקות,מה כוונתו?",
     "q_en": "",
     "options": [
@@ -9878,7 +9880,7 @@
     "official_num": 45,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "הבחנת במפרשית המניפה סימן יום כמתואר בתמונה 77,מה משמעות הסימן?",
     "q_en": "",
     "options": [
@@ -9890,8 +9892,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_077.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9900,7 +9902,7 @@
     "official_num": 46,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כדור שחור המונף בקדמת יכטה מפרשית?",
     "q_en": "",
     "options": [
@@ -9922,7 +9924,7 @@
     "official_num": 47,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מהו סימן היום של מפרשית הנעזרת מנוע?",
     "q_en": "",
     "options": [
@@ -9944,7 +9946,7 @@
     "official_num": 48,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמנת מפרשית המניפה חרוט שחור שקודקו דו כלפי מטה?",
     "q_en": "",
     "options": [
@@ -9966,7 +9968,7 @@
     "official_num": 49,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי שייט מציג סימן יום כמתואר בתמונה 80?",
     "q_en": "",
     "options": [
@@ -9978,8 +9980,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_080.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -9988,7 +9990,7 @@
     "official_num": 50,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מפרשית מציג ה סימן יום כמתואר בתמונה 80,מה כוונת ו?",
     "q_en": "",
     "options": [
@@ -10000,8 +10002,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_080.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10010,7 +10012,7 @@
     "official_num": 51,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מהו כלי שייט מציג סימן יום כמתואר בתמונה 84?",
     "q_en": "",
     "options": [
@@ -10022,8 +10024,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10032,7 +10034,7 @@
     "official_num": 52,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "איזה סימן יום תציג ספינת מכמורתן בהפלגה מנהלית?",
     "q_en": "",
     "options": [
@@ -10054,7 +10056,7 @@
     "official_num": 53,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי השייט ה מציג סימן יום כמתואר בתמונה 81?",
     "q_en": "",
     "options": [
@@ -10066,8 +10068,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_081.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10076,7 +10078,7 @@
     "official_num": 54,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "איזה סימן יציג כלי שייט, פחות מ-50 מטרים, שעלה על שרטון?",
     "q_en": "",
     "options": [
@@ -10098,7 +10100,7 @@
     "official_num": 55,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי השייט ה מציג סימן יום כמתואר בתמונה 86?",
     "q_en": "",
     "options": [
@@ -10110,8 +10112,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_086.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10120,7 +10122,7 @@
     "official_num": 56,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "איזה סימן יום יציג כלי שייט הגורר משך באורך 120 מטרים?",
     "q_en": "",
     "options": [
@@ -10142,7 +10144,7 @@
     "official_num": 57,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "איזה סימן יום תציג ספינה המפליגה במפרשים בלבד?",
     "q_en": "",
     "options": [
@@ -10164,7 +10166,7 @@
     "official_num": 58,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי השייט המ ציג סימן יום כמתואר בתמונה 82?",
     "q_en": "",
     "options": [
@@ -10176,8 +10178,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_082.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10186,7 +10188,7 @@
     "official_num": 59,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי השייט המ ציג סימן יום המתואר בתמונה 79?",
     "q_en": "",
     "options": [
@@ -10198,8 +10200,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_079.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10208,7 +10210,7 @@
     "official_num": 60,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה יציג ביום כלי שייט המוגבל בכושרו לתמרן?",
     "q_en": "",
     "options": [
@@ -10230,7 +10232,7 @@
     "official_num": 61,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי השייט המ ציג סימן יום כמתואר בתמונה 77,תלוי בקדמת כלי השייט?",
     "q_en": "",
     "options": [
@@ -10242,8 +10244,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_077.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10252,7 +10254,7 @@
     "official_num": 62,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה כוונ תו של כלי שייט ה מציג על התורן שלו סימני יום כמתואר בתמונות 84 ו– 85.?",
     "q_en": "",
     "options": [
@@ -10274,7 +10276,7 @@
     "official_num": 63,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "צד כי רשאי דייג לסמן את הכיוון שבו נמצאת הרשת?",
     "q_en": "",
     "options": [
@@ -10296,7 +10298,7 @@
     "official_num": 64,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי השייט המ ציג סימן יום כ מתואר בתמונה 75.?",
     "q_en": "",
     "options": [
@@ -10308,8 +10310,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_075.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10318,7 +10320,7 @@
     "official_num": 65,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה יציג כלי שייט המוגבל בתמרון בגלל השוקע?",
     "q_en": "",
     "options": [
@@ -10340,7 +10342,7 @@
     "official_num": 66,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי שייט ה מציג סימן יום כ מתואר בתמונה 82?",
     "q_en": "",
     "options": [
@@ -10352,8 +10354,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_082.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10362,7 +10364,7 @@
     "official_num": 67,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה תציג ביום מפרשית שהפעילה מנוע?",
     "q_en": "",
     "options": [
@@ -10384,7 +10386,7 @@
     "official_num": 68,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה יציג ביום כלי שייט ממוכן הגורר כלי שייט אחר, כשאורך המשך עד 150 מטרים?",
     "q_en": "",
     "options": [
@@ -10406,7 +10408,7 @@
     "official_num": 69,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מעל בניין מנהלת הנמל מונף\"נס אדום\" (דגל טרפזי מוארך).מהי משמ עותו של אות זה?",
     "q_en": "",
     "options": [
@@ -10428,7 +10430,7 @@
     "official_num": 70,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "איך יכולה מנהלת הנמל לסמן אזהרה לרוח ומצב ים מעל בופור 5?",
     "q_en": "",
     "options": [
@@ -10450,7 +10452,7 @@
     "official_num": 71,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי שייט בעגינה,במפרץ חיפה,ציג מה דגל כ מתואר בתמונה 95?",
     "q_en": "",
     "options": [
@@ -10462,8 +10464,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_095.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10472,7 +10474,7 @@
     "official_num": 72,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "איזה סימן יום חייבת מיכלית גז להניף בזמן הפלגה?",
     "q_en": "",
     "options": [
@@ -10494,7 +10496,7 @@
     "official_num": 73,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה משמעות הנפת דגל כמתואר בתמונה 98?",
     "q_en": "",
     "options": [
@@ -10506,8 +10508,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_098.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10516,7 +10518,7 @@
     "official_num": 74,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "י מה משמעות הנפת דגל כמתואר בתמונה 104?",
     "q_en": "",
     "options": [
@@ -10528,8 +10530,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_104.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10538,7 +10540,7 @@
     "official_num": 75,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "הבחנתה בים ביכטה עוגנת המניפה דגל כמתואר בתמונה 104.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10550,8 +10552,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_104.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10560,7 +10562,7 @@
     "official_num": 76,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה משמעות הנפת דגלים כמתואר בתמונה 92 ותמונה 93 אחד מעל השני?",
     "q_en": "",
     "options": [
@@ -10572,8 +10574,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_092.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10582,7 +10584,7 @@
     "official_num": 77,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "ספינה מניפה דגלים כמתואר בתמונה 92 ותמונה 93 אחד מעל השני,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -10594,8 +10596,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_092.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10604,7 +10606,7 @@
     "official_num": 78,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה משמעות הצגת כדור שחור על גג מנהלת המרינה?",
     "q_en": "",
     "options": [
@@ -10626,7 +10628,7 @@
     "official_num": 79,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "ראית כדור שחור על גג מנהלת המרינה, מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -10648,7 +10650,7 @@
     "official_num": 80,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן כלי שייט ה מציג סימן יום כ מתואר בתמונה 83?",
     "q_en": "",
     "options": [
@@ -10660,8 +10662,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_083.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10670,7 +10672,7 @@
     "official_num": 81,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות מצוקה",
     "q_he": "לידך ספינה המציגה סימן כמתואר בתמונה 83,מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10682,8 +10684,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_083.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10692,7 +10694,7 @@
     "official_num": 82,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה המשמעות כאשר מונף נס אדום(דגל טרפזי מוארך) על גג מנהלת המרינה?",
     "q_en": "",
     "options": [
@@ -10714,7 +10716,7 @@
     "official_num": 83,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "כיצד תנהג כאש ר מונף נס אדום (דגל טרפזי מוארך) על גג מנהלת המרינה?",
     "q_en": "",
     "options": [
@@ -10736,7 +10738,7 @@
     "official_num": 84,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "בזמן ההפלגה הבחנת באדם על ספינה קרובה המנופף לעברך בדגל,חציו אדום וחציו צהוב.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10758,7 +10760,7 @@
     "official_num": 85,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "עת ב ההפלגה הבחנת באדם על ספינה קרובה המנופף לעברך בדגל אדום.מה כוונתו?",
     "q_en": "",
     "options": [
@@ -10780,7 +10782,7 @@
     "official_num": 86,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו כלי השייט המתואר בתמונה 66?",
     "q_en": "",
     "options": [
@@ -10792,8 +10794,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_066.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10802,7 +10804,7 @@
     "official_num": 87,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני החרטום הבחנת בכלי שייט כמתואר בתמונה 66.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10814,8 +10816,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_066.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10824,7 +10826,7 @@
     "official_num": 88,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מימינך הבחנת באורות כמתואר בתמונה 43.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10836,8 +10838,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_043.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10846,7 +10848,7 @@
     "official_num": 89,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "איזה כלי שייט מתואר בתמונה 73?",
     "q_en": "",
     "options": [
@@ -10858,8 +10860,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_073.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10868,7 +10870,7 @@
     "official_num": 90,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מימינך הבחנת באורות כמתואר בתמונה 30.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10880,17 +10882,18 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_030.png",
+    "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2090. מימינך הבחנת באורות כמתואר בתמונה 30.מה הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ג: ממוכָּן, חוצה מימין לשמאל.מ אחר והוא מימיני- אני חייב לֶפַנות לו דרך– ימינה אחרי ירכתיו."
   },
   {
     "num": 2091,
     "official_num": 91,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "איזה כלי שייט מתואר בתמונה 30?",
     "q_en": "",
     "options": [
@@ -10902,8 +10905,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_030.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10912,7 +10915,7 @@
     "official_num": 92,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "מה מסמנים האורות בתמונה 71?",
     "q_en": "",
     "options": [
@@ -10924,8 +10927,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_071.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10934,7 +10937,7 @@
     "official_num": 93,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו כלי השייט המתואר בתמונה 46?",
     "q_en": "",
     "options": [
@@ -10946,8 +10949,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_046.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10956,7 +10959,7 @@
     "official_num": 94,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "משמאל לחרטום ראית תמונה כמתואר בתמונה 46.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -10968,8 +10971,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_046.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -10978,7 +10981,7 @@
     "official_num": 95,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו כלי השייט המופיע בתמונה 17?",
     "q_en": "",
     "options": [
@@ -10990,8 +10993,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_017.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11000,7 +11003,7 @@
     "official_num": 96,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מימינך ראית אורות כמתואר בתמונה 17.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11012,8 +11015,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_017.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11022,7 +11025,7 @@
     "official_num": 97,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו סימן הלילה של מפרשית הנעזרת במנוע?",
     "q_en": "",
     "options": [
@@ -11044,7 +11047,7 @@
     "official_num": 98,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "בהפלגת לילה נחלשה הרוח ולכן הפעלת מנוע והפסקת את אורות הרשות בראש התורן. האם צריך לבצע שינוי נוסף באורות?",
     "q_en": "",
     "options": [
@@ -11066,7 +11069,7 @@
     "official_num": 99,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו כלי השייט המופיע בתמונה 6?",
     "q_en": "",
     "options": [
@@ -11078,8 +11081,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_006.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11088,7 +11091,7 @@
     "official_num": 100,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מימינך ר אית אורות כ מתואר תב מונה 6,מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11110,7 +11113,7 @@
     "official_num": 101,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי השייט המופיע בתמונה 13?",
     "q_en": "",
     "options": [
@@ -11122,8 +11125,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_013.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11132,7 +11135,7 @@
     "official_num": 102,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כיצד תפעל כאשר הבחנת משמאלך בכלי שייט המציג אורות כמתואר בתמונה 48?",
     "q_en": "",
     "options": [
@@ -11144,8 +11147,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_048.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11154,7 +11157,7 @@
     "official_num": 103,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי שייט ה מציג אורות כמתואר בתמונה 27?",
     "q_en": "",
     "options": [
@@ -11166,8 +11169,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_027.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11176,7 +11179,7 @@
     "official_num": 104,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כלי שייט לפניך מציג אורות כ מתואר בתמונה 27 והמרחק ממנו קטן.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11188,8 +11191,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_027.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11198,7 +11201,7 @@
     "official_num": 105,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי השייט ה מציג אורות כמתואר בתמונה 61?",
     "q_en": "",
     "options": [
@@ -11210,8 +11213,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_061.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11220,7 +11223,7 @@
     "official_num": 106,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כלי השייט משמאלך מציג אורות כמתואר בתמונה 61. מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11232,8 +11235,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_061.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11242,7 +11245,7 @@
     "official_num": 107,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי השייט המציג אורות כמתואר בתמונה 33?",
     "q_en": "",
     "options": [
@@ -11254,8 +11257,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_033.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11264,7 +11267,7 @@
     "official_num": 108,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי שייט המציג אורות כמתואר בתמונה 26?",
     "q_en": "",
     "options": [
@@ -11276,8 +11279,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_026.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11286,7 +11289,7 @@
     "official_num": 109,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "הבחנת לפני החרטום בכלי שייט המציג אורות כמתואר בתמונה 26.מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11298,8 +11301,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_026.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11308,7 +11311,7 @@
     "official_num": 110,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "איזה אורות חייב כלי שיי ט העוסק בדייג חכות לה ציג בלילה?",
     "q_en": "",
     "options": [
@@ -11330,7 +11333,7 @@
     "official_num": 111,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי השייט המציג אורות כמתואר בתמונה 51?",
     "q_en": "",
     "options": [
@@ -11342,8 +11345,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_051.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11352,7 +11355,7 @@
     "official_num": 112,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "אילו אורות יציג בלילה כלי שייט המוגבל בכושרו לתמרן?",
     "q_en": "",
     "options": [
@@ -11374,7 +11377,7 @@
     "official_num": 113,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי השייט המציג אורות כמתואר בתמונה 22?",
     "q_en": "",
     "options": [
@@ -11386,8 +11389,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_022.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11396,7 +11399,7 @@
     "official_num": 114,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מול חרטומך קרוב מאוד מופיע כלי שייט המציג אורות כמתואר בתמונה 14, מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11408,8 +11411,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_014.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11418,7 +11421,7 @@
     "official_num": 115,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי שייט המציג אורות כמתואר בתמונה 14?",
     "q_en": "",
     "options": [
@@ -11430,8 +11433,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_014.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11440,7 +11443,7 @@
     "official_num": 116,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות מצוקה",
     "q_he": "כיצד יכול כלי שייט במצוקה ל סמן בלילה את מצבו?",
     "q_en": "",
     "options": [
@@ -11462,7 +11465,7 @@
     "official_num": 117,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפ ני חרטומך ראית כלי שייט המציג אורות כמתואר בתמונה 21 ועוצמת האור מתחזקת. מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11474,8 +11477,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_021.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11484,7 +11487,7 @@
     "official_num": 118,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו כלי שייט המציג אורות כמתואר בתמונה 21?",
     "q_en": "",
     "options": [
@@ -11496,8 +11499,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_021.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11506,7 +11509,7 @@
     "official_num": 119,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטומך אתה רואה אור לב ן בודד. מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -11528,7 +11531,7 @@
     "official_num": 120,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "אתה רואה בקרבת ספינתך אור לבן בודד. מה עשויה להיות משמעותו?",
     "q_en": "",
     "options": [
@@ -11550,7 +11553,7 @@
     "official_num": 121,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני ח רטומך אתה רואה אור כמתואר בתמונה 48. מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -11562,8 +11565,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_048.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11572,7 +11575,7 @@
     "official_num": 122,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטומך, ראית כלי שייט המציג אורות כמתואר בתמונה 28, מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -11584,8 +11587,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_028.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11594,7 +11597,7 @@
     "official_num": 123,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו כלי שייט המציג אורות כמתואר בתמונה 28?",
     "q_en": "",
     "options": [
@@ -11606,8 +11609,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_028.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11616,7 +11619,7 @@
     "official_num": 124,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "אתה מפליג במפרשית בלילה והחלטת להיעזר במנוע. מה השינוי באורות שעליך לבצע?",
     "q_en": "",
     "options": [
@@ -11638,7 +11641,7 @@
     "official_num": 125,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מאחורי הירכתיים של כלי השיט שלך מתקרב כלי שי יט המציג אורות כמתואר בתמונה 35. מהו כלי השייט ומה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11650,8 +11653,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_035.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11660,7 +11663,7 @@
     "official_num": 126,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו כלי השייט המציג בלילה אורות כמתואר בתמונה 35?",
     "q_en": "",
     "options": [
@@ -11672,8 +11675,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_035.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11682,7 +11685,7 @@
     "official_num": 127,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מאחורי הירכתיים שלך מתקרב כלי שייט המציג אורות כמתואר בתמונה 47,מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -11694,8 +11697,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_047.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -11704,7 +11707,7 @@
     "official_num": 128,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות מצוקה",
     "q_he": "איזה מהבאים איננו סימן מצוקה?",
     "q_en": "",
     "options": [
@@ -11726,7 +11729,7 @@
     "official_num": 129,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות מצוקה",
     "q_he": "איזה מהבאים איננו סימן מצוקה?",
     "q_en": "",
     "options": [
@@ -11748,7 +11751,7 @@
     "official_num": 130,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה יכלול הציוד הפירוטכני של סירה?",
     "q_en": "",
     "options": [
@@ -11770,7 +11773,7 @@
     "official_num": 131,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "הפלגת ממרינה הרצל י ה לכיוון דרום,לאיזה מעגנה תגיע קודם?",
     "q_en": "",
     "options": [
@@ -11792,7 +11795,7 @@
     "official_num": 132,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "הפלגת ממרינה תל אביב לכיוון 0100 לאיזה מרינה תגיע קודם?",
     "q_en": "",
     "options": [
@@ -11814,7 +11817,7 @@
     "official_num": 133,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "בהפלגה מחיפה לתל אביב, יש להתרחק 3 מייל לפחות מהחוף,מדוע?",
     "q_en": "",
     "options": [
@@ -11836,7 +11839,7 @@
     "official_num": 134,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "עד לאיזה מרחק מחוף שטח הים ה סגור( 30 ) מול עתלית אסור למעבר כלי שייט?",
     "q_en": "",
     "options": [
@@ -11858,7 +11861,7 @@
     "official_num": 135,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "יצאת מנמל יפו ואתה מפליג צפונה,לאיזו מעגנה תגיע קודם?",
     "q_en": "",
     "options": [
@@ -11880,7 +11883,7 @@
     "official_num": 136,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "יצאת מנמל יפו ואתה מפליג בקורס 0150 לאיזו מעגנה תגיע קודם?",
     "q_en": "",
     "options": [
@@ -11902,7 +11905,7 @@
     "official_num": 137,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מהו ה מאפיין הבולט ביותר בקרבת חוף שדות ים?",
     "q_en": "",
     "options": [
@@ -11924,7 +11927,7 @@
     "official_num": 138,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "אלו מרינות מוס רות ד נמצאות מצפון להרצל י ה?",
     "q_en": "",
     "options": [
@@ -11946,7 +11949,7 @@
     "official_num": 139,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מה מסמן מעבר הגבול בטאבה?",
     "q_en": "",
     "options": [
@@ -11968,7 +11971,7 @@
     "official_num": 140,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "מהי הגדרת\"מהירות בטוחה\",לפי התקנות?",
     "q_en": "",
     "options": [
@@ -11990,7 +11993,7 @@
     "official_num": 141,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהי המהירות המרבית המותר ת בתוך נמל או מעגנה,בהתאם לכללי הימאות הטובה?",
     "q_en": "",
     "options": [
@@ -12012,7 +12015,7 @@
     "official_num": 142,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מתי חייב כלי שייט הנמצא בדרך לקיים תצפית בראיה ובשמיעה?",
     "q_en": "",
     "options": [
@@ -12034,7 +12037,7 @@
     "official_num": 143,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "איזה כלי שייט ממוכן יחשב לכלי שייט שהוא ללא שליטה?",
     "q_en": "",
     "options": [
@@ -12056,7 +12059,7 @@
     "official_num": 144,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "איזה אורות יציג כלי שייט ממוכן בלילה, שהפסיק את פעולת המנוע לצורך תיקון בים?",
     "q_en": "",
     "options": [
@@ -12078,7 +12081,7 @@
     "official_num": 145,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "כיצד יוגדר על פי התקנות כלי שייט שאורכו 6.8 מטרים?",
     "q_en": "",
     "options": [
@@ -12100,7 +12103,7 @@
     "official_num": 146,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "כיצד יוגדר על פי התקנות כלי שייט שאורכו 9.2 מטרים?",
     "q_en": "",
     "options": [
@@ -12122,7 +12125,7 @@
     "official_num": 147,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מהו המרחק שיש להתרחק מסירה המנ יפה דגל צוללים?",
     "q_en": "",
     "options": [
@@ -12144,7 +12147,7 @@
     "official_num": 148,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "כיצד תנהג כאשר הבחנת ליד הכניסה למרינה באורות כמתואר בתמונה 70?",
     "q_en": "",
     "options": [
@@ -12156,8 +12159,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_070.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12166,7 +12169,7 @@
     "official_num": 149,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מהי הכמות המינימאלית של משוטים החייבים להימצא בסירת מנוע בעת הפלגה?",
     "q_en": "",
     "options": [
@@ -12188,7 +12191,7 @@
     "official_num": 150,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "כמה משוטים חייבים להיות בסירת מנוע באורך 6 מטרים?",
     "q_en": "",
     "options": [
@@ -12210,7 +12213,7 @@
     "official_num": 151,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "מהו היתרון העיקרי של קשר הצלה?",
     "q_en": "",
     "options": [
@@ -12232,7 +12235,7 @@
     "official_num": 152,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "ל איזה צורך נשתמש בעיקר בקשר אורגים כפול?",
     "q_en": "",
     "options": [
@@ -12254,7 +12257,7 @@
     "official_num": 153,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מהי כמות המים המינימאלית שחייבת להימצא בעת הפלגה,בסירת מנוע פרטית?",
     "q_en": "",
     "options": [
@@ -12276,7 +12279,7 @@
     "official_num": 154,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "בסירתך 5 מפליגים בהפלגה של עד 3 שעות.מה כמות המים הח י יבת להיות בסירה?",
     "q_en": "",
     "options": [
@@ -12298,7 +12301,7 @@
     "official_num": 155,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מהו סימן היום של מפרשית המפעילה גם מנוע?",
     "q_en": "",
     "options": [
@@ -12320,7 +12323,7 @@
     "official_num": 156,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "במהלך הפלגת מפרשים ביום הפעלת מנוע.איזה סימן יו ם יש להציג?",
     "q_en": "",
     "options": [
@@ -12342,7 +12345,7 @@
     "official_num": 157,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כיצד חייב לפעול כלי שייט הזכאי לפינוי דרך?",
     "q_en": "",
     "options": [
@@ -12364,7 +12367,7 @@
     "official_num": 158,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "על פי ההגדרה בתקנות, מהו כלי שייט\"בדרך\"?",
     "q_en": "",
     "options": [
@@ -12386,7 +12389,7 @@
     "official_num": 159,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( P ) מבחינה בכלי שייט( H ) המניף סימן יום כמתואר בתמונה 84,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12398,8 +12401,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12408,7 +12411,7 @@
     "official_num": 160,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( P ) מבחינה בכלי שייט( G ) המניף סימן יום כמתואר בתמונה 84,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12420,8 +12423,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12430,7 +12433,7 @@
     "official_num": 161,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( K ) מבחינה בסירת מנוע( F.)מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12452,7 +12455,7 @@
     "official_num": 162,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( K ) מבחינה בסירת מנוע( F )ה מציגה סימן יום כמתואר בתמונה 84. מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12464,8 +12467,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12474,7 +12477,7 @@
     "official_num": 163,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינה דו מנועית( G ) מבחינה בסירת מנוע( O ),מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12496,7 +12499,7 @@
     "official_num": 164,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( C ) מבחינה בכלי שייט( K )המניף סימן יום כמ תואר בתמונה 86,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12508,8 +12511,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_086.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12518,7 +12521,7 @@
     "official_num": 165,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( C ) מבחינה בכלי שייט( K )המניף סימן יו ם כמתואר בתמונה 78,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12530,8 +12533,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_078.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12540,7 +12543,7 @@
     "official_num": 166,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינה( H ) מבחינה בכלי שייט( L )המניף סימני יו ם כמתואר בתמונות 84 ו- 85,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12562,7 +12565,7 @@
     "official_num": 167,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינה( E ) מבחינה בכלי שייט( L ) המניף סימני יום כמתואר בתמונות 84 ו- 85,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12584,7 +12587,7 @@
     "official_num": 168,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( P ) המציגה סימן יום כמתואר בתמונה 82, מבחינה בספינה( L )המציגה סימן יו ם כמתואר בתמונה 80, מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12596,8 +12599,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_082.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12606,7 +12609,7 @@
     "official_num": 169,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינה( M )ה מציגה סימן יום כמתוא ר בתמונה 84 מבחינה במפרשית( E ) המניפה סימן יום כמתואר בתמונה 82, מהי הפעולה הנדרשת? ( וקיימת סכנת התנגשות )",
     "q_en": "",
     "options": [
@@ -12618,8 +12621,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12628,7 +12631,7 @@
     "official_num": 170,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( D ) מבחינה בסירת משוטים( H ),מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12650,7 +12653,7 @@
     "official_num": 171,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( C ) מבחינה בכלי שייט( F ) המציג סימן יום כמתואר בתמונה 79,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12662,8 +12665,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_079.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -12672,7 +12675,7 @@
     "official_num": 172,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית ( G ) רואה סירה( C ) ממונעת,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -12694,7 +12697,7 @@
     "official_num": 173,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "יצאת מחוף\"מטבריה\" וברצונך להפליג\" לעין–גב\", באיזה קורס(בקירוב )תפליג על פי המצפן?",
     "q_en": "",
     "options": [
@@ -12716,7 +12719,7 @@
     "official_num": 174,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "יצאת ממעגן\"הקישון\" וברצונך להפליג\"לעכו\", באיזה קורס( בקירוב ) תפליג על פי המצפן?",
     "q_en": "",
     "options": [
@@ -12738,7 +12741,7 @@
     "official_num": 175,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "יצאת מהמעגן\"במכמורת\" וברצונך להפליג\"להרצליה\", באיזה קורס(בקירוב )תפליג על פי המצפן?",
     "q_en": "",
     "options": [
@@ -12760,7 +12763,7 @@
     "official_num": 176,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "אילו מהפריטים הרשומים מטה אין חובה לשאת בסירת מנוע?",
     "q_en": "",
     "options": [
@@ -12782,7 +12785,7 @@
     "official_num": 177,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "ילו א מהפריטים הרשומים מטה חובה לשאת בסירת מנוע,המונע על ידי מנוע פנימי?",
     "q_en": "",
     "options": [
@@ -12804,7 +12807,7 @@
     "official_num": 178,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "איזה מהפריטים הרשומים מטה לא חובה לשאת בסירת מנוע?",
     "q_en": "",
     "options": [
@@ -12826,7 +12829,7 @@
     "official_num": 179,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "ו מה אורכו המינימלי של חבל העוגן לסירה המורשת להפליג רק בים כינרת?",
     "q_en": "",
     "options": [
@@ -12848,7 +12851,7 @@
     "official_num": 180,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "כמה גלגלי הצלה צריכה לשאת סירת מנוע המורשת להפליג גם בלילה?",
     "q_en": "",
     "options": [
@@ -12870,7 +12873,7 @@
     "official_num": 181,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "האם חובה לשאת בסירת מנוע שמיכת כיבוי אש?",
     "q_en": "",
     "options": [
@@ -12892,7 +12895,7 @@
     "official_num": 182,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "איזה סוג וכמה מטפי כיבוי צריכים לשאת בסירת מנוע?",
     "q_en": "",
     "options": [
@@ -12914,7 +12917,7 @@
     "official_num": 183,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "בסירת מנוע מותר לשאת עוגן מאלומיניום או מברזל, מה יהיה משקלם של העוגנים בקירוב?",
     "q_en": "",
     "options": [
@@ -12936,7 +12939,7 @@
     "official_num": 184,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "האם מותר לסירת מנוע להפליג ללא אורות ניווט?",
     "q_en": "",
     "options": [
@@ -12958,7 +12961,7 @@
     "official_num": 185,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "מה הסכנה בים התיכון כאשר נושבת רוח המכונה\"שרק יה י\" חזקה?",
     "q_en": "",
     "options": [
@@ -12980,7 +12983,7 @@
     "official_num": 186,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "מאיזה כיוון נושבת רוח ה מכונה\"שרקיה \"?",
     "q_en": "",
     "options": [
@@ -13002,7 +13005,7 @@
     "official_num": 187,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "היכן ניתן לקבל תחזית מזג אוויר מעודכנת למשיטים?",
     "q_en": "",
     "options": [
@@ -13024,7 +13027,7 @@
     "official_num": 188,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהו הטווח המרבי שמותר לסירת מנוע להתרחק מהחוף?",
     "q_en": "",
     "options": [
@@ -13046,7 +13049,7 @@
     "official_num": 189,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "איזה סוגי כלי השיט נחשבים ל\"ממונעים\"?",
     "q_en": "",
     "options": [
@@ -13068,7 +13071,7 @@
     "official_num": 190,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כיצד מפנים דרך לכלי שייט אחר?",
     "q_en": "",
     "options": [
@@ -13090,7 +13093,7 @@
     "official_num": 191,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "כיצד צריכים לנהוג כלי שי י ט כאשר הראות מוגבלת?",
     "q_en": "",
     "options": [
@@ -13112,7 +13115,7 @@
     "official_num": 192,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה פרוש המושג\"מהירות בטוחה\"?",
     "q_en": "",
     "options": [
@@ -13134,7 +13137,7 @@
     "official_num": 193,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "לו אי גורמים יש לקחת בחשבון בקביעה מהירות בטוחה?",
     "q_en": "",
     "options": [
@@ -13156,7 +13159,7 @@
     "official_num": 194,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "היכן יש מקומות או אזורים הסגורים לשיט(באופן קבוע או במועדים מסוימים)?",
     "q_en": "",
     "options": [
@@ -13178,7 +13181,7 @@
     "official_num": 195,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "איזה מהאזורים סגור להפלגה לסירה פרטית?",
     "q_en": "",
     "options": [
@@ -13200,7 +13203,7 @@
     "official_num": 196,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "איזה סימנים בטבע מבשרים על התקרבות סערה אל האזור בו אנחנו נמצאים?",
     "q_en": "",
     "options": [
@@ -13222,7 +13225,7 @@
     "official_num": 197,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "איזה סימן- אזהרה מפני התקרבות סערה אפשר לראות במרינה?",
     "q_en": "",
     "options": [
@@ -13244,7 +13247,7 @@
     "official_num": 198,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "בכלי שיט(שיש בו מנוע פנימי ומערכת הגוי שאיננה קשורה במנוע ) קרתה תקלה למערכת ההגוי:לוח ההגה ניתק ממקומו ושקע במצולות.איך נוהגים את כלי השיט במצב זה?",
     "q_en": "",
     "options": [
@@ -13266,7 +13269,7 @@
     "official_num": 199,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "כיצד מבצעים עגינה בכלי שיט קטן?",
     "q_en": "",
     "options": [
@@ -13288,7 +13291,7 @@
     "official_num": 200,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "גילית שהעוגן שהטלת נגר ר. מה תהיינה פעולותיך להתגבר על מצב זה?",
     "q_en": "",
     "options": [
@@ -13310,7 +13313,7 @@
     "official_num": 201,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "במה תוכל להעזר לקבוע כי העוגן ניגרר?",
     "q_en": "",
     "options": [
@@ -13332,7 +13335,7 @@
     "official_num": 202,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "האם מותר לסירת מנוע להיכנס ל מעגנה שאיננה\"נמל הבית \" שלה?",
     "q_en": "",
     "options": [
@@ -13354,7 +13357,7 @@
     "official_num": 203,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "כיצד מגדירים מיקום בים?",
     "q_en": "",
     "options": [
@@ -13376,7 +13379,7 @@
     "official_num": 204,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "מה אורכו של המיל הימי?",
     "q_en": "",
     "options": [
@@ -13398,7 +13401,7 @@
     "official_num": 205,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "למה הכוונה כאשר אומרים שכלי השייט מפליג בקורס 150 מעלות?",
     "q_en": "",
     "options": [
@@ -13420,7 +13423,7 @@
     "official_num": 206,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "איזה סימנים בטבע מבשרים על התקרבות סערה אל האזור בו אנחנו נמצאים?",
     "q_en": "",
     "options": [
@@ -13442,7 +13445,7 @@
     "official_num": 207,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "באיזה כיוון נושבת הרוח סביב שקע ברומטרי בים התיכון?",
     "q_en": "",
     "options": [
@@ -13464,7 +13467,7 @@
     "official_num": 208,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "אילו גורמים יש לקחת בחשבון בזמן בחירת מקום עגינה?",
     "q_en": "",
     "options": [
@@ -13486,7 +13489,7 @@
     "official_num": 209,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "ברצונך לעגון עם סירה שהשוקע שלה 0.5 מטר ועומק המים במקום העגינה כ- 2 מטרים. מה יהיה אורך חבל העוגן שתשחרר (עוצמת הרוח כ- 15 קשרים )?",
     "q_en": "",
     "options": [
@@ -13508,7 +13511,7 @@
     "official_num": 210,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "ברצונ ך לעגון עם סירה שהשוקע שלה 0.5 מטר ועומק המים במקום העגינה כ- 10 מטר. מה יהיה אורך חבל העוגן שתשחרר (עוצמת הרוח כ- 15 קשר)?",
     "q_en": "",
     "options": [
@@ -13530,7 +13533,7 @@
     "official_num": 211,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "כיצד ניתן לדעת שהעוגן בסירה ניגרר?",
     "q_en": "",
     "options": [
@@ -13552,7 +13555,7 @@
     "official_num": 212,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "מה הסיבה לכך שה מנוע ב סירתך כבה כאשר משלבים להילוך( בהילוך סרק המנוע עובד היטב)?",
     "q_en": "",
     "options": [
@@ -13574,7 +13577,7 @@
     "official_num": 213,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "מהן הסיבות לכך שהמנוע מעשן?",
     "q_en": "",
     "options": [
@@ -13596,7 +13599,7 @@
     "official_num": 214,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "מהן הסיבות לחימום יתר של המנוע?",
     "q_en": "",
     "options": [
@@ -13618,7 +13621,7 @@
     "official_num": 215,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "איזה בדיקות יש לבצע לפני התנעת המנוע?",
     "q_en": "",
     "options": [
@@ -13640,7 +13643,7 @@
     "official_num": 216,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "ביציאה מפתח מרינה באיזה צד יש לעבור את מצופי הכניסה?",
     "q_en": "",
     "options": [
@@ -13662,7 +13665,7 @@
     "official_num": 217,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "יצאת עם סירה ממרינה של\"הרצליה \"והפלגת מערבה כ- 1 מיל,בפתאומיות הראות ירדה ואינך רואה את החוף. ברצונך לחזור למרינה, על איזה קורס תפליג?",
     "q_en": "",
     "options": [
@@ -13684,7 +13687,7 @@
     "official_num": 218,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירה דו מנוע יתF מבחי נה בכלי שייטN המציג את האורות שבתמונה 15. כיצד יפעלו שני כלי השייט?",
     "q_en": "",
     "options": [
@@ -13696,8 +13699,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_015.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -13706,7 +13709,7 @@
     "official_num": 219,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "הנך מפליג על סירת מנועD ורואה את כלי השייטJ וגם אתO. שני כלי השייט הם מפרשיות, מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -13728,7 +13731,7 @@
     "official_num": 220,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כלי שייטF מפליג בערפל ומשמיע אות קולי שבתמונה 112,ושומע לפני החרטום את כלי שייט N המשמיע את אותו אות קולי. כיצד עליו( F )לפעול?",
     "q_en": "",
     "options": [
@@ -13740,8 +13743,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_112.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -13750,7 +13753,7 @@
     "official_num": 221,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מתי ניתן לקבוע כי קיימת סכנת התנגשות?",
     "q_en": "",
     "options": [
@@ -13772,7 +13775,7 @@
     "official_num": 222,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מתי ניתן לקבוע כי קיימת סכנת התנגשות?",
     "q_en": "",
     "options": [
@@ -13794,7 +13797,7 @@
     "official_num": 223,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "בסירתך משאבת שיפוליים בעלת מנגנו ן הפעלה אוטומטי. באיזה מקרה תבטל את ההפעלה האוטומטית?",
     "q_en": "",
     "options": [
@@ -13816,7 +13819,7 @@
     "official_num": 224,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "באיזה נסיבות חייבים לחבר את מדומם החרום לגוף מפעיל הסירה?",
     "q_en": "",
     "options": [
@@ -13838,7 +13841,7 @@
     "official_num": 225,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "עת ב הפלגה מהרצליה לעכו,שבר אחד המפליגים את רגלו ונדרש פינוי לבית חולים. היכן תוכל למצוא מקום הורדה בטוח לפצוע?",
     "q_en": "",
     "options": [
@@ -13860,7 +13863,7 @@
     "official_num": 226,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "בחודש אוקטובר הו דיע החזאי כי מתקרב שקע שרבי. איזה מזג אויר צפוי בחופי הארץ?",
     "q_en": "",
     "options": [
@@ -13882,7 +13885,7 @@
     "official_num": 227,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "מאיזה סוגי עננים נובעים רוב הגשמים בארץ?",
     "q_en": "",
     "options": [
@@ -13904,7 +13907,7 @@
     "official_num": 228,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "בשעה 10:00 הנך נמצא ליד נהריה. המרחק עד למעגנת הקישון הוא 15 מיל. מתי תגיע למעגנת הקישון אם סירתך מפליגה במהירות 5 קשרים?",
     "q_en": "",
     "options": [
@@ -13926,7 +13929,7 @@
     "official_num": 229,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "מזג אוויר",
     "q_he": "בקיץ כאשר נושבת רוח בריזה רגילה. איזה רוח צפויה בשעה 1400 בחופי נתניה?",
     "q_en": "",
     "options": [
@@ -13948,7 +13951,7 @@
     "official_num": 230,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "מה יש לבדוק לפני הנעת המנוע?",
     "q_en": "",
     "options": [
@@ -13970,7 +13973,7 @@
     "official_num": 231,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "מה יש לבדוק לאחר הנעת המנוע?",
     "q_en": "",
     "options": [
@@ -13992,7 +13995,7 @@
     "official_num": 232,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "ברוח צפונית חזקה פרצה שריפה בחרטום הסירה.מה הפעולה הנדרשת תחילה?",
     "q_en": "",
     "options": [
@@ -14014,7 +14017,7 @@
     "official_num": 233,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "באילו מקרים תכבה שריפה במטפה גז( CO2 )?",
     "q_en": "",
     "options": [
@@ -14036,7 +14039,7 @@
     "official_num": 234,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מהם שלושת מרכיבי האש?",
     "q_en": "",
     "options": [
@@ -14058,7 +14061,7 @@
     "official_num": 235,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה הטיפול הנכון באדם הנמצא במצב של הלם?",
     "q_en": "",
     "options": [
@@ -14080,7 +14083,7 @@
     "official_num": 236,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה כמות המים ה מינימלי שסירת מנוע חייבת לשאת בהפלגה עם 3 אנשי צוות?",
     "q_en": "",
     "options": [
@@ -14102,7 +14105,7 @@
     "official_num": 237,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "עד לאיזה מרחק מותר להתקרב עם כלי שייט לחוף רחצה מוכרז?",
     "q_en": "",
     "options": [
@@ -14124,7 +14127,7 @@
     "official_num": 238,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום סירתך, ראית כלי שייט המציג אורות כמתואר בתמונה 21 והטווח אליו מתקצר,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14136,8 +14139,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_021.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14146,7 +14149,7 @@
     "official_num": 239,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "משמאל לחרטום הסירה(כ- 50 מעלות), ראית אורות כמתואר בתמונה 14,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14158,8 +14161,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_014.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14168,7 +14171,7 @@
     "official_num": 240,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בתעלה צרה,כלי שייט השמיע לכלי שייט המפליג לפניו אות קולי כמתואר בתמונה 116, מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -14180,8 +14183,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_116.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14190,7 +14193,7 @@
     "official_num": 241,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי שייט משמיע רצף צפירות כמפורט: 6 צפירות ארוכות, 6 צפירות קצרות ו- 6 צפירות ארוכו ת, מה פרוש האות?",
     "q_en": "",
     "options": [
@@ -14212,7 +14215,7 @@
     "official_num": 242,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מימין לחרטום סירתך(כ- 50 מעלות )ראית אורו ת כמתואר בתמונה 19,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14224,8 +14227,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_019.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14234,7 +14237,7 @@
     "official_num": 243,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום סירתך כ- 3 מיילים ראית כלי שייט המציג אורות כמתואר בתמונה 13,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14246,8 +14249,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_013.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14256,7 +14259,7 @@
     "official_num": 244,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום הסירה בטווח של 1 מייל, ראית כלי שייט המציג אורות כמתואר בתמונה 67,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14268,8 +14271,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_067.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14278,7 +14281,7 @@
     "official_num": 245,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום הסיר ה, אתה רואה אור כמתואר בתמונה 27, ( עוצמת האור מתחזקת ) מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14290,8 +14293,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_027.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14300,7 +14303,7 @@
     "official_num": 246,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "שמאלה לחרטום הסירה(כ- 50 מעלות),בטווח של כ- 1 מייל אתה רואה אור כמתואר בתמונה 48 המתקדם אליך במתינות.מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14312,8 +14315,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_048.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14322,7 +14325,7 @@
     "official_num": 247,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "שמאלה(כ- 50 מעלות )לחרטום הסירה, ובטווח של 3 מיילים, ראית כלי שייט המציג אורות כמתואר בתמונה 33 מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14334,8 +14337,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_033.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14344,7 +14347,7 @@
     "official_num": 248,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "כלי שייט המציג סימן כמתואר בתמונה 84 ומפליג במרחק של כ- 100 מטרים מקו החוף(לא מוכרז.) מה קובע החוק לגביו?",
     "q_en": "",
     "options": [
@@ -14356,8 +14359,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14366,7 +14369,7 @@
     "official_num": 249,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה פרוש תמונה 104?",
     "q_en": "",
     "options": [
@@ -14378,8 +14381,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_104.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14388,7 +14391,7 @@
     "official_num": 250,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "איזו מן התשובות הבאות מכילות רק ציוד בטיחות שחובה לשאת בעת הפלגה?",
     "q_en": "",
     "options": [
@@ -14410,7 +14413,7 @@
     "official_num": 251,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה פרוש תמונה 79?",
     "q_en": "",
     "options": [
@@ -14422,8 +14425,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_079.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14432,7 +14435,7 @@
     "official_num": 252,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "מה מסמן דגל כמתואר בתמונה 106, המונף מעל כדור שחור?",
     "q_en": "",
     "options": [
@@ -14444,8 +14447,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_106.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14454,7 +14457,7 @@
     "official_num": 253,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "על פי התקנות. מהו אורכו המינימלי של חבל עוגן בסירת מנוע באורך 6.5 מטרים?",
     "q_en": "",
     "options": [
@@ -14476,7 +14479,7 @@
     "official_num": 254,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "מה יהיה משקל העוגן וקוטר חבל העוגן בסירת מנוע באורך של 6 מטרים?",
     "q_en": "",
     "options": [
@@ -14498,7 +14501,7 @@
     "official_num": 255,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "בעת ביצוע החייאה, מה מהפעולות הרשומות מטה,אינה נכונה?",
     "q_en": "",
     "options": [
@@ -14520,7 +14523,7 @@
     "official_num": 256,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "יצאת ממרינה תל-אביב ואתה מפליג צפונה,לאיזו מעגנה המורשת לכניסה,תגיע קודם?",
     "q_en": "",
     "options": [
@@ -14542,7 +14545,7 @@
     "official_num": 257,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "אילו סוגי שריפות קיימים?",
     "q_en": "",
     "options": [
@@ -14564,7 +14567,7 @@
     "official_num": 258,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "לאילו סוגי שריפות עשוי להתאים מטפה קצף?",
     "q_en": "",
     "options": [
@@ -14586,7 +14589,7 @@
     "official_num": 259,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהיכן ניתן לדעת אילו אזורים אסורים להפלגה?",
     "q_en": "",
     "options": [
@@ -14608,7 +14611,7 @@
     "official_num": 260,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "ניווט",
     "q_he": "סירה הנמצאת מערבית 3 מייל ממרינה ת\"א, מפליגה בקורס של 180 מעלות. לאן היא צפויה להגיע?",
     "q_en": "",
     "options": [
@@ -14630,7 +14633,7 @@
     "official_num": 261,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירת מנוע( L ) מבחינה באונית נוסעים( D ),מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14652,7 +14655,7 @@
     "official_num": 262,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית ( L ) מבחינה בספינה( E )המציגה סימן- יום כמתואר בתמונה 86. וקיימת סכנת התנגשות, מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14664,8 +14667,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_086.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14674,7 +14677,7 @@
     "official_num": 263,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( F ) המניפה סימן יום כמתואר בתמונה 82,מבחינה בסירת מנוע( B )הנמצאת בתעלה צרה, ( וקיימת סכנת התנגשות )מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14686,8 +14689,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_082.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14696,7 +14699,7 @@
     "official_num": 264,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( H ) מבחינה בסירת מנוע( L.)מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14718,7 +14721,7 @@
     "official_num": 265,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "גוררת( C ) מבחינה בגוררת( K ),מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14740,7 +14743,7 @@
     "official_num": 266,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "כלי שייט ממוכן הגורר כלי שייט אחר, כשאורך\"המשך \" 250 מטרים. מה עליו להציג ביום?",
     "q_en": "",
     "options": [
@@ -14762,7 +14765,7 @@
     "official_num": 267,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "כלי שייט מציג סימן כמתואר בתמונה 85.מהו פרוש הסימן?",
     "q_en": "",
     "options": [
@@ -14774,8 +14777,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_085.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14784,7 +14787,7 @@
     "official_num": 268,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "דגלים",
     "q_he": "סירה( F )מבחינה בכלי שייט( M ( המניף דג ל כמתואר בתמונה 92 המונף מעל לדגל המתואר בתמונה 104, מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14796,8 +14799,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_092.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14806,7 +14809,7 @@
     "official_num": 269,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינת מנוע( F ) המציגה סימן יום כמתואר בתמונה 84 מבחינה בספינה מנועית גדולה( A ),מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14818,8 +14821,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14828,7 +14831,7 @@
     "official_num": 270,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( G ) מבחינה בספינה ממונעת( E ) המציגה סימן יום כמתואר בתמונה 84,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14840,8 +14843,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14850,7 +14853,7 @@
     "official_num": 271,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינת מנוע(J ) המציגה סימן יום כמתואר בתמונה 80, מבחינה במפרשית( N ) המציגה סימן יום כמתואר בתמונה 82,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14862,8 +14865,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_080.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14872,7 +14875,7 @@
     "official_num": 272,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום הסירה ראית כלי שייט המציג אורות כמתואר בתמונה 42,מה תהיה פעולתך? ( עוצמת האור מתחזקת)",
     "q_en": "",
     "options": [
@@ -14884,8 +14887,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_042.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14894,7 +14897,7 @@
     "official_num": 273,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מימין לחרטום סירתך (כ- 50 מעלות ) בטווח של 1 מיל ראית כלי שייט המציג אורות כמתואר בתמונה 67, מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14906,8 +14909,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_067.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14916,7 +14919,7 @@
     "official_num": 274,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום הסירה אתה רואה אור לבן בודד (. עוצמת האור הולכת ודועכת) מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14938,7 +14941,7 @@
     "official_num": 275,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "כלי שייט( A ) המציג סימן כמתואר בתמונה 75, מבחין לפניו במפרשית(I ) המציגה סימן יום כמתואר בתמונה 82, והמרחק ביניהם קטן מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14950,8 +14953,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_075.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14960,7 +14963,7 @@
     "official_num": 276,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "סירה(J ) מבחינה בספינה( B ) המציגה סימן יום כמתואר בתמונה 81,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -14972,8 +14975,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_081.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -14982,7 +14985,7 @@
     "official_num": 277,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מול חרטום הסירה מופיע כלי שייט המציג אורות כמתואר בתמונה 16,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -14994,8 +14997,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_016.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15004,7 +15007,7 @@
     "official_num": 278,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום הסירה ראית אורות כמתואר בתמונה 71, מהי פעולתך?",
     "q_en": "",
     "options": [
@@ -15016,8 +15019,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_071.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15026,7 +15029,7 @@
     "official_num": 279,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "לפני חרטום הסירה ראית כלי השייט המציג אורות כמתואר בתמונה 39,מה תהיה פעולתך?",
     "q_en": "",
     "options": [
@@ -15038,8 +15041,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_039.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15048,7 +15051,7 @@
     "official_num": 280,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות מצוקה",
     "q_he": "מה יכול להצי ג בלילה כלי שייט הנמצא במצוקה?",
     "q_en": "",
     "options": [
@@ -15070,7 +15073,7 @@
     "official_num": 281,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה מפליג על סירה( F ), משמאלך סירת מפרש(J )המניפה כדור שחור,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15092,7 +15095,7 @@
     "official_num": 282,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה בסירת מנוע( H ), לשמאלך כלי שייט( L ) עם סימן המתואר בתמונה 86.מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15104,8 +15107,8 @@
     "answer": "ד",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_086.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15114,7 +15117,7 @@
     "official_num": 283,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה על סירת מנוע ( L ), מימינך סירה( H ) המניפה סימן מתמונה 83.מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15126,8 +15129,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_083.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15136,7 +15139,7 @@
     "official_num": 284,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה בסירת מנוע(J), לשמאלך כלי שייט( N ) עם סימון כמתואר בתמונה 79.מהי הפעולה נדרשת?",
     "q_en": "",
     "options": [
@@ -15148,8 +15151,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_079.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15158,7 +15161,7 @@
     "official_num": 285,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינה( L ), (מפרשית ) מבחין בסירת מנוע( E ),מהי הפעולה הנדרשת? ( וקיימת סכנת התנגשות)",
     "q_en": "",
     "options": [
@@ -15180,7 +15183,7 @@
     "official_num": 286,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "ספינת מנוע( K )הנמצאת בדרך. מניפה דגל כמתואר בתמונה 95. אתה על סירה ממונעת(F). מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15192,8 +15195,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_095.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15202,7 +15205,7 @@
     "official_num": 287,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מצד ימין 50 מהחרטום בטווח של 3 מיל, נראים אורות בהרכב כמתואר בתמונה 27, מהו כלי השייט ומהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15214,8 +15217,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_027.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15224,7 +15227,7 @@
     "official_num": 288,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מאחור מתקרב אור לבן בודד.מהו כלי השייט ומהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15246,7 +15249,7 @@
     "official_num": 289,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מול חרטומך בטו וח של 3 מיל אתה מבחין באורות כמתואר בתמונה 1.",
     "q_en": "",
     "options": [
@@ -15258,8 +15261,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_001.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15268,7 +15271,7 @@
     "official_num": 290,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "משמאלך כ-° 50 ובטווח של 1 מיל הבחנת באורות כמתואר בתמונה 43,מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15280,8 +15283,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_043.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15290,7 +15293,7 @@
     "official_num": 291,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה מפליג בכלי שייט ממונע( K.) מולך מפרשית( C ),מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15312,7 +15315,7 @@
     "official_num": 292,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה מפליג בכלי שייט ממונע( O ) ומציג אורות כמתואר בתמונה 35, מולך סירת מפרש( G.) מהי הפעולה הנדרשת במצב המתואר?",
     "q_en": "",
     "options": [
@@ -15324,8 +15327,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_035.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15334,7 +15337,7 @@
     "official_num": 293,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "אתה על סירת מנוע( B ) מולך ספינת מפרש(J )המסומנת ע\" י סימן המתואר בתמונה 82,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15346,8 +15349,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_082.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15356,7 +15359,7 @@
     "official_num": 294,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "בראות מוגבלת,לפני חרטום סירתך נשמעות שתי צפירות ממושכות בכל שתי דקות, מהו פירוש האות?",
     "q_en": "",
     "options": [
@@ -15378,7 +15381,7 @@
     "official_num": 295,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי שייט הנמצא סמוך אליך משמיע קבוצה של אותות קוליים המורכבים:משש צפירות קצרות, שלוש ממושכות ושש קצרות.מה הוא מסמן?",
     "q_en": "",
     "options": [
@@ -15400,7 +15403,7 @@
     "official_num": 296,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "סירת מנוע - כללי",
     "q_he": "מהו אורכו המירבי של כלי שייט המוגדר\"כסירה\"?",
     "q_en": "",
     "options": [
@@ -15422,7 +15425,7 @@
     "official_num": 297,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "האם מותר למשיט בעל תעודת משיט 12 (סירת מנוע פ רטית )להשיט סירת נוסעים בשכר?",
     "q_en": "",
     "options": [
@@ -15444,7 +15447,7 @@
     "official_num": 298,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אזורי שיט",
     "q_he": "מהי המהירות המירבית המותרת להפלגת כלי שייט,החייב ל עבור בתחום 300 מטרים מחוף לא מוכרז?",
     "q_en": "",
     "options": [
@@ -15466,7 +15469,7 @@
     "official_num": 299,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "פרצה שרפה באזור ירכתי סירתך.מהן הפעולות הראשוניות הנדרשות במצב זה?",
     "q_en": "",
     "options": [
@@ -15488,7 +15491,7 @@
     "official_num": 300,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה אסור לעשות כשקיים חשש לשבר ברגלו של אדם הנמצא בסירתך?",
     "q_en": "",
     "options": [
@@ -15510,7 +15513,7 @@
     "official_num": 301,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "אדם בסירתך קיבל מכת-חום,מה יהיה הטיפול הנכון?",
     "q_en": "",
     "options": [
@@ -15532,7 +15535,7 @@
     "official_num": 302,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה תהיה הפעולה הראשונה שתעשה באדם מחוסר הכרה שנמשה מהמים אל תוך סירתך?",
     "q_en": "",
     "options": [
@@ -15554,7 +15557,7 @@
     "official_num": 303,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": " 50 מימין לחרטום הסירה ובטווח של 1 מיל הבחנת בכלי שייט המציג אורות כמתואר בתמונה 24, מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15566,8 +15569,8 @@
     "answer": "א",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_024.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15576,7 +15579,7 @@
     "official_num": 304,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "חוקים ותקנות",
     "q_he": "כיצד יש לנהוג כאשר פג תוקפו של הציוד פירוטכני?",
     "q_en": "",
     "options": [
@@ -15598,7 +15601,7 @@
     "official_num": 305,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מאחורי הירכתיים שלך מתקרב כלי שייט המציג אורות כמתואר בתמונה 58 (עוצמת האור מתחזקת.) מה הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15610,8 +15613,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_058.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15620,7 +15623,7 @@
     "official_num": 306,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "כיצד תכבה שריפה בשיפוליים(אזור ניקוז הנוזלים), מתחת למנוע(הפנימי ) של סירתך?",
     "q_en": "",
     "options": [
@@ -15642,7 +15645,7 @@
     "official_num": 307,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "איזה צלע של השריפה מנטרל מטפה האבקה?",
     "q_en": "",
     "options": [
@@ -15664,7 +15667,7 @@
     "official_num": 308,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "תמרוני ספינה",
     "q_he": "באילו פעולות יש לנקוט במידה והעוגן ניגרר?",
     "q_en": "",
     "options": [
@@ -15686,7 +15689,7 @@
     "official_num": 309,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "זכות מעבר",
     "q_he": "מפרשית( O ) מבחינה בכלי שייט( G ) המציג סימן כמתואר בתמונה בתמונה 84.מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15698,8 +15701,8 @@
     "answer": "ג",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_084.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15708,7 +15711,7 @@
     "official_num": 310,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "כלי שייט( F ), מבחין בכלי שייט( K ) המשמיע אות קולי כמתואר בתמונה 119,מהי הפעולה הנדרשת?",
     "q_en": "",
     "options": [
@@ -15720,8 +15723,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_119.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   },
@@ -15730,7 +15733,7 @@
     "official_num": 311,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "בטיחות",
     "q_he": "מה אמצעי הכיבוי היעיל ביותר לכיבוי שריפה בשיפוליים? (אזור ניקוז הנוזלים בסירה)",
     "q_en": "",
     "options": [
@@ -15752,7 +15755,7 @@
     "official_num": 312,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות מצוקה",
     "q_he": "מה מהסימונים הבאים איננו סימן מצוקה?",
     "q_en": "",
     "options": [
@@ -15774,7 +15777,7 @@
     "official_num": 313,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "אותות קוליים",
     "q_he": "מפרשית( H ) מבחינה בספינה( M ) אשר צופרת קבוצה של:שש צפירות קצרות, שש צפירות ממושכות ושש צפירות קצרות. איך תגיב( H )ל סימן שהשמיעה( M )?",
     "q_en": "",
     "options": [
@@ -15796,7 +15799,7 @@
     "official_num": 314,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "יצאת ממרינה הרצליה לכיוון דרום,לאיזה מעגנה המותרת לכניסה תגיע קודם?",
     "q_en": "",
     "options": [
@@ -15818,7 +15821,7 @@
     "official_num": 315,
     "source": "רשמי sq2",
     "license": 12,
-    "topic": "כללי",
+    "topic": "כניסה לנמל",
     "q_he": "מה מסמנים האורות בתמונה 74?",
     "q_en": "",
     "options": [
@@ -15830,8 +15833,8 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_074.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
   }
