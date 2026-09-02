@@ -3309,6 +3309,43 @@ function generateSignalScene(topic, q) {
   return null;
 }
 
+// Horizon distance is height-dependent: d(NM) = 2.03 × √h(m). The static
+// SCENES_QA['horizon_dist'] was baked for h=9m (l30 #117); reusing it for a
+// 1m rider (l11 #1124) showed the wrong height and distance. Parse the height
+// from the question and rebuild the diagram so each question shows its own numbers.
+function generateHorizonScene(qText) {
+  const q = qText || '';
+  const m = q.match(/גובה(?:\s+של)?\s+([\d.]+)\s*מטר/);
+  const h = m ? parseFloat(m[1]) : 9;
+  const d = 2.03 * Math.sqrt(h);
+  const dStr = (Math.round(d * 10) / 10).toString();
+  const sqrtStr = Number.isInteger(Math.sqrt(h))
+    ? `${2.03} × ${Math.sqrt(h)}`
+    : `${2.03} × √${h}`;
+  const hPix = Math.max(20, Math.min(60, 18 + Math.log2(h + 1) * 14));
+  const topY = 260 - hPix;
+  return `
+  <rect width="360" height="420" fill="#060d18"/>
+  <path d="M0,260 Q180,228 360,260" fill="#0a1a2a" stroke="#2a6aae" stroke-width="2"/>
+  <rect x="0" y="260" width="360" height="80" fill="#0a1a2a"/>
+  <line x1="50" y1="260" x2="50" y2="${topY}" stroke="#f39c12" stroke-width="2.5"/>
+  <circle cx="50" cy="${topY - 4}" r="7" fill="#f39c12"/>
+  <text x="65" y="${topY + 4}" fill="#f39c12" font-size="11" font-family="Arial" font-weight="700">h = ${h}m</text>
+  <line x1="42" y1="260" x2="58" y2="260" stroke="#f39c12" stroke-width="1.5"/>
+  <line x1="42" y1="${topY}" x2="58" y2="${topY}" stroke="#f39c12" stroke-width="1.5"/>
+  <line x1="50" y1="${topY - 4}" x2="295" y2="242" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <circle cx="295" cy="243" r="6" fill="#2ecc71"/>
+  <text x="300" y="238" fill="#2ecc71" font-size="9" font-family="Heebo,sans-serif">אופק</text>
+  <line x1="50" y1="263" x2="295" y2="263" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="172" y="277" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Arial" font-weight="700">≈ ${dStr} NM</text>
+  <rect x="18" y="298" width="324" height="68" rx="8" fill="#0d1e38" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="180" y="318" text-anchor="middle" fill="#2ecc71" font-size="12" font-family="Heebo,sans-serif" font-weight="900">נוסחת מרחק האופק:</text>
+  <text x="180" y="338" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial" font-weight="700">d(NM) = 2.03 × √h(m)</text>
+  <text x="180" y="358" text-anchor="middle" fill="#f39c12" font-size="13" font-family="Arial" font-weight="700">= ${sqrtStr} ≈ ${dStr}</text>
+  <text x="180" y="398" text-anchor="middle" fill="#4a8ac0" font-size="10" font-family="Heebo,sans-serif">מרחק האופק</text>
+`;
+}
+
 function getScene(topic, qText) {
   const q = qText || '';
   if(/\([A-P]\)/.test(q) || /(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+[""״"(]?([A-P])\b/.test(q)) {
@@ -3428,7 +3465,7 @@ function getScene(topic, qText) {
     if(/סובב|סיבוב|מסתובב/.test(q))                          return SCENES_QA['earth_rotation'];
     if(/מי?יל ימי|nautical mile|1852|דקת קשת/.test(q))          return SCENES_QA['nautical_mile'];
     if(/5 שניות|15 מטר|5.83|מהירות.*שניות|שניות.*מהירות/.test(q)) return SCENES_QA['speed_calc'];
-    if(/אופק.*מרחק|מרחק.*אופק|גובה.*מטר/.test(q))             return SCENES_QA['horizon_dist'];
+    if(/אופק.*מרחק|מרחק.*אופק|גובה.*מטר/.test(q))             return generateHorizonScene(q);
     if(/זמן מקומי|local time|קו האורך.*זמן/.test(q))           return SCENES_QA['local_time'];
     if(/zone time|אזור זמן|7.5|15 מעלות.*זמן/.test(q))         return SCENES_QA['zone_time'];
     if(/UTC\+3|\+3.*זמן|זמן.*\+3/.test(q))                     return SCENES_QA['utc_plus3'];
