@@ -8239,7 +8239,7 @@
       "ד. מוסרים למשטרה."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "ציוד פירוטכני שפג תוקפו הוא חומר מסוכן - יש למסור למשטרה לסילוק בטוח.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8247,7 +8247,8 @@
     "voiceover_text": "שאלה מספר 1135. כיצד יש לנהוג כאשר פג תוקפו של הציוד הפֵּירוּטְכְנִי?. [[PAUSE]] התשובה הנכונה היא ד: מוסרים למשטרה. ... ציוד פֵּירוּטְכְנִי שפג תוקפו הוא חומר מסוכן - יש למסור למשטרה לסילוק בטוח.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787497908/skipper-quiz/yr6tyjr3lmxdbspgryrz.mp4",
     "rendered_at": "2026-07-24T10:15:18.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1136,
