@@ -8037,7 +8037,7 @@
       "ד. כן, בתנאי שהנוהג קיבל בכתב אישור מטעם רשות הספנות והנמלים."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "רק משיט מוסמך רשאי לנהוג באופנוע ים. השגחה מהחוף אינה מספיקה.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8045,7 +8045,8 @@
     "voiceover_text": "שאלה מספר 1127. האם משיט אופנוע ים רשאי לאפשר לכל אדם לנהוג באופנוע – כאשר המשיט משיגח מהחוף?. [[PAUSE]] התשובה הנכונה היא ג: לא, רק משיט מוסמך רשאי לנהוג באופנוע ים. ... רק משיט מוסמך רשאי לנהוג באופנוע ים. השגחה מהחוף אינה חוקית ואינה מספיקה.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1786534424/skipper-quiz/l9otmhj3nbzagwd2i0y6.mp4",
     "rendered_at": "2026-08-12T11:33:45.803Z",
-    "content_updated_at": "2026-07-29T12:31:23.701Z"
+    "content_updated_at": "2026-07-29T12:31:23.701Z",
+    "html_locked": true
   },
   {
     "num": 1128,
