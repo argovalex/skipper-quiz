@@ -7915,7 +7915,7 @@
       "ד. שניהם נתונים לאותה מידה של סכנה."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "כשהמדומם ניתלש במהירות גבוהה, הנוהג עלול להיפגע מההגה שמול פניו.",
     "mediaUrl": "",
     "mediaType": "",
@@ -7923,7 +7923,8 @@
     "voiceover_text": "שאלה מספר 1121. במהירות הפלגה גבוהה מאוד של אופנוע ים כאשר המֶדֹמֶם ניתלש ממקומו, מי יהיה נתון לסכנת פגיעה גדולה יותר?. [[PAUSE]] התשובה הנכונה היא א: הנוהג יִפָּגָע מההגה של האופנוע. ... כשהמֶדֹמֶם ניתּלָש במהירות גבוהה, הנוהג עלול להיפגע מההגה שמול פניו.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788338844/skipper-quiz/pt5eyi1pdj6hxqsaqzgv.mp4",
     "rendered_at": "2026-09-02T08:47:30.306Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1122,
