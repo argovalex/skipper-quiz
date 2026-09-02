@@ -3448,7 +3448,8 @@
     "voiceover_text": "שאלה מספר 1139. כיצד תנהג כאשר החלטת לשוט עם אופנוע הים מחוף הרצליה לחוף בת-ים?. [[PAUSE]] התשובה הנכונה היא א: תשאיר הודעה בחוף לגבי כוונותיך וזמן חזרה משוער. ... בהפלגה ארוכה בין חופים יש להשאיר הודעה עם פרטי ההפלגה וזמן חזרה משוער.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498058/skipper-quiz/l48vb6ucl96nuyr3a99q.mp4",
     "rendered_at": "2026-07-23T14:42:56.251Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1140,
@@ -3464,7 +3465,7 @@
       "ד. רשיון שייט של כלי השייט."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "תעודת בריאות אינה נדרשת בעת הפלגה - היא נדרשת רק בשלב הרישום לרישיון.",
     "mediaUrl": "",
     "mediaType": "",
