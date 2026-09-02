@@ -9,7 +9,7 @@ const REPO = 'argovalex/skipper-quiz';
 // for legacy readers (publisher, video generators). data/manifest.json lists the
 // licenses so a new quiz is just a new file + a manifest entry, no code change.
 const BANK_DIR = 'data';
-const LICENSE_ORDER = ['30', '11'];          // canonical order; new quizzes appended
+const LICENSE_ORDER = ['30', '11', '12'];    // canonical order; new quizzes appended
 function bankPath(lic) { return `${BANK_DIR}/l${lic}.json`; }
 function licenseOf(q) { return String(q.license ?? '30'); }
 // Byte-identical to the Python canonical dump: 2-space indent, unicode preserved,

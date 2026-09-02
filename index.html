@@ -216,6 +216,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
       <div style="display:flex;gap:6px;margin-bottom:6px">
         <button id="lic-30" class="filter-btn active" onclick="setLicense(30)" style="flex:1">רישיון 30</button>
         <button id="lic-11" class="filter-btn" onclick="setLicense(11)" style="flex:1">רישיון 11</button>
+        <button id="lic-12" class="filter-btn" onclick="setLicense(12)" style="flex:1">רישיון 12</button>
       </div>
       <input id="search" placeholder="🔍 חיפוש לפי מילה או מספר שאלה (#)..." oninput="renderList()" title="חפש בטקסט השאלה או לפי מספר השאלה">
       <select id="topic-filter" onchange="renderList()" title="סנן לפי נושא">
@@ -355,6 +356,7 @@ function setLicense(lic) {
   localStorage.setItem('sq_license', lic);
   document.getElementById('lic-30').classList.toggle('active', lic === 30);
   document.getElementById('lic-11').classList.toggle('active', lic === 11);
+  document.getElementById('lic-12').classList.toggle('active', lic === 12);
   currentIdx = -1;
   showEmptyEditor();
   populateTopicFilter();
@@ -760,9 +762,10 @@ function populateTopicFilter() {
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function initApp() {
   const savedLic = parseInt(localStorage.getItem('sq_license'), 10);
-  if (savedLic === 11 || savedLic === 30) activeLicense = savedLic;
+  if (savedLic === 11 || savedLic === 30 || savedLic === 12) activeLicense = savedLic;
   document.getElementById('lic-30').classList.toggle('active', activeLicense === 30);
   document.getElementById('lic-11').classList.toggle('active', activeLicense === 11);
+  document.getElementById('lic-12').classList.toggle('active', activeLicense === 12);
   document.getElementById('ghToken').value = localStorage.getItem('sq_gh_token') || '';
   const railwayInput = document.getElementById('railwayUrl');
   if (railwayInput) railwayInput.value = localStorage.getItem('sq_railway_url') || '';
