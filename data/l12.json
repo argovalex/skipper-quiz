@@ -175,7 +175,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2008. ו מה המרחק שיש להתרחק מסירה המניפה דגל צולֶלים?. [[PAUSE]] התשובה הנכונה היא ב: 200 מטרים."
   },
   {
     "num": 2009,
@@ -241,7 +242,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2011. מי מהבאים הוא כְּלי שייט ללא שליטה?. [[PAUSE]] התשובה הנכונה היא ג: שאינו יכול לתמרן."
   },
   {
     "num": 2012,
@@ -725,7 +727,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_113.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2033. סירת מנוע קֶיי מבחינה בסירת מנוע ג'יִ הצופרת כמתואר בתמונה 113, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ד: אין סכנת התנגשות, ג'יִ שילב מנועיו אחורה, קֶיי יכול להמשיך."
   },
   {
     "num": 2034,
@@ -1979,7 +1982,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_030.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2090. מימינך הבחנת באורות כמתואר בתמונה 30.מה הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ג: ממוכָּן, חוצה מימין לשמאל.מ אחר והוא מימיני- אני חייב לֶפַנות לו דרך– ימינה אחרי ירכתיו."
   },
   {
     "num": 2091,
