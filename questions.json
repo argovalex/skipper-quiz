@@ -8136,7 +8136,7 @@
       "ד. רשימת ציוד הצלה."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "רשימת ציוד הצלה אינה מסמך שחובה לשאת בעת הפלגה.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8144,7 +8144,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787497647/skipper-quiz/wlsdeg1wzn911aao2ubo.mp4",
     "rendered_at": "2026-07-24T10:13:54.000Z",
     "voiceover_text": "שאלה מספר 1131. איזה מסמך לא חייבים לשאת בעת הפלגה על אופנוע ים?. [[PAUSE]] התשובה הנכונה היא ד: רשימת ציוד הַצָּלָה. ... רשימת ציוד הַצָּלָה אינה מסמך שחובה לשאת בעת הפלגה.",
-    "content_updated_at": "2026-07-24T08:34:17.080Z"
+    "content_updated_at": "2026-07-24T08:34:17.080Z",
+    "html_locked": true
   },
   {
     "num": 1132,
