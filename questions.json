@@ -8436,7 +8436,7 @@
       "ד. 40 ס\"מ."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "מספר הזיהוי חייב להיות בגודל מינימלי של 10 ס\"מ כדי להיות קריא מרחוק.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8444,7 +8444,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498279/skipper-quiz/ehubd88savdnofbpefod.mp4",
     "voiceover_text": "שאלה מספר 1143. מה הגודל המינימלי של מספר הזיהוי על האופנוע ים?. [[PAUSE]] התשובה הנכונה היא א: 10 סנטימטר. ... מספר הזיהוי חייב להיות בגודל מינימלי של 10 סנטימטר כדי להיות קריא מרחוק.",
     "content_updated_at": "2026-07-23T14:52:33.912Z",
-    "rendered_at": "2026-07-23T14:56:49.000Z"
+    "rendered_at": "2026-07-23T14:56:49.000Z",
+    "html_locked": true
   },
   {
     "num": 1144,
