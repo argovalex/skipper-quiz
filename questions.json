@@ -8087,7 +8087,7 @@
       "ד. אסורה לחלוטין!"
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "גרירת סקי מותרת רק אם האופנוע מורשה ל-3 ועליו לפחות 2 (נוהג ו צופה).",
     "mediaUrl": "",
     "mediaType": "",
@@ -8095,7 +8095,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1785334210/skipper-quiz/sl4x2wmhartg4awfc25i.mp4",
     "rendered_at": "2026-07-29T14:10:14.772Z",
     "voiceover_text": "שאלה מספר 1129. האם מותרת גרירת סקי על ידי אופנוע ים?. [[PAUSE]] התשובה הנכונה היא א: כן, בתנאי שהאופנוע מורשה ל-שלושה מפליגים ועליו יהיו לפחות שני אנשי צוות. ... גרירת סקי מותרת רק אם האופנוע מורשה ל-שלושה מפליגים ועליו לפחות שני אנשים נוהג ו «צופה» אשר מביט לאחור אֶל הגולש.",
-    "content_updated_at": "2026-07-29T14:09:22.340Z"
+    "content_updated_at": "2026-07-29T14:09:22.340Z",
+    "html_locked": true
   },
   {
     "num": 1130,
