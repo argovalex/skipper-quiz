@@ -8411,7 +8411,7 @@
       "ד. אין חשיבות למי מחברים את המדומם."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "מדומם חירום (Kill Switch) חייב להיות מחובר לגוף הנוהג למניעת בריחת אופנוע ללא נוהג.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8419,7 +8419,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498237/skipper-quiz/nyvxezwr2tqq0d0v9qkc.mp4",
     "voiceover_text": "שאלה מספר 1142. מהי התקנה בדבר מֶדומֶם חירום באופנוע ים?. [[PAUSE]] התשובה הנכונה היא ג: יש לחבר את המדומם לנוהג. ... מֶדומֶם חירום חייב להיות מחובר לגוף הנוהג למניעת בריחת אופנוע ללא נוהג.",
     "content_updated_at": "2026-07-23T14:49:58.689Z",
-    "rendered_at": "2026-07-23T14:55:52.000Z"
+    "rendered_at": "2026-07-23T14:55:52.000Z",
+    "html_locked": true
   },
   {
     "num": 1143,
