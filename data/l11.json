@@ -3472,7 +3472,8 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787498102/skipper-quiz/rty0usndz8bichzrfulp.mp4",
     "rendered_at": "2026-07-23T14:35:20.000Z",
-    "voiceover_text": "שאלה מספר 1140. איזה מהתעודות הרשומות מטה לא צריך לשאת בעת הפלגה?. [[PAUSE]] התשובה הנכונה היא ג: תעודה המעידה על בריאות תקינה. ... תעודת בריאות אינה נדרשת בעת הפלגה - היא נדרשת רק בשלב הרישום לרישיון."
+    "voiceover_text": "שאלה מספר 1140. איזה מהתעודות הרשומות מטה לא צריך לשאת בעת הפלגה?. [[PAUSE]] התשובה הנכונה היא ג: תעודה המעידה על בריאות תקינה. ... תעודת בריאות אינה נדרשת בעת הפלגה - היא נדרשת רק בשלב הרישום לרישיון.",
+    "html_locked": true
   },
   {
     "num": 1141,
@@ -3488,7 +3489,7 @@
       "ד. אחת לשנה."
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "ביקורת כושר שייט לאופנוע ים פרטי מתבצעת אחת לשנתיים.",
     "mediaUrl": "",
     "mediaType": "",
