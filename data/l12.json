@@ -1784,7 +1784,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_083.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "voiceover_text": "שאלה מספר 2081. לידך ספינה המציגה סימן כמתואר בתמונה 83, מה הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ב: אגש לסייע, זו ספינה במצוקה. ... הסימן בתמונה הוא אות המצוקה הבינלאומי, דגל מרובע וכדור מתחתיו. ספינה המציגה אותו נמצאת במצוקה ומבקשת סיוע, ולכן יש חובה לגשת ולסייע לה. בתנאי כי אינך מסכן את הסירה והצוות שלך."
   },
   {
     "num": 2082,
@@ -4843,7 +4844,9 @@
     "answer_confirmed": false,
     "explanation": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 2221,
@@ -6249,7 +6252,9 @@
     "answer_confirmed": false,
     "explanation": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 2285,
@@ -6291,7 +6296,9 @@
     "answer_confirmed": false,
     "explanation": "",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 2287,
