@@ -11462,7 +11462,7 @@
     "source": "רשמי sq2",
     "license": 12,
     "topic": "אותות מצוקה",
-    "q_he": "כיצד יכול כלי שייט במצוקה ל סמן בלילה את מצבו?",
+    "q_he": "כיצד יכול כלי שייט במצוקה לסמן בלילה את מצבו?",
     "q_en": "",
     "options": [
       "א. תמונה 70.",
@@ -11471,14 +11471,13 @@
       "ד. תמונה 61."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "answer_confirmed": true,
+    "explanation": "בלילה אות המצוקה הוא להבות על כלי השייט, למשל חבית זפת או שמן בוערת. שלוש האפשרויות האחרות הן אורות ניווט שמציינים מצב כלי שייט ולא מצוקה: תמונה 70, אדום לבן אדום, היא כלי מוגבל בכושר התמרון; תמונה 7, שני אדומים זה מעל זה, היא כלי שאינו שולט בתנועתו; ותמונה 61, שני אורות לבנים, היא כלי מנוע בהפלגה רגילה.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2116.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788424374/skipper-quiz/v2ksue7iptuipqsj6yzu.mp4",
-    "voiceover_text": "שאלה מספר 2116. כיצד יכול כְּלי שייט במצוקה ל סמן בלילה את מצבו?. [[PAUSE]] התשובה הנכונה היא ב: חבית בוערת.",
-    "rendered_at": "2026-09-03T08:32:55.436Z"
+    "voiceover_text": "שאלה מספר 2116. כיצד יכול כְּלי שייט במצוקה לסמן בלילה את מצבו?. [[PAUSE]] התשובה הנכונה היא ב: חבית בוערת. ... בלילה אות המצוקה הוא להבות על כְּלי השייט, למשל חבית זפת או שמן בוערת. שלוש האפשרויות האחרות הן אורות ניווט שמציינים מצב כְּלי שייט ולא מצוקה: תמונה 70, אדום לבן אדום, היא כְּלי מוגבל בכושר התמרון, תמונה 7, שני אדומים זה מעל זה, היא כְּלי שאינו שולט בתנועתו, ותמונה 61, שני אורות לבנים, היא כְּלי מנוע בהפלגה רגילה."
   },
   {
     "num": 2117,
@@ -11737,13 +11736,13 @@
       "ד. השמעת חמש או יותר צפירות קצרות."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "answer_confirmed": true,
+    "explanation": "חמש צפירות קצרות ורצופות הן אות אזהרה או ספק, לא אות מצוקה. שלוש האפשרויות האחרות כן אותות מצוקה מוכרים: שידור SOS באלחוט רדיו, אמירת MAYDAY בקשר קולי, והשמעה רצופה של מכשיר אות ערפל כמו גונג.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/scenes/q2128-danger.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788427118/skipper-quiz/fawvuqlotj1jenxqzzkm.mp4",
-    "rendered_at": "2026-09-03T09:18:39.988Z"
+    "voiceover_text": "שאלה מספר 2128. איזה מהבאים איננו סימן מצוקה?. [[PAUSE]] התשובה הנכונה היא ד: הַשְׁמָעַת חמש או יותר צְפִירוֹת קצרות. ... חמש צְפִירוֹת קצרות ורצופות הן אות אזהרה או ספק, לא אות מצוקה. שלוש האפשרויות האחרות כן אותות מצוקה מוכרים: שידור אֶס אוֹ אֶס באלחוט, קריאת MAY DAY בָּקֶשֶׁר קולי, והשמעה רצופה של אות ערפל כמו צופר או גונג."
   },
   {
     "num": 2129,
@@ -11760,13 +11759,12 @@
       "ד. אדם העומד ומנפנף דגל לבן בידיו."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "answer_confirmed": true,
+    "explanation": "נפנוף דגל לבן אינו אות מצוקה מוכר. אות המצוקה בידיים הוא הרמה והורדה איטית של הזרועות הפרושות לצדדים. שלוש האפשרויות האחרות כן אותות מצוקה: שידור SOS באלחוט רדיו, אמירת MAYDAY בקשר קולי, והשמעה רצופה של מכשיר אות ערפל כמו גונג.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2129.png",
+    "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788427171/skipper-quiz/sp9898f1qjn9klpeqady.mp4",
-    "rendered_at": "2026-09-03T09:19:32.689Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788427171/skipper-quiz/sp9898f1qjn9klpeqady.mp4"
   },
   {
     "num": 2130,
@@ -15076,7 +15074,7 @@
     "source": "רשמי sq2",
     "license": 12,
     "topic": "אותות מצוקה",
-    "q_he": "מה יכול להצי ג בלילה כלי שייט הנמצא במצוקה?",
+    "q_he": "מה יכול להציג בלילה כלי שייט הנמצא במצוקה?",
     "q_en": "",
     "options": [
       "א. אורות כמתואר- תמונה 70.",
@@ -15085,13 +15083,12 @@
       "ד. אורות כמתואר- תמונה 61."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "answer_confirmed": true,
+    "explanation": "לפיד יד אדום הוא אות מצוקה לילי. שלוש האפשרויות האחרות הן תצורות אורות ניווט ולא מצוקה: תמונה 70, אדום לבן אדום, כלי מוגבל בכושר התמרון; תמונה 7, שני אדומים זה מעל זה, כלי שאינו שולט בתנועתו; ותמונה 61, שני אורות לבנים, כלי מנוע בהפלגה רגילה.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2280.png",
+    "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788425594/skipper-quiz/rejw6wznyevygj2rd26l.mp4",
-    "rendered_at": "2026-09-03T08:53:15.472Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788425594/skipper-quiz/rejw6wznyevygj2rd26l.mp4"
   },
   {
     "num": 2281,
@@ -15784,19 +15781,18 @@
     "q_he": "מה מהסימונים הבאים איננו סימן מצוקה?",
     "q_en": "",
     "options": [
-      "א. שי דור הקבוצה S.O.S באלחוט רדיו.",
+      "א. שידור הקבוצה S.O.S באלחוט רדיו.",
       "ב. מצוף עשן בצבע כתום.",
-      "ג. שדור המילה MAYDAY באלחוט דבור.",
+      "ג. שידור המילה MAYDAY באלחוט דיבור.",
       "ד. שידור המילה HELP באלחוט דיבור."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "answer_confirmed": true,
+    "explanation": "המילה MAYDAY היא אות המצוקה בקשר קולי, לא המילה HELP. שלוש האפשרויות האחרות כן אותות מצוקה: שידור הקבוצה SOS באלחוט רדיו, מצוף עשן בצבע כתום, ואמירת MAYDAY בקשר קולי.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2312.png",
+    "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788427221/skipper-quiz/pzboqsdauolsm8byvo1g.mp4",
-    "rendered_at": "2026-09-03T09:20:22.154Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788427221/skipper-quiz/pzboqsdauolsm8byvo1g.mp4"
   },
   {
     "num": 2313,
