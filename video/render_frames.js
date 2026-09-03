@@ -12,10 +12,31 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const http = require('http');
 const puppeteer = require('puppeteer');
 const { buildVoiceover } = require('../tools/quiz-app/vo.js');
 
 const ROOT = path.resolve(__dirname, '..');
+
+// Serve media/ over localhost so l12's compass-rose boat/sign images (referenced
+// by raw.githubusercontent in scenes.js) load into the about:blank render even
+// before those assets are pushed. Harmless for l11 (no boat images requested).
+const MIME = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml' };
+function startMediaServer() {
+  return new Promise(resolve => {
+    const srv = http.createServer((req, res) => {
+      const rel = decodeURIComponent(req.url.split('?')[0]).replace(/^\/+/, '');
+      const fp = path.join(ROOT, rel);
+      if (!fp.startsWith(path.join(ROOT, 'media'))) { res.writeHead(403); return res.end(); }
+      fs.readFile(fp, (e, b) => {
+        if (e) { res.writeHead(404); return res.end(); }
+        res.writeHead(200, { 'Content-Type': MIME[path.extname(fp).toLowerCase()] || 'application/octet-stream', 'Access-Control-Allow-Origin': '*' });
+        res.end(b);
+      });
+    });
+    srv.listen(0, () => resolve(srv));
+  });
+}
 
 function arg(flag, def) {
   const i = process.argv.indexOf(flag);
@@ -48,13 +69,15 @@ function loadQuestion() {
 }
 
 // --- load scenes.js in a vm sandbox (same setup as scene-html.js) ---
-function makeGenHtml() {
+function makeGenHtml(mediaBase) {
   const scenesCode = fs.readFileSync(path.join(ROOT, 'scenes.js'), 'utf8');
   const sandbox = {
     console, JSON, Math, parseInt, parseFloat, String, Array, Object, RegExp, Number, Date,
     currentLang: 'he',
     document: { getElementById: () => ({ value: '' }) },
     window: {},
+    VESSEL_IMG_BASE: `${mediaBase}/vessels`,
+    SIGN_IMG_BASE: `${mediaBase}/signs`,
   };
   vm.createContext(sandbox);
   vm.runInContext(scenesCode, sandbox);
@@ -63,15 +86,20 @@ function makeGenHtml() {
 
 (async () => {
   const q = loadQuestion();
-  const genHtml = makeGenHtml();
+  const server = await startMediaServer();
+  const mediaBase = `http://127.0.0.1:${server.address().port}/media`;
+  const genHtml = makeGenHtml(mediaBase);
   let html = genHtml(q);
   if (!html || html.length < 500) throw new Error(`generateQuizHTML too short for Q${num}`);
   // Speed the auto-play clock so the reveal happens fast for the second screenshot.
   html = html.replace('const DELAY=15000', 'const DELAY=40');
 
-  const vo = buildVoiceover(q);
+  const vo = buildVoiceover(q);                 // spoken (letters -> ג'יי for TTS)
+  const voDisplay = buildVoiceover(q, true);    // caption text (letters stay "J")
   const voPath = path.join(outDir, `q${num}.vo.txt`);
+  const voDisplayPath = path.join(outDir, `q${num}.disp.txt`);
   fs.writeFileSync(voPath, vo, 'utf8');
+  fs.writeFileSync(voDisplayPath, voDisplay, 'utf8');
 
   const questionPng = path.join(outDir, `q${num}_question.png`);
   const answerPng = path.join(outDir, `q${num}_answer.png`);
@@ -101,9 +129,10 @@ function makeGenHtml() {
     await reel.screenshot({ path: answerPng });
   } finally {
     await browser.close();
+    server.close();
   }
 
   process.stdout.write(JSON.stringify({
-    num, topic: q.topic || '', voPath, questionPng, answerPng,
+    num, topic: q.topic || '', voPath, voDisplayPath, questionPng, answerPng,
   }) + '\n');
 })().catch(e => { console.error('ERR', e.message); process.exit(1); });
