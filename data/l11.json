@@ -3995,7 +3995,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787499194/skipper-quiz/ymzmin2auwsefraqqrmi.mp4",
     "rendered_at": "2026-07-24T09:16:57.000Z",
     "voiceover_text": "שאלה מספר 1161. על פי התקנה, כיצד צריך להיות לבוש הנוסע מאחור?. [[PAUSE]] התשובה הנכונה היא ד: מִכְנָס עבה, מהמותנים ועד הבירכיים. ... גם הנוסע מאחור חייב במכנס עבה מהמותנים עד הברכיים לפי התקנה.",
-    "content_updated_at": "2026-07-24T08:33:58.532Z"
+    "content_updated_at": "2026-07-24T08:33:58.532Z",
+    "html_locked": true
   },
   {
     "num": 1162,
@@ -4011,7 +4012,7 @@
       "ד. אין משמעות למרחק כל עוד אין מתרחצים באזור."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "במפרץ אילת הטווח המזערי הוא 1000 מ' מקו שפל המים, בשל רגישות אקולוגית.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1162-eilat-north-1000m.png",
     "mediaType": "image",
