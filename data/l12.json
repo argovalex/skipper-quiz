@@ -2552,10 +2552,10 @@
       "ד. תמונה 61."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "",
-    "mediaType": "",
+    "answer_confirmed": true,
+    "explanation": "בלילה, להבות על כלי השייט, למשל חבית זפת או שמן בוערת, הן אות מצוקה מוכר. שאר האפשרויות הן תצורות אורות רגילות ואינן מסמנות מצוקה.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2116.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "",
     "voiceover_text": "שאלה מספר 2116. כיצד יכול כְּלי שייט במצוקה ל סמן בלילה את מצבו?. [[PAUSE]] התשובה הנכונה היא ב: חבית בוערת."
