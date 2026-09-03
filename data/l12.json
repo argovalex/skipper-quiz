@@ -2795,9 +2795,9 @@
       "ד. זהו גורר מוגבל בכושרו לתמרן,המשיג אותי,אשמור על קורס ומהירות."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/scenes/q2127-overtaking.png",
+    "answer_confirmed": true,
+    "explanation": "האורות בתמונה, אדום-לבן-אדום עם מערך גרירה, הם גורר מוגבל בכושרו לתמרן שמשיג אותי מהירכתיים. במפגש עקיפה הכלי העוקף הוא שמפנה, גם אם הוא מוגבל, ולכן אני שומר על קורס ומהירות. תשובה א שגויה כי אין כאן דייג, דייג מציג צבע מעל לבן ולא אדום-לבן-אדום. תשובה ב מזהה נכון מוגבל אך הפעולה הפוכה, הוא העוקף אז הוא מפנה ולא אני. תשובה ג שגויה כי אורות הצד אינם הפוכים, כך נראה חרטום של כלי שמשיג מהירכתיים כשמביטים בו מלפנים.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_047.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
