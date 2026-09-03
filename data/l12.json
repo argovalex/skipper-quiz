@@ -1779,8 +1779,8 @@
       "ד. אתרחק,זו ספינה עוגנת."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
+    "answer_confirmed": true,
+    "explanation": "הסימן בתמונה הוא אות המצוקה הבינלאומי, דגל מרובע וכדור מעליו. ספינה המציגה אותו נמצאת במצוקה ומבקשת סיוע, ולכן יש לגשת ולסייע לה.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_083.png",
     "mediaType": "image",
     "approved_for_publish": false,
