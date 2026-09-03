@@ -8842,7 +8842,8 @@
     "voiceover_text": "שאלה מספר 1159. עד לאיזה מרחק מותר להתקרב עם אופנוע ים אל חוף רחצה מוכרז?. [[PAUSE]] התשובה הנכונה היא ג: עד ל-50 מטרים מכל צד ו-300 מטרים מקו שֵׁפֶל המים. ... מותר להתקרב עד 50 מטר מצדי חוף רחצה מוכרז, ולא יותר מ-300 מטר מקו שֵׁפֶל.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787499105/skipper-quiz/s3or2jqkcfwhfsag8xxy.mp4",
     "rendered_at": "2026-07-24T10:19:19.000Z",
-    "content_updated_at": "2026-07-23T10:07:01.669Z"
+    "content_updated_at": "2026-07-23T10:07:01.669Z",
+    "html_locked": true
   },
   {
     "num": 1160,
@@ -8858,7 +8859,7 @@
       "ד. מכנס עבה, מהמותנים ועד הבירכיים."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "לפי התקנה, המשיט חייב ללבוש מכנס עבה מהמותנים עד הברכיים להגנה.",
     "mediaUrl": "",
     "mediaType": "",
@@ -8866,7 +8867,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787499151/skipper-quiz/nyqobxrtfzuwylaqnqga.mp4",
     "rendered_at": "2026-07-24T09:16:13.000Z",
     "voiceover_text": "שאלה מספר 1160. על פי התקנה, כיצד צריך להיות לבוש המשיט?. [[PAUSE]] התשובה הנכונה היא ד: מִכְנָס עבה, מהמותנים ועד הבירכיים. ... לפי התקנה, המשיט חייב ללבוש מִכְנָס עבה מהמותנים עד הברכיים להגנה.",
-    "content_updated_at": "2026-07-24T08:30:43.149Z"
+    "content_updated_at": "2026-07-24T08:30:43.149Z",
+    "html_locked": true
   },
   {
     "num": 1161,
