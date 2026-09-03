@@ -69,6 +69,9 @@ def render_frames(num, work, license):
     line = [l for l in r.stdout.strip().splitlines() if l.strip().startswith("{")][-1]
     meta = json.loads(line)
     meta["vo"] = open(meta["voPath"], encoding="utf-8").read().strip()
+    # display/caption text: vessel letters kept as "J" (not the spoken "ג'יי")
+    dp = meta.get("voDisplayPath")
+    meta["voDisplay"] = open(dp, encoding="utf-8").read().strip() if dp and os.path.isfile(dp) else meta["vo"]
     return meta
 
 
@@ -245,9 +248,10 @@ async def make_one(num, voice_key, bg_clip, license, work):
     print(f"[{num}] rendering canonical frames...")
     meta = render_frames(num, work, license)
     vo = meta["vo"]
-    # VO-text sidecar next to the video (project rule: every video ships with its VO)
+    # VO-text sidecar next to the video (project rule: every video ships with its VO).
+    # Uses the display text so the letters read as "J", matching the captions.
     with open(os.path.join(OUT_DIR, f"q{num}.vo.txt"), "w", encoding="utf-8") as f:
-        f.write(vo.replace(" [[PAUSE]] ", "\n\n[[PAUSE]]\n\n"))
+        f.write(meta.get("voDisplay", vo).replace(" [[PAUSE]] ", "\n\n[[PAUSE]]\n\n"))
     if "[[PAUSE]]" in vo:
         part1, part2 = [p.strip() for p in vo.split("[[PAUSE]]", 1)]
     else:
@@ -272,10 +276,17 @@ async def make_one(num, voice_key, bg_clip, license, work):
             f.write(f"file '{p.replace(chr(92), '/')}'\n")
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", concat_txt, "-c:a", "libmp3lame", mp3_out])
 
-    # SRT (word-synced; part2 offset by d1 + pause; outro caption at the tail)
-    cues = group_cues(b1, 0.0)
+    # Captions use the DISPLAY text (vessel letters as "J", not the spoken "ג'יי").
+    # It differs from the spoken text only in those letters, so distributing it
+    # across each part's measured audio duration keeps the caption timing.
+    vo_disp = meta.get("voDisplay", vo)
+    if "[[PAUSE]]" in vo_disp:
+        disp1, disp2 = [p.strip() for p in vo_disp.split("[[PAUSE]]", 1)]
+    else:
+        disp1, disp2 = vo_disp, ""
+    cues = group_cues([(0.0, d1, disp1)], 0.0)
     if part2:
-        cues += group_cues(b2, d1 + PAUSE_SEC)
+        cues += group_cues([(0.0, d2, disp2)], d1 + PAUSE_SEC)
     tail = d1 + PAUSE_SEC + d2
     cues.append((tail + 0.15, tail + OUTRO_SEC, OUTRO_TEXT))
     srt_out = os.path.join(OUT_DIR, f"q{num}.srt")

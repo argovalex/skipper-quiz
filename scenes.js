@@ -1166,6 +1166,25 @@ Object.assign(SCENES_QA, {
 <text x="180" y="361" text-anchor="middle" fill="#aac4e8" font-size="10" font-family="Heebo,sans-serif">ביום: שני כדורים שחורים בקו אנכי</text>
 <text x="180" y="382" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Heebo,sans-serif" font-weight="700">כמעט הכל חייב לפנות דרך ל-NUC</text>
 `,
+'daysign_nuc': `
+<defs><linearGradient id="skyNuc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cdec"/><stop offset="1" stop-color="#dcecfb"/></linearGradient></defs>
+<rect width="360" height="252" fill="url(#skyNuc)"/>
+<rect y="252" width="360" height="168" fill="#2f6fa8"/>
+<path d="M0,262 Q90,254 180,262 T360,262" fill="none" stroke="#3f86c4" stroke-width="2" opacity=".55"/>
+<path d="M0,284 Q90,276 180,284 T360,284" fill="none" stroke="#3f86c4" stroke-width="2" opacity=".45"/>
+<rect x="178" y="118" width="4" height="158" fill="#3a3a3a"/>
+<ellipse cx="180" cy="286" rx="72" ry="19" fill="#14304f"/>
+<path d="M112,284 Q180,266 248,284 L236,300 Q180,308 124,300 Z" fill="#1c3f66"/>
+<rect x="160" y="256" width="40" height="20" rx="3" fill="#24507f"/>
+<circle cx="180" cy="140" r="17" fill="#141414" stroke="#000" stroke-width="1.5"/>
+<circle cx="180" cy="186" r="17" fill="#141414" stroke="#000" stroke-width="1.5"/>
+<line x1="199" y1="140" x2="236" y2="126" stroke="#0c1a3a" stroke-width="1.2"/>
+<text x="240" y="130" fill="#0c1a3a" font-size="11" font-family="Heebo,sans-serif" font-weight="700">שני כדורים</text>
+<text x="240" y="146" fill="#0c1a3a" font-size="11" font-family="Heebo,sans-serif" font-weight="700">שחורים</text>
+<text x="240" y="162" fill="#0c1a3a" font-size="10" font-family="Heebo,sans-serif">בקו אנכי</text>
+<rect x="86" y="392" width="188" height="22" rx="11" fill="#0d1e38" stroke="#f39c12" stroke-width="1.3"/>
+<text x="180" y="407" text-anchor="middle" fill="#f39c12" font-size="12" font-weight="900" font-family="Heebo,sans-serif">כלי שייט ללא שליטה (NUC)</text>
+`,
 'lights_ram': `<rect width="360" height="420" fill="#050d1a"/>
 <circle cx="35" cy="25" r="1" fill="white" opacity=".7"/><circle cx="310" cy="18" r="1" fill="white" opacity=".6"/><circle cx="75" cy="55" r="1.2" fill="white" opacity=".8"/>
 <ellipse cx="180" cy="185" rx="20" ry="55" fill="#0d2040" stroke="#2a4a8a" stroke-width="1.5"/>
@@ -1602,9 +1621,9 @@ function crVessel(letter) {
     + `<rect x="${(lbl.x-11).toFixed(1)}" y="${(lbl.y-11).toFixed(1)}" width="22" height="22" fill="#fff" stroke="${color}" stroke-width="2.2"/>`
     + `<text x="${lbl.x.toFixed(1)}" y="${(lbl.y+5).toFixed(1)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="${color}">${letter}</text>`;
 }
-function crHighlight(letter) {
+function crHighlight(letter, color) {
   const p = crPos(CR_LETTERS.indexOf(letter) * 22.5, CR_R_LABEL);
-  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="17" fill="none" stroke="#ffd700" stroke-width="3"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle>`;
+  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="17" fill="none" stroke="${color || '#ffd700'}" stroke-width="3"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle>`;
 }
 function crBowLine(letter, color) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, flip = letter === 'E' || letter === 'I';
@@ -1693,14 +1712,90 @@ const SIGNAL_IMAGES = {
   126: ['S','S','S','S','S','S','S','S','S','S','S','S'],
 };
 
-function generateCompassRoseScene(qText) {
+// ── l12 boat overlay (top-view illustrations on the rose) ────────────────────
+// Only the l12 caller passes useBoats=true; l11 keeps the plain triangle rose.
+// Images are transparent top-view PNGs in media/vessels (bow points up), placed
+// on the wedge and rotated so the bow faces the rose centre. Sign sits ABOVE the
+// letter. VESSEL_IMG_BASE (a sandbox global, optional) overrides the URL base so
+// a local render can point at a file server before the assets are pushed.
+function crVesselBase() {
+  return (typeof VESSEL_IMG_BASE !== 'undefined' && VESSEL_IMG_BASE)
+    ? VESSEL_IMG_BASE
+    : 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/vessels';
+}
+// day-sign image number -> vessel type illustration. Missing = motor (speedboat).
+const CR_SIGN_TO_TYPE = {
+  79:'workboat', 87:'workboat', 89:'workboat', 90:'workboat',   // מוגבל בתמרון (RAM)
+  80:'nuc_damaged', 81:'nuc_damaged',                            // ללא שליטה / על שרטון
+  84:'fishing_net',                                              // דייג
+  20:'sailing_bare', 82:'sailing_bare',                          // מפרשית תחת מנוע
+};
+function crBoat(letter, type) {
+  const w = 40, h = 78, R_BOAT = 46;
+  const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
+  const p = crPos(angle, R_BOAT);
+  const toC = Math.atan2(CR_CY - p.y, CR_CX - p.x) * 180 / Math.PI;
+  const rot = toC + 90; // library boats point bow-up (screen -90); aim bow at centre
+  return `<g transform="translate(${p.x.toFixed(1)},${p.y.toFixed(1)}) rotate(${rot.toFixed(1)})">`
+    + `<image href="${crVesselBase()}/${type}.png" x="${(-w/2).toFixed(1)}" y="${(-h/2).toFixed(1)}" width="${w}" height="${h}"/></g>`;
+}
+// letter box + letter only (no triangle) — used for the two boat vessels
+function crVesselLabel(letter) {
+  const idx = CR_LETTERS.indexOf(letter), color = crColor(idx);
+  const lbl = crPos(idx * 22.5, CR_R_LABEL);
+  return `<rect x="${(lbl.x-11).toFixed(1)}" y="${(lbl.y-11).toFixed(1)}" width="22" height="22" fill="#fff" stroke="${color}" stroke-width="2.2"/>`
+    + `<text x="${lbl.x.toFixed(1)}" y="${(lbl.y+5).toFixed(1)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="${color}">${letter}</text>`;
+}
+// base URL for the official booklet sign images (media/signs/tmuna_NNN.png).
+function crSignBase() {
+  return (typeof SIGN_IMG_BASE !== 'undefined' && SIGN_IMG_BASE)
+    ? SIGN_IMG_BASE
+    : 'https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs';
+}
+// the vessel's sign in a card ABOVE its letter, shown as the ACTUAL official
+// booklet image (tmuna_NNN.png) — authoritative for day-shapes, flags and sound
+// signals alike, so it never drifts from the exam booklet. Sits a bit outside the
+// letter ring and is clamped to stay inside the scene (never over the footer).
+// booklet image number -> signal-flag letter, so flags render as a clean CENTERED
+// flag (the booklet flag photos are off-centre with a mast and edge bleed).
+const CR_FLAG_ID = { 92:'C', 93:'N', 95:'B', 98:'A', 104:'O', 106:'Q' };
+function crSignCardAbove(letter, shapeIds, withBall) {
+  const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
+  const p = crPos(angle, CR_R_LABEL + 42);   // same radial offset for every sign
+  const id = shapeIds[0] || null;
+  const box = 58, S = 50;
+  const cx = Math.max(box/2 + 12, Math.min(348 - box/2, p.x));
+  const cy = Math.max(box/2 + 8, Math.min(304, p.y)); // keep full offset yet above the y=345 watermark
+  let inner, label;
+  if (id && CR_FLAG_ID[id] && SIGNAL_FLAGS[CR_FLAG_ID[id]]) {
+    const fw = 44, fh = 30;                    // flag centred in the card
+    inner = SIGNAL_FLAGS[CR_FLAG_ID[id]].draw(cx - fw/2, cy - fh/2, fw, fh)
+      + `<rect x="${(cx-fw/2).toFixed(1)}" y="${(cy-fh/2).toFixed(1)}" width="${fw}" height="${fh}" fill="none" stroke="#111" stroke-width="1.2"/>`;
+    label = `תמונה ${id}`;
+  } else if (id) {
+    const n = String(id).padStart(3, '0');     // official booklet image (day-shape / sound signal)
+    inner = `<image href="${crSignBase()}/tmuna_${n}.png" x="${(cx-S/2).toFixed(1)}" y="${(cy-S/2).toFixed(1)}" width="${S}" height="${S}"/>`;
+    label = `תמונה ${id}`;
+  } else if (withBall) {
+    inner = crBall(cx, cy, 11); label = 'כדור';
+  } else { return ''; }
+  // lower-half signs put the label ABOVE the card (below would hit the watermark)
+  const ly = (cy >= 200) ? (cy - box/2 - 9) : (cy + box/2 + 9);
+  const lw = Math.max(52, label.length * 6.2);
+  return `<rect x="${(cx-box/2).toFixed(1)}" y="${(cy-box/2).toFixed(1)}" width="${box}" height="${box}" rx="8" fill="#fff" stroke="#e74c3c" stroke-width="2.4"/>`
+    + inner
+    + `<rect x="${(cx-lw/2).toFixed(1)}" y="${(ly-7).toFixed(1)}" width="${lw.toFixed(1)}" height="14" rx="3" fill="#0c1a3a"/>`
+    + `<text x="${cx.toFixed(1)}" y="${(ly+3.5).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${label}</text>`;
+}
+
+function generateCompassRoseScene(qText, useBoats) {
   const txt = qText || '';
-  const parenMatch = txt.match(/\(([A-P])\)/g);
+  const parenMatch = txt.match(/\(\s*([A-P])\s*\)/g);
   const quoteMatch = txt.match(/[""״"]([A-P])[""״"]/g);
   const bareMatch = txt.match(/(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+([A-P])\b/g);
   let vessels;
   if (parenMatch && parenMatch.length >= 2) {
-    vessels = parenMatch.map(v => v.replace(/[()]/g, ''));
+    vessels = parenMatch.map(v => v.replace(/[()\s]/g, ''));
   } else if (quoteMatch && quoteMatch.length >= 2) {
     vessels = quoteMatch.map(v => v.replace(/[""״"]/g, ''));
   } else if (bareMatch) {
@@ -1723,6 +1818,17 @@ function generateCompassRoseScene(qText) {
   svg += `<line x1="${CR_CX-D}" y1="${CR_CY}" x2="${CR_CX+D}" y2="${CR_CY}" stroke="#333" stroke-width="0.6" stroke-dasharray="2,2"/>`;
   svg += `<line x1="${CR_CX-d45}" y1="${CR_CY-d45}" x2="${CR_CX+d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
   svg += `<line x1="${CR_CX+d45}" y1="${CR_CY-d45}" x2="${CR_CX-d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
+  // l12 boat overlay: top-view illustration per vessel, sign card above the letter.
+  if (useBoats) {
+    for (const l of CR_LETTERS) svg += (l === observer || l === target) ? crVesselLabel(l) : crVessel(l);
+    svg += crBoat(observer, 'speedboat');
+    const targetType = (shapeIds.length && CR_SIGN_TO_TYPE[shapeIds[0]]) || 'speedboat';
+    svg += crBoat(target, targetType);
+    if (shapeIds.length || withBall) svg += crSignCardAbove(target, shapeIds, withBall);
+    svg += crHighlight(observer, '#ffd700');
+    svg += crHighlight(target, '#e74c3c');
+    return svg;
+  }
   for (const l of CR_LETTERS) svg += crVessel(l);
   if ((shapeIds.length || withBall) && target) svg += crDayShape(target, shapeIds, withBall);
   if (observer) svg += crBowLine(observer, '#ffd700');
@@ -4393,8 +4499,9 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   //   4. everything else -> clean neutral card.
   let scene;
   if (q.license === 12) {
-    const rose = generateCompassRoseScene(q.q_he || '');
+    const rose = generateCompassRoseScene(q.q_he || '', true);
     scene = rose ? rose
+      : /ללא שליטה|לא שולט|איבד הגה|איבד את ההגה/.test(q.q_he || '') ? SCENES_QA['daysign_nuc']
       : (q.topic === 'זכות מעבר') ? getScene('זכות מעבר', q.q_he || '')
       : neutralSceneL12();
   } else {

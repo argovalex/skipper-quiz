@@ -26,6 +26,11 @@ const VO_FIXES = [
   // (the bracket-strip below then exposes them for LATIN_LETTER_HE conversion).
   // Must run before that bracket-strip, which would otherwise leave the word inline.
   [/\([^)]*[A-Za-z]{2,}[^)]*\)/g, ''],
+  // A single vessel/flag letter in parens (l12 writes "מנוע(J)", "( N )") must keep
+  // a space on both sides, or the bracket-strip glues it to the previous word and
+  // LATIN_LETTER_HE reads "מנועJ" as one token ("מנועג'יי"). Spacing it lets the
+  // letter convert cleanly, exactly like l11's spaced "כלי שייט J".
+  [/\(\s*([A-Za-z])\s*\)/g, ' $1 '],
   [/=/g,              ' '],
   [/[(){}\[\]]/g,     ''],
   [/[_|]/g,           ' '],
@@ -105,18 +110,26 @@ const VO_FIXES = [
   [/°/g,              ' מעלות '],
   [/\bknots?\b/gi,    'קשרים'],
   [/"/g,              ''],
-  [/(?<=[֐-׿]-)([A-Za-z])(?![A-Za-z-])/g,
-                      (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
-  [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g,
-                      (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
   [/\b(\d+)%/g,       '$1 אחוז'],
   [/(\d+)\.(\d+)/g,   '$1 נקודה $2'],
   [/\//g,             ' או '],
 ];
 
-function applyVoFixes(text) {
+// Latin vessel/flag letters -> Hebrew phonetics (J -> ג'יי). This is PRONUNCIATION
+// only: apply it for the spoken (TTS) text, but NOT for the on-screen/caption text,
+// which must keep the real letter "J" (Alex 2026-09-02). Kept out of VO_FIXES so a
+// display build can skip it; runs last so brackets/glosses are already resolved.
+const LETTER_RULES = [
+  [/(?<=[֐-׿]-)([A-Za-z])(?![A-Za-z-])/g, (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
+  [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g, (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
+];
+
+// keepLatin=true returns DISPLAY text (letters stay "J"); default transliterates
+// them for the TTS voice.
+function applyVoFixes(text, keepLatin) {
   let t = text;
   for (const [pat, rep] of VO_FIXES) t = t.replace(pat, rep);
+  if (!keepLatin) for (const [pat, rep] of LETTER_RULES) t = t.replace(pat, rep);
   return t.replace(/\s{2,}/g, ' ').trim();
 }
 
@@ -172,14 +185,18 @@ function heNum(n){
   return p.join(' ');
 }
 
-function buildVoiceover(q) {
+// keepLatin=true builds the DISPLAY/caption text (vessel letters stay "J"); the
+// default builds the spoken text (letters transliterated for the TTS voice). The
+// two differ ONLY in the letters, so their [[PAUSE]] split and word order match,
+// which lets the caption timing (built on the spoken audio) reuse the display text.
+function buildVoiceover(q, keepLatin) {
   const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
   const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '');
   const letter = (q.answer || 'א').trim();
-  let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`);
+  let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`, keepLatin);
   if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
-  let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`);
-  if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation)}`;
+  let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`, keepLatin);
+  if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation, keepLatin)}`;
   // Auto-niqqud content words from Alex's lexicon (flag letters already done via
   // LATIN_LETTER_HE inside applyVoFixes) so every render is vocalised, no manual pass.
   q1 = applyLexiconText(q1);
