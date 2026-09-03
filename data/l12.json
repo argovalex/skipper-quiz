@@ -2819,8 +2819,8 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "חמש צפירות קצרות ורצופות הן אות אזהרה או ספק, לא אות מצוקה. שלוש האפשרויות האחרות כן אותות מצוקה מוכרים: שידור SOS באלחוט רדיו, אמירת MAYDAY בקשר קולי, והשמעה רצופה של מכשיר אות ערפל כמו גונג.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/distress-signals.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788425468/skipper-quiz/tvoqvxhpopcfi065vo52.mp4"
   },
@@ -2841,8 +2841,8 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "נפנוף דגל לבן אינו אות מצוקה מוכר. אות המצוקה בידיים הוא הרמה והורדה איטית של הזרועות הפרושות לצדדים. שלוש האפשרויות האחרות כן אותות מצוקה: שידור SOS באלחוט רדיו, אמירת MAYDAY בקשר קולי, והשמעה רצופה של מכשיר אות ערפל כמו גונג.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/distress-signals.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788425532/skipper-quiz/sbf23pmi22crccmnnbnr.mp4"
   },
@@ -6869,8 +6869,8 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "המילה MAYDAY היא אות המצוקה בקשר קולי, לא המילה HELP. שלוש האפשרויות האחרות כן אותות מצוקה: שידור הקבוצה SOS באלחוט רדיו, מצוף עשן בצבע כתום, ואמירת MAYDAY בקשר קולי.",
-    "mediaUrl": "",
-    "mediaType": "",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/distress-signals.png",
+    "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788425650/skipper-quiz/sbor2vll69kzjkaeikge.mp4"
   },
