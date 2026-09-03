@@ -8909,14 +8909,15 @@
       "ד. אין משמעות למרחק כל עוד אין מתרחצים באזור."
     ],
     "answer": "ג",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "במפרץ אילת הטווח המזערי הוא 1000 מ' מקו שפל המים, בשל רגישות אקולוגית.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/1162-eilat-north-1000m.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1787499282/skipper-quiz/jvr840jptcnfguacfcra.mp4",
     "rendered_at": "2026-07-24T09:17:46.000Z",
-    "voiceover_text": "שאלה מספר 1162. מהו הטווח המזערי בו רשאי משיט אופנוע ים להפליג בסמוך לחוף הצפוני של מפרץ אילת?. [[PAUSE]] התשובה הנכונה היא ג: 1000 מטרים מקו שֵׁפֶל המים. ... במפרץ אילת הטווח המזערי הוא 1000 מטר מקו שֵׁפֶל המים, בשל רגישות אקולוגית."
+    "voiceover_text": "שאלה מספר 1162. מהו הטווח המזערי בו רשאי משיט אופנוע ים להפליג בסמוך לחוף הצפוני של מפרץ אילת?. [[PAUSE]] התשובה הנכונה היא ג: 1000 מטרים מקו שֵׁפֶל המים. ... במפרץ אילת הטווח המזערי הוא 1000 מטר מקו שֵׁפֶל המים, בשל רגישות אקולוגית.",
+    "html_locked": true
   },
   {
     "num": 2001,
