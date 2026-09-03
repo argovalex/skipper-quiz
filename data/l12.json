@@ -2819,7 +2819,7 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "חמש צפירות קצרות ורצופות הן אות אזהרה או ספק, לא אות מצוקה. שלוש האפשרויות האחרות כן אותות מצוקה מוכרים: שידור SOS באלחוט רדיו, אמירת MAYDAY בקשר קולי, והשמעה רצופה של מכשיר אות ערפל כמו גונג.",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/distress-signals.png",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/scenes/q2128-danger.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788426228/skipper-quiz/ybpdnixpcxltpttlt6hw.mp4"
@@ -2841,7 +2841,7 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "נפנוף דגל לבן אינו אות מצוקה מוכר. אות המצוקה בידיים הוא הרמה והורדה איטית של הזרועות הפרושות לצדדים. שלוש האפשרויות האחרות כן אותות מצוקה: שידור SOS באלחוט רדיו, אמירת MAYDAY בקשר קולי, והשמעה רצופה של מכשיר אות ערפל כמו גונג.",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/distress-signals.png",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2129.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788426282/skipper-quiz/mpetrire7158kcua7na3.mp4"
@@ -6869,7 +6869,7 @@
     "answer": "ד",
     "answer_confirmed": true,
     "explanation": "המילה MAYDAY היא אות המצוקה בקשר קולי, לא המילה HELP. שלוש האפשרויות האחרות כן אותות מצוקה: שידור הקבוצה SOS באלחוט רדיו, מצוף עשן בצבע כתום, ואמירת MAYDAY בקשר קולי.",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/distress-signals.png",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2312.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1788426331/skipper-quiz/myeewwscjlb2fbbxmony.mp4"
