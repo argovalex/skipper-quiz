@@ -341,8 +341,10 @@ async def main():
     ap.add_argument("--license", default="11")
     a = ap.parse_args()
     os.makedirs(OUT_DIR, exist_ok=True)
-    if a.bg_clip and not os.path.isfile(a.bg_clip):
-        sys.exit(f"--bg-clip not found: {a.bg_clip}")
+    if a.bg_clip:
+        if not os.path.isfile(a.bg_clip):
+            sys.exit(f"--bg-clip not found: {a.bg_clip}")
+        a.bg_clip = os.path.abspath(a.bg_clip)  # ffmpeg runs from a different cwd; relative paths don't resolve there
 
     if a.all:
         nums = list_license_nums(a.license)
