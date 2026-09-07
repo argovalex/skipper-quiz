@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /legal/
 
 Sitemap: https://www.alargov.com/sitemap.xml
