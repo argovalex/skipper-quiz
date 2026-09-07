@@ -36,6 +36,11 @@ video course/
 !media/bgclips/
 !media/bgclips/*.mp4
 
+# חריג זמני: media/videos/ הוא פתרון-ביניים לאירוח סרטונים סופיים דרך git-raw
+# בזמן ששרת הרינדור (Railway→Cloudinary) תקוע. לא לשימוש קבוע, רק לשאלה בודדת בכל פעם.
+!media/videos/
+!media/videos/*.mp4
+
 # YouTube OAuth: סודות מקומיים, לעולם לא ב-git
 tools/youtube/client_secret.json
 tools/youtube/token.json
