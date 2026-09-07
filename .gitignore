@@ -32,6 +32,14 @@ _archive/
 *.mp4
 video course/
 
+# חריג: media/bgclips/ הם קלטי-מקור (רקעי סצנה) שהשרת מושך מ-GitHub, לא תוצרי רינדור
+!media/bgclips/
+!media/bgclips/*.mp4
+
+# YouTube OAuth: סודות מקומיים, לעולם לא ב-git
+tools/youtube/client_secret.json
+tools/youtube/token.json
+
 # inputs מקוריים וניסויים מקומיים
 *.pdf
 *.xlsx
