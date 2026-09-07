@@ -1,6 +1,6 @@
 // AUTO-GENERATED from references/niqqud-lexicon.md by
 // tools/quiz-app/gen-vo-lexicon.js. Do NOT edit by hand — edit the .md and re-run.
-// 205 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
+// 206 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
 const VO_LEXICON = [
   ["חבל העוגן","חֶבֶל הָעֹגֶן"],
   ["שנים עשרה","שְׁנֵים עֶשְׂרֵה"],
@@ -103,6 +103,7 @@ const VO_LEXICON = [
   ["הרכבה","הָרְכִבָה"],
   ["מאטים","מאִטים"],
   ["רכיבה","רֶכִיבָה"],
+  ["המפנה","הַמְּפַנֶּה"],
   ["בהחפה","בְּהַחָפָה"],
   ["השוקע","השוֹקָעַּ"],
   ["הפגוש","הפָּגֹש"],
