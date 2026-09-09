@@ -133,7 +133,7 @@ def main():
     print(f"[1/6] copied clip -> {bgclip_rel}")
 
     data_path = data_path_for(a.license)
-    with open(data_path, "r", encoding="utf-8") as f:
+    with open(data_path, "r", encoding="utf-8", newline="") as f:
         text = f.read()
     start, end = question_block(text, a.num)
     block = set_field(text[start:end], "mediaUrl", f"{GH_RAW}/{bgclip_rel}")
@@ -163,7 +163,7 @@ def main():
     if stale:
         print(f"      removed {len(stale)} superseded version(s): {', '.join(stale)}")
 
-    with open(data_path, "r", encoding="utf-8") as f:
+    with open(data_path, "r", encoding="utf-8", newline="") as f:
         text = f.read()
     start, end = question_block(text, a.num)
     rendered_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
