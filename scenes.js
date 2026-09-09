@@ -4554,6 +4554,7 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
 .opt.wrong .ltr{background:#e74c3c;color:#fff}
 .opt.dim{opacity:0.3}
 #prog{position:absolute;bottom:0;left:0;height:2px;background:#4a90d9;width:0;z-index:5}
+#credit{background:#0c1a3a;color:#7eb8f7;font-size:12px;font-weight:700;text-align:center;padding:6px 0;flex-shrink:0;border-top:2px solid #1e3a6e}
 </style></head><body>
 <div id="reel">
   <div id="hdr"><div class="brand">⚓ SKIPPER QUIZ</div><div class="htitle">${headerTitle}</div></div>
@@ -4565,10 +4566,11 @@ body{background:#000;display:flex;align-items:center;justify-content:center;heig
         <rect x="60" y="8" width="240" height="38" rx="19" fill="#0d3d2a" stroke="#2ecc71" stroke-width="2" opacity="0.95"/>
         <text id="ovText" x="180" y="32" text-anchor="middle" fill="#2ecc71" font-size="20" font-family="Heebo,sans-serif" font-weight="900">✅ נכון!</text>
       </g>
-      ${q.topic !== 'אותות קוליים' ? '<text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>' : ''}
+      ${(q.topic !== 'אותות קוליים' && !q.mediaUrl) ? '<text x="180" y="345" text-anchor="middle" fill="#7eb8f7" font-size="12" font-family="Heebo,sans-serif" font-weight="700" opacity="1">⚓ Alex Argov | Sailing Instructor</text>' : ''}
     </svg>
     <div id="prog"></div>
   </div>
+  ${q.mediaUrl ? '<div id="credit">⚓ Alex Argov | Sailing Instructor</div>' : ''}
   <div id="ftr">
     <div class="ql" id="ql">${phaseLabels[0]}</div>
     <div class="qt" id="qt">${qText}</div>
