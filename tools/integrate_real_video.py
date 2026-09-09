@@ -77,14 +77,16 @@ def set_field(block, field, value):
     new = f'"{field}": "{value}"'
     if pat.search(block):
         return pat.sub(new, block, count=1)
-    vpat = re.compile(r'"videoUrl":\s*"[^"]*",?\n')
+    vpat = re.compile(r'("videoUrl":\s*"[^"]*")(,)?(\r?\n)')
     m = vpat.search(block)
     if not m:
         sys.exit(f'could not find "videoUrl" in question block to anchor insertion of "{field}"')
     line_start = block.rfind("\n", 0, m.start()) + 1
     indent = re.match(r"[ \t]*", block[line_start:m.start()]).group(0)
-    insertion = f'{indent}"{field}": "{value}",\n'
-    return block[: m.end()] + insertion + block[m.end() :]
+    comma = m.group(2) or ","  # videoUrl may have been the last field (no comma) — add one
+    newline = m.group(3)
+    insertion = f'{indent}"{field}": "{value}",{newline}'
+    return block[: m.start()] + m.group(1) + comma + newline + insertion + block[m.end() :]
 
 
 def git_dirty_tracked():
