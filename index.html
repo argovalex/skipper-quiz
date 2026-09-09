@@ -974,7 +974,7 @@ function renderEditor(q) {
         <input type="file" accept="image/*,video/*" onchange="handleMediaUpload(this)" onclick="event.stopPropagation()">
         ${q.mediaUrl
           ? (q.mediaType==='video'
-              ? `<video src="${q.mediaUrl}" style="width:100%;max-height:100px;object-fit:cover;border-radius:6px" muted></video>`
+              ? `<video src="${q.mediaUrl}" style="width:100%;max-height:100px;object-fit:cover;border-radius:6px" autoplay muted loop playsinline></video>`
               : `<img src="${q.mediaUrl}" class="media-thumb">`)
           : `<div style="color:var(--muted);font-size:13px">📷 או — העלה תמונה מוכנה שתחליף את הסצנה<br><small style="font-size:11px;opacity:0.7">JPG, PNG, MP4, MOV</small></div>`
         }
