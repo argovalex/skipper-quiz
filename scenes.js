@@ -4502,7 +4502,7 @@ function generateQuizHTML(q, lang, autoPlay=false) {
     const rose = generateCompassRoseScene(q.q_he || '', true);
     scene = rose ? rose
       : /ללא שליטה|לא שולט|איבד הגה|איבד את ההגה/.test(q.q_he || '') ? SCENES_QA['daysign_nuc']
-      : (q.topic === 'זכות מעבר') ? getScene('זכות מעבר', q.q_he || '')
+      : (q.topic === 'זכות מעבר' || q.topic === 'כניסה לנמל') ? getScene(q.topic, q.q_he || '')
       : neutralSceneL12();
   } else {
     scene = (isSoundSignal && !hasVesselLetters)
