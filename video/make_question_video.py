@@ -189,8 +189,13 @@ AENC = ["-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "192k"]
 
 def _bg_filter(seconds, bg_clip):
     if bg_clip:
+        # The card (see build_segment) now fills the whole 1080x1920 frame at the
+        # same aspect ratio, matching the live editor preview exactly (no floating
+        # card over a separate blurred background) — so this clip IS the visible
+        # scene content behind the card's transparent hole, not ambient decor.
+        # No darken/desaturate: it needs to look like the real video, not a backdrop.
         return ("[0:v]scale=1080:1920:force_original_aspect_ratio=increase,"
-                "crop=1080:1920,eq=brightness=-0.22:saturation=0.85,"
+                "crop=1080:1920,"
                 f"trim=duration={seconds:.3f},setsar=1,fps={FPS}[bg]")
     frames = max(1, int(seconds * FPS))
     # subtle Ken Burns zoom on a deep-blue gradient
@@ -210,8 +215,15 @@ def build_segment(out, png, seconds, bg_clip, work, audio=None, timer=False):
     inp += ["-loop", "1", "-t", f"{seconds:.3f}", "-i", png]
 
     fc = _bg_filter(seconds, bg_clip)
-    fc += f";[1:v]scale=-1:{CARD_H}:force_original_aspect_ratio=decrease,setsar=1[card]"
-    fc += f";[bg][card]overlay=(W-w)/2:{CARD_Y}[v]"
+    if bg_clip:
+        # Card's own aspect (see render_frames.js's reelH=693 for video-bg) already
+        # matches 1080:1920, so this is a straight fill — no crop, no letterbox,
+        # no floating card over ambient background. Matches the editor preview.
+        fc += ";[1:v]scale=1080:1920,setsar=1[card]"
+        fc += ";[bg][card]overlay=0:0[v]"
+    else:
+        fc += f";[1:v]scale=-1:{CARD_H}:force_original_aspect_ratio=decrease,setsar=1[card]"
+        fc += f";[bg][card]overlay=(W-w)/2:{CARD_Y}[v]"
     if timer:
         # relative fontfile (resolved via cwd=work); drawtext+fontconfig segfaults on this build
         fc += (";[v]drawtext=fontfile=f.ttf:"
@@ -316,10 +328,16 @@ async def make_one(num, voice_key, bg_clip, license, work):
     joined = os.path.join(work, "joined.mp4")
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", vcat, "-c", "copy", joined])
 
-    # burn subtitles (run in work dir so the filter path has no drive colon)
+    # burn subtitles (run in work dir so the filter path has no drive colon) — skip
+    # for a full-frame video-bg card: its footer already shows the question/answer
+    # text on screen, and the caption band this was designed for no longer exists
+    # now that the card fills the whole 1920 height (it would sit over the footer).
     out_mp4 = os.path.join(OUT_DIR, f"q{num}.mp4")
-    run(["ffmpeg", "-y", "-i", joined, "-vf", "subtitles=subs.ass:fontsdir=.",
-         *VENC, "-c:a", "copy", out_mp4], cwd=work)
+    if bg_clip:
+        shutil.copyfile(joined, out_mp4)
+    else:
+        run(["ffmpeg", "-y", "-i", joined, "-vf", "subtitles=subs.ass:fontsdir=.",
+             *VENC, "-c:a", "copy", out_mp4], cwd=work)
     print(f"[{num}] OK -> {out_mp4}  ({dur(out_mp4):.1f}s)")
     return out_mp4
 
