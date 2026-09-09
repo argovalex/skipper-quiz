@@ -4770,8 +4770,8 @@
     "answer": "ב",
     "answer_confirmed": true,
     "explanation": "השאלה עוסקת בסימון המצופים הצדדיים (IALA A) בפתח מרינה. בכניסה מהים הפתוח, מצוף ירוק (חרוטי) עובר מימין הסירה ומצוף אדום (גלילי) עובר משמאלה. ביציאה מהמרינה הכיוון הפוך: הירוק עובר משמאל הסירה והאדום מימינה, לכן התשובה הנכונה היא ב. תשובה א שגויה כי היא מתארת את מערך הצבעים של הכניסה למרינה ולא של היציאה ממנה. תשובה ג שגויה כי לצד יש חשיבות רבה, סטייה מהתעלה המסומנת עלולה להעלות את הסירה על שרטון או על המצוף עצמו. תשובה ד שגויה כי קיימת תשובה נכונה, ב.",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2216.png",
-    "mediaType": "image",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/bgclips/2216-port-exit-buoys.mp4",
+    "mediaType": "video",
     "approved_for_publish": false,
     "videoUrl": ""
   },
