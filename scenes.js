@@ -1792,7 +1792,13 @@ function generateCompassRoseScene(qText, useBoats) {
   const txt = qText || '';
   const parenMatch = txt.match(/\(\s*([A-P])\s*\)/g);
   const quoteMatch = txt.match(/[""״"]([A-P])[""״"]/g);
-  const bareMatch = txt.match(/(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית)\s+([A-P])\b/g);
+  // "סירת מנוע D" / "סירה דו מנועית F" introduce the observer without the
+  // כלי-שייט/אופנוע-ים/מפרשית wording, and a second vessel is often introduced
+  // later as a bare continuation ("...וגם את O") instead of repeating the vessel
+  // noun. Both forms are common in l12's multi-vessel scenarios (e.g. Q#2219,
+  // Q#2218) and were falling through to the generic getScene diagram instead of
+  // the compass rose, because only one of the two+ letters matched.
+  const bareMatch = txt.match(/(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית|סירת מנוע|סירה(?:\s+דו\s+מנועית)?|וגם(?:\s+את)?)\s+([A-P])\b/g);
   let vessels;
   if (parenMatch && parenMatch.length >= 2) {
     vessels = parenMatch.map(v => v.replace(/[()\s]/g, ''));
