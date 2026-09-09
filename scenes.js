@@ -4607,7 +4607,9 @@ setTimeout(()=>{
   ${q.mediaUrl ? '' : "ov.setAttribute('opacity','1');"}
   setTimeout(()=>{
     document.getElementById('ql').textContent='✅ התשובה הנכונה:';
-    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
+    // Video default: audio (VO) carries the full explanation — don't also dump the
+    // raw explanation text into the small footer card, it overflows and looks bad.
+    document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>';
     // Second countdown — next card (loop for batch recording)
     const prog2=document.getElementById('prog');
     prog2.style.transition='none';prog2.style.width='0%';
