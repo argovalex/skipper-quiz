@@ -104,14 +104,27 @@ function makeGenHtml(mediaBase) {
   const questionPng = path.join(outDir, `q${num}_question.png`);
   const answerPng = path.join(outDir, `q${num}_answer.png`);
 
+  // Video-bg questions get a taller card: #reel is hardcoded to 625px in scenes.js,
+  // and with a long l12 explanation the footer (flex-shrink:0) eats most of that,
+  // squeezing the scene (flex:1) down to almost nothing — the bg clip ends up
+  // hidden behind the answer options instead of visible above them. Give the card
+  // more total height so scene keeps a real share without clipping the footer text.
+  // 693 (not an arbitrary taller number) is chosen so the card's own aspect ratio
+  // (390:693) exactly matches the exported video canvas (1080:1920) — the final
+  // render fills the whole frame with this card (see make_question_video.py's
+  // build_segment), so a mismatched aspect would force a crop into the header/footer.
+  const isVideoBg = q.mediaType === 'video';
+  const reelH = isVideoBg ? 693 : 625;
+
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
     headless: 'new',
   });
   try {
     const page = await browser.newPage();
-    await page.setViewport({ width: 390, height: 625, deviceScaleFactor: 3 });
+    await page.setViewport({ width: 390, height: reelH, deviceScaleFactor: 3 });
     await page.setContent(html, { waitUntil: 'networkidle0', timeout: 60000 });
+    if (isVideoBg) await page.evaluate(h => { document.getElementById('reel').style.height = h + 'px'; }, reelH);
     // fonts + any mediaUrl image
     await page.evaluate(() => document.fonts && document.fonts.ready).catch(() => {});
     await page.evaluate(async () => {
@@ -120,13 +133,29 @@ function makeGenHtml(mediaBase) {
     }).catch(() => {});
     await new Promise(r => setTimeout(r, 350));
 
+    // This pipeline only takes STILL screenshots — a <video> mediaUrl would freeze
+    // on one frame. Instead punch a transparent hole where the scene would be, so
+    // make_question_video.py's --bg-clip overlay shows real motion through it
+    // (the card's own #reel background is the only thing painting that area; #hdr
+    // and #ftr keep their own opaque backgrounds so text stays readable).
+    if (isVideoBg) {
+      await page.evaluate(() => {
+        document.querySelectorAll('#scene video').forEach(v => v.remove());
+        const reel = document.getElementById('reel');
+        if (reel) reel.style.background = 'transparent';
+        document.documentElement.style.background = 'transparent';
+        document.body.style.background = 'transparent';
+      });
+    }
+
     const reel = await page.$('#reel');
-    await reel.screenshot({ path: questionPng });
+    const shotOpts = isVideoBg ? { omitBackground: true } : {};
+    await reel.screenshot({ path: questionPng, ...shotOpts });
 
     // reveal the answer, then screenshot the answer state
     await page.evaluate(() => window.__startAutoPlay && window.__startAutoPlay());
     await new Promise(r => setTimeout(r, 1300));
-    await reel.screenshot({ path: answerPng });
+    await reel.screenshot({ path: answerPng, ...shotOpts });
   } finally {
     await browser.close();
     server.close();
