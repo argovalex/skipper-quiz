@@ -4604,7 +4604,7 @@ setTimeout(()=>{
   const rect=ov.querySelector('rect');
   txt.textContent='✅ תשובה נכונה!';txt.setAttribute('fill','#2ecc71');
   rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');
-  ov.setAttribute('opacity','1');
+  ${q.mediaUrl ? '' : "ov.setAttribute('opacity','1');"}
   setTimeout(()=>{
     document.getElementById('ql').textContent='✅ התשובה הנכונה:';
     document.getElementById('qt').innerHTML='<span style="color:#2ecc71;font-size:11px;font-weight:900">'+OPTS[C]+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
@@ -4634,7 +4634,7 @@ document.querySelectorAll('.opt').forEach((el,i)=>{
     const rect=ov.querySelector('rect');
     if(ok){txt.textContent='✅ נכון!';txt.setAttribute('fill','#2ecc71');rect.setAttribute('fill','#0d3d2a');rect.setAttribute('stroke','#2ecc71');}
     else{txt.textContent='❌ לא נכון';txt.setAttribute('fill','#e74c3c');rect.setAttribute('fill','#3d1a1a');rect.setAttribute('stroke','#e74c3c');}
-    ov.setAttribute('opacity','1');
+    ${q.mediaUrl ? '' : "ov.setAttribute('opacity','1');"}
     setTimeout(()=>{
       document.getElementById('ql').textContent=ok?'✅ נכון! הסבר:':'❌ תשובה נכונה: '+LT[C];
       document.getElementById('qt').innerHTML='<span style="color:'+(ok?'#2ecc71':'#e67e22')+';font-size:11px;font-weight:900">'+(OPTS[C]||'')+'</span>'+(E?'<br><span style="color:#aac4e8;font-size:10px;font-weight:400">'+E+'</span>':'');
