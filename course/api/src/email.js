@@ -6,7 +6,21 @@ const nodemailer = require('nodemailer');
 
 let tx = null; // false = no SMTP configured; object = transport
 function transport() {
-  if (tx === null) tx = process.env.SMTP_URL ? nodemailer.createTransport(process.env.SMTP_URL) : false;
+  if (tx !== null) return tx;
+  if (process.env.SMTP_URL) {
+    tx = nodemailer.createTransport(process.env.SMTP_URL);
+  } else if (process.env.SMTP_HOST) {
+    // Discrete vars avoid URL-encoding the "@" in a Gmail username.
+    const port = Number(process.env.SMTP_PORT || 587);
+    tx = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port,
+      secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : port === 465,
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    });
+  } else {
+    tx = false;
+  }
   return tx;
 }
 
