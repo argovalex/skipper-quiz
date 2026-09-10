@@ -254,13 +254,13 @@ function buildCheckoutUrl(req, token, amount, buyer, ret) {
     // Return URLs route through /api/return (not straight to the app): Tranzila POSTs the result,
     // and the static app host answers only GET, so a direct POST there 405s. /api/return 302s to the app.
     const ret302 = ok => `${apiBase}/api/return?` + new URLSearchParams({ to: returnTo, token, ok: ok ? '1' : '0' }).toString();
-    // NOTE: we deliberately do NOT send notify_url_address in the request. Tranzila does not attach
-    // the secret to a request-driven notify (verified: hasSecret:false), and a client-visible URL
-    // cannot carry the secret safely. Instead the notify URL is configured in the terminal PANEL as
-    // `.../api/tranzila/notify?secret=<value>` (server-side), and the handler reads req.query.secret.
+    // notify_url_address makes Tranzila POST the server-to-server notify that issues the code.
+    // The secret can't ride in this client-visible URL, and Tranzila does not attach one itself
+    // (hasSecret:false). Notify authentication is handled in the notify handler (see there).
     const p = new URLSearchParams({
       sum: String(amount), currency: '1', email: buyer || '', pdesc: 'course access', token,
       success_url_address: ret302(true), fail_url_address: ret302(false),
+      notify_url_address: `${apiBase}/api/tranzila/notify`,
     });
     return `https://direct.tranzila.com/${term}/iframenew.php?${p.toString()}`;
   }
@@ -349,17 +349,17 @@ app.all('/api/return', (req, res) => {
 app.post('/api/tranzila/notify', async (req, res) => {
   if (!db.hasDb()) return res.status(503).send('no-db');
   const b = req.body || {};
-  // TEMP diagnostic (remove after wiring confirmed): shows Tranzila did POST, what it sent, and
-  // whether the secret matched — without ever printing the secret value itself.
-  console.error('notify hit:', JSON.stringify({
-    method: req.method, keys: Object.keys(b), Response: b.Response,
-    hasToken: !!(b.token || b.uid), hasSecret: b.secret != null,
-    secretMatch: b.secret === process.env.TRANZILA_NOTIFY_SECRET,
-  }));
-  const provided = b.secret != null ? b.secret : (req.query && req.query.secret); // query: notify_url_address carries it
-  if (process.env.TRANZILA_NOTIFY_SECRET && provided !== process.env.TRANZILA_NOTIFY_SECRET) {
-    return res.status(403).send('bad-secret');
-  }
+  // Authenticate the notify. Tranzila does not attach our secret to the POST and the notify URL is
+  // client-visible, so a shared secret can't be relied on here. Trust either a matching secret
+  // (query or body) OR a POST originating from a Tranzila source IP (set TRANZILA_NOTIFY_IPS to the
+  // IP/prefix seen in the log below). Approval still requires Response 000 + a real pending order.
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || '';
+  const provided = b.secret != null ? b.secret : (req.query && req.query.secret);
+  const secretOk = !!process.env.TRANZILA_NOTIFY_SECRET && provided === process.env.TRANZILA_NOTIFY_SECRET;
+  const ips = (process.env.TRANZILA_NOTIFY_IPS || '').split(',').map(s => s.trim()).filter(Boolean);
+  const ipOk = ips.some(p => ip === p || ip.startsWith(p));
+  console.error('notify auth:', JSON.stringify({ ip, secretOk, ipOk, Response: b.Response, keys: Object.keys(b) }));
+  if (!secretOk && !ipOk) return res.status(403).send('bad-secret');
   const token = b.token || b.uid || null;
   const txn = b.Tempref || b.ConfirmationCode || b.index || ('TZ-' + Date.now());
   // Live terminal: only Response 000 is an approval. Without a terminal (dev), notify isn't
