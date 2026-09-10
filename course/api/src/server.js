@@ -254,12 +254,13 @@ function buildCheckoutUrl(req, token, amount, buyer, ret) {
     // Return URLs route through /api/return (not straight to the app): Tranzila POSTs the result,
     // and the static app host answers only GET, so a direct POST there 405s. /api/return 302s to the app.
     const ret302 = ok => `${apiBase}/api/return?` + new URLSearchParams({ to: returnTo, token, ok: ok ? '1' : '0' }).toString();
-    // notify_url_address makes Tranzila send the server-to-server notify that issues the code.
-    // The shared `secret` is attached by the terminal config in the panel (never in this client URL).
+    // NOTE: we deliberately do NOT send notify_url_address in the request. Tranzila does not attach
+    // the secret to a request-driven notify (verified: hasSecret:false), and a client-visible URL
+    // cannot carry the secret safely. Instead the notify URL is configured in the terminal PANEL as
+    // `.../api/tranzila/notify?secret=<value>` (server-side), and the handler reads req.query.secret.
     const p = new URLSearchParams({
       sum: String(amount), currency: '1', email: buyer || '', pdesc: 'course access', token,
       success_url_address: ret302(true), fail_url_address: ret302(false),
-      notify_url_address: `${apiBase}/api/tranzila/notify`,
     });
     return `https://direct.tranzila.com/${term}/iframenew.php?${p.toString()}`;
   }
@@ -355,7 +356,8 @@ app.post('/api/tranzila/notify', async (req, res) => {
     hasToken: !!(b.token || b.uid), hasSecret: b.secret != null,
     secretMatch: b.secret === process.env.TRANZILA_NOTIFY_SECRET,
   }));
-  if (process.env.TRANZILA_NOTIFY_SECRET && b.secret !== process.env.TRANZILA_NOTIFY_SECRET) {
+  const provided = b.secret != null ? b.secret : (req.query && req.query.secret); // query: notify_url_address carries it
+  if (process.env.TRANZILA_NOTIFY_SECRET && provided !== process.env.TRANZILA_NOTIFY_SECRET) {
     return res.status(403).send('bad-secret');
   }
   const token = b.token || b.uid || null;
