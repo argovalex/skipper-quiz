@@ -348,6 +348,13 @@ app.all('/api/return', (req, res) => {
 app.post('/api/tranzila/notify', async (req, res) => {
   if (!db.hasDb()) return res.status(503).send('no-db');
   const b = req.body || {};
+  // TEMP diagnostic (remove after wiring confirmed): shows Tranzila did POST, what it sent, and
+  // whether the secret matched — without ever printing the secret value itself.
+  console.error('notify hit:', JSON.stringify({
+    method: req.method, keys: Object.keys(b), Response: b.Response,
+    hasToken: !!(b.token || b.uid), hasSecret: b.secret != null,
+    secretMatch: b.secret === process.env.TRANZILA_NOTIFY_SECRET,
+  }));
   if (process.env.TRANZILA_NOTIFY_SECRET && b.secret !== process.env.TRANZILA_NOTIFY_SECRET) {
     return res.status(403).send('bad-secret');
   }
