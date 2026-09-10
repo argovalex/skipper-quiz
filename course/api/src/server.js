@@ -247,19 +247,25 @@ function applyCoupon(base, c) {
 const selfBase = req => (process.env.PUBLIC_URL || (req.protocol + '://' + req.get('host'))).replace(/\/$/, '');
 function buildCheckoutUrl(req, token, amount, buyer, ret) {
   const term = (process.env.TRANZILA_TERMINAL || '').toLowerCase(); // Tranzila URL path is case-sensitive, lowercase only
-  const returnTo = ret || selfBase(req);
-  const success = returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + encodeURIComponent(token);
+  const apiBase = selfBase(req);
+  const returnTo = ret || apiBase;
   if (term) {
-    // Real Tranzila hosted page. Field names refined at real-connect; notify is configured on the terminal.
+    // Real Tranzila hosted page.
+    // Return URLs route through /api/return (not straight to the app): Tranzila POSTs the result,
+    // and the static app host answers only GET, so a direct POST there 405s. /api/return 302s to the app.
+    const ret302 = ok => `${apiBase}/api/return?` + new URLSearchParams({ to: returnTo, token, ok: ok ? '1' : '0' }).toString();
+    // notify_url_address makes Tranzila send the server-to-server notify that issues the code.
+    // The shared `secret` is attached by the terminal config in the panel (never in this client URL).
     const p = new URLSearchParams({
       sum: String(amount), currency: '1', email: buyer || '', pdesc: 'course access', token,
-      success_url_address: success, fail_url_address: returnTo,
+      success_url_address: ret302(true), fail_url_address: ret302(false),
+      notify_url_address: `${apiBase}/api/tranzila/notify`,
     });
     return `https://direct.tranzila.com/${term}/iframenew.php?${p.toString()}`;
   }
   // Simulated hosted page (until the real terminal is connected).
   const p = new URLSearchParams({ token, amount: String(amount), email: buyer || '', ret: returnTo });
-  return selfBase(req) + '/api/dev/checkout?' + p.toString();
+  return apiBase + '/api/dev/checkout?' + p.toString();
 }
 
 // Shared: turn a pending purchase into a paid one — issue code, email, invoice. Idempotent.
@@ -323,6 +329,19 @@ app.get('/api/order/status', async (req, res) => {
     code = c.rows[0] && c.rows[0].code;
   }
   res.json({ ok: true, status: row.status, code });
+});
+
+// Tranzila POSTs the payment result to the return URL, but the static app host answers only GET
+// (a POST there 405s). Bounce the browser (302) back to the app with the token so it can poll
+// /api/order/status for the issued code. Accept GET+POST; guard against open redirect.
+app.all('/api/return', (req, res) => {
+  const q = Object.assign({}, req.query, req.body || {});
+  const token = q.token || '';
+  let to = q.to || '';
+  try { const u = new URL(to); if (!(ALLOW.includes('*') || ALLOW.includes(u.origin))) to = ''; } catch { to = ''; }
+  if (!to) to = ALLOW.find(a => /^https?:\/\//.test(a)) || selfBase(req);
+  const sep = to.includes('?') ? '&' : '?';
+  res.redirect(302, to + sep + 'token=' + encodeURIComponent(token) + (q.ok === '0' ? '&pay=fail' : ''));
 });
 
 // Tranzila server-to-server notify → finalize the order.
