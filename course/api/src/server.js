@@ -278,7 +278,7 @@ async function finalize(p, txn) {
   const code = await codes.issueCode(p.email, p.id);
   await db.q("update purchases set status='paid', tranzila_txn=$2 where id=$1", [p.id, txn]);
   if (p.coupon_code) await db.q('update coupons set uses=uses+1 where lower(code)=lower($1)', [p.coupon_code]);
-  await email.sendCode(p.email, code);
+  email.sendCode(p.email, code).catch(e => console.error('email bg error', e.message)); // fire-and-forget: never delay the notify response on a slow/blocked SMTP
   await invoice.issue({ email: p.email, amount: Number(p.amount_ils), code });
   console.error(`💳 finalized ${p.email} → ${code} (₪${p.amount_ils}${p.coupon_code ? ', ' + p.coupon_code : ''})`);
   return code;
