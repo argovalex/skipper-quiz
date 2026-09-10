@@ -1,11 +1,51 @@
 // Delivers the access code to the buyer.
-// Simulation: logs to console. Real: wire SMTP (nodemailer) when SMTP_URL is set.
-async function sendCode(email, code) {
-  if (process.env.SMTP_URL) {
-    // TODO(real): const nodemailer=require('nodemailer'); send via process.env.SMTP_URL.
-    // Kept as a seam so connecting real email is one module, no flow change.
-  }
-  console.error(`✉️  [sim] access code ${code} → ${email}`);
-  return { sent: true, sim: !process.env.SMTP_URL };
+// Real send via nodemailer when SMTP_URL is set (e.g. smtp://user:pass@smtp.host:587);
+// otherwise logs (simulation). Failures never throw — the code is already issued and shown in-app,
+// so a mail hiccup must not break finalize.
+const nodemailer = require('nodemailer');
+
+let tx = null; // false = no SMTP configured; object = transport
+function transport() {
+  if (tx === null) tx = process.env.SMTP_URL ? nodemailer.createTransport(process.env.SMTP_URL) : false;
+  return tx;
 }
+
+async function sendCode(email, code) {
+  const t = transport();
+  if (!t) {
+    console.error(`✉️  [sim] access code ${code} → ${email}`);
+    return { sent: true, sim: true };
+  }
+  const from = process.env.MAIL_FROM || 'אלכס ארגוב · תיאוריה בשיט <no-reply@alargov.com>';
+  const appUrl = (process.env.APP_URL || 'https://app.alargov.com').replace(/\/$/, '');
+  const subject = 'קוד הגישה שלך · קורס תיאוריה לאופנוע ים';
+  const text = [
+    'תודה על הרכישה!',
+    '',
+    `קוד הגישה שלך: ${code}`,
+    '',
+    `כניסה לקורס: ${appUrl}`,
+    'הזן את הקוד באפליקציה כדי לפתוח את כל התוכן.',
+    '',
+    'בהצלחה במבחן,',
+    'אלכס ארגוב',
+  ].join('\n');
+  const html = `<div dir="rtl" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#0a1428">
+  <p>תודה על הרכישה!</p>
+  <p>קוד הגישה שלך:</p>
+  <p style="font-size:26px;font-weight:900;letter-spacing:3px;margin:6px 0 18px">${code}</p>
+  <p><a href="${appUrl}" style="background:#f3c24c;color:#20160a;padding:11px 20px;border-radius:11px;text-decoration:none;font-weight:800;display:inline-block">כניסה לקורס</a></p>
+  <p style="color:#445">הזן את הקוד באפליקציה כדי לפתוח את כל התוכן.</p>
+  <p style="margin-top:20px">בהצלחה במבחן,<br>אלכס ארגוב</p>
+</div>`;
+  try {
+    await t.sendMail({ from, to: email, subject, text, html });
+    console.error(`✉️  sent access code → ${email}`);
+    return { sent: true, sim: false };
+  } catch (e) {
+    console.error(`✉️  send FAILED → ${email}: ${e.message}`);
+    return { sent: false, sim: false, error: e.message };
+  }
+}
+
 module.exports = { sendCode };
