@@ -351,15 +351,16 @@ app.post('/api/tranzila/notify', async (req, res) => {
   const b = req.body || {};
   // Authenticate the notify. Tranzila does not attach our secret to the POST and the notify URL is
   // client-visible, so a shared secret can't be relied on here. Trust either a matching secret
-  // (query or body) OR a POST originating from a Tranzila source IP (set TRANZILA_NOTIFY_IPS to the
-  // IP/prefix seen in the log below). Approval still requires Response 000 + a real pending order.
-  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || '';
+  // (query or body) OR a POST from a Tranzila source IP (TRANZILA_NOTIFY_IPS, comma-separated exact
+  // IPs or prefixes). Use the LAST X-Forwarded-For hop — the peer Railway's proxy actually saw — so a
+  // client-supplied X-Forwarded-For header can't spoof the source. Approval still needs Response 000.
+  const xff = String(req.headers['x-forwarded-for'] || '').split(',').map(s => s.trim()).filter(Boolean);
+  const ip = xff.length ? xff[xff.length - 1] : (req.socket.remoteAddress || '');
   const provided = b.secret != null ? b.secret : (req.query && req.query.secret);
   const secretOk = !!process.env.TRANZILA_NOTIFY_SECRET && provided === process.env.TRANZILA_NOTIFY_SECRET;
   const ips = (process.env.TRANZILA_NOTIFY_IPS || '').split(',').map(s => s.trim()).filter(Boolean);
   const ipOk = ips.some(p => ip === p || ip.startsWith(p));
-  console.error('notify auth:', JSON.stringify({ ip, secretOk, ipOk, Response: b.Response, keys: Object.keys(b) }));
-  if (!secretOk && !ipOk) return res.status(403).send('bad-secret');
+  if (!secretOk && !ipOk) { console.error('notify rejected: ip=' + ip); return res.status(403).send('bad-secret'); }
   const token = b.token || b.uid || null;
   const txn = b.Tempref || b.ConfirmationCode || b.index || ('TZ-' + Date.now());
   // Live terminal: only Response 000 is an approval. Without a terminal (dev), notify isn't
