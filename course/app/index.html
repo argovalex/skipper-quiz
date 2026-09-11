@@ -98,6 +98,7 @@ async function syncProgressDown(){try{const r=await apiGetProgress();if(r&&r.ok&
 let _pushT;function pushProgress(){if(!st.owned)return;if(!storedCode())return;clearTimeout(_pushT);_pushT=setTimeout(()=>{apiSaveProgress({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound,examLog:st.examLog});},700);}
 async function handleReturn(){
   const u=new URL(location.href);const token=u.searchParams.get('token');if(!token)return false;
+  if(u.searchParams.get('pay')==='fail'){history.replaceState({},'',u.pathname);toast('התשלום לא אושר. לא בוצע חיוב. אפשר לנסות שוב.');return false;}
   toast('מאמת תשלום…');
   for(let i=0;i<25;i++){const s=await apiJson('/api/order/status?token='+encodeURIComponent(token));if(s&&s.ok&&s.status==='paid'&&s.code){history.replaceState({},'',u.pathname);await unlockWithCode(s.code);return true;}await new Promise(r=>setTimeout(r,800));}
   history.replaceState({},'',u.pathname);toast('לא התקבל אישור תשלום. אם חויבת, הקוד נשלח למייל.');return false;
