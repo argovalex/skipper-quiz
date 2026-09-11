@@ -38,6 +38,10 @@ async function priorDevice(priorSid, code) {
 // deactivates any other session on that device so only one stays live.
 async function start(code, priorSid) {
   code = (code || '').trim();
+  // Accept the code with or without hyphens and in any case — e.g. copied from the WhatsApp
+  // OTP button, which carries the code hyphenless. Canonicalize a SK######## back to SK-XXXX-YYYY.
+  const norm = code.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (/^SK[A-Z0-9]{8}$/.test(norm)) code = `SK-${norm.slice(2, 6)}-${norm.slice(6, 10)}`;
   if (!code) return { ok: false, reason: 'missing-code' };
   if (devBypass(code)) {
     const sid = newSid();

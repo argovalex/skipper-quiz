@@ -39,15 +39,23 @@ async function sendCode(phone, code) {
   const tmpl = process.env.WHATSAPP_TEMPLATE || 'access_code';
   const lang = process.env.WHATSAPP_TEMPLATE_LANG || 'he';
   const url = `${GRAPH}/${ver}/${process.env.WHATSAPP_PHONE_ID}/messages`;
+  // WhatsApp only approves code-bearing templates under the Authentication category, whose
+  // copy-code button accepts alphanumerics only. Strip the hyphens (SK-DXJB-33Y6 → SKDXJB33Y6);
+  // the app's session.start canonicalizes it back, so the copied value still validates.
+  // Auth templates require the OTP in BOTH the body and the URL/copy-code button component.
+  const otp = String(code).replace(/-/g, '');
+  const authTemplate = process.env.WHATSAPP_UTILITY !== '1'; // default: authentication-style
+  const components = authTemplate
+    ? [
+        { type: 'body', parameters: [{ type: 'text', text: otp }] },
+        { type: 'button', sub_type: 'url', index: '0', parameters: [{ type: 'text', text: otp }] },
+      ]
+    : [{ type: 'body', parameters: [{ type: 'text', text: String(code) }] }];
   const payload = {
     messaging_product: 'whatsapp',
     to,
     type: 'template',
-    template: {
-      name: tmpl,
-      language: { code: lang },
-      components: [{ type: 'body', parameters: [{ type: 'text', text: String(code) }] }],
-    },
+    template: { name: tmpl, language: { code: lang }, components },
   };
   try {
     const r = await fetch(url, {
