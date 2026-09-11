@@ -6,7 +6,7 @@
 // Config (Railway env on skipper-quiz):
 //   WHATSAPP_TOKEN         permanent/system-user access token
 //   WHATSAPP_PHONE_ID      the sender's Phone Number ID (NOT the phone number itself)
-//   WHATSAPP_TEMPLATE      approved template name (default: access_code)
+//   WHATSAPP_TEMPLATE      approved template name (default: course_access_code — Authentication/OTP, Hebrew)
 //   WHATSAPP_TEMPLATE_LANG template language code (default: he)
 //   WHATSAPP_API_VERSION   graph API version (default: v21.0)
 //
@@ -36,7 +36,7 @@ async function sendCode(phone, code) {
   if (!to) { return { sent: false, skipped: 'no-phone' }; }
   if (!configured()) { console.error(`📱 [sim] wa code ${code} → ${to}`); return { sent: true, sim: true }; }
   const ver = process.env.WHATSAPP_API_VERSION || 'v21.0';
-  const tmpl = process.env.WHATSAPP_TEMPLATE || 'access_code';
+  const tmpl = process.env.WHATSAPP_TEMPLATE || 'course_access_code';
   const lang = process.env.WHATSAPP_TEMPLATE_LANG || 'he';
   const url = `${GRAPH}/${ver}/${process.env.WHATSAPP_PHONE_ID}/messages`;
   // WhatsApp only approves code-bearing templates under the Authentication category, whose
