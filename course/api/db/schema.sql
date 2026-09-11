@@ -28,6 +28,9 @@ update access_codes set device_limit = 1 where device_limit <> 1;
 alter table purchases add column if not exists token text;
 create unique index if not exists idx_purchases_token on purchases(token);
 
+-- buyer mobile (E.164, +972...) for WhatsApp code delivery; null when not collected
+alter table purchases add column if not exists phone text;
+
 create table if not exists code_devices (
   code       text not null references access_codes(code) on delete cascade,
   device_id  text not null,
