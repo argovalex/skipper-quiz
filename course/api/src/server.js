@@ -8,6 +8,7 @@ const content = require('./content');
 const codes = require('./codes');
 const settings = require('./settings');
 const email = require('./email');
+const whatsapp = require('./whatsapp');
 const invoice = require('./invoice');
 const session = require('./session');
 const media = require('./media');
@@ -279,6 +280,7 @@ async function finalize(p, txn) {
   await db.q("update purchases set status='paid', tranzila_txn=$2 where id=$1", [p.id, txn]);
   if (p.coupon_code) await db.q('update coupons set uses=uses+1 where lower(code)=lower($1)', [p.coupon_code]);
   email.sendCode(p.email, code).catch(e => console.error('email bg error', e.message)); // fire-and-forget: never delay the notify response on a slow/blocked SMTP
+  if (p.phone) whatsapp.sendCode(p.phone, code).catch(e => console.error('wa bg error', e.message)); // fire-and-forget: WhatsApp code delivery, never blocks finalize
   await invoice.issue({ email: p.email, amount: Number(p.amount_ils), code });
   console.error(`💳 finalized ${p.email} → ${code} (₪${p.amount_ils}${p.coupon_code ? ', ' + p.coupon_code : ''})`);
   return code;
@@ -292,8 +294,9 @@ async function finalizeById(id, txn) {
 app.post('/api/checkout', rateStart, async (req, res) => {
   if (!checkoutOpen()) return res.status(503).json({ ok: false, reason: 'checkout-closed' });
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
-  const { email: buyer, coupon, return_url } = req.body || {};
+  const { email: buyer, coupon, return_url, phone } = req.body || {};
   if (!buyer || !/.+@.+/.test(buyer)) return res.status(400).json({ ok: false, reason: 'bad-email' });
+  const phoneE164 = whatsapp.toWaNumber(phone); // '' if missing/invalid; stored with leading '+'
   const pr = await settings.pricing();
   let amount = pr.price, couponRow = null, partner = null;
   if (coupon) {
@@ -305,9 +308,9 @@ app.post('/api/checkout', rateStart, async (req, res) => {
   }
   const token = genToken();
   const p = await db.q(
-    `insert into purchases(email, amount_ils, coupon_code, partner_ref, status, token)
-     values ($1,$2,$3,$4,'pending',$5) returning id`,
-    [buyer, amount, couponRow ? couponRow.code : null, partner, token]
+    `insert into purchases(email, amount_ils, coupon_code, partner_ref, status, token, phone)
+     values ($1,$2,$3,$4,'pending',$5,$6) returning id`,
+    [buyer, amount, couponRow ? couponRow.code : null, partner, token, phoneE164 ? '+' + phoneE164 : null]
   );
   if (amount <= 0) { // 100% coupon → free, no checkout
     const code = await finalizeById(p.rows[0].id, 'FREE-' + token);
