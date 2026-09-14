@@ -52,7 +52,12 @@ async function start(code, priorSid) {
 
   const reuse = await priorDevice(priorSid, code);
   return db.tx(async (c) => {
-    const r = await c.query('select code, revoked, device_limit from access_codes where code=$1 for update', [code]);
+    const r = await c.query(
+      `select ac.code, ac.revoked, ac.device_limit, ac.email, i.name as instructor_name
+       from access_codes ac left join instructors i on i.code = ac.code
+       where ac.code = $1 for update`,
+      [code]
+    );
     if (!r.rows.length) return { ok: false, reason: 'not-found' };
     const row = r.rows[0];
     if (row.revoked) return { ok: false, reason: 'revoked' };
@@ -69,7 +74,7 @@ async function start(code, priorSid) {
     const sid = newSid();
     await c.query('insert into sessions(sid, code, device_id) values ($1,$2,$3)', [sid, code, device]);
     await c.query('insert into progress(code) values ($1) on conflict do nothing', [code]);
-    return { ok: true, sid, email: row.email };
+    return { ok: true, sid, email: row.email, name: row.instructor_name || null };
   });
 }
 
