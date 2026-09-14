@@ -16,6 +16,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;font-family:'Heebo',sans-serif;-webkit-tap-highlight-color:transparent}
+:root{--fs:1}
+.text-lg{--fs:1.18}
 html,body{margin:0;padding:0}
 body{background:radial-gradient(circle at 50% 15%,#0e1c3d,#050b1a 70%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
 a{color:#7eb8f7}
@@ -77,7 +79,17 @@ let API_BASE = (localStorage.getItem('sq_api')||'https://api.alargov.com').repla
 let BRAND='לומדה', PRODUCT='רישיון אופנוע ים', PRICE=199, PRICING=null, CHECKOUT_OPEN=false;
 function storedCode(){try{return localStorage.getItem('sq_code')||'';}catch(e){return '';}}
 function storeCode(c){try{localStorage.setItem('sq_code',c);}catch(e){}}
-function clearCode(){try{localStorage.removeItem('sq_code');}catch(e){}}
+function clearCode(){try{localStorage.removeItem('sq_code');localStorage.removeItem('sq_email');localStorage.removeItem('sq_name');}catch(e){}}
+function storeIdentity(r){try{if(r&&r.email)localStorage.setItem('sq_email',r.email);if(r&&r.name)localStorage.setItem('sq_name',r.name);}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function displayName(){
+  try{
+    const n=localStorage.getItem('sq_name');if(n&&n.trim())return esc(n.trim().split(/\s+/)[0]);
+    const e=localStorage.getItem('sq_email');
+    if(e){const first=(e.split('@')[0].split('+')[0].split(/[._-]+/)[0]||'').trim();if(first)return esc(first.charAt(0).toUpperCase()+first.slice(1));}
+  }catch(err){}
+  return 'סקיפר';
+}
 // The httpOnly sid cookie is the working credential; every call sends it. The raw
 // code is kept only to (re)open a session if the cookie is lost or superseded.
 async function apiJson(path,opts){opts=opts||{};opts.credentials='include';const r=await fetch(API_BASE+path,opts);return r.json().catch(()=>({ok:false,reason:'bad-json'}));}
@@ -91,7 +103,7 @@ async function apiContent(){return authed('/api/content');}
 async function apiGetProgress(){return authed('/api/progress');}
 async function apiSaveProgress(data){return authed('/api/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data})});}
 function applyContent(resp){LESSON_Q={};const L=(resp&&resp.lessons)||{};for(const k in L)LESSON_Q[k]=(L[k].questions||[]);rebuildIndex();}
-async function unlockWithCode(code){const s=await sessionStart(code);if(!(s&&s.ok)){const m=s&&s.reason==='device-limit'?'הקוד כבר בשימוש במספר המכשירים המרבי':s&&s.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין';toast(m);return s;}storeCode(code);const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;await syncProgressDown();toast('נפתחה גישה מלאה 🎉');go('home');}else{toast(r&&r.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין');}return r;}
+async function unlockWithCode(code){const s=await sessionStart(code);if(!(s&&s.ok)){const m=s&&s.reason==='device-limit'?'הקוד כבר בשימוש במספר המכשירים המרבי':s&&s.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין';toast(m);return s;}storeCode(code);storeIdentity(s);const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;await syncProgressDown();toast('נפתחה גישה מלאה 🎉');go('home');}else{toast(r&&r.reason==='revoked'?'הגישה בוטלה':'קוד לא תקין');}return r;}
 function promptCode(){const c=prompt('הזן קוד גישה (מהרכישה או מהמדריך):');if(c&&c.trim())unlockWithCode(c.trim());}
 async function logout(){clearCode();st.owned=false;st.done=new Set();try{await apiJson('/api/session/end',{method:'POST'});}catch(e){}try{const f=await apiFree();if(f&&f.ok)applyContent(f);}catch(e){}stopSpeak();go('onboarding');toast('התנתקת — חזרת למצב טעימה');}
 async function syncProgressDown(){try{const r=await apiGetProgress();if(r&&r.ok&&r.data){const d=r.data;if(typeof d.xp==='number')st.xp=Math.max(st.xp,d.xp);if(d.srs)st.srs=Object.assign({},d.srs,st.srs);if(d.topicStats)st.topicStats=Object.assign({},d.topicStats,st.topicStats);if(Array.isArray(d.done))d.done.forEach(x=>st.done.add(x));if(Array.isArray(d.examLog)){const seen=new Set((st.examLog||[]).map(e=>e.ts));d.examLog.forEach(e=>{if(e&&!seen.has(e.ts)){seen.add(e.ts);st.examLog.push(e);}});st.examLog.sort((a,b)=>(a.ts<b.ts?-1:1));if(st.examLog.length>50)st.examLog=st.examLog.slice(-50);}persist();render();}}catch(e){}}
@@ -107,7 +119,7 @@ async function bootstrap(){
   try{const cfg=await apiConfig();if(cfg&&cfg.ok){BRAND=cfg.brand_name||BRAND;PRODUCT=cfg.product_title||PRODUCT;PRICE=cfg.price_ils||PRICE;PRICING=cfg.pricing||PRICING;CHECKOUT_OPEN=!!cfg.checkout_open;}}catch(e){}
   if(await handleReturn())return;
   const code=storedCode();
-  if(code){const s=await sessionStart(code);if(s&&s.ok){const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown();return;}}clearCode();}
+  if(code){const s=await sessionStart(code);if(s&&s.ok){storeIdentity(s);const r=await apiContent();if(r&&r.ok){applyContent(r);st.owned=true;if(st.screen==='onboarding')st.screen='home';render();await syncProgressDown();return;}}clearCode();}
   try{const f=await apiFree();if(f&&f.ok)applyContent(f);else toast('לא הצלחתי לטעון תוכן מהשרת');}catch(e){toast('אין חיבור לשרת');}
   st.owned=false;render();
   // Arriving from the landing "רכוש עכשיו" button (?buy=1): open the purchase flow.
@@ -174,7 +186,7 @@ function lessonLocked(id){return !st.owned;}
 /* ===== STATE ===== */
 const st={screen:'onboarding',lessonId:11,cardIndex:0,qIndex:0,selected:null,score:0,vo:false,videoEnded:false,qvTime:0,
   done:new Set(),owned:false,pool:[],
-  xp:0,streak:0,hearts:5,heartsOn:false,mode:'practice',srs:{},topicStats:{},sound:true,fx:null,gameOver:false,examLog:[],
+  xp:0,streak:0,hearts:5,heartsOn:false,mode:'practice',srs:{},topicStats:{},sound:true,voMode:'both',textSize:'normal',fx:null,gameOver:false,examLog:[],
   paused:false,timed:false,secLeft:0,timeUp:false,
   tour:[],tourIdx:0,tourPhase:'intro'};
 
@@ -223,8 +235,8 @@ function floaty(txt,color){const p=document.querySelector('.phone')||document.bo
 function burst(){const p=document.querySelector('.phone')||document.body;for(let i=0;i<14;i++){const e=document.createElement('div');const cs=['#f1c40f','#2ecc71','#7eb8f7','#fb7185'];e.style.cssText=`position:absolute;top:130px;left:50%;width:8px;height:8px;border-radius:2px;background:${cs[i%4]};z-index:79;pointer-events:none`;p.appendChild(e);const dx=(Math.random()*2-1)*140,dy=-(60+Math.random()*160),rot=Math.random()*360;e.animate([{transform:'translate(-50%,0) rotate(0)',opacity:1},{transform:`translate(calc(-50% + ${dx}px),${dy}px) rotate(${rot}deg)`,opacity:0}],{duration:900+Math.random()*400,easing:'cubic-bezier(.2,.7,.3,1)'});setTimeout(()=>e.remove(),1300);}}
 
 /* ===== שמירה מתמשכת (localStorage עם fallback) ===== */
-function persist(){try{localStorage.setItem('sq_state',JSON.stringify({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound,examLog:st.examLog}));}catch(e){}pushProgress();}
-function loadPersist(){try{const d=JSON.parse(localStorage.getItem('sq_state')||'null');if(d){st.xp=d.xp||0;st.srs=d.srs||{};st.topicStats=d.topicStats||{};if(d.done)st.done=new Set(d.done);if(d.sound!==undefined)st.sound=d.sound;if(Array.isArray(d.examLog))st.examLog=d.examLog;}}catch(e){}}
+function persist(){try{localStorage.setItem('sq_state',JSON.stringify({xp:st.xp,srs:st.srs,topicStats:st.topicStats,done:[...st.done],sound:st.sound,voMode:st.voMode,textSize:st.textSize,examLog:st.examLog}));}catch(e){}pushProgress();}
+function loadPersist(){try{const d=JSON.parse(localStorage.getItem('sq_state')||'null');if(d){st.xp=d.xp||0;st.srs=d.srs||{};st.topicStats=d.topicStats||{};if(d.done)st.done=new Set(d.done);if(d.sound!==undefined)st.sound=d.sound;if(d.voMode==='both'||d.voMode==='text')st.voMode=d.voMode;if(d.textSize==='normal'||d.textSize==='large')st.textSize=d.textSize;if(Array.isArray(d.examLog))st.examLog=d.examLog;}}catch(e){}}
 
 function showPauseHint(){
   if(document.getElementById('pauseHint'))return;
@@ -245,7 +257,7 @@ function hudHtml(){
   </div>`;}
 
 /* ===== VOICE ===== */
-function speak(t){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='he-IL';const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('he'));if(v)u.voice=v;speechSynthesis.speak(u);}
+function speak(t){if(st.voMode==='text')return;if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='he-IL';const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('he'));if(v)u.voice=v;speechSynthesis.speak(u);}
 function stopSpeak(){if('speechSynthesis'in window)speechSynthesis.cancel();}
 
 /* ===== NAV ===== */
@@ -350,6 +362,7 @@ const C={navy:'#0a1428',card:'#132447',card2:'#1a2f5e',bd:'#2a4a8a',bd2:'#24304f
 function render(){
   const s=st.screen;
   const scroll=document.getElementById('scroll');
+  document.querySelector('.scene').classList.toggle('text-lg',st.textSize==='large');
   let h='';
   if(s==='onboarding')h=vOnboard();
   else if(s==='home')h=vHome();
@@ -424,7 +437,7 @@ function vHome(){
     </div>`;}).join('');
   return `
 <div style="padding:60px 20px 24px">
-  <div style="font-size:20px;font-weight:900;margin-bottom:2px">שלום, אלכס 👋</div>
+  <div style="font-size:20px;font-weight:900;margin-bottom:2px">שלום, ${displayName()} 👋</div>
   <div style="color:${C.blue};font-size:13px;font-weight:700;margin-bottom:20px">הקורס לרישיון אופנוע ים</div>
   <div style="background:${C.card};border:1px solid ${C.bd};border-radius:14px;padding:14px 16px;margin-bottom:8px">
     <div style="display:flex;justify-content:space-between;font-size:12px;color:${C.mut};margin-bottom:6px"><span>התקדמות בקורס</span><span>${doneN}/${total} שיעורים</span></div>
@@ -484,13 +497,13 @@ function vLesson(){
         <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:16px">▶</div>
         <div style="font-family:monospace;font-size:10.5px;color:${C.mut};letter-spacing:.5px">[ וידאו: ${l.title} ]</div>
       </div>
-      <div data-act="vo" style="display:flex;align-items:center;gap:10px;background:${C.navy};border:1px solid ${C.bd};border-radius:10px;padding:9px 12px;margin-bottom:14px;cursor:pointer">
+      ${st.voMode==='text'?'':`<div data-act="vo" style="display:flex;align-items:center;gap:10px;background:${C.navy};border:1px solid ${C.bd};border-radius:10px;padding:9px 12px;margin-bottom:14px;cursor:pointer">
         <div style="width:28px;height:28px;border-radius:50%;background:${C.blue};display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${C.navy};font-size:12px">${st.vo?'⏸':'▶'}</div>
         <div style="flex:1;height:4px;background:${C.bd2};border-radius:2px;overflow:hidden"><div style="height:100%;background:${C.blue};width:${st.vo?60:0}%"></div></div>
         <div style="font-size:10px;color:${C.blue};font-weight:700;flex-shrink:0">${st.vo?'קורא…':'הקראה'}</div>
-      </div>`;
+      </div>`}`;
     inner=`${media}
-    <div style="font-size:15.5px;line-height:1.9;color:#eef4ff;margin-bottom:16px">${card.body}</div>
+    <div style="font-size:calc(15.5px*var(--fs));line-height:1.9;color:#eef4ff;margin-bottom:16px">${card.body}</div>
     ${card.highlight?`<div style="margin-top:auto;background:${C.okBg};border:1px solid ${C.ok};border-radius:12px;padding:13px 15px;font-size:13.5px;font-weight:700;color:${C.okT};line-height:1.55">${card.highlight}</div>`:''}`;
   }
   return `
@@ -536,7 +549,7 @@ function vQuiz(){
     if(answered){if(i===q.c){bg=C.okBg;bd=C.ok;lbg=C.ok;lc=C.okBg;tc=C.ok;cls='pop';}else if(i===st.selected){bg=C.badBg;bd=C.bad;lbg=C.bad;lc='#fff';tc=C.bad;cls='shake';}else op=.35;}
     return `<div ${answered?'':`data-ans="${i}"`} class="${cls}" style="display:flex;align-items:center;gap:10px;background:${bg};border:1px solid ${bd};border-radius:11px;padding:12px 14px;opacity:${op};cursor:${answered?'default':'pointer'}">
       <div style="width:24px;height:24px;border-radius:50%;background:${lbg};color:${lc};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0">${LETTERS[i]}</div>
-      <div style="font-size:13px;font-weight:700;color:${tc};line-height:1.4">${t}</div>
+      <div style="font-size:calc(13px*var(--fs));font-weight:700;color:${tc};line-height:1.4">${t}</div>
     </div>`;}).join('');
   const pct=Math.round(((st.qIndex+(answered?1:0))/st.pool.length)*100);
   const modeLabel={practice:'תרגול',exam:'מבחן מסכם',review:'חזרה חכמה',reinforce:'מבחן חיזוק',timed:'מבחן מדומה',continuous:'מבחן רציף'}[st.mode]||'תרגול';
@@ -556,14 +569,14 @@ function vQuiz(){
   <div style="height:5px;background:${C.card};border-radius:3px;overflow:hidden;margin-bottom:18px"><div style="height:100%;background:${C.blue};width:${pct}%"></div></div>
   ${q.vid?`<div style="text-align:center;margin-bottom:14px"><video id="quizVideo" controls autoplay playsinline preload="auto" src="${q.vid}" style="max-width:100%;max-height:60vh;display:inline-block;vertical-align:top;background:#000;border-radius:12px"></video></div>`:''}
   <div style="background:${C.card};border:1px solid ${C.bd};border-radius:16px;padding:16px;margin-bottom:16px">
-    <div style="font-size:15px;font-weight:700;line-height:1.6">${q.q}</div>
+    <div style="font-size:calc(15px*var(--fs));font-weight:700;line-height:1.6">${q.q}</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:9px">${opts}</div>
   ${answered?`
   <div class="pop" style="background:${correct?C.okBg:C.badBg};border:1px solid ${correct?C.ok:C.bad};border-radius:12px;padding:14px 16px;margin-top:16px">
     <div style="font-size:12.5px;font-weight:900;color:${correct?C.ok:C.bad};margin-bottom:6px">${correct?'✅ תשובה נכונה!':'❌ לא בדיוק — בוא נבין למה'}</div>
-    ${!correct?`<div style="font-size:12.5px;font-weight:800;color:${C.okT};margin-bottom:6px">התשובה הנכונה (${LETTERS[q.c]}): ${q.opts[q.c]}</div>`:''}
-    <div style="font-size:12.5px;line-height:1.6;color:#dce8ff">${q.exp||''}</div>
+    ${!correct?`<div style="font-size:calc(12.5px*var(--fs));font-weight:800;color:${C.okT};margin-bottom:6px">התשובה הנכונה (${LETTERS[q.c]}): ${q.opts[q.c]}</div>`:''}
+    <div style="font-size:calc(12.5px*var(--fs));line-height:1.6;color:#dce8ff">${q.exp||''}</div>
   </div>
   <button data-act="nextq" style="margin-top:16px;background:${C.gold};color:${C.navy};border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:900;cursor:pointer">${st.qIndex>=st.pool.length-1?'לתוצאות':'השאלה הבאה'}</button>`:''}
 </div>`;}
@@ -618,21 +631,21 @@ function vTour(){
     if(answered){if(i===q.c){bg=C.okBg;bd=C.ok;lbg=C.ok;lc=C.okBg;tc=C.ok;cls='pop';}else if(i===st.selected){bg=C.badBg;bd=C.bad;lbg=C.bad;lc='#fff';tc=C.bad;cls='shake';}else op=.35;}
     return `<div ${answered?'':`data-tans="${i}"`} class="${cls}" style="display:flex;align-items:center;gap:10px;background:${bg};border:1px solid ${bd};border-radius:11px;padding:12px 14px;opacity:${op};cursor:${answered?'default':'pointer'}">
       <div style="width:24px;height:24px;border-radius:50%;background:${lbg};color:${lc};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0">${LETTERS[i]}</div>
-      <div style="font-size:13px;font-weight:700;color:${tc};line-height:1.4">${t}</div>
+      <div style="font-size:calc(13px*var(--fs));font-weight:700;color:${tc};line-height:1.4">${t}</div>
     </div>`;}).join('');
   return `
 <div style="padding:44px 20px 24px;display:flex;flex-direction:column;min-height:100%">
   ${head}
   ${q.vid?`<div style="text-align:center;margin-bottom:14px"><video controls playsinline preload="metadata" src="${q.vid}" style="max-width:100%;max-height:52vh;display:inline-block;vertical-align:top;background:#000;border-radius:12px"></video></div>`:''}
   <div style="background:${C.card};border:1px solid ${C.bd};border-radius:16px;padding:16px;margin-bottom:16px">
-    <div style="font-size:15px;font-weight:700;line-height:1.6">${q.q}</div>
+    <div style="font-size:calc(15px*var(--fs));font-weight:700;line-height:1.6">${q.q}</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:9px">${opts}</div>
   ${answered?`
   <div class="pop" style="background:${correct?C.okBg:C.badBg};border:1px solid ${correct?C.ok:C.bad};border-radius:12px;padding:14px 16px;margin-top:16px">
     <div style="font-size:12.5px;font-weight:900;color:${correct?C.ok:C.bad};margin-bottom:6px">${correct?'✅ תשובה נכונה!':'❌ לא בדיוק — בוא נבין למה'}</div>
-    ${!correct?`<div style="font-size:12.5px;font-weight:800;color:${C.okT};margin-bottom:6px">התשובה הנכונה (${LETTERS[q.c]}): ${q.opts[q.c]}</div>`:''}
-    <div style="font-size:12.5px;line-height:1.6;color:#dce8ff">${q.exp||''}</div>
+    ${!correct?`<div style="font-size:calc(12.5px*var(--fs));font-weight:800;color:${C.okT};margin-bottom:6px">התשובה הנכונה (${LETTERS[q.c]}): ${q.opts[q.c]}</div>`:''}
+    <div style="font-size:calc(12.5px*var(--fs));line-height:1.6;color:#dce8ff">${q.exp||''}</div>
   </div>
   ${tourCtaHtml(last)}
   <button data-act="${last?'home':'tournext'}" style="margin-top:14px;background:transparent;border:1px solid ${C.bd};color:${C.blue};border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer">${last?'סיום הטעימה':'לשאלה הבאה ←'}</button>`:''}
@@ -664,13 +677,15 @@ function vProfile(){
 <div style="padding:60px 20px 24px">
   <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:24px">
     <div style="width:64px;height:64px;border-radius:50%;background:${C.card2};border:1px solid ${C.bd};display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:10px">⚓</div>
-    <div style="font-size:17px;font-weight:900">אלכס ארגוב</div>
+    <div style="font-size:17px;font-weight:900">${displayName()}</div>
     <div style="color:${C.blue};font-size:12px;font-weight:700">מועמד לרישיון אופנוע ים</div>
   </div>
   <div style="display:flex;gap:10px;margin-bottom:20px">
     ${[[`${doneN}/${total}`,'שיעורים',C.gold],[`${pct}%`,'התקדמות',C.ok],['4🔥','ימי רצף',C.blue]].map(([v,t,col])=>`<div style="flex:1;background:${C.card};border:1px solid ${C.bd};border-radius:12px;padding:14px;text-align:center"><div style="font-size:20px;font-weight:900;color:${col}">${v}</div><div style="font-size:10.5px;color:${C.mut};margin-top:2px">${t}</div></div>`).join('')}
   </div>
   <button data-act="sound" style="width:100%;background:transparent;border:1px solid ${C.bd};color:#fff;border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer;margin-bottom:10px">${st.sound?'🔊 צלילים: פעיל':'🔇 צלילים: כבוי'}</button>
+  <button data-act="vomode" style="width:100%;background:transparent;border:1px solid ${C.bd};color:#fff;border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer;margin-bottom:10px">${st.voMode==='text'?'📝 הקראה: טקסט בלבד':'🗣️ הקראה: קול + טקסט'}</button>
+  <button data-act="textsize" style="width:100%;background:transparent;border:1px solid ${C.bd};color:#fff;border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer;margin-bottom:10px">${st.textSize==='large'?'🔠 גודל טקסט: גדול':'🔤 גודל טקסט: רגיל'}</button>
   <button data-act="manage" style="width:100%;background:transparent;border:1px solid ${C.bd};color:#fff;border-radius:12px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer">ניהול מנוי</button>
   ${st.owned?`<button data-act="logout" style="width:100%;background:transparent;border:1px solid ${C.bd};color:${C.dim};border-radius:12px;padding:13px;font-size:12.5px;font-weight:700;cursor:pointer;margin-top:10px">התנתק · נקה גישה במכשיר</button>`:''}
 </div>`;}
@@ -741,6 +756,8 @@ function bindActions(){
       else if(a==='practice')go('practice');
       else if(a==='profile'){stopSpeak();go('profile');}
       else if(a==='sound'){st.sound=!st.sound;persist();toast(st.sound?'🔊 צלילים פעילים':'🔇 צלילים כבויים');render();}
+      else if(a==='vomode'){st.voMode=st.voMode==='text'?'both':'text';if(st.voMode==='text'){st.vo=false;stopSpeak();}persist();toast(st.voMode==='text'?'📝 מעכשיו טקסט בלבד, בלי הקראה':'🗣️ מעכשיו קול + טקסט');render();}
+      else if(a==='textsize'){st.textSize=st.textSize==='large'?'normal':'large';persist();toast(st.textSize==='large'?'🔠 טקסט גדול':'🔤 טקסט רגיל');render();}
       else if(a==='manage')toast('ניהול מנוי — יחובר למערכת החיוב (Tranzila).');
       else if(a==='logout')logout();
       else if(a==='havecode')promptCode();

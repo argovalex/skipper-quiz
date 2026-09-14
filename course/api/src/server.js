@@ -157,7 +157,7 @@ app.post('/api/session/start', rateStart, async (req, res) => {
   if (!r.ok) return res.status(r.reason === 'device-limit' || r.reason === 'revoked' ? 403 : 400).json({ ok: false, reason: r.reason });
   setSid(req, res, r.sid);
   if (code && !r.dev) db.q('insert into code_visits(code) values ($1)', [String(code).trim()]).catch(() => {}); // usage stats
-  res.json({ ok: true });
+  res.json({ ok: true, email: r.email || null, name: r.name || null });
 });
 
 app.post('/api/session/end', async (req, res) => {
