@@ -666,6 +666,44 @@ app.post('/api/admin/lead/delete', async (req, res) => {
   }
 });
 
+// Fully delete a comp/instructor test code (own QA promo mints, etc.) — the code, its
+// devices/sessions, the instructors row, and its comp purchase — so it stops showing
+// anywhere, including records.html. Only ever touches purchases that are 'comp' and
+// partner_ref='instructor' (how promo mints are created), so a real paid purchase can
+// never be caught by this even if the code matches. Protected by ADMIN_TOKEN.
+// Body: { codes: ['SK-XXXX-YYYY', ...] }.
+app.post('/api/admin/instructor/delete', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  const codes = Array.isArray(req.body && req.body.codes) ? req.body.codes.map(String) : [];
+  if (!codes.length) return res.status(400).json({ ok: false, reason: 'no-codes' });
+  try {
+    const deleted = await db.tx(async (c) => {
+      await c.query('delete from sessions where code = any($1)', [codes]);
+      await c.query('delete from code_devices where code = any($1)', [codes]);
+      const purchaseIds = await c.query(
+        `select purchase_id from access_codes where code = any($1) and purchase_id is not null`,
+        [codes]
+      );
+      const r = await c.query('delete from access_codes where code = any($1) returning code', [codes]);
+      await c.query('delete from instructors where code = any($1)', [codes]);
+      const ids = purchaseIds.rows.map((row) => row.purchase_id);
+      if (ids.length) {
+        await c.query(
+          `delete from purchases where id = any($1) and status='comp' and partner_ref='instructor'`,
+          [ids]
+        );
+      }
+      return r.rows.length;
+    });
+    res.json({ ok: true, deleted });
+  } catch (e) {
+    srv500(res, e);
+  }
+});
+
 const PORT = process.env.PORT || 8080;
 db.init()
   .then(() => settings.seed())
