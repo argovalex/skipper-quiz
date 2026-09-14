@@ -55,7 +55,7 @@ async function start(code, priorSid) {
     const r = await c.query(
       `select ac.code, ac.revoked, ac.device_limit, ac.email, i.name as instructor_name
        from access_codes ac left join instructors i on i.code = ac.code
-       where ac.code = $1 for update`,
+       where ac.code = $1 for update of ac`,
       [code]
     );
     if (!r.rows.length) return { ok: false, reason: 'not-found' };
