@@ -516,7 +516,7 @@ app.get('/api/admin/buyers', async (req, res) => {
     // Buyers = real money (paid). Pending = started checkout, never finalized.
     // Comp/instructor codes are excluded here — they live in the instructors table.
     const purchases = await db.q(`
-      select p.email, p.amount_ils, p.coupon_code, p.status, p.created_at,
+      select p.id, p.email, p.amount_ils, p.coupon_code, p.status, p.created_at,
              (select code from access_codes ac where ac.purchase_id = p.id limit 1) as code
       from purchases p
       where coalesce(p.partner_ref,'') <> 'instructor'
@@ -614,23 +614,53 @@ app.post('/api/admin/revoke', async (req, res) => {
 });
 
 // Mark specific purchases as non-counting test transactions (own checkout QA, etc.) so
-// they stop consuming a founders seat — without touching the code's access or Tranzila.
-// Protected by ADMIN_TOKEN. Body: { codes: ['SK-XXXX-YYYY', ...] }.
+// they drop out of the founders count and the records.html/buyers report — without
+// touching the code's access or Tranzila. Protected by ADMIN_TOKEN.
+// Body: { codes: ['SK-XXXX-YYYY', ...] } (paid purchases, matched via their code) and/or
+//       { ids: [123, ...] } (any status, matched by purchase id — e.g. abandoned/pending
+//       checkouts from self-testing that never got a code).
 app.post('/api/admin/purchase/mark-test', async (req, res) => {
   if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
     return res.status(403).json({ ok: false });
   }
   if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
   const codes = Array.isArray(req.body && req.body.codes) ? req.body.codes.map(String) : [];
-  if (!codes.length) return res.status(400).json({ ok: false, reason: 'no-codes' });
+  const ids = Array.isArray(req.body && req.body.ids) ? req.body.ids.map(Number).filter(Number.isFinite) : [];
+  if (!codes.length && !ids.length) return res.status(400).json({ ok: false, reason: 'no-codes' });
   try {
-    const r = await db.q(
-      `update purchases set status='test'
-       where status='paid' and id in (select purchase_id from access_codes where code = any($1))
-       returning id`,
-      [codes]
-    );
-    res.json({ ok: true, updated: r.rows.length });
+    let updated = 0;
+    if (codes.length) {
+      const r = await db.q(
+        `update purchases set status='test'
+         where status='paid' and id in (select purchase_id from access_codes where code = any($1))
+         returning id`,
+        [codes]
+      );
+      updated += r.rows.length;
+    }
+    if (ids.length) {
+      const r = await db.q(`update purchases set status='test' where id = any($1) and status <> 'test' returning id`, [ids]);
+      updated += r.rows.length;
+    }
+    res.json({ ok: true, updated });
+  } catch (e) {
+    srv500(res, e);
+  }
+});
+
+// Delete stray free-trial leads (own CORS/deploy self-tests, etc.) that never converted —
+// pure noise in the records.html/buyers report. Protected by ADMIN_TOKEN.
+// Body: { emails: ['a@a.com', ...] }.
+app.post('/api/admin/lead/delete', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  const emails = Array.isArray(req.body && req.body.emails) ? req.body.emails.map(String) : [];
+  if (!emails.length) return res.status(400).json({ ok: false, reason: 'no-emails' });
+  try {
+    const r = await db.q(`delete from trial_leads where lower(email) = any($1) returning id`, [emails.map(e => e.toLowerCase())]);
+    res.json({ ok: true, deleted: r.rows.length });
   } catch (e) {
     srv500(res, e);
   }
