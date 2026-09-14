@@ -613,6 +613,29 @@ app.post('/api/admin/revoke', async (req, res) => {
   res.json({ ok: true });
 });
 
+// Mark specific purchases as non-counting test transactions (own checkout QA, etc.) so
+// they stop consuming a founders seat — without touching the code's access or Tranzila.
+// Protected by ADMIN_TOKEN. Body: { codes: ['SK-XXXX-YYYY', ...] }.
+app.post('/api/admin/purchase/mark-test', async (req, res) => {
+  if (!process.env.ADMIN_TOKEN || req.header('x-admin') !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ ok: false });
+  }
+  if (!db.hasDb()) return res.status(503).json({ ok: false, reason: 'no-db' });
+  const codes = Array.isArray(req.body && req.body.codes) ? req.body.codes.map(String) : [];
+  if (!codes.length) return res.status(400).json({ ok: false, reason: 'no-codes' });
+  try {
+    const r = await db.q(
+      `update purchases set status='test'
+       where status='paid' and id in (select purchase_id from access_codes where code = any($1))
+       returning id`,
+      [codes]
+    );
+    res.json({ ok: true, updated: r.rows.length });
+  } catch (e) {
+    srv500(res, e);
+  }
+});
+
 const PORT = process.env.PORT || 8080;
 db.init()
   .then(() => settings.seed())
