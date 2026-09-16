@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<title>אישור פרסום — SkipperQuiz</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Heebo', Arial, sans-serif; background: #0c1a3a; color: #fff; margin: 0; padding: 24px; }
+  h1 { font-size: 20px; margin: 0 0 20px; }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; max-width: 1100px; }
+  .col { flex: 1; min-width: 320px; }
+  video { width: 100%; max-width: 380px; border-radius: 10px; background: #000; display: block; }
+  label { display: block; font-size: 13px; color: #7eb8f7; margin: 14px 0 4px; font-weight: 700; }
+  input[type=text], input[type=number] {
+    width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #2a4a8a;
+    background: #1a2f5e; color: #fff; font-size: 14px;
+  }
+  textarea {
+    width: 100%; min-height: 300px; padding: 10px; border-radius: 6px; border: 1px solid #2a4a8a;
+    background: #1a2f5e; color: #fff; font-size: 14px; line-height: 1.5; font-family: inherit; resize: vertical;
+  }
+  .meta { font-size: 13px; color: #9db8e8; margin-top: 6px; }
+  button {
+    margin-top: 16px; padding: 10px 22px; border: none; border-radius: 8px; font-size: 15px;
+    font-weight: 700; cursor: pointer;
+  }
+  #loadBtn { background: #2a4a8a; color: #fff; }
+  #publishBtn { background: #2ecc71; color: #0d3d2a; }
+  #publishBtn:disabled { background: #2a4a8a; color: #9db8e8; cursor: not-allowed; }
+  #status { margin-top: 16px; font-size: 14px; white-space: pre-wrap; }
+  .ok { color: #2ecc71; }
+  .err { color: #ff6b6b; }
+  .topbar { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 20px; }
+  .topbar input { width: 100px; }
+</style>
+</head>
+<body>
+<h1>אישור פרסום Reel לפני הפצה</h1>
+
+<div class="topbar">
+  <div><label>מספר שאלה</label><input type="number" id="num" placeholder="1056"></div>
+  <div><label>רשיון</label><input type="number" id="license" value="11"></div>
+  <button id="loadBtn" onclick="load()">טען</button>
+</div>
+
+<div class="row" id="content" style="display:none">
+  <div class="col">
+    <video id="video" controls></video>
+    <div class="meta" id="meta"></div>
+  </div>
+  <div class="col">
+    <label>כותרת (title)</label>
+    <input type="text" id="title">
+    <label>טקסט הפוסט (caption)</label>
+    <textarea id="caption"></textarea>
+    <button id="publishBtn" onclick="publish()">אשר ופרסם עכשיו</button>
+    <div id="status"></div>
+  </div>
+</div>
+
+<script>
+let current = null;
+
+async function load() {
+  const num = document.getElementById('num').value.trim();
+  const license = document.getElementById('license').value.trim() || '11';
+  if (!num) return;
+  document.getElementById('status').textContent = '';
+  const res = await fetch(`/api/publish-preview?num=${encodeURIComponent(num)}&license=${encodeURIComponent(license)}`);
+  const data = await res.json();
+  if (data.error) {
+    document.getElementById('content').style.display = 'none';
+    document.getElementById('status').innerHTML = `<span class="err">${data.error}</span>`;
+    return;
+  }
+  current = data;
+  document.getElementById('content').style.display = 'flex';
+  document.getElementById('video').src = data.videoPath;
+  document.getElementById('title').value = data.title;
+  document.getElementById('caption').value = data.caption;
+  document.getElementById('meta').textContent =
+    `נושא: ${data.topic} | תשובה: ${data.answer} | מרונדר מקומית: ${data.rendered ? 'כן' : 'לא — הרץ קודם make_question_video'}`;
+  document.getElementById('publishBtn').disabled = !data.rendered;
+  document.getElementById('status').textContent = '';
+}
+
+async function publish() {
+  if (!current) return;
+  if (!confirm(`לפרסם את שאלה ${current.num} עכשיו? זה יזרים בפועל ל-YouTube+Facebook+Instagram דרך Make.com.`)) return;
+  const btn = document.getElementById('publishBtn');
+  btn.disabled = true;
+  document.getElementById('status').textContent = 'מעלה ל-R2 ומפרסם...';
+  try {
+    const res = await fetch('/api/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        num: current.num,
+        license: current.license,
+        title: document.getElementById('title').value,
+        caption: document.getElementById('caption').value
+      })
+    });
+    const data = await res.json();
+    if (data.status === 'published') {
+      document.getElementById('status').innerHTML = `<span class="ok">פורסם. videoUrl: ${data.payload.videoUrl}</span>`;
+    } else {
+      document.getElementById('status').innerHTML = `<span class="err">${data.message}</span>`;
+      btn.disabled = false;
+    }
+  } catch (e) {
+    document.getElementById('status').innerHTML = `<span class="err">${e.message}</span>`;
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>

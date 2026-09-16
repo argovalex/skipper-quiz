@@ -450,51 +450,118 @@ async function addToLexicon(raw) {
   }
 }
 
-// Show a one-click replacement when the selected text is a lexicon word.
+// Longest common substring length between two consonant strings (small words → naive DP is fine).
+function lcsLen(a, b) {
+  let best = 0, prev = new Array(b.length + 1).fill(0);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = new Array(b.length + 1).fill(0);
+    for (let j = 1; j <= b.length; j++) {
+      if (a[i - 1] === b[j - 1]) { cur[j] = prev[j - 1] + 1; if (cur[j] > best) best = cur[j]; }
+    }
+    prev = cur;
+  }
+  return best;
+}
+// Find lexicon entries "close" to the selected text: sharing a run of >= min consonants.
+// Ranked by overlap length (then by shortness), excluding the exact match.
+function findLexNear(sel, min = 3, limit = 6) {
+  const key = lexKey(sel).replace(/\s/g, '');
+  if (key.length < min) return [];
+  const seen = new Set(), scored = [];
+  for (const it of LEXICON) {
+    const pk = lexKey(it.plain).replace(/\s/g, '');
+    if (pk === key || seen.has(it.nikud)) continue;
+    const score = lcsLen(key, pk);
+    if (score >= min) { scored.push({ it, score }); seen.add(it.nikud); }
+  }
+  scored.sort((a, b) => b.score - a.score || a.it.plain.length - b.it.plain.length);
+  return scored.slice(0, limit).map(x => x.it);
+}
+// Replace the current textarea selection with a vocalised word (preserving edge spaces).
+function replaceSelectionWith(niq) {
+  const t = ta();
+  const s = t.selectionStart, e = t.selectionEnd;
+  const ins = keepEdgeSpaces(t.value.slice(s, e), niq);
+  t.value = t.value.slice(0, s) + ins + t.value.slice(e);
+  t.selectionStart = s; t.selectionEnd = s + ins.length;
+  t.focus(); saveDraft();
+  setStatus('✅ הוחלף: ' + niq, 'ok');
+}
+
+// When a word is selected in the textarea: mirror it into the lexicon search field
+// (so the list filters to it) and offer one-click replacements — the exact match if
+// there is one, plus any close lexicon words (>= 3 shared letters).
 function updateLexSuggest() {
   const box = document.getElementById('lexSuggest');
   if (!box) return;
   const t = ta();
   const s = t.selectionStart, e = t.selectionEnd;
   const sel = e > s ? t.value.substring(s, e) : '';
-  const niq = sel ? LEX_INDEX.get(lexKey(sel)) : null;
-  if (!niq || sel === niq) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  const plainSel = stripNikudStr(sel).trim();
+  if (!plainSel) { box.style.display = 'none'; box.innerHTML = ''; return; }
+
+  // Mirror the selected word into the search box so the lexicon grid filters to it.
+  const searchEl = document.getElementById('lexSearch');
+  if (searchEl && document.activeElement === t && searchEl.value !== plainSel) {
+    searchEl.value = plainSel;
+    renderLex(plainSel);
+  }
+
+  const exact = LEX_INDEX.get(lexKey(sel));
+  const suggestions = [];
+  if (exact && exact !== sel) suggestions.push(exact);
+  for (const it of findLexNear(sel)) if (it.nikud !== exact) suggestions.push(it.nikud);
+  if (!suggestions.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+
   box.innerHTML = '';
   const lbl = document.createElement('div');
   lbl.className = 'hint'; lbl.style.margin = '0 0 6px';
-  lbl.textContent = 'נמצא במילון — החלף את "' + stripNikudStr(sel) + '":';
-  const chip = document.createElement('span');
-  chip.className = 'lex-chip';
-  const w = document.createElement('span');
-  w.className = 'word'; w.textContent = niq;
-  const rep = document.createElement('button');
-  rep.className = 'btn btn-green'; rep.textContent = 'החלף'; rep.style.padding = '3px 12px';
-  rep.addEventListener('mousedown', ev => {           // mousedown+preventDefault keeps the selection
-    ev.preventDefault();
-    t.value = t.value.slice(0, s) + niq + t.value.slice(e);
-    t.selectionStart = s; t.selectionEnd = s + niq.length;
-    t.focus(); saveDraft();
-    setStatus('✅ הוחלף: ' + niq, 'ok');
-    box.style.display = 'none'; box.innerHTML = '';
-  });
-  const say = document.createElement('button');
-  say.className = 'say'; say.textContent = '🔊'; say.title = 'האזן';
-  say.addEventListener('mousedown', async ev => {
-    ev.preventDefault();
-    try { const a = await speak(niq); a.onended = () => setStatus('✅', 'ok'); setStatus('🔊 ' + niq); }
-    catch (err) { setStatus('❌ ' + err.message, 'err'); }
-  });
-  chip.append(w, rep, say);
-  box.append(lbl, chip);
+  lbl.textContent = (exact ? 'נמצא במילון' : 'קרוב במילון') + ' — החלף את "' + plainSel + '":';
+  box.appendChild(lbl);
+  for (const niq of suggestions) {
+    const chip = document.createElement('span');
+    chip.className = 'lex-chip';
+    chip.style.marginLeft = '6px'; chip.style.marginBottom = '6px';
+    const w = document.createElement('span');
+    w.className = 'word'; w.textContent = niq;
+    const rep = document.createElement('button');
+    rep.className = 'btn btn-green'; rep.textContent = 'החלף'; rep.style.padding = '3px 12px';
+    rep.addEventListener('mousedown', ev => {           // mousedown+preventDefault keeps the selection
+      ev.preventDefault();
+      replaceSelectionWith(niq);
+      box.style.display = 'none'; box.innerHTML = '';
+    });
+    const say = document.createElement('button');
+    say.className = 'say'; say.textContent = '🔊'; say.title = 'האזן';
+    say.addEventListener('mousedown', async ev => {
+      ev.preventDefault();
+      try { const a = await speak(niq); a.onended = () => setStatus('✅', 'ok'); setStatus('🔊 ' + niq); }
+      catch (err) { setStatus('❌ ' + err.message, 'err'); }
+    });
+    chip.append(w, rep, say);
+    box.appendChild(chip);
+  }
   box.style.display = '';
+}
+
+// Re-attach the leading/trailing whitespace of the text being replaced, so
+// dropping a vocalised word onto a double-click selection (which on Windows
+// often grabs the trailing space) doesn't glue it to the next word.
+function keepEdgeSpaces(replaced, insert) {
+  const lead = (replaced.match(/^\s+/) || [''])[0];
+  const trail = (replaced.match(/\s+$/) || [''])[0];
+  if (lead && !/^\s/.test(insert)) insert = lead + insert;
+  if (trail && !/\s$/.test(insert)) insert = insert + trail;
+  return insert;
 }
 
 // Insert vocalised word at the caret (replacing any selection).
 function insertAtCursor(text) {
   const t = ta();
   const s = t.selectionStart, e = t.selectionEnd;
-  t.value = t.value.slice(0, s) + text + t.value.slice(e);
-  const pos = s + text.length;
+  const ins = keepEdgeSpaces(t.value.slice(s, e), text);
+  t.value = t.value.slice(0, s) + ins + t.value.slice(e);
+  const pos = s + ins.length;
   t.selectionStart = t.selectionEnd = pos;
   t.focus();
   saveDraft();

@@ -18,6 +18,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["--yes", "http-server", "course/app", "-p", "8055", "-c-1", "--silent"],
       "port": 8055
+    },
+    {
+      "name": "site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "http-server", "course/site", "-p", "8056", "-c-1", "--silent"],
+      "port": 8056
     }
   ]
 }
