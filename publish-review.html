@@ -116,9 +116,15 @@ function downloadVideo() {
   if (!current) return;
   const src = current.remoteVideoUrl || current.videoPath;
   if (!src) return;
+  // שם קובץ ייחודי לגרסה (מזהה Cloudinary או timestamp) — אחרת דפדפן שכבר
+  // הוריד skipperquiz-qN.mp4 פעם אחת (מרינדור ישן) משאיר את הקובץ הישן על
+  // הכונן עם אותו שם, וגרירה חוזרת מביאה את הגרסה הגנרית/מיושנת בטעות.
+  const versionTag = current.remoteVideoUrl
+    ? current.remoteVideoUrl.split('/').pop().replace(/\.mp4$/, '')
+    : Date.now();
   const a = document.createElement('a');
   a.href = src;
-  a.download = `skipperquiz-q${current.num}.mp4`;
+  a.download = `skipperquiz-q${current.num}-${versionTag}.mp4`;
   a.target = '_blank';
   document.body.appendChild(a);
   a.click();
