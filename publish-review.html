@@ -32,6 +32,13 @@
   .err { color: #ff6b6b; }
   .topbar { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 20px; }
   .topbar input { width: 100px; }
+  #groups { display: flex; flex-direction: column; gap: 2px; max-height: 220px; overflow-y: auto;
+    background: #1a2f5e; border: 1px solid #2a4a8a; border-radius: 6px; padding: 8px; margin-top: 4px; }
+  .group-row { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; border-radius: 4px; }
+  .group-row:hover { background: #223a6e; }
+  .group-row label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #fff; font-weight: 400; margin: 0; cursor: pointer; }
+  .group-row button { margin: 0; padding: 2px 8px; font-size: 13px; background: #2a4a8a; border-radius: 5px; }
+  #groupsBtn { background: #2a4a8a; }
 </style>
 </head>
 <body>
@@ -55,11 +62,70 @@
     <textarea id="caption"></textarea>
     <button id="publishBtn" onclick="publish()">אשר ופרסם עכשיו</button>
     <div id="status"></div>
+
+    <label>הפצה לקבוצות פייסבוק (חצי-אוטומטי — מטא לא מאפשרת פרסום אוטומטי לקבוצות; כל כפתור מעתיק את הקפשן ופותח את הקבוצה, אתה מדביק ומפרסם)</label>
+    <div id="groups"></div>
+    <button id="groupsBtn" onclick="openGroups()">📋 העתק קפשן ופתח קבוצות מסומנות</button>
+    <div id="groupsStatus" class="meta"></div>
   </div>
 </div>
 
 <script>
 let current = null;
+let groupsData = [];
+
+// Meta doesn't allow automated posting into Facebook Groups (no such app in
+// Make.com either — publish_to_groups was pulled from the Graph API years ago),
+// so this is a manual-click assist: copy the caption, open the group's feed
+// (composer is right there), you paste and hit post yourself.
+async function loadGroups() {
+  const res = await fetch('/tools/facebook-groups.json');
+  groupsData = await res.json();
+  document.getElementById('groups').innerHTML = groupsData.map((g, i) => `
+    <div class="group-row">
+      <label><input type="checkbox" id="grp${i}" ${g.default ? 'checked' : ''}> ${g.name}</label>
+      <button type="button" onclick="openOneGroup(${i})" title="העתק קפשן ופתח קבוצה זו">🔗 פתח</button>
+    </div>
+  `).join('');
+}
+
+function groupUrl(g) {
+  return `https://www.facebook.com/groups/${g.id}/`;
+}
+
+// Clipboard write needs a secure origin + permission; can silently fail (blocked
+// permission, non-HTTPS localhost quirks). Never let that stop the tabs from
+// opening — just tell the user to copy from the textarea manually instead.
+async function copyCaption() {
+  try {
+    await navigator.clipboard.writeText(document.getElementById('caption').value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+async function openOneGroup(i) {
+  const ok = await copyCaption();
+  window.open(groupUrl(groupsData[i]), '_blank');
+  document.getElementById('groupsStatus').innerHTML = ok
+    ? `הקפשן הועתק — הדבק ופרסם ב-${groupsData[i].name}`
+    : `<span class="err">ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה, ואז הדבק ב-${groupsData[i].name}</span>`;
+}
+
+async function openGroups() {
+  const checked = groupsData.filter((g, i) => document.getElementById('grp' + i).checked);
+  if (!checked.length) {
+    document.getElementById('groupsStatus').innerHTML = '<span class="err">לא נבחרה אף קבוצה</span>';
+    return;
+  }
+  const ok = await copyCaption();
+  for (const g of checked) window.open(groupUrl(g), '_blank');
+  document.getElementById('groupsStatus').innerHTML = ok
+    ? `הקפשן הועתק ללוח, נפתחו ${checked.length} קבוצות — הדבק ופרסם בכל אחת (אם חלק לא נפתחו, ייתכן שהדפדפן חסם popups — אשר אותם ונסה שוב).`
+    : `<span class="err">נפתחו ${checked.length} קבוצות אבל ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה.</span>`;
+}
+loadGroups();
 
 async function load() {
   const num = document.getElementById('num').value.trim();
