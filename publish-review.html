@@ -105,6 +105,26 @@ async function copyCaption() {
   }
 }
 
+// מוריד את קובץ הוידאו עצמו (לא קישור) לתיקיית ההורדות, כדי שאפשר יהיה
+// לגרור אותו ישירות לתיבת הפוסט בקבוצה. עדיפות ל-remoteVideoUrl (Cloudinary) —
+// זה המקור הפרסום-אמיתי; videoPath המקומי (output/videos/) יכול להיות ישן אם
+// השאלה רונדרה-מחדש ב-POST ישיר לשרת (שמעדכן רק את הענן, לא את הקובץ המקומי),
+// מה שגרם להורדת וידאו גנרי/מיושן במקום הגרסה הנכונה שכבר בענן.
+// remoteVideoUrl הוא cross-origin: לרוב הדפדפן פשוט יפתח אותו בטאב חדש במקום
+// להוריד — עדיין נותן גישה מהירה לכפתור השמירה של הנגן.
+function downloadVideo() {
+  if (!current) return;
+  const src = current.remoteVideoUrl || current.videoPath;
+  if (!src) return;
+  const a = document.createElement('a');
+  a.href = src;
+  a.download = `skipperquiz-q${current.num}.mp4`;
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
 // מתעד רק "נפתח" (לחיצה + טאב) — לא הוכחה שהפוסט אכן פורסם בקבוצה, מטא לא
 // חושפת API לבדוק את זה. monitor.html מציג את זה בתור "נפתח", לא "פורסם".
 async function logGroupOpen(groups) {
@@ -120,10 +140,11 @@ async function logGroupOpen(groups) {
 
 async function openOneGroup(i) {
   const ok = await copyCaption();
+  downloadVideo();
   window.open(groupUrl(groupsData[i]), '_blank');
   logGroupOpen([groupsData[i]]);
   document.getElementById('groupsStatus').innerHTML = ok
-    ? `הקפשן הועתק — הדבק ופרסם ב-${groupsData[i].name}`
+    ? `הקפשן הועתק, הוידאו יורד — הדבק את הטקסט וגרור את קובץ ה-mp4 מההורדות לפוסט ב-${groupsData[i].name}`
     : `<span class="err">ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה, ואז הדבק ב-${groupsData[i].name}</span>`;
 }
 
@@ -134,10 +155,11 @@ async function openGroups() {
     return;
   }
   const ok = await copyCaption();
+  downloadVideo();
   for (const g of checked) window.open(groupUrl(g), '_blank');
   logGroupOpen(checked);
   document.getElementById('groupsStatus').innerHTML = ok
-    ? `הקפשן הועתק ללוח, נפתחו ${checked.length} קבוצות — הדבק ופרסם בכל אחת (אם חלק לא נפתחו, ייתכן שהדפדפן חסם popups — אשר אותם ונסה שוב).`
+    ? `הקפשן הועתק ללוח, הוידאו יורד, נפתחו ${checked.length} קבוצות — בכל אחת: הדבק טקסט וגרור את קובץ ה-mp4 מההורדות (אם חלק לא נפתחו, ייתכן שהדפדפן חסם popups — אשר אותם ונסה שוב).`
     : `<span class="err">נפתחו ${checked.length} קבוצות אבל ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה.</span>`;
 }
 loadGroups();
