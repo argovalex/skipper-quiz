@@ -45,6 +45,12 @@ video course/
 tools/youtube/client_secret.json
 tools/youtube/token.json
 
+# תעודת Root CA מקומית (Kaspersky TLS-interception) — ספציפית למכונה, לא נכס
+tools/kaspersky-root-ca.pem
+
+# היסטוריית פרסום יומי: state בזמן ריצה, לא נכס
+tools/daily-publish-history.json
+
 # inputs מקוריים וניסויים מקומיים
 *.pdf
 *.xlsx
