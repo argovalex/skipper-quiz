@@ -410,7 +410,7 @@
     <a class="status-link" href="index.html" target="skipper-editor" title="פתח עורך" onclick="return openFresh(this)">
       <span class="dot"></span> עורך
     </a>
-    <a class="status-link" href="monitor.html" target="skipper-monitor" title="פתח מוניטור">
+    <a class="status-link" href="http://localhost:8899/monitor.html" target="skipper-monitor" title="פתח מוניטור (כולל הפצת קבוצות)">
       <span class="dot"></span> מוניטור
     </a>
     <a class="status-link" href="fix-requests.html" target="skipper-fix" title="בקשות תיקון">
@@ -444,7 +444,7 @@
     <div class="stat-value loading" id="val-queue">…</div>
     <div class="stat-label">ממתינות לפרסום</div>
   </div>
-  <div class="stat-card" id="stat-approved" onclick="window.open('monitor.html','skipper-monitor')" style="cursor:pointer" title="פתח מוניטור">
+  <div class="stat-card" id="stat-approved" onclick="window.open('http://localhost:8899/monitor.html','skipper-monitor')" style="cursor:pointer" title="פתח מוניטור">
     <div class="stat-value loading" id="val-approved">…</div>
     <div class="stat-label">מאושרות ✅</div>
   </div>
@@ -477,7 +477,7 @@
       <a class="btn primary" href="admin.html">🔑 ניהול מדריכים</a>
       <a class="btn" href="records.html" target="skipper-records">📊 תוצאות מבחנים (החזר כספי)</a>
       <a class="btn" href="index.html" target="skipper-editor" onclick="return openFresh(this)">✏️ פתח עורך</a>
-      <a class="btn" href="monitor.html" target="skipper-monitor">📊 פתח מוניטור</a>
+      <a class="btn" href="http://localhost:8899/monitor.html" target="skipper-monitor">📊 פתח מוניטור</a>
       <a class="btn" href="fix-requests.html" target="skipper-fix">🛠 בקשות תיקון</a>
       <a class="btn green-btn" href="http://localhost:8899/publish-review.html" target="skipper-publish">📤 אישור פרסום Reel</a>
       <a class="btn" href="https://github.com/argovalex/skipper-quiz" target="_blank">🐙 GitHub</a>
@@ -638,7 +638,7 @@ function renderTodayQuestion(qs, log) {
       <span class="q-answer-val">${correctLetter}</span>
       <span class="q-answer-text">${answerText}</span>
     </div>
-    <a class="btn green-btn" href="monitor.html" target="skipper-monitor">▶️ צפה בתור המלא</a>
+    <a class="btn green-btn" href="http://localhost:8899/monitor.html" target="skipper-monitor">▶️ צפה בתור המלא</a>
   `;
 }
 

@@ -10,6 +10,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const LEXICON = path.join(ROOT, 'references', 'niqqud-lexicon.md');
+const GROUPS_LOG = path.join(ROOT, 'tools', 'groups-log.json');
 const PORT = Number(process.env.PORT) || 8899;
 const SECTION = '## מילים';
 const NEXT_SECTION = '## מקרים מיוחדים';
@@ -71,6 +72,19 @@ function addToLexicon(nikudRaw, plainOverride) {
   return { status, plain, nikud };
 }
 
+// ── לוג הפצה לקבוצות פייסבוק ──────────────────────────────────────────────────────
+// פרסום לקבוצה הוא תמיד לחיצה ידנית (מטא חוסמת API) — זה רק מתעד "פתחתי את
+// הקבוצה עם הקפשן הזה", לא אישור שהפוסט אכן פורסם. monitor.html קורא את הקובץ
+// כדי להראות אילו קבוצות נפתחו לכל שאלה, גם אם זה לא הוכחה מוחלטת של פרסום בפועל.
+function appendGroupLog(num, groups) {
+  let log = [];
+  try { log = JSON.parse(fs.readFileSync(GROUPS_LOG, 'utf8')); } catch { log = []; }
+  const opened_at = new Date().toISOString();
+  for (const g of groups) log.push({ num: Number(num), group_id: g.id, group_name: g.name, opened_at });
+  fs.writeFileSync(GROUPS_LOG, JSON.stringify(log, null, 2) + '\n', 'utf8');
+  return log;
+}
+
 // ── הגשת קבצים סטטיים ────────────────────────────────────────────────────────────
 function serveStatic(req, res) {
   let rel = decodeURIComponent(req.url.split('?')[0]);
@@ -79,8 +93,11 @@ function serveStatic(req, res) {
   if (!full.startsWith(ROOT)) { res.writeHead(403); return res.end('forbidden'); }
   fs.readFile(full, (err, buf) => {
     if (err) { res.writeHead(404); return res.end('not found'); }
+    // monitor.html is often opened as a local file:// page (relative link from
+    // hub.html), whose fetch() calls carry a null origin — allow it through so
+    // it can read tools/groups-log.json served here.
     res.writeHead(200, { 'Content-Type': MIME[path.extname(full).toLowerCase()] || 'application/octet-stream',
-      'Cache-Control': 'no-cache' });
+      'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*' });
     res.end(buf);
   });
 }
@@ -111,6 +128,22 @@ const server = http.createServer((req, res) => {
         const result = await publishVideo(j.num, j.license || '11', { caption: j.caption, title: j.title });
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ status: 'published', payload: result }));
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'error', message: e.message }));
+      }
+    });
+    return;
+  }
+  if (req.method === 'POST' && req.url === '/api/group-log') {
+    let body = '';
+    req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
+    req.on('end', () => {
+      try {
+        const j = JSON.parse(body || '{}');
+        const log = appendGroupLog(j.num, j.groups || []);
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'ok', count: log.length }));
       } catch (e) {
         res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ status: 'error', message: e.message }));

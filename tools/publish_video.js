@@ -67,6 +67,10 @@ function buildPreview(num, license) {
     answer: q.answer || '',
     rendered: fs.existsSync(localPath),
     videoPath: `/output/videos/q${num}.mp4`,
+    // גיבוי: שאלות שפורסמו דרך שרת ה-Railway (לא הצינור המקומי) מעולם לא
+    // קיבלו קובץ ב-output/videos/ — ה-videoUrl (Cloudinary) השמור בבנק הוא
+    // הדרך היחידה להציג אותן כאן, למשל כשמגיעים מקישור "צפה" ב-monitor.html.
+    remoteVideoUrl: q.videoUrl || '',
     title: `SkipperQuiz — ${q.topic} שאלה #${q.num}`,
     caption: buildPublishCaption(q)
   };

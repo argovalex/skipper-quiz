@@ -105,9 +105,23 @@ async function copyCaption() {
   }
 }
 
+// מתעד רק "נפתח" (לחיצה + טאב) — לא הוכחה שהפוסט אכן פורסם בקבוצה, מטא לא
+// חושפת API לבדוק את זה. monitor.html מציג את זה בתור "נפתח", לא "פורסם".
+async function logGroupOpen(groups) {
+  if (!current) return;
+  try {
+    await fetch('/api/group-log', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ num: current.num, groups: groups.map(g => ({ id: g.id, name: g.name })) })
+    });
+  } catch (e) { /* לא חוסם את זרימת הפרסום אם התיעוד נכשל */ }
+}
+
 async function openOneGroup(i) {
   const ok = await copyCaption();
   window.open(groupUrl(groupsData[i]), '_blank');
+  logGroupOpen([groupsData[i]]);
   document.getElementById('groupsStatus').innerHTML = ok
     ? `הקפשן הועתק — הדבק ופרסם ב-${groupsData[i].name}`
     : `<span class="err">ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה, ואז הדבק ב-${groupsData[i].name}</span>`;
@@ -121,11 +135,29 @@ async function openGroups() {
   }
   const ok = await copyCaption();
   for (const g of checked) window.open(groupUrl(g), '_blank');
+  logGroupOpen(checked);
   document.getElementById('groupsStatus').innerHTML = ok
     ? `הקפשן הועתק ללוח, נפתחו ${checked.length} קבוצות — הדבק ופרסם בכל אחת (אם חלק לא נפתחו, ייתכן שהדפדפן חסם popups — אשר אותם ונסה שוב).`
     : `<span class="err">נפתחו ${checked.length} קבוצות אבל ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה.</span>`;
 }
 loadGroups();
+
+// תמיכה ב-?num=1056&license=11 בכתובת — כך monitor.html יכול לקשר ישירות
+// לתצוגה המלאה (וידאו+קפשן+קבוצות) של שאלה שכבר פורסמה, במקום לפתוח את קובץ
+// הוידאו הגולמי.
+// ?published=1 מגיע מ-monitor.html — שאלה שכבר פורסמה לפי publish-log, לא
+// טיוטה. חוסם את כפתור הפרסום כדי שצפייה חוזרת לא תרים בטעות פרסום כפול.
+let viewingAlreadyPublished = false;
+
+(function loadFromQueryString() {
+  const params = new URLSearchParams(location.search);
+  const num = params.get('num');
+  if (!num) return;
+  document.getElementById('num').value = num;
+  document.getElementById('license').value = params.get('license') || '11';
+  viewingAlreadyPublished = params.get('published') === '1';
+  load();
+})();
 
 async function load() {
   const num = document.getElementById('num').value.trim();
@@ -141,13 +173,15 @@ async function load() {
   }
   current = data;
   document.getElementById('content').style.display = 'flex';
-  document.getElementById('video').src = data.videoPath;
+  document.getElementById('video').src = data.rendered ? data.videoPath : data.remoteVideoUrl;
   document.getElementById('title').value = data.title;
   document.getElementById('caption').value = data.caption;
   document.getElementById('meta').textContent =
-    `נושא: ${data.topic} | תשובה: ${data.answer} | מרונדר מקומית: ${data.rendered ? 'כן' : 'לא — הרץ קודם make_question_video'}`;
-  document.getElementById('publishBtn').disabled = !data.rendered;
-  document.getElementById('status').textContent = '';
+    `נושא: ${data.topic} | תשובה: ${data.answer} | מקור וידאו: ${data.rendered ? 'רינדור מקומי' : (data.remoteVideoUrl ? 'Cloudinary (כבר פורסם)' : 'אין וידאו — הרץ קודם make_question_video')}`;
+  document.getElementById('publishBtn').disabled = viewingAlreadyPublished || (!data.rendered && !data.remoteVideoUrl);
+  document.getElementById('status').innerHTML = viewingAlreadyPublished
+    ? '<span class="meta">שאלה זו כבר פורסמה — כפתור הפרסום נחסם כדי למנוע פרסום כפול. אפשר עדיין להפיץ לקבוצות למטה.</span>'
+    : '';
 }
 
 async function publish() {
