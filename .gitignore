@@ -51,6 +51,9 @@ tools/kaspersky-root-ca.pem
 # היסטוריית פרסום יומי: state בזמן ריצה, לא נכס
 tools/daily-publish-history.json
 
+# לוג הפצה לקבוצות פייסבוק: state מקומי (מי לחץ "פתח" ומתי), לא נכס
+tools/groups-log.json
+
 # inputs מקוריים וניסויים מקומיים
 *.pdf
 *.xlsx

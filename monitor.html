@@ -534,6 +534,7 @@
             <th>נושא</th>
             <th>וידאו</th>
             <th>פלטפורמות</th>
+            <th>קבוצות</th>
           </tr>
         </thead>
         <tbody id="history-tbody">
@@ -575,10 +576,15 @@ const QUESTIONS_URL   = 'https://raw.githubusercontent.com/argovalex/skipper-qui
 // skipper-quiz-publisher (where publish-log.json lives) is a private repo, and
 // raw.githubusercontent.com 404s without an auth token — use the public Railway proxy instead.
 const PUBLISH_LOG_URL = 'https://skipper-quiz-publisher-production.up.railway.app/publish-log';
+// הפצה לקבוצות היא תמיד ידנית (מטא חוסמת API) — הלוג הזה חי רק מקומית, נכתב
+// ע"י publish-review.html כשלוחצים "פתח קבוצה". קיים רק אם שרת ה-VO-editor
+// (localhost:8899) רץ; אם לא — הטבלה פשוט לא תציג עמודת קבוצות, בלי שגיאה.
+const GROUPS_LOG_URL  = 'http://localhost:8899/tools/groups-log.json';
 const AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutes
 
 let questions    = [];
 let publishLog   = [];
+let groupsLog    = [];
 let refreshTimer = null;
 let countdown    = AUTO_REFRESH_MS / 1000;
 
@@ -626,16 +632,19 @@ async function loadData() {
   document.getElementById('refresh-btn').disabled = true;
 
   try {
-    // Fetch both; publish log may 404 — that's fine
-    const [qs, log] = await Promise.allSettled([
+    // Fetch all three; publish log / groups log may fail — that's fine, both
+    // degrade gracefully (groups log needs localhost:8899 running).
+    const [qs, log, grp] = await Promise.allSettled([
       fetchJSON(QUESTIONS_URL),
-      fetchJSON(PUBLISH_LOG_URL)
+      fetchJSON(PUBLISH_LOG_URL),
+      fetchJSON(GROUPS_LOG_URL)
     ]);
 
     if (qs.status === 'rejected') throw new Error('שגיאה בטעינת השאלות: ' + qs.reason.message);
 
     questions  = qs.value;
     publishLog = log.status === 'fulfilled' ? log.value : [];
+    groupsLog  = grp.status === 'fulfilled' ? grp.value : [];
 
     renderAll();
     setStatus('ok', 'נתונים עדכניים');
@@ -779,7 +788,7 @@ function renderQueue(queue) {
 function renderHistory() {
   const tbody = document.getElementById('history-tbody');
   if (publishLog.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" class="loading-row"><div class="empty-state">אין היסטוריית פרסום עדיין</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="loading-row"><div class="empty-state">אין היסטוריית פרסום עדיין</div></td></tr>`;
     return;
   }
 
@@ -795,9 +804,16 @@ function renderHistory() {
     const topic     = e.topic || topicMap[e.num] || '—';
     const platforms = (e.platforms || []).map(p =>
       `<span class="platform-tag">${p}</span>`).join('');
+    // מקשר לתצוגה המלאה ב-publish-review.html (וידאו+קפשן+קבוצות), לא לקובץ
+    // הוידאו הגולמי ב-Cloudinary.
     const videoLink = e.videoUrl
-      ? `<a href="${e.videoUrl}" target="_blank" class="video-link">▶ צפה</a>`
+      ? `<a href="http://localhost:8899/publish-review.html?num=${e.num}&license=11&published=1" target="_blank" class="video-link">▶ צפה</a>`
       : '—';
+
+    const groupOpens = groupsLog.filter(g => g.num === e.num);
+    const groupsCell = groupOpens.length
+      ? `<span class="platform-tag" title="${groupOpens.map(g => g.group_name + ' — ' + formatDate(g.opened_at)).join('\n')}">נפתחו ${groupOpens.length}</span>`
+      : '<span style="color:var(--text-dim)">—</span>';
 
     return `
       <tr>
@@ -806,6 +822,7 @@ function renderHistory() {
         <td><span class="topic-badge">${topic}</span></td>
         <td>${videoLink}</td>
         <td>${platforms || '—'}</td>
+        <td>${groupsCell}</td>
       </tr>`;
   }).join('');
 }
