@@ -117,5 +117,10 @@ if (require.main === module) {
     console.error('usage: node tools/publish_video.js <num> [--license 11] [--dry-run]');
     process.exit(1);
   }
-  publishVideo(num, license, { dryRun }).catch(e => { console.error(e.message); process.exit(1); });
+  publishVideo(num, license, { dryRun }).catch(e => {
+    // fetch()'s own error message is always the unhelpful generic "fetch failed" —
+    // the real reason (DNS, TLS, ECONNRESET, IPv6 routing...) is on e.cause.
+    console.error(e.message, e.cause ? `\ncause: ${e.cause}` : '');
+    process.exit(1);
+  });
 }
