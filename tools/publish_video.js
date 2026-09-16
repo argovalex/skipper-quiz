@@ -43,8 +43,11 @@ function buildPublishCaption(q) {
   const idx = LETTER_MAP[(q.answer || 'א').trim()] ?? 0;
   const opts = (q.options || []).map(o => o.replace(/^[אבגד]\.\s*/, '').trim());
   const optLines = ['א', 'ב', 'ג', 'ד'].map((l, i) => `${l}. ${opts[i] || ''}`).join('\n');
-  const cta = '🎓 הקורס המלא לרישיון אופנוע ים באתר: www.alargov.com\nתרגול חינם, בלי הרשמה.';
-  return `${q.topic || ''} 🚢\n\n${q.q_he || ''}\n\n${optLines}\n\n✅ תשובה: ${opts[idx] || ''}\n\n💡 ${q.explanation || ''}\n\n${cta}\n\n#SkipperQuiz #שאלות_נוטים #רישיון_שייט`;
+  // Plain-text captions (FB/IG/YouTube) have no bold — the guarantee line gets its
+  // own emphasized line with ❗ markers instead, since there's no real bold to apply.
+  const cta = '🎓 הקורס המלא לרישיון אופנוע ים באתר: www.alargov.com\nתרגול חינם, ללא הרשמה.\n❗ לא עברת? לא שילמת. ❗';
+  const hashtags = '#SkipperQuiz #שאלות_נוטים #רישיון_שייט #אופנוע_ים #רישיון_אופנוע_ים #תאוריית_אופנוע_ים';
+  return `${cta}\n\n${q.topic || ''} 🚢\n\n${q.q_he || ''}\n\n${optLines}\n\n✅ תשובה: ${opts[idx] || ''}\n\n💡 ${q.explanation || ''}\n\n${hashtags}`;
 }
 
 function localVideoPath(num) {
