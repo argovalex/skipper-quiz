@@ -110,36 +110,30 @@ async function copyCaption() {
 // זה המקור הפרסום-אמיתי; videoPath המקומי (output/videos/) יכול להיות ישן אם
 // השאלה רונדרה-מחדש ב-POST ישיר לשרת (שמעדכן רק את הענן, לא את הקובץ המקומי).
 //
-// קריטי: `<a href="cross-origin-url" download>` לא עובד — התכונה download
-// מתעלמת מקישורים ממקור זר, אז הדפדפן פשוט פותח טאב עם הנגן ושום קובץ לא
-// באמת יורד. זה גרם לכך שלא ירד שום דבר, ואלכס גרר בטעות קובץ ישן/לא-קשור
-// מההורדות. הפתרון: להביא את הוידאו כ-blob (fetch, לא <a> רגיל) וליצור ממנו
-// קישור מקומי (blob:) — זה תמיד מוריד בפועל, בלי תלות במקור.
+// קריטי: `<a href="cross-origin-url" download>` לא עובד באופן עקבי — לקישור
+// ממקור זר (Cloudinary) הדפדפן לפעמים מתעלם מ-download ופשוט פותח טאב, ושום
+// קובץ לא באמת יורד (וגם ניסיון fetch()+blob ישיר מהדפדפן נתקל ב-CORS לא
+// עקבי). הפתרון האמין: פרוקסי דרך /api/download-video בשרת המקומי (Node
+// מביא את הוידאו מ-Cloudinary ומגיש אותו same-origin עם Content-Disposition:
+// attachment) — זה תמיד כופה הורדה אמיתית, בלי תלות בהתנהגות cross-origin.
 async function downloadVideo() {
-  if (!current) return;
+  if (!current) return false;
   const src = current.remoteVideoUrl || current.videoPath;
-  if (!src) return;
+  if (!src) return false;
   const versionTag = current.remoteVideoUrl
     ? current.remoteVideoUrl.split('/').pop().replace(/\.mp4$/, '')
     : Date.now();
   const filename = `skipperquiz-q${current.num}-${versionTag}.mp4`;
-  try {
-    const res = await fetch(src);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(blobUrl), 30000);
-    return true;
-  } catch (e) {
-    console.error('downloadVideo failed', e);
-    return false;
-  }
+  const dlUrl = current.remoteVideoUrl
+    ? `/api/download-video?url=${encodeURIComponent(current.remoteVideoUrl)}&filename=${encodeURIComponent(filename)}`
+    : src; // videoPath המקומי כבר same-origin, אין צורך בפרוקסי
+  const a = document.createElement('a');
+  a.href = dlUrl;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  return true;
 }
 
 // מתעד רק "נפתח" (לחיצה + טאב) — לא הוכחה שהפוסט אכן פורסם בקבוצה, מטא לא
