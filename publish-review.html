@@ -108,27 +108,38 @@ async function copyCaption() {
 // מוריד את קובץ הוידאו עצמו (לא קישור) לתיקיית ההורדות, כדי שאפשר יהיה
 // לגרור אותו ישירות לתיבת הפוסט בקבוצה. עדיפות ל-remoteVideoUrl (Cloudinary) —
 // זה המקור הפרסום-אמיתי; videoPath המקומי (output/videos/) יכול להיות ישן אם
-// השאלה רונדרה-מחדש ב-POST ישיר לשרת (שמעדכן רק את הענן, לא את הקובץ המקומי),
-// מה שגרם להורדת וידאו גנרי/מיושן במקום הגרסה הנכונה שכבר בענן.
-// remoteVideoUrl הוא cross-origin: לרוב הדפדפן פשוט יפתח אותו בטאב חדש במקום
-// להוריד — עדיין נותן גישה מהירה לכפתור השמירה של הנגן.
-function downloadVideo() {
+// השאלה רונדרה-מחדש ב-POST ישיר לשרת (שמעדכן רק את הענן, לא את הקובץ המקומי).
+//
+// קריטי: `<a href="cross-origin-url" download>` לא עובד — התכונה download
+// מתעלמת מקישורים ממקור זר, אז הדפדפן פשוט פותח טאב עם הנגן ושום קובץ לא
+// באמת יורד. זה גרם לכך שלא ירד שום דבר, ואלכס גרר בטעות קובץ ישן/לא-קשור
+// מההורדות. הפתרון: להביא את הוידאו כ-blob (fetch, לא <a> רגיל) וליצור ממנו
+// קישור מקומי (blob:) — זה תמיד מוריד בפועל, בלי תלות במקור.
+async function downloadVideo() {
   if (!current) return;
   const src = current.remoteVideoUrl || current.videoPath;
   if (!src) return;
-  // שם קובץ ייחודי לגרסה (מזהה Cloudinary או timestamp) — אחרת דפדפן שכבר
-  // הוריד skipperquiz-qN.mp4 פעם אחת (מרינדור ישן) משאיר את הקובץ הישן על
-  // הכונן עם אותו שם, וגרירה חוזרת מביאה את הגרסה הגנרית/מיושנת בטעות.
   const versionTag = current.remoteVideoUrl
     ? current.remoteVideoUrl.split('/').pop().replace(/\.mp4$/, '')
     : Date.now();
-  const a = document.createElement('a');
-  a.href = src;
-  a.download = `skipperquiz-q${current.num}-${versionTag}.mp4`;
-  a.target = '_blank';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+  const filename = `skipperquiz-q${current.num}-${versionTag}.mp4`;
+  try {
+    const res = await fetch(src);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 30000);
+    return true;
+  } catch (e) {
+    console.error('downloadVideo failed', e);
+    return false;
+  }
 }
 
 // מתעד רק "נפתח" (לחיצה + טאב) — לא הוכחה שהפוסט אכן פורסם בקבוצה, מטא לא
@@ -145,13 +156,17 @@ async function logGroupOpen(groups) {
 }
 
 async function openOneGroup(i) {
-  const ok = await copyCaption();
-  downloadVideo();
+  // window.open חייב לרוץ מיד בתוך ה-click handler (לפני כל await) — אחרת
+  // הדפדפן מאבד את "user gesture" וחוסם את הטאב כ-popup.
   window.open(groupUrl(groupsData[i]), '_blank');
+  const ok = await copyCaption();
+  const dl = await downloadVideo();
   logGroupOpen([groupsData[i]]);
-  document.getElementById('groupsStatus').innerHTML = ok
-    ? `הקפשן הועתק, הוידאו יורד — הדבק את הטקסט וגרור את קובץ ה-mp4 מההורדות לפוסט ב-${groupsData[i].name}`
-    : `<span class="err">ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה, ואז הדבק ב-${groupsData[i].name}</span>`;
+  document.getElementById('groupsStatus').innerHTML = ok && dl
+    ? `הקפשן הועתק, הוידאו ירד להורדות — הדבק את הטקסט וגרור את קובץ ה-mp4 לפוסט ב-${groupsData[i].name}`
+    : !dl
+      ? `<span class="err">הורדת הוידאו נכשלה — פתח את ${current ? current.remoteVideoUrl : 'הקישור'} ידנית ושמור אותו.</span>`
+      : `<span class="err">ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה, ואז הדבק ב-${groupsData[i].name}</span>`;
 }
 
 async function openGroups() {
@@ -160,13 +175,15 @@ async function openGroups() {
     document.getElementById('groupsStatus').innerHTML = '<span class="err">לא נבחרה אף קבוצה</span>';
     return;
   }
-  const ok = await copyCaption();
-  downloadVideo();
   for (const g of checked) window.open(groupUrl(g), '_blank');
+  const ok = await copyCaption();
+  const dl = await downloadVideo();
   logGroupOpen(checked);
-  document.getElementById('groupsStatus').innerHTML = ok
-    ? `הקפשן הועתק ללוח, הוידאו יורד, נפתחו ${checked.length} קבוצות — בכל אחת: הדבק טקסט וגרור את קובץ ה-mp4 מההורדות (אם חלק לא נפתחו, ייתכן שהדפדפן חסם popups — אשר אותם ונסה שוב).`
-    : `<span class="err">נפתחו ${checked.length} קבוצות אבל ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה.</span>`;
+  document.getElementById('groupsStatus').innerHTML = ok && dl
+    ? `הקפשן הועתק ללוח, הוידאו ירד להורדות, נפתחו ${checked.length} קבוצות — בכל אחת: הדבק טקסט וגרור את קובץ ה-mp4 (אם חלק לא נפתחו, ייתכן שהדפדפן חסם popups — אשר אותם ונסה שוב).`
+    : !dl
+      ? `<span class="err">הורדת הוידאו נכשלה — פתח את ${current ? current.remoteVideoUrl : 'הקישור'} ידנית ושמור אותו. נפתחו ${checked.length} קבוצות.</span>`
+      : `<span class="err">נפתחו ${checked.length} קבוצות אבל ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה.</span>`;
 }
 loadGroups();
 
