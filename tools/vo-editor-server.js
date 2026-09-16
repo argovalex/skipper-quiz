@@ -5,6 +5,7 @@
 //     -> מוסיף/מעדכן שורה ב-references/niqqud-lexicon.md, מחזיר { status, plain, nikud }
 'use strict';
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
@@ -148,6 +149,39 @@ const server = http.createServer((req, res) => {
         res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ status: 'error', message: e.message }));
       }
+    });
+    return;
+  }
+  // מוריד וידאו לתיקיית ההורדות, פרוקסי דרך השרת המקומי — כדי שההורדה תיחשב
+  // same-origin. הדפדפן מתעלם מ-<a download> לקישור cross-origin (Cloudinary),
+  // ופשוט פותח טאב במקום לשמור קובץ; זה מה שגרם לכך ששום קובץ לא ירד בפועל
+  // ואלכס גרר בטעות קובץ ישן/לא-קשור מההורדות.
+  if (req.method === 'GET' && req.url.startsWith('/api/download-video')) {
+    const u = new URL(req.url, 'http://x');
+    const src = u.searchParams.get('url') || '';
+    const filenameRaw = u.searchParams.get('filename') || 'video.mp4';
+    const filename = filenameRaw.replace(/[^\w.\-]+/g, '_');
+    if (!/^https:\/\/res\.cloudinary\.com\//.test(src)) {
+      res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: 'only res.cloudinary.com URLs are allowed' }));
+      return;
+    }
+    https.get(src, (upstream) => {
+      if (upstream.statusCode !== 200) {
+        res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: `upstream HTTP ${upstream.statusCode}` }));
+        upstream.resume();
+        return;
+      }
+      res.writeHead(200, {
+        'Content-Type': 'video/mp4',
+        'Content-Disposition': `attachment; filename="${filename}"`,
+        ...(upstream.headers['content-length'] ? { 'Content-Length': upstream.headers['content-length'] } : {}),
+      });
+      upstream.pipe(res);
+    }).on('error', (e) => {
+      res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: e.message }));
     });
     return;
   }
