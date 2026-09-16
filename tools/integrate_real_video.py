@@ -156,6 +156,10 @@ def main():
     shutil.copyfile(local_render, os.path.join(vid_dir, out_name))
     print(f"[4/6] published rendered video -> {out_rel}")
 
+    rel_data = os.path.relpath(data_path, ROOT).replace(os.sep, "/")
+    ours = {bgclip_rel, out_rel, rel_data}
+    dirty = git_dirty_tracked()
+
     stale = [name for v, name in existing_versions(vid_dir, a.num, a.slug) if v != nextv]
     for name in stale:
         run(["git", "rm", "-q", f"media/videos/{name}"], check=False)
@@ -179,9 +183,6 @@ def main():
         print("[6/6] --no-push: leaving changes staged locally, not committing")
         return
 
-    rel_data = os.path.relpath(data_path, ROOT).replace(os.sep, "/")
-    ours = {bgclip_rel, out_rel, rel_data}
-    dirty = git_dirty_tracked()
     to_stash = [f for f in dirty if f not in ours]
     stashed = False
     if to_stash:

@@ -86,6 +86,38 @@ function serveStatic(req, res) {
 }
 
 const server = http.createServer((req, res) => {
+  if (req.method === 'GET' && req.url.startsWith('/api/publish-preview')) {
+    const u = new URL(req.url, 'http://x');
+    const num = u.searchParams.get('num');
+    const license = u.searchParams.get('license') || '11';
+    try {
+      const { buildPreview } = require('./publish_video');
+      const preview = buildPreview(num, license);
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify(preview));
+    } catch (e) {
+      res.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+  if (req.method === 'POST' && req.url === '/api/publish') {
+    let body = '';
+    req.on('data', c => { body += c; if (body.length > 1e6) req.destroy(); });
+    req.on('end', async () => {
+      try {
+        const j = JSON.parse(body || '{}');
+        const { publishVideo } = require('./publish_video');
+        const result = await publishVideo(j.num, j.license || '11', { caption: j.caption, title: j.title });
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'published', payload: result }));
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'error', message: e.message }));
+      }
+    });
+    return;
+  }
   if (req.method === 'POST' && req.url === '/api/lexicon') {
     let body = '';
     req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });

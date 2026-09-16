@@ -338,6 +338,12 @@ async def make_one(num, voice_key, bg_clip, license, work):
     else:
         run(["ffmpeg", "-y", "-i", joined, "-vf", "subtitles=subs.ass:fontsdir=.",
              *VENC, "-c:a", "copy", out_mp4], cwd=work)
+    # moov-atom-at-front ("faststart") — required by Instagram's Reels publish API
+    # (it fetch-streams the file and times out ~50s otherwise, surfacing as a
+    # generic OAuthException with no hint it was a media format problem).
+    faststart = os.path.join(work, "faststart.mp4")
+    run(["ffmpeg", "-y", "-i", out_mp4, "-c", "copy", "-movflags", "+faststart", faststart])
+    shutil.move(faststart, out_mp4)
     print(f"[{num}] OK -> {out_mp4}  ({dur(out_mp4):.1f}s)")
     return out_mp4
 
@@ -357,6 +363,8 @@ async def main():
     ap.add_argument("--all", action="store_true", help="every license-11 question, skipping existing")
     ap.add_argument("--bg-clip", default=None, help="looping background video (darkened 40%%)")
     ap.add_argument("--license", default="11")
+    ap.add_argument("--publish", action="store_true",
+                     help="after rendering, upload to R2 and fire the Make.com webhook (tools/publish_video.js)")
     a = ap.parse_args()
     os.makedirs(OUT_DIR, exist_ok=True)
     if a.bg_clip:
@@ -385,6 +393,14 @@ async def main():
             except SystemExit as e:
                 fail += 1
                 print(f"[{num}] FAIL: {e}")
+                continue
+        if a.publish:
+            publish_helper = os.path.join(ROOT, "tools", "publish_video.js")
+            r = subprocess.run(["node", publish_helper, str(num), "--license", str(a.license)],
+                               capture_output=True, text=True, encoding="utf-8", errors="replace")
+            print(r.stdout, end="")
+            if r.returncode:
+                print(f"[{num}] PUBLISH FAIL: {(r.stderr or '').strip()[-800:]}")
     print(f"\n=== {ok} ok, {fail} fail, {skip} skipped of {len(nums)} ===")
 
 
