@@ -47,7 +47,7 @@ function buildPublishCaption(q) {
   // own emphasized ❗ markers instead, repeated on both lines. Exact wording/line
   // breaks pinned by Alex 2026-09-16 — do not reflow until he says otherwise.
   const cta = '🎓 הקורס תאוריה המלא לרישיון אופנוע ים ❗ לא עברת? לא שילמת. ❗\nwww.alargov.com תרגול חינם, ללא הרשמה. ❗ לא עברת? לא שילמת. ❗';
-  const hashtags = '#SkipperQuiz #שאלות_נוטים #רישיון_שייט #אופנוע_ים #רישיון_אופנוע_ים #תאוריית_אופנוע_ים';
+  const hashtags = '#SkipperQuiz #רישיון_שייט #אופנוע_ים #רישיון_אופנוע_ים #תאוריית_אופנוע_ים';
   return `${cta}\n\n${q.topic || ''} 🚢\n\n${q.q_he || ''}\n\n${optLines}\n\n✅ תשובה: ${opts[idx] || ''}\n\n💡 ${q.explanation || ''}\n\n${hashtags}`;
 }
 
