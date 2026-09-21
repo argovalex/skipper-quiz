@@ -161,9 +161,11 @@ const server = http.createServer((req, res) => {
     const src = u.searchParams.get('url') || '';
     const filenameRaw = u.searchParams.get('filename') || 'video.mp4';
     const filename = filenameRaw.replace(/[^\w.\-]+/g, '_');
-    if (!/^https:\/\/res\.cloudinary\.com\//.test(src)) {
+    // Cloudinary = main render pipeline; *.r2.dev = daily-publish-pool's
+    // audio-fixed videos (tools/daily_publish.js / audio-fix upload).
+    if (!/^https:\/\/(res\.cloudinary\.com|[a-z0-9-]+\.r2\.dev)\//.test(src)) {
       res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
-      res.end(JSON.stringify({ error: 'only res.cloudinary.com URLs are allowed' }));
+      res.end(JSON.stringify({ error: 'only res.cloudinary.com or *.r2.dev URLs are allowed' }));
       return;
     }
     https.get(src, (upstream) => {
