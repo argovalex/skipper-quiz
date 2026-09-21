@@ -191,7 +191,7 @@ async function openTikTok() {
   const ok = await copyCaption();
   const dl = await downloadVideo();
   document.getElementById('tiktokStatus').innerHTML = ok && dl
-    ? 'הקפשן הועתק, הוידאו ירד להורדות. ב-TikTok: גרור את ה-mp4, הדבק את הטקסט ולחץ Post.'
+    ? 'הקפשן הועתק, הוידאו ירד להורדות. ב-TikTok: גרור את ה-mp4, חכה שיעלה, ואז בתיאור לחץ Ctrl+A ו-Ctrl+V (TikTok ממלא שם קובץ אוטומטית ודורס את מה שהודבק קודם). ואז Post.'
     : `<span class="err">${!dl ? 'הורדת הוידאו נכשלה, פתח את הקישור ידנית.' : 'ההעתקה האוטומטית נחסמה, העתק ידנית מתיבת הטקסט.'}</span>`;
 }
 
