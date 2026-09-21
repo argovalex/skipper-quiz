@@ -67,6 +67,9 @@
     <div id="groups"></div>
     <button id="groupsBtn" onclick="openGroups()">📋 העתק קפשן ופתח קבוצות מסומנות</button>
     <div id="groupsStatus" class="meta"></div>
+
+    <button id="tiktokBtn" onclick="openTikTok()">🎵 TikTok: העתק קפשן, הורד וידאו ופתח העלאה</button>
+    <div id="tiktokStatus" class="meta"></div>
   </div>
 </div>
 
@@ -180,6 +183,17 @@ async function openGroups() {
       : `<span class="err">נפתחו ${checked.length} קבוצות אבל ההעתקה האוטומטית נחסמה — העתק ידנית מתיבת הטקסט למעלה.</span>`;
 }
 loadGroups();
+
+// כפתור TikTok יחיד: פותח את דף ההעלאה, מעתיק את הקפשן ומוריד את הוידאו.
+// אלכס גורר את הקובץ, מדביק ולוחץ Post בעצמו.
+async function openTikTok() {
+  window.open('https://www.tiktok.com/tiktokstudio/upload', '_blank');
+  const ok = await copyCaption();
+  const dl = await downloadVideo();
+  document.getElementById('tiktokStatus').innerHTML = ok && dl
+    ? 'הקפשן הועתק, הוידאו ירד להורדות. ב-TikTok: גרור את ה-mp4, הדבק את הטקסט ולחץ Post.'
+    : `<span class="err">${!dl ? 'הורדת הוידאו נכשלה, פתח את הקישור ידנית.' : 'ההעתקה האוטומטית נחסמה, העתק ידנית מתיבת הטקסט.'}</span>`;
+}
 
 // תמיכה ב-?num=1056&license=11 בכתובת — כך monitor.html יכול לקשר ישירות
 // לתצוגה המלאה (וידאו+קפשן+קבוצות) של שאלה שכבר פורסמה, במקום לפתוח את קובץ
