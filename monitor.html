@@ -580,11 +580,20 @@ const PUBLISH_LOG_URL = 'https://skipper-quiz-publisher-production.up.railway.ap
 // ע"י publish-review.html כשלוחצים "פתח קבוצה". קיים רק אם שרת ה-VO-editor
 // (localhost:8899) רץ; אם לא — הטבלה פשוט לא תציג עמודת קבוצות, בלי שגיאה.
 const GROUPS_LOG_URL  = 'http://localhost:8899/tools/groups-log.json';
+// דואל: פרסום ה-daily-publish-pool (Make.com webhook ישיר, לא דרך שרת ה-Railway)
+// כותב היסטוריה משלו מקומית — לא נכנס ל-publish-log של ה-publisher. מוגש כסטטי
+// דרך אותו שרת 8899 (כמו groups-log), אז לא קיים אם השרת לא רץ — מתנהג בהתאם.
+const DAILY_POOL_LOG_URL = 'http://localhost:8899/tools/daily-publish-history.json';
+// TikTok מפורסם יום אחרי הפייסבוק (skill tiktok-daily-publish) ולא דרך publish-log
+// של ה-publisher — יומן נפרד, מוגש דרך אותו שרת 8899, מותאם ל-num כדי לתייג את
+// הרשומה המקורית בטבלת ההיסטוריה.
+const TIKTOK_LOG_URL = 'http://localhost:8899/tools/tiktok-publish-history.json';
 const AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutes
 
 let questions    = [];
 let publishLog   = [];
 let groupsLog    = [];
+let tiktokLog    = [];
 let refreshTimer = null;
 let countdown    = AUTO_REFRESH_MS / 1000;
 
@@ -632,19 +641,38 @@ async function loadData() {
   document.getElementById('refresh-btn').disabled = true;
 
   try {
-    // Fetch all three; publish log / groups log may fail — that's fine, both
-    // degrade gracefully (groups log needs localhost:8899 running).
-    const [qs, log, grp] = await Promise.allSettled([
+    // Fetch all four; publish log / groups log / daily-pool log may fail —
+    // that's fine, all three degrade gracefully (need localhost:8899 running).
+    const [qs, log, grp, pool, tiktok] = await Promise.allSettled([
       fetchJSON(QUESTIONS_URL),
       fetchJSON(PUBLISH_LOG_URL),
-      fetchJSON(GROUPS_LOG_URL)
+      fetchJSON(GROUPS_LOG_URL),
+      fetchJSON(DAILY_POOL_LOG_URL),
+      fetchJSON(TIKTOK_LOG_URL)
     ]);
 
     if (qs.status === 'rejected') throw new Error('שגיאה בטעינת השאלות: ' + qs.reason.message);
 
     questions  = qs.value;
-    publishLog = log.status === 'fulfilled' ? log.value : [];
     groupsLog  = grp.status === 'fulfilled' ? grp.value : [];
+    tiktokLog  = tiktok.status === 'fulfilled' ? tiktok.value : [];
+
+    // מאחדים את שני מקורות ההיסטוריה לטבלה אחת: publish-log (פרסום ידני דרך
+    // publish-review.html) + daily-publish-history (רוטציית ה-pool האוטומטית
+    // ל-Make.com). כל פוסט אמור להופיע כאן בלי קשר לאיך הוא נשלח.
+    const railwayLog = log.status === 'fulfilled' ? log.value : [];
+    const poolLog     = pool.status === 'fulfilled' ? pool.value : [];
+    const topicByNum  = {};
+    questions.forEach(q => { topicByNum[q.num] = { topic: q.topic, videoUrl: q.videoUrl }; });
+    const normalizedPool = poolLog.map(e => ({
+      num: e.num,
+      topic: e.topic || topicByNum[e.num]?.topic,
+      published_at: e.date,
+      videoUrl: topicByNum[e.num]?.videoUrl,
+      platforms: ['daily-pool'],
+      source: 'daily-pool'
+    }));
+    publishLog = [...railwayLog, ...normalizedPool];
 
     renderAll();
     setStatus('ok', 'נתונים עדכניים');
@@ -802,12 +830,26 @@ function renderHistory() {
 
   tbody.innerHTML = entries.map(e => {
     const topic     = e.topic || topicMap[e.num] || '—';
-    const platforms = (e.platforms || []).map(p =>
-      `<span class="platform-tag">${p}</span>`).join('');
+    const basePlatforms = e.source === 'daily-pool'
+      ? `<span class="platform-tag" style="background:rgba(255,180,80,0.18);color:#ffb450" title="נשלח ישירות ל-Make.com דרך תור ה-pool האוטומטי, לא דרך publish-review">🔁 daily-pool</span>`
+      : (e.platforms || []).map(p => `<span class="platform-tag">${p}</span>`).join('');
+    // TikTok מפורסם יום אחרי (skill tiktok-daily-publish), לא באותה רשומה — מתויג
+    // בנפרד לפי num מ-tools/tiktok-publish-history.json ומוצג ליד תגי הפלטפורמה.
+    const tiktokEntry = tiktokLog.find(t => t.num === e.num);
+    const tiktokTag = tiktokEntry
+      ? (tiktokEntry.status === 'prepared'
+          ? `<span class="platform-tag" style="background:rgba(255,180,80,0.18);color:#ffb450" title="הוכן ב-${formatDate(tiktokEntry.date)}, ממתין ללחיצת Publish">🎵 TikTok ממתין</span>`
+          : `<span class="platform-tag" style="background:rgba(255,255,255,0.12);color:#e0e0e0" title="פורסם ל-TikTok ב-${formatDate(tiktokEntry.date)}">🎵 TikTok</span>`)
+      : '';
+    const platforms = basePlatforms + tiktokTag;
     // מקשר לתצוגה המלאה ב-publish-review.html (וידאו+קפשן+קבוצות), לא לקובץ
     // הוידאו הגולמי ב-Cloudinary.
+    const downloadHref = e.videoUrl
+      ? `http://localhost:8899/api/download-video?url=${encodeURIComponent(e.videoUrl)}&filename=q${e.num}.mp4`
+      : null;
     const videoLink = e.videoUrl
       ? `<a href="http://localhost:8899/publish-review.html?num=${e.num}&license=11&published=1" target="_blank" class="video-link">▶ צפה</a>`
+        + (downloadHref ? ` <a href="${downloadHref}" class="video-link" title="הורד את קובץ הוידאו כדי להחליף/לגרור">⬇ הורד</a>` : '')
       : '—';
 
     const groupOpens = groupsLog.filter(g => g.num === e.num);
