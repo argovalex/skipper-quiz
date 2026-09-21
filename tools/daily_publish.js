@@ -30,6 +30,9 @@ const ROOT = path.join(__dirname, '..');
 const POOL_PATH = path.join(__dirname, 'daily-publish-pool.json');
 const HISTORY_PATH = path.join(__dirname, 'daily-publish-history.json');
 const NO_REPEAT_DAYS = 7;
+// Topics that pull more traffic (Q1001 is "זכות מעבר", 2026-09-21): weighted x3 in the pick.
+const PREFERRED_TOPICS = new Set(['זכות מעבר']);
+const PREFERRED_WEIGHT = 3;
 const MAKE_WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL || 'https://hook.eu1.make.com/deu5m0qyc6xndo7nhd6noioi9gnwc4yr';
 
 function loadBank() {
@@ -55,7 +58,10 @@ function pickQuestion(pool, history) {
     eligible = [...pool].sort((a, b) => (lastSeen.get(a.num) || 0) - (lastSeen.get(b.num) || 0));
     eligible = [eligible[0]];
   }
-  return eligible[Math.floor(Math.random() * eligible.length)];
+  const weights = eligible.map(p => PREFERRED_TOPICS.has(p.topic) ? PREFERRED_WEIGHT : 1);
+  let r = Math.random() * weights.reduce((a, b) => a + b, 0);
+  for (let i = 0; i < eligible.length; i++) { r -= weights[i]; if (r < 0) return eligible[i]; }
+  return eligible[eligible.length - 1];
 }
 
 async function main() {
