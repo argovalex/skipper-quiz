@@ -9422,14 +9422,14 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "שלוש צפירות קצרות (תמונה 113) הן אות תמרון קולי לפי כלל 34. הכלל לזכירה: צפירה אחת ימינה, שתי צפירות שמאלה, שלוש אחורה. לכן שלוש קצרות פירושן אני מפעיל מכונות לאחור - תשובה א. תשובה ב שגויה כי אני נמצא בתנועה לאחור מתאר מצב ולא פעולה - האות מדווח על הפעלת ההנעה לאחור, לא רק על היות הכלי כבר נע לאחור. תשובה ג שגויה כי פנייה ימינה מסומנת בצפירה קצרה אחת בלבד, לא בשלוש. תשובה ד שגויה כי אות ספק וסכנה מסומן בלפחות חמש צפירות קצרות רצופות, לא בשלוש.",
+    "explanation": "שלוש צפירות קצרות (תמונה 113) הן אות תמרון קולי לפי כלל 34: אני מפעיל מכונות לאחור. הכלל לזכירה: צפירה אחת ימינה, שתי צפירות שמאלה, שלוש אחורה. תשובה ב: שגויה כי היא מתארת מצב ולא פעולה - האות מדווח על הפעלת ההנעה לאחור, לא רק על היות הכלי כבר נע לאחור. תשובה ג: שגויה כי כלי הפונה ימינה משמיע צפירה קצרה אחת בלבד, לא שלוש. תשובה ד: שגויה כי אות ספק וסכנה מושמע בלפחות חמש צפירות קצרות רצופות, לא שלוש.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2023.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076432/skipper-quiz/pmrrcmtqdjrdfipflzcx.mp4",
     "voiceover_text": "שאלה מספר 2023. מה פרוש האות הקולי כמתואר בתמונה 113? [[PAUSE]] התשובה הנכונה היא א: אני מפעיל מנוע לאחור. שלוש צְפִירוֹת קצרות הן אות תמרון קולי לפי כלל 34. הכלל לזכירה: צְפִירָה אחת ימינה, שתי צְפִירוֹת שמאלה, שלוש אחורה. תשובה ב: שגויה כי אני נמצא בתנועה לאחור מתאר מצב ולא פעולה - האות מדווח על הפעלת ההנעה לאחור, לא רק על היות הכלי כבר נע לאחור. תשובה ג: שגויה כי פנייה ימינה מסומנת ב-צְפִירָה קצרה אחת בלבד, לא בשלוש. תשובה ד: שגויה כי אות ספק וסכנה מסומן בלפחות חמש צְפִירוֹת קצרות רצופות, לא בשלוש.",
     "blastOverride": "",
-    "rendered_at": "2026-09-22T11:27:13.927Z",
+    "rendered_at": "2026-09-22T09:23:23.000Z",
     "html_locked": true
   },
   {
@@ -9447,13 +9447,12 @@
       "ד. כוונותיך לא ברורות,שים לב!"
     ],
     "answer": "ג",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_114.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות קצרות (תמונה 114) הן אות תמרון קולי לפי כלל 34: אני פונה שמאלה. הכלל לזכירה: צפירה אחת ימינה, שתי צפירות שמאלה, שלוש אחורה. תשובה א: שגויה כי כלי המפעיל מכונות לאחור משמיע שלוש צפירות קצרות, לא שתיים. תשובה ב: שגויה כי היא מתארת מצב תנועה ולא אות תמרון רשמי, ובכל מקרה אינה תואמת שתי צפירות. תשובה ד: שגויה כי אות ספק וסכנה מושמע בלפחות חמש צפירות קצרות רצופות, לא שתיים.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2024.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076507/skipper-quiz/brfcatbfmkzffwrd4zwt.mp4",
-    "rendered_at": "2026-09-22T11:28:28.957Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076507/skipper-quiz/brfcatbfmkzffwrd4zwt.mp4"
   },
   {
     "num": 2025,
@@ -9470,13 +9469,12 @@
       "ד. אני לא מבין כוונותיך בתמרונך שים לב!"
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_115.png",
+    "answer_confirmed": true,
+    "explanation": "חמש צפירות קצרות (תמונה 115) הן אות ספק וסכנה לפי כלל 34(ד): אני לא מבין כוונותיך בתמרונך שים לב, הניתן כשכלי שייט אינו בטוח שהצד השני נוקט פעולה מספקת למניעת התנגשות. תשובה א: שגויה כי כלי המפעיל מנועים לאחור משמיע שלוש צפירות קצרות בלבד, לא חמש. תשובה ב: שגויה כי כלי הפונה ימינה משמיע צפירה קצרה אחת בלבד. תשובה ג: שגויה כי היא מתארת מצב תנועה ולא אות תמרון רשמי, וגם אינה תואמת חמש צפירות.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2025.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076585/skipper-quiz/p2bgnkkv6ittmhsoyvtd.mp4",
-    "rendered_at": "2026-09-22T11:29:47.410Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076585/skipper-quiz/p2bgnkkv6ittmhsoyvtd.mp4"
   },
   {
     "num": 2026,
@@ -9493,13 +9491,12 @@
       "ד. אני לא מבין כוונותיך בתמרונך שים לב!"
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_115.png",
+    "answer_confirmed": true,
+    "explanation": "חמש צפירות קצרות (תמונה 115) הן אות ספק וסכנה לפי כלל 34(ד): אני לא מבין כוונותיך בתמרונך שים לב, הניתן כשכלי שייט בספק אם הצד השני נוקט פעולה מספקת למניעת התנגשות. תשובה א: שגויה כי כלי המפעיל מנועים לאחור משמיע שלוש צפירות קצרות בלבד, לא חמש. תשובה ב: שגויה כי קריאת מצוקה אינה מושמעת בחמש קצרות אלא באותות מצוקה ייעודיים. תשובה ג: מנוסחת בדומה לתשובה הנכונה אך אינה הניסוח הרשמי של האות לפי כלל 34(ד).",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2025.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076661/skipper-quiz/oplcevs7widnhxalxqiu.mp4",
-    "rendered_at": "2026-09-22T11:31:02.730Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076661/skipper-quiz/oplcevs7widnhxalxqiu.mp4"
   },
   {
     "num": 2027,
@@ -9516,13 +9513,14 @@
       "ד. לפניך כלי שייט שעצר והטיל עוגן."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_118.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות ארוכות (תמונה 118), במחזוריות של עד שתי דקות, הן אות ראות מוגבלת לפי כלל 35(ב): כלי שייט ממוכן שהוא בתנועה אך נעצר ואינו עושה דרכו במים. תשובה א: שגויה כי כלי שייט העושה דרכו במים משמיע צפירה ארוכה אחת בלבד. תשובה ג: שגויה כי כלי מוגבל בכושר תמרון משמיע צפירה ארוכה ושתי קצרות, לא שתי ארוכות בלבד. תשובה ד: שגויה כי כלי עוגן משתמש בפעמון ולא בצופר.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2027.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076742/skipper-quiz/udmks19hrjsbnfl2fcum.mp4",
-    "rendered_at": "2026-09-22T11:32:24.065Z"
+    "blastOverride": "",
+    "voiceover_text": "שאלה מספר 2027. בערפל או רְאוּת מוגבלת לפני הַחַרְטוֹם שמעת , במחזוריות של כ- 2 דקות, אות קולי כמתואר בתמונה 118, מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא ב: לפניך כְּלי שייט מְמוּכָּן שנעצר ואינו עושה דרכו במים. ... שתי צְפִירוֹת ארוכות תמונה 118, במחזוריות של עד שתי דקות, הן אות רְאוּת מוגבלת לפי כלל 35ב: כְּלי שייט מְמוּכָּן שהוא בתנועה אך נעצר ואינו עושה דרכו במים. תשובה א: שגויה כי כְּלי שייט העושה דרכו במים משמיע צְפִירָה ארוכה אחת בלבד. תשובה ג: שגויה כי כְּלי מוגבל בכושר תִמרון משמיע צְפִירָה ארוכה ושתי קצרות, לא שתי ארוכות בלבד. תשובה ד: שגויה כי כְּלי עוֹגֶן משתמש בפעמון ולא בצוּפַר."
   },
   {
     "num": 2028,
@@ -9561,13 +9559,12 @@
       "ד. אני מסכים לבקשתך לעקוף אותי."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_116.png",
+    "answer_confirmed": true,
+    "explanation": "תמונה 116 (שתי ארוכות ושתי קצרות) היא בקשת עקיפה בתעלה צרה מצד שמאל של כלי השייט מלפנים. תמונה 117 (ארוכה-קצרה-ארוכה-קצרה) היא אות ההסכמה של כלי השייט מלפנים לבקשה: אני מסכים לבקשתך לעקוף אותי. תשובה א: שגויה כי אינה תואמת את תבנית תמונה 117, וגם התוכן הפוך - זו תשובה של אי-הסכמה. תשובה ב: שגויה כי תמונה 116 מבקשת עקיפה משמאל ולא מימין, ותמונה 117 היא תגובת הסכמה כללית ולא ציון צד. תשובה ג: שגויה כי אות ספק וסכנה מושמע בחמש צפירות קצרות, לא בתבנית ארוכה-קצרה-ארוכה-קצרה.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2029.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076838/skipper-quiz/tf3qcoqy73noejfdgqy6.mp4",
-    "rendered_at": "2026-09-22T11:33:59.009Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076838/skipper-quiz/tf3qcoqy73noejfdgqy6.mp4"
   },
   {
     "num": 2030,
@@ -9695,13 +9692,12 @@
       "ד. מוגבל בכושר התמרון,גוררת,מפרשית,כ\"ש ללא שליטה או דייג."
     ],
     "answer": "א",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_118.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות ארוכות (תמונה 118), במחזוריות של עד שתי דקות, הן אות ראות מוגבלת לפי כלל 35(ב): כלי שייט ממוכן שהוא בתנועה אך נעצר ואינו עושה דרכו במים. תשובה ב: שגויה כי כלי שייט על שרטון משמיע אות ייחודי בפעמון, לא בצופר. תשובה ג: שגויה כי כלי העושה דרכו במים משמיע צפירה ארוכה אחת בלבד, לא שתיים. תשובה ד: שגויה כי כלי מוגבל בכושר תמרון, גוררת, מפרשית, כלי שיט ללא שליטה או דייג משמיעים צפירה ארוכה ושתי קצרות, לא שתי ארוכות.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2027.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076927/skipper-quiz/h333chj9bdhpb5fuupvp.mp4",
-    "rendered_at": "2026-09-22T11:35:29.097Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790076927/skipper-quiz/h333chj9bdhpb5fuupvp.mp4"
   },
   {
     "num": 2036,
