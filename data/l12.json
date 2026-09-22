@@ -594,9 +594,9 @@
       "ד. לפניך כלי שייט שעצר והטיל עוגן."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_118.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות ארוכות (תמונה 118), במחזוריות של עד שתי דקות, הן אות ראות מוגבלת לפי כלל 35(ב) - כלי שייט ממוכן שהוא בתנועה אך נעצר ואינו עושה דרכו במים. תשובה ב: לפניך כלי שייט ממוכן שנעצר ואינו עושה דרכו במים - הנוסחה הרשמית של כלל 35(ב). תשובה א: שגויה כי כלי שייט העושה דרכו במים מסמן צפירה ארוכה אחת בלבד. תשובה ג: שגויה כי כלי מוגבל בכושר תמרון מסמן צפירה ארוכה ושתי קצרות, לא שתי ארוכות בלבד. תשובה ד: שגויה כי כלי עוגן משתמש בפעמון ולא בצופר.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2027.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
@@ -771,9 +771,9 @@
       "ד. מוגבל בכושר התמרון,גוררת,מפרשית,כ\"ש ללא שליטה או דייג."
     ],
     "answer": "א",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_118.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות ארוכות (תמונה 118), במחזוריות של עד שתי דקות, הן אות ראות מוגבלת לפי כלל 35(ב): כלי שייט ממוכן שהוא בתנועה אך נעצר ואינו עושה דרכו במים. תשובה א: כלי שייט ממוכן שנעצר ואינו עושה דרכו במים - הנוסחה הרשמית של כלל 35(ב). תשובה ב: שגויה כי כלי שייט על שרטון מסמן אות ייחודי בפעמון, לא בצופר. תשובה ג: שגויה כי כלי העושה דרכו במים מסמן צפירה ארוכה אחת בלבד, לא שתיים. תשובה ד: שגויה כי כלי מוגבל בכושר תמרון, גוררת, מפרשית, כלי שיט ללא שליטה או דייג מסמנים צפירה ארוכה ושתי קצרות, לא שתי ארוכות.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2027.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
