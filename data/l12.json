@@ -599,7 +599,7 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2027.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790075127/skipper-quiz/y4scv5ocdynrl4zbvie3.mp4"
   },
   {
     "num": 2028,
@@ -638,12 +638,12 @@
       "ד. אני מסכים לבקשתך לעקוף אותי."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_116.png",
+    "answer_confirmed": true,
+    "explanation": "תמונה 116 (שתי ארוכות ושתי קצרות) היא בקשת עקיפה בתעלה צרה מצד שמאל של כלי השייט מלפנים. תמונה 117 (ארוכה-קצרה-ארוכה-קצרה) היא אות ההסכמה של כלי השייט מלפנים לבקשה - תשובה ד: אני מסכים לבקשתך לעקוף אותי. תשובה א: שגויה כי אינה תואמת את תבנית תמונה 117, וגם התוכן הפוך - זו תשובה של אי-הסכמה. תשובה ב: שגויה כי תמונה 116 מבקשת עקיפה משמאל ולא מימין, ותמונה 117 היא תגובת הסכמה כללית ולא ציון צד. תשובה ג: שגויה כי אות ספק וסכנה מסומן בחמש צפירות קצרות, לא בתבנית ארוכה-קצרה-ארוכה-קצרה.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2029.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790075498/skipper-quiz/quobhk99a33u7bkfqd4w.mp4"
   },
   {
     "num": 2030,
@@ -776,7 +776,7 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2027.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790075224/skipper-quiz/u11t6nlgrtg5kldivet6.mp4"
   },
   {
     "num": 2036,
