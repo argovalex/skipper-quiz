@@ -528,9 +528,9 @@
       "ד. כוונותיך לא ברורות,שים לב!"
     ],
     "answer": "ג",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_114.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות קצרות (תמונה 114) הן אות תמרון קולי לפי כלל 34. הכלל לזכירה: צפירה אחת ימינה, שתי צפירות שמאלה, שלוש אחורה. לכן שתי קצרות פירושן אני פונה שמאלה - תשובה ג. תשובה א: שגויה כי אני מפעיל מכונות לאחור מסומן בשלוש צפירות קצרות, לא בשתיים. תשובה ב: שגויה כי היא מתארת מצב תנועה ולא אות תמרון רשמי, ובכל מקרה אינה תואמת שתי צפירות. תשובה ד: שגויה כי אות ספק וסכנה מסומן בלפחות חמש צפירות קצרות רצופות, לא בשתיים.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2024.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": ""
