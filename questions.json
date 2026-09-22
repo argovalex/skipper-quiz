@@ -9587,13 +9587,12 @@
       "ד. כוונותיך לא ברורות."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_121.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות ארוכות וצפירה קצרה אחת (תמונה 121) הן אות בקשת עקיפה בתעלה צרה לפי כלל 34(ג): אני עומד לעקוף אותך מימין. תשובה א: שגויה כי בקשת עקיפה משמאל מושמעת בשתי ארוכות ושתי קצרות (תמונה 116), לא בקצרה אחת. תשובה ג: שגויה כי פנייה שמאלה מושמעת בשתי צפירות קצרות בלבד, לא בתבנית זו. תשובה ד: שגויה כי אות ספק וסכנה מושמע בחמש צפירות קצרות, לא בתבנית זו.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2030.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790080994/skipper-quiz/vfuh0w9ao3ehogw3o8sj.mp4",
-    "rendered_at": "2026-09-22T12:43:15.178Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790080994/skipper-quiz/vfuh0w9ao3ehogw3o8sj.mp4"
   },
   {
     "num": 2031,
@@ -9708,7 +9707,7 @@
     "html_locked": true,
     "blastOverride": "",
     "voiceover_text": "שאלה מספר 2035. בעת ההפלגה בראות לקוויה, שמעת אות קולי כמתואר בתמונה 118, במחזוריות של שתי דקות.מהו כְּלי שייט?. [[PAUSE]] התשובה הנכונה היא א: כְּלי שייט מְמוּכָּן שנעצר ואינו עושה דרכו במים. ... שתי צְפִירוֹת ארוכות תמונה 118, במחזוריות של עד שתי דקות, הן אות רְאוּת מוגבלת לפי כלל 35ב: כְּלי שייט מְמוּכָּן שהוא בתנועה אך נעצר ואינו עושה דרכו במים. תשובה ב: שגויה כי כְּלי שייט על שִׂרְטוֹן משמיע אות ייחודי בפעמון, לא בצופר. תשובה ג: שגויה כי כְּלי העושה דרכו במים משמיע צְפִירָה ארוכה אחת בלבד, לא שתיים. תשובה ד: שגויה כי כְּלי מוגבל בכושר תִמרון, גוררת, מִפְרָשִׂית, כְּלי שיט ללא שליטה או דייג משמיעים צְפִירָה ארוכה ושתי קצרות, לא שתי ארוכות.",
-    "rendered_at": "2026-09-22T15:12:32.545Z"
+    "rendered_at": "2026-09-22T15:12:35.075Z"
   },
   {
     "num": 2036,
@@ -9879,13 +9878,12 @@
       "ד. כל התשובות נכונות."
     ],
     "answer": "ד",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_122.png",
+    "answer_confirmed": true,
+    "explanation": "צפירה ארוכה ושתי קצרות (תמונה 122), במחזוריות של עד שתי דקות, הן אות ראות מוגבלת משותף לפי כלל 35(ג) לכלי שאין עליו שליטה, כלי מוגבל בכושר תמרון (כולל גוררת) וכלי מפרשית - ולכן שלוש התשובות נכונות יחד. תשובה א: נכונה בפני עצמה אך אינה מלאה - אוניה שאין עליה שליטה משמיעה אות זה, אך כך גם גוררת ומפרשית. תשובה ב: נכונה בפני עצמה אך אינה מלאה - גם כלי שאין עליו שליטה ומפרשית משמיעים אותו אות. תשובה ג: נכונה בפני עצמה אך אינה מלאה - גם כלי שאין עליו שליטה וגוררת משמיעים אותו אות.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2043.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790081079/skipper-quiz/f37itwfnnsudf8zel4xf.mp4",
-    "rendered_at": "2026-09-22T12:44:40.634Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790081079/skipper-quiz/f37itwfnnsudf8zel4xf.mp4"
   },
   {
     "num": 2044,
@@ -14239,13 +14237,12 @@
       "ד. אני לא מסכים לעקיפה שלך בצד ימין שלי."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_116.png",
+    "answer_confirmed": true,
+    "explanation": "שתי צפירות ארוכות ושתי קצרות (תמונה 116) הן אות בקשת עקיפה בתעלה צרה לפי כלל 34(ג): אני רוצה לעקוף אותך מצד שמאל שלך. תשובה א: שגויה כי אות ספק וסכנה מושמע בחמש צפירות קצרות, לא בתבנית זו. תשובה ג: שגויה כי הסכמה לעקיפה מושמעת בתבנית ארוכה-קצרה-ארוכה-קצרה (תמונה 117), לא בשתי ארוכות ושתי קצרות. תשובה ד: שגויה כי שתי ארוכות ושתי קצרות הן בקשת עקיפה משמאל, ולא אות התנגדות כלשהו.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2240.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790080913/skipper-quiz/cfihy9zft7gz6ucawnee.mp4",
-    "rendered_at": "2026-09-22T12:41:54.730Z"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790080913/skipper-quiz/cfihy9zft7gz6ucawnee.mp4"
   },
   {
     "num": 2241,
@@ -15780,15 +15777,14 @@
       "ד. F מפנה ל- K."
     ],
     "answer": "ב",
-    "answer_confirmed": false,
-    "explanation": "",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/signs/tmuna_119.png",
+    "answer_confirmed": true,
+    "explanation": "צפירה ארוכה רצופה (תמונה 119) היא אחד מאותות המצוקה הרשמיים לפי נספח IV לתקנות הבינלאומיות למניעת התנגשויות בים - השמעה ממושכת ורצופה של מכשיר האות הקולי. תשובה א: שגויה כי K אינו משמיע אות פינוי דרך אלא קורא למצוקה. תשובה ג: שגויה כי אסור להתעלם מאות מצוקה ולהמשיך כרגיל. תשובה ד: שגויה כי F אינו נדרש לפנות אלא להגיש עזרה.",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2310.png",
     "mediaType": "image",
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790081155/skipper-quiz/swk5dywo4dq6xay0o0co.mp4",
     "blastOverride": "",
-    "voiceover_text": "שאלה מספר 2310. כְּלי שייט אֶף, מבחין בכלי שייט קֶיי המשמיע אות קולי כמתואר בתמונה 119, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ב: קֶיי נִמְצָא במצוקה עלי להגיש לו עזרה.",
-    "rendered_at": "2026-09-22T12:45:56.568Z"
+    "voiceover_text": "שאלה מספר 2310. כְּלי שייט אֶף, מבחין בכלי שייט קֶיי המשמיע אות קולי כמתואר בתמונה 119, מהי הפעולה הנדרשת?. [[PAUSE]] התשובה הנכונה היא ב: קֶיי נִמְצָא במצוקה עלי להגיש לו עזרה. ... צְפִירָה ארוכה רצופה תמונה 119 היא אחד מאותות המצוקה הרשמיים לפי נספח ארבע לתקנות הבינלאומיות למניעת התנגשויות בים - השמעה ממושכת ורצופה של מכשיר האות הקולי. תשובה א: שגויה כי קֶיי אינו משמיע אות פינוי דרך אלא קורא למצוקה. תשובה ג: שגויה כי אסור להתעלם מאות מצוקה ולהמשיך כרגיל. תשובה ד: שגויה כי אֶף אינו נדרש לפנות אלא להגיש עזרה."
   },
   {
     "num": 2311,
