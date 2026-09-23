@@ -625,7 +625,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2028.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1L"
   },
   {
     "num": 2029,
@@ -695,7 +696,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "3S 3L 3S"
   },
   {
     "num": 2032,
@@ -717,7 +719,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1L"
   },
   {
     "num": 2033,
@@ -832,7 +835,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1L"
   },
   {
     "num": 2038,
@@ -854,7 +858,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "3S 3L 3S"
   },
   {
     "num": 2039,
@@ -876,7 +881,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2039.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1S"
   },
   {
     "num": 2040,
@@ -898,7 +904,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1S"
   },
   {
     "num": 2041,
@@ -920,7 +927,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2028.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1L"
   },
   {
     "num": 2042,
@@ -942,7 +950,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_fog.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "1L"
   },
   {
     "num": 2043,
@@ -6511,7 +6520,8 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_fog.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": ""
+    "videoUrl": "",
+    "blastOverride": "2L"
   },
   {
     "num": 2295,
