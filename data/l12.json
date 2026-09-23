@@ -625,8 +625,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2028.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1L"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790147887/skipper-quiz/chl64lcp8wojpvufnbnv.mp4",
+    "blastOverride": "1L",
+    "voiceover_text": "שאלה מספר 2028. מה פרוש האות הקולי כמתואר בתמונה 112 המושמע בערפל כל שתי דקות?. [[PAUSE]] התשובה הנכונה היא א: לפניך כְּלי שייט מְמוּכָּן העושה דרכו במים. ... צְפִירָה ארוכה אחת תמונה 112, המושמעת בערפל במחזוריות של עד שתי דקות, היא אות רְאוּת מוגבלת לפי כלל 35א: לפניך כְּלי שייט מְמוּכָּן העושה דרכו במים. תשובה ב: שגויה כי כְּלי שייט מְמוּכָּן שנעצר ואינו עושה דרכו במים משמיע שתי צְפִירוֹת ארוכות, לא אחת. תשובה ג: שגויה כי כְּלי מוגבל בכושרו לתמרון משמיע צְפִירָה ארוכה ושתי קצרות, ואות זה אינו מציין כִּיווּן תנועה. תשובה ד: שגויה כי כְּלי שעצר והטיל עֹגֶן משמיע פעימות פעמון, לא צְפִירָה בצופר."
   },
   {
     "num": 2029,
@@ -696,8 +697,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "3S 3L 3S"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790147971/skipper-quiz/n7ey3gnew4yuxlbjdoa2.mp4",
+    "blastOverride": "3S 3L 3S",
+    "voiceover_text": "שאלה מספר 2031. כְּלי שייט משמיע רצף אותות קוליים: 3 קצרים, 3 ארוכים ו- 3 קצרים. מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא ד: אני במצוקה וזקוק לסיוע מיידי. ... רצף של שלוש קצרות, שלוש ארוכות ושלוש קצרות הוא אות אס, או, אס במורס, המושמע כאות מצוקה לפי נספח ארבע לתקנות: אני במצוקה וזקוק לסיוע מיידי. תשובה א: שגויה כי כְּלי מוגבל בכושרו לתמרון משמיע צְפִירָה ארוכה ושתי קצרות, לא את תבנית ה-אס, או, אס. תשובה ב: שגויה כי כְּלי העוסק בגרירה ומתקשה בתמרון משמיע אותה תבנית של כְּלי מוגבל בתמרון ארוכה ושתי קצרות, לא אס, או, אס. תשובה ג: שגויה כי אין אות קולי ייעודי לספינת אם לצוללנים."
   },
   {
     "num": 2032,
@@ -719,8 +721,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1L"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148046/skipper-quiz/l94tispvoiwspgx7edwm.mp4",
+    "blastOverride": "1L",
+    "voiceover_text": "שאלה מספר 2032. מה משמעות צְפִירָה ממושכת ורצופה מכלי שייט?. [[PAUSE]] התשובה הנכונה היא ד: אני במצוקה וזקוק לסיוע מיידי. ... צְפִירָה ממושכת ורצופה, ללא הפסקות, היא אות מצוקה לפי נספח ארבע לתקנות השמעה רצופה במיתקן איתות קולי: אני במצוקה וזקוק לסיוע מיידי. תשובה א: שגויה כי כְּלי מוגבל בכושרו לתמרון משמיע צְפִירָה ארוכה ושתי קצרות במרווחים, לא צְפִירָה רצופה ללא הפסק. תשובה ב: שגויה כי כְּלי העוסק בגרירה ומתקשה בתמרון משמיע אותה תבנית של כְּלי מוגבל בתמרון, לא צְפִירָה רצופה. תשובה ג: שגויה כי אין אות קולי ייעודי לספינת אם לצוללנים."
   },
   {
     "num": 2033,
@@ -835,8 +838,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1L"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148122/skipper-quiz/etlt7vo5gkgh8hgzokww.mp4",
+    "blastOverride": "1L",
+    "voiceover_text": "שאלה מספר 2037. בלילה, אתה שומע צְפִירָה מתמשכת ללא הפסק, מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא ג: כְּלי שייט במצוקה. ... צְפִירָה מתמשכת ורצופה ללא הפסק, ביום או בלילה, היא אות מצוקה לפי נספח ארבע לתקנות: כְּלי שייט במצוקה. תשובה א: שגויה כי כְּלי על שִׂרְטוֹן משמיע אותות בפעמון, לא צְפִירָה רצופה בצופר. תשובה ב: שגויה כי כְּלי מוגבל בכושר תִמרון, גורר, מִפְרָשִׂית, כְּלי שיט ללא שליטה או דייג משמיעים צְפִירָה ארוכה ושתי קצרות במרווחים, לא צְפִירָה רצופה. תשובה ד: שגויה כי זהו אות מצוקה מוגדר ומוכר בתקנות, לא תקלה."
   },
   {
     "num": 2038,
@@ -858,8 +862,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "3S 3L 3S"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148206/skipper-quiz/vwfwlimgfwnsha96tust.mp4",
+    "blastOverride": "3S 3L 3S",
+    "voiceover_text": "שאלה מספר 2038. בלילה אתה שומע מאחור רצף של שלוש צְפִירוֹת קצרות, שלוש ארוכות, שלוש קצרות. מה פרוש האות?. [[PAUSE]] התשובה הנכונה היא ג: כְּלי שייט במצוקה. ... רצף של שלוש קצרות, שלוש ארוכות ושלוש קצרות הוא אות אס, או, אס במורס, המושמע כאות מצוקה לפי נספח ארבע לתקנות, ללא קשר לכיוון ממנו הוא נשמע: כְּלי שייט במצוקה. תשובה א: שגויה כי כְּלי משיג שהפעיל מכונות לאחור משמיע שלוש צְפִירוֹת קצרות בלבד, לא את תבנית ה-אס, או, אס. תשובה ב: שגויה כי כְּלי המתקרב שמוגבל בתמרון משמיע צְפִירָה ארוכה ושתי קצרות, לא אס, או, אס. תשובה ד: שגויה כי זהו אות מצוקה מוגדר ומוכר בתקנות."
   },
   {
     "num": 2039,
@@ -881,8 +886,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2039.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1S"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148276/skipper-quiz/qobpdfpbim6nqhq955kw.mp4",
+    "blastOverride": "1S",
+    "voiceover_text": "שאלה מספר 2039. כְּלי השייט שלידך משמיע צְפִירָה כמתואר בתמונה 111, מה פירוש הצפירה?. [[PAUSE]] התשובה הנכונה היא א: אני משנה אורחי לימין. ... צְפִירָה קצרה אחת תמונה 111 היא אות תִמרון לפי כלל 34א: אני משנה אורחי לימין. תשובה ב: שגויה כי פנייה שמאלה מושמעת בשתי צְפִירוֹת קצרות, לא באחת. תשובה ג: שגויה כי עשיית דרך במים אינה אות תִמרון יומי, אלא צְפִירָה ארוכה המושמעת בתנאי רְאוּת מוגבלת. תשובה ד: שגויה כי הפעלת מכונות לאחור מושמעת בשלוש צְפִירוֹת קצרות, לא באחת."
   },
   {
     "num": 2040,
@@ -904,8 +910,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_day.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1S"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148351/skipper-quiz/yugxsyegwv73ofw6cmez.mp4",
+    "blastOverride": "1S",
+    "voiceover_text": "שאלה מספר 2040. כְּלי שייט מאחורי הירכתיים שלך צופר צְפִירָה קצרה אחת.מה פרוש הצפירה?. [[PAUSE]] התשובה הנכונה היא א: אני משנה א ורחי לימין. ... צְפִירָה קצרה אחת המושמעת מכלי שייט מאחורי הירכתיים שלך היא אות תִמרון לפי כלל 34א: אני משנה אורחי לימין. תשובה ב: שגויה כי פנייה שמאלה מושמעת בשתי צְפִירוֹת קצרות, לא באחת. תשובה ג: שגויה כי בקשת עקיפה מימין בתעלה צרה מושמעת בשתי צְפִירוֹת ארוכות וקצרה אחת תמונה 121, לא בקצרה בודדת. תשובה ד: שגויה כי בקשת עקיפה משמאל בתעלה צרה מושמעת בשתי צְפִירוֹת ארוכות ושתי קצרות תמונה 116, לא בקצרה בודדת."
   },
   {
     "num": 2041,
@@ -927,8 +934,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q2028.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1L"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148423/skipper-quiz/dca3lkzvod4ghvysusdz.mp4",
+    "blastOverride": "1L",
+    "voiceover_text": "שאלה מספר 2041. בערפל, כְּלי שייט שבקרבתך משמיע צְפִירָה כמתואר בתמונה 112, מה פירוש הצפירה?. [[PAUSE]] התשובה הנכונה היא ג: אני עושה דרכי במים. ... צְפִירָה ארוכה אחת תמונה 112, המושמעת בערפל, היא אות רְאוּת מוגבלת לפי כלל 35א: אני עושה דרכי במים. תשובה א ו-ב: שגויות כי אותות שינוי אורח ימינה או שמאלה מושמעים בצפירות קצרות בתנאי רְאוּת טוֹבָה בלבד, ולא כחלק מאותות רְאוּת מוגבלת. תשובה ד: שגויה כי כְּלי שנעצר ואינו עושה דרכו במים משמיע שתי צְפִירוֹת ארוכות, לא אחת."
   },
   {
     "num": 2042,
@@ -950,8 +958,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_fog.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "1L"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148502/skipper-quiz/pkjzwzkbmizkrsioqw1t.mp4",
+    "blastOverride": "1L",
+    "voiceover_text": "שאלה מספר 2042. ב רְאוּת לקוויה, כְּלי שייט שבקרבתך משמיע צְפִירָה ארוכה אחת כל שתי דקות, מה פירוש הצפירה?. [[PAUSE]] התשובה הנכונה היא ג: אני עושה דרכי במים. ... צְפִירָה ארוכה אחת כל שתי דקות, בתנאי רְאוּת לקוויה, היא אות רְאוּת מוגבלת לפי כלל 35א: אני עושה דרכי במים. תשובה א: שגויה כי שינוי אורח לימין מושמע בצפירה קצרה אחת בתנאי רְאוּת טוֹבָה בלבד, לא כאות רְאוּת מוגבלת חוזר. תשובה ב: שגויה כי אזהרה כללית לפני עיקול בתעלה צרה מושמעת אף היא בצפירה ארוכה אחת אך כאות חד-פעמי בקרבה לעיקול, ולא במחזוריות של שתי דקות בראות לקוויה. תשובה ד: שגויה כי כְּלי שנעצר ואינו עושה דרכו במים משמיע שתי צְפִירוֹת ארוכות, לא אחת."
   },
   {
     "num": 2043,
@@ -6520,8 +6529,9 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/q_plain_fog.png",
     "mediaType": "image",
     "approved_for_publish": false,
-    "videoUrl": "",
-    "blastOverride": "2L"
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790148584/skipper-quiz/kkcsz4aawggqxhimmznc.mp4",
+    "blastOverride": "2L",
+    "voiceover_text": "שאלה מספר 2294. בראות מוגבלת, לפני חַרְטוֹם סירתך נשמעות שתי צְפִירוֹת ממושכות בכל שתי דקות, מהו פירוש האות?. [[PAUSE]] התשובה הנכונה היא ג: מלפנים נִמְצָא כְּלי שייט מְמוּכָּן שנעצר ולא עושה דרכו במים. ... שתי צְפִירוֹת ממושכות ארוכות בכל שתי דקות, בתנאי רְאוּת מוגבלת, הן אות לפי כלל 35ב: מלפנים נִמְצָא כְּלי שייט מְמוּכָּן שנעצר ואינו עושה דרכו במים. תשובה א: שגויה כי כְּלי שהטיל עֹגֶן משמיע פעימות פעמון, לא צְפִירוֹת בצופר. תשובה ב: שגויה כי כְּלי מְמוּכָּן העושה דרכו במים משמיע צְפִירָה ארוכה אחת בלבד, לא שתיים. תשובה ד: שגויה כי כְּלי מוגבל בכושרו לתמרון משמיע צְפִירָה ארוכה ושתי קצרות, ואות זה אינו מציין כִּיווּן תנועה."
   },
   {
     "num": 2295,
