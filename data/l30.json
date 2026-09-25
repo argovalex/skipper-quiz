@@ -23,7 +23,9 @@
     "scheduled_date": "2026-06-28",
     "scheduled_time": "10:31",
     "license": 30,
-    "html_locked": true
+    "html_locked": true,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 1
   },
   {
     "num": 102,
@@ -47,7 +49,9 @@
     "html_locked": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782723907/skipper-quiz/ofgd5vklh0xkzaxsk2rs.mp4",
     "rendered_at": "2026-06-29T09:05:10.900Z",
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 2
   },
   {
     "num": 103,
@@ -72,7 +76,10 @@
     "rendered_at": "2026-06-28T10:21:51.672Z",
     "scheduled_date": "2026-06-28",
     "scheduled_time": "15:00",
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 3,
+    "fix_request": "מפתח SQ5 (שאלה 3) נותן תשובה ד, בבנק א"
   },
   {
     "num": 104,
@@ -97,7 +104,9 @@
     "rendered_at": "2026-06-28T10:24:49.848Z",
     "scheduled_date": "2026-06-29",
     "scheduled_time": "09:00",
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 4
   },
   {
     "num": 105,
@@ -123,7 +132,9 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782724090/skipper-quiz/pcytscnngxzmngqbmtid.mp4",
     "rendered_at": "2026-06-29T09:08:13.858Z",
     "scheduled_date": "2026-06-29",
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 5
   },
   {
     "num": 106,
@@ -143,7 +154,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 6
   },
   {
     "num": 107,
@@ -170,7 +183,9 @@
     "fix_request": "",
     "fix_requested_at": "",
     "scheduled_date": "2026-06-30",
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 7
   },
   {
     "num": 108,
@@ -190,7 +205,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 8
   },
   {
     "num": 109,
@@ -210,7 +227,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 9
   },
   {
     "num": 110,
@@ -230,7 +249,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 10
   },
   {
     "num": 111,
@@ -250,7 +271,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 11
   },
   {
     "num": 112,
@@ -270,7 +293,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 12,
+    "fix_request": "מפתח SQ5 (שאלה 12) נותן תשובה ג, בבנק ד"
   },
   {
     "num": 113,
@@ -290,7 +316,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 14
   },
   {
     "num": 114,
@@ -310,7 +338,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 15
   },
   {
     "num": 115,
@@ -330,7 +360,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 16
   },
   {
     "num": 116,
@@ -350,7 +382,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 17
   },
   {
     "num": 117,
@@ -370,7 +404,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 18
   },
   {
     "num": 118,
@@ -390,7 +426,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 19
   },
   {
     "num": 119,
@@ -410,7 +448,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 20
   },
   {
     "num": 120,
@@ -430,7 +470,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 21
   },
   {
     "num": 121,
@@ -450,7 +492,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 22
   },
   {
     "num": 122,
@@ -470,7 +514,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 24
   },
   {
     "num": 123,
@@ -490,7 +536,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 25
   },
   {
     "num": 124,
@@ -510,7 +558,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 26
   },
   {
     "num": 125,
@@ -530,7 +580,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 27
   },
   {
     "num": 126,
@@ -550,7 +602,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 29
   },
   {
     "num": 127,
@@ -570,7 +624,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 30
   },
   {
     "num": 128,
@@ -590,7 +646,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 31
   },
   {
     "num": 129,
@@ -610,7 +668,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 33
   },
   {
     "num": 130,
@@ -630,7 +690,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 36
   },
   {
     "num": 131,
@@ -650,7 +712,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 38,
+    "fix_request": "מפתח SQ5 (שאלה 38) נותן תשובה ד, בבנק ג"
   },
   {
     "num": 132,
@@ -670,7 +735,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 133,
@@ -690,7 +756,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 134,
@@ -710,7 +777,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 135,
@@ -730,7 +798,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 49
   },
   {
     "num": 136,
@@ -750,7 +820,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 76
   },
   {
     "num": 137,
@@ -770,7 +842,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 77
   },
   {
     "num": 138,
@@ -790,7 +864,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 79
   },
   {
     "num": 139,
@@ -810,7 +886,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 82
   },
   {
     "num": 140,
@@ -830,7 +908,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 52
   },
   {
     "num": 141,
@@ -850,7 +930,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 53
   },
   {
     "num": 142,
@@ -870,7 +952,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 55
   },
   {
     "num": 143,
@@ -890,7 +974,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 59
   },
   {
     "num": 144,
@@ -910,7 +996,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 75,
+    "fix_request": "מפתח SQ5 (שאלה 75) נותן תשובה ד, בבנק ב"
   },
   {
     "num": 145,
@@ -930,7 +1019,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 74
   },
   {
     "num": 146,
@@ -950,7 +1041,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 61
   },
   {
     "num": 147,
@@ -970,7 +1063,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 62
   },
   {
     "num": 148,
@@ -990,7 +1085,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 66
   },
   {
     "num": 149,
@@ -1010,7 +1107,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 70
   },
   {
     "num": 150,
@@ -1030,7 +1129,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 71
   },
   {
     "num": 151,
@@ -1050,7 +1151,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 69
   },
   {
     "num": 152,
@@ -1070,7 +1173,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 60
   },
   {
     "num": 153,
@@ -1090,7 +1195,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 98
   },
   {
     "num": 154,
@@ -1110,7 +1217,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 99
   },
   {
     "num": 155,
@@ -1130,7 +1239,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 100
   },
   {
     "num": 156,
@@ -1150,7 +1261,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 157,
@@ -1170,7 +1282,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 128
   },
   {
     "num": 158,
@@ -1190,7 +1304,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 159,
@@ -1210,7 +1325,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 97
   },
   {
     "num": 160,
@@ -1230,7 +1347,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 87
   },
   {
     "num": 161,
@@ -1250,7 +1369,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 162,
@@ -1270,7 +1390,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 163,
@@ -1290,7 +1411,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 78
   },
   {
     "num": 164,
@@ -1310,7 +1433,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 165,
@@ -1330,7 +1454,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 147
   },
   {
     "num": 166,
@@ -1350,7 +1476,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 148
   },
   {
     "num": 167,
@@ -1370,7 +1498,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 149
   },
   {
     "num": 168,
@@ -1390,7 +1520,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 151
   },
   {
     "num": 169,
@@ -1410,7 +1542,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 152
   },
   {
     "num": 170,
@@ -1430,7 +1564,10 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 153,
+    "fix_request": "מפתח SQ5 (שאלה 153) נותן תשובה ד, בבנק א"
   },
   {
     "num": 171,
@@ -1450,7 +1587,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 172,
@@ -1470,7 +1608,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 173,
@@ -1490,7 +1629,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 126
   },
   {
     "num": 174,
@@ -1510,7 +1651,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 94
   },
   {
     "num": 175,
@@ -1530,7 +1673,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 176,
@@ -1550,7 +1694,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 177,
@@ -1570,7 +1715,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 134
   },
   {
     "num": 178,
@@ -1590,7 +1737,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 135
   },
   {
     "num": 179,
@@ -1610,7 +1759,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 180,
@@ -1630,7 +1780,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 139
   },
   {
     "num": 181,
@@ -1650,7 +1802,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 182,
@@ -1670,7 +1823,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 143
   },
   {
     "num": 183,
@@ -1690,7 +1845,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 184,
@@ -1710,7 +1866,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 185,
@@ -1730,7 +1887,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 186,
@@ -1750,7 +1908,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 67
   },
   {
     "num": 187,
@@ -1770,7 +1930,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 188,
@@ -1790,7 +1951,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 189,
@@ -1810,7 +1972,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 111
   },
   {
     "num": 190,
@@ -1830,7 +1994,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 112
   },
   {
     "num": 191,
@@ -1850,7 +2016,9 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 90
   },
   {
     "num": 192,
@@ -1870,7 +2038,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט מכשירים"
   },
   {
     "num": 193,
@@ -1890,7 +2059,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 194,
@@ -1910,7 +2080,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 195,
@@ -1930,7 +2101,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 196,
@@ -1950,7 +2122,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 197,
@@ -1970,7 +2143,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 198,
@@ -1990,7 +2164,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 199,
@@ -2010,7 +2185,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 200,
@@ -2030,7 +2206,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 201,
@@ -2050,7 +2227,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 202,
@@ -2070,7 +2248,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 203,
@@ -2090,7 +2269,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 204,
@@ -2110,7 +2290,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 205,
@@ -2132,7 +2313,8 @@
     "approved_for_publish": false,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782821918/skipper-quiz/gl1h8alagnkmugizkhfs.mp4",
     "rendered_at": "2026-06-30T12:18:40.649Z",
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 206,
@@ -2152,7 +2334,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 207,
@@ -2172,7 +2355,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 208,
@@ -2192,7 +2376,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 209,
@@ -2214,7 +2399,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579031/skipper-quiz/ersei0wmayzhtmjhtdnc.mp4",
-    "rendered_at": "2026-07-09T06:37:20.304Z"
+    "rendered_at": "2026-07-09T06:37:20.304Z",
+    "branch": "ימאות"
   },
   {
     "num": 210,
@@ -2236,7 +2422,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579077/skipper-quiz/i1ll18ktyonswxn35l3l.mp4",
-    "rendered_at": "2026-07-09T06:38:05.387Z"
+    "rendered_at": "2026-07-09T06:38:05.387Z",
+    "branch": "ימאות"
   },
   {
     "num": 211,
@@ -2258,7 +2445,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579123/skipper-quiz/hcml5kzjwg0zjd6c8jgc.mp4",
-    "rendered_at": "2026-07-09T06:38:52.156Z"
+    "rendered_at": "2026-07-09T06:38:52.156Z",
+    "branch": "ימאות"
   },
   {
     "num": 212,
@@ -2280,7 +2468,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579168/skipper-quiz/gbuerkic8ic1jamqpqy4.mp4",
-    "rendered_at": "2026-07-09T06:39:36.944Z"
+    "rendered_at": "2026-07-09T06:39:36.944Z",
+    "branch": "ימאות"
   },
   {
     "num": 213,
@@ -2302,7 +2491,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579220/skipper-quiz/r721oj2xbonx9cbrzpmx.mp4",
-    "rendered_at": "2026-07-09T06:40:28.759Z"
+    "rendered_at": "2026-07-09T06:40:28.759Z",
+    "branch": "ימאות"
   },
   {
     "num": 214,
@@ -2324,7 +2514,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579275/skipper-quiz/rguvgulealmsbhcdemcz.mp4",
-    "rendered_at": "2026-07-09T06:41:23.986Z"
+    "rendered_at": "2026-07-09T06:41:23.986Z",
+    "branch": "ימאות"
   },
   {
     "num": 215,
@@ -2346,7 +2537,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579327/skipper-quiz/fxklqub0yi8n3kyytdbt.mp4",
-    "rendered_at": "2026-07-09T06:42:15.875Z"
+    "rendered_at": "2026-07-09T06:42:15.875Z",
+    "branch": "ימאות"
   },
   {
     "num": 216,
@@ -2368,7 +2560,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579372/skipper-quiz/ocgyvzyeivhueaoppgfo.mp4",
-    "rendered_at": "2026-07-09T06:43:01.025Z"
+    "rendered_at": "2026-07-09T06:43:01.025Z",
+    "branch": "ימאות"
   },
   {
     "num": 217,
@@ -2390,7 +2583,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579425/skipper-quiz/iv6pg7sob8yzeodhknv6.mp4",
-    "rendered_at": "2026-07-09T06:43:53.457Z"
+    "rendered_at": "2026-07-09T06:43:53.457Z",
+    "branch": "ימאות"
   },
   {
     "num": 218,
@@ -2412,7 +2606,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579476/skipper-quiz/smd5yrskfxingtqvoqi1.mp4",
-    "rendered_at": "2026-07-09T06:44:45.015Z"
+    "rendered_at": "2026-07-09T06:44:45.015Z",
+    "branch": "ימאות"
   },
   {
     "num": 219,
@@ -2434,7 +2629,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579526/skipper-quiz/ydtsrb19oukn1u00f9zt.mp4",
-    "rendered_at": "2026-07-09T06:45:34.869Z"
+    "rendered_at": "2026-07-09T06:45:34.869Z",
+    "branch": "ימאות"
   },
   {
     "num": 220,
@@ -2456,7 +2652,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579578/skipper-quiz/ul8iycljssmwriybqxwv.mp4",
-    "rendered_at": "2026-07-09T06:46:27.017Z"
+    "rendered_at": "2026-07-09T06:46:27.017Z",
+    "branch": "ימאות"
   },
   {
     "num": 221,
@@ -2478,7 +2675,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579630/skipper-quiz/mbvpggr6bh4iunzgt04o.mp4",
-    "rendered_at": "2026-07-09T06:47:19.319Z"
+    "rendered_at": "2026-07-09T06:47:19.319Z",
+    "branch": "ימאות"
   },
   {
     "num": 222,
@@ -2498,7 +2696,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 223,
@@ -2518,7 +2717,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 224,
@@ -2538,7 +2738,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 225,
@@ -2558,7 +2759,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 226,
@@ -2578,7 +2780,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 227,
@@ -2598,7 +2801,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 228,
@@ -2618,7 +2822,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 229,
@@ -2638,7 +2843,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 230,
@@ -2658,7 +2864,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 231,
@@ -2678,7 +2885,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 232,
@@ -2698,7 +2906,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 233,
@@ -2718,7 +2927,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 234,
@@ -2738,7 +2948,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 235,
@@ -2758,7 +2969,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 236,
@@ -2778,7 +2990,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 237,
@@ -2798,7 +3011,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 238,
@@ -2818,7 +3032,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 239,
@@ -2838,7 +3053,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 240,
@@ -2858,7 +3074,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 241,
@@ -2878,7 +3095,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 242,
@@ -2898,7 +3116,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 243,
@@ -2918,7 +3137,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 244,
@@ -2938,7 +3158,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 245,
@@ -2958,7 +3179,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 246,
@@ -2978,7 +3200,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 247,
@@ -2998,7 +3221,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 248,
@@ -3018,7 +3242,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 249,
@@ -3038,7 +3263,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 250,
@@ -3058,7 +3284,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 251,
@@ -3078,7 +3305,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 252,
@@ -3098,7 +3326,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 253,
@@ -3118,7 +3347,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 254,
@@ -3138,7 +3368,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 255,
@@ -3158,7 +3389,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 256,
@@ -3178,7 +3410,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 257,
@@ -3198,7 +3431,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 258,
@@ -3218,7 +3452,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 259,
@@ -3240,7 +3475,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579686/skipper-quiz/gduruqik5ctszrn0dizr.mp4",
-    "rendered_at": "2026-07-09T06:48:14.525Z"
+    "rendered_at": "2026-07-09T06:48:14.525Z",
+    "branch": "ימאות"
   },
   {
     "num": 260,
@@ -3262,7 +3498,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579726/skipper-quiz/nbltwfcwnb9jeaclekul.mp4",
-    "rendered_at": "2026-07-09T06:48:55.292Z"
+    "rendered_at": "2026-07-09T06:48:55.292Z",
+    "branch": "ימאות"
   },
   {
     "num": 261,
@@ -3284,7 +3521,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579779/skipper-quiz/dfjjqbykc0dlsmk1ihdl.mp4",
-    "rendered_at": "2026-07-09T06:49:47.701Z"
+    "rendered_at": "2026-07-09T06:49:47.701Z",
+    "branch": "ימאות"
   },
   {
     "num": 262,
@@ -3306,7 +3544,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579833/skipper-quiz/filgrjoy626f67bcmra2.mp4",
-    "rendered_at": "2026-07-09T06:50:41.974Z"
+    "rendered_at": "2026-07-09T06:50:41.974Z",
+    "branch": "ימאות"
   },
   {
     "num": 263,
@@ -3328,7 +3567,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579881/skipper-quiz/zssvuayjmcwhlmyqquy2.mp4",
-    "rendered_at": "2026-07-09T06:51:29.571Z"
+    "rendered_at": "2026-07-09T06:51:29.571Z",
+    "branch": "ימאות"
   },
   {
     "num": 264,
@@ -3349,7 +3589,8 @@
     "approved_for_publish": false,
     "blastOverride": "",
     "license": 30,
-    "explanation": ""
+    "explanation": "",
+    "branch": "ימאות"
   },
   {
     "num": 265,
@@ -3375,7 +3616,8 @@
     "approved_for_publish": true,
     "voiceover_text": "שאלה מספר 265. מה מסמלת סדרה של 5 צפירות קצרות?. [[PAUSE]] התשובה הנכונה: כוונותיך אינן מובנות, או שאני מוטרד מפעולתך. 5 צפירות קצרות = אות ספק/סכנה: 'כוונותיך אינן מובנות לי' / 'אני מוטרד מהיעדר פעולתך'. מחייבת תגובה מיידית מהספינה האחרת.",
     "html_locked": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 266,
@@ -3396,7 +3638,8 @@
     "mediaType": "",
     "approved_for_publish": false,
     "blastOverride": "",
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 267,
@@ -3416,7 +3659,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 268,
@@ -3440,7 +3684,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782298764/skipper-quiz/q7pgudf4vcndygsyyjla.mp4",
     "rendered_at": "2026-06-24T11:10:00.000Z",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 269,
@@ -3460,7 +3705,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 270,
@@ -3480,7 +3726,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 271,
@@ -3500,7 +3747,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 272,
@@ -3520,7 +3768,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 273,
@@ -3540,7 +3789,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 274,
@@ -3560,7 +3810,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 275,
@@ -3580,7 +3831,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 276,
@@ -3600,7 +3852,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 277,
@@ -3622,7 +3875,8 @@
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1782299454/skipper-quiz/e3ke7rezxurtmsuztoyv.mp4",
     "rendered_at": "2026-06-24T11:10:00.000Z",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 278,
@@ -3642,7 +3896,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 279,
@@ -3666,7 +3921,8 @@
     "rendered_at": "2026-06-30T14:33:13.701Z",
     "voiceover_text": "שאלה מספר 279. כיצד ניגשים לאדם שנפל לים עם סירה קטנה?. [[PAUSE]] התשובה הנכונה: מתוך הרוח (upwind) לאט, כך שהרוח תסחוף הספינה אל האדם. גישה ל-MOB: ניגשים מתוך הרוח (upwind) לאט ב-'quick stop' — כך שהרוח תסחוף הספינה לעבר האדם ולא ממנו. מנוע בצד שהאדם נמצא — סכנה!",
     "html_locked": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 280,
@@ -3686,7 +3942,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 281,
@@ -3706,7 +3963,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 282,
@@ -3726,7 +3984,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 283,
@@ -3746,7 +4005,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 284,
@@ -3766,7 +4026,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 285,
@@ -3786,7 +4047,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 286,
@@ -3806,7 +4068,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 287,
@@ -3826,7 +4089,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 288,
@@ -3846,7 +4110,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 289,
@@ -3866,7 +4131,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 290,
@@ -3886,7 +4152,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 291,
@@ -3906,7 +4173,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 292,
@@ -3926,7 +4194,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 293,
@@ -3946,7 +4215,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 294,
@@ -3966,7 +4236,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 295,
@@ -3986,7 +4257,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 296,
@@ -4006,7 +4278,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 297,
@@ -4026,7 +4299,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 298,
@@ -4046,7 +4320,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 299,
@@ -4066,7 +4341,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 300,
@@ -4086,7 +4362,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 301,
@@ -4106,7 +4383,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 302,
@@ -4126,7 +4404,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 303,
@@ -4146,7 +4425,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 304,
@@ -4166,7 +4446,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 305,
@@ -4186,7 +4467,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 306,
@@ -4206,7 +4488,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 307,
@@ -4226,7 +4509,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 308,
@@ -4248,7 +4532,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579932/skipper-quiz/wquupqmjbrlor6yvzm5o.mp4",
-    "rendered_at": "2026-07-09T06:52:21.051Z"
+    "rendered_at": "2026-07-09T06:52:21.051Z",
+    "branch": "ימאות"
   },
   {
     "num": 309,
@@ -4270,7 +4555,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783579996/skipper-quiz/lne39cob6tz43norofus.mp4",
-    "rendered_at": "2026-07-09T06:53:24.257Z"
+    "rendered_at": "2026-07-09T06:53:24.257Z",
+    "branch": "ימאות"
   },
   {
     "num": 310,
@@ -4292,7 +4578,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783580052/skipper-quiz/rjxnppjueg6iovmhkpwr.mp4",
-    "rendered_at": "2026-07-09T06:54:20.229Z"
+    "rendered_at": "2026-07-09T06:54:20.229Z",
+    "branch": "ימאות"
   },
   {
     "num": 311,
@@ -4312,7 +4599,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 312,
@@ -4332,7 +4620,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 313,
@@ -4352,7 +4641,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 314,
@@ -4372,7 +4662,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 315,
@@ -4392,7 +4683,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 316,
@@ -4412,7 +4704,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 317,
@@ -4432,7 +4725,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 318,
@@ -4452,7 +4746,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 319,
@@ -4472,7 +4767,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 320,
@@ -4492,7 +4788,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 321,
@@ -4512,7 +4809,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 322,
@@ -4532,7 +4830,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 323,
@@ -4552,7 +4851,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 324,
@@ -4572,7 +4872,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 325,
@@ -4592,7 +4893,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 326,
@@ -4612,7 +4914,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 327,
@@ -4632,7 +4935,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 328,
@@ -4652,7 +4956,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 329,
@@ -4672,7 +4977,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 330,
@@ -4692,7 +4998,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 331,
@@ -4712,7 +5019,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 332,
@@ -4732,7 +5040,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 333,
@@ -4752,7 +5061,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 334,
@@ -4772,7 +5082,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 335,
@@ -4792,7 +5103,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ניווט חופי"
   },
   {
     "num": 336,
@@ -4812,7 +5124,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 337,
@@ -4832,7 +5145,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 338,
@@ -4854,7 +5168,8 @@
     "approved_for_publish": false,
     "license": 30,
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1783580120/skipper-quiz/lbeo0hkncmlrijdzpd6b.mp4",
-    "rendered_at": "2026-07-09T06:55:28.522Z"
+    "rendered_at": "2026-07-09T06:55:28.522Z",
+    "branch": "ימאות"
   },
   {
     "num": 339,
@@ -4874,7 +5189,8 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
   },
   {
     "num": 340,
@@ -4894,6 +5210,2673 @@
     "mediaUrl": "",
     "mediaType": "",
     "approved_for_publish": false,
-    "license": 30
+    "license": 30,
+    "branch": "ימאות"
+  },
+  {
+    "num": 341,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מירכתי ספינה בתנועה, שוחרר חבל שעליו קשרים במרווחים קבועים של 5 מטרים בין קשר לקשר. מה מהירות כלי השיט, אם נמנו (בלי הקצה) חמישה קשרים בעשר שניות?",
+    "q_en": "",
+    "options": [
+      "א. 5 קשרים.",
+      "ב. 5 מיליים ימיים בשעה.",
+      "ג. 2.5 מטרים בשנייה.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 13
+  },
+  {
+    "num": 342,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "מה דרוש לבדיקת סכנת התנגשות עם כלי שיט בסביבה?",
+    "q_en": "",
+    "options": [
+      "א. מצפן תכווינים, שעון ולפחות 3 מדידות אל כלי השיט הנבדק ויכולת הערכת הטווח.",
+      "ב. מצפן הגוי שנתן להרכיב עליו טלסקופ עם \"ראית לילה\".",
+      "ג. מצפן ששגיאתו ידועה וצופה עם משקפת x7 50mm.",
+      "ד. מצפן שמורכבת עליו טבעת עם חלוקת האופק ביחס לחרטום (Relative Bearing)."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 23
+  },
+  {
+    "num": 343,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "במה תלוי דיוק שמירת הקורס שמוזן להגה אוטומטי חשמלי?",
+    "q_en": "",
+    "options": [
+      "א. באיכות הטכנית של מערכת התמסורת.",
+      "ב. בשליטתו של המשתמש בפקדים של \"מהירות התגובה\".",
+      "ג. בסוגו ובדיוקו של המצפן, שמשמש כחיישן הכוון.",
+      "ד. תשובות ב ו-ג נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 28
+  },
+  {
+    "num": 344,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "היכן מותקן הממיר של מד העומק הדי?",
+    "q_en": "",
+    "options": [
+      "א. בקו המים של כלי השיט כשהוא בציפה מרבית במים מלוחים.",
+      "ב. בנקודה העמוקה ביותר של כלי השיט כשהוא בטעינה מרבית במים מתוקים.",
+      "ג. בחרטום כלי השיט ובזווית שיוכל לקבל הדים ממכשולים לפני שמגיעים אליהם.",
+      "ד. אין חשיבות לעומק בו הוא מותקן, כי ניתן לכוון את התצוגה ולהציג עומקים החל מנקודת השוקע המרבי, אך חשוב שאלומת הקרינה לא תופרע מבועות ועצמים שכנים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 32
+  },
+  {
+    "num": 345,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "כיצד יש לטפל בממיר מד העומק?",
+    "q_en": "",
+    "options": [
+      "א. שינוקה עם מכונת ליטוש ויצופה בצבע שמכיל מתכת.",
+      "ב. יצבע בחומר שאינו מכיל מתכת.",
+      "ג. צריך להשאירו חשוף מצבע ובמקרה של ממרי אלקטרומגנטי לחדש את עצמת המגנטיות על ידי חיכוך עם מגנט טבעי.",
+      "ד. אין לבצע כל פעולת אחזקה, ההמרה אינה מופרעת מחומרים ובועות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 34
+  },
+  {
+    "num": 346,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "באילו מצבים נעזר במד העומק?",
+    "q_en": "",
+    "options": [
+      "א. לשימוש בלוחמה הימית בלבד.",
+      "ב. לבטיחות השייט, ניווט ועגינה.",
+      "ג. איתור מטרות תת ימיות ואיתור צוללות.",
+      "ד. דייג ואיתור להקות דייגים בלבד."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 35
+  },
+  {
+    "num": 347,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "ממה לא מושפע הדיוק במד עומק?",
+    "q_en": "",
+    "options": [
+      "א. מטמפרטורת המים.",
+      "ב. ממליחות המים.",
+      "ג. מאורך הפולס שפוגע בגוף או בקרקעית שמתחת לכלי השיט.",
+      "ד. מהשדה החשמלי שנוצר מחיכוך לוח ההגה בשכבת המים העליונה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 37
+  },
+  {
+    "num": 348,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "בזמן השייט נמדד במד עומק אלקטרוני (הדי) עומק של 12 מטרים בעוד שבמפה מצוין, באותו מקום 8-10 מטרים, שוקע הספינה 1.2 מטרים; ההבדל נובע מכך:",
+    "q_en": "",
+    "options": [
+      "א. אורך הפולס אינו מאפשר רמת דיוק כזו.",
+      "ב. ישנם גלים בגובה ממוצע של כ-1.2 מטרים.",
+      "ג. העומק במפה מצוין בשיא השפל ובזמן המדידה יש גאות של 2.4 מטרים.",
+      "ד. העומק במפה מצוין בשיא הגאות אך הממיר מותקן בקו המים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 39
+  },
+  {
+    "num": 349,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "אילו חלופות אפשריות להערכת העומק כשאין מד עומק או שהוא אינו תקין, סמן את התשובה המעשית ביותר:",
+    "q_en": "",
+    "options": [
+      "א. להזין מקלט G.P.S ב-Chart Datum של מפת האזור ולהפעילו במצב D3.",
+      "ב. לחפש את תאור האזור בספר חופאות.",
+      "ג. לעומקים קטנים להשתמש בחבל עם משקולת ולעומקים גדולים לקרא ולחשב מנתוני וסימני המפה ביחס לעומקים, גאות ושפל.",
+      "ד. לשוט עם עוגן מורד בין 1 ל-2 מטרים יותר מהשוקע המרבי של מבנה הספינה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 40
+  },
+  {
+    "num": 350,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "כיצד מפיק מקלט ה-G.P.S את האתר?",
+    "q_en": "",
+    "options": [
+      "א. שדור קוד זיהוי ללוויינים שמעליו ואלה מחזירים אליו, לאחר חישוב, את אתרו ברוחב ואורך.",
+      "ב. קליטת קוד זיהוי והטווח של 3 או יותר לוויינים, והמרת נקודת המפגש של הטווחים לנקודת החיתוך של קו אורך וקו רוחב במפה/תצוגה כל שהיא.",
+      "ג. קליטת נקודת החיתוך של הכיוונים אל 3 לוויינים והטלת הנקודה על רשת קווי האורך והרוחב על ידי הפחתת הגובה אל נקודת החיתוך במרחב.",
+      "ד. המקלט מפיק ברצף מסודר מהלוויין הראשון שחולף מעליו את הזמן, מהשני את קו האורך ומהשלישי את קו הרוחב, ואז הוא מציג את האתר בהפרשים שמתעדכנים כל אלפית שנייה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 41
+  },
+  {
+    "num": 351,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "ראשי תיבות G.P.S./ממ\"ג יפ מה ירושן:",
+    "q_en": "",
+    "options": [
+      "א. מערכת זיהוי גלובלית.",
+      "ב. מערכת מקום גלובלית / Global Positioning System.",
+      "ג. Grounding Position of Sattelites.",
+      "ד. א ו-ב נכונות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 42
+  },
+  {
+    "num": 352,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "ההבדל בין SET UP ו-INITIALISATION (אתחול) הוא:",
+    "q_en": "",
+    "options": [
+      "א. אתחול במקלטים מסוימים מתבצע מעצמו ודורש זמן מסוים ובמקלטים אחרים דורש הזנה לפחות של: אתר מקורב; תקן המפה; גובה האנטנה וזמן אזורי. ו-SET UP בעקרו הוא לבחירת המשתמש.",
+      "ב. ב-SET UP בוחרים בעקר את התצוגות והיחידות שלצורך המשתמש. ואתחול הוא הכרחי בכל פעם שהמקלט היה כבוי תקופה ארוכה או הועתק כבוי מעל 500 קילומטר.",
+      "ג. אין הבדל משמעותי היות ורוב המקלטים החדישים מכלילים ב-SET UP כל מה שלא מתבצע אוטומטית.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 43
+  },
+  {
+    "num": 353,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מה ההבדל בין פקד M.O.B ופקד MARK?",
+    "q_en": "",
+    "options": [
+      "א. אין הבדל. שניהם מסמנים את האתר הנוכחי כנקודת דרך (Way Point).",
+      "ב. MOB מסמן את האתר הנוכחי כ\"נקודת דרך פעילה\" אליה יוצגו הכיוון והטווח ברציפות ואילו MARK מסמן רק את האתר הנוכחי.",
+      "ג. MARK מסמן את האתר הנוכחי והכוון ההפוך ב-180° כדי לגשת מהר לאדם שנפל לים, ואילו Miles Off Buoy = MOB מסמן את המרחק למצוף הקרוב בזמן תחרות.",
+      "ד. MARK מפעיל אתראה על המצאות כלי השיט ב'טווח הדיוק' של המקלט מאתר היעד ואילו MOB מפעיל את המקלט במצב עגינה/ריתוק לתחזוקה (ללא נתוני תנועה = Maintenance On Board)."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 44
+  },
+  {
+    "num": 354,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "על מנת לקבל מיקום באמצעות ממ\"ג (מערכת מיקום גלובלית – GPS) יש צורך ב:",
+    "q_en": "",
+    "options": [
+      "א. קליטה של לפחות לווין אחד.",
+      "ב. קליטה בו זמנית מ-2 לוויינים לפחות.",
+      "ג. קליטה בו זמנית מ-3 לוויינים לפחות.",
+      "ד. קליטה בו זמנית מ-4 לוויינים לפחות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 45
+  },
+  {
+    "num": 355,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "היכן מומלץ להתקין בספינה את אנטנת הממ\"ג?",
+    "q_en": "",
+    "options": [
+      "א. גבוה ככל האפשר כדי לשמור על קו ראייה של 3 לוויינים ויותר ולהגדיל את טווח הקליטה.",
+      "ב. נמוך ככל האפשר (להימנע מטלטולים) תוך שמירה על שדה ראייה כלפי הרקיע ומסביב.",
+      "ג. גבוה ככל האפשר סמוך לאנטנת המכ\"ם ואם אין מכ\"ם אז אנטנת התג\"ם.",
+      "ד. אין חשיבות לגובה ולמיקום, אנטנה בגובה 30 ס\"מ תאפשר תפקוד בכל מקום בספינה."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 46
+  },
+  {
+    "num": 356,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "כאשר כלי שיט עוגן במקום שבו יש זרם:",
+    "q_en": "",
+    "options": [
+      "א. מקלט ה-GPS יראה רק את מהירות הזרם, ומד מהירות ביחס למים, יראה אפס מהירות.",
+      "ב. במקלט ה-GPS נקבל אפס, ובמד מהירות ביחס למים נקבל את מהירות הזרם.",
+      "ג. במדי מהירות שמודדים מהירות ביחס לקרקע נקבל את ערך הזרם בסימן חיובי, ובמדי מהירות ביחס למים נקבל את ערך הזרם בסימן שלילי.",
+      "ד. נקבל אפס בכל מקרה משום שמדי המהירות אינם מדויקים עד כדי להראות את המהירויות הקטנות של הזרמים הנפוצים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 47
+  },
+  {
+    "num": 357,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כלי שיט מנועי שט בכיוון 2700 ברוח מערבית של 10 קשרים, באזור ישנו זרם מערבי של 2 קשרים. תצוגת מד המהירות מכני מראה 8 קשרים ומקלט ה-GPS מראה 10 קשרים. מה הסיבה להבדל?",
+    "q_en": "",
+    "options": [
+      "א. מד המהירות ביחס למים אינו מתחשב בזרם והרוח, ואילו מקלט ה-GPS מציג מהירות אמיתית ביחס לקרקע.",
+      "ב. לפי טבלת בופור כל 5 קשרים ברוח נגדית מאטים את הספינה ב-1 קשר ולכן 10 קשר רוח מבטלים את 2 קשר של תוספת הזרם, ואילו במקלט ה-GPS יש אי-דיוק של 2 קשר.",
+      "ג. רוח נגדית של 10 קשר אינה משפיעה על ספינה מנועית וגלגל כנפיים של מד מהירות צפוי לצבור שכבת זהום דביק וצמחיה ימית שמאטים את תגובתו.",
+      "ד. לבד ממד מהירות נגרר, כל מדי המהירות מזייפים במידה כל שהיא, בגלל שתחתית הספינה גוררת איתה שכבת מים בכיוון השיט (\"גרר\" התלוי באיכות התחתית)."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 48
+  },
+  {
+    "num": 358,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "האם ניתן לזהות במכ\"ם כלי טיס וענני גשם?",
+    "q_en": "",
+    "options": [
+      "א. ניתן אך רק בגבהים שבגזרת האלומה האנכית של הקרינה.",
+      "ב. לא ניתן משום שהמכ\"ם הימי מתוכנן כך שיקלוט רק עצמים במישור ולא יופרע מעצמים שלמעל פני הים.",
+      "ג. ניתן לזהות עננים רק אם הם מורידים גשם, וכלי טיס רק אם הם טסים מול החרטום.",
+      "ד. ניתן לזהות, רק אם הספינה מטלטלת ואלומת הקרינה פונה מעלה בזמן הטלטול."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 50
+  },
+  {
+    "num": 359,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "מהם החסרונות המשמעותיים של המצפן הסביבוני המכני (גיירו)?",
+    "q_en": "",
+    "options": [
+      "א. צורך חשמל רצוף ותלוי בו, אינו מתייצב מייד ברגע הפעלתו.",
+      "ב. אינו יכול לשמש כחישן להגה אוטומטי, ואינו מפיק את הצפון המגנטי.",
+      "ג. מייצר שדה מגנטי שמסיט מצפנים נוספים בסביבתו.",
+      "ד. ניתן להתקנה רק בכלי שיט גדולים ומבנה מתכת."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 51
+  },
+  {
+    "num": 360,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מדוע נדרשת הסמכה מסווגת להפעלת ציוד קשר בתקשורת בין-לאומית?",
+    "q_en": "",
+    "options": [
+      "א. משום שאי ידיעת הנוהל ותפקידי הפקדים בציוד, עלולה למנוע השגת עזרה במצוקה או להפריע לתקשורת הצלה של כלי שיט אחרים.",
+      "ב. משום שההיגוי לא נכון של ביטוי נוהל הקשר, עלול לגרום לטעות בהבנת כוונות התנועה של כלי שיט ולמה שמכונה \"V.H.F collision\".",
+      "ג. משום שבמקרה מצוקה עלול לקרות, שבכלי השייט הקרוב יותר להגשת עזרה, מפעיל הרדיו אינו יודע את שפת אלה שבמצוקה.",
+      "ד. משום שכך נהוג על פי כללי הימאות הטובה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 54
+  },
+  {
+    "num": 361,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "אתה מנהל קשר מצוקה על ערוץ 16 ובגלל הפרעות בלתי פוסקות אתה מבקש לעבור לערוץ \"נקי\", איזה קבוצת ערוצים מתאימה?",
+    "q_en": "",
+    "options": [
+      "א. 25, 70, 76.",
+      "ב. 17, 24, 75.",
+      "ג. 06, 08, 13.",
+      "ד. כל ערוצי ה–DUPLEX."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 56
+  },
+  {
+    "num": 362,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה משותף ל\"משקט רחש\" במכשיר קשר, למנתחי הפרעות במכ\"ם, להיגוי ידני של לוח ההגה ולמתיחה נכונה של מפרש?",
+    "q_en": "",
+    "options": [
+      "א. הכוונון שלהם אינו חד משמעי בכל תנאי.",
+      "ב. דרושה מיומנות מניסיון מצטבר לכוונון נכון.",
+      "ג. כוונון קיצוני יפעל הפוך לכוונה הרצויה.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 57
+  },
+  {
+    "num": 363,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה משפיע בעיקר על טווח הקשר בתחום התג\"מ?",
+    "q_en": "",
+    "options": [
+      "א. שעת היממה, מליחות המים, מהירות הספינה.",
+      "ב. מרחב חופשי ממכשולים בין האנטנות, הספק השידור, גובה האנטנות, תנאי התפשטות של גלי הרדיו.",
+      "ג. הערוץ שבשימוש, עצמת הדיבור, עונת השנה, מספר כתמי השמש במועד השידור.",
+      "ד. הטמפרטורה וצפיפות החומרים בשכבות האוויר שבין התחנות, מספר הדילוגים שמבצע הגל מהיונוספ רה ועד תחנת היעד."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 58
+  },
+  {
+    "num": 364,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "במה מותנה טווח הגילוי של מכ\"מ?",
+    "q_en": "",
+    "options": [
+      "א. מחירו של המכ\"מ. בדרך כלל מחיר גבוה מחברה טובה ישדר לטווח גבוה יותר.",
+      "ב. רוחב האלומה האופקית של האנטנה.",
+      "ג. גובה האנטנה, עוצמת השידור, תנאי אקלים ואטמוספרה.",
+      "ד. גובה האנטנה ועוצמת השידור בלבד."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 63
+  },
+  {
+    "num": 365,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "באיזה מן המקומות באסדת ההצלה יש להניח את ה-E.P.I.R.B בכדי ששידורו ייקלט בצורה מיטבית?",
+    "q_en": "",
+    "options": [
+      "א. בתוך המים בסמוך לאסדת ההצלה.",
+      "ב. בתוך אסדת ההצלה כמה שיותר גבוה.",
+      "ג. בתוך אסדת ההצלה במקום מוגן ויבש.",
+      "ד. מיקומו לא משנה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 64
+  },
+  {
+    "num": 366,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "אילו שידורים משודרים בהספק נמוך?",
+    "q_en": "",
+    "options": [
+      "א. מומלץ לשדר בעוצמה נמוכה אלא אם כלי השייט לא שומע אותנו ואז נעבור לעוצמה חזקה.",
+      "ב. שידורי ניסוי ותקשורת פנים ספינתי.",
+      "ג. שידורים בתוך הנמל או בתוך המרינה.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 65
+  },
+  {
+    "num": 367,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "האם שתי יאכטות ישראליות יכולות לדבר ביניהן על ערוץ 26?",
+    "q_en": "",
+    "options": [
+      "א. לא, ערוץ 26 הוא ערוץ משני לחירום.",
+      "ב. כן, ערוץ 26 הוא ערוץ תקשורת כללית.",
+      "ג. כן, רק ליאכטות ישראליות מותר לדבר על ערוץ 26.",
+      "ד. לא, ערוץ 26 הוא ערוץ דו מגמי המיועד לתקשורת ציבורית."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 68
+  },
+  {
+    "num": 368,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה נדרש מאנטנת מכשיר הקשר?",
+    "q_en": "",
+    "options": [
+      "א. חייבת להיות מחומרים אקריליים בלבד לצורך בידוד.",
+      "ב. אורכה יהיה מתאים לתחום תדר השידור והקליטה של המכשיר.",
+      "ג. לפרק את גל השמע מהגל הנושא, על מנת שרק גל השמע ייקלט במכשיר.",
+      "ד. תברור את הערוץ שהמכשיר יקלוט."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 72
+  },
+  {
+    "num": 369,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "לאיזה סוגי אירועים משתמשים ברמת \"דחיפות\"?",
+    "q_en": "",
+    "options": [
+      "א. בהודעה הקשורה להצלת חיים.",
+      "ב. בהודעות המופנות לכל כלי שייט בעל מכשיר EPIRB כאשר נדרשת עזרה רפואית.",
+      "ג. ההודעה אחרי הקריאה תתייחס למקרים של תנאי מזג אויר קיצוניים.",
+      "ד. אף תשובה לא נכונה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 73
+  },
+  {
+    "num": 370,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "האיכות וטווח הגלוי של עצם במכ\"ם תלוי ב-",
+    "q_en": "",
+    "options": [
+      "א. תחום הטווחים שבוחרים בעזרת הפקד RANGE והתחום המרבי שלו תוכנן",
+      "ב. עצמת המשדר, רגישות המקלט, איכות האנטנה ותנאי ההתפשטות של גלי הרדיו",
+      "ג. כיוונון נכון של TUNE, GAIN, BRILLIANCE, רוחב הפולס ומנחתי הפרעות",
+      "ד. כל התשובות נכונות"
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 80
+  },
+  {
+    "num": 371,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "מה צריך כדי לזהות במכ\"ם סכנת התנגשות?",
+    "q_en": "",
+    "options": [
+      "א. קורס התנגשות יראה במכ\"ם כאשר חיבור הנקודות של מיקומי המטרה השונים לאורך זמן יחתוך או יעבור בסמוך למרכז המכ\"ם.",
+      "ב. צריך לבצע את השרטוט בדף מיוחד לתנועה יחסית או במפה.",
+      "ג. במכ\"ם מתקדם, מספיק לסמן את המטרות והמחשב יציג את נתוני התנועה של כל מטרה.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 81
+  },
+  {
+    "num": 372,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "הודעות מצוקה שמופיעות בפלט מקלט NAVTEX:",
+    "q_en": "",
+    "options": [
+      "א. משודרות מכלי השיט שבמצוקה ומיועדות רק לתחנות חוף שצריכות להזעיק משלחת הצלה.",
+      "ב. מקורן בתחנות חוף ובמנהלה האזורית של משדר ה–NAVTEX במטרה להרחיב את מספר כלי השיט שיכולים להגיש עזרה.",
+      "ג. משודרות מתחנות חוף של השרות הימי וכלי שיט, שקלטו הודעת מצוקה מדוברת על ערוץ 16 של תחום התג\"מ הימי.",
+      "ד. חל איסור להפיץ הודעות מצוקה ב–NAVTEX כדי למנוע בלבול ומערבות של כלי שיט שמחוץ לטווח ה–VHF הימי, ואינם זמינים לעזרה מיידית."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 83
+  },
+  {
+    "num": 373,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "VITAL, IMPORTANT, ROUTINE הם:",
+    "q_en": "",
+    "options": [
+      "א. \"חיונית\", \"חשובה\", \"שגרתית\" בסיווג עדיפות ותוכן הודעות NAVTEX.",
+      "ב. \"מיוחדת\", \"מידית\", \"דחופה\" ומקבלת עדיפות בהתאם.",
+      "ג. הסיווג והעדיפויות המקבילים ל\"מצוקה\", \"דחיפות\" ו\"בטיחות\" שבתקשורת דבור.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 84
+  },
+  {
+    "num": 374,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "משואת חירום המשויכת למערכת ה-Cospas-Sarsat:",
+    "q_en": "",
+    "options": [
+      "א. פועלת על תדר 406 MHz.",
+      "ב. אינה מותרת בספינה לשיט חופי, משום שהיא תזעיק תחנות בכל תחום הכיסוי של הלוויין י, ולא כאלה שנמצאות בטווח הצלה מיידית של התג״מ הימי.",
+      "ג. מאפשרת קשר בדיבור ללא צורך בהקלדת הודעות מוכנות מתוך תפריט.",
+      "ד. מאפשרת התבייתות (כיוון וטווח) של משלחת הצלה בראות מוגבלת."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 85
+  },
+  {
+    "num": 375,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מהו משיב מכ״מ לצורך חיפוש והצלה?",
+    "q_en": "",
+    "options": [
+      "א. מכשיר אשר מרגע הפעלתו קולט את משדרי המכ״מ הימי ומשמש כמשיב הד מכ״מ אקטיבי.",
+      "ב. מכשיר אשר חובה להפעילו במקרה מצוקה כדי לאפשר התבייתות מכ״מ.",
+      "ג. Search And Rescue Radar Transponder = SART.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 86
+  },
+  {
+    "num": 376,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כלי שיט שבמסך המכ\"ם שלו נקלטו הסימונים הבאים: ●●●●●●●●●●●● וכעבור זמן ובחלוף עוד זמן",
+    "q_en": "",
+    "options": [
+      "א. נקלטים החזרי מכ\"ם חופי של חיל הים, שמזהים שנויים בכיוון ומהירות כלי שיט.",
+      "ב. נקלטים אותות של משואת מכ\"ם המנחה כלי שיט למסלול כניסה לנמל.",
+      "ג. נקלטים שדורי SART בטווח של כ–8 מיילים, כ–5 מיילים ופחות מ–1 מיל, בהתאמה (מימין לשמאל).",
+      "ד. קיימות 3 רפסודות ניצולים נושאות SART פעיל, וכל אחת מאותתת את הטווח אליה."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 88,
+    "fix_request": "שאלה 88 ב-SQ5 נשענת על איור שלא קיים בבנק. צריך להוסיף תמונה."
+  },
+  {
+    "num": 377,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "למה מתכוונים כשאומרים \"קריאת ברירה ספרתית\"?",
+    "q_en": "",
+    "options": [
+      "א. מספר יחודי לכל כלי שיט, שמאפשר את זיהוי בתקשורת של קידוד ספרתי.",
+      "ב. למכשיר או המכלול שמטרתו לזהות/להזדהות, לפענח ולעבד הודעות לתקשורת ספרתית = Digital Selective Call.",
+      "ג. המספר המקודד, בהתקנה ואתחול מכשיר DSC, יאפשר זיהוי עצמי אוטומטי של מקור ההודעות, בטרם העברתן לשדור.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 89
+  },
+  {
+    "num": 378,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כשספינות מחויבות להצטייד במכשיר קשר הכוונה למכשיר שקולט ומשדר בתחום תדרים שבין 156 ל-174 MHz. מדוע?",
+    "q_en": "",
+    "options": [
+      "א. שזה התחום, שהוקצב לשרות הימי הנייד, על ידי הארגון הבין-לאומי לתקשורת.",
+      "ב. שאורך הגלים בתחום זה קטן מ-2 מטר ונח לבנות אנטנות קטנות וניידות.",
+      "ג. שטווחי הקשר המושגים בתחום זה מוגבלים, לכמה עשרות מילים, וכך נמנעות הפרעות הדדיות עם תנועת כלי שיט שלא בתחום החופים של כל מדינה.",
+      "ד. שבתחום זה נתן לשדר בשיטת FM וזה מונע הפרעות ברקים."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 91
+  },
+  {
+    "num": 379,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "לאילו תחומים לא הוקצו ערוצים בתחום התג״מ הימי?",
+    "q_en": "",
+    "options": [
+      "א. מצוקה ובטיחות, חיפוש והצלה, תפעול נמל.",
+      "ב. גשר לגשר (כלי שיט), על הסיפון או עם סירת שרות, פקוח על תנועת כלי שיט.",
+      "ג. תעבורה ציבורית, פסי משמר, תקשורת ספרתית (DSC).",
+      "ד. השגחה על כלי שיט עוגנים, אזעקה אוטומטית כשהמכ״מ מזהה קרבה מרבית, קשר לחיוג אוטומטי דרך ממסר לוויני."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 92
+  },
+  {
+    "num": 380,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "במעבר לאילו ערוצים ומאיזו סיבה יאבד קשר דבור בין שתי ספינות? סמן את התשובה שאינה נכונה.",
+    "q_en": "",
+    "options": [
+      "א. 13 משום שהוא מיועד \"גשר לגשר\" של אניות, עם אנטנות גבוהות משל ספינות.",
+      "ב. 25 משום שהוא פועל ב-DUPLEX עם תחנות חוף בלבד.",
+      "ג. 17 משום שהוא בהספק נמוך (1 W) וטווח הקשר יקטן משני הכוונים, 70 משום שהוא רק לתקשורת ספרתית.",
+      "ד. במעבר לכל ערוץ בלי להאזין תחילה אם הוא תפוש בתקשורת חוקית."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 93
+  },
+  {
+    "num": 381,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "אדם נפל לים מכלי שיט ואבד קשר עין איתו:",
+    "q_en": "",
+    "options": [
+      "א. יקוים נוהל \"מצוקה\" ובתוכן ההודעה יש לציין את האתר והזמן שנראה לאחרונה.",
+      "ב. יקוים נוהל \"דחיפות\" וכלי שיט יתבקשו לדווח לתחנה הקוראת על כל גוף בולט מעל המים בתחום האופק שלהם.",
+      "ג. מייד עם הכרה באבדן האדם יש להטיל לים כל אמצעי ציפה זמין.",
+      "ד. יש לשדר רק ב-DSC על ערוץ 70."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 95
+  },
+  {
+    "num": 382,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "הודעה שמקודמת במילה MEDICO:",
+    "q_en": "",
+    "options": [
+      "א. היא בעדיפות של קשר \"דחיפות\" ויש לכלול בה את מין וגיל החולה, חום הגוף, דופק, תאור התופעות וטיפול אם ניתן. לאחר הקריאה על 16 נתן לעבור לערוץ אחר.",
+      "ב. היא בעדיפות \"מצוקה\" ויש להודיע במשפט קצר עד דקה שדור: לחץ דם, חום, אזור הכאב והיסטוריה רפואית.",
+      "ג. היא בעדיפות \"מצוקה\" רק אם מדובר במפקד כלי השיט וחייבים להציג סימנים של \"מוגבל בכושרו לתמרן\".",
+      "ד. תשודר רק על ידי קידוד מהדפים הירוקים של ספר הקודים הימי INTERCO באמצעים ספרתיים או קוד מורס כדי למנוע טעויות בהגוי והבנה של מונחים רפואיים."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 96
+  },
+  {
+    "num": 383,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "אילו בדיקות יש לבצע בציוד הקשר של ספינה ולרשום ביומן הספינה?",
+    "q_en": "",
+    "options": [
+      "א. מצברים, פעולת ה-D.S.C, פעולת שדור (עד 10 שניות) וקליטה במקמ\"ש V.H.F, תאריך תפוגה של סוללות ובקרת נזקים במשואות למינהיים.",
+      "ב. לפי יומן בדיקות מיוחד שמוכנות בו שורות מיוחדות לתדירות כל בדיקה ותאריך תפוגה של כל מכלול או מסמך.",
+      "ג. אין צורך בבדיקות מיוחדות, אלא בסבב יומי של בקרת נזקים, כל היתר מבוצע אחת לשנתיים בבדיקת כשירות.",
+      "ד. א' ו-ב' אם ישנו."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 101
+  },
+  {
+    "num": 384,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "באיזה מן הקבוצות הבאות מופיעה כוכב הצפון?",
+    "q_en": "",
+    "options": [
+      "א. א",
+      "ב. ב",
+      "ג. ג",
+      "ד. ד"
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 102,
+    "fix_request": "שאלה 102 ב-SQ5 נשענת על איור שלא קיים בבנק. צריך להוסיף תמונה."
+  },
+  {
+    "num": 385,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "בחר מהאיורים הבאים את קבוצת הכוכבים הנקראת \"העגלה הגדולה\".",
+    "q_en": "",
+    "options": [
+      "א. א",
+      "ב. ב",
+      "ג. ג",
+      "ד. ד"
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 103,
+    "fix_request": "שאלה 103 ב-SQ5 נשענת על איור שלא קיים בבנק. צריך להוסיף תמונה."
+  },
+  {
+    "num": 386,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מד מהירות המבוסס על G.P.S מראה מהירות של 8 קשר, באזור זרם נגדי של 2 קשר. מה מהירות ספינתך ביחס לקרקע?",
+    "q_en": "",
+    "options": [
+      "א. 8 קשרים.",
+      "ב. 10 קשרים.",
+      "ג. 6 קשרים.",
+      "ד. לא ניתן לדעת מתוך הנתונים הנ\"ל."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 104
+  },
+  {
+    "num": 387,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מהו ההבדל בין RADAR-REFLECTOR (ראשון) ו- S.A.R.T (שני)?",
+    "q_en": "",
+    "options": [
+      "א. הראשון שימושי בכלי שייט שבנויים מחומר שאינו מחזיר הדי מכ\"ם חזקים.",
+      "ב. השני משמש רק במצוקה בזמן חיפוש והצלה.",
+      "ג. הראשון אינו משדר ואילו השני משיב שידור.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 105
+  },
+  {
+    "num": 388,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "באילו מכשירים ניתן לקלוט את שידורי ה- S.A.R.T?",
+    "q_en": "",
+    "options": [
+      "א. ב- NAVTEX.",
+      "ב. במכשיר ה- V.H.F על ערוץ 70.",
+      "ג. מכ\"ם ימיים העובדים בתחום X.",
+      "ד. בתחנות החוף על ערוץ 16 ב- V.H.F."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 106
+  },
+  {
+    "num": 389,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "על אילו מכשירים בספינה ניתן לקלוט הודעת מצוקה?",
+    "q_en": "",
+    "options": [
+      "א. NAVTEX.",
+      "ב. S.A.R.T.",
+      "ג. E.P.I.R.B.",
+      "ד. אף תשובה לא נכונה מצוקה ניתן לקלוט רק בקשר."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 107
+  },
+  {
+    "num": 390,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "תאריך בכלי השייט 24.06.11, השעה האזורית 10:42, קו האורך של הצופה E 154:39. מה תהייה השעה והתאריך בגריניץ?",
+    "q_en": "",
+    "options": [
+      "א. השעה תהייה 23:42 בתאריך 24.06.11.",
+      "ב. השעה תהייה 21:42 בתאריך 24.06.11.",
+      "ג. השעה תהייה 00:42 בתאריך 24.06.11.",
+      "ד. השעה תהייה 23:42 בתאריך 25.06.11."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 108
+  },
+  {
+    "num": 391,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מה מתשובות הרשומות מטה מציין זיהוי של ספינה?",
+    "q_en": "",
+    "options": [
+      "א. 42800501.",
+      "ב. 232000432.",
+      "ג. 042811111.",
+      "ד. תשובה א+ב נכונות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 109
+  },
+  {
+    "num": 392,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "על פי הדרישות של ה- G.M.D.S.S איזה ציוד הצלה חייב להיות בספינה באזור A1?",
+    "q_en": "",
+    "options": [
+      "א. S.A.R.T - E.P.I.R.B - D.S.C - RADAR.",
+      "ב. D.S.C - S.A.R.T - E.P.I.R.B - PORTABLE V.H.F – NAVTEX - V.H.F.",
+      "ג. D.S.C - S.A.R.T - E.P.I.R.B - PORTABLE V.H.F.",
+      "ד. V.H.F - S.A.R.T - E.P.I.R.B - D.S.C - D.F."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 110
+  },
+  {
+    "num": 393,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "הקריאה הבאה נשמעה על ערוץ 16 במכשיר ה-V.H.F:\n\nMAYDAY MAYDAY MAYDAY THIS IS SONDRA SONDRA SONDRA\nM.M.S.I 356004420 MAYDAY SONDRA\nTHREE FIVE DEGREES FOUR FOUR MINUTES EAST THREE TWO DEGREES FIVE NINE MINUTES NORTH\nIN ROUGH SEA AND IN DANGER OF SINKING. REQUIRE IMMEDIATE ASSISTANCE\n8 PERSONS ON BOARD\nOVER\n\nבקריאת המצוקה יתכן שישנם אי אלו שגיאות בנוסח ההודעה, סמן את התשובה הנכונה:",
+    "q_en": "",
+    "options": [
+      "א. בהגדרת מיקום הספינה יש להודיעה תחילה את קו הרוחב.",
+      "ב. השגיאה היחידה היא הרכב מספר ה-M.M.S.I.",
+      "ג. הסיומת לא נכונה, הביטוי צריך להיות OUT.",
+      "ד. יש להודיעה את הזמן של ההתרחשות."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 113
+  },
+  {
+    "num": 394,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "בין 2 מטרות קרובות אחת לשנייה (פיזית) הנמצאות באותו כיוון במכ\"מ, מתי תהיה הבחנה טובה יותר?",
+    "q_en": "",
+    "options": [
+      "א. כאשר זווית האלומה האנכית גדולה יותר.",
+      "ב. כאשר זווית האלומה האופקית קטנה יותר.",
+      "ג. כאשר הספק השידור גדול יותר.",
+      "ד. כאשר רוחב פולס השידור קטן יותר."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 114
+  },
+  {
+    "num": 395,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה תודיע התחנה שמפקחת על הקשר, כאשר מסתיים אירוע מצוקה ורוצים ל\"שחרר\" את ערוץ 16 לקריאות שיגרה?",
+    "q_en": "",
+    "options": [
+      "א. PRUDONCE.",
+      "ב. SEELONCE FEENEE.",
+      "ג. RESUME NORMAL TRAFFIC.",
+      "ד. FINISH OF SILENCE PERIOD."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 115
+  },
+  {
+    "num": 396,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "למה משמש כפתור ה-\"DUAL-WATCH\" במכשיר ה-V.H.F?",
+    "q_en": "",
+    "options": [
+      "א. המכשיר יאזין על 2 ערוצים: 16 וערוץ נוסף של SIMPLEX בלבד.",
+      "ב. מבטל את כל ערוצי ה-DUPLEX.",
+      "ג. המכשיר יאזין גם על ערוצי ה-SIMPLEX בנוסף ל-DUPLEX.",
+      "ד. המכשיר יאזין על ערוץ 16 וערוץ נבחר נוסף."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 116
+  },
+  {
+    "num": 397,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "על איזה תחום תדרים קולט מכשיר ה-\"NAVTEX\"?",
+    "q_en": "",
+    "options": [
+      "א. M.F.",
+      "ב. S.F.",
+      "ג. על \"BAND – X\" שמכ\"ם יקלוט אותו.",
+      "ד. VHF."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 117
+  },
+  {
+    "num": 398,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "אם גובהו של כוכב הצפון הוא 45 מעלות מעל האופק יש להניח שהצופה נמצא בערך במיקום:",
+    "q_en": "",
+    "options": [
+      "א. קו רוחב 45 מעלות דרום.",
+      "ב. קו רוחב 45 מעלות מזרח.",
+      "ג. קו רוחב 45 מעלות צפון.",
+      "ד. קו רוחב 45 מעלות מערב."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 118
+  },
+  {
+    "num": 399,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "למה מתייחסות ומה משמעות ההודעות מסוג VITAL, IMPORTANT, ROUTINE?",
+    "q_en": "",
+    "options": [
+      "א. \"חיונית\", \"חשובה\", \"שגרתית\" בסיווג עדיפות ותוכן הודעות NAVTEX.",
+      "ב. הודעות ROUTINE ו-IMPORTANT יזוהו במספר ולא יקלטו שנית לאחר שנרשמו בזיכרון המקלט ה-V.H.F, ו-VITAL מתייחס רק ל-NAVTEX.",
+      "ג. הסיווג והעדיפות המקבילים ל\"מצוקה\", \"דחיפות\" ו\"בטיחות\" בהודעות של ה-E.P.I.R.B.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 119
+  },
+  {
+    "num": 400,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "האם שתי יאכטות יכולות לדבר ביניהם בערוץ 25 במכשיר ה-V.H.F?",
+    "q_en": "",
+    "options": [
+      "א. לא - זהו ערוץ מצוקה חלופי.",
+      "ב. כן - זהו ערוץ תקשורת ציבורי.",
+      "ג. כן - זהו ערוץ תקשורת בין כלי שייט ישראלים.",
+      "ד. לא - זהו ערוץ דופלקס."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 120
+  },
+  {
+    "num": 401,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "למה תגרום שינוי רגישות התגובה בהגה האוטומטי?",
+    "q_en": "",
+    "options": [
+      "א. ניתוק מערכת ההגה האוטומטי מהמצברים וחיבורו ישירות לאלטרנטור.",
+      "ב. מחבר את ההגה האוטומטי למעקב אחרי ה-G.P.S וכך ההגה יעבוד פחות מכיוון שישמור על הקורס הרצוי.",
+      "ג. שינויי קורס קיצונים.",
+      "ד. הקטנה או הגדלה של מהירות התגובה לשינויי בקורס."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 121
+  },
+  {
+    "num": 402,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מתי תבחר לשדר ב-SIMPLEX ומתי תשדר ב-DUPLEX במכשיר ה-V.H.F הימי?",
+    "q_en": "",
+    "options": [
+      "א. רצוי לשדר תמיד ב-DUPLEX.",
+      "ב. המכשיר מכוון תמיד על שידור SIMPLEX.",
+      "ג. המכשיר מכוון תמיד על שידור DUPLEX.",
+      "ד. אין באפשרותנו לבחור, המכשיר עובר ביניהם באופן אוטומטי ברגע שמחליפים ערוץ."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 122
+  },
+  {
+    "num": 403,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "באיזה מקרים יש לקיים נוהל בטיחות?",
+    "q_en": "",
+    "options": [
+      "א. בקשה של יעוץ או עזרה רפואית וחלוץ חולים או פצועים.",
+      "ב. מקרים שהספינה לא כשירה ודרושה גרירה או עזרה טכנית כל שהיא.",
+      "ג. כל מקרי החרום, שאינם מצוקה, ואפשר לפנות את ערוץ 16 אם התעוררה מצוקה.",
+      "ד. כל התשובות אינן נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 123
+  },
+  {
+    "num": 404,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מדוע יש צורך לפעמים לשנות את תדר השידור בלילה בזמן הקמת קשר בתדרי-H.F?",
+    "q_en": "",
+    "options": [
+      "א. בגלל שינוי גובה היונוספרה.",
+      "ב. בגלל תנאי קליטה גרועים יותר בלילה.",
+      "ג. בגלל תנאי קליטה טובים יותר בלילה.",
+      "ד. יש צורך לשנות את התדר רק אם הטווח בין המכשירים מעל 1000 מיל."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 124
+  },
+  {
+    "num": 405,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מהו תחום התדרים במכשיר V.H.F הימי?",
+    "q_en": "",
+    "options": [
+      "א. תחום התדרים בין 30 מ״הרץ ל 300 ק״הרץ.",
+      "ב. תחום התדרים בין 30 מ״הרץ ל 300 מ״הרץ.",
+      "ג. תחום התדרים בין 156 מ״הרץ ל 174 מ״הרץ.",
+      "ד. תחום התדרים בין 1600 מ״הרץ ל 2850 מ״הרץ."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 125
+  },
+  {
+    "num": 406,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "למשדר V.H.F (נייד) יש יכולת להקטין את הספק השידור עד:",
+    "q_en": "",
+    "options": [
+      "א. 0.1W",
+      "ב. 1W",
+      "ג. 5W",
+      "ד. 10W"
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 127
+  },
+  {
+    "num": 407,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה מציין הקוד MA33?",
+    "q_en": "",
+    "options": [
+      "א. אות קריאה של אניית רדיו־טלפון.",
+      "ב. קוד זיהוי של הודעת נווטקס.",
+      "ג. תחנת חוף אשר תווי זיהוי המדינה שלה הם \"MA\".",
+      "ד. קוד זיהוי של אתר D.S.C המתייחסת לאזהרת נווט."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 129
+  },
+  {
+    "num": 408,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כמה פעמים ולכמה זמן תשדר תחנת NAVTEX ביממה אחת?",
+    "q_en": "",
+    "options": [
+      "א. כל 6 שעות, בכל שידור 15 דקות לכל היותר.",
+      "ב. כל 4 שעות, בכל שידור 10 דקות לכל היותר.",
+      "ג. 4 פעמים, בכל שידור כמה שנחוץ להשלמת ההודעות.",
+      "ד. 6 פעמים, בכל שידור דקה אחת לכל היותר."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 130
+  },
+  {
+    "num": 409,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "למה גורמת התעקמות גלי המכ\"מ?",
+    "q_en": "",
+    "options": [
+      "א. הקטנת טווח המכ\"מ.",
+      "ב. הגדלת טווח המכ\"מ.",
+      "ג. אי דיוק במדידת מרחק המטרה.",
+      "ד. תשובה ב' וג' נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 131
+  },
+  {
+    "num": 410,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "הנך מפליג ביכטה \"MARNI\" M.M.S.I 428666099 אתה עומד על עוגן מול נמל חיפה 32º42΄N 34º58΄E. בחצות זמן מקומי כלי שייט לא מזוהה מתנגש בכלי השייט שלך. כתוצאה, היכטה שלך נוטה על צידה ויש סכנה לטביעתה. על סיפון היכטה שלך 3 נוסעים ו־3 אנשי צוות. ספינתך מצוידת על־פי דרישות GMDSS באזור AREA 1. סמן את המשפט הנכון.",
+    "q_en": "",
+    "options": [
+      "א. יש להוציא קריאת מצוקה לנמל חיפה עם ציון הזמן על פי U.T.C. לשלוח הודעה ב־ D.S.C ולבחור סוג מצוקה SINKING ולציין ב־ V.H.F שעל הספינה נמצאים 9 אנשים.",
+      "ב. יש להוציא קריאת מצוקה לנמל חיפה עם ציון הזמן על פי U.T.C. לשלוח הודעה ב־ D.S.C ולבחור סוג מצוקה COLLISION ולציין ב־ V.H.F שעל הספינה נמצאים 9 אנשים.",
+      "ג. יש להוציא קריאת מצוקה לכולם. לשלוח הודעה ב־ D.S.C ולבחור סוג מצוקה COLLISION ולציין ב־ V.H.F שעל הספינה נמצאים 6 אנשים.",
+      "ד. יש להוציא קריאת מצוקה לכולם. לשלוח הודעה ב־ D.S.C ולבחור סוג מצוקה COLLISION ולציין ב־ V.H.F שעל הספינה נמצאים 3 אנשי צוות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 132
+  },
+  {
+    "num": 411,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מקומך הוא 32º17`N 157º42`E השעה 17:53 U.T.C, לכן השעה האזורית היא:",
+    "q_en": "",
+    "options": [
+      "א. 15:53",
+      "ב. 04:53",
+      "ג. 00:53",
+      "ד. 18:00"
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 133
+  },
+  {
+    "num": 412,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "אילו בדיקות יש לבצע בציוד הקשר של ספינה?",
+    "q_en": "",
+    "options": [
+      "א. מצברים, פעולת ה־DSC, פעולת שדור (עד 10 שניות) וקליטה במקמ\"ש VHF, תאריך תפוגה של סוללות ובקרת נזקים במשואות למינהן.",
+      "ב. לפי יומן בדיקות מיוחד שמוכנות בו שורות מיוחדות לתדירות כל בדיקה ותאריך תפוגה של כל מכלול או מסמך.",
+      "ג. אין צורך בבדיקות מיוחדות, אלא בסבב יומי של בקרת נזקים, כל היתר מבוצע אחת לשנתיים בבדיקת כשירות.",
+      "ד. א' ו־ב' אם ישנו."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 136
+  },
+  {
+    "num": 413,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "הפחתת הדיוק באתר בגלל קליטת לווינים קרובים זה לזה מסומנת ב־",
+    "q_en": "",
+    "options": [
+      "א. TDOP (TIME DILUTION OF PRECISION).",
+      "ב. VDOP (VERTICAL DILUTION OF PRECISION).",
+      "ג. GDOP (GEOMETRIC DILUTION OF PRECISION).",
+      "ד. PDOP (POSITION DILUTION OF PRECISION)."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 137
+  },
+  {
+    "num": 414,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "הגדרת המושג זמן אזורי – ZT (ZONE TIME) היא:",
+    "q_en": "",
+    "options": [
+      "א. הזמן באזור שנקבע על פי רוחב הצופה.",
+      "ב. הזמן באזור שנקבע על פי אורך הצופה.",
+      "ג. הזמן באזור שנקבע לפי אזור הזמן.",
+      "ד. הזמן באזור שנקבע על פי מהלך השמש."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 138
+  },
+  {
+    "num": 415,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מהו LOCAL MEAN TIME?",
+    "q_en": "",
+    "options": [
+      "א. הזמן באזור על פי שעון אטומי.",
+      "ב. הזמן באזור על פי הרוחב הממוצע (MEAN LATITUDE).",
+      "ג. הזמן באזור על פי אזור הזמן.",
+      "ד. הזמן באזור על־פי קו האורך שבו נמצא הצופה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 140
+  },
+  {
+    "num": 416,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "למצפן אלקטרוני (FLUX GATE) היתרונות הבאים סמן את זה שאינו מתאים:",
+    "q_en": "",
+    "options": [
+      "א. נתן לקבל בו דיוק של כחצי מעלה.",
+      "ב. נוח לתקן בו את שגיאות הדויציה והוראציה.",
+      "ג. אינו תופס מקום וקל להתקנה בכל מקום.",
+      "ד. נתן להפריד את התצוגה מהחישן ולהתקין אותו במקום שאינו מושפע משדות מגנטיים."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 141
+  },
+  {
+    "num": 417,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מהו הצירוף 428000500?",
+    "q_en": "",
+    "options": [
+      "א. קוד זיהוי MMSI של מתקן DSC של כלי שייט.",
+      "ב. קוד זיהוי MMSI אשר שייך למדינה בעלת MID 428.",
+      "ג. קוד זיהוי MMSI של קבוצת מתקני DSC.",
+      "ד. תשובות א ו-ב נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 142
+  },
+  {
+    "num": 418,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "איזה הודעות ניתן לשדר במכשיר NAVTEX מהספינה?",
+    "q_en": "",
+    "options": [
+      "א. מצוקה (VITAL).",
+      "ב. בטיחות, דחופות (IMPORTANT).",
+      "ג. הודעות שגרתיות (ROUTINE).",
+      "ד. אף תשובה לא נכונה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 144
+  },
+  {
+    "num": 419,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "באיזה אזורים שימושי מכשיר \"EPIRB\" העובד על מערכת לווינים המקיפים את כדור הארץ מקוטב לקוטב?",
+    "q_en": "",
+    "options": [
+      "א. A1.",
+      "ב. A2,3.",
+      "ג. A4.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 145
+  },
+  {
+    "num": 420,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "תכוונו לאתר בחוף נתן לקבל באופן מדויק ביותר על ידי:",
+    "q_en": "",
+    "options": [
+      "א. מכ\"מ.",
+      "ב. GPS.",
+      "ג. מכ\"ר (D.F).",
+      "ד. פילורוס."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 146
+  },
+  {
+    "num": 421,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "באילו מכשירים/מערכות מנוצלת תופעת דופלר?",
+    "q_en": "",
+    "options": [
+      "א. מערך לוויני COSPASS-SARSAT.",
+      "ב. מצפן ג'ירוסקופי.",
+      "ג. מד מהירות לקריאת SOG.",
+      "ד. מצפן מגנטי."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 150
+  },
+  {
+    "num": 422,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "על מה ישפיעו מכשירים המכילים רמקולים, אזניות, מיקרופון וסוללות?",
+    "q_en": "",
+    "options": [
+      "א. שישפיע על מצפן מגנטי ויוציאו אותו מאיזון.",
+      "ב. שישפיע על מצפן סביבוני (ג'ירוסקופי) ויגרמו לו לחפש את הדרום במקום הצפון.",
+      "ג. שישפרו את הדיוק של כל מצפן שתלוי במגנטיות.",
+      "ד. שהם עלולים להינזק בגלל עצמתם של המגנטים במצפן."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 154
+  },
+  {
+    "num": 423,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "האוראציה משפיעה באותה מידה על:",
+    "q_en": "",
+    "options": [
+      "א. מצפן מגנטי ומצפן \"שער שטף\" (Flux Gate).",
+      "ב. מצפן סביבוני (Gyroscopic) ומצפן אזימוט.",
+      "ג. מצפנים שלא בוצעה טבלת דוויאציה ביחס אליהם.",
+      "ד. מצפנים בכלי שיט שאינם בנויים ממתכת ולכן חשופים להשפעות הסביבה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 155
+  },
+  {
+    "num": 424,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "כיצד פועל מצפן FLUX GATE (שער שטף מגנטי)?",
+    "q_en": "",
+    "options": [
+      "א. כמו מצפן מגנטי מורה על הצפון בהשפעת הכוחות המגנטיים בסביבה.",
+      "ב. במקום מוטות מגנטיים מותקנים בו אלקטרו-מגנטים זעירים.",
+      "ג. מייצר שדה מגנטי עצמי, שאותו מתקן היצרן מראש לביטול אווראציה והדוויאציה.",
+      "ד. א ו-ב נכונים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 156
+  },
+  {
+    "num": 425,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "מה הם החסרונות המשמעותיים של מצפן סביבוני מכני (Gyrocompass)?",
+    "q_en": "",
+    "options": [
+      "א. צורך חשמל רצוף ותלוי בו, אינו מתייצב מייד ברגע הפעלתו, מפתח שגיאה בתלות בקו הרוחב ובכיוון/מהירות של כלי השיט בו הוא מותקן.",
+      "ב. אינו יכול לשמש כחישן להגה אוטומטי, ואינו מפיק את הצפון המגנטי.",
+      "ג. מייצר שדה מגנטי שמסיט מצפנים נוספים בסביבתו.",
+      "ד. ניתן להתקנה רק בכלי שיט גדולים ומבנה מתכת."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 157
+  },
+  {
+    "num": 426,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "קיימות מערכות שונות לשיפור הדיוק של ה-GPS עד חלקי מטר, כיצד תדע על זמינותן לשמושך, או לפחות, את רמת הדיוק של המקלט שברשותך?",
+    "q_en": "",
+    "options": [
+      "א. מספיק לראות בספר ההוראות למפעיל, שאזור השיט הנוכחי מכוסה בתחום שיפור הדיוק.",
+      "ב. מספיק לבחור את האפשרות בתהליך אתחול המקלט.",
+      "ג. מספיק להפעיל את המקלט ב-D3, להחזיקו קרוב לקו המים וכל מספר שעות לזהות אם השנוי בגובה של הגאות והשפל מוצג בהתאמה לחישובים מנתוני המפה.",
+      "ד. כשהספינה קשורה לרציף, להשוות אתר שהתקבל מחיתוך 3 תכווינים והאתר שמפיק ה-GPS ולזהות שה-GPS מציג מהירות אפס."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 158
+  },
+  {
+    "num": 427,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מה ההבדל בין פקד MOB ופקד MARK?",
+    "q_en": "",
+    "options": [
+      "א. אין הבדל שניהם מסמנים את האתר הנוכחי כנקודת דרך (Way Point).",
+      "ב. MOB מסמן את האתר הנוכחי כ\"נקודת דרך פעילה\" אליה יוצגו הכיוון והטווח ברציפות ואילו MARK מסמן רק את האתר הנוכחי.",
+      "ג. MARK מסמן את האתר הנוכחי והכיוון ההפוך ב-180° כדי לגשת מהר לאדם שנפל לים, ואילו MOB (Miles Off Buoy) מסמן את המרחק למצוף הקרוב בזמן תחרות.",
+      "ד. MARK מפעיל אתראה על המצאות כלי השיט בטווח הדיוק של המקלט מאתר היעד ואילו MOB מפעיל את המקלט במצב עגינה/ריתוק לתחזוקה (ללא נתוני תנועה = Maintenance On Board)."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 159
+  },
+  {
+    "num": 428,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "במקלט GPS מה פרוש (בהתאמה) של-: 1-ROUTE, 2-TRACK, 3-Course To Steer?",
+    "q_en": "",
+    "options": [
+      "א. 1- הנתיב במעלות בין שתי \"נקודות דרך\"; 2-עקום התנועה שבוצע בפועל על ידי כלי השיט; 3- הקורס במעלות שיש לנהוג כדי לחזור ל-ROUTE.",
+      "ב. 1- מספר קטעים בעלי קורס שונה שבין כל שתי נקודות סמוכות ועוקבות שקושרו לנתיב אחד ונשמרים בזיכרון תחת שם נבחר. 2-הנתיב אותו אמור כלי השיט לעבור בין אתר יציאה ואתר יעד. 3- הקורס שמתוקן על ידי המקלט, אותו יש לנהוג כדי להגיע אל נקודת הדרך שנבחרה.",
+      "ג. 1- הקורס האמיתי בין אתר תחילת המסע והיעד; 2- עקבות הכוון של תנועת כלי השיט מאחרי לוח ההגה; 3- הכוון שיש לנהוג כדי שהמקלט לא יזהה Cross Track Error.",
+      "ד. 1- מסלול תקני של תחרות שיט אולימפית; 2- אחת הצלעות של מסלול תחרות; 3- הקורס למצוף הראשון מקו הזינוק של תחרות שיט."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 160
+  },
+  {
+    "num": 429,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "מה הם שימושי המכ\"מ?",
+    "q_en": "",
+    "options": [
+      "א. לזהות קיום צוללות מתחת למים.",
+      "ב. למניעת התנגשות, לנווט, תובלן, לחיפוש והצלה.",
+      "ג. בכל מכ\"מ ניתן אתראה כשהטווח למטרה קטן.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 161
+  },
+  {
+    "num": 430,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "האם ניתן לזהות במכ\"מ כלי שיט קטנים וכניסה למרינה בגשם סמיך ואיזה פקד יש להפעיל בלוח הבקרה?",
+    "q_en": "",
+    "options": [
+      "א. ניתן לזהות, אך זה תלוי במידות ובחומר של העצמים וסמיכות הגשם, הפקד המתאים הוא-Anti-Clutter-Rain או FTC.",
+      "ב. ניתן לגלוי מיידי על ידי הפעלת GAIN או STC.",
+      "ג. ניתן על ידי פקד להגברת עצמת השידור.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 162
+  },
+  {
+    "num": 431,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "סמן את המשפט שתוכנו הנכון ביותר ביחס למכ\"מ הימי:",
+    "q_en": "",
+    "options": [
+      "א. ככל שהפולס המשודר קצר יותר האבחנה בטווח טובה יותר וככל שהטווח קטן יותר האבחנה בכיוון מדויקת יותר.",
+      "ב. ככל שהטווח גדול יותר האבחנה בכיוון טובה יותר והאבחנה בטווח גרועה יותר.",
+      "ג. ככל שהפולס המשודר ארוך יותר האבחנה בעצמים קטנים טובה יותר אך טווח הגלוי קטן.",
+      "ד. בתחומי טווח קטנים נבחר פולס שידור קצר לאבחנה טובה בין עצמים קרובים וכן נקבל דיוק טוב יותר בכיוונים; ובתחומי טווח גדולים נעדיף פולס ארוך יותר להחזרה טובה מעצמים קטנים אך דיוק הכיוונים גרוע יותר."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 163
+  },
+  {
+    "num": 432,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "במה תלוי האיכות וטווח הגלוי של עצם במכ\"מ?",
+    "q_en": "",
+    "options": [
+      "א. תחום הטווחים שבוחרים בעזרת הפקד RANGE והתחום המרבי שלו תוכנן.",
+      "ב. עצמת המשדר, רגישות המקלט, איכות האנטנה ותנאי התפשטות גלי הרדיו.",
+      "ג. כיוונון נכון של TUNE, GAIN, BRILLIANCE, PULSE ומנחתי הפרעות.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 164
+  },
+  {
+    "num": 433,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "מה תפקיד הממיר במד העומק?",
+    "q_en": "",
+    "options": [
+      "א. להמיר את מתקפי גל הרדיו לגל קול בכיוון השידור ולהמיר את ההד החוזר לגל רדיו בכיוון הקליטה.",
+      "ב. לעצב את אלומת הקרינה כך שיתקבלו הדים רק מתחת לכלי השיט גם בטלטולים.",
+      "ג. לסרוק את חתך העומק שנבחר ולספק כיוונים אל עצמים שנגלים באותו חתך עומק.",
+      "ד. א ו-ג נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 165
+  },
+  {
+    "num": 434,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כיצד מועברים ההודעות במערכת ה-NAVTEX?",
+    "q_en": "",
+    "options": [
+      "א. קובץ של הודעות לבטיחות השיט (Navigational Text book), שמתעדכן בתחילת כל חודש, וניתן לקבלו ממנהל הספנות של כל מעגן או להוריד מהאינטרנט.",
+      "ב. מערכת מנהלות ומשדרים בפריסה עולמית, להפצת מידע בטיחותי לספנות, כלי השיט קולטים את המידע המודפס דרך מקלטים מיוחדים המכוניים Navtex Receivers.",
+      "ג. מערך לווינים הנעים במרחק 800 קילומטר אחד מהשני מוזנים במידע הבטיחותי לשיט מעל האזור שהם חולפים מעליו, ובה בעת, הם מחזירים אותו למקלטים בכלי השיט.",
+      "ד. מהדורת אזהרות לשיט שמשודרת בשיטה ספרתית (D.S.C.) על ערוץ 70 של תג\"מ ימי לאחר הודעה פניה מדוברת בערוץ 16 של תחום ה-VHF הימי."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 166
+  },
+  {
+    "num": 435,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כיצד פרושה שרשרת המשדרים להפצת המידע הבטיחותי של מערך ה-NAVTEX?",
+    "q_en": "",
+    "options": [
+      "א. שכלי ים שיוצא מטווח משדר אחד יכנס לחפיפה של משדר סמוך.",
+      "ב. שבכל שיט חופי תתאפשר הצלבת מידע לפחות משלושה משדרים.",
+      "ג. שבטווח המתוכנן לכל משדר (כ-400 מיל) לא תהיה חפיפה מפריעה עם המשדר לכסוי האזור הסמוך (כ-800 מיל), אך מתקיים תאום הספקים והפצה בין המנהלות הסמוכות.",
+      "ד. שכולם ישדרו באותן שעות האור של הזמן המקומי אך על תדרים שונים לבחירת המשיט."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 167
+  },
+  {
+    "num": 436,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "כיצד מופיעות הודעות מצוקה בפלט מקלט NAVTEX?",
+    "q_en": "",
+    "options": [
+      "א. משודרות מכלי השיט שבמצוקה ומיועדות רק לתחנות חוף שצריכות להזעיק משלחת הצלה.",
+      "ב. מקורן בתחנות חוף ובמנהלה האזורית של משדר ה-NAVTEX במטרה להרחיב את מספר כלי השיט שיכולים להגיש עזרה.",
+      "ג. משודרות מתחנות חוף של השרות הימי וכלי ים, שקלטו הודעת מצוקה מדוברת על ערוץ 16 של תחום התג\"מ הימי.",
+      "ד. חל איסור להפיץ הודעות מצוקה ב-NAVTEX כדי למנוע בלבול ומעורבות של כלי שיט שמחוץ לטווח ה-VHF הימי, ואינם זמינים לעזרה מיידית."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 168
+  },
+  {
+    "num": 437,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "סמן את המשפט הנכון ביחס למשואת Cospas-Sarsat.",
+    "q_en": "",
+    "options": [
+      "א. פועלת על תדר 406 MHZ אל מערך לוויני, אך מותרת בזיווד כלי ים כחלופה למשואה על ערוץ 70 של התג\"מ הימי.",
+      "ב. אינה מותרת בספינה לשיט חופי, משום שהיא תזעיק תחנות בכל תחום הכיסוי של הלווין, ולא כאלה שנמצאות בטווח הצלה מיידית של התג\"מ הימי.",
+      "ג. מאפשרת קשר בדיבור ללא צורך בהקלדת הודעות מוכנות מתוך תפריט.",
+      "ד. מאפשרת התבייתות (כיוון וטווח) של משלחת הצלה בראות מוגבלת."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 169
+  },
+  {
+    "num": 438,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה פרוש התכונה המכונה \"FLOAT FREE\"?",
+    "q_en": "",
+    "options": [
+      "א. סידור טכני שמאפשר התנתקות עצמית וציפה של המשואות למקרי מצוקה.",
+      "ב. חופשי מיכלת לצוף.",
+      "ג. מתקן המנפח רפסודת הצלה כך שהמשואה תהיה בגג ולא תרטיב במי הים.",
+      "ד. אריזה מיוחדת, המסופקת לכל סוג משואה, כדי להבטיח את ציפתה ואטימותה גם במים מתוקים."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 170
+  },
+  {
+    "num": 439,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מהו המכלול האלקטרוני המכונה D.S.C.?",
+    "q_en": "",
+    "options": [
+      "א. מאפשר עבוד הודעות למשלוח על ידי הזמנתן מתפריטים מוכנים וספריות נתונים.",
+      "ב. מאפשר קשר מיידי דרך ממסר לוויין Direct Satellite Communication.",
+      "ג. כלול במכשירי קשר לצורך פענוח וקידוד הודעות בתקשורת ספרתית, ובכוונה שלא תהיה תלות במיומנויות המפעיל.",
+      "ד. א ו-ב נכונות."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 171
+  },
+  {
+    "num": 440,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה משפיע, בעיקר, על טווח הקשר בתחום התג\"מ?",
+    "q_en": "",
+    "options": [
+      "א. שעת היממה, מליחות המים, מהירות הספינה.",
+      "ב. מרחב חופשי ממכשולים בין האנטנות (גובה האנטנות), הספק השידור, הגבר ותאום האנטנות, מספר תנאי התפשטות של גלי הרדיו.",
+      "ג. הערוץ שבשימוש, עצמת הדיבור, עונת השנה, מספר כתמי השמש במועד השדור.",
+      "ד. הטמפרטורה וצפיפות החומרים בשכבות האוויר שבין התחנות, מספר הדילוגים שמבצע הגל מהיונוספירה עד תחנת היעד."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 172
+  },
+  {
+    "num": 441,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מהו \"קריאת מצוקה\" DISTRESS CALL?",
+    "q_en": "",
+    "options": [
+      "א. פניה על ערוץ 16, לכל מי ששומע, להפסיק כל פעילות (שאינה מצוקה) ולהקשיב ל\"הודעת המצוקה\" שצפויה אחריה.",
+      "ב. שדור 3 פעמים בטוי הנוהל MAYDAY, THIS IS ו-3 פעמים זיהוי התחנה הקוראת.",
+      "ג. מצופה שתחנות חוף יאשרו ראשונות את הקליטה ויטלו פיקוח על הקשר.",
+      "ד. כל התשובות נכונות."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 173
+  },
+  {
+    "num": 442,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מהו המרחק הקצר ביותר בין מיצרי \"גיברלטר\" והעיר \"ניו-יורק\"?",
+    "q_en": "",
+    "options": [
+      "א. קטע של המעגל הגדול העובר בין שתי האתרים.",
+      "ב. קטע של המעגל הקטן העובר בין שני האתרים.",
+      "ג. על קו חלזוני העובר בין שני האתרים.",
+      "ד. אף תשובה לא נכונה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 174
+  },
+  {
+    "num": 443,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מה יהיה גובה של כוכב הצפון מעל האופק לספינה המפליגה בין חיפה לקפריסין כאשר קו הרוחב בערך כ-36 מעלות צפון?",
+    "q_en": "",
+    "options": [
+      "א. גובה כוכב הצפון יהיה כ-90 מעלות מעל האופק.",
+      "ב. גובה כוכב הצפון יהיה כ-36 מעלות מעל האופק.",
+      "ג. גובה כוכב הצפון יהיה כ-54 מעלות מעל האופק.",
+      "ד. אין חשיבות לקו הרוחב שאני נמצא בו לגבי גובה כוכב הצפון כל עוד אני בחצי הכדור הצפוני."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 175
+  },
+  {
+    "num": 444,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "כיצד יש לטפל בממיר מד העומק?",
+    "q_en": "",
+    "options": [
+      "א. שינוקה עם מכונת ליטוש ויצופה בצבע שמכיל מתכת.",
+      "ב. אם הוא מסוג כרמי טבול בשמן, יש לבדוק ולהשלים חסר ברמת השמן.",
+      "ג. צריך להשאירו חשוף מצבע ובמקרה של ממרי אלקטרומגנטי לחדש את עצמת המגנטיות על ידי חיכוך עם מגנט טבעי.",
+      "ד. אין לבצע כל פעולת אחזקה, ההמרה אינה מופרעת מחומרים ובועות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 176
+  },
+  {
+    "num": 445,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מה הם מאפייני ה-SART?",
+    "q_en": "",
+    "options": [
+      "א. יכולת ציפה, סוללה שתאפשר קליטה במשך 96 שעות או 8 שעות שידור, נורה ואות קולי.",
+      "ב. ריתוק קבוע לכלי השיט וסידור שהאנטנה תשאר אנכית גם בטלטולי הים.",
+      "ג. לחצן שדור, שיציג על מסכי המכ\"מ בסביבה ▪ ▪ ▪ ▬ ▬ ▬ ▪ ▪ ▪.",
+      "ד. ב ו-ג נכונות."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 177,
+    "fix_request": "שאלה 177 ב-SQ5 נשענת על איור שלא קיים בבנק. צריך להוסיף תמונה."
+  },
+  {
+    "num": 446,
+    "source": "SQ5",
+    "topic": "מד עומק",
+    "q_he": "בהנחה ש-מד העומק מציג את העומק מנקודת השוקע המרבי, כלי שיט שהשוקע שלו 1.5 מטרים מודד עומק של 1 מטר ובמפה רשום 2 מטרים. מה הסיבה להבדל?",
+    "q_en": "",
+    "options": [
+      "א. העומק במפה רשום בשיא הגאות ובזמן המדידה יש שפל של 0.5 מטר.",
+      "ב. העומק במפה רשום בשיא השפל אך בזמן המדידה יש גאות של 0.5 מטר מהרשום.",
+      "ג. קרקע הים במקום המדידה גבוהה ב-0.5 מטר מ-Chart Datum.",
+      "ד. ב ו-ג אפשרויות נכונות."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 178
+  },
+  {
+    "num": 447,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מהו המרחק, במיילים ימיים, בין שני קווי רוחב סמוכים על-פני כדור-הארץ?",
+    "q_en": "",
+    "options": [
+      "א. מייל אחד.",
+      "ב. עשרה מיילים.",
+      "ג. 60 מיילים.",
+      "ד. 100 מיילים."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 179
+  },
+  {
+    "num": 448,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "האם המרחק בין שני קווי אורך סמוכים על-פני כדור-הארץ הוא קבוע?",
+    "q_en": "",
+    "options": [
+      "א. כן.",
+      "ב. לא.",
+      "ג. כן, חוץ מאשר בקו המשווה.",
+      "ד. בקטבים בלבד."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 180
+  },
+  {
+    "num": 449,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "היכן מסתיים קו רוחב N°20?",
+    "q_en": "",
+    "options": [
+      "א. בקוטב הצפוני.",
+      "ב. בקו קריניץ'.",
+      "ג. בקו-המשווה.",
+      "ד. הוא לא מסתיים."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 181
+  },
+  {
+    "num": 450,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "איזה קו אורך משלים למעגל שלם את קו האורך E°40?",
+    "q_en": "",
+    "options": [
+      "א. W°40.",
+      "ב. E°220.",
+      "ג. W°140.",
+      "ד. W°220."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 182
+  },
+  {
+    "num": 451,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "אתה מפליג מזרחה, בקו רוחב S°30. באיזה תכווין תוכל לראות את כוכב הצפון?",
+    "q_en": "",
+    "options": [
+      "א. °0.",
+      "ב. °90 לשמאל.",
+      "ג. °30 לימין.",
+      "ד. הכוכב לא נראה לעין."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 183
+  },
+  {
+    "num": 452,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מהו מיקומו של כוכב הצפון ביחס לכדור-הארץ?",
+    "q_en": "",
+    "options": [
+      "א. בהמשכו הדמיוני של קו המשווה של כדור-הארץ.",
+      "ב. בהמשכו הדמיוני של הקו הצפוני של ציר הסיבוב של כדור-הארץ.",
+      "ג. במחצית המרחק בין הקטבים של כדור-הארץ.",
+      "ד. המיקום משתנה בהתאם לעונות השנה בכדור-הארץ."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 184
+  },
+  {
+    "num": 453,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "היכן ממוקם כוכב הצפון במערכת הכוכבים?",
+    "q_en": "",
+    "options": [
+      "א. במרכז שביל החלב.",
+      "ב. במרכז העגלה הקטנה.",
+      "ג. בתחתית קבוצת כוכבי הקסיופאה.",
+      "ד. בקצה היצול של העגלה הקטנה."
+    ],
+    "answer": "ד",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 185
+  },
+  {
+    "num": 454,
+    "source": "SQ5",
+    "topic": "ניווט",
+    "q_he": "מדוע הכוכבים נראים קטנים?",
+    "q_en": "",
+    "options": [
+      "א. כי הם רחוקים מאיתנו.",
+      "ב. כי הם אכן קטנים.",
+      "ג. כי אנו רואים רק את החלק השטוח שלהם.",
+      "ד. בגלל העיוות האופטי שיוצרת האטמוספרה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 186
+  },
+  {
+    "num": 455,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "איזה מהמכשירים שלהלן מראה את כיוון ההפלגה האמיתי של ספינה ביחס לכיוון הצפון האמיתי?",
+    "q_en": "",
+    "options": [
+      "א. G.P.S.",
+      "ב. מצפן מגנטי.",
+      "ג. מצפן חשמלי.",
+      "ד. מצפן שטף מגנטי."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 187
+  },
+  {
+    "num": 456,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "האם ה-G.P.S יכול למדוד מהירות?",
+    "q_en": "",
+    "options": [
+      "א. כן.",
+      "ב. לא.",
+      "ג. רק בשיט איטי.",
+      "ד. רק בים שקט."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 188
+  },
+  {
+    "num": 457,
+    "source": "SQ5",
+    "topic": "מכ\"מ",
+    "q_he": "מתי אפשר לקבוע על-פי המכ\"ם שספינתך נתונה בסכנת התנגשות?",
+    "q_en": "",
+    "options": [
+      "א. כאשר המטרה נשמרת בטווח קבוע והתכווין משתנה.",
+      "ב. כאשר המטרה נשמרת בתכווין קבוע והטווח קטן.",
+      "ג. כאשר המטרה נשמרת בתכווין קבוע והטווח גדל.",
+      "ד. כאשר המטרה מתקרבת אליך בקצב קבוע."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 189
+  },
+  {
+    "num": 458,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "ספינתך מפליגה לאחור לכיוון מזרח. על איזה קורס יצביע המצפן המגנטי, ועל איזה קורס יצביע מכשיר ה-G.P.S?",
+    "q_en": "",
+    "options": [
+      "א. המצפן המגנטי – E; מכשיר ה-G.P.S – E.",
+      "ב. המצפן המגנטי – E; מכשיר ה-G.P.S – W.",
+      "ג. המצפן המגנטי – W; מכשיר ה-G.P.S – E.",
+      "ד. המצפן המגנטי – W; מכשיר ה-G.P.S – W."
+    ],
+    "answer": "ג",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 190
+  },
+  {
+    "num": 459,
+    "source": "SQ5",
+    "topic": "GPS",
+    "q_he": "סובבו ספינה שעמדה כשחרטומה בכיוון °150, °30 שמאלה. על איזה קורס הפלגה יצביע המצפן המגנטי ועל איזה קורס הפלגה יצביע מכשיר ה-G.P.S?",
+    "q_en": "",
+    "options": [
+      "א. המצפן המגנטי - °120; מכשיר ה-G.P.S – °120.",
+      "ב. המצפן המגנטי - °120; מכשיר ה-G.P.S - לא יגיב.",
+      "ג. המצפן המגנטי - °180; מכשיר ה-G.P.S – °120.",
+      "ד. המצפן המגנטי - °150; מכשיר ה-G.P.S - לא יגיב."
+    ],
+    "answer": "ב",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 191
+  },
+  {
+    "num": 460,
+    "source": "SQ5",
+    "topic": "מצפן",
+    "q_he": "תו-הכיוון במצפן הימי נמצא מול הצפון. אם נסובב את המצפן שמאלה, בזווית של °90, לאיזה כיוון יצביע תו-הכיוון?",
+    "q_en": "",
+    "options": [
+      "א. מערבה.",
+      "ב. צפונה.",
+      "ג. מזרחה.",
+      "ד. דרומה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 192
+  },
+  {
+    "num": 461,
+    "source": "SQ5",
+    "topic": "קשר VHF",
+    "q_he": "מי צריך להשיב מיד לקריאה \"MAYDAY\"?",
+    "q_en": "",
+    "options": [
+      "א. כל מי ששומע את הקריאה.",
+      "ב. כל מי שמסוגל לעזור מיידית.",
+      "ג. כל מי שנמצא בקרבת הספינה.",
+      "ד. כל מי שעוסק בהצלה."
+    ],
+    "answer": "א",
+    "answer_confirmed": true,
+    "explanation": "",
+    "mediaUrl": "",
+    "mediaType": "",
+    "approved_for_publish": false,
+    "license": 30,
+    "branch": "ניווט מכשירים",
+    "sq5_num": 193
   }
 ]
