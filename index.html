@@ -218,6 +218,8 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
         <button id="lic-11" class="filter-btn" onclick="setLicense(11)" style="flex:1">רישיון 11</button>
         <button id="lic-12" class="filter-btn" onclick="setLicense(12)" style="flex:1">רישיון 12</button>
       </div>
+      <!-- l30 branches (ענפים). Filled by renderBranchBar(); hidden for other licenses. -->
+      <div id="branch-bar" style="display:none;flex-wrap:wrap;gap:4px;margin-bottom:6px"></div>
       <input id="search" placeholder="🔍 חיפוש לפי מילה או מספר שאלה (#)..." oninput="renderList()" title="חפש בטקסט השאלה או לפי מספר השאלה">
       <select id="topic-filter" onchange="renderList()" title="סנן לפי נושא">
         <option value="">— כל הנושאים —</option>
@@ -361,6 +363,35 @@ function setLicense(lic) {
   showEmptyEditor();
   populateTopicFilter();
   renderList();
+}
+
+// ── License 30 branches (ענפים) ──────────────────────────────────────────────
+// Each l30 question carries q.branch. '' = all branches. Only license 30 has them.
+const BRANCHES_30 = ['ימאות','מכונה','ניווט מכשירים','ניווט חופי'];
+let activeBranch = (() => { try { return localStorage.getItem('sq_branch_30') || ''; } catch { return ''; } })();
+if (activeBranch && !BRANCHES_30.includes(activeBranch)) activeBranch = '';
+function setBranch(b) {
+  activeBranch = b;
+  try { localStorage.setItem('sq_branch_30', b); } catch {}
+  currentIdx = -1;
+  showEmptyEditor();
+  populateTopicFilter();
+  renderList();
+}
+function inActiveScope(q) {
+  if ((q.license ?? 30) !== activeLicense) return false;
+  return !(activeLicense === 30 && activeBranch && q.branch !== activeBranch);
+}
+function renderBranchBar() {
+  const bar = document.getElementById('branch-bar');
+  if (!bar) return;
+  bar.style.display = activeLicense === 30 ? 'flex' : 'none';
+  if (activeLicense !== 30) return;
+  const l30 = questions.filter(q => (q.license ?? 30) === 30);
+  const btn = (b, label, n) =>
+    `<button class="filter-btn${activeBranch === b ? ' active' : ''}" style="flex:1 1 45%;font-size:12px" onclick="setBranch('${b}')">${label} (${n})</button>`;
+  bar.innerHTML = btn('', 'כל הענפים', l30.length) +
+    BRANCHES_30.map(b => btn(b, b, l30.filter(q => q.branch === b).length)).join('');
 }
 let correctIdx = 0;
 let currentLang = 'he';  // 'he' | 'en'
@@ -750,7 +781,7 @@ async function saveJSON() {
 
 // ── Auto-populate topic filter ────────────────────────────────────────────────
 function populateTopicFilter() {
-  const topics = [...new Set(questions.filter(q=>(q.license??30)===activeLicense).map(q=>q.topic).filter(Boolean))].sort();
+  const topics = [...new Set(questions.filter(inActiveScope).map(q=>q.topic).filter(Boolean))].sort();
   const sel = document.getElementById('topic-filter');
   const cur = sel.value;
   const keepCur = topics.includes(cur);
@@ -780,6 +811,7 @@ function addQuestion() {
   const maxNum = questions.length ? Math.max(...questions.map(q=>q.num||0)) + 1 : 1;
   questions.push({
     num: maxNum, source: 'ידני', topic: 'כללי', license: activeLicense,
+    ...(activeLicense === 30 && activeBranch ? { branch: activeBranch } : {}),
     q_he: '', q_en: '',
     options: ['א. ','ב. ','ג. ','ד. '],
     answer: 'א', answer_confirmed: false, explanation: '',
@@ -810,7 +842,7 @@ function renderList() {
 
   questions.forEach((q, i) => {
     const text = (q.q_he || q.q_en || '').toLowerCase();
-    if((q.license ?? 30) !== activeLicense) return;
+    if(!inActiveScope(q)) return;
     if(search && !text.includes(search) && !String(q.num).includes(search)) return;
     if(topicF && q.topic !== topicF) return;
 
@@ -830,11 +862,12 @@ function renderList() {
     list.appendChild(el);
   });
 
+  renderBranchBar();
   updateCount();
 }
 
 function updateCount() {
-  const inLicense = questions.filter(q => (q.license ?? 30) === activeLicense);
+  const inLicense = questions.filter(inActiveScope);
   const confirmed = inLicense.filter(q=>q.answer_confirmed).length;
   const approved  = inLicense.filter(q=>q.approved_for_publish).length;
   document.getElementById('q-count').textContent =
@@ -908,6 +941,12 @@ function renderEditor(q) {
         ${topicOptions(q.topic).map(t=>`<option${q.topic===t?' selected':''}>${t}</option>`).join('')}
       </select>
     </div>
+    ${(q.license ?? 30) === 30 ? `<div class="field"><label>ענף</label>
+      <select id="f-branch" onchange="if(currentIdx>=0){questions[currentIdx].branch=this.value||undefined;renderList();}">
+        <option value=""${q.branch?'':' selected'}>(ללא ענף)</option>
+        ${BRANCHES_30.map(b=>`<option${q.branch===b?' selected':''}>${b}</option>`).join('')}
+      </select>
+    </div>` : ''}
     <div class="field"><label>שאלה בעברית</label><textarea id="f-qhe" placeholder="טקסט השאלה בעברית...">${escHtml(q.q_he)}</textarea></div>
     <div class="field"><label>שאלה באנגלית (מ-PDF)</label><textarea id="f-qen" placeholder="טקסט השאלה באנגלית...">${escHtml(q.q_en)}</textarea></div>
 
