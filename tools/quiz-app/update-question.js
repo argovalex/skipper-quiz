@@ -2,7 +2,8 @@
 // update-question.js — one command to re-render a question and propagate the new
 // video EVERYWHERE the course reads from.
 //
-//   node tools/quiz-app/update-question.js <num> [num...] [--license N] [--no-push] [--no-render]
+//   node tools/quiz-app/update-question.js <num> [num...] [--license N] [--no-push] [--no-render] [--vo-ok]
+//   Renders only when vo-check.js finds no unapproved VO words (--vo-ok overrides).
 //   --license N (default 11) selects the bank/derived files: data/l<N>.json,
 //   quiz-data-l<N>.json, pause-map[-l<N>].json, quiz-app[-l<N>].html.
 //
@@ -132,6 +133,21 @@ async function propagateToCourseDb(done) {
   const questions = load('questions.json');
   const qById = new Map(questions.map(q => [String(q.num), q]));
   const newUrls = {};
+
+  // 0) pronunciation gate: refuse to render while the VO has words nobody listened to
+  //    (tools/quiz-app/vo-check.js). --vo-ok bypasses it once Alex approved the clip.
+  if (!noRender && !args.includes('--vo-ok')) {
+    const { newWords, loadApproved } = require('./vo-check.js');
+    const approved = loadApproved();
+    const blocked = nums.map(n => [n, bank.find(x => String(x.num) === n)])
+      .filter(([, q]) => q && newWords(q, approved).size);
+    if (blocked.length) {
+      console.error(`! new VO words not approved in: ${blocked.map(([n]) => n).join(',')}`);
+      console.error(`  run: node tools/quiz-app/vo-check.js ${blocked.map(([n]) => n).join(' ')} --license ${LICENSE}`);
+      console.error('  then --approve <num> (or fix the lexicon), or pass --vo-ok');
+      process.exit(1);
+    }
+  }
 
   // 1) render (or read new url from questions.json if --no-render)
   for (const num of nums) {
