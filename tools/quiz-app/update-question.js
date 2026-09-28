@@ -166,6 +166,17 @@ async function propagateToCourseDb(done) {
     else if (oldUrl === newUrl) synced++;
     else console.error(`! ${num}: old url not found in ${BANK}`);
   }
+  // store the VO that was actually rendered, so the editor's VO field matches the video
+  if (!noRender) {
+    const crlf = raw.includes('\r\n');
+    const arr = JSON.parse(raw);
+    for (const num of done) {
+      const q = arr.find(x => String(x.num) === num);
+      if (q) q.voiceover_text = buildVoiceover(q);
+    }
+    raw = JSON.stringify(arr, null, 2);
+    if (crlf) raw = raw.replace(/\n/g, '\r\n');
+  }
   fs.writeFileSync(p(BANK), raw);
   console.log(`videoUrl synced into ${BANK}: ${synced}/${done.length}`);
 
