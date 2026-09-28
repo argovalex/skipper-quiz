@@ -42,8 +42,6 @@
     "answer": "ב",
     "answer_confirmed": false,
     "explanation": "כדור הארץ מסתובב ממערב למזרח — לכן השמש נראית זורחת במזרח ושוקעת במערב.",
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/l30_q102.jpg",
-    "mediaType": "image",
     "approved_for_publish": true,
     "voiceover_text": "שאלה מספר 102. מדוע רואים את השמש זורחת במזרח ושוקעת במערב?. [[PAUSE]] התשובה הנכונה: כדור הארץ סובב סביב צירו ממערב למזרח. כדור הארץ מסתובב ממערב למזרח — לכן השמש נראית זורחת במזרח ושוקעת במערב.",
     "html_locked": false,
@@ -51,7 +49,8 @@
     "rendered_at": "2026-06-29T09:05:10.900Z",
     "license": 30,
     "branch": "ניווט מכשירים",
-    "sq5_num": 2
+    "sq5_num": 2,
+    "mediaUrl_realistic": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/l30_q102.jpg"
   },
   {
     "num": 103,
