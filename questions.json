@@ -134,7 +134,7 @@
     "html_locked": true,
     "fix_resolved_at": "2026-06-28T11:21:04.044Z",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1790599853/skipper-quiz/wcwp6gplzmolbd34kchw.mp4",
-    "rendered_at": "2026-09-28T12:50:55.217Z",
+    "rendered_at": "2026-09-28T12:50:56.983Z",
     "scheduled_date": "2026-06-29",
     "license": 30,
     "branch": "ניווט מכשירים",
@@ -161,7 +161,8 @@
     "approved_for_publish": false,
     "license": 30,
     "branch": "ניווט מכשירים",
-    "sq5_num": 6
+    "sq5_num": 6,
+    "voiceover_text": "שאלה מספר 106. מה פירוש התכונה המכונה FLOAT FREE?. [[PAUSE]] התשובה הנכונה היא א: סידור טכני שמאפשר התנתקות עצמית וציפַה של המשואות למקרי מצוקה. ... FLOAT FREE — כאשר הספינה שוקעת, המשואה משתחררת אוטומטית וצָפה, ומשדרת אות מצוקה."
   },
   {
     "num": 107,
