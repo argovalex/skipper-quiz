@@ -180,15 +180,20 @@ async function propagateToCourseDb(done) {
     const newUrl = newUrls[num];
     if (oldUrl && oldUrl !== newUrl && raw.includes(`"${oldUrl}"`)) { raw = raw.replace(`"${oldUrl}"`, `"${newUrl}"`); synced++; }
     else if (oldUrl === newUrl) synced++;
+    else if (!oldUrl) synced++; // first render: no url to replace, set below
     else console.error(`! ${num}: old url not found in ${BANK}`);
   }
-  // store the VO that was actually rendered, so the editor's VO field matches the video
-  if (!noRender) {
+  // first renders get their videoUrl here; also store the VO that was actually rendered,
+  // so the editor's VO field matches the video
+  const firsts = done.filter(num => !(byNum.get(num) && byNum.get(num).videoUrl));
+  if (!noRender || firsts.length) {
     const crlf = raw.includes('\r\n');
     const arr = JSON.parse(raw);
     for (const num of done) {
       const q = arr.find(x => String(x.num) === num);
-      if (q) q.voiceover_text = buildVoiceover(q);
+      if (!q) continue;
+      if (!q.videoUrl) { q.videoUrl = newUrls[num]; q.rendered_at = new Date().toISOString(); }
+      if (!noRender) q.voiceover_text = buildVoiceover(q);
     }
     raw = JSON.stringify(arr, null, 2);
     if (crlf) raw = raw.replace(/\n/g, '\r\n');
