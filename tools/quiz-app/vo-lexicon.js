@@ -1,6 +1,6 @@
 // AUTO-GENERATED from references/niqqud-lexicon.md by
 // tools/quiz-app/gen-vo-lexicon.js. Do NOT edit by hand — edit the .md and re-run.
-// 253 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
+// 259 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
 const VO_LEXICON = [
   ["FLOAT FREE ציפה חופשית","FLOAT FREE ציפַה חופשית"],
   ["במיליים ימיים","בְּמָילִיִים יַמִּיִּים"],
@@ -15,6 +15,8 @@ const VO_LEXICON = [
   ["הטיטאניק","הַטִּיטָאנִיק"],
   ["אס או אס","אֶס אוֹ אֶס"],
   ["הסביבוני","הַסְּבִיבוֹנִיִ"],
+  ["דוייאציה","דֶוְייָאצְיָה"],
+  ["פיברגלאס","פִיבֶּרְגְלָאס"],
   ["כלי שיט","כְּלֶיִ שיט"],
   ["מהמרינה","מֵהַמָּרִינָה"],
   ["מכמורתן","מִכְמֹורתן"],
@@ -41,6 +43,9 @@ const VO_LEXICON = [
   ["במיליים","בְּמָילִיִים"],
   ["ומעגלים","ומעָגלים"],
   ["הג'יירו","הַגָ'יירו"],
+  ["לרפסודת","לרפסודָת"],
+  ["דויאציה","דֶּוְיָאצְיָה"],
+  ["לגריניץ","לגרינִיץּ"],
   ["שזיהית","שֶׁזִּיֽהִיתָ"],
   ["מצופים","מְצוֹפִים"],
   ["והמצוף","וְהַמָּצוֹף"],
@@ -255,5 +260,6 @@ const VO_LEXICON = [
   ["כול","כּוֹל"],
   ["תדר","תֶּדֶר"],
   ["לקו","לקָו"],
+  ["ימי","יָמִי"],
 ];
 if (typeof module !== 'undefined' && module.exports) module.exports = { VO_LEXICON };
