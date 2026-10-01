@@ -26,6 +26,36 @@ const MIME = {
 
 const stripNiqqud = s => s.replace(/[֑-ׇ]/g, '').trim();
 
+// ── קול Alex Skipper v2 (docs/voice-style-v2.md) ─────────────────────────────────
+// Higgsfield TTS זמין רק דרך MCP בסשן Claude, לא ב-REST, אז העורך לא מפיק בזמן אמת.
+// העורך רושם בקשה ב-v2-requests.json; סשן Claude (המשימה voice-v2-migration או ידני)
+// מפיק ל-output/voice-v2/editor/<id>.mp3, והעורך מנגן את הקובץ כשהוא קיים.
+const V2_REQUESTS = path.join(ROOT, 'tools', 'voice', 'v2-requests.json');
+const V2_DIR = path.join(ROOT, 'output', 'voice-v2', 'editor');
+const v2Id = text => require('crypto').createHash('sha1').update(text, 'utf8').digest('hex').slice(0, 12);
+
+function readV2Requests() {
+  try { return JSON.parse(fs.readFileSync(V2_REQUESTS, 'utf8')); } catch { return []; }
+}
+
+function lookupV2(text) {
+  const id = v2Id(text);
+  const file = path.join(V2_DIR, id + '.mp3');
+  if (fs.existsSync(file)) return { status: 'ready', id, url: `output/voice-v2/editor/${id}.mp3` };
+  const r = readV2Requests().find(x => x.id === id);
+  return { status: r ? r.status : 'none', id };
+}
+
+function requestV2(text) {
+  const cur = lookupV2(text);
+  if (cur.status === 'ready' || cur.status === 'pending') return cur;
+  const list = readV2Requests().filter(x => x.id !== cur.id);
+  list.push({ id: cur.id, text, status: 'pending', created: new Date().toISOString() });
+  fs.mkdirSync(path.dirname(V2_REQUESTS), { recursive: true });
+  fs.writeFileSync(V2_REQUESTS, JSON.stringify(list, null, 2) + '\n', 'utf8');
+  return { status: 'pending', id: cur.id };
+}
+
 // ── עדכון המילון ────────────────────────────────────────────────────────────────
 function addToLexicon(nikudRaw, plainOverride) {
   const nikud = String(nikudRaw || '').trim();
@@ -184,6 +214,21 @@ const server = http.createServer((req, res) => {
     }).on('error', (e) => {
       res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ error: e.message }));
+    });
+    return;
+  }
+  if (req.method === 'POST' && (req.url === '/api/v2-lookup' || req.url === '/api/v2-request')) {
+    let body = '';
+    req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
+    req.on('end', () => {
+      let out;
+      try {
+        const text = String(JSON.parse(body || '{}').text || '').trim();
+        if (!text) throw new Error('text required');
+        out = req.url === '/api/v2-request' ? requestV2(text) : lookupV2(text);
+      } catch (e) { out = { status: 'error', message: e.message }; }
+      res.writeHead(out.status === 'error' ? 400 : 200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify(out));
     });
     return;
   }
