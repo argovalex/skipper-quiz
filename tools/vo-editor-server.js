@@ -56,6 +56,58 @@ function requestV2(text) {
   return { status: 'pending', id: cur.id };
 }
 
+// ── האזנה חיה בקול שלך: ElevenLabs ישירות (אותו שיבוט מ-Alex_voice.m4a) ─────────
+// Higgsfield לא חושף TTS ב-REST, אז העורך מפיק דרך ElevenLabs עם ELEVENLABS_API_KEY
+// ו-ELEVENLABS_VOICE_ID מ-.env (tools/voice/elevenlabs-clone.js יוצר את השיבוט).
+// cache לפי hash ב-output/voice-v2/editor/live-<id>.mp3; [[PAUSE]] = שתי קריאות + 2.5ש׳ שקט.
+function loadEnv() {
+  try {
+    for (const line of fs.readFileSync(path.join(ROOT, '.env'), 'utf8').split(/\r?\n/)) {
+      const m = line.match(/^\s*(ELEVENLABS_[A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+      if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+    }
+  } catch { /* אין .env */ }
+}
+loadEnv();
+const EL_MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v3';
+const MASTER_CHAIN = 'highpass=f=70,acompressor=threshold=-20dB:ratio=2:attack=10:release=150,loudnorm=I=-14:TP=-1:LRA=9';
+
+async function elevenTts(text, out) {
+  const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${process.env.ELEVENLABS_VOICE_ID}?output_format=mp3_44100_192`, {
+    method: 'POST',
+    headers: { 'xi-api-key': process.env.ELEVENLABS_API_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, model_id: EL_MODEL }),
+  });
+  if (!r.ok) throw new Error(`ElevenLabs ${r.status}: ${(await r.text()).slice(0, 200)}`);
+  fs.writeFileSync(out, Buffer.from(await r.arrayBuffer()));
+}
+
+async function liveV2(text) {
+  if (!process.env.ELEVENLABS_API_KEY || !process.env.ELEVENLABS_VOICE_ID)
+    throw new Error('חסר ELEVENLABS_API_KEY / ELEVENLABS_VOICE_ID ב-.env (ראה tools/voice/elevenlabs-clone.js)');
+  const id = v2Id(EL_MODEL + '|' + text);
+  const out = path.join(V2_DIR, `live-${id}.mp3`);
+  if (fs.existsSync(out)) return out;
+  fs.mkdirSync(V2_DIR, { recursive: true });
+  const { execFileSync } = require('child_process');
+  const parts = text.split('[[PAUSE]]').map(s => s.trim()).filter(Boolean);
+  const raw = parts.map((_, i) => path.join(V2_DIR, `tmp-${id}-${i}.mp3`));
+  await Promise.all(parts.map((p, i) => elevenTts(p, raw[i])));
+  const args = ['-y', '-loglevel', 'error'];
+  raw.forEach(f => args.push('-i', f));
+  if (raw.length > 1) {
+    args.push('-filter_complex',
+      `anullsrc=r=44100:cl=mono,atrim=duration=2.5[s];[0:a]aresample=44100,aformat=channel_layouts=mono[a];` +
+      `[1:a]aresample=44100,aformat=channel_layouts=mono[b];[a][s][b]concat=n=3:v=0:a=1,${MASTER_CHAIN}`);
+  } else {
+    args.push('-af', MASTER_CHAIN);
+  }
+  args.push('-b:a', '192k', out);
+  execFileSync('ffmpeg', args);
+  raw.forEach(f => fs.rmSync(f, { force: true }));
+  return out;
+}
+
 // ── עדכון המילון ────────────────────────────────────────────────────────────────
 function addToLexicon(nikudRaw, plainOverride) {
   const nikud = String(nikudRaw || '').trim();
@@ -214,6 +266,24 @@ const server = http.createServer((req, res) => {
     }).on('error', (e) => {
       res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ error: e.message }));
+    });
+    return;
+  }
+  if (req.method === 'POST' && req.url === '/api/tts-v2') {
+    let body = '';
+    req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
+    req.on('end', async () => {
+      try {
+        const text = String(JSON.parse(body || '{}').text || '').trim();
+        if (!text) throw new Error('text required');
+        const hf = lookupV2(text);   // קובץ Higgsfield מופק גובר על ההפקה החיה
+        const file = hf.status === 'ready' ? path.join(ROOT, hf.url) : await liveV2(text);
+        res.writeHead(200, { 'Content-Type': 'audio/mpeg', 'X-Voice-Source': hf.status === 'ready' ? 'higgsfield' : 'elevenlabs' });
+        res.end(fs.readFileSync(file));
+      } catch (e) {
+        res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
     });
     return;
   }
