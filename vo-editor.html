@@ -72,7 +72,7 @@
 <body>
 <div class="wrap">
   <h1>עורך VO — ניקוד והאזנה</h1>
-  <p class="sub">הדבק טקסט VO, נקד/ערוך, האזן, ואז העתק חזרה לשדה ה-VO בעורך הראשי. אותה לוגיקה (Dicta + edge-tts דרך Railway) כמו ב-index.html.</p>
+  <p class="sub">הדבק טקסט VO, נקד/ערוך, האזן, ואז העתק חזרה לשדה ה-VO בעורך הראשי. ההאזנה מנגנת את הקול שלך (Alex Skipper v2) כשהטקסט כבר הופק; אחרת תצוגת הגייה בקול הישן.</p>
 
   <div class="row">
     <input id="railwayUrl" type="text" placeholder="Railway URL (ל-TTS)" style="flex:1;min-width:220px"
@@ -98,7 +98,9 @@
         <div class="row" style="margin-bottom:0">
           <button class="btn btn-green" id="playBtn" onclick="playVo()">🔊 האזן (מסומן / הכל)</button>
           <button class="btn" onclick="stopVo()">⏹ עצור</button>
+          <button class="btn" id="v2Btn" onclick="requestV2()">🎙 הפק בקול שלי (v2)</button>
         </div>
+        <div id="voiceTag" style="font-size:12px;margin-top:6px;opacity:.8">קול: Alex Skipper v2 כשקיים קובץ מופק; אחרת תצוגה בקול הישן (edge-tts) לבדיקת הגייה בלבד.</div>
         <audio id="audio" controls></audio>
       </div>
 
@@ -262,14 +264,40 @@ async function playVo() {
   btn.disabled = true;
   setStatus(selected ? '⏳ מייצר קטע נבחר...' : '⏳ מייצר...');
   try {
+    const v2 = await v2Call('/api/v2-lookup', text);
+    if (v2.status === 'ready') {
+      const audio = document.getElementById('audio');
+      audio.src = v2.url;
+      await audio.play();
+      setStatus('🔊 מנגן בקול שלך (v2)', 'ok');
+      audio.onended = () => setStatus('✅ סיים (v2)', 'ok');
+      return;
+    }
     const audio = await speak(text);
-    setStatus(selected ? '🔊 מנגן קטע נבחר...' : '🔊 מנגן...');
+    setStatus(v2.status === 'pending'
+      ? '🔊 קול ישן (תצוגה). הפקה ב-v2 ממתינה בתור'
+      : '🔊 קול ישן (תצוגה). לחץ "הפק בקול שלי" לגרסת v2');
     audio.onended = () => setStatus('✅ סיים', 'ok');
   } catch (e) {
     setStatus('❌ ' + e.message, 'err');
   } finally {
     btn.disabled = false;
   }
+}
+// ── Alex Skipper v2: Higgsfield רץ רק מסשן Claude, אז העורך רושם בקשה בתור ──────
+async function v2Call(url, text) {
+  try {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) });
+    return await r.json();
+  } catch { return { status: 'none' }; }
+}
+async function requestV2() {
+  const text = currentText(true).trim();
+  if (!text) { setStatus('אין טקסט להפקה', 'err'); return; }
+  const r = await v2Call('/api/v2-request', text);
+  if (r.status === 'ready') setStatus('✅ כבר מופק ב-v2. לחץ האזן', 'ok');
+  else if (r.status === 'pending') setStatus('📝 נרשם לתור הפקה ב-v2 (' + r.id + '). יופק בריצה הבאה', 'ok');
+  else setStatus('❌ ' + (r.message || 'שרת העורך לא זמין'), 'err');
 }
 function stopVo() {
   const audio = document.getElementById('audio');
