@@ -65,3 +65,6 @@ questions-Alex.json
 raspen_5_diverse.json
 references/*.patch
 logs/
+
+# קאש רינדור של תמונות ריאליסטיות (נבנה מחדש מקומית)
+media/realistic/_*_cache.png
