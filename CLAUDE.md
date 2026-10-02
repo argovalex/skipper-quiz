@@ -1,9 +1,9 @@
 # SkipperQuiz — הנחיות לסוכנים
 
 ## קול Alex Skipper v2 + סגנון מדובר (חוק קבוע — אלכס 2026-10-01, גובר על כל אזכור edge-tts/Hila/Avri/Remy למטה)
-- **כל** הפקת קריינות חדשה (שאלה, שיעור, ריל): Higgsfield `text2speech_v2`, `variant: elevenlabs`, `voice_type: element`, `voice_id: 88948eaa-5208-4ff5-a405-4d1d9eed6ac1`. בלי pitch-shift/EQ. מסטרינג רק ב-`python tools/voice/master.py`.
+- **כל** הפקת קריינות חדשה (שאלה, שיעור, ריל): ElevenLabs, שיבוט `825LDODpKbomKDZoqVG5`, `eleven_v3` (מ-2026-10-02; Higgsfield היה השלב הקודם). שרת הרינדור ועורך ה-VO מפיקים בו לבד. בלי pitch-shift/EQ. מסטרינג רק בשרשרת של `tools/voice/master.py`.
 - כל טקסט מוקרא נכתב בסגנון מדובר (משפטים קצרים, "תחשוב", שאלות רטוריות, שורה תחתונה → למה → מסיחים). נוסח השאלה והתשובות א-ד כלשונם.
-- שאלה: הטקסט המדובר בשדה `explanation_spoken`, `explanation` לא נמחק. רינדור = POST עם `audioQuestion`/`audioAnswer` (hybrid) ו-`html`.
+- שאלה: הטקסט המדובר בשדה `explanation_spoken`, `explanation` לא נמחק. רינדור = `update-question.js <num> --license N` רגיל; השרת מקריא בקול של אלכס.
 - כללים מלאים, מפת מצב ותוכנית מעבר: `docs/voice-style-v2.md`. התקדמות: `tools/voice/migration-state.json` (משימה מתוזמנת `voice-v2-migration`).
 
 ## הוסף, אל תחליף (חוק כללי — אלכס 2026-08-23)
