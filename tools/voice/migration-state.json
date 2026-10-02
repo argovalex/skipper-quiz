@@ -1,6 +1,6 @@
 {
   "spec": "docs/voice-style-v2.md",
-  "phase": "code",
+  "phase": "pilot",
   "pilot_approved": false,
   "pilot": {
     "questions": [110, 1001, 1037, 1039, 1053, 1057, 1068, 1083, 1093, 1124],
@@ -18,5 +18,7 @@
   "skip_manual": [2127],
   "failed": [],
   "samples_for_review": [],
-  "log": []
+  "log": [
+    "2026-10-02 09:15 IL: code: vo.js prefers explanation_spoken (opener 'התשובה הנכונה... X'!', ellipses kept; no-field output byte-identical to stored VO of 110), update-question.js --audio <dir> (<num>_q.mp3/<num>_a.mp3 base64 hybrid + html), tts.py --from-dir, docs/video-pipeline.md, index.html vo.js?v=14. Editor requests 28d66ace53ba+dfe2695ba24f done. Note: pilot 110 lives in data/l30.json, the other 9 in l11 -> phase=pilot"
+  ]
 }
