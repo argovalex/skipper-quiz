@@ -18,7 +18,6 @@ html/
 scratch_*
 
 # caches ותוצרי build/עיבוד מקומיים
-graphify-out/
 .tilecache/
 .review-data.json
 quiz_videos/
@@ -53,6 +52,9 @@ tools/daily-publish-history.json
 
 # לוג הפצה לקבוצות פייסבוק: state מקומי (מי לחץ "פתח" ומתי), לא נכס
 tools/groups-log.json
+
+# WhatsApp: סשן מכשיר-מקושר (Baileys) — סוד מקומי, לעולם לא ב-git
+tools/.wa-auth/
 
 # inputs מקוריים וניסויים מקומיים
 *.pdf
