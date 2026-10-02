@@ -20,6 +20,12 @@
 //               the course API, so the PAID app serves the new video (unless --no-db).
 //               Needs course/api/.env with DATABASE_URL (+ ADMIN_TOKEN for instant reload).
 //
+// --audio <dir> (voice v2, docs/voice-style-v2.md): ship pre-made, mastered Alex
+// Skipper v2 audio instead of the server's edge-tts. Expects <dir>/<num>_q.mp3 (up to
+// [[PAUSE]]) and <dir>/<num>_a.mp3 (after it), sent as base64 audioQuestion/audioAnswer
+// together with html (hybrid mode in publisher/index.js). A num whose files are missing
+// is skipped, never rendered with the old voice.
+//
 // questions.json is intentionally NOT touched here: the render server auto-commits
 // the videoUrl to it on GitHub. The pull --rebase in step 5 absorbs that commit.
 
@@ -43,11 +49,13 @@ const P = paths(LICENSE);
 // repo-relative paths (for git add / p()/load()); default license 11 keeps the old names
 const rel = f => path.relative(ROOT, f).replace(/\\/g, '/');
 const BANK = rel(P.bank), QUIZDATA = rel(P.quizData), PAUSEMAP = rel(P.pauseMap), QUIZAPP = rel(P.quizApp);
-// nums = digit args, minus the value that follows --license
+// nums = digit args, minus the values that follow --license / --audio
 const li = args.indexOf('--license');
-const nums = args.filter((a, i) => /^\d+$/.test(a) && !(li !== -1 && i === li + 1));
-if (!nums.length) {
-  console.error('usage: node tools/quiz-app/update-question.js <num> [num...] [--license N] [--no-push] [--no-render]');
+const ai = args.indexOf('--audio');
+const AUDIO_DIR = ai !== -1 ? path.resolve(args[ai + 1] || '') : null;
+const nums = args.filter((a, i) => /^\d+$/.test(a) && !(li !== -1 && i === li + 1) && !(ai !== -1 && i === ai + 1));
+if (!nums.length || (ai !== -1 && !args[ai + 1])) {
+  console.error('usage: node tools/quiz-app/update-question.js <num> [num...] [--license N] [--audio <dir>] [--no-push] [--no-render]');
   process.exit(1);
 }
 
@@ -55,16 +63,24 @@ const p = f => path.join(ROOT, f);
 const load = f => JSON.parse(fs.readFileSync(p(f), 'utf8'));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+// v2 audio pair for a num from --audio <dir>, as base64; throws if either is missing
+function loadAudio(num) {
+  const qf = path.join(AUDIO_DIR, `${num}_q.mp3`), af = path.join(AUDIO_DIR, `${num}_a.mp3`);
+  for (const f of [qf, af]) if (!fs.existsSync(f)) throw new Error(`missing ${f}`);
+  return { audioQuestion: fs.readFileSync(qf).toString('base64'), audioAnswer: fs.readFileSync(af).toString('base64') };
+}
+
 async function render(num, q) {
   const vo = buildVoiceover(q);
   const html = genHtml(q); // question-specific visual — REQUIRED, else the server renders a generic anchor
+  const audio = AUDIO_DIR ? loadAudio(num) : {};
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 180000);
   try {
     const res = await fetch(`${RENDER_URL}/render/${num}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ voiceover_text: vo, force: true, html }),
+      body: JSON.stringify({ voiceover_text: vo, force: true, html, ...audio }),
       signal: ctrl.signal,
     });
     const data = await res.json().catch(() => ({}));

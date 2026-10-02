@@ -11,9 +11,13 @@ tts.py — מפיק קריינות edge-tts לכל סעיף בקובץ VO של �
 
 שימוש:
     python tools/lesson/tts.py <vo.txt> <out_dir>
+    python tools/lesson/tts.py <vo.txt> <out_dir> --from-dir <v2_dir>
+
+--from-dir (קול v2, docs/voice-style-v2.md): לא מפיק כלום. לוקח seg_<sid>.mp3 מוכנים
+(Alex Skipper v2 מ-Higgsfield, אחרי tools/voice/master.py) מ-<v2_dir>, מוודא שיש קובץ
+לכל סעיף ושהאורך סביר (master.py --check), ומעתיק ל-<out_dir>. סעיף חסר/חשוד = עצירה.
 """
-import asyncio, os, re, sys, subprocess
-import edge_tts
+import asyncio, os, re, shutil, sys, subprocess
 from niqqud import load_lexicon, apply as niqqud_apply
 
 VOICE = "he-IL-HilaNeural"
@@ -48,7 +52,33 @@ def parse_segments(vofile):
     return segs
 
 
+def from_dir(vofile, out_dir, src_dir):
+    master = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "voice", "master.py")
+    os.makedirs(out_dir, exist_ok=True)
+    segs = parse_segments(vofile)
+    bad = []
+    for sid, text in segs:
+        src = os.path.join(src_dir, f"seg_{sid}.mp3")
+        if not os.path.exists(src):
+            print(f"  !! {sid} missing {src}")
+            bad.append(sid)
+            continue
+        r = subprocess.run([sys.executable, master, "--check", src, str(len(_MARKS.sub("", text)))],
+                           capture_output=True, text=True)
+        print(r.stdout.strip())
+        if r.returncode != 0:
+            bad.append(sid)
+            continue
+        dst = os.path.join(out_dir, f"seg_{sid}.mp3")
+        if os.path.abspath(src) != os.path.abspath(dst):
+            shutil.copyfile(src, dst)
+    if bad:
+        raise SystemExit(f"ABORT: missing/failed v2 segments: {bad}")
+    print("segments:", len(segs))
+
+
 async def run(vofile, out_dir):
+    import edge_tts
     lex = load_lexicon()
     os.makedirs(out_dir, exist_ok=True)
     segs = parse_segments(vofile)
@@ -74,6 +104,15 @@ async def run(vofile, out_dir):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        sys.exit("usage: python tools/lesson/tts.py <vo.txt> <out_dir>")
-    asyncio.run(run(os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2])))
+    a = sys.argv[1:]
+    if "--from-dir" in a:
+        i = a.index("--from-dir")
+        src = a[i + 1] if i + 1 < len(a) else None
+        a = a[:i] + a[i + 2:]
+        if len(a) < 2 or not src:
+            sys.exit("usage: python tools/lesson/tts.py <vo.txt> <out_dir> --from-dir <v2_dir>")
+        from_dir(os.path.abspath(a[0]), os.path.abspath(a[1]), os.path.abspath(src))
+    else:
+        if len(a) < 2:
+            sys.exit("usage: python tools/lesson/tts.py <vo.txt> <out_dir> [--from-dir <v2_dir>]")
+        asyncio.run(run(os.path.abspath(a[0]), os.path.abspath(a[1])))

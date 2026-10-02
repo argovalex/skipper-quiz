@@ -189,14 +189,29 @@ function heNum(n){
 // default builds the spoken text (letters transliterated for the TTS voice). The
 // two differ ONLY in the letters, so their [[PAUSE]] split and word order match,
 // which lets the caption timing (built on the spoken audio) reuse the display text.
+// Voice v2 (docs/voice-style-v2.md): the spoken explanation keeps its "..." breath
+// marks, which VO_FIXES would otherwise collapse to ".". Shield them with U+2026
+// while the fixes run, then restore.
+function applySpokenFixes(text, keepLatin) {
+  return applyVoFixes(text.replace(/\.{3,}/g, '…'), keepLatin).replace(/…/g, '...');
+}
+
 function buildVoiceover(q, keepLatin) {
   const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
   const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '');
   const letter = (q.answer || 'א').trim();
   let q1 = applyVoFixes(`שאלה מספר ${q.num}... ${q.q_he}.`, keepLatin);
   if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
-  let q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`, keepLatin);
-  if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation, keepLatin)}`;
+  let q2;
+  if (q.explanation_spoken) {
+    // v2 spoken style: "התשובה הנכונה... ב'!" then the spoken text (which restates
+    // the answer itself). A field that already opens with the cue is used as-is.
+    const sp = q.explanation_spoken.trim();
+    q2 = applySpokenFixes(/^התשובה הנכונה/.test(sp) ? sp : `התשובה הנכונה... ${letter}'! ${sp}`, keepLatin);
+  } else {
+    q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`, keepLatin);
+    if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation, keepLatin)}`;
+  }
   // Auto-niqqud content words from Alex's lexicon (flag letters already done via
   // LATIN_LETTER_HE inside applyVoFixes) so every render is vocalised, no manual pass.
   q1 = applyLexiconText(q1);
@@ -210,5 +225,5 @@ function buildVoiceover(q, keepLatin) {
 // scope where index.html's inline scripts resolve buildVoiceover/applyVoFixes by
 // name. Guard the export so the browser doesn't throw on `module` being undefined.
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { buildVoiceover, applyVoFixes, applyLexiconText, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
+  module.exports = { buildVoiceover, applyVoFixes, applySpokenFixes, applyLexiconText, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
 }

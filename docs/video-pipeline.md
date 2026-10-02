@@ -1,5 +1,25 @@
 # Free vertical-video pipeline (`video/`)
 
+> **Voice v2 (from 2026-10-01, `docs/voice-style-v2.md`) overrides the edge-tts parts
+> below.** All new narration is Higgsfield Alex Skipper v2, produced from a Claude
+> session (Higgsfield is MCP-only), mastered with `python tools/voice/master.py`.
+> edge-tts Avri/Hila remain only for legacy renders.
+>
+> - **VO text**: `buildVoiceover(q)` prefers `q.explanation_spoken`. After `[[PAUSE]]`
+>   it emits `התשובה הנכונה... <letter>'! <explanation_spoken>` (used as-is if the
+>   field already opens with "התשובה הנכונה"); "..." breath marks survive the VO
+>   fixes. Without the field the old `התשובה הנכונה היא X: ... explanation` is kept.
+>   The question part (before `[[PAUSE]]`) is unchanged.
+> - **Server render**: `node tools/quiz-app/update-question.js <num> --audio <dir>`
+>   sends `<dir>/<num>_q.mp3` + `<dir>/<num>_a.mp3` as base64 `audioQuestion`/
+>   `audioAnswer` with `html` (hybrid mode in `publisher/index.js`, server edge-tts
+>   skipped). A num with a missing file is skipped, never rendered in the old voice.
+> - **Lessons**: `python tools/lesson/tts.py <vo.txt> <out_dir> --from-dir <v2_dir>`
+>   takes ready `seg_<sid>.mp3` files, checks each with `master.py --check`, and
+>   copies them; a missing/suspect segment aborts.
+> - `video/make_question_video.py` still uses edge-tts; its `--audio-dir` path is
+>   not built yet.
+
 Fully-free 9:16 explainer video per quiz question. **No paid cloud**: narration by
 `edge-tts`, visuals reused from the CANONICAL `scenes.js` (rendered locally with
 puppeteer), assembly by FFmpeg. Output looks identical to the render server because
