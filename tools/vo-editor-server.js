@@ -73,7 +73,7 @@ const EL_MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v3';
 const MASTER_CHAIN = 'highpass=f=70,acompressor=threshold=-20dB:ratio=2:attack=10:release=150,loudnorm=I=-14:TP=-1:LRA=9';
 
 async function elevenTts(text, out) {
-  const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${process.env.ELEVENLABS_VOICE_ID}?output_format=mp3_44100_192`, {
+  const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${process.env.ELEVENLABS_VOICE_ID}?output_format=mp3_44100_128`, {
     method: 'POST',
     headers: { 'xi-api-key': process.env.ELEVENLABS_API_KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({ text, model_id: EL_MODEL }),
