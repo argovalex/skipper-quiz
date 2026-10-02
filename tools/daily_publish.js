@@ -15,6 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const { buildPublishCaption } = require('./publish_video');
+const { sendMessage: sendWaGroupMessage } = require('./wa-group-publish');
 
 function loadEnvFile() {
   const envPath = path.join(__dirname, '..', '.env');
@@ -99,6 +100,18 @@ async function main() {
   history.push({ num: q.num, topic: q.topic, date: payload.date });
   fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2) + '\n');
   console.log(`[daily-publish] published Q#${q.num} — Make.com triggered.`);
+
+  // WhatsApp group: best-effort, never blocks the rest of the pipeline. Requires a
+  // one-time --pair (see tools/wa-group-publish.js) and WA_GROUP_JID in .env.
+  if (process.env.WA_GROUP_JID) {
+    try {
+      await sendWaGroupMessage(`${payload.caption}\n\n${payload.videoUrl}`);
+    } catch (e) {
+      console.error(`[daily-publish] WhatsApp group send FAILED (non-fatal): ${e.message}`);
+    }
+  } else {
+    console.log('[daily-publish] WA_GROUP_JID not set — skipping WhatsApp group send.');
+  }
 }
 
 main().catch(e => {
