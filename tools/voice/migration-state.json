@@ -9,10 +9,12 @@
     "out_dir": "output/voice-v2/pilot"
   },
   "batch": {
-    "text_per_run": 20,
-    "audio_per_run": 12,
-    "license_order": [11, 12, 30]
+    "text_per_run": 40,
+    "audio_per_run": 15,
+    "license_order": [11]
   },
+  "deadline": "2026-10-03T14:00:00+03:00",
+  "deadline_scope": "l11 only: all 161 questions (spoken text + re-render) and all 13 lessons in lessons/l11/cards. l12/l30 resume after the deadline.",
   "done_text": [110],
   "done_audio": [110],
   "done_lessons": [],
