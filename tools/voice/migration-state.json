@@ -4,26 +4,60 @@
   "pilot_approved": true,
   "provider": "elevenlabs-via-render-server",
   "pilot": {
-    "questions": [110, 1001, 1037, 1039, 1053, 1057, 1068, 1083, 1093, 1124],
+    "questions": [
+      110,
+      1001,
+      1037,
+      1039,
+      1053,
+      1057,
+      1068,
+      1083,
+      1093,
+      1124
+    ],
     "lesson": "דגל צולל",
     "out_dir": "output/voice-v2/pilot"
   },
   "batch": {
     "text_per_run": 40,
     "audio_per_run": 15,
-    "license_order": [11]
+    "license_order": [
+      11
+    ]
   },
   "deadline": "2026-10-03T14:00:00+03:00",
   "deadline_scope": "l11 only: all 161 questions (spoken text + re-render) and all 13 lessons in lessons/l11/cards. l12/l30 resume after the deadline.",
-  "done_text": [110],
-  "done_audio": [110],
-  "done_lessons": [],
-  "skip_manual": [2127],
+  "done_text": [
+    110
+  ],
+  "done_audio": [
+    110
+  ],
+  "done_lessons": [
+    "אופנוע ים - כללי",
+    "סכנות רכיבה ותמרון",
+    "תמרוני ספינה",
+    "בטיחות אש ותדלוק",
+    "מצוקה",
+    "דגל צולל",
+    "זכות מעבר",
+    "עזרה ראשונה",
+    "סימני יום",
+    "אזורי שיט ומהירויות",
+    "ניווט וכניסה לנמל",
+    "אותות קוליים",
+    "מטאורולוגיה"
+  ],
+  "skip_manual": [
+    2127
+  ],
   "failed": [],
   "samples_for_review": [],
   "log": [
     "2026-10-02 09:15 IL: code: vo.js prefers explanation_spoken (opener 'התשובה הנכונה... X'!', ellipses kept; no-field output byte-identical to stored VO of 110), update-question.js --audio <dir> (<num>_q.mp3/<num>_a.mp3 base64 hybrid + html), tts.py --from-dir, docs/video-pipeline.md, index.html vo.js?v=14. Editor requests 28d66ace53ba+dfe2695ba24f done. Note: pilot 110 lives in data/l30.json, the other 9 in l11 -> phase=pilot",
     "2026-10-02 09:30 IL: pilot: Alex asked to render 110 now. explanation_spoken = approved reference text (docs/voice-style-v2.md) in data/l30.json, v2 audio in output/voice-v2/pilot/110_{q,a}.mp3 (check OK 4.6s/43.0s), rendered with --audio --vo-ok -> videoUrl v1790922400. Course DB propagation skipped (push retry path).",
-    "2026-10-02 10:20 IL: Alex re-rendered 110 from the editor; render server now narrates via ElevenLabs clone 825LDODpKbomKDZoqVG5 (videoUrl v1790925453, 47.6s). Alex: 'נשמע טוב, ממשיכים' -> pilot_approved=true, phase=batch. Provider switched to ElevenLabs via render server: batch renders WITHOUT --audio, no Higgsfield."
+    "2026-10-02 10:20 IL: Alex re-rendered 110 from the editor; render server now narrates via ElevenLabs clone 825LDODpKbomKDZoqVG5 (videoUrl v1790925453, 47.6s). Alex: 'נשמע טוב, ממשיכים' -> pilot_approved=true, phase=batch. Provider switched to ElevenLabs via render server: batch renders WITHOUT --audio, no Higgsfield.",
+    "2026-10-03 IL: scheduled tasks disabled by Alex (stalled on permission prompts overnight). All 13 l11 lessons rebuilt from this session: spoken vo.txt per card (## sid heading), tools/lesson/tts.py --elevenlabs (429 retry), assemble+brand, companion .txt regenerated with niqqud. Lessons without card PNGs (אותות קוליים, ניווט, מטאורולוגיה/cards_v2) use stills extracted from the old videos; אותות קוליים summary has synthesized horn blasts. mp4s are gitignored (local/OneDrive only)."
   ]
 }

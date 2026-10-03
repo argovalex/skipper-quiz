@@ -101,11 +101,16 @@ def elevenlabs(vofile, out_dir):
             f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
             data=json.dumps({"text": text, "model_id": "eleven_v3"}).encode(),
             headers={"xi-api-key": key, "Content-Type": "application/json"})
-        try:
-            with urllib.request.urlopen(req, timeout=180) as r:
-                open(raw, "wb").write(r.read())
-        except urllib.error.HTTPError as e:
-            raise SystemExit(f"ABORT {sid}: ElevenLabs {e.code} {e.read()[:300]!r}")
+        for attempt in range(20):
+            try:
+                with urllib.request.urlopen(req, timeout=180) as r:
+                    open(raw, "wb").write(r.read())
+                break
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and attempt < 19:      # מגבלת בקשות מקבילות בתוכנית, מחכים ומנסים שוב
+                    import time; time.sleep(15)
+                    continue
+                raise SystemExit(f"ABORT {sid}: ElevenLabs {e.code} {e.read()[:300]!r}")
         mst.master(raw, out)
         os.remove(raw)
         if not mst.check(out, len(_MARKS.sub("", text))):
