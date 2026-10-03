@@ -12,6 +12,7 @@ tts.py — מפיק קריינות edge-tts לכל סעיף בקובץ VO של �
 שימוש:
     python tools/lesson/tts.py <vo.txt> <out_dir>
     python tools/lesson/tts.py <vo.txt> <out_dir> --from-dir <v2_dir>
+    python tools/lesson/tts.py <vo.txt> <out_dir> --elevenlabs     # קול v2, ברירת המחדל מ-2026-10-02
 
 --from-dir (קול v2, docs/voice-style-v2.md): לא מפיק כלום. לוקח seg_<sid>.mp3 מוכנים
 (Alex Skipper v2 מ-Higgsfield, אחרי tools/voice/master.py) מ-<v2_dir>, מוודא שיש קובץ
@@ -77,6 +78,43 @@ def from_dir(vofile, out_dir, src_dir):
     print("segments:", len(segs))
 
 
+def elevenlabs(vofile, out_dir):
+    """קול v2 (docs/voice-style-v2.md): ElevenLabs ישירות, ELEVENLABS_* מ-.env, מסטרינג master.py."""
+    import json, urllib.request, urllib.error
+    root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    env = dict(re.findall(r"^\s*(ELEVENLABS_\w+)\s*=\s*(.+?)\s*$",
+                          open(os.path.join(root, ".env"), encoding="utf-8").read(), re.M))
+    key, voice = env["ELEVENLABS_API_KEY"], env["ELEVENLABS_VOICE_ID"]
+    sys.path.insert(0, os.path.join(root, "tools", "voice"))
+    import master as mst
+    lex = load_lexicon()
+    os.makedirs(out_dir, exist_ok=True)
+    segs = parse_segments(vofile)
+    bad = []
+    for sid, text in segs:
+        text = niqqud_apply(text, lex)
+        out = os.path.join(out_dir, f"seg_{sid}.mp3")
+        if os.path.exists(out) and mst.check(out, len(_MARKS.sub("", text))):
+            continue                                   # כבר הופק (המשך אחרי עצירה, חוסך מכסה)
+        raw = out + ".raw.mp3"
+        req = urllib.request.Request(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
+            data=json.dumps({"text": text, "model_id": "eleven_v3"}).encode(),
+            headers={"xi-api-key": key, "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                open(raw, "wb").write(r.read())
+        except urllib.error.HTTPError as e:
+            raise SystemExit(f"ABORT {sid}: ElevenLabs {e.code} {e.read()[:300]!r}")
+        mst.master(raw, out)
+        os.remove(raw)
+        if not mst.check(out, len(_MARKS.sub("", text))):
+            bad.append(sid)
+    if bad:
+        raise SystemExit(f"ABORT: suspicious length: {bad}")
+    print("segments:", len(segs))
+
+
 async def run(vofile, out_dir):
     import edge_tts
     lex = load_lexicon()
@@ -105,7 +143,10 @@ async def run(vofile, out_dir):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    if "--from-dir" in a:
+    if "--elevenlabs" in a:
+        a.remove("--elevenlabs")
+        elevenlabs(os.path.abspath(a[0]), os.path.abspath(a[1]))
+    elif "--from-dir" in a:
         i = a.index("--from-dir")
         src = a[i + 1] if i + 1 < len(a) else None
         a = a[:i] + a[i + 2:]

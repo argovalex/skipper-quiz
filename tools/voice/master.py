@@ -15,7 +15,7 @@ CHAIN = ("highpass=f=70,"
          "acompressor=threshold=-20dB:ratio=2:attack=10:release=150,"
          "loudnorm=I=-14:TP=-1:LRA=9")
 PAUSE_S = 2.5
-CPS_MIN, CPS_MAX = 9.0, 22.0   # תווים לשנייה; מחוץ לטווח = קיטוע או שקט חשוד
+CPS_MIN, CPS_MAX = 6.0, 22.0   # תווים לשנייה; Alex v2 איטי (8-13), קיטוע = מעל המקסימום או אורך אפסי
 
 
 def run(args):
