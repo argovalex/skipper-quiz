@@ -6,7 +6,7 @@ set-spoken.py — כותב explanation_spoken לשאלות בבנק, in-place, �
     python tools/voice/set-spoken.py <spoken.json> [--license 11]
     python tools/voice/set-spoken.py --check [--license 11]     # בדיקת roundtrip בלבד
 
-spoken.json: {"<num>": "<טקסט מדובר אחרי 'התשובה הנכונה... X'!'>", ...}
+spoken.json: {"<num>": "<טקסט מדובר אחרי 'התשובה הנכונה היא X:'; אותיות בטקסט: "א:" בלי גרש>", ...}
 """
 import json, sys, os
 
