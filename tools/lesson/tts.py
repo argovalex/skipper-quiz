@@ -99,7 +99,7 @@ def elevenlabs(vofile, out_dir):
         raw = out + ".raw.mp3"
         req = urllib.request.Request(
             f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
-            data=json.dumps({"text": text, "model_id": "eleven_v3"}).encode(),
+            data=json.dumps({"text": text, "model_id": os.environ.get("ELEVENLABS_MODEL", "eleven_v4")}).encode(),
             headers={"xi-api-key": key, "Content-Type": "application/json"})
         for attempt in range(20):
             try:

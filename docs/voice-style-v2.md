@@ -5,7 +5,7 @@
 ## חלק א: מה חל מעכשיו על כל עבודה חדשה
 
 ### קול
-- **עדכון 2026-10-02 (גובר על הסעיפים למטה):** ספק אחד, ElevenLabs ישירות. שיבוט Instant מאותה הקלטה, `voice_id: 825LDODpKbomKDZoqVG5`, מודל `eleven_v3`, פלט `mp3_44100_128` (תוכנית Starter). המפתח והמזהה ב-`.env` המקומי וב-Railway (שירות skipper-quiz-publisher). שרת הרינדור מפיק בקול הזה לבד בכל רינדור, ועורך ה-VO (:8899) מנגן אותו חי. אלכס אישר את הסאונד על שאלה 110 (2026-10-02). לכן רינדור שאלה = `node tools/quiz-app/update-question.js <num> --license N` **בלי** `--audio`; Higgsfield כבר לא נדרש. לשיעורים: `tools/lesson/tts.py` צריך להפיק דרך ElevenLabs API עם `ELEVENLABS_*` מ-`.env` (לא edge-tts).
+- **עדכון 2026-10-02 (גובר על הסעיפים למטה):** ספק אחד, ElevenLabs ישירות. שיבוט Instant מאותה הקלטה, `voice_id: 825LDODpKbomKDZoqVG5`, מודל `eleven_v4` (מ-2026-10-04; שאלות l11 נשארו ב-`eleven_v3`), פלט `mp3_44100_128` (תוכנית Starter). המפתח והמזהה ב-`.env` המקומי וב-Railway (שירות skipper-quiz-publisher). שרת הרינדור מפיק בקול הזה לבד בכל רינדור, ועורך ה-VO (:8899) מנגן אותו חי. אלכס אישר את הסאונד על שאלה 110 (2026-10-02). לכן רינדור שאלה = `node tools/quiz-app/update-question.js <num> --license N` **בלי** `--audio`; Higgsfield כבר לא נדרש. לשיעורים: `tools/lesson/tts.py` צריך להפיק דרך ElevenLabs API עם `ELEVENLABS_*` מ-`.env` (לא edge-tts).
 - (היסטורי) Higgsfield `generate_audio`: `model: text2speech_v2`, `variant: elevenlabs`, `voice_type: element`, `voice_id: 88948eaa-5208-4ff5-a405-4d1d9eed6ac1`.
 - אסור: edge-tts (Hila/Avri), Remy, Alex Skipper v1 (`2294c7c3-...`). אסור pitch-shift, rubberband, asetrate, EQ חם.
 - מסטרינג יחיד: `python tools/voice/master.py` (highpass 70, compressor 2:1, loudnorm -14 LUFS, 192k).
