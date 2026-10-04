@@ -69,7 +69,7 @@ function loadEnv() {
   } catch { /* אין .env */ }
 }
 loadEnv();
-const EL_MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v3';
+const EL_MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v4';
 const MASTER_CHAIN = 'highpass=f=70,acompressor=threshold=-20dB:ratio=2:attack=10:release=150,loudnorm=I=-14:TP=-1:LRA=9';
 
 async function elevenTts(text, out) {
@@ -153,6 +153,30 @@ function addToLexicon(nikudRaw, plainOverride) {
 
   if (status !== 'exists') fs.writeFileSync(LEXICON, lines.join(eol), 'utf8');
   return { status, plain, nikud };
+}
+
+// מחיקת מילה מהמילון לפי הצורה הרגילה (התאמה לפי אותיות, בלי ניקוד), רק בסקציית המילים.
+function removeFromLexicon(plainRaw) {
+  const key = stripNiqqud(String(plainRaw || '').split('(')[0]);
+  if (!key) return { status: 'error', message: 'לא התקבלה מילה' };
+  const md = fs.readFileSync(LEXICON, 'utf8');
+  const eol = md.includes('\r\n') ? '\r\n' : '\n';
+  const lines = md.split(/\r?\n/);
+  const secIdx = lines.findIndex(l => l.trim() === SECTION);
+  if (secIdx === -1) return { status: 'error', message: `לא נמצאה הסקציה ${SECTION}` };
+  let endIdx = lines.findIndex((l, i) => i > secIdx && l.trim() === NEXT_SECTION);
+  if (endIdx === -1) endIdx = lines.length;
+  const hits = [];
+  for (let i = secIdx + 1; i < endIdx; i++) {
+    if (!lines[i].trimStart().startsWith('|')) continue;
+    const cells = lines[i].trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
+    if (cells.length >= 2 && stripNiqqud(cells[0].split('(')[0]) === key) hits.push(i);
+  }
+  if (!hits.length) return { status: 'missing', plain: key };
+  const removed = hits.map(i => lines[i].trim());
+  for (const i of hits.reverse()) lines.splice(i, 1);
+  fs.writeFileSync(LEXICON, lines.join(eol), 'utf8');
+  return { status: 'deleted', plain: key, removed };
 }
 
 // ── לוג הפצה לקבוצות פייסבוק ──────────────────────────────────────────────────────
@@ -308,6 +332,18 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       let out;
       try { const j = JSON.parse(body || '{}'); out = addToLexicon(j.nikud, j.plain); }
+      catch (e) { out = { status: 'error', message: e.message }; }
+      res.writeHead(out.status === 'error' ? 400 : 200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify(out));
+    });
+    return;
+  }
+  if (req.method === 'POST' && req.url === '/api/lexicon-delete') {
+    let body = '';
+    req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
+    req.on('end', () => {
+      let out;
+      try { out = removeFromLexicon(JSON.parse(body || '{}').plain); }
       catch (e) { out = { status: 'error', message: e.message }; }
       res.writeHead(out.status === 'error' ? 400 : 200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify(out));
