@@ -79,6 +79,8 @@ def from_dir(vofile, out_dir, src_dir):
 
 
 def elevenlabs(vofile, out_dir):
+    # l11 lessons stay on eleven_v3, as built (Alex 2026-10-04); everything else eleven_v4.
+    model = os.environ.get("ELEVENLABS_MODEL") or ("eleven_v3" if "l11" in os.path.abspath(vofile).replace("\\", "/").split("/") else "eleven_v4")
     """קול v2 (docs/voice-style-v2.md): ElevenLabs ישירות, ELEVENLABS_* מ-.env, מסטרינג master.py."""
     import json, urllib.request, urllib.error
     root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
@@ -99,7 +101,7 @@ def elevenlabs(vofile, out_dir):
         raw = out + ".raw.mp3"
         req = urllib.request.Request(
             f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
-            data=json.dumps({"text": text, "model_id": os.environ.get("ELEVENLABS_MODEL", "eleven_v4")}).encode(),
+            data=json.dumps({"text": text, "model_id": model}).encode(),
             headers={"xi-api-key": key, "Content-Type": "application/json"})
         for attempt in range(20):
             try:
