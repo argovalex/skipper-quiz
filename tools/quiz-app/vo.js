@@ -204,10 +204,10 @@ function buildVoiceover(q, keepLatin) {
   if (ANSWER_PROMPT_NUMS.has(Number(q.num))) q1 += ' מה התשובה הנכונה?';
   let q2;
   if (q.explanation_spoken) {
-    // v2 spoken style: "התשובה הנכונה... ב'!" then the spoken text (which restates
+    // v2 spoken style: "התשובה הנכונה היא ב:" (colon, no geresh: eleven_v4 misreads "ב'", Alex 2026-10-04) then the spoken text (which restates
     // the answer itself). A field that already opens with the cue is used as-is.
     const sp = q.explanation_spoken.trim();
-    q2 = applySpokenFixes(/^התשובה הנכונה/.test(sp) ? sp : `התשובה הנכונה... ${letter}'! ${sp}`, keepLatin);
+    q2 = applySpokenFixes(/^התשובה הנכונה/.test(sp) ? sp : `התשובה הנכונה היא ${letter}: ${sp}`, keepLatin);
   } else {
     q2 = applyVoFixes(`התשובה הנכונה היא ${letter}: ${ans}.`, keepLatin);
     if (q.explanation) q2 += ` ... ${applyVoFixes(q.explanation, keepLatin)}`;
