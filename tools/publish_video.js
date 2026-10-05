@@ -39,16 +39,30 @@ function loadQuestion(num, license) {
 // two have diverged. The caption is editable in publish-review.html before publish;
 // this default CTA is a starting point, not fixed copy — tailor it per post there.
 function buildPublishCaption(q) {
-  const LETTER_MAP = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 };
-  const idx = LETTER_MAP[(q.answer || 'א').trim()] ?? 0;
+  // Engagement-first caption (Alex 2026-10-05, replaces the 2026-09-16 pinned copy):
+  // hook → question → options → ask for a comment. The answer/explanation are NOT in
+  // the caption (the video reveals them) so viewers have a reason to comment; the
+  // sales CTA moves to the end. Reel captions have no clickable links → "לינק בפרופיל".
   const opts = (q.options || []).map(o => o.replace(/^[אבגד]\.\s*/, '').trim());
   const optLines = ['א', 'ב', 'ג', 'ד'].map((l, i) => `${l}. ${opts[i] || ''}`).join('\n');
-  // Plain-text captions (FB/IG/YouTube) have no bold — the guarantee line gets its
-  // own emphasized ❗ markers instead, repeated on both lines. Exact wording/line
-  // breaks pinned by Alex 2026-09-16 — do not reflow until he says otherwise.
-  const cta = '🎓 הקורס תאוריה המלא לרישיון אופנוע ים ❗ לא עברת? לא שילמת. ❗\nwww.alargov.com תרגול חינם, ללא הרשמה. ❗ לא עברת? לא שילמת. ❗';
-  const hashtags = '#SkipperQuiz #רישיון_שייט #אופנוע_ים #רישיון_אופנוע_ים #תאוריית_אופנוע_ים';
-  return `${cta}\n\n${q.topic || ''} 🚢\n\n${q.q_he || ''}\n\n${optLines}\n\n✅ תשובה: ${opts[idx] || ''}\n\n💡 ${q.explanation || ''}\n\n${hashtags}`;
+  const HOOKS = [
+    '🚤 רוב הנבחנים טועים בשאלה הזאת. אתה?',
+    '⚠️ שאלת מלכודת מהמבחן העיוני. תענה לפני שאתה ממשיך לגלול.',
+    '🤔 10 שניות. יודע את התשובה?',
+    '🎯 בדוק את עצמך: שאלה אמיתית ממבחן רישיון אופנוע ים.'
+  ];
+  const hook = HOOKS[(Number(q.num) || 0) % HOOKS.length];
+  const ask = '👇 כתבו בתגובות א / ב / ג / ד לפני שהסרטון חושף את התשובה';
+  const cta = '🎓 עוד מאות שאלות כאלה בתרגול חינם, בלי הרשמה. לינק בפרופיל | alargov.com\nהקורס המלא: לא עברת? לא שילמת.';
+  const hashtags = '#רישיון_אופנוע_ים #אופנוע_ים #רישיון_שייט #SkipperQuiz';
+  return `${hook}\n\n❓ ${q.q_he || ''}\n\n${optLines}\n\n${ask}\n\n${cta}\n\n${hashtags}`;
+}
+
+// Text for an optional pinned comment (Make: Facebook "Create a Comment" step).
+function buildAnswerComment(q) {
+  const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
+  const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '').trim();
+  return `✅ התשובה: ${['א','ב','ג','ד'][idx]}. ${ans}\n\n💡 ${q.explanation || ''}`;
 }
 
 function localVideoPath(num) {
@@ -110,7 +124,7 @@ async function publishVideo(num, license, { dryRun = false, caption, title } = {
   return payload;
 }
 
-module.exports = { publishVideo, buildPublishCaption, buildPreview };
+module.exports = { publishVideo, buildPublishCaption, buildAnswerComment, buildPreview };
 
 if (require.main === module) {
   const args = process.argv.slice(2);

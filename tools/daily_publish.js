@@ -67,6 +67,12 @@ function pickQuestion(pool, history) {
 
 async function main() {
   const dryRun = process.argv.includes('--dry-run');
+  // Disabled 2026-10-05: this ran alongside the Railway pool with a separate history,
+  // causing 2 posts/day and repeated questions. Railway is now the only daily publisher.
+  if (!process.argv.includes('--manual') && !dryRun) {
+    console.log('[daily-publish] disabled — Railway publisher handles the daily post. Use --manual to force.');
+    return;
+  }
   const pool = JSON.parse(fs.readFileSync(POOL_PATH, 'utf8'));
   const history = loadHistory();
   const pick = pickQuestion(pool, history);
