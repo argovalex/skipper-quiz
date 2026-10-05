@@ -2,7 +2,7 @@
 usage: python subs.py <vo.txt> <aud_dir> <branded.mp4> <out.mp4> [--intro 3.0]
 Timing: per-section offsets from assemble.py clips (<aud>/wrk/NN_<sid>.mp4); inside a section, sentence
 boundaries are estimated by character share and snapped to detected pauses in the trimmed narration.
-Display text: TTS-only spellings mapped back (אָלֶף -> א, גברַאלְטָר -> גיברלטר), lexicon niqqud applied.
+Display text: TTS-only spellings mapped back (גברַאלְטָר -> גיברלטר), lexicon niqqud applied.
 """
 import os, re, sys, subprocess, shutil
 sys.path.insert(0, r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz/tools/lesson')
@@ -12,7 +12,7 @@ from PIL import ImageFont
 VO, AUD, SRC, OUT = sys.argv[1:5]
 INTRO = 3.0
 HERE = os.environ.get('SUBS_WORK') or os.path.join(__import__('tempfile').gettempdir(), 'lesson_subs'); os.makedirs(HERE, exist_ok=True)
-DISPLAY = [('אָלֶף', 'א'), ('גברַאלְטָר', 'גיברלטר'), ('הרָאם לַיְין', 'ה-Rhumb line'), ('רָאם לַיְין', 'Rhumb line'), ('U T C', 'UTC'), ('G M T', 'GMT'), ('Z D', 'ZD'), ('G P S', 'GPS')]
+DISPLAY = [('גברַאלְטָר', 'גיברלטר'), ('הרָאם לַיְין', 'ה-Rhumb line'), ('רָאם לַיְין', 'Rhumb line'), ('U T C', 'UTC'), ('G M T', 'GMT'), ('Z D', 'ZD'), ('G P S', 'GPS'), ('C O G', 'COG')]
 FONT = ImageFont.truetype('C:/Windows/Fonts/arialbd.ttf', 40)
 MAXW = 1120
 NIQ = re.compile(r'[\u0591-\u05C7]')

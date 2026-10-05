@@ -9,8 +9,6 @@ def tts(t):
     t = re.sub(r'(\d+)°', lambda m: NUM[m.group(1)] + ' מעלות', t)
     t = re.sub(r'(?<![\d.])(\d+)(?![\d])', lambda m: NUM[m.group(1)], t)
     t = t.replace(' = ', ' שווה ')
-    # answer letter א: lexicon maps lone "א" -> "אֹ" (Latin O for SOS), so spell the letter name
-    t = re.sub(r'(?<![֐-׿])א(?=[:\s,.])(?![֐-׿])', 'אָלֶף', t)
     return t
 
 v = '\n'.join(l if l.startswith('## ') else tts(l) for l in src.split('\n'))
