@@ -68,3 +68,5 @@ logs/
 
 # קאש רינדור של תמונות ריאליסטיות (נבנה מחדש מקומית)
 media/realistic/_*_cache.png
+
+lessons/*/cards/*/_old/
