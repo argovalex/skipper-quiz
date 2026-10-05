@@ -32,7 +32,7 @@ V = {
  "sail_port":  ("sail_port",  [(31.5, 72, R_)]),
  "sail_stern": ("sail_stern", [(49.5, 72, W_)]),
  "sail_optional_port": ("sail_port", [(48.8, 8.5, R_), (48.8, 12.5, G_), (31.5, 72, R_)]),
- "sail_optional_bow":  ("sail_bow",  [(50, 6.5, R_), (50, 10.5, G_), (47, 72, G_), (53, 72, R_)]),
+ "sail_optional_bow":  ("sail_bow",  [(50, 6.5, R_), (50, 10.5, G_)]),   # masthead only, no deck sidelights (Alex)
  # pilot (white over red)
  "pilot_bow":   ("pilot_bow",   [(50, 22, W_), (50, 27, R_), (33, 52, G_), (67, 52, R_)]),
  "pilot_port":  ("pilot_port",  [(56.5, 27, W_), (56.5, 31.5, R_), (41, 44, R_)]),
