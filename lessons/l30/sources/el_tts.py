@@ -42,7 +42,6 @@ def main(vo, aud):
     jobs = []
     for sid, t in sections(vo):
         n = niqqud_apply(t, lex)
-        n = re.sub(r"(?<![\u0590-\u05FF])אֹ(?=')", 'א', n)   # answer letter א' (lexicon maps bare א -> אֹ)
         jobs.append((sid, n))
     def one(job):
         sid, text = job

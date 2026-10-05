@@ -455,6 +455,23 @@ async function addToLexicon(raw) {
   }
 }
 
+// Delete a word from references/niqqud-lexicon.md via the local :8899 server.
+async function deleteFromLexicon(it) {
+  if (!confirm('למחוק מהמילון את "' + it.nikud + '" (' + it.plain + ')?')) return;
+  try {
+    const r = await fetch('/api/lexicon-delete', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plain: it.plain })
+    });
+    const j = await r.json();
+    if (!r.ok || j.status === 'error') throw new Error(j.message || ('HTTP ' + r.status));
+    setStatus(j.status === 'deleted' ? '🗑 נמחק מהמילון: ' + it.nikud : 'לא נמצא במילון: ' + it.plain, j.status === 'deleted' ? 'ok' : 'err');
+    await loadLexicon();
+  } catch (e) {
+    setStatus('❌ מחיקה נכשלה (' + e.message + ') — ודא שהעורך מוגש דרך :8899 ושהשרת הופעל מחדש', 'err');
+  }
+}
+
 // Longest common substring length between two consonant strings (small words → naive DP is fine).
 function lcsLen(a, b) {
   let best = 0, prev = new Array(b.length + 1).fill(0);
@@ -623,7 +640,12 @@ function renderLex(filter = '') {
       catch (err) { setStatus('❌ ' + err.message, 'err'); }
       finally { say.disabled = false; }
     };
-    chip.append(word, cp, say);
+    const del = document.createElement('button');
+    del.className = 'say';
+    del.textContent = '🗑';
+    del.title = 'מחק מהמילון';
+    del.onclick = () => deleteFromLexicon(it);
+    chip.append(word, cp, say, del);
     grid.appendChild(chip);
   }
 }

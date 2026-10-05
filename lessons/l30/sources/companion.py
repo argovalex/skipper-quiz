@@ -5,8 +5,13 @@ import re, sys
 sys.path.insert(0, r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz/tools/lesson')
 from niqqud import load_lexicon, apply
 
-DISPLAY = [('אָלֶף', 'א'), ('גברַאלְטָר', 'גיברלטר'), ('הרָאם לַיְין', 'ה-Rhumb line'), ('רָאם לַיְין', 'Rhumb line'), ('U T C', 'UTC'), ('G M T', 'GMT'), ('Z D', 'ZD'), ('G P S', 'GPS')]
+DISPLAY = [('גברַאלְטָר', 'גיברלטר'), ('הרָאם לַיְין', 'ה-Rhumb line'), ('רָאם לַיְין', 'Rhumb line'), ('U T C', 'UTC'), ('G M T', 'GMT'), ('Z D', 'ZD'), ('G P S', 'GPS'), ('C O G', 'COG')]
 HEADINGS = {
+    # lesson 1
+    's02_axis': 'הציר והקטבים', 's03_equator': 'קו המשווה', 's04_great_circle': 'מעגל גדול', 's05_small_circle': 'מעגל קטן',
+    's06_latitude': 'קווי רוחב', 's07_lat_distance': 'המרחק בין קווי רוחב', 's07b_lat_end': 'היכן מסתיים קו רוחב',
+    's08_longitude': 'קווי אורך', 's08b_long_distance': 'המרחק בין קווי אורך', 's09_meridian_pair': 'קו אורך משלים',
+    's09b_greenwich': "קו גריניץ'", 's10_position': 'אתר גיאוגרפי',
     # lesson 2
     's02_projection': 'היטל מרקטור', 's03_mercator_grid': 'ארבעת החוקים והמחיר', 's04_distortion': 'עיוות ומדידת מרחק',
     's05_rhumb': 'Rhumb line', 's06_gc_vs_rhumb': 'מעגל גדול מול קו ישר', 's07_nautical_mile': 'המייל הימי',
@@ -20,6 +25,10 @@ HEADINGS = {
     's07_polaris_alt': 'גובה כוכב הצפון וקו הרוחב', 's08_q175': 'בין חיפה לקפריסין', 's09_same_angle': 'אותה זווית כל ערב',
     's10_south': 'חצי הכדור הדרומי', 's11_little_dipper': 'העגלה הקטנה', 's12_q102': 'שאלת ציורים', 's13_stars_far': 'למה הכוכבים נראים קטנים',
     's14_summary': 'סיכום',
+    # lesson 5
+    's02_parts': 'חלקי המצפן הימי', 's03_why': 'למה צריך מצפן', 's04_course_bearing': 'קורס מול כיוון', 's05_angle': 'מצפן הוא מד זווית',
+    's06_how': 'איך המצפן עובד', 's07_errors': 'שגיאות המצפן', 's08_variation': 'וריאציה', 's09_deviation': 'דויאציה',
+    's10_speakers': 'מכשירים עם מגנטים', 's11_table': 'טבלת דויאציה', 's12_gps': 'מצפן מול GPS', 's13_rotate': 'סיבוב במקום',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום',
 }
