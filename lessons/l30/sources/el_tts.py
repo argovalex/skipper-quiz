@@ -36,25 +36,43 @@ def tts(text, out):
                                  headers={'xi-api-key': KEY, 'Content-Type': 'application/json'})
     with urllib.request.urlopen(req, timeout=300) as r: open(out, 'wb').write(r.read())
 
+# Answer letters (Alex 2026-10-05): raw \u05D3 read as "delet", \u05D1 as "bayit". TTS-only; display text keeps the bare letter.
+LETTER_NAME = {'\u05D0': '\u05D0\u05B8\u05DC\u05B6\u05E3', '\u05D1': '\u05D1\u05B5\u05BC\u05D9\u05EA', '\u05D2': '\u05D2\u05B4\u05BC\u05D9\u05DE\u05B6\u05DC', '\u05D3': '\u05D3\u05B8\u05BC\u05DC\u05B6\u05EA'}
+# Prefixed letters (\u05D5\u05D1', \u05D5\u05D3') stay raw: the editor reads them right, the substituted form came out wrong.
+LETTER_RE = re.compile(r"(?<![\u05D0-\u05EA\u0591-\u05C7])()([\u05D0\u05D1\u05D2\u05D3])([:'\u05F3])(?![\u05D0-\u05EA])")
+# 3s pause after "\u05D4\u05EA\u05E9\u05D5\u05D1\u05D4 \u05D4\u05E0\u05DB\u05D5\u05E0\u05D4 \u05D4\u05D9\u05D0" (Alex 2026-10-05): split there, TTS each piece, join with silence.
+ANSWER_SPLIT = re.compile(r'(?<=\u05D4\u05EA\u05E9\u05D5\u05D1\u05D4 \u05D4\u05E0\u05DB\u05D5\u05E0\u05D4 \u05D4\u05D9\u05D0)\s*')
+PAUSE = 3.0
+
+def pieces(t, lex):
+    return [niqqud_apply(LETTER_RE.sub(lambda m: m.group(1) + LETTER_NAME[m.group(2)] + (m.group(3) if m.group(3) == ':' else ''), p), lex)
+            for p in ANSWER_SPLIT.split(t) if p.strip()]
+
 def main(vo, aud):
     raw = os.path.join(aud, 'raw'); os.makedirs(raw, exist_ok=True)
     lex = load_lexicon()
-    jobs = []
-    for sid, t in sections(vo):
-        n = niqqud_apply(t, lex)
-        jobs.append((sid, n))
+    jobs = [(sid, pieces(t, lex)) for sid, t in sections(vo)]
     def one(job):
-        sid, text = job
+        sid, parts = job
+        text = f' [[{PAUSE:g}s]] '.join(parts)
         seg, key = os.path.join(aud, f'seg_{sid}.mp3'), os.path.join(raw, sid + '.txt')
         if os.path.exists(seg) and os.path.exists(key) and open(key, encoding='utf-8').read() == MODEL + '|' + text:
             return sid, dur(seg), 'cached'
-        rp = os.path.join(raw, sid + '.mp3')
-        for attempt in range(3):
-            try: tts(text, rp); break
-            except Exception as e:
-                if attempt == 2: raise RuntimeError(f'{sid}: {e}')
-        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', rp, '-af', CHAIN, '-b:a', '192k', seg], check=True)
-        d = dur(seg); cps = len(re.sub(r'[\u0591-\u05C7\s]', '', text)) / max(d, 0.1)
+        rps = [os.path.join(raw, f'{sid}_{i}.mp3') for i in range(len(parts))]
+        for part, rp in zip(parts, rps):
+            for attempt in range(3):
+                try: tts(part, rp); break
+                except Exception as e:
+                    if attempt == 2: raise RuntimeError(f'{sid}: {e}')
+        args, labels = [], []
+        for i, rp in enumerate(rps):
+            if i: args += ['-f', 'lavfi', '-t', str(PAUSE), '-i', 'anullsrc=r=44100:cl=mono']
+            args += ['-i', rp]
+        n = args.count('-i')
+        fc = ''.join(f'[{i}:a]aformat=sample_rates=44100:channel_layouts=mono[a{i}];' for i in range(n))
+        fc += ''.join(f'[a{i}]' for i in range(n)) + f'concat=n={n}:v=0:a=1,{CHAIN}[out]'
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', *args, '-filter_complex', fc, '-map', '[out]', '-b:a', '192k', seg], check=True)
+        d = dur(seg); cps = len(re.sub(r'[\u0591-\u05C7\s]|\[\[[^\]]*\]\]', '', text)) / max(d - PAUSE * (len(parts) - 1), 0.1)
         if not 5 <= cps <= 22: raise RuntimeError(f'{sid}: suspicious length {d:.1f}s ({cps:.1f} chars/s)')
         open(key, 'w', encoding='utf-8').write(MODEL + '|' + text)
         return sid, d, f'{cps:.1f} cps'
