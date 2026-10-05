@@ -23,5 +23,14 @@
     "status": "prepared",
     "publish_session_id": "f99865bd-26d6-486a-9160-2a229a8842e0",
     "source_date": "2026-09-28T05:57:07.437Z"
+  },
+  {
+    "num": 1095,
+    "topic": "מזג אוויר",
+    "date": "2026-10-05T12:10:00.000Z",
+    "status": "prepared",
+    "publish_session_id": "8ef74ab4-5898-4fac-8856-19ab7c5b348a",
+    "source_date": "manual-2026-10-05-graph-api",
+    "note": "mirror of manual FB/IG test post 2026-10-05"
   }
 ]
