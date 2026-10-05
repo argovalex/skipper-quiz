@@ -8,7 +8,7 @@ OUT = os.path.join(ROOT, "lessons", "l12", "cards", "אורות לילה")
 SIGNS = os.path.join(ROOT, "media", "signs")
 NIGHT = os.path.join(ROOT, "media", "vessels", "night")
 VESS = {"title": "power_big", "s_groups": "power_big", "s_headon": "power_big_bow", "s_stern": "power_big_stern",
-  "s_method": "power_small", "s_white": "power_big", "s_sail": "sail", "s_pilot": "pilot", "s_fish": "trawler",
+  "s_method": "power_small", "s_white": "power_big", "s_sail": "sail", "s_sail_opt": "sail_optional", "s_pilot": "pilot", "s_fish": "trawler",
   "s_rwr": "ram", "s_diamonds": "dredge", "s_divers": "divers", "s_draft": "draft", "s_mines": "mines_port",
   "s_nuc": "nuc", "s_aground": "aground", "s_anchor": "anchor_small", "s_anchor50": "anchor_big", "s_tow": "tow",
   "s_tow200": "tow_long", "s_yellow": "tow_stern", "s_flash": "hover", "s_ex1": "tow_stern", "s_ex2": "pilot_port"}
@@ -28,7 +28,8 @@ CARDS = {
  "s_method":  ("השיטה: קו מעל אורות הניווט", None, "מתחת לקו: איפה הוא יחסית אליי | מעל הקו: מי הוא | ואז: מי מפנה", [30]),
  "s_rules":   ("אותם חוקי פינוי", None, "ממוכן ← מפרש ← דייג ← מוגבל ← חסר שליטה", "LADDER"),
  "s_white":   ("לבן למעלה = יש מנוע", None, "לבן אחד: עד 50 מ' | שניים: מעל 50 מ'. הגודל לא משנה. ממוכן.", [15, 5]),
- "s_sail":    ("אין לבן = אין מנוע", None, "רק אדום: דופן שמאל של מפרשית. אדום מעל ירוק בתורן: אורות רשות.", [24, 14]),
+ "s_sail":    ("אין לבן = אין מנוע", None, "רק אדום: דופן שמאל של מפרשית. מתניעה מנוע? מדליקה לבן.", [24]),
+ "s_sail_opt":("אדום מעל ירוק בתורן = מפרשית", None, "אורות רשות ביאכטות גדולות. אצלנו כמעט לא רואים.", [14]),
  "s_pilot":   ("לבן מעל אדום = נתב", None, "כמו דגל H ביום. ממוכן לכל דבר. אין לו זכות עליך.", [46]),
  "s_fish":    ("צבע מעל לבן = דייג", None, "ירוק/לבן: מכמורתן | אדום/לבן: רשתות. מפנים לו. לבן למעלה? נתב.", [64, 55]),
  "s_rwr":     ("אדום · לבן · אדום = מוגבל", None, "כמו כדור-יהלום-כדור ביום. מפנים לו.", [35]),
