@@ -6,6 +6,12 @@ from bidi.algorithm import get_display
 ROOT = r"C:\Users\argov\OneDrive\Co-Work OS\SkipperQuiz"
 OUT = os.path.join(ROOT, "lessons", "l12", "cards", "אורות לילה")
 SIGNS = os.path.join(ROOT, "media", "signs")
+NIGHT = os.path.join(ROOT, "media", "vessels", "night")
+VESS = {"title": "power_big_bow", "s_groups": "power_big_port", "s_headon": "power_big_bow", "s_stern": "power_stern",
+  "s_method": "power_small_port", "s_white": "power_big_port", "s_sail": "sail_port", "s_pilot": "pilot_port",
+  "s_fish": "trawler_port", "s_rwr": "ram_port", "s_divers": "divers", "s_draft": "draft_port", "s_mines": "mines_port",
+  "s_nuc": "nuc_port", "s_aground": "aground_port", "s_anchor": "anchor_port", "s_tow": "tow_port", "s_yellow": "tow_stern",
+  "s_flash": "hover_port", "s_ex1": "tow_stern", "s_ex2": "pilot_port"}
 W, H = 1280, 720
 BG, BAR, PANEL, TXT, ORANGE, BLUE, LOGIC = "#0E1A2D", "#22A05A", "#182842", "#F0F5FA", "#DCA03C", "#5A96DC", "#1F2F2A"
 F = r"C:\Windows\Fonts\arialbd.ttf"
@@ -14,10 +20,10 @@ font = lambda s, b=True: ImageFont.truetype(F if b else FR, s)
 he = lambda t: get_display(t)
 
 CARDS = {
- "title":     ("אורות לילה", "רשיון סירת מנוע · מבחן תאוריה", "לא זוכרים תמונות בעל פה. מבינים את התמונה.", [5, 35, 6]),
+ "title":     ("אורות לילה", "רשיון סירת מנוע · מבחן תאוריה", "לא זוכרים תמונות בעל פה. מבינים את התמונה.", [5]),
  "s_groups":  ("שלוש קבוצות אורות", None, "ניווט: לאן הוא מפליג | גודל (לבן למעלה): יש מנוע | משפחה (360°): מי הוא", [15]),
  "s_sectors": ("אורות ניווט גזרתיים", None, "ירוק ימין, אדום שמאל: 112.5° כל אחד | לבן ירכתיים: 135°", "SECTORS"),
- "s_headon":  ("אדום וירוק יחד", None, "הוא בא ישר מולך. קורס התנגשות.", [1]),
+ "s_headon":  ("אדום וירוק יחד", None, "הוא בא ישר מולך. קורס התנגשות.", [5]),
  "s_stern":   ("רק לבן מאחור", None, "מאחור כולם נראים אותו דבר. בלי צבע מעליו: ממוכן או מפרשית.", [27]),
  "s_method":  ("השיטה: קו מעל אורות הניווט", None, "מתחת לקו: איפה הוא יחסית אליי | מעל הקו: מי הוא | ואז: מי מפנה", [30]),
  "s_rules":   ("אותם חוקי פינוי", None, "ממוכן ← מפרש ← דייג ← מוגבל ← חסר שליטה", "LADDER"),
@@ -94,6 +100,21 @@ def make(sid, spec):
     px, py, pw, ph = 90, 150, 470, 470
     if imgs == "SECTORS": sectors(c, d, px, py, pw, ph)
     elif imgs == "LADDER": ladder(d, px, py + 60, pw)
+    elif sid in VESS:
+        # realistic night vessel (media/vessels/night) + official exam image(s) underneath
+        vx, vy, vw, vh = 40, 100, 560, 420
+        vi = Image.open(os.path.join(NIGHT, VESS[sid] + ".jpg")).convert("RGB")
+        s = max(vw / vi.width, vh / vi.height); vi = vi.resize((int(vi.width * s), int(vi.height * s)))
+        l, t = (vi.width - vw) // 2, (vi.height - vh) // 2; vi = vi.crop((l, t, l + vw, t + vh))
+        m = Image.new("L", (vw, vh), 0); ImageDraw.Draw(m).rounded_rectangle((0, 0, vw, vh), 24, fill=255)
+        c.paste(vi, (vx, vy), m)
+        x = vx
+        for k in imgs:
+            im = sign(k, (150, 150)); yy = vy + vh + 22
+            c.paste(im, (x, yy))
+            tag = he(f"תמונה {k}"); f = font(24); tw = d.textlength(tag, font=f)
+            d.text((int(x + im.width + 12), yy + im.height // 2 - 14), tag, font=f, fill=TXT)
+            x = int(x + im.width + tw + 50)
     else:
         d.rounded_rectangle((px, py, px + pw, py + ph), 24, fill="#000000")
         n = len(imgs); cellw = (pw - 20) // n
