@@ -7,11 +7,11 @@ ROOT = r"C:\Users\argov\OneDrive\Co-Work OS\SkipperQuiz"
 OUT = os.path.join(ROOT, "lessons", "l12", "cards", "אורות לילה")
 SIGNS = os.path.join(ROOT, "media", "signs")
 NIGHT = os.path.join(ROOT, "media", "vessels", "night")
-VESS = {"title": "power_big_bow", "s_groups": "power_big_port", "s_headon": "power_big_bow", "s_stern": "power_stern",
-  "s_method": "power_small_port", "s_white": "power_big_port", "s_sail": "sail_port", "s_pilot": "pilot_port",
-  "s_fish": "trawler_port", "s_rwr": "ram_port", "s_divers": "divers", "s_draft": "draft_port", "s_mines": "mines_port",
-  "s_nuc": "nuc_port", "s_aground": "aground_port", "s_anchor": "anchor_port", "s_tow": "tow_port", "s_yellow": "tow_stern",
-  "s_flash": "hover_port", "s_ex1": "tow_stern", "s_ex2": "pilot_port"}
+VESS = {"title": "power_big", "s_groups": "power_big", "s_headon": "power_big_bow", "s_stern": "power_big_stern",
+  "s_method": "power_small", "s_white": "power_big", "s_sail": "sail", "s_pilot": "pilot", "s_fish": "trawler",
+  "s_rwr": "ram", "s_diamonds": "dredge", "s_divers": "divers", "s_draft": "draft", "s_mines": "mines_port",
+  "s_nuc": "nuc", "s_aground": "aground", "s_anchor": "anchor_small", "s_anchor50": "anchor_big", "s_tow": "tow",
+  "s_tow200": "tow_long", "s_yellow": "tow_stern", "s_flash": "hover", "s_ex1": "tow_stern", "s_ex2": "pilot_port"}
 W, H = 1280, 720
 BG, BAR, PANEL, TXT, ORANGE, BLUE, LOGIC = "#0E1A2D", "#22A05A", "#182842", "#F0F5FA", "#DCA03C", "#5A96DC", "#1F2F2A"
 F = r"C:\Windows\Fonts\arialbd.ttf"
@@ -38,8 +38,10 @@ CARDS = {
  "s_mines":   ("שלושה ירוקים = שולת מוקשים", None, "מתרחקים.", [56]),
  "s_nuc":     ("שני אדומים + ניווט = חסר שליטה", None, "עושה דרכו במים, נסחף. אין לבן, אין מנוע.", [33]),
  "s_aground": ("שני אדומים בלי ניווט = שרטון", None, "עומד. שני אדומים + לבן עגינה.", [7]),
- "s_anchor":  ("לבנים בלבד = עוגן", None, "לבן 360°. מעל 50 מ': שניים. בלי אורות ניווט.", [61]),
+ "s_anchor":  ("עוגן עד 50 מטר: לבן אחד", None, "לבן אחד, רואים אותו מכל כיוון. בלי אורות ניווט.", [27]),
+ "s_anchor50":("עוגן מעל 50 מטר: שני לבנים", None, "אחד בחרטום, אחד בירכתיים. הקדמי גבוה יותר.", [61]),
  "s_tow":     ("פעמיים אורות ניווט = גוררת", None, "בלי אדום-לבן-אדום: ממוכנת. כמות הלבנים לא משנה.", [6]),
+ "s_tow200":  ("גוררת: עד 200 מ' ומעל 200 מ'", None, "משך עד 200 מ': שני לבנים בקו אחד | מעל 200 מ': שלושה", []),
  "s_yellow":  ("צהוב מאחור = גוררת", None, "צהוב קבוע מעל אור הירכתיים.", [17]),
  "s_flash":   ("צהוב מהבהב = רחפת", None, "לא גוררת.", [16]),
  "s_port":    ("יציאה מהנמל", None, "יוצא: שמאל על הירוק, ימין על האדום | חוזר: הפוך", [74, 71]),
@@ -101,20 +103,36 @@ def make(sid, spec):
     if imgs == "SECTORS": sectors(c, d, px, py, pw, ph)
     elif imgs == "LADDER": ladder(d, px, py + 60, pw)
     elif sid in VESS:
-        # realistic night vessel (media/vessels/night) + official exam image(s) underneath
-        vx, vy, vw, vh = 40, 100, 560, 420
-        vi = Image.open(os.path.join(NIGHT, VESS[sid] + ".jpg")).convert("RGB")
-        s = max(vw / vi.width, vh / vi.height); vi = vi.resize((int(vi.width * s), int(vi.height * s)))
-        l, t = (vi.width - vw) // 2, (vi.height - vh) // 2; vi = vi.crop((l, t, l + vw, t + vh))
-        m = Image.new("L", (vw, vh), 0); ImageDraw.Draw(m).rounded_rectangle((0, 0, vw, vh), 24, fill=255)
-        c.paste(vi, (vx, vy), m)
-        x = vx
+        fam = VESS[sid]
+        def put(name, x, y, w, h, label=None):
+            vi = Image.open(os.path.join(NIGHT, name + ".jpg")).convert("RGB")
+            if vi.width / vi.height > 1.6:      # wide tow scene: fit, keep both vessels
+                s_ = w / vi.width; vi = vi.resize((w, int(vi.height * s_)))
+                bg = Image.new("RGB", (w, h), vi.getpixel((5, 5))); bg.paste(vi, (0, (h - vi.height) // 2)); vi = bg
+            else:
+                s_ = max(w / vi.width, h / vi.height); vi = vi.resize((int(vi.width * s_), int(vi.height * s_)))
+                l, t = (vi.width - w) // 2, (vi.height - h) // 2; vi = vi.crop((l, t, l + w, t + h))
+            m = Image.new("L", (w, h), 0); ImageDraw.Draw(m).rounded_rectangle((0, 0, w, h), 18, fill=255)
+            c.paste(vi, (x, y), m)
+            if label:
+                f = font(22); t_ = he(label); tw = d.textlength(t_, font=f)
+                d.rounded_rectangle((x + w - tw - 26, y + 10, x + w - 10, y + 42), 8, fill=PANEL)
+                d.text((x + w - tw - 18, y + 13), t_, font=f, fill=TXT)
+        if os.path.exists(os.path.join(NIGHT, fam + "_bow.jpg")) or os.path.exists(os.path.join(NIGHT, fam + "_port.jpg")):
+            put(fam + "_port", 40, 90, 560, 330, "דופן שמאל")
+            if os.path.exists(os.path.join(NIGHT, fam + "_bow.jpg")):
+                put(fam + "_bow", 40, 432, 275, 260, "חרטום")
+            stern = fam + "_stern" if os.path.exists(os.path.join(NIGHT, fam + "_stern.jpg")) else "tow_stern"
+            if os.path.exists(os.path.join(NIGHT, stern + ".jpg")):
+                put(stern, 325, 432, 275, 260, "ירכתיים")
+        else:
+            put(fam, 40, 100, 560, 420)
+        x = 1210
         for k in imgs:
-            im = sign(k, (150, 150)); yy = vy + vh + 22
-            c.paste(im, (x, yy))
-            tag = he(f"תמונה {k}"); f = font(24); tw = d.textlength(tag, font=f)
-            d.text((int(x + im.width + 12), yy + im.height // 2 - 14), tag, font=f, fill=TXT)
-            x = int(x + im.width + tw + 50)
+            im = sign(k, (130, 130)); tag = he(f"תמונה {k}"); f = font(24); tw = d.textlength(tag, font=f)
+            x -= im.width; c.paste(im, (x, 560))
+            d.text((int(x - tw - 12), 560 + im.height // 2 - 14), tag, font=f, fill=TXT)
+            x = int(x - tw - 40)
     else:
         d.rounded_rectangle((px, py, px + pw, py + ph), 24, fill="#000000")
         n = len(imgs); cellw = (pw - 20) // n
