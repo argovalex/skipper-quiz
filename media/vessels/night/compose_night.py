@@ -72,12 +72,12 @@ V = {
  "nuc_stern": ("cargo_stern", stack(50, [20, 24.5], R_) + CS_STERN),
  # aground: 2 red + anchor lights, no navigation lights
  "aground_bow":   ("cargo_bow",   stack(50, [20, 24.5], R_) + [(50, 38, W_), (50, 45, W_)]),
- "aground_port":  ("cargo_port",  [(14.2, 41, W_), (95, 47, W_)] + stack(82, [33, 37.5], R_)),
- "aground_stern": ("cargo_stern", stack(50, [20, 24.5], R_) + [(50, 47, W_)]),
+ "aground_port":  ("cargo_port",  [(14.2, 41, W_), (82, 43, W_)] + stack(82, [33, 37.5], R_)),   # anchor light on the mast, not the stern (Alex)
+ "aground_stern": ("cargo_stern", stack(50, [20, 24.5], R_)),   # no white from astern (Alex)
  # at anchor > 50 m: two white, forward higher
  "anchor_big_bow":   ("cargo_bow",   [(50, 38, W_), (50, 45, W_)]),
- "anchor_big_port":  ("cargo_port",  [(14.2, 41, W_), (95, 47, W_)]),
- "anchor_big_stern": ("cargo_stern", [(50, 47, W_)]),
+ "anchor_big_port":  ("cargo_port",  [(14.2, 41, W_), (82, 43, W_)]),   # aft anchor light on the mast (Alex)
+ "anchor_big_stern": ("cargo_stern", [(50, 31, W_)]),   # on the mast
  # at anchor < 50 m: one white all-round
  "anchor_small_bow":   ("motor_bow",   [(50, 33, W_)]),
  "anchor_small_port":  ("motor_port",  [(62, 35, W_)]),
