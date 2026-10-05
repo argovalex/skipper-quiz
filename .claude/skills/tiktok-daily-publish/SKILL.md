@@ -11,18 +11,16 @@ description: פרסום שאלה יומית מ-SkipperQuiz ל-TikTok דרך חש
 
 **חובה להריץ מקומית, לא בענן:** `tools/daily-publish-history.json` ב-.gitignore (קיים רק על המחשב של אלכס), ו-`ffmpeg` והכתיבה ל-`tools/tiktok-publish-history.json` גם הם מקומיים. routine בענן נכשל 4 פעמים (2026-09-18 עד 09-21) בגלל זה, והושבת. ההרצה היא scheduled task מקומי של Claude Desktop (`tiktok-daily-publish`, 10:00 שעון ישראל), שפועל רק כשהאפליקציה פתוחה והמחשב ער. הפרסום עצמו עובר רק דרך כלי ה-MCP של Higgsfield, בניגוד לצינור הפייסבוק (`tools/daily_publish.js`) שרץ headless ב-Windows Task Scheduler.
 
-## שלב 0 — בחירת שאלה (מראה של פוסט פייסבוק שעוד לא שוקף)
+## שלב 0 — בחירת שאלה (מראה של הפוסט האחרון ב-Facebook/Instagram)
 
-TikTok **לא** בוחר שאלה משלו — הוא מפרסם את מה שהאוטומציה של הפייסבוק (`tools/daily_publish.js`) כבר פרסמה ועוד לא שוקף. ככה TikTok תמיד אחרי הפייסבוק, בלי כפילות בחירה. (הפייסבוק רץ לפעמים באיחור או מדלג על יום כשהמחשב כבוי, לכן לא מחפשים "אתמול" דווקא.)
+**מקור (מ-2026-10-05):** הפרסום היומי לפייסבוק/אינסטגרם רץ רק ב-Railway (`publisher/index.js`, 19:00, Graph API ישיר). `tools/daily_publish.js` המקומי מנוטרל, ולכן `daily-publish-history.json` כבר לא מתעדכן — אל תשתמש בו.
 
-1. תאריך היום, שעון Asia/Jerusalem.
-2. קרא את `tools/daily-publish-history.json`. קח את הרשומות שה-`date` שלהן (מומר ל-Asia/Jerusalem) **לפני היום**, מהחדשה לישנה, עד 3 ימים אחורה.
-3. קרא את `tools/tiktok-publish-history.json`. רשומת פייסבוק נחשבת משוקפת אם קיימת שם רשומה עם אותו `source_date` (זהה ל-`date` של רשומת הפייסבוק).
-4. בחר את הרשומה **החדשה ביותר שלא שוקפה**. אין כזו → אין מה לפרסם היום. דווח וסיים בלי לפרסם (אל תבחר שאלה אחרת במקום).
-5. הגנה מכפילות: אם כבר נרשם ב-`tiktok-publish-history.json` פרסום מהיום, סיים.
-6. טען את השאלה (`num` מהרשומה) מ-`data/l11.json`; ודא `videoUrl` קיים.
-
-דוגמה: ב-`daily-publish-history.json` יש `{num:1158, date:"2026-09-19T01:38"}` ולא שוקפה → ההרצה הבאה מפרסמת את Q1158, גם אם הפייסבוק רץ באיחור.
+1. `git -C publisher pull --ff-only` (אם נכשל: `git -C publisher checkout -- . && git -C publisher pull --ff-only`).
+2. קרא את `publisher/publish-log.json`. קח רשומות עם `platforms` שכולל `facebook`, מהחדשה לישנה, עד 3 ימים אחורה.
+3. רשומה נחשבת משוקפת אם ב-`tools/tiktok-publish-history.json` יש רשומה עם `source_date` זהה ל-`published_at` שלה.
+4. בחר את החדשה ביותר שלא שוקפה. אין → דווח וסיים בלי לפרסם.
+5. הגנה מכפילות: אם כבר נרשם ב-`tiktok-publish-history.json` פרסום מהיום — סיים.
+6. טען את השאלה (`num`) מ-`questions.json`; ודא `videoUrl`.
 
 ## שלב 1 — תיקון FPS (חובה, TikTok דורש 23–60fps)
 
@@ -46,7 +44,7 @@ TikTok דורש `video_url` שמתארח ב-Higgsfield (לא Cloudinary/R2 יש�
 ## שלב 3 — כותרת ותיאור
 
 - **title** (≤150 תו): הוק קצר + 2–3 האשטגים. דוגמה מ-Q1117: `⚠️ למה האצה פתאומית באופנוע ים מסוכנת? #SkipperQuiz #אופנוע_ים #רישיון_שייט`.
-- **description** (≤4000 תו): `buildPublishCaption(q)` מ-`tools/publish_video.js` — אותו caption מלא בו משתמשים לפייסבוק/יוטיוב (CTA + שאלה + תשובה + 💡 הסבר + האשטגים). אין צורך לכתוב caption נפרד ל-TikTok.
+- **description** (≤4000 תו): `buildPublishCaption(q)` מ-`tools/publish_video.js` — אותו caption כמו בפייסבוק/אינסטגרם (פורמט 2026-10-05: הוק → שאלה → תשובות → "כתבו בתגובות" → CTA). בלי תשובה בכיתוב.
 
 ## שלב 4 — Prepare
 
@@ -70,7 +68,7 @@ music_usage_confirmed: true                processing_notice_acknowledged: true
 ## שלב 6 — גיבוי ורישום
 
 1. גיבוי למקרה שהטופס לא נגיש: העתק את הוידאו (אחרי בדיקת ה-FPS) ואת ה-description ל-`output/tiktok-ready/q<num>/` (`q<num>.mp4`, `caption.txt`, שורה ראשונה = title). אז אפשר להעלות ידנית מהאפליקציה.
-2. הוסף רשומה ל-`tools/tiktok-publish-history.json`: `{num, topic, date: ISO של היום, status:"prepared", source_date: ה-date המדויק של רשומת הפייסבוק מ-daily-publish-history.json}`. `source_date` הוא מפתח ההתאמה בשלב 0, ורשומה `prepared` נחשבת משוקפת כדי שלא תיבחר שוב מחר.
+2. הוסף רשומה ל-`tools/tiktok-publish-history.json`: `{num, topic, date: ISO של היום, status:"prepared", source_date: ה-published_at המדויק של הרשומה מ-publisher/publish-log.json}`. `source_date` הוא מפתח ההתאמה בשלב 0, ורשומה `prepared` נחשבת משוקפת כדי שלא תיבחר שוב מחר.
 3. אחרי ש-אלכס מאשר בטופס ומדווח, עדכן את הרשומה ל-`status:"published"` עם `publish_id`, ובדוק `tiktok_publish_status` (`PUBLISH_COMPLETE`).
 4. סיים בהודעה אחת: "Q<num> מוכן ב-TikTok, לחץ Publish בטופס. פג בשעה HH:MM."
 

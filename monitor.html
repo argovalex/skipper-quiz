@@ -510,7 +510,7 @@
   <div class="section">
     <div class="section-header">
       <span>📅</span>
-      <h2>שאלת היום</h2>
+      <h2>הפרסום הבא</h2>
     </div>
     <div class="section-body" id="today-body">
       <div class="empty-state"><span class="spinner"></span> טוען…</div>
@@ -739,47 +739,40 @@ function renderStats(queue, publishedQ) {
 // Today's question — same logic as publisher
 // ─────────────────────────────────────────────────────────────
 function renderToday(queue, publishedNums) {
-  const body   = document.getElementById('today-body');
-  const today  = new Date();
-  let question = null;
-  let source   = '';
+  // Mirrors publishFromRotationPool() in publisher/index.js (2026-10-05):
+  // one post/day at/after 19:00 Israel, random pick from approved pool questions
+  // (approved_for_publish, no scheduled_date, has videoUrl), skipping questions
+  // posted in the last 21 days and topics used in the last 3 posts.
+  const body = document.getElementById('today-body');
+  const HOUR = 19, NO_REPEAT_DAYS = 21, TOPIC_COOLDOWN = 3;
+  const railway = publishLog.filter(e => e.source !== 'daily-pool')
+    .sort((a, b) => new Date(a.published_at) - new Date(b.published_at));
+  const ilDate = d => new Date(d).toLocaleDateString('en-CA', { timeZone: 'Asia/Jerusalem' });
+  const now = new Date();
+  const ilHour = Number(new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Jerusalem', hour: 'numeric', hourCycle: 'h23' }).format(now));
+  const postedToday = railway.some(e => e.pool && ilDate(e.published_at) === ilDate(now));
+  const nextWhen = postedToday ? 'מחר 19:00' : (ilHour >= HOUR ? 'בדקות הקרובות' : 'היום 19:00');
 
-  if (queue.length > 0) {
-    // Priority: first approved-not-published
-    question = queue[0];
-    source   = 'ראשון בתור (מאושר, לא פורסם)';
-  } else {
-    // Fallback: dayOfYear % total
-    const idx = dayOfYear(today) % questions.length;
-    question  = questions[idx];
-    source    = 'fallback — dayOfYear % total (אין שאלות מאושרות בתור)';
-  }
+  const pool = questions.filter(q => q.approved_for_publish && !q.scheduled_date && q.videoUrl);
+  const cutoff = Date.now() - NO_REPEAT_DAYS * 864e5;
+  const recentNums = new Set(railway.filter(e => new Date(e.published_at).getTime() >= cutoff).map(e => e.num));
+  const recentTopics = new Set(railway.slice(-TOPIC_COOLDOWN).map(e => e.topic));
+  const eligible = pool.filter(q => !recentNums.has(q.num) && !recentTopics.has(q.topic));
 
-  if (!question) {
-    body.innerHTML = '<div class="empty-state">לא נמצאה שאלה</div>';
-    return;
-  }
-
-  // Find the answer text
-  const answerLetter = question.answer; // e.g. "א"
-  const optionFull   = (question.options || []).find(o => o.startsWith(answerLetter + '.')) ||
-                       (question.options || []).find(o => o.startsWith(answerLetter));
-  const answerText   = optionFull || answerLetter;
+  const last = railway[railway.length - 1];
+  const lastErr = last && last.errors && Object.keys(last.errors).length
+    ? `<div style="color:#ff6b6b;font-size:0.85rem;margin-top:6px">⚠️ שגיאות בפרסום האחרון: ${Object.entries(last.errors).map(([k, v]) => k + ': ' + v).join(' | ')}</div>` : '';
+  const topics = [...new Set(eligible.map(q => q.topic))];
 
   body.innerHTML = `
     <div class="today-card">
-      <div class="today-num">Q${question.num}</div>
+      <div class="today-num">${nextWhen}</div>
       <div class="today-meta">
-        <div><span class="topic-badge">${question.topic}</span>
-          <span style="font-size:0.75rem;color:var(--text-dim);margin-right:8px">${source}</span>
-        </div>
-        <div class="today-q">${question.q_he}</div>
-        <div class="today-answer">
-          <span>תשובה נכונה: </span>${answerText}
-        </div>
-        ${question.explanation
-          ? `<div style="font-size:0.82rem;color:var(--text-dim);line-height:1.5">${question.explanation}</div>`
-          : ''}
+        <div style="font-size:0.9rem">בחירה אקראית מתוך <b>${eligible.length}</b> שאלות זכאיות (מאגר: ${pool.length}) · פייסבוק + אינסטגרם דרך Graph API</div>
+        <div style="font-size:0.8rem;color:var(--text-dim)">לא חוזר על שאלה 21 יום ולא על נושא מ-3 הפוסטים האחרונים${recentTopics.size ? ' (חסומים: ' + [...recentTopics].join(', ') + ')' : ''}</div>
+        <div style="margin-top:6px">${topics.map(t => `<span class="topic-badge" style="margin:2px">${t}</span>`).join('')}</div>
+        ${last ? `<div style="font-size:0.8rem;color:var(--text-dim);margin-top:6px">פרסום אחרון: Q${last.num} · ${formatDate(last.published_at)}</div>` : ''}
+        ${lastErr}
       </div>
     </div>`;
 }
@@ -832,7 +825,14 @@ function renderHistory() {
     const topic     = e.topic || topicMap[e.num] || '—';
     const basePlatforms = e.source === 'daily-pool'
       ? `<span class="platform-tag" style="background:rgba(255,180,80,0.18);color:#ffb450" title="נשלח ישירות ל-Make.com דרך תור ה-pool האוטומטי, לא דרך publish-review">🔁 daily-pool</span>`
-      : (e.platforms || []).map(p => `<span class="platform-tag">${p}</span>`).join('');
+      : (e.platforms || []).map(p => {
+          const id = e.ids && e.ids[p];
+          if (p === 'facebook' && id) return `<a class="platform-tag" href="https://www.facebook.com/reel/${id}" target="_blank" title="פתח את הריל">facebook ↗</a>`;
+          if (p === 'instagram' && id) return `<a class="platform-tag" href="https://www.instagram.com/alex_argov_sailing_vr/reels/" target="_blank" title="media id ${id}">instagram ↗</a>`;
+          return `<span class="platform-tag">${p}</span>`;
+        }).join('')
+        + Object.entries(e.errors || {}).map(([p, msg]) =>
+          `<span class="platform-tag" style="background:rgba(255,80,80,0.18);color:#ff6b6b" title="${String(msg).replace(/"/g, '&quot;')}">✖ ${p}</span>`).join('');
     // TikTok מפורסם יום אחרי (skill tiktok-daily-publish), לא באותה רשומה — מתויג
     // בנפרד לפי num מ-tools/tiktok-publish-history.json ומוצג ליד תגי הפלטפורמה.
     const tiktokEntry = tiktokLog.find(t => t.num === e.num);
