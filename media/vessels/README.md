@@ -34,3 +34,4 @@
 - `night/src/*.jpg` = בסיסים **בלי אורות** (gpt_image_2_5 ב-Higgsfield, "ALL lights OFF"). ה-AI לא מצייר אורות, כי הוא טועה בהם.
 - האורות מצוירים בקוד: `python media/vessels/night/compose_night.py` (מיקומים באחוזים לכל בסיס, `lightup.py` מצייר נקודה זוהרת). לתיקון אור, מתקנים את הקואורדינטה ב-`V` ומריצים שוב.
 - קבצים: `<משפחה>_<bow|port|stern>.jpg` לכל משפחה (שולת מוקשים: צד בלבד, לבקשת אלכס). משפחות: power_big, power_small, sail (+sail_optional), pilot, trawler, netfish, ram, dredge (מוגבל עם מכשול: 2 אדומים בצד החסום, 2 ירוקים בצד המעבר), divers (ספינת צוללנים, עומדת, בלי אורות ניווט), draft, nuc, aground, anchor_small (עד 50 מ'), anchor_big (מעל 50 מ'), tow (משך עד 200 מ', 2 לבנים), tow_long (מעל 200 מ', 3 לבנים), hover, mines_port.
+- נוספו (2026-10-06): `sail_motor_*` (מפרשית תחת מנוע: לבן גזרתי באמצע התורן), `scene_ex1`/`scene_ex2` (סצנות רחפן של שאלות השיעור: הסירה שלי + הכלי השני בתנועה, עם האורות הנכונים).

@@ -83,7 +83,7 @@ def main():
             if not os.path.isfile(pth):
                 sys.exit(f"חסר {what} ל-{sid}: {pth}")
         t = os.path.join(wrk, f"{sid}_t.mp3"); trim(raw, t)
-        p = os.path.join(wrk, f"{sid}_p.mp3"); pad(t, p, 0.5)
+        p = os.path.join(wrk, f"{sid}_p.mp3"); pad(t, p, 3.0 if sid.endswith("_q") else 0.5)  # "_q" = question posed: 3s to think (Alex)
         o = os.path.join(wrk, f"{idx:02d}_{sid}.mp4")
         clip_card(o, png, p)
         segfiles.append(o)
