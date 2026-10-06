@@ -90,6 +90,13 @@ V = {
  # towing, tow > 200 m: 3 masthead in a vertical line
  "tow_long_bow":  ("tug_bow",      stack(49.5, [13, 17.5, 22], W_) + [(37, 50, G_), (62, 50, R_)]),
  "tow_long_port": ("tuglong_port", stack(8.3, [38, 43, 48], W_) + [(6, 53, R_), (70.5, 54.5, R_)]),
+ # sailing vessel under engine: white masthead (225 deg sector) half-way up the mast + sidelights
+ "sail_motor_bow":   ("sail_bow",   [(50, 40, W_), (47, 72, G_), (53, 72, R_)]),
+ "sail_motor_port":  ("sail_port",  [(48.6, 40, W_), (31.5, 72, R_)]),
+ "sail_motor_stern": ("sail_stern", [(49.5, 72, W_)]),
+ # lesson question scenes (drone view behind my boat)
+ "scene_ex1": ("scene_ex1", [(65.3, 30.5, Y_), (65.3, 33.5, W_), (72, 46, W_), (47.5, 70, W_)]),   # tug on my starboard, seen from astern
+ "scene_ex2": ("scene_ex2", [(27, 22.5, W_), (27, 26.5, R_), (30.5, 37.5, R_), (52.8, 68, W_)]),  # pilot on my port, port side to port side
  # hovercraft: flashing yellow
  "hover_bow":   ("hover_bow",   [(49.5, 24.5, Y_), (49.5, 29, W_), (24, 52, G_), (75, 52, R_)]),
  "hover_port":  ("hover_port",  [(37, 29.5, Y_), (37, 34, W_), (24, 45, R_)]),
@@ -100,7 +107,7 @@ if __name__ == "__main__":
     for name, (base, lights) in V.items():
         src = os.path.join(HERE, "src", base + ".jpg")
         W, H = Image.open(src).size
-        r = max(9, int(W * (0.011 if base.endswith("_port") else 0.014)))
+        r = max(8, int(W * (0.008 if base.startswith("scene") else 0.011 if base.endswith("_port") else 0.014)))
         spec = ";".join(f"{int(x * W / 100)},{int(y * H / 100)},{c},{r}" for x, y, c in lights)
         lightup(src, os.path.join(OUT, name + ".jpg"), spec)
     print(len(V), "images ->", OUT)
