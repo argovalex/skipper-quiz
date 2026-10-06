@@ -12,7 +12,7 @@ from PIL import ImageFont
 VO, AUD, SRC, OUT = sys.argv[1:5]
 INTRO = 3.0
 HERE = os.environ.get('SUBS_WORK') or os.path.join(__import__('tempfile').gettempdir(), 'lesson_subs'); os.makedirs(HERE, exist_ok=True)
-DISPLAY = [('גברַאלְטָר', 'גיברלטר'), ('הרָאם לַיְין', 'ה-Rhumb line'), ('רָאם לַיְין', 'Rhumb line'), ('U T C', 'UTC'), ('G M T', 'GMT'), ('Z D', 'ZD'), ('G P S', 'GPS'), ('C O G', 'COG')]
+DISPLAY = [('גברַאלְטָר', 'גיברלטר'), ('הרָאם לַיְין', 'ה-Rhumb line'), ('רָאם לַיְין', 'Rhumb line'), ('U T C', 'UTC'), ('G M T', 'GMT'), ('Z D', 'ZD'), ('G P S', 'GPS'), ('C O G', 'COG'), ('איאלה איי', 'IALA A'), ('איאלה בי', 'IALA B')]
 FONT = ImageFont.truetype('C:/Windows/Fonts/arialbd.ttf', 40)
 MAXW = 1120
 NIQ = re.compile(r'[\u0591-\u05C7]')
