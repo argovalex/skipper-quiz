@@ -1,0 +1,24 @@
+/* Site-wide hub bar: the sea-knowledge sections above each page's own header.
+   Self-contained so it works on the landing page, topic pages and section pages. */
+.hub{background:#07101f;border-bottom:1px solid rgba(255,255,255,.08);font-family:'Heebo',system-ui,sans-serif}
+.hub-in{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:22px;height:44px}
+.hub-home{font-weight:900;font-size:.88rem;color:#eaf1fc;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px}
+.hub-home b{color:#f3c24c;font-weight:900}
+.hub-links{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;
+  -webkit-mask-image:linear-gradient(to left,#000 88%,transparent);mask-image:linear-gradient(to left,#000 88%,transparent)}
+.hub-links::-webkit-scrollbar{display:none}
+.hub-links a{position:relative;color:#a7bbdd;font-weight:700;font-size:.86rem;white-space:nowrap;text-decoration:none;
+  padding:11px 10px;transition:color .15s}
+.hub-links a:hover{color:#eaf1fc}
+.hub-links a[aria-current="page"]{color:#f3c24c}
+.hub-links a[aria-current="page"]::after{content:"";position:absolute;right:10px;left:10px;bottom:0;height:2px;background:#f3c24c;border-radius:2px}
+.hub-links a .soon{font-size:.62rem;font-weight:800;color:#63799f;margin-inline-start:5px;letter-spacing:.04em}
+.hub-course{color:#f3c24c;font-weight:800;font-size:.84rem;white-space:nowrap;text-decoration:none;
+  border:1px solid rgba(243,194,76,.35);border-radius:999px;padding:5px 12px;transition:background .15s}
+.hub-course:hover{background:rgba(243,194,76,.1)}
+@media(max-width:720px){
+  .hub-in{padding:0 14px;gap:12px}
+  .hub-home span{display:none}
+  .hub-links{-webkit-mask-image:linear-gradient(to left,#000 80%,transparent);mask-image:linear-gradient(to left,#000 80%,transparent)}
+  .hub-course{display:none}
+}

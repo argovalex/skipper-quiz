@@ -5,6 +5,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const { hubHeader } = require('./hub');
 
 const SITE = __dirname;
 const DIR = path.join(SITE, 'ofnoa-yam');
@@ -83,11 +84,13 @@ ${t.poster ? `<meta property="og:image" content="${esc(t.poster)}">` : ''}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/ofnoa-yam/topic.css">
+<link rel="stylesheet" href="/assets/hub.css">
 <script type="application/ld+json">
 ${ld(t, url)}
 </script>
 </head>
 <body>
+${hubHeader(null)}
 <header>
   <div class="wrap">
     <a class="brand" href="/">אלכס ארגוב <span>· תיאוריה בשיט</span></a>
