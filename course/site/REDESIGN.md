@@ -7,7 +7,7 @@
 | איפה | מתי | איך |
 | --- | --- | --- |
 | מקומית במחשב | תוך כדי עבודה | `powershell -File tools/site/preview.ps1` → נפתח http://localhost:8080 |
-| Staging ב-Railway | אחרי כל push לענף | כתובת ה-staging (ראה הגדרה למטה). כל push ל-`redesign` מתפרס לבד |
+| Staging ב-Railway | אחרי כל push לענף | https://course-site-staging-production.up.railway.app · שירות "course site staging" בפרויקט Postgres. כל push ל-`redesign` מתפרס לבד |
 | האתר החי | אחרי מיזוג ל-`main` | https://www.alargov.com |
 
 ## הגדרת Staging ב-Railway (פעם אחת)
