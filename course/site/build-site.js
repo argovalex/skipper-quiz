@@ -27,13 +27,32 @@ const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'
 
 const questions = JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'data', 'l11.json'), 'utf8'));
 const qByNum = new Map(questions.map(q => [q.num, q]));
-const videos = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'reels.json'), 'utf8')).map(r => {
-  const q = qByNum.get(r.num);
-  if (!q || !q.videoUrl) throw new Error(`no videoUrl for question ${r.num}`);
-  return { ...r, topic: q.topic, src: q.videoUrl,
+// Every rendered question video is on the site. A video's date is the latest of: its publish date
+// (tools/tiktok-publish-history.json) and its render date (rendered_at). No manual dating needed.
+// content/reels.json only sets a short title and the order of the homepage rail.
+const picks = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'reels.json'), 'utf8'));
+const titleOf = new Map(picks.map(r => [r.num, r.title]));
+const pubFile = path.join(ROOT, '..', '..', 'tools', 'tiktok-publish-history.json');
+const published = new Map();
+if (fs.existsSync(pubFile)) for (const h of JSON.parse(fs.readFileSync(pubFile, 'utf8'))) {
+  const d = (h.published_at || h.date || '').slice(0, 10);
+  if (d && (!published.get(h.num) || d > published.get(h.num))) published.set(h.num, d);
+}
+const shortQ = t => { t = t.replace(/\s+/g, ' ').trim(); if (t.length <= 58) return t; const cut = t.slice(0, 58); return cut.slice(0, cut.lastIndexOf(' ')) + '…'; };
+const allVideos = questions.filter(q => q.videoUrl).map(q => {
+  const dates = [published.get(q.num), (q.rendered_at || '').slice(0, 10)].filter(Boolean).sort();
+  return { num: q.num, topic: q.topic, src: q.videoUrl, date: dates.pop() || '',
+    title: titleOf.get(q.num) || shortQ(q.q_he), picked: titleOf.has(q.num),
     poster: q.videoUrl.replace('/video/upload/', '/video/upload/so_3,w_500,c_scale/').replace(/\.mp4$/, '.jpg'),
-    href: `/video/?v=${r.num}` };
-});
+    href: `/video/?v=${q.num}` };
+}).sort((a, b) => b.date.localeCompare(a.date) || b.num - a.num);
+// Homepage rail: hand-picked first (reels.json order), then the newest.
+const videos = [...picks.map(r => allVideos.find(v => v.num === r.num)).filter(Boolean),
+  ...allVideos.filter(v => !v.picked)].slice(0, 14);
+
+// Q&A articles under /ofnoa-yam/ (built by build-topics.js) — used to keep the news window turning.
+const articles = JSON.parse(fs.readFileSync(path.join(ROOT, 'ofnoa-yam', 'topics.json'), 'utf8'))
+  .map(t => ({ href: `/ofnoa-yam/${t.slug}.html`, img: t.poster, title: t.h1, topic: t.topic }));
 
 // ---------- shared pieces ----------
 function page({ title, desc, active, body, canonical, extraHead = '' }) {
@@ -123,12 +142,18 @@ ${slides.map((s, i) => `        <a class="slide${i === 0 ? ' on' : ''}" href="${
 function home() {
   const courseSlides = COURSES.map(c => ({ href: c.href, img: tile(c.img), badge: c.state, title: c.name, text: c.text }));
   // Items dated today win: the script below hides the rest when any exist.
-  // Videos lead so this window differs from the news window beside it.
+  // Newest across the site (posts + all videos), top 10. "היום באתר" logic below keys off data-date.
   const fresh = [
-    ...videos.map(v => ({ href: v.href, img: v.poster, badge: 'סרטון', title: v.title, date: v.date, kind: 'video' })),
+    ...allVideos.map(v => ({ href: v.href, img: v.poster, badge: 'סרטון', title: v.title, date: v.date, kind: 'video' })),
     ...posts.map(p => ({ href: p.href, img: p.img, badge: 'פוסט', title: p.title, date: p.date, kind: 'post' })),
+  ].sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.kind === 'video' ? -1 : 1)).slice(0, 10);
+  // Open on a video so this window doesn't show the same post as the news window beside it.
+  const fv = fresh.findIndex(x => x.kind === 'video'); if (fv > 0) fresh.unshift(...fresh.splice(fv, 1));
+  // News window: posts first; while there are fewer than 5, Q&A articles fill it so it keeps turning.
+  const newsSlides = [
+    ...posts.map(p => ({ href: p.href, img: p.img, badge: sectionOf(p.section).name, title: p.title, text: fmtDate(p.date) })),
+    ...articles.slice(0, Math.max(0, 5 - posts.length)).map(a => ({ href: a.href, img: a.img, badge: 'שאלה מהמאגר', title: a.title, text: a.topic })),
   ];
-  const newsSlides = posts.map(p => ({ href: p.href, img: p.img, badge: sectionOf(p.section).name, title: p.title, text: fmtDate(p.date) }));
 
   const body = `
 <section class="strip">
@@ -274,14 +299,27 @@ ${pagehead(name, blurb, !list.length)}
 }
 
 function videoPage() {
+  const topics = [...new Set(allVideos.map(v => v.topic))];
   const body = `
-${pagehead(VIDEO.name, VIDEO.blurb)}
+${pagehead(VIDEO.name, `${VIDEO.blurb} ${allVideos.length} סרטונים, החדשים ראשונים.`)}
 <section class="vgrid-wrap">
-  <div class="wrap vgrid">
-    ${videos.map(reelCard).join('\n    ')}
+  <div class="wrap">
+    <div class="chips" role="group" aria-label="סינון לפי נושא">
+      <button type="button" class="chip on" data-t="">הכל</button>
+      ${topics.map(t => `<button type="button" class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join('\n      ')}
+    </div>
+    <div class="vgrid">
+    ${allVideos.map(v => reelCard(v).replace('<button class="reel"', `<button data-topic="${esc(v.topic)}" class="reel"`)).join('\n    ')}
+    </div>
   </div>
 </section>
-${PLAYER}`;
+${PLAYER}
+<script>
+document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+  document.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===c)});
+  document.querySelectorAll('.vgrid .reel').forEach(function(r){r.hidden=!!c.dataset.t&&r.dataset.topic!==c.dataset.t});
+})});
+</script>`;
   return page({ title: `${VIDEO.name} | אלכס ארגוב`, desc: VIDEO.blurb, active: VIDEO.slug, body, canonical: '/video/' });
 }
 
@@ -307,4 +345,4 @@ write(`${NEWS.slug}/index.html`, feed(NEWS.slug, NEWS.name, NEWS.blurb, posts));
 for (const s of SECTIONS) write(`${s.slug}/index.html`, feed(s.slug, s.name, s.blurb, posts.filter(p => p.section === s.slug)));
 for (const p of posts) write(`${p.section}/${p.slug}.html`, postPage(p));
 
-console.log(`site: home, video (${videos.length}), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} post page(s)`);
+console.log(`site: home, video (${allVideos.length}), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} post page(s)`);
