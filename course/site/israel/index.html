@@ -43,10 +43,20 @@
   </div>
 </section>
 <section class="feed">
-  <div class="wrap stories">
-      
+  <div class="wrap news-list">
+  
   </div>
 </section>
+<script>
+(function(){
+  function toggle(a,open){var m=a.querySelector('.news-more'),b=a.querySelector('.read-more');
+    m.hidden=!open;b.setAttribute('aria-expanded',open);b.textContent=open?'סגור':'קרא עוד'}
+  document.querySelectorAll('.news-item').forEach(function(a){
+    a.querySelector('.read-more').addEventListener('click',function(){toggle(a,a.querySelector('.news-more').hidden)})});
+  var h=decodeURIComponent(location.hash.slice(1)),t=h&&document.getElementById(h);
+  if(t&&t.classList.contains('news-item')){toggle(t,true);t.scrollIntoView()}
+})();
+</script>
 <!-- site-footer:start -->
 <footer>
   <div class="wrap">

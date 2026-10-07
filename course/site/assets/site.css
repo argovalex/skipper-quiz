@@ -195,3 +195,27 @@ footer a:hover{color:var(--gold)}
 .vgrid .reel .cap b{font-size:1.45rem}
 .vsec{font-size:clamp(2.2rem,4vw,3.2rem);margin:0 0 20px}
 .vstories{margin-bottom:56px}
+
+/* NEWS FEED: video beside headline, "קרא עוד" opens the rest in place */
+.news-list{display:grid;gap:0}
+.news-item{display:grid;grid-template-columns:320px minmax(0,1fr);gap:clamp(22px,4vw,48px);padding:36px 0;border-bottom:1px solid var(--rule);scroll-margin-top:84px}
+.news-item:first-child{padding-top:0}
+.news-media iframe{width:100%;aspect-ratio:9/16;border:0;border-radius:14px;background:var(--deep);display:block}
+.news-media>img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+.news-credit{font-size:.85rem;color:var(--dim);margin-top:8px}
+.news-credit a{text-decoration:underline}
+.news-txt h2{font-size:clamp(2.4rem,4.4vw,3.6rem);margin:12px 0 10px}
+.news-lede{font-size:1.18rem;color:var(--dim);max-width:60ch}
+.news-more{font-size:1.1rem;line-height:1.85;max-width:66ch;margin-top:18px}
+.news-more p{margin:0 0 1em}
+.news-more ul{margin:0 0 1em;padding-inline-start:1.2em}
+.news-more .rule h3{font-size:1.8rem;margin-bottom:6px}
+.news-more .rule{margin:6px 0 16px}
+.read-more{margin-top:16px;font:800 1rem var(--body);color:var(--navy);background:none;border:2px solid var(--navy);border-radius:999px;padding:9px 20px;cursor:pointer}
+.read-more:hover{background:var(--navy);color:#fff}
+.feed .post-meta{display:flex;gap:14px;align-items:center;font-weight:700;font-size:.95rem;color:var(--dim)}
+.feed .post-meta a{color:#fff;background:var(--buoy);padding:2px 11px;border-radius:999px}
+@media(max-width:720px){
+  .news-item{grid-template-columns:1fr}
+  .news-media iframe{max-width:340px;margin:0 auto}
+}
