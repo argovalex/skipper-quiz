@@ -27,7 +27,7 @@ const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'
 
 const questions = JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'data', 'l11.json'), 'utf8'));
 const qByNum = new Map(questions.map(q => [q.num, q]));
-// Every rendered question video is on the site. A video's date is the latest of: its publish date
+// A video's date is the latest of: its publish date
 // (tools/tiktok-publish-history.json) and its render date (rendered_at). No manual dating needed.
 // content/reels.json only sets a short title and the order of the homepage rail.
 const picks = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'reels.json'), 'utf8'));
@@ -39,7 +39,11 @@ if (fs.existsSync(pubFile)) for (const h of JSON.parse(fs.readFileSync(pubFile, 
   if (d && (!published.get(h.num) || d > published.get(h.num))) published.set(h.num, d);
 }
 const shortQ = t => { t = t.replace(/\s+/g, ' ').trim(); if (t.length <= 58) return t; const cut = t.slice(0, 58); return cut.slice(0, cut.lastIndexOf(' ')) + '…'; };
-const allVideos = questions.filter(q => q.videoUrl).map(q => {
+// Only the public rotation pool goes on the site (tools/daily-publish-pool.json — the 40 questions
+// that are posted to social media again and again). The rest of the bank stays inside the paid course.
+const POOL = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'tools', 'daily-publish-pool.json'), 'utf8')).map(p => p.num));
+for (const r of picks) if (!POOL.has(r.num)) throw new Error(`reels.json: question ${r.num} is not in the public pool`);
+const allVideos = questions.filter(q => q.videoUrl && POOL.has(q.num)).map(q => {
   const dates = [published.get(q.num), (q.rendered_at || '').slice(0, 10)].filter(Boolean).sort();
   return { num: q.num, topic: q.topic, src: q.videoUrl, date: dates.pop() || '',
     title: titleOf.get(q.num) || shortQ(q.q_he), picked: titleOf.has(q.num),
@@ -299,11 +303,18 @@ ${pagehead(name, blurb, !list.length)}
 }
 
 function videoPage() {
+  // News posts built around a video show here too, newest first.
+  const seaVideos = posts.filter(p => (p.source || {}).mediaType === 'video');
   const topics = [...new Set(allVideos.map(v => v.topic))];
   const body = `
-${pagehead(VIDEO.name, `${VIDEO.blurb} ${allVideos.length} סרטונים, החדשים ראשונים.`)}
+${pagehead(VIDEO.name, VIDEO.blurb)}
 <section class="vgrid-wrap">
   <div class="wrap">
+${seaVideos.length ? `<h2 class="vsec">מקרים מהים</h2>
+    <div class="stories vstories">
+      ${seaVideos.map(storyCard).join('\n      ')}
+    </div>
+    <h2 class="vsec">שאלות מהמבחן</h2>` : ''}
     <div class="chips" role="group" aria-label="סינון לפי נושא">
       <button type="button" class="chip on" data-t="">הכל</button>
       ${topics.map(t => `<button type="button" class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join('\n      ')}

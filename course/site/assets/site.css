@@ -193,3 +193,5 @@ footer a:hover{color:var(--gold)}
 .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
 .vgrid .reel[hidden]{display:none}
 .vgrid .reel .cap b{font-size:1.45rem}
+.vsec{font-size:clamp(2.2rem,4vw,3.2rem);margin:0 0 20px}
+.vstories{margin-bottom:56px}
