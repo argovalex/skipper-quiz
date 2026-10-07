@@ -33,6 +33,10 @@ HEADINGS = {
     's02_fluxgate_how': 'מצפן שער שטף', 's03_fluxgate_q78': 'איך שער שטף עובד', 's04_fluxgate_pros': 'שער שטף: יתרונות וחסרונות',
     's05_fluxgate_q141': 'מה אינו יתרון', 's06_gyro_how': "מצפן ג'יירו", 's07_gyro_pros': "ג'יירו: יתרונות וחסרונות",
     's08_gyro_q51': "חסרונות הג'יירו", 's09_gyro_q157': 'שאלה כמעט זהה', 's10_true_course_q187': 'הכיוון האמיתי',
+    # lesson 7
+    's02_log_history': 'למה קשר', 's03_speed_formula': 'מטר לשנייה', 's04_speed_q12': 'חישוב מהירות', 's05_speed_q13': 'החבל עם הקשרים',
+    's06_impeller_log': 'אימפלר', 's07_log_gps_q48': 'מים מול קרקע', 's08_wind_true_apparent': 'רוח אמיתית ויחסית',
+    's09_wind_q11': 'סירה עומדת', 's10_wind_q25': 'סירה בתנועה',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום',
 }
