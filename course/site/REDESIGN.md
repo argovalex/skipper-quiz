@@ -37,13 +37,9 @@
 
 ## האתר החדש (`/v2/` ב-staging)
 
-בנייה, לפי הסדר:
+בנייה: `node build-site.js` (סקריפט אחד, בונה את כל העמודים החדשים).
 
-```bash
-node build-sections.js   # תפריט, פוטר, רשימת מדורים, מדף הסרטונים, דפי מדור זמניים
-node build-magazin.js    # כתבות מ-magazin/posts.json: עמוד לכל כתבה, פידים, "חדש מהים" בדף הבית
-```
-
-- מדורים, תפריט ופוטר: `hub.js`. עיצוב: `assets/site.css`.
-- סרטוני המדף: `v2/reels.json` (מספר שאלה + כותרת). הקישור נלקח מ-`data/l11.json`.
-- כתבות: `magazin/posts.json`, ייצוא מה-Back Office. רק `status: "approved"` עולה. שאלת מבחן מוצגת רק כשהיא מסומנת `exam.official: true`.
+- מבנה, תפריט, קורסים ופוטר: `hub.js`. עיצוב: `assets/site.css`. תמונות החלונות: `assets/tiles/`.
+- חדשות: `content/posts.json`, ייצוא מה-Back Office. רק `status: "approved"` עולה. שדה `image` אופציונלי.
+- סרטונים: `content/reels.json` (מספר שאלה, כותרת, `date` אופציונלי). הקישור נלקח מ-`data/l11.json`.
+- חלון "חדש באתר" בדף הבית: אם יש פוסט או סרטון עם תאריך של היום (שעון ישראל), הוא הופך ל"היום באתר" ומציג רק אותם.

@@ -7,122 +7,143 @@
 <meta name="description" content="סרטונים, חדשות מהים, מדריכים וקורסים לרישיונות שיט, בעברית. מאת מדריך השיט אלכס ארגוב.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#102948">
+<meta property="og:title" content="אלכס ארגוב · סקיפר דיגיטלי">
+<meta property="og:description" content="סרטונים, חדשות מהים, מדריכים וקורסים לרישיונות שיט, בעברית. מאת מדריך השיט אלכס ארגוב.">
+<meta property="og:locale" content="he_IL">
+<link rel="canonical" href="https://www.alargov.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+
 </head>
 <body>
-
 <!-- site-header:start -->
-<header class="top top--over" id="top">
+<header class="top" id="top">
   <div class="wrap">
     <a class="logo" href="/v2/" aria-label="אלכס ארגוב, דף הבית"><img src="/assets/logo.jpg" alt="">אלכס ארגוב</a>
     <nav class="menu" id="menu" aria-label="ניווט ראשי">
-      <a href="/v2/#licenses">קורסים</a>
-      <a href="/v2/#watch">סרטונים</a>
-      <a href="/magazin/">מגזין</a>
+      <a href="/kursim/">קורסים</a>
+      <a href="/video/">סרטונים</a>
+      <a href="/hadash/">חדש מהים</a>
       <a href="/takalot/">לומדים מתקלות</a>
-      <a href="/sidrot/">סדרות ימאות</a>
       <a href="/milon/">מילון ימי</a>
       <a href="/klim/">כלים</a>
       <a href="/israel/">ישראל במים</a>
       <a href="/ahrei/">אחרי הרישיון</a>
     </nav>
-    <div class="top-cta">
-      <a class="btn btn-gold btn-sm" href="/v2/#licenses">קורסים לרישיון</a>
-      <button class="burger" id="burger" aria-label="תפריט" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-    </div>
+    <button class="burger" id="burger" aria-label="תפריט" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <!-- site-header:end -->
 
-<section class="hero">
+<section class="strip">
   <img class="poster" src="/assets/sea-hero.jpg" alt="">
   <video id="heroVid" autoplay muted loop playsinline poster="/assets/sea-hero.jpg" aria-hidden="true"><source src="/assets/sea-hero.mp4" type="video/mp4"></video>
-  <div class="wrap hero-copy">
-    <h1>לצאת לים,<br>ולדעת מה עושים.</h1>
-    <p class="hero-sub">סרטונים, סיפורים מהים, מדריכים וקורסים לרישיונות שיט. בעברית, מאת מדריך שיט.</p>
-    <div class="acts">
-      <a class="btn btn-gold" href="#watch">לסרטונים</a>
-      <a class="btn btn-ghost" href="#news" style="color:#fff">מה חדש בים</a>
-    </div>
+  <div class="wrap strip-copy">
+    <h1>לצאת לים, ולדעת מה עושים.</h1>
+    <p>סרטונים, חדשות מהים, מדריכים וקורסים לרישיונות שיט. בעברית, מאת מדריך שיט.</p>
   </div>
   <button class="mute" id="heroPause" type="button">עצור וידאו</button>
 </section>
 
-<section class="news" id="news">
+<section class="board">
   <div class="wrap">
-    <div class="row-head">
-      <h2>חדש מהים</h2>
-      <a class="more" href="/magazin/">כל הכתבות</a>
+    <div class="board-top">
+      <div class="tile rot tile--courses" data-rot>
+        <span class="tile-label">קורסים</span>
+        <a class="slide on" href="/">
+          <img src="/assets/tiles/jetski.jpg" alt="" >
+          <span class="slide-txt"><span class="badge">פתוח להרשמה</span><b>אופנוע ים</b><span>13 שיעורים, כל שאלות המאגר הרשמי והסבר בקול לכל שאלה.</span></span>
+        </a>
+        <a class="slide" href="/kursim/#12">
+          <img src="/assets/tiles/speedboat.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">בהכנה</span><b>משיט 12</b><span>סירת מנוע.</span></span>
+        </a>
+        <a class="slide" href="/kursim/#30">
+          <img src="/assets/tiles/sail.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">בהמשך</span><b>משיט 30</b></span>
+        </a>
+        <a class="slide" href="/kursim/#40">
+          <img src="/assets/tiles/chart.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">בהמשך</span><b>משיט 40</b></span>
+        </a>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <div class="tile rot tile--fresh" data-rot>
+        <span class="tile-label">חדש באתר</span>
+        <a class="slide on" href="/video/?v=1125" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791098434/skipper-quiz/tgprg9dlc89wkhzntdfn.jpg" alt="" >
+          <span class="slide-txt"><span class="badge">סרטון</span><b>מצופים ביציאה מנמל</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1083" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791036338/skipper-quiz/plbsw6jdbij8nh8shlsb.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>שריפה במיכל הדלק</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1053" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791033739/skipper-quiz/evwzkriir06w8nt9ebiv.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>אות מצוקה מאופנוע ים</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1093" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791037186/skipper-quiz/whgqm8ergeb2i36or1dk.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>רוח דרומית באילת</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1039" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791027202/skipper-quiz/ftqskxgyj5phy6kvzigh.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>אות קולי במרינה</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1001" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791017333/skipper-quiz/x2immw22vm893fvcu68i.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>סימן יום ופעולה</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1116" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791097529/skipper-quiz/esblzgxrfhu2o6qx5z54.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>נפילה בהאצה</b></span>
+        </a>
+        <a class="slide" href="/video/?v=1129" data-kind="video">
+          <img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791098654/skipper-quiz/tv5eizgh3kt7gpqs5sge.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">סרטון</span><b>גרירת סקי</b></span>
+        </a>
+        <a class="slide" href="/takalot/three-yachts-aground-low-tide.html" data-date="2026-10-06" data-kind="post">
+          <img src="/assets/tiles/coast.jpg" alt="" loading="lazy">
+          <span class="slide-txt"><span class="badge">פוסט</span><b>שלוש יאכטות על שרטון באותה תעלה. מה הם פספסו?</b></span>
+        </a>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <div class="tile rot tile--news" data-rot>
+        <span class="tile-label">חדש מהים</span>
+        <a class="slide on" href="/takalot/three-yachts-aground-low-tide.html">
+          <img src="/assets/tiles/coast.jpg" alt="" >
+          <span class="slide-txt"><span class="badge">לומדים מתקלות</span><b>שלוש יאכטות על שרטון באותה תעלה. מה הם פספסו?</b><span>6 באוקטובר 2026</span></span>
+        </a>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
     </div>
-    <div class="stories">
-      <!-- news:start -->
-      <a class="story story--lead" href="/takalot/three-yachts-aground-low-tide.html">
-        <span class="story-sec">לומדים מתקלות</span>
-        <h3>שלוש יאכטות על שרטון באותה תעלה. מה הם פספסו?</h3>
-        <p>שלוש יאכטות נתקעו בתעלת כניסה בשפל. מה בודקים לפני כניסה לנמל, ולמה גם בים התיכון זה רלוונטי.</p>
-        <time datetime="2026-10-06">6 באוקטובר 2026</time>
-      </a>
-      <!-- news:end -->
+    <div class="board-topics">
+      <a class="tile topic" href="/takalot/"><img src="/assets/tiles/crew.jpg" alt="" loading="lazy"><span class="slide-txt"><b>לומדים מתקלות</b><span>אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה לומדים מזה.</span></span></a>
+      <a class="tile topic" href="/milon/"><img src="/assets/tiles/globe.jpg" alt="" loading="lazy"><span class="slide-txt"><b>מילון ימי</b><span>עמוד לכל מונח ימי, בעברית ובאנגלית.</span></span></a>
+      <a class="tile topic" href="/klim/"><img src="/assets/tiles/vhf.jpg" alt="" loading="lazy"><span class="slide-txt"><b>כלים</b><span>סימולטור קריאת MAYDAY, משחק זכות קדימה, בוחן אורות ותנאי ים במרינות.</span></span></a>
+      <a class="tile topic" href="/israel/"><img src="/assets/tiles/motorboat.jpg" alt="" loading="lazy"><span class="slide-txt"><b>ישראל במים</b><span>מרינות, השכרת אופנוע ים, קניית סירה משומשת, ביטוח ורישוי.</span></span></a>
+      <a class="tile topic" href="/ahrei/"><img src="/assets/tiles/night.jpg" alt="" loading="lazy"><span class="slide-txt"><b>אחרי הרישיון</b><span>צ'קליסט להפלגה ראשונה, העונה הראשונה, והמעבר ל-ICC.</span></span></a>
     </div>
   </div>
 </section>
 
 <section class="watch" id="watch">
   <div class="wrap watch-head">
-    <div>
-      <h2>סרטונים</h2>
-      <p>שאלות ממבחני התאוריה, דקה של הסבר לכל אחת. לחצו על סרטון כדי לצפות.</p>
+    <h2>סרטונים</h2>
+    <div class="watch-acts">
+      <a class="more" href="/video/">כל הסרטונים</a>
+      <div class="rail-nav"><button type="button" data-dir="1" aria-label="הקודם">›</button><button type="button" data-dir="-1" aria-label="הבא">‹</button></div>
     </div>
-    <div class="rail-nav"><button type="button" data-dir="1" aria-label="הקודם">›</button><button type="button" data-dir="-1" aria-label="הבא">‹</button></div>
   </div>
   <div class="rail" id="rail">
-    <!-- reels:start -->
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791098434/skipper-quiz/tgprg9dlc89wkhzntdfn.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791098434/skipper-quiz/tgprg9dlc89wkhzntdfn.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>מצופים ביציאה מנמל</b><span>כניסה לנמל</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791036338/skipper-quiz/plbsw6jdbij8nh8shlsb.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791036338/skipper-quiz/plbsw6jdbij8nh8shlsb.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>שריפה במיכל הדלק</b><span>בטיחות</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791033739/skipper-quiz/evwzkriir06w8nt9ebiv.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791033739/skipper-quiz/evwzkriir06w8nt9ebiv.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>אות מצוקה מאופנוע ים</b><span>אותות מצוקה</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791037186/skipper-quiz/whgqm8ergeb2i36or1dk.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791037186/skipper-quiz/whgqm8ergeb2i36or1dk.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>רוח דרומית באילת</b><span>מזג אוויר</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791027202/skipper-quiz/ftqskxgyj5phy6kvzigh.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791027202/skipper-quiz/ftqskxgyj5phy6kvzigh.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>אות קולי במרינה</b><span>אותות קוליים</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791017333/skipper-quiz/x2immw22vm893fvcu68i.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791017333/skipper-quiz/x2immw22vm893fvcu68i.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>סימן יום ופעולה</b><span>זכות מעבר</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791097529/skipper-quiz/esblzgxrfhu2o6qx5z54.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791097529/skipper-quiz/esblzgxrfhu2o6qx5z54.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>נפילה בהאצה</b><span>סכנות רכיבה ותמרון</span></span></button>
-    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791098654/skipper-quiz/tv5eizgh3kt7gpqs5sge.mp4"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791098654/skipper-quiz/tv5eizgh3kt7gpqs5sge.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>גרירת סקי</b><span>תמרוני ספינה</span></span></button>
-    <!-- reels:end -->
-  </div>
-</section>
-
-<section class="index">
-  <div class="wrap">
-    <h2>מדריכים, כלים ומקומות</h2>
-    <!-- sections-grid:start -->
-    <div class="index-list">
-      <a href="/magazin/"><h3>מגזין</h3><p>כל הפוסטים החדשים מכל המדורים, לפי תאריך.</p><span class="st">חדש</span></a>
-      <a href="/takalot/"><h3>לומדים מתקלות</h3><p>אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה שואלים על זה במבחן.</p><span class="st">חדש</span></a>
-      <a href="/sidrot/"><h3>סדרות ימאות</h3><p>סדרות ממוספרות עם אינפוגרפיקה: אורות לילה, מצבי חירום, קשר VHF, אותות.</p><span class="st">בקרוב</span></a>
-      <a href="/milon/"><h3>מילון ימי</h3><p>עמוד לכל מונח ימי, בעברית ובאנגלית.</p><span class="st">בקרוב</span></a>
-      <a href="/klim/"><h3>כלים</h3><p>סימולטור קריאת MAYDAY, משחק זכות קדימה, בוחן אורות ותנאי ים במרינות.</p><span class="st">בקרוב</span></a>
-      <a href="/israel/"><h3>ישראל במים</h3><p>מרינות, השכרת אופנוע ים, קניית סירה משומשת, ביטוח ורישוי.</p><span class="st">בקרוב</span></a>
-      <a href="/ahrei/"><h3>אחרי הרישיון</h3><p>צ'קליסט להפלגה ראשונה, העונה הראשונה, והמעבר ל-ICC.</p><span class="st">בקרוב</span></a>
-    </div>
-    <!-- sections-grid:end -->
-  </div>
-</section>
-
-<section class="licenses" id="licenses">
-  <div class="wrap">
-    <div class="row-head">
-      <h2>קורסים לרישיונות שיט</h2>
-    </div>
-    <p class="row-sub">הכנה למבחן התאוריה: כל שאלות המאגר הרשמי, הסבר בקול לכל שאלה ומערכי שיעור מצולמים.</p>
-    <div class="lic-row">
-      <a class="lic lic--live" href="/">
-        <span class="lic-state">פתוח להרשמה</span>
-        <h3>אופנוע ים</h3>
-        <p>13 שיעורים, כל שאלות המאגר, 13 שאלות ראשונות חינם.</p>
-      </a>
-      <div class="lic"><span class="lic-state">בהכנה</span><h3>משיט 12</h3><p>סירת מנוע.</p></div>
-      <div class="lic"><span class="lic-state">בהמשך</span><h3>משיט 30</h3></div>
-      <div class="lic"><span class="lic-state">בהמשך</span><h3>משיט 40</h3></div>
-    </div>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791098434/skipper-quiz/tgprg9dlc89wkhzntdfn.mp4" data-num="1125"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791098434/skipper-quiz/tgprg9dlc89wkhzntdfn.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>מצופים ביציאה מנמל</b><span>כניסה לנמל</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791036338/skipper-quiz/plbsw6jdbij8nh8shlsb.mp4" data-num="1083"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791036338/skipper-quiz/plbsw6jdbij8nh8shlsb.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>שריפה במיכל הדלק</b><span>בטיחות</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791033739/skipper-quiz/evwzkriir06w8nt9ebiv.mp4" data-num="1053"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791033739/skipper-quiz/evwzkriir06w8nt9ebiv.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>אות מצוקה מאופנוע ים</b><span>אותות מצוקה</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791037186/skipper-quiz/whgqm8ergeb2i36or1dk.mp4" data-num="1093"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791037186/skipper-quiz/whgqm8ergeb2i36or1dk.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>רוח דרומית באילת</b><span>מזג אוויר</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791027202/skipper-quiz/ftqskxgyj5phy6kvzigh.mp4" data-num="1039"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791027202/skipper-quiz/ftqskxgyj5phy6kvzigh.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>אות קולי במרינה</b><span>אותות קוליים</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791017333/skipper-quiz/x2immw22vm893fvcu68i.mp4" data-num="1001"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791017333/skipper-quiz/x2immw22vm893fvcu68i.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>סימן יום ופעולה</b><span>זכות מעבר</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791097529/skipper-quiz/esblzgxrfhu2o6qx5z54.mp4" data-num="1116"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791097529/skipper-quiz/esblzgxrfhu2o6qx5z54.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>נפילה בהאצה</b><span>סכנות רכיבה ותמרון</span></span></button>
+    <button class="reel" type="button" data-src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1791098654/skipper-quiz/tv5eizgh3kt7gpqs5sge.mp4" data-num="1129"><span class="thumb"><img src="https://res.cloudinary.com/dzmyg9pel/video/upload/so_3,w_500,c_scale/v1791098654/skipper-quiz/tv5eizgh3kt7gpqs5sge.jpg" alt="" loading="lazy"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>גרירת סקי</b><span>תמרוני ספינה</span></span></button>
   </div>
 </section>
 
@@ -131,11 +152,8 @@
     <img src="/assets/logo.jpg" alt="הלוגו של אלכס ארגוב: קטמרן בקווים לבנים על רקע כחול">
     <div>
       <h2>אני אלכס.</h2>
-      <p>מדריך שיט כבר 9 שנים. מלמד תאוריה לרישיונות שיט, ופה אני שם את מה שאני מספר לתלמידים מחוץ לשיעור: מה קרה בים השבוע, מה אפשר ללמוד מזה, ואיך מתכוננים ליציאה הבאה.</p>
-      <p>שאלה? כתבו לי בוואטסאפ.</p>
-      <div class="acts">
-        <a class="btn btn-gold" href="https://wa.me/972523682486" target="_blank" rel="noopener">לכתוב בוואטסאפ</a>
-      </div>
+      <p>מדריך שיט כבר 9 שנים. מלמד תאוריה לרישיונות שיט, ופה אני שם את מה שאני מספר לתלמידים מחוץ לשיעור: מה קרה בים, מה אפשר ללמוד מזה, ואיך מתכוננים ליציאה הבאה.</p>
+      <div class="acts"><a class="btn btn-gold" href="https://wa.me/972523682486" target="_blank" rel="noopener">לכתוב לי בוואטסאפ</a></div>
     </div>
   </div>
 </section>
@@ -144,7 +162,55 @@
   <button class="x" id="playerClose" type="button" aria-label="סגור">✕</button>
   <video id="playerVid" controls playsinline></video>
 </div>
+<script>
+(function(){
+  var pl=document.getElementById('player'),pv=document.getElementById('playerVid'),x=document.getElementById('playerClose');
+  function open(src){pv.src=src;pl.classList.add('open');pv.play();x.focus()}
+  function close(){pv.pause();pv.removeAttribute('src');pv.load();pl.classList.remove('open')}
+  document.querySelectorAll('.reel').forEach(function(r){r.addEventListener('click',function(){open(r.dataset.src)})});
+  x.addEventListener('click',close);
+  pl.addEventListener('click',function(e){if(e.target===pl)close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&pl.classList.contains('open'))close()});
+  var v=new URLSearchParams(location.search).get('v'),r=v&&document.querySelector('.reel[data-num="'+v+'"]');
+  if(r)open(r.dataset.src);
+})();
+</script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var v=document.getElementById('heroVid'),pb=document.getElementById('heroPause');
+  if(reduce){v.pause();pb.textContent='הפעל וידאו'}
+  pb.addEventListener('click',function(){if(v.paused){v.play();pb.textContent='עצור וידאו'}else{v.pause();pb.textContent='הפעל וידאו'}});
+  var rail=document.getElementById('rail');
+  document.querySelectorAll('.rail-nav button').forEach(function(b){b.addEventListener('click',function(){rail.scrollBy({left:b.dataset.dir*rail.clientWidth*0.8,behavior:'smooth'})})});
 
+  // "חדש באתר": when something went up today (Israel time), show only today's items.
+  var today=new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Jerusalem'});
+  var fresh=document.querySelector('.tile--fresh');
+  var todays=fresh.querySelectorAll('.slide[data-date="'+today+'"]');
+  if(todays.length){
+    fresh.querySelector('.tile-label').textContent='היום באתר';
+    fresh.querySelectorAll('.slide').forEach(function(s){if(s.dataset.date!==today)s.remove()});
+    fresh.querySelectorAll('.slide').forEach(function(s,i){s.classList.toggle('on',i===0)});
+  }
+
+  // Rotating tiles: one slide at a time, every 5s, staggered; pause on hover/focus; dots switch.
+  document.querySelectorAll('[data-rot]').forEach(function(t,k){
+    var slides=t.querySelectorAll('.slide'),dots=t.querySelector('.dots'),i=0,timer;
+    if(slides.length<2){dots.remove();return}
+    slides.forEach(function(_,n){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','שקופית '+(n+1));
+      d.addEventListener('click',function(e){e.preventDefault();show(n)});dots.appendChild(d)});
+    dots.removeAttribute('aria-hidden');
+    function show(n){slides[i].classList.remove('on');dots.children[i].classList.remove('on');i=n;slides[i].classList.add('on');dots.children[i].classList.add('on')}
+    show(0);
+    function start(){if(reduce)return;stop();timer=setInterval(function(){show((i+1)%slides.length)},5000)}
+    function stop(){clearInterval(timer)}
+    t.addEventListener('mouseenter',stop);t.addEventListener('mouseleave',start);
+    t.addEventListener('focusin',stop);t.addEventListener('focusout',start);
+    setTimeout(start,k*1600);
+  });
+})();
+</script>
 <!-- site-footer:start -->
 <footer>
   <div class="wrap">
@@ -153,8 +219,8 @@
         <div class="logo">אלכס ארגוב</div>
         <p style="max-width:32ch">מדריך שיט. מלמד תאוריה למבחן, ומה שקורה בים אחרי שעוברים אותו.</p>
       </div>
-      <div><h4>קורסים</h4><ul><li><a href="/">רשיון אופנוע ים</a></li><li><a href="https://app.alargov.com/">13 שאלות חינם</a></li><li><a href="/ofnoa-yam/chukim.html">שאלות לפי נושא</a></li></ul></div>
-      <div><h4>באתר</h4><ul><li><a href="/magazin/">מגזין</a></li><li><a href="/takalot/">לומדים מתקלות</a></li><li><a href="/sidrot/">סדרות ימאות</a></li><li><a href="/milon/">מילון ימי</a></li><li><a href="/klim/">כלים</a></li><li><a href="/israel/">ישראל במים</a></li><li><a href="/ahrei/">אחרי הרישיון</a></li></ul></div>
+      <div><h4>קורסים</h4><ul><li><a href="/">אופנוע ים</a></li><li><a href="/kursim/#12">משיט 12</a></li><li><a href="/kursim/#30">משיט 30</a></li><li><a href="/kursim/#40">משיט 40</a></li></ul></div>
+      <div><h4>באתר</h4><ul><li><a href="/kursim/">קורסים</a></li><li><a href="/video/">סרטונים</a></li><li><a href="/hadash/">חדש מהים</a></li><li><a href="/takalot/">לומדים מתקלות</a></li><li><a href="/milon/">מילון ימי</a></li><li><a href="/klim/">כלים</a></li><li><a href="/israel/">ישראל במים</a></li><li><a href="/ahrei/">אחרי הרישיון</a></li></ul></div>
       <div><h4>דברו איתי</h4><ul><li><a href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ 052-368-2486</a></li><li><a href="mailto:alex@alargov.com">alex@alargov.com</a></li><li><a href="/legal/refund-policy.html">ביטולים והחזרים</a></li></ul></div>
     </div>
     <div class="fbottom"><span>© אלכס ארגוב, סקיפר דיגיטלי</span><span>* בכפוף לתנאי ההחזר</span></div>
@@ -162,27 +228,10 @@
 </footer>
 <script>
 (function(){
-  var b=document.getElementById('burger'),m=document.getElementById('menu'),t=document.getElementById('top');
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
   if(b)b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
-  if(t&&t.classList.contains('top--over')){var f=function(){t.classList.toggle('scrolled',scrollY>60)};addEventListener('scroll',f,{passive:true});f();}
 })();
 </script>
 <!-- site-footer:end -->
-
-<script>
-(function(){
-  var v=document.getElementById('heroVid'),pb=document.getElementById('heroPause');
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.pause();pb.textContent='הפעל וידאו';}
-  pb.addEventListener('click',function(){if(v.paused){v.play();pb.textContent='עצור וידאו'}else{v.pause();pb.textContent='הפעל וידאו'}});
-  var rail=document.getElementById('rail');
-  document.querySelectorAll('.rail-nav button').forEach(function(b){b.addEventListener('click',function(){rail.scrollBy({left:b.dataset.dir*rail.clientWidth*0.8,behavior:'smooth'})})});
-  var pl=document.getElementById('player'),pv=document.getElementById('playerVid');
-  function close(){pv.pause();pv.removeAttribute('src');pv.load();pl.classList.remove('open')}
-  document.querySelectorAll('.reel').forEach(function(r){r.addEventListener('click',function(){pv.src=r.dataset.src;pl.classList.add('open');pv.play();document.getElementById('playerClose').focus()})});
-  document.getElementById('playerClose').addEventListener('click',close);
-  pl.addEventListener('click',function(e){if(e.target===pl)close()});
-  addEventListener('keydown',function(e){if(e.key==='Escape'&&pl.classList.contains('open'))close()});
-})();
-</script>
 </body>
 </html>
