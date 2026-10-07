@@ -2,7 +2,6 @@
 // 1) Writes /<slug>/index.html for each hub section that has no real page yet (placeholder, noindex).
 //    A section that already has its own generator (e.g. build-magazin.js) is skipped once its
 //    index.html exists without the placeholder marker.
-// 2) Injects/refreshes the hub bar in index.html between <!-- hub:start --> and <!-- hub:end -->.
 const fs = require('fs');
 const path = require('path');
 const { SECTIONS, hubHeader } = require('./hub');
@@ -68,17 +67,4 @@ for (const s of SECTIONS) {
   written++;
 }
 
-// Landing page: refresh the hub bar block, or insert it right after <body>.
-const idx = path.join(ROOT, 'index.html');
-let html = fs.readFileSync(idx, 'utf8');
-const block = hubHeader(null);
-if (html.includes('<!-- hub:start -->')) {
-  html = html.replace(/<!-- hub:start -->[\s\S]*?<!-- hub:end -->/, block);
-} else {
-  html = html.replace(/<body>\s*/, `<body>\n${block}\n\n`);
-}
-if (!html.includes('/assets/hub.css')) {
-  html = html.replace('</head>', '<link rel="stylesheet" href="/assets/hub.css">\n</head>');
-}
-fs.writeFileSync(idx, html);
-console.log(`sections: ${written} placeholder page(s) written; hub bar refreshed in index.html`);
+console.log(`sections: ${written} placeholder page(s) written`);

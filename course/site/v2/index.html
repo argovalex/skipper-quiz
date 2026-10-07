@@ -16,19 +16,19 @@
     --ink:#0b1b33; --dim:#4a5d78; --faint:#7d8ea6;
     --sea:#0b5cad; --sea-deep:#084784; --sea-soft:#dcebfa;
     --gold:#f3c24c; --gold-deep:#e0a92f;
-    --line:#dfe7f1; --wrap:1180px; --r:16px;
+    --line:#dfe7f1; --wrap:1480px; --r:16px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'Heebo',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,4vw,64px)}
   h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.015em;line-height:1.15}
   h2{font-size:clamp(1.7rem,3.4vw,2.5rem)}
   .kicker{display:inline-block;font-size:.8rem;font-weight:800;color:var(--sea);letter-spacing:.06em;margin-bottom:10px}
-  .lead{color:var(--dim);font-size:1.08rem;max-width:60ch;margin:12px 0 0}
-  section{padding:84px 0}
+  .lead{color:var(--dim);font-size:1.08rem;max-width:72ch;margin:12px 0 0}
+  section{padding:64px 0}
   .center{text-align:center}.center .lead{margin-inline:auto}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:800;font-size:.98rem;
@@ -54,8 +54,8 @@
   .burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
 
   /* HERO */
-  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf3fc 0%,#f7fbff 55%,#fff 100%);padding:72px 0 0}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf3fc 0%,#f7fbff 55%,#fff 100%);padding:40px 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
   .hero h1{font-size:clamp(2.3rem,5.4vw,4rem)}
   .hero h1 em{font-style:normal;color:var(--sea)}
   .hero .lead{font-size:clamp(1.05rem,1.6vw,1.22rem)}
@@ -65,11 +65,11 @@
   .waves{display:block;width:100%;height:70px;margin-top:20px}
 
   /* PATH CARDS */
-  .paths{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  .paths{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:32px}
   .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;
     transition:box-shadow .2s,transform .2s,border-color .2s}
   a.card:hover{box-shadow:0 18px 40px -18px rgba(11,40,80,.28);transform:translateY(-3px);border-color:#c8d8ea}
-  .card .ph{aspect-ratio:16/10;background:var(--sea-soft);display:flex;align-items:center;justify-content:center;position:relative}
+  .card .ph{aspect-ratio:16/9;background:var(--sea-soft);display:flex;align-items:center;justify-content:center;position:relative}
   .card .ph img{width:100%;height:100%;object-fit:cover}
   .card .ph svg{width:56px;height:56px;color:var(--sea)}
   .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -80,15 +80,19 @@
 
   /* STEPS */
   .bg2{background:var(--bg2)}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;counter-reset:s}
-  .step{background:#fff;border-radius:var(--r);padding:28px 24px;border:1px solid var(--line);position:relative}
+  .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px;counter-reset:s}
+  .step{display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:start}
+  .step::before{grid-row:span 2;margin-bottom:0}
+  .step{background:#fff;border-radius:var(--r);padding:20px 22px;border:1px solid var(--line);position:relative}
   .step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
     background:var(--sea);color:#fff;font-weight:900;font-size:1.15rem;margin-bottom:16px}
   .step h3{font-size:1.25rem;margin-bottom:6px}
   .step p{margin:0;color:var(--dim)}
 
   /* WHY */
-  .why{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:44px}
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 32px;margin-top:28px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
   .why div svg{width:40px;height:40px;color:var(--sea);margin-bottom:12px}
   .why h3{font-size:1.08rem;margin-bottom:6px}
   .why p{margin:0;color:var(--dim);font-size:.95rem}
@@ -104,7 +108,7 @@
   .ticks b{color:var(--ink)}
 
   /* SECTIONS GRID */
-  .hubgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  .hubgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
   .hubgrid .card{flex-direction:row;align-items:center;gap:16px;padding:20px}
   .hubgrid .ico{flex:0 0 56px;height:56px;border-radius:14px;background:var(--sea-soft);display:flex;align-items:center;justify-content:center}
   .hubgrid .ico svg{width:28px;height:28px;color:var(--sea)}
@@ -134,7 +138,7 @@
     .burger{display:block}
     .top .wrap{justify-content:space-between}
     .paths{grid-template-columns:repeat(2,1fr)}
-    .why{grid-template-columns:repeat(2,1fr)}
+    .duo{grid-template-columns:1fr;gap:48px}
     .hubgrid{grid-template-columns:repeat(2,1fr)}
     .fgrid{grid-template-columns:1fr 1fr}
   }
@@ -247,19 +251,6 @@
   </div>
 </section>
 
-<section class="bg2">
-  <div class="wrap center">
-    <span class="kicker">איך זה עובד</span>
-    <h2>להבין. לתרגל. לדעת.</h2>
-    <p class="lead">המטרה היא לא לשנן תשובות. המטרה היא להכיר את החומר מספיק טוב כדי להשתמש בו בים.</p>
-    <div class="steps" style="text-align:right">
-      <div class="step"><h3>להבין</h3><p>מערכי שיעור מצולמים שעוברים על כל נושא בסילבוס, עם איורים של מצבי שיט אמיתיים.</p></div>
-      <div class="step"><h3>לתרגל</h3><p>כל שאלות המאגר הרשמי. ליד כל שאלה הסבר בקול: למה התשובה נכונה ולמה האחרות לא.</p></div>
-      <div class="step"><h3>לדעת</h3><p>מבחני דמה עם טיימר וציון עובר, ומד מוכנות שאומר מתי אפשר לגשת למבחן.</p></div>
-    </div>
-  </div>
-</section>
-
 <section>
   <div class="wrap">
     <div class="split">
@@ -280,7 +271,17 @@
 </section>
 
 <section class="bg2">
-  <div class="wrap">
+  <div class="wrap duo">
+    <div>
+    <span class="kicker">איך זה עובד</span>
+    <h2>להבין. לתרגל. לדעת.</h2>
+    <p class="lead">המטרה היא לא לשנן תשובות. המטרה היא להכיר את החומר מספיק טוב כדי להשתמש בו בים.</p>
+    <div class="steps">
+      <div class="step"><h3>להבין</h3><p>מערכי שיעור מצולמים שעוברים על כל נושא בסילבוס, עם איורים של מצבי שיט אמיתיים.</p></div>
+      <div class="step"><h3>לתרגל</h3><p>כל שאלות המאגר הרשמי. ליד כל שאלה הסבר בקול: למה התשובה נכונה ולמה האחרות לא.</p></div>
+      <div class="step"><h3>לדעת</h3><p>מבחני דמה עם טיימר וציון עובר, ומד מוכנות שאומר מתי אפשר לגשת למבחן.</p></div>
+    </div>
+    <div>
     <span class="kicker">למה ללמוד כאן</span>
     <h2>קורס שנבנה על ידי מדריך שיט.</h2>
     <div class="why">
@@ -289,6 +290,7 @@
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><h3>החזר כספי</h3><p>לא עברת את מבחן התאוריה? מקבלים את הכסף חזרה.*</p></div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><h3>מדריך זמין</h3><p>שאלה שלא הסתדרה? כותבים בוואטסאפ ומקבלים תשובה מאלכס.</p></div>
     </div>
+  </div>
   </div>
 </section>
 
