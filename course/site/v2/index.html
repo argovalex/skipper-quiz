@@ -10,184 +10,34 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#ffffff; --bg2:#f3f7fb; --bg3:#e8f0f8;
-    --ink:#0b1b33; --dim:#4a5d78; --faint:#7d8ea6;
-    --sea:#0b5cad; --sea-deep:#084784; --sea-soft:#dcebfa;
-    --gold:#f3c24c; --gold-deep:#e0a92f;
-    --line:#dfe7f1; --wrap:1480px; --r:16px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Heebo',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%;display:block}
-  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,4vw,64px)}
-  h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.015em;line-height:1.15}
-  h2{font-size:clamp(1.7rem,3.4vw,2.5rem)}
-  .kicker{display:inline-block;font-size:.8rem;font-weight:800;color:var(--sea);letter-spacing:.06em;margin-bottom:10px}
-  .lead{color:var(--dim);font-size:1.08rem;max-width:72ch;margin:12px 0 0}
-  section{padding:64px 0}
-  .center{text-align:center}.center .lead{margin-inline:auto}
-
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:800;font-size:.98rem;
-    border-radius:999px;padding:13px 24px;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s,transform .12s}
-  .btn:active{transform:translateY(1px)}
-  .btn-sea{background:var(--sea);color:#fff}.btn-sea:hover{background:var(--sea-deep)}
-  .btn-gold{background:var(--gold);color:#20160a}.btn-gold:hover{background:var(--gold-deep)}
-  .btn-line{border-color:var(--sea);color:var(--sea);background:#fff}.btn-line:hover{background:var(--sea-soft)}
-  .btn-sm{padding:9px 18px;font-size:.9rem}
-  .link{color:var(--sea);font-weight:800;font-size:.95rem}.link::after{content:" ←"}
-
-  /* HEADER */
-  .top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .top .wrap{display:flex;align-items:center;gap:28px;height:72px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.08rem;white-space:nowrap}
-  .logo svg{width:34px;height:34px}
-  .logo small{display:block;font-size:.72rem;font-weight:700;color:var(--faint);letter-spacing:.04em;line-height:1}
-  .menu{display:flex;align-items:center;gap:4px;flex:1}
-  .menu a{font-weight:700;font-size:.95rem;color:var(--dim);padding:8px 11px;border-radius:10px;white-space:nowrap}
-  .menu a:hover{color:var(--sea);background:var(--bg2)}
-  .top-cta{display:flex;gap:10px;align-items:center}
-  .burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
-  .burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
-
-  /* HERO */
-  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf3fc 0%,#f7fbff 55%,#fff 100%);padding:40px 0 0}
-  .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
-  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem)}
-  .hero h1 em{font-style:normal;color:var(--sea)}
-  .hero .lead{font-size:clamp(1.05rem,1.6vw,1.22rem)}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-  .hero-note{margin-top:16px;color:var(--faint);font-size:.92rem}
-  .hero-art svg{width:100%;height:auto}
-  .waves{display:block;width:100%;height:70px;margin-top:20px}
-
-  /* PATH CARDS */
-  .paths{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:32px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;
-    transition:box-shadow .2s,transform .2s,border-color .2s}
-  a.card:hover{box-shadow:0 18px 40px -18px rgba(11,40,80,.28);transform:translateY(-3px);border-color:#c8d8ea}
-  .card .ph{aspect-ratio:16/9;background:var(--sea-soft);display:flex;align-items:center;justify-content:center;position:relative}
-  .card .ph img{width:100%;height:100%;object-fit:cover}
-  .card .ph svg{width:56px;height:56px;color:var(--sea)}
-  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .card h3{font-size:1.15rem}
-  .card p{margin:0;color:var(--dim);font-size:.95rem;flex:1}
-  .tag{position:absolute;top:12px;right:12px;font-size:.74rem;font-weight:800;padding:4px 10px;border-radius:999px;background:#fff;color:var(--sea)}
-  .tag.live{background:var(--gold);color:#20160a}
-
-  /* STEPS */
-  .bg2{background:var(--bg2)}
-  .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px;counter-reset:s}
-  .step{display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:start}
-  .step::before{grid-row:span 2;margin-bottom:0}
-  .step{background:#fff;border-radius:var(--r);padding:20px 22px;border:1px solid var(--line);position:relative}
-  .step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
-    background:var(--sea);color:#fff;font-weight:900;font-size:1.15rem;margin-bottom:16px}
-  .step h3{font-size:1.25rem;margin-bottom:6px}
-  .step p{margin:0;color:var(--dim)}
-
-  /* WHY */
-  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 32px;margin-top:28px}
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-  .head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-  .why div svg{width:40px;height:40px;color:var(--sea);margin-bottom:12px}
-  .why h3{font-size:1.08rem;margin-bottom:6px}
-  .why p{margin:0;color:var(--dim);font-size:.95rem}
-
-  /* SPLIT */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .vframe{position:relative;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 24px 50px -24px rgba(11,40,80,.45)}
-  .vframe video{width:100%;height:100%;object-fit:cover;display:block}
-  .ticks{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:10px}
-  .ticks li{padding-right:30px;position:relative;color:var(--dim)}
-  .ticks li::before{content:"";position:absolute;right:0;top:.45em;width:18px;height:18px;border-radius:50%;
-    background:var(--sea-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b5cad' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
-  .ticks b{color:var(--ink)}
-
-  /* SECTIONS GRID */
-  .hubgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
-  .hubgrid .card{flex-direction:row;align-items:center;gap:16px;padding:20px}
-  .hubgrid .ico{flex:0 0 56px;height:56px;border-radius:14px;background:var(--sea-soft);display:flex;align-items:center;justify-content:center}
-  .hubgrid .ico svg{width:28px;height:28px;color:var(--sea)}
-  .hubgrid h3{font-size:1.08rem;margin-bottom:2px}
-  .hubgrid p{margin:0;color:var(--dim);font-size:.92rem}
-  .soon{font-size:.7rem;font-weight:800;color:var(--faint);margin-inline-start:6px}
-
-  /* CTA BAND */
-  .band{background:linear-gradient(135deg,var(--sea) 0%,#0a3f78 100%);color:#fff;border-radius:24px;padding:52px 44px;
-    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
-  .band h2{color:#fff}
-  .band p{margin:10px 0 0;color:#cfe2f7;max-width:52ch}
-  .band .ast{color:var(--gold)}
-
-  /* FOOTER */
-  footer{background:#0b1b33;color:#b6c4d8;padding:60px 0 28px;margin-top:84px}
-  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
-  footer h4{color:#fff;margin:0 0 12px;font-size:.98rem}
-  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.93rem}
-  footer a:hover{color:var(--gold)}
-  .fbottom{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;font-size:.84rem;color:#7d8ea6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-
-  @media(max-width:1020px){
-    .menu{display:none;position:absolute;top:72px;right:0;left:0;background:#fff;flex-direction:column;align-items:stretch;padding:10px 16px 18px;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.2)}
-    .menu.open{display:flex}
-    .menu a{padding:12px 10px;font-size:1rem}
-    .burger{display:block}
-    .top .wrap{justify-content:space-between}
-    .paths{grid-template-columns:repeat(2,1fr)}
-    .duo{grid-template-columns:1fr;gap:48px}
-    .hubgrid{grid-template-columns:repeat(2,1fr)}
-    .fgrid{grid-template-columns:1fr 1fr}
-  }
-  @media(max-width:720px){
-    section{padding:60px 0}
-    .wrap{padding:0 16px}
-    .hero{padding-top:40px}
-    .hero-grid,.split{grid-template-columns:1fr;gap:28px}
-    .hero-art{order:-1;max-width:420px;margin:0 auto}
-    .steps{grid-template-columns:1fr}
-    .hubgrid{grid-template-columns:1fr}
-    .top-cta .btn-line{display:none}
-    .band{padding:36px 24px}
-  }
-  @media(max-width:460px){
-    .paths,.why{grid-template-columns:1fr}
-    .paths .ph:not(:has(img)){aspect-ratio:auto;height:96px}
-    .logo small{display:none}
-  }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
+<!-- site-header:start -->
 <header class="top">
   <div class="wrap">
     <a class="logo" href="/v2/" aria-label="אלכס ארגוב, דף הבית">
-      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" fill="#0b5cad"/>
-        <path d="M20 8 L20 26 M20 10 L29 24 L20 24 Z" stroke="#f3c24c" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M10 27 h20 l-3 4 H13 Z" fill="#fff"/>
-      </svg>
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0b5cad"/><path d="M20 8 L20 26 M20 10 L29 24 L20 24 Z" stroke="#f3c24c" stroke-width="2" stroke-linejoin="round"/><path d="M10 27 h20 l-3 4 H13 Z" fill="#fff"/></svg>
       <span>אלכס ארגוב<small>ללמוד ים בעברית</small></span>
     </a>
     <nav class="menu" id="menu" aria-label="ניווט ראשי">
-      <a href="/">קורס אופנוע ים</a>
+      <a href="/" class="menu-course">קורסים</a>
       <a href="/magazin/">מגזין</a>
-      <a href="/sidrot/">סדרות</a>
-      <a href="/milon/">מילון</a>
-      <a href="/kelim/">כלים</a>
-      <a href="/israel-bamayim/">ישראל במים</a>
-      <a href="/acharei-harishayon/">אחרי הרישיון</a>
+      <a href="/takalot/">לומדים מתקלות</a>
+      <a href="/sidrot/">סדרות ימאות</a>
+      <a href="/milon/">מילון ימי</a>
+      <a href="/klim/">כלים</a>
+      <a href="/israel/">ישראל במים</a>
+      <a href="/ahrei/">אחרי הרישיון</a>
     </nav>
     <div class="top-cta">
-      <a class="btn btn-line btn-sm" href="https://app.alargov.com/">כניסה</a>
-      <a class="btn btn-sea btn-sm" href="https://app.alargov.com/">התחל חינם</a>
+      <a class="btn btn-sea btn-sm" href="https://app.alargov.com/">13 שאלות חינם</a>
       <button class="burger" id="burger" aria-label="תפריט" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
+<!-- site-header:end -->
 
 <section class="hero">
   <div class="wrap hero-grid">
@@ -299,14 +149,17 @@
     <span class="kicker">ידע ימי</span>
     <h2>לא נגמר במבחן.</h2>
     <p class="lead">מדורים למי שכבר במים, או בדרך לשם.</p>
+    <!-- sections-grid:start -->
     <div class="hubgrid">
-      <a class="card" href="/magazin/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h12v16H6a2 2 0 0 1-2-2z"/><path d="M16 8h4v10a2 2 0 0 1-2 2"/><path d="M8 8h4M8 12h4M8 16h4"/></svg></div><div><h3>מגזין<span class="soon">בקרוב</span></h3><p>סיפורים מהים, תקלות אמיתיות ומה לומדים מהן.</p></div></a>
-      <a class="card" href="/sidrot/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M10 9l5 2-5 2z"/><path d="M7 21h10"/></svg></div><div><h3>סדרות<span class="soon">בקרוב</span></h3><p>נושא אחד לעומק, פרק אחרי פרק.</p></div></a>
-      <a class="card" href="/milon/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 8h6"/></svg></div><div><h3>מילון<span class="soon">בקרוב</span></h3><p>מונחי ים בעברית ובאנגלית, עם הסבר קצר.</p></div></a>
-      <a class="card" href="/kelim/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h4"/></svg></div><div><h3>כלים<span class="soon">בקרוב</span></h3><p>מחשבונים וכלים קטנים ליציאה לים.</p></div></a>
-      <a class="card" href="/israel-bamayim/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg></div><div><h3>ישראל במים<span class="soon">בקרוב</span></h3><p>מרינות, חופים ואזורי שיט לאורך החוף.</p></div></a>
-      <a class="card" href="/acharei-harishayon/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0 0 14 0M8 11h8"/></svg></div><div><h3>אחרי הרישיון<span class="soon">בקרוב</span></h3><p>מה עושים כשהרישיון כבר בכיס.</p></div></a>
+      <a class="card" href="/magazin/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12v16H6a2 2 0 0 1-2-2z"/><path d="M16 8h4v10a2 2 0 0 1-2 2"/><path d="M8 8h4M8 12h4M8 16h4"/></svg></div><div><h3>מגזין<span class="soon">בקרוב</span></h3><p>כל הפוסטים החדשים מכל המדורים, לפי תאריך.</p></div></a>
+      <a class="card" href="/takalot/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg></div><div><h3>לומדים מתקלות<span class="soon">בקרוב</span></h3><p>אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה שואלים על זה במבחן.</p></div></a>
+      <a class="card" href="/sidrot/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M10 9l5 2-5 2z"/><path d="M7 21h10"/></svg></div><div><h3>סדרות ימאות<span class="soon">בקרוב</span></h3><p>סדרות ממוספרות עם אינפוגרפיקה: אורות לילה, מצבי חירום, קשר VHF, אותות.</p></div></a>
+      <a class="card" href="/milon/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 8h6"/></svg></div><div><h3>מילון ימי<span class="soon">בקרוב</span></h3><p>עמוד לכל מונח ימי, בעברית ובאנגלית.</p></div></a>
+      <a class="card" href="/klim/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h4"/></svg></div><div><h3>כלים<span class="soon">בקרוב</span></h3><p>סימולטור קריאת MAYDAY, משחק זכות קדימה, בוחן אורות ותנאי ים במרינות.</p></div></a>
+      <a class="card" href="/israel/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg></div><div><h3>ישראל במים<span class="soon">בקרוב</span></h3><p>מרינות, השכרת אופנוע ים, קניית סירה משומשת, ביטוח ורישוי.</p></div></a>
+      <a class="card" href="/ahrei/"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0 0 14 0M8 11h8"/></svg></div><div><h3>אחרי הרישיון<span class="soon">בקרוב</span></h3><p>צ'קליסט להפלגה ראשונה, העונה הראשונה, והמעבר ל-ICC.</p></div></a>
     </div>
+    <!-- sections-grid:end -->
   </div>
 </section>
 
@@ -325,6 +178,7 @@
   </div>
 </section>
 
+<!-- site-footer:start -->
 <footer>
   <div class="wrap">
     <div class="fgrid">
@@ -333,16 +187,16 @@
         <p style="margin:0;font-size:.93rem;max-width:34ch">מדריך שיט. קורסי הכנה למבחן התאוריה וידע ימי בעברית.</p>
       </div>
       <div><h4>קורסים</h4><ul><li><a href="/">רשיון אופנוע ים</a></li><li><a href="https://app.alargov.com/">13 שאלות חינם</a></li><li><a href="/ofnoa-yam/chukim.html">שאלות לפי נושא</a></li></ul></div>
-      <div><h4>ידע ימי</h4><ul><li><a href="/magazin/">מגזין</a></li><li><a href="/sidrot/">סדרות</a></li><li><a href="/milon/">מילון</a></li><li><a href="/kelim/">כלים</a></li><li><a href="/israel-bamayim/">ישראל במים</a></li></ul></div>
+      <div><h4>ידע ימי</h4><ul><li><a href="/magazin/">מגזין</a></li><li><a href="/takalot/">לומדים מתקלות</a></li><li><a href="/sidrot/">סדרות ימאות</a></li><li><a href="/milon/">מילון ימי</a></li><li><a href="/klim/">כלים</a></li><li><a href="/israel/">ישראל במים</a></li><li><a href="/ahrei/">אחרי הרישיון</a></li></ul></div>
       <div><h4>קשר</h4><ul><li><a href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ · 052-368-2486</a></li><li><a href="/legal/refund-policy.html">ביטולים והחזרים</a></li></ul></div>
     </div>
-    <div class="fbottom"><span>© אלכס ארגוב</span><span>* בכפוף לתנאי ההחזר.</span></div>
+    <div class="fbottom"><span>© אלכס ארגוב · סקיפר דיגיטלי</span><span>* בכפוף לתנאי ההחזר.</span></div>
   </div>
 </footer>
-
 <script>
-  const b=document.getElementById('burger'),m=document.getElementById('menu');
-  b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  (function(){var b=document.getElementById('burger'),m=document.getElementById('menu');
+  if(b)b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});})();
 </script>
+<!-- site-footer:end -->
 </body>
 </html>
