@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>אלכס ארגוב · סקיפר דיגיטלי</title>
-<meta name="description" content="סרטונים, שיעורים וקורס הכנה למבחן התאוריה בשיט, מאת מדריך השיט אלכס ארגוב.">
+<meta name="description" content="סרטונים, חדשות מהים, מדריכים וקורסים לרישיונות שיט, בעברית. מאת מדריך השיט אלכס ארגוב.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#102948">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
   <div class="wrap">
     <a class="logo" href="/v2/" aria-label="אלכס ארגוב, דף הבית"><img src="/assets/logo.jpg" alt="">אלכס ארגוב</a>
     <nav class="menu" id="menu" aria-label="ניווט ראשי">
-      <a href="/">קורסים</a>
+      <a href="/v2/#licenses">קורסים</a>
       <a href="/v2/#watch">סרטונים</a>
       <a href="/magazin/">מגזין</a>
       <a href="/takalot/">לומדים מתקלות</a>
@@ -28,7 +28,7 @@
       <a href="/ahrei/">אחרי הרישיון</a>
     </nav>
     <div class="top-cta">
-      <a class="btn btn-gold btn-sm" href="https://app.alargov.com/">13 שאלות חינם</a>
+      <a class="btn btn-gold btn-sm" href="/v2/#licenses">קורסים לרישיון</a>
       <button class="burger" id="burger" aria-label="תפריט" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -39,22 +39,40 @@
   <img class="poster" src="/assets/sea-hero.jpg" alt="">
   <video id="heroVid" autoplay muted loop playsinline poster="/assets/sea-hero.jpg" aria-hidden="true"><source src="/assets/sea-hero.mp4" type="video/mp4"></video>
   <div class="wrap hero-copy">
-    <h1>אופנוע ים?<br>הרישיון קרוב מתמיד.</h1>
-    <p class="sign">אלכס ארגוב, סקיפר דיגיטלי</p>
+    <h1>לצאת לים,<br>ולדעת מה עושים.</h1>
+    <p class="hero-sub">סרטונים, סיפורים מהים, מדריכים וקורסים לרישיונות שיט. בעברית, מאת מדריך שיט.</p>
     <div class="acts">
-      <a class="btn btn-gold" href="https://app.alargov.com/">13 שאלות חינם</a>
-      <a class="btn btn-ghost" href="#watch" style="color:#fff">לצפות בסרטונים</a>
+      <a class="btn btn-gold" href="#watch">לסרטונים</a>
+      <a class="btn btn-ghost" href="#news" style="color:#fff">מה חדש בים</a>
     </div>
-    <p class="note">בלי הרשמה. לא עברת את המבחן? מקבלים את הכסף חזרה.*</p>
   </div>
   <button class="mute" id="heroPause" type="button">עצור וידאו</button>
+</section>
+
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="row-head">
+      <h2>חדש מהים</h2>
+      <a class="more" href="/magazin/">כל הכתבות</a>
+    </div>
+    <div class="stories">
+      <!-- news:start -->
+      <a class="story story--lead" href="/takalot/three-yachts-aground-low-tide.html">
+        <span class="story-sec">לומדים מתקלות</span>
+        <h3>שלוש יאכטות על שרטון באותה תעלה. מה הם פספסו?</h3>
+        <p>שלוש יאכטות נתקעו בתעלת כניסה בשפל. מה בודקים לפני כניסה לנמל, ולמה גם בים התיכון זה רלוונטי.</p>
+        <time datetime="2026-10-06">6 באוקטובר 2026</time>
+      </a>
+      <!-- news:end -->
+    </div>
+  </div>
 </section>
 
 <section class="watch" id="watch">
   <div class="wrap watch-head">
     <div>
-      <h2>שאלה מהמבחן.<br>דקה של הסבר.</h2>
-      <p>לכל שאלה במאגר יש סרטון קצר: השאלה, התשובה, ולמה האחרות לא נכונות. לחצו על אחד.</p>
+      <h2>סרטונים</h2>
+      <p>שאלות ממבחני התאוריה, דקה של הסבר לכל אחת. לחצו על סרטון כדי לצפות.</p>
     </div>
     <div class="rail-nav"><button type="button" data-dir="1" aria-label="הקודם">›</button><button type="button" data-dir="-1" aria-label="הבא">‹</button></div>
   </div>
@@ -72,46 +90,13 @@
   </div>
 </section>
 
-<section class="lessons">
-  <div class="wrap">
-    <h2>13 שיעורים. כל החומר למבחן.</h2>
-    <div class="lessons-grid">
-      <div>
-        <div class="screen"><video controls preload="none" playsinline poster="/assets/lesson-poster.jpg"><source src="https://res.cloudinary.com/dzmyg9pel/video/upload/v1787133707/skipper-quiz/site/lesson-daysigns.mp4" type="video/mp4"></video></div>
-        <p class="screen-cap">סימני יום <span>שיעור מלא מתוך הקורס, פתוח לכולם</span></p>
-      </div>
-      <div>
-        <ol class="lesson-list">
-          <li>אופנוע ים, כללי <small>בקורס</small></li>
-          <li>אזורי שיט ומהירויות <small>בקורס</small></li>
-          <li>זכות מעבר <small>בקורס</small></li>
-          <li>תמרוני ספינה <small>בקורס</small></li>
-          <li class="on">סימני יום <small>פתוח</small></li>
-          <li>דגל צולל <small>בקורס</small></li>
-          <li>אותות קוליים <small>בקורס</small></li>
-          <li>מצוקה <small>בקורס</small></li>
-          <li>ניווט וכניסה לנמל <small>בקורס</small></li>
-          <li>מטאורולוגיה <small>בקורס</small></li>
-          <li>סכנות רכיבה ותמרון <small>בקורס</small></li>
-          <li>בטיחות אש ותדלוק <small>בקורס</small></li>
-          <li>עזרה ראשונה <small>בקורס</small></li>
-        </ol>
-        <div class="acts">
-          <a class="btn btn-navy" href="/">לקורס רשיון אופנוע ים</a>
-          <a class="btn btn-ghost" href="https://app.alargov.com/">13 שאלות חינם</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="index">
   <div class="wrap">
-    <h2>לא רק המבחן</h2>
+    <h2>מדריכים, כלים ומקומות</h2>
     <!-- sections-grid:start -->
     <div class="index-list">
-      <a href="/magazin/"><h3>מגזין</h3><p>כל הפוסטים החדשים מכל המדורים, לפי תאריך.</p><span class="st">בקרוב</span></a>
-      <a href="/takalot/"><h3>לומדים מתקלות</h3><p>אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה שואלים על זה במבחן.</p><span class="st">בקרוב</span></a>
+      <a href="/magazin/"><h3>מגזין</h3><p>כל הפוסטים החדשים מכל המדורים, לפי תאריך.</p><span class="st">חדש</span></a>
+      <a href="/takalot/"><h3>לומדים מתקלות</h3><p>אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה שואלים על זה במבחן.</p><span class="st">חדש</span></a>
       <a href="/sidrot/"><h3>סדרות ימאות</h3><p>סדרות ממוספרות עם אינפוגרפיקה: אורות לילה, מצבי חירום, קשר VHF, אותות.</p><span class="st">בקרוב</span></a>
       <a href="/milon/"><h3>מילון ימי</h3><p>עמוד לכל מונח ימי, בעברית ובאנגלית.</p><span class="st">בקרוב</span></a>
       <a href="/klim/"><h3>כלים</h3><p>סימולטור קריאת MAYDAY, משחק זכות קדימה, בוחן אורות ותנאי ים במרינות.</p><span class="st">בקרוב</span></a>
@@ -122,13 +107,32 @@
   </div>
 </section>
 
+<section class="licenses" id="licenses">
+  <div class="wrap">
+    <div class="row-head">
+      <h2>קורסים לרישיונות שיט</h2>
+    </div>
+    <p class="row-sub">הכנה למבחן התאוריה: כל שאלות המאגר הרשמי, הסבר בקול לכל שאלה ומערכי שיעור מצולמים.</p>
+    <div class="lic-row">
+      <a class="lic lic--live" href="/">
+        <span class="lic-state">פתוח להרשמה</span>
+        <h3>אופנוע ים</h3>
+        <p>13 שיעורים, כל שאלות המאגר, 13 שאלות ראשונות חינם.</p>
+      </a>
+      <div class="lic"><span class="lic-state">בהכנה</span><h3>משיט 12</h3><p>סירת מנוע.</p></div>
+      <div class="lic"><span class="lic-state">בהמשך</span><h3>משיט 30</h3></div>
+      <div class="lic"><span class="lic-state">בהמשך</span><h3>משיט 40</h3></div>
+    </div>
+  </div>
+</section>
+
 <section class="about">
   <div class="wrap about-grid">
     <img src="/assets/logo.jpg" alt="הלוגו של אלכס ארגוב: קטמרן בקווים לבנים על רקע כחול">
     <div>
       <h2>אני אלכס.</h2>
-      <p>מדריך שיט כבר 9 שנים. מלמד תאוריה לרישיונות שיט, ופה אני שם את מה שאני מסביר לתלמידים: שאלות המבחן, תקלות אמיתיות מהים, ומה עושים כשהרישיון כבר בכיס.</p>
-      <p>שאלה שלא מסתדרת? כתבו לי בוואטסאפ.</p>
+      <p>מדריך שיט כבר 9 שנים. מלמד תאוריה לרישיונות שיט, ופה אני שם את מה שאני מספר לתלמידים מחוץ לשיעור: מה קרה בים השבוע, מה אפשר ללמוד מזה, ואיך מתכוננים ליציאה הבאה.</p>
+      <p>שאלה? כתבו לי בוואטסאפ.</p>
       <div class="acts">
         <a class="btn btn-gold" href="https://wa.me/972523682486" target="_blank" rel="noopener">לכתוב בוואטסאפ</a>
       </div>
