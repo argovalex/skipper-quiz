@@ -20,8 +20,12 @@ const write = (rel, html) => { const f = path.join(ROOT, rel); fs.mkdirSync(path
 const sectionOf = slug => SECTIONS.find(s => s.slug === slug) || { slug, name: slug };
 
 // ---------- data ----------
+// content/posts.json is the Back Office queue (back-office.html commits it). Only approved/published go up.
 const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'), 'utf8'))
-  .filter(p => p.status === 'approved')
+  .filter(d => (d.status === 'approved' || d.status === 'published') && d.out && d.out.slug)
+  .map(d => ({ id: d.id, slug: d.out.slug, title: d.out.title, excerpt: d.out.excerpt, body: d.out.body, rule: d.out.rule,
+    exam: d.out.exam, section: d.section, source: d.source, image: d.image,
+    date: (d.approvedAt || d.updated || d.created).slice(0, 10) }))
   .sort((a, b) => b.date.localeCompare(a.date))
   .map(p => ({ ...p, href: `/hadash/#${p.slug}`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
 

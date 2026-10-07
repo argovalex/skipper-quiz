@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>חדר עריכה ימי</title>
+<!--
+  Back Office for "חדש מהים" (alargov.com). Standalone version of the claude.ai artifact.
+  - Queue is the file course/site/content/posts.json on branch BRANCH, read/written through the
+    GitHub API with the same token as the other hub tools (localStorage sq_gh_token, auth.js).
+    build-site.js publishes only status approved/published. Approving = committing; no export step.
+  - "עבד לעברית" calls the Anthropic API straight from the browser with a key kept only in this
+    browser (localStorage sq_anthropic_key).
+  - Unsaved edits are kept locally (localStorage) until you save.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=Secular+One&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="auth.js"></script>
+<style>
+:root{
+  --bg:#f3f6f8; --panel:#ffffff; --ink:#0f1e2e; --muted:#5b6b7a; --line:#d8e0e7;
+  --accent:#0b7a75; --accent-soft:#e1f2f0; --sea:#0a1428;
+  --ok:#1f7a3d; --warn:#a15c00; --bad:#b3261e; --info:#2a5db0;
+  --ok-soft:#e4f3e8; --warn-soft:#fbefdc; --bad-soft:#fbe4e2; --info-soft:#e3ebf8;
+  --f-display:"Secular One","IBM Plex Sans Hebrew",Arial,sans-serif;
+  --f-body:"IBM Plex Sans Hebrew","Segoe UI",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#081220; --panel:#0f1c2d; --ink:#e6eef5; --muted:#93a4b5; --line:#22344a;
+  --accent:#3cc1b8; --accent-soft:#103534; --sea:#04090f;
+  --ok:#5fcf85; --warn:#f0a94a; --bad:#f2837b; --info:#86a9ef;
+  --ok-soft:#12301d; --warn-soft:#352610; --bad-soft:#3a1715; --info-soft:#15243f; color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px 48px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 0 14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{font-family:var(--f-display);font-weight:400;font-size:26px;margin:0}
+.brand .sig{color:var(--muted);font-size:13px}
+.brand a{color:var(--muted);font-size:13px}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 14px;font-weight:500}
+button:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.ghost{background:transparent}
+button.danger{color:var(--bad)}
+button:disabled{opacity:.55;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.rail{position:sticky;top:12px;display:flex;flex-direction:column;gap:12px}
+@media (max-width:860px){.rail{position:static}}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--sea);border-color:var(--sea);color:#fff}
+.queue{display:flex;flex-direction:column;gap:6px;max-height:70vh;overflow:auto;padding:2px}
+.item{text-align:right;display:grid;grid-template-columns:1fr auto;gap:4px 8px;padding:10px 12px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line);width:100%}
+.item[aria-current="true"]{border-color:var(--accent);box-shadow:inset -3px 0 0 var(--accent)}
+.item .t{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.item .m{grid-column:1/-1;color:var(--muted);font-size:12px;font-family:var(--f-mono);direction:ltr;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{font-size:11.5px;padding:2px 8px;border-radius:999px;font-weight:600;white-space:nowrap}
+.s-new{background:var(--info-soft);color:var(--info)}
+.s-processed{background:var(--warn-soft);color:var(--warn)}
+.s-approved{background:var(--ok-soft);color:var(--ok)}
+.s-published{background:var(--accent-soft);color:var(--accent)}
+.s-rejected{background:var(--bad-soft);color:var(--bad)}
+.empty{color:var(--muted);font-size:14px;padding:16px;border:1px dashed var(--line);border-radius:var(--r);text-align:center}
+.sheet{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.sheet h2{font-family:var(--f-display);font-weight:400;font-size:21px;margin:0}
+.sec-label{font-size:12px;letter-spacing:.6px;color:var(--muted);font-weight:600;margin:0 0 8px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);font-weight:500;min-width:0}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+textarea{resize:vertical;min-height:84px;line-height:1.6}
+textarea.tall{min-height:240px}
+.ltr{direction:ltr;text-align:left;font-family:var(--f-mono);font-size:13px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bar .grow{flex:1}
+.status-line{font-size:13px;color:var(--muted);min-height:20px}
+.status-line.err{color:var(--bad)}
+.fit{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r);background:var(--bg);border:1px solid var(--line)}
+.fit .score{font-family:var(--f-mono);font-size:22px;font-weight:500;color:var(--accent);min-width:56px;text-align:center}
+.flags{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.flags li{font-size:14px;padding:8px 12px;border-radius:8px;background:var(--warn-soft);border-right:3px solid var(--warn)}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center}
+.opt input[type=radio]{width:auto}
+hr{border:0;border-top:1px solid var(--line);margin:0}
+.hint{font-size:12.5px;color:var(--muted)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--sea);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;z-index:5}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 12px;border-radius:8px;background:var(--bad-soft)}
+.pv{display:flex;flex-direction:column;gap:12px}
+.tabs{display:flex;gap:6px}
+#pvSite{width:100%;height:640px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.feed-mock{max-width:420px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.feed-mock .head{display:flex;align-items:center;gap:10px;padding:10px 12px;font-size:14px;font-weight:600}
+.feed-mock .av{width:32px;height:32px;border-radius:50%;background:#102948;color:#f3c24c;display:grid;place-items:center;font-family:var(--f-display);font-size:14px}
+.feed-mock img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.feed-mock .acts{display:flex;gap:14px;padding:10px 12px 4px;font-size:20px}
+.feed-mock .cap{padding:4px 12px 14px;font-size:14px;white-space:pre-line}
+.feed-mock .tags{color:var(--info)}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);padding:20px;max-width:520px;width:92vw}
+dialog::backdrop{background:rgba(4,9,15,.55)}
+dialog form{display:flex;flex-direction:column;gap:14px}
+.conn{font-size:12.5px;color:var(--muted)}
+.conn b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>חדר עריכה ימי</h1>
+      <span class="sig">אלכס ארגוב · סקיפר דיגיטלי · "חדש מהים" ב-alargov.com</span>
+      <a href="hub.html">→ חזרה ל-Hub</a>
+    </div>
+    <div class="top-actions">
+      <button id="btnNew" class="primary">+ פוסט חדש</button>
+      <button id="btnReload" title="טען מחדש את התור מ-GitHub">רענן תור</button>
+      <button id="btnExport" title="גיבוי מקומי של כל התור">הורד posts.json</button>
+      <button id="btnSettings">⚙ הגדרות</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <aside class="rail" aria-label="תור פוסטים">
+      <div class="filters" role="group" aria-label="סינון לפי סטטוס" id="filters"></div>
+      <div class="queue" id="queue"><div class="empty">טוען את התור…</div></div>
+      <p class="conn" id="conn"></p>
+    </aside>
+
+    <main class="sheet" id="sheet">
+      <div class="empty" id="placeholder">בחר פוסט מהתור או לחץ "פוסט חדש". מדביקים קישור וטקסט מקורי, ו-Claude כותב גרסה בעברית מותאמת לקהל בארץ.</div>
+
+      <form id="form" hidden novalidate>
+        <div class="bar">
+          <h2 id="sheetTitle" class="grow">פוסט חדש</h2>
+          <span class="pill" id="statusPill"></span>
+        </div>
+
+        <section>
+          <p class="sec-label">המקור</p>
+          <div class="row">
+            <label>קישור לפוסט<input id="fUrl" class="ltr" type="url" placeholder="https://www.facebook.com/reel/..."></label>
+            <label>פלטפורמה<select id="fPlatform"><option>פייסבוק</option><option>אינסטגרם</option><option>יוטיוב</option><option>טיקטוק</option><option>אתר / בלוג</option><option>אחר</option></select></label>
+            <label>סוג מדיה<select id="fMedia"><option value="video">וידאו</option><option value="image">תמונה / אינפוגרפיקה</option><option value="text">טקסט</option></select></label>
+            <label>יוצר המקור<input id="fAuthor" placeholder="שם הערוץ או העמוד"></label>
+          </div>
+        </section>
+
+        <section class="row">
+          <label>הטקסט המקורי (הדבקה)<textarea id="fText" placeholder="מדביקים כאן את הכיתוב או את גוף הפוסט, בכל שפה"></textarea></label>
+          <label>מה רואים במדיה<textarea id="fMediaDesc" placeholder="למשל: שלוש יאכטות על שרטון בתעלת כניסה למרינה בשפל"></textarea></label>
+        </section>
+
+        <section class="row">
+          <label>מדור<select id="fSection">
+            <option value="takalot">לומדים מתקלות</option><option value="milon">מילון ימי</option><option value="klim">כלים</option><option value="israel">ישראל במים</option><option value="ahrei">אחרי הרישיון</option>
+          </select></label>
+          <label>קהל<select id="fAudience"><option value="11">אופנוע ים</option><option value="12-13">משיט 12/13 · סירת מנוע</option><option value="30">משיט 30 · יאכטה</option><option value="all">כללי · כל השייטים</option></select></label>
+          <label>תמונה לרקע הקאבר (לא חובה)<input id="fImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+        </section>
+        <label>הנחיות ל-Claude<textarea id="fNotes" placeholder="למשל: לחבר לכלל 9 בתעלות צרות, להזכיר את מרינה הרצליה"></textarea></label>
+
+        <div class="bar">
+          <button type="button" id="btnProcess" class="primary">עבד לעברית</button>
+          <button type="button" id="btnStop" hidden>עצור</button>
+          <button type="button" id="btnSaveDraft" class="ghost">שמור טיוטה</button>
+          <span class="status-line grow" id="procStatus" role="status"></span>
+        </div>
+
+        <div id="outBlock" hidden>
+          <hr>
+          <section style="display:flex;flex-direction:column;gap:14px;margin-top:20px">
+            <div class="fit"><div class="score" id="fitScore">–</div><div id="fitWhy"></div></div>
+            <div id="flagsWrap" hidden><p class="sec-label">לבדיקה לפני אישור</p><ul class="flags" id="flags"></ul></div>
+
+            <section id="previewWrap" class="pv">
+              <div class="bar">
+                <p class="sec-label grow" style="margin:0">כך זה ייראה</p>
+                <div class="tabs" role="tablist">
+                  <button type="button" role="tab" class="chip" data-pv="site" aria-pressed="true">באתר</button>
+                  <button type="button" role="tab" class="chip" data-pv="feed" aria-pressed="false">אינסטגרם / פייסבוק</button>
+                </div>
+                <button type="button" id="btnCover">הורד תמונה (PNG)</button>
+              </div>
+              <iframe id="pvSite" title="תצוגה מקדימה באתר"></iframe>
+              <div id="pvFeed" class="feed-mock" hidden></div>
+              <canvas id="cover" width="1080" height="1350" hidden></canvas>
+            </section>
+
+            <p class="sec-label" style="margin:0">הגרסה בעברית · ניתן לערוך</p>
+            <div class="row">
+              <label>כותרת<input id="oTitle"></label>
+              <label>כתובת (slug)<input id="oSlug" class="ltr"></label>
+            </div>
+            <label>תקציר (2 שורות ליד הסרטון)<input id="oExcerpt"></label>
+            <label>גוף הפוסט (Markdown, נפתח ב"קרא עוד")<textarea id="oBody" class="tall"></textarea></label>
+            <label>הכלל או התקנה הרלוונטיים<textarea id="oRule"></textarea></label>
+
+            <p class="sec-label" style="margin:8px 0 0">שאלת מבחן קשורה (מוצגת באתר רק אם היא מהמאגר הרשמי)</p>
+            <label>השאלה<input id="oQ"></label>
+            <div class="opts" id="oOpts"></div>
+            <label>הסבר לתשובה<textarea id="oExpl"></textarea></label>
+            <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="oOfficial" style="width:auto"> השאלה מהמאגר הרשמי (רספ"ן)</label>
+
+            <p class="sec-label" style="margin:8px 0 0">הפצה</p>
+            <label>כיתוב לרשתות<textarea id="oCaption"></textarea></label>
+            <label>האשטגים<input id="oTags"></label>
+            <label>טיפול במדיה<textarea id="oMediaPlan"></textarea></label>
+
+            <label>מה לשנות בעיבוד הבא<textarea id="fRedo" placeholder="למשל: קצר יותר, יותר דגש על אופנוע ים"></textarea></label>
+            <div class="bar">
+              <button type="button" id="btnApprove" class="primary">אשר לפרסום</button>
+              <button type="button" id="btnSave">שמור שינויים</button>
+              <button type="button" id="btnRedo">עבד מחדש</button>
+              <button type="button" id="btnPublished" class="ghost">סמן כפורסם</button>
+              <button type="button" id="btnReject" class="ghost danger">דחה</button>
+              <span class="grow"></span>
+              <button type="button" id="btnDelete" class="ghost danger">מחק</button>
+            </div>
+            <div class="confirm" id="confirmDel" hidden>
+              <span>למחוק את הפוסט לצמיתות?</span>
+              <button type="button" id="btnDelYes" class="danger">מחק</button>
+              <button type="button" id="btnDelNo" class="ghost">ביטול</button>
+            </div>
+          </section>
+        </div>
+      </form>
+    </main>
+  </div>
+</div>
+
+<dialog id="settings">
+  <form method="dialog">
+    <h2 style="font-family:var(--f-display);font-weight:400;margin:0">הגדרות</h2>
+    <label>GitHub Token (משותף לכל כלי ה-Hub)<input id="sGh" class="ltr" type="password" autocomplete="off"></label>
+    <label>Anthropic API Key (לעיבוד לעברית)<input id="sAk" class="ltr" type="password" autocomplete="off" placeholder="sk-ant-..."></label>
+    <label>מודל<input id="sModel" class="ltr"></label>
+    <label>ענף ב-GitHub<input id="sBranch" class="ltr"></label>
+    <p class="hint">המפתחות נשמרים רק בדפדפן הזה. הקובץ: <span class="ltr">course/site/content/posts.json</span>. בזמן העבודה על האתר החדש הענף הוא redesign; כשהאתר עולה לאוויר מחליפים ל-main.</p>
+    <div class="bar"><button value="save" class="primary">שמור</button><button value="cancel" class="ghost">ביטול</button></div>
+  </form>
+</dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const REPO = "argovalex/skipper-quiz";
+const FILE = "course/site/content/posts.json";
+const STATUS = {new:"חדש",processed:"מעובד",approved:"מאושר",published:"פורסם",rejected:"נדחה"};
+const SECTIONS = {takalot:"לומדים מתקלות",milon:"מילון ימי",klim:"כלים",israel:"ישראל במים",ahrei:"אחרי הרישיון",sidrot:"סדרות ימאות"};
+const $ = id => document.getElementById(id);
+const LS = {
+  get:(k,d="")=>{try{return localStorage.getItem(k)??d}catch{return d}},
+  set:(k,v)=>{try{localStorage.setItem(k,v)}catch{}},
+  del:k=>{try{localStorage.removeItem(k)}catch{}}
+};
+const cfg = {
+  gh:()=> (typeof getToken==="function"?getToken():"") || LS.get("sq_gh_token"),
+  key:()=> LS.get("sq_anthropic_key"),
+  model:()=> LS.get("sq_bo_model","claude-sonnet-5-5"),
+  branch:()=> LS.get("sq_bo_branch","redesign"),
+};
+let posts=[], fileSha=null, currentId=null, filter="all", ctl=null;
+
+function toast(msg){const t=$("toast");t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>t.hidden=true,2800)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,"")),c=>c.charCodeAt(0)));
+const b64enc = s => { const b=new TextEncoder().encode(s); let bin=""; for(let i=0;i<b.length;i+=0x8000) bin+=String.fromCharCode.apply(null,b.subarray(i,i+0x8000)); return btoa(bin); };
+const newId = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+
+// ---------- GitHub storage ----------
+async function loadQueue(){
+  const tok=cfg.gh();
+  if(!tok){$("queue").innerHTML=`<div class="empty">חסר GitHub Token. לחץ ⚙ הגדרות.</div>`;renderConn();return}
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}?ref=${encodeURIComponent(cfg.branch())}`,{headers:{Authorization:`Bearer ${tok}`},cache:"no-store"});
+    if(r.status===404){posts=[];fileSha=null}
+    else if(!r.ok) throw new Error("HTTP "+r.status);
+    else{const j=await r.json();fileSha=j.sha;const data=JSON.parse(b64dec(j.content));posts=(Array.isArray(data)?data:data.posts||[]).map(p=>({...p,id:p.id||newId()}))}
+    posts.sort((a,b)=>(b.created||"").localeCompare(a.created||""));
+    renderFilters();renderQueue();renderConn();
+    const c=current();if(c)fillForm(c);
+  }catch(e){$("queue").innerHTML=`<div class="empty">לא הצלחתי לטעון את התור (${esc(e.message)}). בדוק את ה-Token והענף בהגדרות.</div>`;renderConn(true)}
+}
+function renderConn(err){
+  $("conn").innerHTML=`<b>${esc(REPO)}</b> · ענף <b>${esc(cfg.branch())}</b> · ${cfg.gh()?"GitHub מחובר":"אין GitHub Token"} · ${cfg.key()?"Claude מחובר":"אין מפתח Claude"}${err?" · שגיאה":""}`;
+}
+async function commitQueue(message){
+  const tok=cfg.gh(); if(!tok){toast("חסר GitHub Token בהגדרות");return false}
+  const clean=posts.map(({_local,...p})=>p);
+  const body={message,content:b64enc(JSON.stringify(clean,null,2)+"\n"),branch:cfg.branch()};
+  if(fileSha) body.sha=fileSha;
+  const put=()=>fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{method:"PUT",headers:{Authorization:`Bearer ${tok}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
+  let r=await put();
+  if(r.status===409||r.status===422){ // someone else changed the file: merge by id, newest "updated" wins, retry once
+    const g=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}?ref=${encodeURIComponent(cfg.branch())}`,{headers:{Authorization:`Bearer ${tok}`},cache:"no-store"});
+    if(g.ok){const j=await g.json();const remote=JSON.parse(b64dec(j.content));const byId=new Map(remote.map(p=>[p.id,p]));
+      for(const p of clean){const o=byId.get(p.id);if(!o||(p.updated||"")>=(o.updated||""))byId.set(p.id,p)}
+      posts=[...byId.values()].sort((a,b)=>(b.created||"").localeCompare(a.created||""));
+      body.sha=j.sha;body.content=b64enc(JSON.stringify(posts,null,2)+"\n");r=await put()}
+  }
+  if(!r.ok){toast("השמירה ל-GitHub נכשלה ("+r.status+")");return false}
+  const j=await r.json();fileSha=j.content.sha;return true;
+}
+
+// ---------- queue UI ----------
+function renderFilters(){
+  const counts={all:posts.length};posts.forEach(p=>counts[p.status]=(counts[p.status]||0)+1);
+  $("filters").innerHTML=["all","new","processed","approved","published","rejected"].map(k=>`<button type="button" class="chip" data-f="${k}" aria-pressed="${filter===k}">${k==="all"?"הכול":STATUS[k]} ${counts[k]||0}</button>`).join("");
+}
+$("filters").addEventListener("click",e=>{const b=e.target.closest("[data-f]");if(!b)return;filter=b.dataset.f;renderFilters();renderQueue()});
+function renderQueue(){
+  const list=posts.filter(p=>filter==="all"||p.status===filter);
+  if(!list.length){$("queue").innerHTML=`<div class="empty">${posts.length?"אין פוסטים בסטטוס הזה":"התור ריק. לחץ \"פוסט חדש\" והדבק קישור ראשון."}</div>`;return}
+  $("queue").innerHTML=list.map(p=>`<button type="button" class="item" data-id="${p.id}" aria-current="${p.id===currentId}">
+    <span class="t">${esc(p.out?.title||p.source?.author||p.original?.mediaDesc||"פוסט ללא כותרת")}</span>
+    <span class="pill s-${p.status}">${STATUS[p.status]||p.status}</span>
+    <span class="m">${esc(SECTIONS[p.section]||"")} · ${esc(p.source?.url||"ללא קישור")}</span></button>`).join("");
+}
+$("queue").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)openPost(b.dataset.id)});
+function blankPost(){return{id:newId(),status:"new",created:new Date().toISOString(),section:"takalot",audience:"all",source:{url:"",platform:"פייסבוק",mediaType:"video",author:""},original:{text:"",mediaDesc:""},notes:"",out:null}}
+function current(){return currentId?posts.find(x=>x.id===currentId):null}
+
+// ---------- form ----------
+function fillForm(p){
+  const draft=LS.get("sq_bo_draft_"+p.id); if(draft){try{const d=JSON.parse(draft);if((d.updated||"")>(p.updated||""))p=Object.assign(p,d)}catch{}}
+  $("placeholder").hidden=true;$("form").hidden=false;$("confirmDel").hidden=true;
+  $("sheetTitle").textContent=p.out?.title||"פוסט חדש";
+  $("statusPill").className="pill s-"+p.status;$("statusPill").textContent=STATUS[p.status]||p.status;
+  $("fUrl").value=p.source.url;$("fPlatform").value=p.source.platform;$("fMedia").value=p.source.mediaType;$("fAuthor").value=p.source.author;
+  $("fText").value=p.original.text;$("fMediaDesc").value=p.original.mediaDesc;$("fSection").value=SECTIONS[p.section]&&p.section!=="sidrot"?p.section:"takalot";$("fAudience").value=p.audience||"all";$("fNotes").value=p.notes||"";
+  $("fImage").value="";$("fRedo").value="";$("procStatus").textContent=draft?"יש שינויים מקומיים שלא נשמרו ל-GitHub":"";$("procStatus").classList.remove("err");
+  fillOut(p.out);
+}
+function fillOut(o){
+  $("outBlock").hidden=!o;if(!o)return;
+  $("fitScore").textContent=(o.fit?.score??"–")+"/10";$("fitWhy").textContent=o.fit?.why||"";
+  const flags=o.flags||[];$("flagsWrap").hidden=!flags.length;$("flags").innerHTML=flags.map(f=>`<li>${esc(f)}</li>`).join("");
+  $("oTitle").value=o.title||"";$("oSlug").value=o.slug||"";$("oExcerpt").value=o.excerpt||"";$("oBody").value=o.body||"";$("oRule").value=o.rule||"";
+  const ex=o.exam||{options:[]};$("oQ").value=ex.q||"";$("oExpl").value=ex.explanation||"";$("oOfficial").checked=!!ex.official;
+  const opts=(ex.options||[]).concat(["","","",""]).slice(0,4);
+  $("oOpts").innerHTML=opts.map((t,i)=>`<div class="opt"><input type="radio" name="correct" value="${i}" ${ex.correct===i?"checked":""} aria-label="תשובה נכונה ${i+1}"><input id="oo${i}" value="${esc(t)}" aria-label="תשובה ${i+1}"></div>`).join("");
+  $("oCaption").value=o.caption||"";$("oTags").value=(o.hashtags||[]).join(" ");$("oMediaPlan").value=o.mediaPlan||"";
+  renderPreview();
+}
+function readForm(p){
+  p.source={url:$("fUrl").value.trim(),platform:$("fPlatform").value,mediaType:$("fMedia").value,author:$("fAuthor").value.trim()};
+  p.original={text:$("fText").value,mediaDesc:$("fMediaDesc").value};p.section=$("fSection").value;p.audience=$("fAudience").value;p.notes=$("fNotes").value;
+  if(!$("outBlock").hidden&&p.out){
+    const c=document.querySelector('input[name=correct]:checked');
+    p.out={...p.out,title:$("oTitle").value,slug:$("oSlug").value.trim(),excerpt:$("oExcerpt").value,body:$("oBody").value,rule:$("oRule").value,
+      exam:{q:$("oQ").value,options:[0,1,2,3].map(i=>$("oo"+i).value),correct:c?Number(c.value):0,explanation:$("oExpl").value,official:$("oOfficial").checked},
+      caption:$("oCaption").value,hashtags:$("oTags").value.split(/\s+/).filter(Boolean),mediaPlan:$("oMediaPlan").value};
+  }
+  p.updated=new Date().toISOString();return p;
+}
+function working(){return current()||$("form")._draft||($("form")._draft=blankPost())}
+
+// local autosave (no commit per keystroke)
+let autoT=null;
+$("form").addEventListener("input",e=>{
+  if(e.target.id==="fImage"||e.target.id==="fRedo")return;
+  clearTimeout(autoT);
+  autoT=setTimeout(()=>{const p=readForm(structuredClone(working()));LS.set("sq_bo_draft_"+p.id,JSON.stringify(p));$("procStatus").classList.remove("err");$("procStatus").textContent="נשמר מקומית · לחץ שמור כדי לשלוח ל-GitHub"},800);
+});
+
+async function save(p,msg,commitMsg){
+  readForm(p);
+  if(!posts.find(x=>x.id===p.id)){posts.unshift(p);currentId=p.id;$("form")._draft=null}
+  $("procStatus").textContent="שומר ל-GitHub…";
+  const ok=await commitQueue(commitMsg||`back-office: ${STATUS[p.status]||p.status} · ${p.out?.slug||p.id}`);
+  if(ok){LS.del("sq_bo_draft_"+p.id);$("procStatus").textContent="";if(msg)toast(msg)}
+  renderFilters();renderQueue();return ok;
+}
+
+// ---------- preview ----------
+function md(s){return esc(s).split(/\n{2,}/).map(par=>{par=par.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");if(/^#{1,3} /.test(par))return `<h4>${par.replace(/^#+ /,"")}</h4>`;if(/^- /m.test(par)){const lines=par.split("\n");const lead=lines.filter(l=>!l.startsWith("- ")).map(l=>`<p>${l}</p>`).join("");return lead+"<ul>"+lines.filter(l=>l.startsWith("- ")).map(l=>`<li>${l.slice(2)}</li>`).join("")+"</ul>"}return `<p>${par.replace(/\n/g,"<br>")}</p>`}).join("")}
+function embed(u){
+  if(/facebook\.com|fb\.watch/.test(u))return `<iframe src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false&width=320&height=568" allowfullscreen></iframe>`;
+  const yt=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{11})/);if(yt)return `<iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}" allowfullscreen></iframe>`;
+  const ig=u.match(/instagram\.com\/(?:reel|p)\/([\w-]+)/);if(ig)return `<iframe src="https://www.instagram.com/p/${ig[1]}/embed"></iframe>`;
+  return "";
+}
+const siteBase = location.href.replace(/[^/]*$/,"") + "course/site/";
+let bgImg=null,coverUrl="";
+$("fImage").addEventListener("change",()=>{const f=$("fImage").files[0];if(!f){bgImg=null;renderPreview();return}const im=new Image();im.onload=()=>{bgImg=im;renderPreview()};im.src=URL.createObjectURL(f)});
+function wrapLines(ctx,text,maxW){const words=String(text).split(/\s+/).filter(Boolean),lines=[];let line="";for(const w of words){const t=line?line+" "+w:w;if(ctx.measureText(t).width>maxW&&line){lines.push(line);line=w}else line=t}if(line)lines.push(line);return lines}
+function drawCover(){
+  const cv=$("cover"),ctx=cv.getContext("2d"),W=1080,H=1350;ctx.clearRect(0,0,W,H);
+  if(bgImg){const s=Math.max(W/bgImg.width,H/bgImg.height),w=bgImg.width*s,h=bgImg.height*s;ctx.drawImage(bgImg,(W-w)/2,(H-h)/2,w,h);
+    const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,"rgba(16,41,72,.35)");g.addColorStop(.45,"rgba(16,41,72,.55)");g.addColorStop(1,"rgba(10,28,51,.96)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  else{const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,"#163659");g.addColorStop(1,"#0a1c33");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle="rgba(243,194,76,.12)";ctx.lineWidth=2;for(let r=180;r<900;r+=110){ctx.beginPath();ctx.arc(W-40,180,r,0,Math.PI*2);ctx.stroke()}}
+  ctx.direction="rtl";ctx.textAlign="right";const X=W-90;
+  ctx.fillStyle="#f3c24c";ctx.font='600 34px "IBM Plex Sans Hebrew",Arial';ctx.fillText(SECTIONS[$("fSection").value]||"",X,150);ctx.fillRect(X-90,175,90,6);
+  ctx.fillStyle="#ffffff";ctx.font='88px "Secular One",Arial';
+  const tl=wrapLines(ctx,$("oTitle").value||"כותרת הפוסט",W-180).slice(0,5),lh=108,ty=H-420-(tl.length-1)*lh;
+  tl.forEach((l,i)=>ctx.fillText(l,X,ty+i*lh));
+  ctx.fillStyle="#d6e7f5";ctx.font='38px "IBM Plex Sans Hebrew",Arial';
+  wrapLines(ctx,$("oExcerpt").value,W-180).slice(0,2).forEach((l,i)=>ctx.fillText(l,X,ty+tl.length*lh+20+i*54));
+  ctx.fillStyle="rgba(255,255,255,.18)";ctx.fillRect(90,H-150,W-180,2);
+  ctx.fillStyle="#ffffff";ctx.font='40px "Secular One",Arial';ctx.fillText("אלכס ארגוב · סקיפר דיגיטלי",X,H-88);
+  ctx.textAlign="left";ctx.direction="ltr";ctx.fillStyle="#f3c24c";ctx.font='500 34px "IBM Plex Mono",monospace';ctx.fillText("alargov.com",90,H-90);
+  if($("fMedia").value==="video"){ctx.fillStyle="rgba(255,255,255,.92)";ctx.beginPath();ctx.arc(170,170,70,0,Math.PI*2);ctx.fill();ctx.fillStyle="#0a1c33";ctx.beginPath();ctx.moveTo(150,135);ctx.lineTo(150,205);ctx.lineTo(208,170);ctx.closePath();ctx.fill()}
+  try{coverUrl=cv.toDataURL("image/png")}catch{coverUrl=""}
+}
+// Site preview: the real news item from the site's stylesheet, inside an iframe.
+function renderPreview(){
+  drawCover();
+  const url=$("fUrl").value.trim(),author=$("fAuthor").value.trim(),isVideo=$("fMedia").value==="video";
+  const video=isVideo?embed(url):"";
+  const sec=SECTIONS[$("fSection").value];
+  const doc=`<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><base href="${siteBase}">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css"><style>body{padding:24px 0}.news-more{display:block}</style></head><body>
+<section class="feed" style="padding:0"><div class="wrap news-list"><article class="news-item">
+<div class="news-media">${video||`<img src="${coverUrl}" alt="">`}${url?`<p class="news-credit">הסרטון: <a href="${esc(url)}" target="_blank">${esc(author||"המקור")}, ב${esc($("fPlatform").value)}</a></p>`:""}</div>
+<div class="news-txt"><p class="post-meta"><a>${esc(sec)}</a> <time>היום</time></p><h2>${esc($("oTitle").value)}</h2><p class="news-lede">${esc($("oExcerpt").value)}</p>
+<div class="news-more">${md($("oBody").value)}${$("oRule").value?`<div class="rule"><h3>הכלל</h3><p>${esc($("oRule").value)}</p></div>`:""}<p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p></div></div>
+</article></div></section></body></html>`;
+  $("pvSite").srcdoc=doc;
+  $("pvFeed").innerHTML=`<div class="head"><span class="av">א</span>argovalexander</div><img src="${coverUrl}" alt="">
+    <div class="acts" aria-hidden="true">♡ ◯ ➤</div>
+    <div class="cap"><b>argovalexander</b> ${esc($("oCaption").value)}\n<span class="tags">${esc($("oTags").value)}</span></div>`;
+}
+let pvT=null;const pvSoon=()=>{clearTimeout(pvT);pvT=setTimeout(renderPreview,500)};
+$("previewWrap").addEventListener("click",e=>{const b=e.target.closest("[data-pv]");if(!b)return;
+  document.querySelectorAll("[data-pv]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $("pvSite").hidden=b.dataset.pv!=="site";$("pvFeed").hidden=b.dataset.pv!=="feed"});
+$("btnCover").onclick=()=>{drawCover();const a=document.createElement("a");a.download=($("oSlug").value.trim()||"cover")+".png";a.href=coverUrl;a.click()};
+["fSection","fMedia","fAuthor","fUrl","fPlatform"].forEach(id=>$(id).addEventListener("input",()=>{if(!$("outBlock").hidden)pvSoon()}));
+["oTitle","oExcerpt","oBody","oRule","oCaption","oTags"].forEach(id=>$(id).addEventListener("input",pvSoon));
+Promise.all(['88px "Secular One"','600 34px "IBM Plex Sans Hebrew"','500 34px "IBM Plex Mono"'].map(f=>document.fonts?.load(f,"אבג abc").catch(()=>{}))).then(()=>{if(!$("outBlock").hidden)renderPreview()});
+
+function openPost(id){const p=posts.find(x=>x.id===id);if(!p)return;currentId=id;$("form")._draft=null;fillForm(p);renderQueue();if(innerWidth<860)$("sheet").scrollIntoView({behavior:"smooth"})}
+
+// ---------- actions ----------
+$("btnNew").onclick=()=>{currentId=null;const p=blankPost();$("form")._draft=p;fillForm(p);renderQueue();$("fUrl").focus()};
+$("btnReload").onclick=loadQueue;
+$("btnSaveDraft").onclick=()=>save(working(),"הטיוטה נשמרה");
+$("btnSave").onclick=()=>save(working(),"השינויים נשמרו");
+$("btnApprove").onclick=async()=>{const p=readForm(working());if(!p.out?.slug){toast("חסרה כתובת (slug) לפני אישור");return}
+  p.status="approved";p.approvedAt=new Date().toISOString();if(await save(p,"אושר ונשמר ל-GitHub. עולה לאתר בבנייה הבאה"))fillForm(p)};
+$("btnPublished").onclick=async()=>{const p=working();p.status="published";if(await save(p,"סומן כפורסם"))fillForm(p)};
+$("btnReject").onclick=async()=>{const p=working();p.status="rejected";if(await save(p,"הפוסט נדחה"))fillForm(p)};
+$("btnDelete").onclick=()=>{$("confirmDel").hidden=false};
+$("btnDelNo").onclick=()=>{$("confirmDel").hidden=true};
+$("btnDelYes").onclick=async()=>{const p=current();if(!p){$("confirmDel").hidden=true;return}
+  posts=posts.filter(x=>x.id!==p.id);LS.del("sq_bo_draft_"+p.id);
+  if(await commitQueue(`back-office: delete · ${p.out?.slug||p.id}`)){currentId=null;$("form").hidden=true;$("placeholder").hidden=false;renderFilters();renderQueue();toast("נמחק")}};
+$("btnExport").onclick=()=>{const a=document.createElement("a");a.download="posts.json";a.href=URL.createObjectURL(new Blob([JSON.stringify(posts,null,2)],{type:"application/json"}));a.click()};
+
+// ---------- settings ----------
+$("btnSettings").onclick=()=>{$("sGh").value=cfg.gh();$("sAk").value=cfg.key();$("sModel").value=cfg.model();$("sBranch").value=cfg.branch();$("settings").showModal()};
+$("settings").addEventListener("close",()=>{if($("settings").returnValue!=="save")return;
+  LS.set("sq_gh_token",$("sGh").value.trim());LS.set("sq_anthropic_key",$("sAk").value.trim());
+  LS.set("sq_bo_model",$("sModel").value.trim()||"claude-sonnet-5-5");LS.set("sq_bo_branch",$("sBranch").value.trim()||"redesign");
+  renderConn();loadQueue()});
+
+// ---------- Claude ----------
+function buildPrompt(p,redo){
+  const aud={"11":"מתלמדים לרישיון אופנוע ים","12-13":"מתלמדים לרישיון משיט 12/13 (סירת מנוע)","30":"מתלמדים לרישיון משיט 30 (יאכטה)","all":"שייטים ישראלים בכל הרמות"}[p.audience];
+  return `אתה כותב התוכן של אלכס ארגוב, מדריך שיט מעשי ותאוריה ישראלי עם 9 שנות ניסיון ("אלכס ארגוב · סקיפר דיגיטלי"). המשימה: לקחת פוסט זר ולכתוב ממנו ידיעה מקורית בעברית למדור "חדש מהים" באתר alargov.com, מותאמת לקהל הישראלי. באתר הידיעה מוצגת ככה: הסרטון המקורי מוטמע, לידו הכותרת ושתי שורות תקציר, וכפתור "קרא עוד" פותח את הגוף.
+
+קהל יעד: ${aud}.
+מדור: ${SECTIONS[p.section]}.
+
+כללים מחייבים:
+1. כתיבה מחדש ולא תרגום. אסור להעתיק משפטים מהמקור. מותר לכל היותר ציטוט קצר אחד (עד 12 מילים) עם ייחוס.
+2. סגנון מדובר: משפטים קצרים, פנייה ישירה בלשון זכר יחיד, שאלות רטוריות. בלי סימני קריאה מיותרים ובלי אימוג'י.
+3. מונחים: מונח רספ"ן הרשמי, ואחריו השם המדובר בסוגריים כשיש. רישיון 11 נקרא "רישיון אופנוע ים", לא "רישיון 11".
+4. הקשר ישראלי: ים תיכון, מרינות בארץ (הרצליה, תל אביב, יפו, אשדוד, אשקלון, חיפה, עכו, אילת), תקנות רשות הספנות והנמלים ו-COLREG. אל תמציא תקנות, מספרי סעיפים או נתונים. אם אתה לא בטוח בפרט, כתוב אותו בזהירות והוסף אותו ל-flags.
+5. התקציר הוא שתי שורות שעומדות לבד ליד הסרטון: מה קרה ולמה זה מעניין אותי.
+6. מבנה הגוף: מה קרה (2-3 משפטים) → למה זה קרה → מה עושים נכון → איך זה קשור למבחן. 180-350 מילים, Markdown פשוט (פסקאות, **הדגשה**, רשימת "- " אחת לכל היותר).
+7. שאלת מבחן בסגנון מאגר רספ"ן: 4 תשובות, אחת נכונה, הסבר קצר למה.
+8. טיפול במדיה: לווידאו או לתמונה של אחרים כתוב "הטמעה מהמקור עם קרדיט ל-<יוצר>" או הצעה לשחזר את התרחיש בסרטון AI מקורי. לעולם לא להוריד ולהעלות מחדש.
+9. fit: ציון 1-10 עד כמה הפוסט מתאים לקהל ולמותג, ומשפט נימוק.
+
+המקור:
+פלטפורמה: ${p.source.platform}
+יוצר: ${p.source.author||"לא צוין"}
+קישור: ${p.source.url||"לא צוין"}
+סוג מדיה: ${p.source.mediaType}
+מה רואים במדיה: ${p.original.mediaDesc||"לא תואר"}
+טקסט מקורי:
+"""
+${(p.original.text||"").slice(0,6000)}
+"""
+${p.notes?`\nהנחיות של אלכס: ${p.notes}`:""}${redo?`\n\nזו גרסה קודמת שכתבת:\n${JSON.stringify(p.out).slice(0,6000)}\n\nמה לשנות: ${redo}`:""}
+
+החזר JSON בלבד, באובייקט אחד בצורה הזו:
+{"title":"כותרת עד 70 תווים","slug":"latin-kebab-case-short","excerpt":"שתי שורות, עד 155 תווים","body":"Markdown","rule":"הכלל או התקנה בשפה פשוטה, עם מקור (COLREG כלל X / תקנות השיט) רק אם אתה בטוח","exam":{"q":"שאלה","options":["א","ב","ג","ד"],"correct":0,"explanation":"הסבר"},"caption":"כיתוב לאינסטגרם/פייסבוק עד 400 תווים עם CTA לטעימה החינמית ב-alargov.com","hashtags":["#רישיוןשיט"],"mediaPlan":"הוראת טיפול במדיה","flags":["פרט לבדיקה"],"fit":{"score":8,"why":"נימוק"}}`;
+}
+const fileB64 = f => new Promise((ok,bad)=>{const r=new FileReader();r.onload=()=>ok(String(r.result).split(",")[1]);r.onerror=bad;r.readAsDataURL(f)});
+async function callClaude(prompt,file,signal){
+  const content=[];
+  if(file) content.push({type:"image",source:{type:"base64",media_type:file.type||"image/jpeg",data:await fileB64(file)}});
+  content.push({type:"text",text:prompt});
+  const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal,headers:{
+    "x-api-key":cfg.key(),"anthropic-version":"2023-06-01","content-type":"application/json","anthropic-dangerous-direct-browser-access":"true"},
+    body:JSON.stringify({model:cfg.model(),max_tokens:4000,messages:[{role:"user",content}]})});
+  if(r.status===401)throw{code:"auth"};if(r.status===429)throw{code:"rate_limited"};if(r.status===413)throw{code:"prompt_too_large"};
+  if(!r.ok){let m="";try{m=(await r.json()).error?.message||""}catch{}throw{code:"http",msg:r.status+" "+m}}
+  const j=await r.json();const text=(j.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("");
+  const s=text.indexOf("{"),e=text.lastIndexOf("}");if(s<0||e<0)throw{code:"invalid_json"};
+  try{return JSON.parse(text.slice(s,e+1))}catch{throw{code:"invalid_json"}}
+}
+async function process(redo){
+  if(!cfg.key()){$("procStatus").textContent="חסר מפתח Anthropic. לחץ ⚙ הגדרות.";$("procStatus").classList.add("err");return}
+  const p=readForm(working());
+  if(!p.original.text.trim()&&!p.original.mediaDesc.trim()){$("procStatus").textContent="הדבק את הטקסט המקורי או תאר מה רואים במדיה.";$("procStatus").classList.add("err");return}
+  ctl=new AbortController();$("btnProcess").disabled=true;$("btnRedo").disabled=true;$("btnStop").hidden=false;
+  $("procStatus").classList.remove("err");$("procStatus").textContent="Claude כותב… בדרך כלל 20–60 שניות";
+  try{
+    const o=await callClaude(buildPrompt(p,redo),$("fImage").files[0],ctl.signal);
+    if(!o||typeof o!=="object"||!o.body)throw{code:"invalid_json"};
+    o.hashtags=Array.isArray(o.hashtags)?o.hashtags:[];o.flags=Array.isArray(o.flags)?o.flags:[];
+    p.out=o;p.status="processed";p.processedAt=new Date().toISOString();
+    fillForm(p);
+    await save(p,"מוכן. עבור על הטקסט, תקן ואשר.");
+  }catch(e){
+    const m={auth:"מפתח Anthropic לא תקין.",rate_limited:"יותר מדי בקשות. נסה שוב בעוד דקה.",invalid_json:"התשובה לא הגיעה בפורמט הנכון. לחץ שוב.",prompt_too_large:"הטקסט ארוך מדי. קצר את המקור.",http:"העיבוד נכשל: "+(e.msg||"")}[e.code]||(e.name==="AbortError"?"העיבוד נעצר.":"העיבוד נכשל. נסה שוב.");
+    $("procStatus").textContent=m;if(e.name!=="AbortError")$("procStatus").classList.add("err");
+  }finally{$("btnProcess").disabled=false;$("btnRedo").disabled=false;$("btnStop").hidden=true}
+}
+$("btnProcess").onclick=()=>process(null);
+$("btnRedo").onclick=()=>{const r=$("fRedo").value.trim();if(!r){toast("כתוב מה לשנות בעיבוד הבא");$("fRedo").focus();return}process(r)};
+$("btnStop").onclick=()=>ctl?.abort();
+
+renderFilters();renderConn();loadQueue();
+</script>
+</body>
+</html>
