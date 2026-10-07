@@ -26,12 +26,12 @@ function header(active, over) {
   <div class="wrap">
     <a class="logo" href="/v2/" aria-label="אלכס ארגוב, דף הבית"><img src="/assets/logo.jpg" alt="">אלכס ארגוב</a>
     <nav class="menu" id="menu" aria-label="ניווט ראשי">
-      <a href="/"${cur('course')}>קורסים</a>
+      <a href="/v2/#licenses"${cur('course')}>קורסים</a>
       <a href="/v2/#watch">סרטונים</a>
       ${links}
     </nav>
     <div class="top-cta">
-      <a class="btn btn-gold btn-sm" href="https://app.alargov.com/">13 שאלות חינם</a>
+      <a class="btn btn-gold btn-sm" href="/v2/#licenses">קורסים לרישיון</a>
       <button class="burger" id="burger" aria-label="תפריט" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -39,11 +39,18 @@ function header(active, over) {
 <!-- site-header:end -->`;
 }
 
+// A section is live once its index.html is a real page (no placeholder marker).
+function isLive(slug) {
+  const f = require('path').join(__dirname, slug, 'index.html');
+  const fs = require('fs');
+  return fs.existsSync(f) && !fs.readFileSync(f, 'utf8').includes('<!-- section-placeholder -->');
+}
+
 function sectionsIndex(except) {
   return `<!-- sections-grid:start -->
     <div class="index-list">
 ${SECTIONS.filter(s => s.slug !== except).map(s =>
-  `      <a href="/${s.slug}/"><h3>${s.name}</h3><p>${s.blurb}</p><span class="st">בקרוב</span></a>`).join('\n')}
+  `      <a href="/${s.slug}/"><h3>${s.name}</h3><p>${s.blurb}</p><span class="st">${isLive(s.slug) ? 'חדש' : 'בקרוב'}</span></a>`).join('\n')}
     </div>
     <!-- sections-grid:end -->`;
 }

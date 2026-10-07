@@ -34,3 +34,16 @@
 - [ ] הסרטונים מ-Cloudinary מתנגנים
 - [ ] `sitemap.xml` מעודכן לעמודים חדשים
 - [ ] עמודי legal לא נפגעו
+
+## האתר החדש (`/v2/` ב-staging)
+
+בנייה, לפי הסדר:
+
+```bash
+node build-sections.js   # תפריט, פוטר, רשימת מדורים, מדף הסרטונים, דפי מדור זמניים
+node build-magazin.js    # כתבות מ-magazin/posts.json: עמוד לכל כתבה, פידים, "חדש מהים" בדף הבית
+```
+
+- מדורים, תפריט ופוטר: `hub.js`. עיצוב: `assets/site.css`.
+- סרטוני המדף: `v2/reels.json` (מספר שאלה + כותרת). הקישור נלקח מ-`data/l11.json`.
+- כתבות: `magazin/posts.json`, ייצוא מה-Back Office. רק `status: "approved"` עולה. שאלת מבחן מוצגת רק כשהיא מסומנת `exam.official: true`.
