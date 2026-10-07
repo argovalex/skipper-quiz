@@ -496,17 +496,34 @@ ${p.notes?`\nהנחיות של אלכס: ${p.notes}`:""}${redo?`\n\nזו גרס�
 {"title":"כותרת עד 70 תווים","slug":"latin-kebab-case-short","excerpt":"שתי שורות, עד 155 תווים","body":"Markdown","rule":"הכלל או התקנה בשפה פשוטה, עם מקור (COLREG כלל X / תקנות השיט) רק אם אתה בטוח","exam":{"q":"שאלה","options":["א","ב","ג","ד"],"correct":0,"explanation":"הסבר"},"caption":"כיתוב לאינסטגרם/פייסבוק עד 400 תווים עם CTA לטעימה החינמית ב-alargov.com","hashtags":["#רישיוןשיט"],"mediaPlan":"הוראת טיפול במדיה","flags":["פרט לבדיקה"],"fit":{"score":8,"why":"נימוק"}}`;
 }
 const fileB64 = f => new Promise((ok,bad)=>{const r=new FileReader();r.onload=()=>ok(String(r.result).split(",")[1]);r.onerror=bad;r.readAsDataURL(f)});
+// Structured output: Claude must answer through the write_post tool, so the API hands back a parsed
+// object. (Free-text JSON broke on Hebrew acronyms like רספ"ן, whose quote mark ends a JSON string.)
+const POST_TOOL={name:"write_post",description:"מחזיר את הפוסט המעובד בעברית",input_schema:{type:"object",
+  required:["title","slug","excerpt","body","rule","exam","caption","hashtags","mediaPlan","flags","fit"],
+  properties:{
+    title:{type:"string"},slug:{type:"string",description:"latin kebab-case"},excerpt:{type:"string"},
+    body:{type:"string",description:"Markdown"},rule:{type:"string"},
+    exam:{type:"object",required:["q","options","correct","explanation"],properties:{q:{type:"string"},options:{type:"array",items:{type:"string"}},correct:{type:"integer"},explanation:{type:"string"}}},
+    caption:{type:"string"},hashtags:{type:"array",items:{type:"string"}},mediaPlan:{type:"string"},
+    flags:{type:"array",items:{type:"string"}},
+    fit:{type:"object",required:["score","why"],properties:{score:{type:"integer"},why:{type:"string"}}}}}};
 async function callClaude(prompt,file,signal){
   const content=[];
   if(file) content.push({type:"image",source:{type:"base64",media_type:file.type||"image/jpeg",data:await fileB64(file)}});
-  content.push({type:"text",text:prompt});
+  content.push({type:"text",text:prompt.replace(/\nהחזר JSON בלבד[\s\S]*$/,"\nהחזר את התוצאה דרך הכלי write_post.")});
   const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal,headers:{
     "x-api-key":cfg.key(),"anthropic-version":"2023-06-01","content-type":"application/json","anthropic-dangerous-direct-browser-access":"true"},
-    body:JSON.stringify({model:cfg.model(),max_tokens:4000,messages:[{role:"user",content}]})});
+    body:JSON.stringify({model:cfg.model(),max_tokens:8000,tools:[POST_TOOL],tool_choice:{type:"tool",name:"write_post"},messages:[{role:"user",content}]})});
   if(r.status===401)throw{code:"auth"};if(r.status===429)throw{code:"rate_limited"};if(r.status===413)throw{code:"prompt_too_large"};
   if(!r.ok){let m="";try{m=(await r.json()).error?.message||""}catch{}throw{code:"http",msg:r.status+" "+m}}
-  const j=await r.json();const text=(j.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("");
-  const s=text.indexOf("{"),e=text.lastIndexOf("}");if(s<0||e<0)throw{code:"invalid_json"};
+  const j=await r.json();
+  console.log("[back-office] Claude response",j);
+  if(j.stop_reason==="max_tokens")throw{code:"truncated"};
+  const t=(j.content||[]).find(b=>b.type==="tool_use");
+  if(t&&t.input)return t.input;
+  // fallback: text answer with JSON in it
+  const text=(j.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("");
+  const s=text.indexOf("{"),e=text.lastIndexOf("}");
   try{return JSON.parse(text.slice(s,e+1))}catch{throw{code:"invalid_json"}}
 }
 async function process(redo){
@@ -523,7 +540,7 @@ async function process(redo){
     fillForm(p);
     await save(p,"מוכן. עבור על הטקסט, תקן ואשר.");
   }catch(e){
-    const m={auth:"מפתח Anthropic לא תקין.",rate_limited:"יותר מדי בקשות. נסה שוב בעוד דקה.",invalid_json:"התשובה לא הגיעה בפורמט הנכון. לחץ שוב.",prompt_too_large:"הטקסט ארוך מדי. קצר את המקור.",http:"העיבוד נכשל: "+(e.msg||"")}[e.code]||(e.name==="AbortError"?"העיבוד נעצר.":"העיבוד נכשל. נסה שוב.");
+    const m={auth:"מפתח Anthropic לא תקין.",rate_limited:"יותר מדי בקשות. נסה שוב בעוד דקה.",invalid_json:"התשובה לא הגיעה בפורמט הנכון (הפרטים בקונסול, F12). לחץ שוב.",truncated:"התשובה נחתכה כי הייתה ארוכה מדי. קצר את המקור או את ההנחיות.",prompt_too_large:"הטקסט ארוך מדי. קצר את המקור.",http:"העיבוד נכשל: "+(e.msg||"")}[e.code]||(e.name==="AbortError"?"העיבוד נעצר.":"העיבוד נכשל. נסה שוב.");
     $("procStatus").textContent=m;if(e.name!=="AbortError")$("procStatus").classList.add("err");
   }finally{$("btnProcess").disabled=false;$("btnRedo").disabled=false;$("btnStop").hidden=true}
 }
