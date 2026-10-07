@@ -23,7 +23,7 @@ const sectionOf = slug => SECTIONS.find(s => s.slug === slug) || { slug, name: s
 const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'), 'utf8'))
   .filter(p => p.status === 'approved')
   .sort((a, b) => b.date.localeCompare(a.date))
-  .map(p => ({ ...p, href: `/${p.section}/${p.slug}.html`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
+  .map(p => ({ ...p, href: `/hadash/#${p.slug}`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
 
 const questions = JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'data', 'l11.json'), 'utf8'));
 const qByNum = new Map(questions.map(q => [q.num, q]));
@@ -261,45 +261,63 @@ function md(text) {
   }).join('\n');
 }
 
-function postPage(p) {
-  const ld = { '@context': 'https://schema.org', '@type': 'Article', headline: p.title, description: p.excerpt,
-    datePublished: p.date, inLanguage: 'he', author: { '@type': 'Person', name: 'אלכס ארגוב' } };
-  const src = p.source || {};
-  const sec = sectionOf(p.section);
-  const body = `
-<article class="post">
-  <header class="post-head" style="--img:url(${p.img})">
-    <div class="wrap">
-      <p class="post-meta"><a href="/${p.section}/">${esc(sec.name)}</a> <time datetime="${p.date}">${fmtDate(p.date)}</time></p>
-      <h1>${esc(p.title)}</h1>
-      <p class="post-lede">${esc(p.excerpt)}</p>
-    </div>
-  </header>
-  <div class="wrap post-grid">
-    <div class="post-body">
-${md(p.body)}
-      <p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p>
-    </div>
-    <aside class="post-side">
-      ${src.url ? `<a class="source" href="${esc(src.url)}" target="_blank" rel="noopener"><span class="source-play">${PLAY}</span><span><b>הסרטון המקורי</b>${esc(src.author || '')}${src.platform ? `, ב${esc(src.platform)}` : ''}</span></a>` : ''}
-      ${p.rule ? `<div class="rule"><h2>הכלל</h2><p>${esc(p.rule)}</p></div>` : ''}
-      <div class="side-cta"><p>מתכוננים למבחן התאוריה?</p><a class="btn btn-gold" href="/kursim/">לקורסים</a></div>
-    </aside>
-  </div>
-</article>`;
-  return page({ title: `${p.title} | אלכס ארגוב`, desc: p.excerpt, active: p.section, body, canonical: p.href,
-    extraHead: `<script type="application/ld+json">${JSON.stringify(ld)}</script>` });
+// Embed the source video inline (the plan: embed from the source with credit, never re-upload).
+function embed(src) {
+  const u = src.url || '';
+  if (/facebook\.com|fb\.watch/.test(u))
+    return `<iframe src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false&width=320&height=568" title="הסרטון המקורי" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  const yt = u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{11})/);
+  if (yt) return `<iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}" title="הסרטון המקורי" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+  const ig = u.match(/instagram\.com\/(?:reel|p)\/([\w-]+)/);
+  if (ig) return `<iframe src="https://www.instagram.com/p/${ig[1]}/embed" title="הסרטון המקורי" loading="lazy"></iframe>`;
+  return '';
 }
 
+// One news item: video beside the headline and a few lines; "קרא עוד" opens the rest in place.
+function newsItem(p) {
+  const src = p.source || {};
+  const video = src.mediaType === 'video' ? embed(src) : '';
+  const credit = src.url ? `<a class="credit" href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.author || 'המקור')}${src.platform ? `, ב${esc(src.platform)}` : ''}</a>` : '';
+  return `<article class="news-item" id="${esc(p.slug)}">
+    <div class="news-media">${video || `<img src="${p.img}" alt="" loading="lazy">`}${credit ? `<p class="news-credit">הסרטון: ${credit}</p>` : ''}</div>
+    <div class="news-txt">
+      <p class="post-meta"><a href="/${p.section}/">${esc(sectionOf(p.section).name)}</a> <time datetime="${p.date}">${fmtDate(p.date)}</time></p>
+      <h2>${esc(p.title)}</h2>
+      <p class="news-lede">${esc(p.excerpt)}</p>
+      <div class="news-more" hidden>
+${md(p.body)}
+        ${p.rule ? `<div class="rule"><h3>הכלל</h3><p>${esc(p.rule)}</p></div>` : ''}
+        <p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p>
+      </div>
+      <button class="read-more" type="button" aria-expanded="false">קרא עוד</button>
+    </div>
+  </article>`;
+}
+
+const NEWS_JS = `<script>
+(function(){
+  function toggle(a,open){var m=a.querySelector('.news-more'),b=a.querySelector('.read-more');
+    m.hidden=!open;b.setAttribute('aria-expanded',open);b.textContent=open?'סגור':'קרא עוד'}
+  document.querySelectorAll('.news-item').forEach(function(a){
+    a.querySelector('.read-more').addEventListener('click',function(){toggle(a,a.querySelector('.news-more').hidden)})});
+  var h=decodeURIComponent(location.hash.slice(1)),t=h&&document.getElementById(h);
+  if(t&&t.classList.contains('news-item')){toggle(t,true);t.scrollIntoView()}
+})();
+</script>`;
+
 function feed(slug, name, blurb, list) {
+  const ld = list.map(p => ({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: p.title,
+    description: p.excerpt, datePublished: p.date, inLanguage: 'he', author: { '@type': 'Person', name: 'אלכס ארגוב' } }));
   const body = `
 ${pagehead(name, blurb, !list.length)}
 <section class="feed">
-  <div class="wrap stories">
-      ${list.map(storyCard).join('\n      ')}
+  <div class="wrap news-list">
+  ${list.map(newsItem).join('\n  ')}
   </div>
-</section>`;
-  return page({ title: `${name} | אלכס ארגוב`, desc: blurb, active: slug, body, canonical: `/${slug}/` });
+</section>
+${NEWS_JS}`;
+  return page({ title: `${name} | אלכס ארגוב`, desc: blurb, active: slug, body, canonical: `/${slug}/`,
+    extraHead: list.length ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : '' });
 }
 
 function videoPage() {
@@ -354,6 +372,5 @@ write('video/index.html', videoPage());
 write('kursim/index.html', coursesPage());
 write(`${NEWS.slug}/index.html`, feed(NEWS.slug, NEWS.name, NEWS.blurb, posts));
 for (const s of SECTIONS) write(`${s.slug}/index.html`, feed(s.slug, s.name, s.blurb, posts.filter(p => p.section === s.slug)));
-for (const p of posts) write(`${p.section}/${p.slug}.html`, postPage(p));
 
-console.log(`site: home, video (${allVideos.length}), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} post page(s)`);
+console.log(`site: home, video (${allVideos.length}), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} news item(s)`);
