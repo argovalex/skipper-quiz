@@ -1,2 +1,4 @@
 # Videos live on Cloudinary, never in git history.
 *.mp4
+# small site loops (<1MB) live in the repo; everything else goes to Cloudinary
+!site/assets/*.mp4
