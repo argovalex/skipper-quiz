@@ -6,7 +6,7 @@
 // 2) Refreshes the shared header / sections grid / footer blocks in v2/index.html.
 const fs = require('fs');
 const path = require('path');
-const { SECTIONS, header, sectionsGrid, footer } = require('./hub');
+const { SECTIONS, FONTS, header, sectionsGrid, footer } = require('./hub');
 
 const ROOT = __dirname;
 const MARK = '<!-- section-placeholder -->';
@@ -18,10 +18,8 @@ function head(title, desc) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#ffffff">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#102948">
+${FONTS}
 <link rel="stylesheet" href="/assets/site.css">`;
 }
 
@@ -33,37 +31,24 @@ ${MARK}
 ${head(`${s.name} | אלכס ארגוב`, s.blurb)}
 </head>
 <body>
-${header(s.slug)}
+${header(s.slug, false)}
 
-<section class="hero" style="padding-bottom:40px">
+<section class="pagehead">
   <div class="wrap">
-    <span class="kicker">מדור</span>
-    <h1 style="font-size:clamp(2rem,4.4vw,3.2rem)">${esc(s.name)}</h1>
-    <p class="lead">${esc(s.blurb)}</p>
-    <div class="hero-actions"><span class="tag" style="position:static;background:var(--sea-soft)">המדור בבנייה</span></div>
+    <h1>${esc(s.name)}</h1>
+    <p>${esc(s.blurb)}</p>
+    <span class="soon">המדור עולה בקרוב</span>
   </div>
 </section>
 
-<section style="padding-top:20px">
+<section class="index">
   <div class="wrap">
-    <div class="band">
-      <div>
-        <h2>13 שאלות ראשונות חינם.</h2>
-        <p>בינתיים, הקורס לרשיון אופנוע ים פתוח. בלי הרשמה ובלי כרטיס אשראי.</p>
-      </div>
-      <div class="hero-actions" style="margin:0">
-        <a class="btn btn-gold" href="https://app.alargov.com/">התחל חינם</a>
-        <a class="btn" style="border-color:#fff;color:#fff" href="/">לקורס</a>
-      </div>
+    <h2>בינתיים באתר</h2>
+    <div class="index-list">
+      <a href="/v2/#watch"><h3>סרטונים</h3><p>שאלות מהמבחן, דקה של הסבר לכל אחת.</p><span class="st">פתוח</span></a>
+      <a href="/"><h3>קורס רשיון אופנוע ים</h3><p>13 שיעורים, כל שאלות המאגר, ו-13 שאלות ראשונות חינם.</p><span class="st">פתוח</span></a>
     </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <span class="kicker">עוד באתר</span>
-    <h2>שאר המדורים</h2>
-    ${sectionsGrid(s.slug)}
+    ${sectionsGrid(s.slug).replace('<div class="index-list">', '<div class="index-list" style="border-top:0;margin-top:0">')}
   </div>
 </section>
 
@@ -71,6 +56,21 @@ ${footer()}
 </body>
 </html>
 `;
+}
+
+// Vertical question videos for the homepage rail. Titles in v2/reels.json, video URLs from the
+// canonical question data (data/l11.json), so a re-rendered question updates here on the next build.
+function reels() {
+  const list = JSON.parse(fs.readFileSync(path.join(ROOT, 'v2', 'reels.json'), 'utf8'));
+  const qs = JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'data', 'l11.json'), 'utf8'));
+  const byNum = new Map(qs.map(q => [q.num, q]));
+  const cards = list.map(r => {
+    const q = byNum.get(r.num);
+    if (!q || !q.videoUrl) throw new Error(`no videoUrl for question ${r.num}`);
+    const poster = q.videoUrl.replace('/video/upload/', '/video/upload/so_3,w_500,c_scale/').replace(/\.mp4$/, '.jpg');
+    return `    <button class="reel" type="button" data-src="${esc(q.videoUrl)}"><span class="thumb"><img src="${esc(poster)}" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="cap"><b>${esc(r.title)}</b><span>${esc(q.topic)}</span></span></button>`;
+  });
+  return `<!-- reels:start -->\n${cards.join('\n')}\n    <!-- reels:end -->`;
 }
 
 const swap = (html, name, block) => {
@@ -91,7 +91,8 @@ for (const s of SECTIONS) {
 
 const home = path.join(ROOT, 'v2', 'index.html');
 let html = fs.readFileSync(home, 'utf8');
-html = swap(html, 'site-header', header(null));
+html = swap(html, 'site-header', header(null, true));
+html = swap(html, 'reels', '    ' + reels());
 html = swap(html, 'sections-grid', '    ' + sectionsGrid(null));
 html = swap(html, 'site-footer', footer());
 fs.writeFileSync(home, html);
