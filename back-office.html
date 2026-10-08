@@ -161,8 +161,10 @@ dialog form{display:flex;flex-direction:column;gap:14px}
             <option value="takalot">לומדים מתקלות</option><option value="milon">מילון ימי</option><option value="klim">כלים</option><option value="israel">ישראל במים</option><option value="ahrei">אחרי הרישיון</option>
           </select></label>
           <label>קהל<select id="fAudience"><option value="11">אופנוע ים</option><option value="12-13">משיט 12/13 · סירת מנוע</option><option value="30">משיט 30 · יאכטה</option><option value="all">כללי · כל השייטים</option></select></label>
-          <label>תמונה לרקע הקאבר (לא חובה)<input id="fImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+          <label>תמונה לפוסט ולקאבר (לא חובה)<input id="fImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+          <label>סרטון לפוסט (קובץ, לא חובה)<input id="fVideo" type="file" accept="video/mp4,video/webm,video/quicktime"></label>
         </section>
+        <p id="mediaNow" class="hint"></p>
         <label>הנחיות ל-Claude<textarea id="fNotes" placeholder="למשל: לחבר לכלל 9 בתעלות צרות, להזכיר את מרינה הרצליה"></textarea></label>
 
         <div class="bar">
@@ -333,7 +335,7 @@ function fillForm(p){
   $("statusPill").className="pill s-"+p.status;$("statusPill").textContent=STATUS[p.status]||p.status;
   $("fUrl").value=p.source.url;$("fPlatform").value=p.source.platform;$("fMedia").value=p.source.mediaType;$("fAuthor").value=p.source.author;
   $("fText").value=p.original.text;$("fMediaDesc").value=p.original.mediaDesc;$("fSection").value=SECTIONS[p.section]&&p.section!=="sidrot"?p.section:"takalot";$("fAudience").value=p.audience||"all";$("fNotes").value=p.notes||"";
-  $("fImage").value="";$("fRedo").value="";$("procStatus").textContent=draft?"יש שינויים מקומיים שלא נשמרו ל-GitHub":"";$("procStatus").classList.remove("err");
+  $("fImage").value="";$("fVideo").value="";$("fRedo").value="";setMedia(p);$("procStatus").textContent=draft?"יש שינויים מקומיים שלא נשמרו ל-GitHub":"";$("procStatus").classList.remove("err");
   fillOut(p.out);
 }
 function fillOut(o){
@@ -350,6 +352,7 @@ function fillOut(o){
 function readForm(p){
   p.source={url:$("fUrl").value.trim(),platform:$("fPlatform").value,mediaType:$("fMedia").value,author:$("fAuthor").value.trim()};
   p.original={text:$("fText").value,mediaDesc:$("fMediaDesc").value};p.section=$("fSection").value;p.audience=$("fAudience").value;p.notes=$("fNotes").value;
+  if(media.image)p.image=media.image;else delete p.image;if(media.video)p.video=media.video;else delete p.video;
   if(!$("outBlock").hidden&&p.out){
     const c=document.querySelector('input[name=correct]:checked');
     p.out={...p.out,title:$("oTitle").value,slug:$("oSlug").value.trim(),excerpt:$("oExcerpt").value,body:$("oBody").value,rule:$("oRule").value,
@@ -363,7 +366,7 @@ function working(){return current()||$("form")._draft||($("form")._draft=blankPo
 // local autosave (no commit per keystroke)
 let autoT=null;
 $("form").addEventListener("input",e=>{
-  if(e.target.id==="fImage"||e.target.id==="fRedo")return;
+  if(e.target.id==="fImage"||e.target.id==="fVideo"||e.target.id==="fRedo")return;
   clearTimeout(autoT);
   autoT=setTimeout(()=>{const p=readForm(structuredClone(working()));LS.set("sq_bo_draft_"+p.id,JSON.stringify(p));$("procStatus").classList.remove("err");$("procStatus").textContent="נשמר מקומית · לחץ שמור כדי לשלוח ל-GitHub"},800);
 });
@@ -387,7 +390,45 @@ function embed(u){
 }
 const siteBase = location.href.replace(/[^/]*$/,"") + "course/site/";
 let bgImg=null,coverUrl="";
-$("fImage").addEventListener("change",()=>{const f=$("fImage").files[0];if(!f){bgImg=null;renderPreview();return}const im=new Image();im.onload=()=>{bgImg=im;renderPreview()};im.src=URL.createObjectURL(f)});
+// Media belongs to one post: image/video files are committed to course/site/assets/posts/ and the post keeps their site paths.
+const MEDIA_DIR="course/site/assets/posts/";
+let media={image:"",video:""},localUrl={image:"",video:""};
+const rawUrl=p=>p?`https://raw.githubusercontent.com/${REPO}/${encodeURIComponent(cfg.branch())}/course/site${p}`:"";
+const mediaSrc=k=>localUrl[k]||rawUrl(media[k]);
+function setMedia(p){
+  media={image:p.image&&p.image.startsWith("/assets/posts/")?p.image:"",video:p.video||""};localUrl={image:"",video:""};
+  bgImg=null;if(media.image){const im=new Image();im.crossOrigin="anonymous";im.onload=()=>{bgImg=im;renderPreview()};im.src=rawUrl(media.image)}
+  renderMediaNow();
+}
+function renderMediaNow(){
+  const parts=[];
+  if(media.image)parts.push(`תמונה: <span class="ltr">${esc(media.image.split("/").pop())}</span> <a href="#" data-rm="image">הסר</a>`);
+  if(media.video)parts.push(`סרטון: <span class="ltr">${esc(media.video.split("/").pop())}</span> <a href="#" data-rm="video">הסר</a>`);
+  $("mediaNow").innerHTML=parts.length?"מצורף לפוסט הזה · "+parts.join(" · "):"";
+}
+$("mediaNow").addEventListener("click",e=>{const a=e.target.closest("[data-rm]");if(!a)return;e.preventDefault();const k=a.dataset.rm;
+  media[k]="";localUrl[k]="";if(k==="image")bgImg=null;renderMediaNow();renderPreview();
+  $("procStatus").textContent="ההסרה תישמר כשתלחץ שמור"});
+async function uploadMedia(kind,f){
+  const tok=cfg.gh();if(!tok){toast("חסר GitHub Token בהגדרות");return}
+  if(f.size>45*1024*1024){toast("הקובץ גדול מ-45MB. כווץ אותו ונסה שוב");return}
+  const p=working(),ext=(f.name.split(".").pop()||"bin").toLowerCase().replace(/[^a-z0-9]/g,"");
+  const name=`${p.id}-${kind}.${ext}`,repoPath=MEDIA_DIR+name,api=`https://api.github.com/repos/${REPO}/contents/${repoPath}`;
+  $("procStatus").classList.remove("err");$("procStatus").textContent=`מעלה ${kind==="video"?"סרטון":"תמונה"} ל-GitHub…`;
+  try{
+    const body={message:`back-office: ${kind==="video"?"סרטון":"תמונה"} · ${p.out?.slug||p.id}`,content:await fileB64(f),branch:cfg.branch()};
+    const g=await fetch(api+"?ref="+encodeURIComponent(cfg.branch()),{headers:{Authorization:`Bearer ${tok}`},cache:"no-store"});
+    if(g.ok)body.sha=(await g.json()).sha;
+    const r=await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${tok}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    media[kind]="/assets/posts/"+name;localUrl[kind]=URL.createObjectURL(f);renderMediaNow();
+    const saved=current();
+    if(saved){const keep={...localUrl};if(await save(saved,"הקובץ הועלה ושויך לפוסט")){fillForm(saved);localUrl=keep;renderPreview()}}
+    else $("procStatus").textContent="הקובץ הועלה. לחץ שמור כדי לשייך אותו לפוסט";
+  }catch(e){$("procStatus").classList.add("err");$("procStatus").textContent="ההעלאה נכשלה ("+e.message+")"}
+}
+$("fImage").addEventListener("change",()=>{const f=$("fImage").files[0];if(!f)return;const im=new Image();im.onload=()=>{bgImg=im;renderPreview()};im.src=URL.createObjectURL(f);uploadMedia("image",f)});
+$("fVideo").addEventListener("change",()=>{const f=$("fVideo").files[0];if(f)uploadMedia("video",f)});
 function wrapLines(ctx,text,maxW){const words=String(text).split(/\s+/).filter(Boolean),lines=[];let line="";for(const w of words){const t=line?line+" "+w:w;if(ctx.measureText(t).width>maxW&&line){lines.push(line);line=w}else line=t}if(line)lines.push(line);return lines}
 function drawCover(){
   const cv=$("cover"),ctx=cv.getContext("2d"),W=1080,H=1350;ctx.clearRect(0,0,W,H);
@@ -412,7 +453,7 @@ function drawCover(){
 function renderPreview(){
   drawCover();
   const url=$("fUrl").value.trim(),author=$("fAuthor").value.trim(),isVideo=$("fMedia").value==="video";
-  const video=isVideo?embed(url):"";
+  const video=media.video?`<video src="${esc(mediaSrc("video"))}" controls playsinline preload="metadata" style="width:100%;border-radius:14px;background:#000"></video>`:isVideo?embed(url):"";
   const sec=SECTIONS[$("fSection").value];
   const doc=`<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><base href="${siteBase}">
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">

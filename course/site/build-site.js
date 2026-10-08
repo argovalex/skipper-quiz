@@ -24,7 +24,7 @@ const sectionOf = slug => SECTIONS.find(s => s.slug === slug) || { slug, name: s
 const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'), 'utf8'))
   .filter(d => (d.status === 'approved' || d.status === 'published') && d.out && d.out.slug)
   .map(d => ({ id: d.id, slug: d.out.slug, title: d.out.title, excerpt: d.out.excerpt, body: d.out.body, rule: d.out.rule,
-    exam: d.out.exam, section: d.section, source: d.source, image: d.image,
+    exam: d.out.exam, section: d.section, source: d.source, image: d.image, video: d.video,
     date: (d.approvedAt || d.updated || d.created).slice(0, 10) }))
   .sort((a, b) => b.date.localeCompare(a.date))
   .map(p => ({ ...p, href: `/hadash/#${p.slug}`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
@@ -280,7 +280,10 @@ function embed(src) {
 // One news item: video beside the headline and a few lines; "קרא עוד" opens the rest in place.
 function newsItem(p) {
   const src = p.source || {};
-  const video = src.mediaType === 'video' ? embed(src) : '';
+  // A video file attached in the Back Office wins over embedding the source post.
+  const video = p.video
+    ? `<video src="${esc(p.video)}" controls playsinline preload="metadata"${p.image ? ` poster="${esc(p.image)}"` : ''}></video>`
+    : src.mediaType === 'video' ? embed(src) : '';
   const credit = src.url ? `<a class="credit" href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.author || 'המקור')}${src.platform ? `, ב${esc(src.platform)}` : ''}</a>` : '';
   return `<article class="news-item" id="${esc(p.slug)}">
     <div class="news-media">${video || `<img src="${p.img}" alt="" loading="lazy">`}${credit ? `<p class="news-credit">הסרטון: ${credit}</p>` : ''}</div>
@@ -326,7 +329,7 @@ ${NEWS_JS}`;
 
 function videoPage() {
   // News posts built around a video show here too, newest first.
-  const seaVideos = posts.filter(p => (p.source || {}).mediaType === 'video');
+  const seaVideos = posts.filter(p => p.video || (p.source || {}).mediaType === 'video');
   const topics = [...new Set(allVideos.map(v => v.topic))];
   const body = `
 ${pagehead(VIDEO.name, VIDEO.blurb)}
