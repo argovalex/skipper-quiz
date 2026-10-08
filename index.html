@@ -843,14 +843,14 @@ function renderList() {
   questions.forEach((q, i) => {
     const text = (q.q_he || q.q_en || '').toLowerCase();
     if(!inActiveScope(q)) return;
-    if(search && !text.includes(search) && !String(q.num).includes(search)) return;
+    if(search && !text.includes(search) && !String(q.num).includes(search) && !String(q.sq5_num||'').includes(search)) return;
     if(topicF && q.topic !== topicF) return;
 
     const el = document.createElement('div');
     el.className = 'q-item' + (i === currentIdx ? ' active' : '');
     el.onclick = () => selectQuestion(i);
     el.innerHTML = `
-      <div class="q-item-num">#${q.num} · ${q.source||'?'}</div>
+      <div class="q-item-num">#${q.num}${q.sq5_num?` · SQ5 ${q.sq5_num}`:''} · ${q.source||'?'}</div>
       <div class="q-item-text">${(q.q_he||q.q_en||'שאלה חדשה').substring(0,60)}${(q.q_he||q.q_en||'').length>60?'...':''}</div>
       <div class="q-item-topic">
         <span class="q-item-badge ${q.answer_confirmed?'':'unconfirmed'}">${q.answer_confirmed?'✓ מאושר':'⚠ לא מאושר'}</span>
@@ -933,7 +933,7 @@ function renderEditor(q) {
   ed.innerHTML = `
     <div class="section-title">פרטי שאלה</div>
     <div class="row2">
-      <div class="field"><label>מספר שאלה</label><input id="f-num" type="number" value="${q.num||''}"></div>
+      <div class="field"><label>מספר שאלה${q.sq5_num?` <span style="color:var(--muted)">(SQ5 ${q.sq5_num})</span>`:''}</label><input id="f-num" type="number" value="${q.num||''}"></div>
       <div class="field"><label>מקור</label><input id="f-source" value="${escAttr(q.source)}"></div>
     </div>
     <div class="field"><label>נושא</label>
