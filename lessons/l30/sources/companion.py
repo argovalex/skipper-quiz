@@ -37,8 +37,13 @@ HEADINGS = {
     's02_log_history': 'למה קשר', 's03_speed_formula': 'מטר לשנייה', 's04_speed_q12': 'חישוב מהירות', 's05_speed_q13': 'החבל עם הקשרים',
     's06_impeller_log': 'אימפלר', 's07_log_gps_q48': 'מים מול קרקע', 's08_wind_true_apparent': 'רוח אמיתית ויחסית',
     's09_wind_q11': 'סירה עומדת', 's10_wind_q25': 'סירה בתנועה',
+    # lesson 8
+    's02_lead_line_q40': 'חבל ומשקולת', 's03_uses_q31_q35': 'שימושים', 's04_echo_principle': 'עקרון ההד',
+    's05_transducer_q165': 'תפקיד הממיר', 's06_transducer_q32': 'איפה הממיר', 's07_care_q33_34_176': 'אחזקת הממיר',
+    's08_accuracy_q37': 'דיוק', 's09_range_q135': 'טווח ופולסים', 's10_depth_formula': 'עומק, שוקע וגאות',
+    's11_depth_q38': 'חישוב עומק במפה', 's12_depth_q36_q39': 'מאיפה ההבדל', 's13_depth_q178': 'מד עומק מכויל',
     # shared
-    's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום',
+    's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }
 
 vo, out, title = sys.argv[1:4]
