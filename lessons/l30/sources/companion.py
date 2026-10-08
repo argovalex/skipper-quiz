@@ -42,6 +42,12 @@ HEADINGS = {
     's05_transducer_q165': 'תפקיד הממיר', 's06_transducer_q32': 'איפה הממיר', 's07_care_q33_34_176': 'אחזקת הממיר',
     's08_accuracy_q37': 'דיוק', 's09_range_q135': 'טווח ופולסים', 's10_depth_formula': 'עומק, שוקע וגאות',
     's11_depth_q38': 'חישוב עומק במפה', 's12_depth_q36_q39': 'מאיפה ההבדל', 's13_depth_q178': 'מד עומק מכויל',
+    # lesson 9
+    's02_principle': 'עקרון הפעולה', 's03_detects_q50': 'מה המכ״מ רואה', 's04_uses_q49_q161': 'שימושי המכ״מ',
+    's05_nav_q146': 'ניווט במכ״מ', 's06_display_ebl_vrm': 'המסך: EBL, VRM וסמן', 's07_range_q63': 'טווח הגילוי',
+    's08_quality_q80_q164': 'מה משפיע על הקליטה', 's09_pulse_q163': 'אורך הפולס', 's10_discrimination_q114': 'הפרדה בטווח',
+    's11_bands_beam': 'תדרים ואנטנה', 's12_refraction_q131': 'התעקמות הגל', 's13_gain_q76': 'GAIN',
+    's14_rain_q79_q162': 'גשם', 's15_standby_q82': 'סטנד ביי', 's16_summary': 'סיכום',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }
