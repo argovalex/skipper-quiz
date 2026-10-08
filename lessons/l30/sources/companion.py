@@ -48,6 +48,11 @@ HEADINGS = {
     's08_quality_q80_q164': 'מה משפיע על הקליטה', 's09_pulse_q163': 'אורך הפולס', 's10_discrimination_q114': 'הפרדה בטווח',
     's11_bands_beam': 'תדרים ואנטנה', 's12_refraction_q131': 'התעקמות הגל', 's13_gain_q76': 'GAIN',
     's14_rain_q79_q162': 'גשם', 's15_standby_q82': 'סטנד ביי', 's16_summary': 'סיכום',
+    # lesson 10
+    's02_relative_bearings': 'ירוק ואדום', 's03_head_up_north_up': 'תמונה אמיתית ויחסית', 's04_true_bearing_calc': 'מיחסי לאמיתי',
+    's05_exam_turn': 'שאלה מהמבחן', 's06_collision_q189': 'סכנת התנגשות', 's07_plot_q81': 'שרטוט על המסך',
+    's08_compass_q23': 'בדיקה במצפן', 's09_more_controls': 'TUNING ו-INTERFERENCE REJECTION',
+    's10_antenna_location': 'מיקום האנטנה', 's11_reflector_q105': 'מחזיר הד מכ״מ', 's12_summary': 'סיכום',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }
