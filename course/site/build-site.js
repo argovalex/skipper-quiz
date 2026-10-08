@@ -268,6 +268,9 @@ function md(text) {
 // Embed the source video inline (the plan: embed from the source with credit, never re-upload).
 function embed(src) {
   const u = src.url || '';
+  // A Facebook post (not a reel/video) only renders through the post plugin.
+  if (/facebook\.com/.test(u) && !/\/(reel|videos|watch)\b|fb\.watch/.test(u))
+    return `<iframe class="fb-post" src="https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(u)}&show_text=true&width=500" title="הפוסט המקורי" loading="lazy" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
   if (/facebook\.com|fb\.watch/.test(u))
     return `<iframe src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false&width=320&height=568" title="הסרטון המקורי" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
   const yt = u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{11})/);
