@@ -1,0 +1,8 @@
+Lesson 12 (GPS) photos, lessons/l30/sources/assets:
+u12_sat.jpg           "GPS Satellite NASA art-iif.jpg", NASA, Public domain (Wikimedia Commons)
+u12_furuno.jpg        "Furuno Electric GPS Navigator GP-80 at Greenpeace's Rainbow Warrior II 20110108.jpg", Flickr user umi, CC BY-SA 2.0 (Wikimedia Commons)
+u12_plotter.jpg       "OpenSeaMap auf Garmin-Kartenplotter GPSmap526 Screen 1.jpg", RheinSkipper, CC BY-SA 3.0 (Wikimedia Commons)
+u12_raymarine.jpg     "BVI 2009-273 (3692273152).jpg", Fairley, CC BY 2.0 (Wikimedia Commons)
+u12_antenna_alex.jpg  Alex's photo (GPS antenna on the stern rail)
+u12_pier.jpg          AI scene, Higgsfield nano_banana (yacht at the quay, 3 landmarks)
+Credit for the Commons photos is burned onto each card that uses them.
