@@ -38,14 +38,25 @@ def tts(text, out):
 
 # Answer letters (Alex 2026-10-05): raw \u05D3 read as "delet", \u05D1 as "bayit". TTS-only; display text keeps the bare letter.
 LETTER_NAME = {'\u05D0': '\u05D0\u05B8\u05DC\u05B6\u05E3', '\u05D1': '\u05D1\u05B5\u05BC\u05D9\u05EA', '\u05D2': '\u05D2\u05B4\u05BC\u05D9\u05DE\u05B6\u05DC', '\u05D3': '\u05D3\u05B8\u05BC\u05DC\u05B6\u05EA'}
-# Prefixed letters (\u05D5\u05D1', \u05D5\u05D3') stay raw: the editor reads them right, the substituted form came out wrong.
-LETTER_RE = re.compile(r"(?<![\u05D0-\u05EA\u0591-\u05C7])()([\u05D0\u05D1\u05D2\u05D3])([:'\u05F3])(?![\u05D0-\u05EA])")
+# Alex 2026-10-09: every answer letter must sound like the alphabet name, including "\u05D5\u05D3'?" and "\u05D1 \u05D5-\u05D2".
+#   "\u05D1'?" -> "\u05D1\u05B5\u05BC\u05D9\u05EA."   (a lone letter-question is read flat, like reciting the alphabet)
+#   "\u05D5\u05D3'?" -> "\u05D3\u05B8\u05BC\u05DC\u05B6\u05EA."  (the \u05D5 prefix is dropped: "\u05D5\u05D1\u05B5\u05BC\u05D9\u05EA" came out unintelligible)
+#   "\u05D5\u05D2'," / "\u05D1 \u05D5-\u05D2" -> "\u05D5\u05D2\u05DD \u05D2\u05B4\u05BC\u05D9\u05DE\u05B6\u05DC"  (mid-sentence "and C" keeps its meaning)
+LETTER_RE = re.compile(r"(?<![\u05D0-\u05EA\u0591-\u05C7])(\u05D5?)([\u05D0\u05D1\u05D2\u05D3])([:'\u05F3])(\??)(?![\u05D0-\u05EA])")
+PAIR_RE = re.compile(r"(?<![\u05D0-\u05EA\u0591-\u05C7])([\u05D0\u05D1\u05D2\u05D3])['\u05F3]? \u05D5-?([\u05D0\u05D1\u05D2\u05D3])['\u05F3]?(?![\u05D0-\u05EA])")
+
+def letter_sub(m):
+    pre, ch, mark, q = m.groups(); name = LETTER_NAME[ch]
+    if q: return name + '.'                                   # "\u05D1'?" / "\u05D5\u05D3'?": standalone, flat
+    if mark == ':': return name + ':'
+    return ('\u05D5\u05D2\u05DD ' if pre else '') + name
 # 3s pause after "\u05D4\u05EA\u05E9\u05D5\u05D1\u05D4 \u05D4\u05E0\u05DB\u05D5\u05E0\u05D4 \u05D4\u05D9\u05D0" (Alex 2026-10-05): split there, TTS each piece, join with silence.
 ANSWER_SPLIT = re.compile(r'(?<=\u05D4\u05EA\u05E9\u05D5\u05D1\u05D4 \u05D4\u05E0\u05DB\u05D5\u05E0\u05D4 \u05D4\u05D9\u05D0)\s*')
 PAUSE = 3.0
 
 def pieces(t, lex):
-    return [niqqud_apply(LETTER_RE.sub(lambda m: m.group(1) + LETTER_NAME[m.group(2)] + (m.group(3) if m.group(3) == ':' else ''), p), lex)
+    pair = lambda m: LETTER_NAME[m.group(1)] + ' וגם ' + LETTER_NAME[m.group(2)]
+    return [niqqud_apply(LETTER_RE.sub(letter_sub, PAIR_RE.sub(pair, p)), lex)
             for p in ANSWER_SPLIT.split(t) if p.strip()]
 
 def main(vo, aud):

@@ -53,6 +53,10 @@ HEADINGS = {
     's05_exam_turn': 'שאלה מהמבחן', 's06_collision_q189': 'סכנת התנגשות', 's07_plot_q81': 'שרטוט על המסך',
     's08_compass_q23': 'בדיקה במצפן', 's09_more_controls': 'TUNING ו-INTERFERENCE REJECTION',
     's10_antenna_location': 'מיקום האנטנה', 's11_reflector_q105': 'מחזיר הד מכ״מ', 's12_summary': 'סיכום',
+    # lesson 11
+    's02_system': 'חלקי המערכת', 's03_how_to_use': 'הפעלה', 's04_accuracy_q28': 'דיוק', 's05_advantage_q26': 'היתרון',
+    's06_power_q10': 'צריכת חשמל', 's07_disadvantages_q29': 'החסרונות', 's08_windvane_q17': 'הגה רוח',
+    's09_windvane_q30': 'הגה רוח: בעד ונגד',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }
