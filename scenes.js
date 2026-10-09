@@ -4526,7 +4526,8 @@ function generateQuizHTML(q, lang, autoPlay=false) {
   const sceneContent = q.mediaUrl
     ? (q.mediaType === 'video'
         ? `<video src="${q.mediaUrl}" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"></video>`
-        : `<img src="${q.mediaUrl}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1">`)
+        // composed night-lights images (photo + booklet image) must show whole: contain on navy, not cover
+        : `<img src="${q.mediaUrl}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:${/_night\.jpg$/.test(q.mediaUrl) ? 'contain;background:#0E1A2D' : 'cover'};z-index:1">`)
     : '';
   const svgZindex = q.mediaUrl ? 'position:absolute;inset:0;z-index:2;' : '';
 
