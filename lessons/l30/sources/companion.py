@@ -57,6 +57,12 @@ HEADINGS = {
     's02_system': 'חלקי המערכת', 's03_how_to_use': 'הפעלה', 's04_accuracy_q28': 'דיוק', 's05_advantage_q26': 'היתרון',
     's06_power_q10': 'צריכת חשמל', 's07_disadvantages_q29': 'החסרונות', 's08_windvane_q17': 'הגה רוח',
     's09_windvane_q30': 'הגה רוח: בעד ונגד',
+    # lesson 12
+    's02_what': 'מה זה GPS', 's03_how': 'איך זה עובד', 's04_fix_q41': 'איך מתקבל אתר', 's05_name_q42': 'ממ"ג', 's06_sats_q45': 'כמה לוויינים',
+    's07_features': 'מאפיינים', 's08_settings': 'הגדרות והתראות', 's09_position_only': 'מיקום בלבד', 's10_speed_q188': 'מדידת מהירות',
+    's11_anchor_q47': 'עוגן בזרם', 's12_current_q104': 'זרם נגדי', 's13_compass': 'מצפן מול GPS', 's14_functions': 'פונקציות',
+    's15_route_q160': 'ROUTE, TRACK, CTS', 's16_mob_q44': 'MOB מול MARK', 's17_errors': 'דיוק ודאטום', 's18_dop_q137': 'PDOP',
+    's19_accuracy_q158': 'בדיקת דיוק', 's20_antenna_q46': 'האנטנה', 's21_summary': 'סיכום',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }
