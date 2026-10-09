@@ -1,6 +1,6 @@
 // AUTO-GENERATED from references/niqqud-lexicon.md by
 // tools/quiz-app/gen-vo-lexicon.js. Do NOT edit by hand — edit the .md and re-run.
-// 333 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
+// 334 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
 const VO_LEXICON = [
   ["FLOAT FREE ציפה חופשית","FLOAT FREE ציפַה חופשית"],
   ["במיליים ימיים.","בְּמיַלִיִים יַמִּיִּים."],
@@ -292,7 +292,8 @@ const VO_LEXICON = [
   ["נמנו","נִמנו"],
   ["פנים","פָנים"],
   ["מורד","מורָד"],
-  ["דייג","דָיִיג"],
+  ["דייג","דָיָיג"],
+  ["מספר","מִספָר"],
   ["ניתן","נִיתן"],
   ["הפקד","הפָקָד"],
   ["מכ\"מ","מכּ\"מ"],
