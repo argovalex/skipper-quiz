@@ -238,8 +238,6 @@ function renderAt(t) {
   const st = stateAt(t), v = vectors(st.twa, st.s);
   wakeDist += (t - lastT) * st.s; lastT = t;
   background(t); windStreaks(t);
-  // wind source marker at the top of the diagram
-  txt('הרוח נושבת מכאן ↓', 560, 40, 22, COL.tw, 800, 'center');
   const cx = 330, cy = 400;
   wake(cx, cy, v.head, st.s, t);
   const m = boat(cx, cy, v, st.twa);
