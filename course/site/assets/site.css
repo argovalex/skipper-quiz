@@ -232,3 +232,15 @@ html.lenis,html.lenis body{height:auto}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 .pagehead .app-btn{margin-top:18px}
+/* App showcase (section with app.shots, e.g. /milon/) */
+.app-show{padding:8px 0 48px}
+.app-show-in{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.app-copy h2{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-bottom:12px}
+.app-copy p{color:var(--dim);margin:0 0 14px;max-width:52ch}
+.app-copy .btn{margin-top:8px}
+.app-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.app-shots figure{margin:0}
+.app-shots img{display:block;width:100%;height:auto;border-radius:22px;border:6px solid var(--deep);box-shadow:0 18px 40px rgba(16,41,72,.22);background:var(--deep)}
+.app-shots figure:nth-child(2){margin-top:32px}
+.app-shots figcaption{font-size:.9rem;color:var(--dim);margin-top:10px;text-align:center}
+@media (max-width:760px){.app-show-in{grid-template-columns:1fr}.app-shots figure:nth-child(2){margin-top:0}}

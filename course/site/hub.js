@@ -3,8 +3,16 @@
 // Topic sections (each gets /<slug>/). Magazine and series were dropped (Alex, 2026-10-07).
 const SECTIONS = [
   { slug: 'takalot', name: 'לומדים מתקלות', blurb: 'אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה לומדים מזה.', img: 'crew' },
-  { slug: 'milon', name: 'מילון ימי', blurb: 'עמוד לכל מונח ימי, בעברית ובאנגלית.', img: 'globe',
-    app: { href: 'https://play.google.com/store/apps/details?id=com.alexskipper.marinedictionary&hl=he', label: 'להורדת המילון מ-Google Play' } },
+  { slug: 'milon', name: 'מילון ימי', blurb: '764 מונחים ימיים בעברית, באנגלית ובצרפתית, באפליקציה לאנדרואיד.', img: 'globe',
+    app: { href: 'https://play.google.com/store/apps/details?id=com.alexskipper.marinedictionary&hl=he', label: 'להורדת המילון מ-Google Play',
+      intro: [
+        'מחפשים בכל אחת משלוש השפות ומקבלים את המונח בשתיים האחרות, עם תג נושא: ציוד, כלי שייט, הפלגה ועוד.',
+        'את המונחים באנגלית ובצרפתית אפשר לשמוע בהגייה נכונה. שומרים מונחים למועדפים, עוברים למצב לילה, והכל עובד בלי אינטרנט, גם בלב ים. האפליקציה לא אוספת שום מידע.',
+      ],
+      shots: [
+        { img: '/assets/milon/search.jpg', cap: 'חיפוש "מדחף" מחזיר את המונח באנגלית ובצרפתית' },
+        { img: '/assets/milon/term.jpg', cap: 'דף מונח: תורן בשלוש השפות, עם השמעה' },
+      ] } },
   { slug: 'klim', name: 'כלים', blurb: 'סימולטור קריאת MAYDAY, משחק זכות קדימה, בוחן אורות ותנאי ים במרינות.', img: 'vhf' },
   { slug: 'israel', name: 'ישראל במים', blurb: 'מרינות, השכרת אופנוע ים, קניית סירה משומשת, ביטוח ורישוי.', img: 'motorboat' },
   { slug: 'ahrei', name: 'אחרי הרישיון', blurb: 'צ\'קליסט להפלגה ראשונה, העונה הראשונה, והמעבר ל-ICC.', img: 'night' },
