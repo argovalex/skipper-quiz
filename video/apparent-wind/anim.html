@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:Assistant;font-weight:600;src:url(fonts/assistant-hebrew-600-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:Assistant;font-weight:600;src:url(fonts/assistant-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF}
+@font-face{font-family:Assistant;font-weight:700;src:url(fonts/assistant-hebrew-700-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:Assistant;font-weight:700;src:url(fonts/assistant-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF}
+@font-face{font-family:Assistant;font-weight:800;src:url(fonts/assistant-hebrew-800-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:Assistant;font-weight:800;src:url(fonts/assistant-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF}
+@font-face{font-family:Karantina;font-weight:700;src:url(fonts/karantina-hebrew-700-normal.woff2) format('woff2')}
+html,body{margin:0;background:#0a1c33}
+canvas{display:block}
+</style>
+</head>
+<body>
+<canvas id="c" width="1280" height="720"></canvas>
+<script>
+// Apparent-wind explainer: true wind constant, boat speed changes with point of sail.
+// renderAt(t) draws the frame at t seconds (deterministic, for frame-by-frame capture).
+const C = document.getElementById('c'), X = C.getContext('2d');
+const W = 1280, H = 720;
+const COL = { navy:'#102948', deep:'#0a1c33', line:'#26588b', sky:'#d6e7f5', gold:'#f3c24c',
+  tw:'#4aa3ff', bs:'#ff5a4a', aw:'#2fd17a', white:'#f5f8fc', dim:'#93aecb' };
+const TW = 12; // true wind, knots — constant
+const PTS = [
+  { he:'מפרשים קרובים לרוח', en:'Close Hauled', twa:45,  s:5.0, note:'שטים קרוב לרוח. הרוח המדומה חזקה מהאמיתית ונכנסת מקדימה.' },
+  { he:'רוח צד קדמית',      en:'Close Reach', twa:65,  s:6.0, note:'פותחים קצת מהרוח. הסירה מאיצה.' },
+  { he:'רוח צד',            en:'Beam Reach',  twa:90,  s:6.5, note:'הרוח האמיתית בדיוק מהצד. כאן הסירה הכי מהירה.' },
+  { he:'רוח צד אחורית',     en:'Broad Reach', twa:125, s:5.5, note:'הרוח עוברת מאחור. הרוח המדומה נחלשת.' },
+  { he:'רוח אחורית-צדית',   en:'Very Broad Reach', twa:155, s:4.5, note:'המהירות יורדת, והרוח שמרגישים על הסיפון חלשה עוד יותר.' },
+  { he:'רוח גב',            en:'Run',         twa:180, s:3.5, note:'בורחים עם הרוח: רוח מדומה = 12 פחות מהירות הסירה.' },
+];
+const INTRO = 3, HOLD = 4.5, MOVE = 1.8, OUTRO = 5.5;
+const DURATION = INTRO + PTS.length * HOLD + (PTS.length - 1) * MOVE + OUTRO;
+window.DURATION = DURATION;
+
+const ease = x => x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2;
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, k) => a + (b - a) * k;
+
+// Where are we in the timeline?
+function stateAt(t) {
+  let u = t - INTRO, idx = 0, k = 0;
+  if (u < 0) return { twa: PTS[0].twa, s: PTS[0].s, idx: 0, k: 0, intro: t / INTRO, outro: 0 };
+  for (let i = 0; i < PTS.length; i++) {
+    if (u < HOLD) return { twa: PTS[i].twa, s: PTS[i].s, idx: i, k: 0, intro: 1, outro: 0, hold: u / HOLD };
+    u -= HOLD;
+    if (i === PTS.length - 1) break;
+    if (u < MOVE) { k = ease(u / MOVE);
+      return { twa: lerp(PTS[i].twa, PTS[i+1].twa, k), s: lerp(PTS[i].s, PTS[i+1].s, k), idx: i, k, moving: true, intro: 1, outro: 0 }; }
+    u -= MOVE;
+  }
+  const L = PTS[PTS.length - 1];
+  return { twa: L.twa, s: L.s, idx: PTS.length - 1, k: 0, intro: 1, outro: clamp(u / 0.8, 0, 1) };
+}
+
+// Vectors in screen coords (y down). Wind blows from top to bottom.
+function vectors(twa, s) {
+  const r = twa * Math.PI / 180;
+  const head = { x: Math.sin(r), y: -Math.cos(r) };        // boat heading
+  const tw = { x: 0, y: TW };                                // true wind (blowing toward)
+  const ind = { x: -s * head.x, y: -s * head.y };            // wind made by the boat's own motion
+  const aw = { x: tw.x + ind.x, y: tw.y + ind.y };           // apparent = true + induced
+  const aws = Math.hypot(aw.x, aw.y);
+  const from = { x: -aw.x / aws, y: -aw.y / aws };
+  const awa = Math.acos(clamp(from.x * head.x + from.y * head.y, -1, 1)) * 180 / Math.PI;
+  return { head, tw, ind, aw, aws, awa };
+}
+
+function txt(s, x, y, size, color, weight = 700, align = 'right', font = 'Assistant') {
+  X.font = `${weight} ${size}px ${font}`; X.fillStyle = color; X.textAlign = align; X.textBaseline = 'alphabetic';
+  X.fillText(s, x, y);
+}
+function rrect(x, y, w, h, r) { X.beginPath(); X.roundRect(x, y, w, h, r); }
+function arrow(x1, y1, x2, y2, color, width, alpha = 1) {
+  const a = Math.atan2(y2 - y1, x2 - x1), len = Math.hypot(x2 - x1, y2 - y1);
+  if (len < 2) return;
+  const hl = Math.min(18, len * .45);
+  X.save(); X.globalAlpha = alpha; X.strokeStyle = color; X.fillStyle = color; X.lineWidth = width; X.lineCap = 'round';
+  X.beginPath(); X.moveTo(x1, y1); X.lineTo(x2 - Math.cos(a) * hl * .7, y2 - Math.sin(a) * hl * .7); X.stroke();
+  X.beginPath(); X.moveTo(x2, y2);
+  X.lineTo(x2 - hl * Math.cos(a - .42), y2 - hl * Math.sin(a - .42));
+  X.lineTo(x2 - hl * Math.cos(a + .42), y2 - hl * Math.sin(a + .42)); X.closePath(); X.fill();
+  X.restore();
+}
+function label(s, x, y, color) {
+  X.font = '800 19px Assistant'; const w = X.measureText(s).width + 18;
+  X.save(); X.fillStyle = 'rgba(10,28,51,.82)'; rrect(x - w / 2, y - 16, w, 30, 15); X.fill();
+  X.strokeStyle = color; X.lineWidth = 2; X.stroke(); X.restore();
+  txt(s, x, y + 6, 19, color, 800, 'center');
+}
+
+// ---------- scene pieces ----------
+function background(t) {
+  const g = X.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#0d2442'); g.addColorStop(1, '#081629');
+  X.fillStyle = g; X.fillRect(0, 0, W, H);
+}
+// Steady true-wind streaks: same speed for the whole video.
+function windStreaks(t) {
+  X.save(); X.strokeStyle = 'rgba(74,163,255,.16)'; X.lineWidth = 2; X.lineCap = 'round';
+  for (let i = 0; i < 26; i++) {
+    const x = 40 + (i * 97) % 600, ph = (i * 0.37) % 1;
+    const y = ((t * 150 + ph * 900) % 900) - 120;
+    X.beginPath(); X.moveTo(x, y); X.lineTo(x, y + 46); X.stroke();
+  }
+  X.restore();
+}
+// Foam trail behind the boat; its pace follows boat speed.
+const wakeSeed = Array.from({ length: 40 }, (_, i) => ({ o: (i * 0.618) % 1, j: ((i * 7919) % 100) / 100 - .5 }));
+let wakeDist = 0, lastT = 0;
+function wake(cx, cy, head, s, t) {
+  X.save();
+  for (const p of wakeSeed) {
+    const d = ((wakeDist * 9 + p.o * 260) % 260) + 70;
+    const px = cx - head.x * d + (-head.y) * p.j * (10 + d * .12);
+    const py = cy - head.y * d + (head.x) * p.j * (10 + d * .12);
+    X.globalAlpha = (1 - (d - 70) / 260) * .55; X.fillStyle = COL.sky;
+    X.beginPath(); X.arc(px, py, 2.2, 0, Math.PI * 2); X.fill();
+  }
+  X.restore();
+}
+function boat(cx, cy, v, twa) {
+  const ang = twa * Math.PI / 180;
+  X.save(); X.translate(cx, cy); X.rotate(ang);
+  // hull (bow at -y)
+  X.beginPath(); X.moveTo(0, -95);
+  X.bezierCurveTo(30, -55, 34, 30, 24, 78); X.lineTo(-24, 78);
+  X.bezierCurveTo(-34, 30, -30, -55, 0, -95); X.closePath();
+  X.fillStyle = '#e9eff6'; X.fill(); X.lineWidth = 3; X.strokeStyle = COL.navy; X.stroke();
+  X.beginPath(); X.moveTo(0, -78); X.bezierCurveTo(20, -45, 22, 25, 15, 66); X.lineTo(-15, 66);
+  X.bezierCurveTo(-22, 25, -20, -45, 0, -78); X.fillStyle = '#c9d6e4'; X.fill();
+  // sail trim: boom off centreline ≈ half the apparent-wind angle, on the leeward side (wind from port here)
+  const sa = clamp(v.awa / 2, 10, 85) * Math.PI / 180;
+  const mast = { x: 0, y: -25 }, L = 105;
+  const be = { x: mast.x + Math.sin(sa) * L, y: mast.y + Math.cos(sa) * L };
+  const bul = { x: (mast.x + be.x) / 2 + Math.cos(sa) * 22, y: (mast.y + be.y) / 2 - Math.sin(sa) * 22 };
+  X.beginPath(); X.moveTo(mast.x, mast.y); X.quadraticCurveTo(bul.x, bul.y, be.x, be.y); X.lineTo(mast.x, mast.y);
+  X.fillStyle = 'rgba(255,255,255,.92)'; X.fill(); X.strokeStyle = COL.navy; X.lineWidth = 2; X.stroke();
+  X.beginPath(); X.moveTo(mast.x, mast.y); X.lineTo(be.x, be.y); X.strokeStyle = '#5b6b7e'; X.lineWidth = 4; X.stroke();
+  // jib
+  const ja = clamp(v.awa / 2 + 4, 12, 80) * Math.PI / 180, jt = { x: 0, y: -90 };
+  const je = { x: jt.x + Math.sin(ja) * 62, y: jt.y + Math.cos(ja) * 62 };
+  X.beginPath(); X.moveTo(jt.x, jt.y); X.quadraticCurveTo((jt.x + je.x) / 2 + Math.cos(ja) * 14, (jt.y + je.y) / 2 - Math.sin(ja) * 14, je.x, je.y);
+  X.lineTo(jt.x, jt.y); X.fillStyle = 'rgba(255,255,255,.8)'; X.fill(); X.strokeStyle = COL.navy; X.lineWidth = 1.5; X.stroke();
+  X.beginPath(); X.arc(mast.x, mast.y, 5, 0, Math.PI * 2); X.fillStyle = COL.navy; X.fill();
+  X.restore();
+  // mast position in screen coords
+  return { x: cx + Math.sin(ang) * 25, y: cy - Math.cos(ang) * 25 };
+}
+// Vector triangle ending at the mast: true wind, then the boat's own wind, = apparent wind.
+function triangle(m, v, a) {
+  const k = 14;
+  const p0 = { x: m.x - v.aw.x * k, y: m.y - v.aw.y * k };
+  const p1 = { x: p0.x + v.tw.x * k, y: p0.y + v.tw.y * k };
+  arrow(p0.x, p0.y, p1.x, p1.y, COL.tw, 5, a);
+  arrow(p1.x, p1.y, m.x, m.y, COL.bs, 5, a);
+  arrow(p0.x, p0.y, m.x, m.y, COL.aw, 6, a);
+  if (a > .5) {
+    const cg = { x: (p0.x + p1.x + m.x) / 3, y: (p0.y + p1.y + m.y) / 3 };
+    const place = (A, B, s, col, off) => {
+      const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2, L = Math.hypot(B.x - A.x, B.y - A.y) || 1;
+      let nx = -(B.y - A.y) / L, ny = (B.x - A.x) / L;
+      if ((mx - cg.x) * nx + (my - cg.y) * ny < 0) { nx = -nx; ny = -ny; }
+      label(s, mx + nx * off, my + ny * off, col);
+    };
+    X.save(); X.globalAlpha = a;
+    place(p0, p1, 'רוח אמיתית 12', COL.tw, 70);
+    place(p0, m, 'רוח מדומה', COL.aw, 62);
+    place(p1, m, 'רוח מהירות הסירה', COL.bs, 84);
+    X.restore();
+  }
+}
+
+// ---------- right panel ----------
+function panel(st, v, t) {
+  const x0 = 690, x1 = 1240, w = x1 - x0;
+  // header
+  txt('רוח קבועה, מהירות משתנה', x1, 78, 56, COL.white, 700, 'right', 'Karantina');
+  txt('הרוח האמיתית לא זזה. הכיוון של הסירה משנה הכל.', x1, 112, 22, COL.dim, 600);
+  // true wind constant chip
+  X.save(); rrect(x0, 136, w, 52, 26); X.fillStyle = 'rgba(74,163,255,.14)'; X.fill();
+  X.strokeStyle = COL.tw; X.lineWidth = 2; X.stroke(); X.restore();
+  txt('רוח אמיתית', x1 - 24, 170, 22, COL.tw, 800);
+  txt('12 קשר · קבועה לאורך כל הסרטון', x1 - 160, 170, 21, COL.white, 600);
+  // point of sail
+  const cur = st.moving ? null : PTS[st.idx];
+  const name = st.moving ? 'משנים כיוון…' : cur.he, en = st.moving ? '' : cur.en;
+  txt(name, x1, 240, 40, COL.gold, 800);
+  if (en) txt(en, x0, 240, 20, COL.dim, 600, 'left');
+  txt(`זווית לרוח האמיתית: ${Math.round(st.twa)} מעלות`, x1, 270, 20, COL.dim, 600);
+  // readouts
+  const card = (x, label, val, unit, sub, color) => {
+    X.save(); rrect(x, 290, 262, 132, 18); X.fillStyle = 'rgba(255,255,255,.05)'; X.fill();
+    X.fillStyle = color; X.fillRect(x + 262 - 6, 290, 6, 132); X.restore();
+    txt(label, x + 240, 322, 21, color, 800);
+    txt(val, x + 240, 380, 54, COL.white, 800);
+    X.font = '800 54px Assistant'; const vw = X.measureText(val).width;
+    txt(unit, x + 240 - vw - 10, 380, 22, COL.dim, 700);
+    txt(sub, x + 240, 408, 18, COL.dim, 600);
+  };
+  card(x1 - 262, 'מהירות הסירה', st.s.toFixed(1), 'קשר', 'משתנה עם כיוון השיט', COL.bs);
+  card(x0, 'רוח מדומה', v.aws.toFixed(1), 'קשר', `נכנסת ${Math.round(v.awa)} מעלות מהחרטום`, COL.aw);
+  // bars: boat speed per point of sail
+  txt('מהירות הסירה בכל כיוון שיט', x1, 462, 20, COL.sky, 800);
+  const bw = 78, gap = (w - bw * 6) / 5, base = 610, scale = 18;
+  PTS.forEach((p, i) => {
+    const bx = x1 - bw - i * (bw + gap);
+    const on = (!st.moving && st.idx === i) || st.outro > 0;
+    const h = p.s * scale * (i <= st.idx || st.outro ? 1 : .0) ;
+    X.save(); X.fillStyle = 'rgba(255,255,255,.06)'; rrect(bx, base - 6.5 * scale, bw, 6.5 * scale, 8); X.fill();
+    X.fillStyle = on && !st.outro ? COL.gold : (i <= st.idx ? 'rgba(255,90,74,.75)' : 'rgba(255,255,255,0)');
+    if (h > 0) { rrect(bx, base - h, bw, h, 8); X.fill(); }
+    X.restore();
+    if (h > 0) txt(p.s.toFixed(1), bx + bw / 2, base - h - 8, 18, COL.white, 800, 'center');
+    const words = p.he.split(' ');
+    const l1 = words.length > 2 ? words.slice(0, 2).join(' ') : words[0], l2 = words.length > 2 ? words.slice(2).join(' ') : words.slice(1).join(' ');
+    txt(l1, bx + bw / 2, base + 24, 15, on ? COL.white : COL.dim, 700, 'center');
+    if (l2) txt(l2, bx + bw / 2, base + 42, 15, on ? COL.white : COL.dim, 700, 'center');
+  });
+  txt('המספרים להמחשה בלבד. תלוי בסירה, ברוח ובכיוון המפרשים.', x1, 690, 15, 'rgba(147,174,203,.8)', 600);
+}
+
+function caption(st) {
+  let s = st.moving ? '' : PTS[st.idx].note;
+  if (st.outro > 0) s = 'הרוח האמיתית נשארה 12 קשר כל הזמן. השתנו כיוון השיט, מהירות הסירה והרוח המדומה.';
+  if (!s) return;
+  X.save(); X.globalAlpha = st.outro > 0 ? st.outro : clamp((st.hold || 0) * 6, 0, 1);
+  X.font = '700 23px Assistant'; const w = Math.min(620, X.measureText(s).width + 40);
+  rrect(330 - w / 2, 646, w, 48, 24); X.fillStyle = 'rgba(10,28,51,.88)'; X.fill();
+  X.strokeStyle = 'rgba(243,194,76,.6)'; X.lineWidth = 1.5; X.stroke();
+  txt(s, 330, 678, s.length > 52 ? 19 : 23, COL.white, 700, 'center');
+  X.restore();
+}
+
+function renderAt(t) {
+  const st = stateAt(t), v = vectors(st.twa, st.s);
+  wakeDist += (t - lastT) * st.s; lastT = t;
+  background(t); windStreaks(t);
+  // wind source marker at the top of the diagram
+  txt('הרוח נושבת מכאן ↓', 560, 40, 22, COL.tw, 800, 'center');
+  const cx = 330, cy = 400;
+  wake(cx, cy, v.head, st.s, t);
+  const m = boat(cx, cy, v, st.twa);
+  triangle(m, v, clamp(st.intro * 1.6 - .4, 0, 1));
+  X.save(); X.globalAlpha = clamp(st.intro * 2, 0, 1); panel(st, v, t); X.restore();
+  caption(st);
+  // separator
+  X.fillStyle = 'rgba(255,255,255,.07)'; X.fillRect(660, 30, 2, 660);
+}
+window.renderAt = renderAt;
+window.ready = Promise.all(['600 20px Assistant','700 20px Assistant','800 20px Assistant','700 20px Karantina'].map(f => document.fonts.load(f, 'אבג 123'))).then(() => { renderAt(0); return true; });
+</script>
+</body>
+</html>
