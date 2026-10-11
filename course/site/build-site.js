@@ -85,6 +85,8 @@ ${extraHead}
 ${header(active)}
 ${body}
 ${footer()}
+<script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="/assets/motion.js" defer></script>
 </body>
 </html>
 `;
