@@ -65,6 +65,7 @@ function page(t) {
   return `<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+<script src="/assets/ga.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
