@@ -321,12 +321,18 @@ function feed(slug, name, blurb, list, app) {
   const ld = list.map(p => ({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: p.title,
     description: p.excerpt, datePublished: p.date, inLanguage: 'he', author: { '@type': 'Person', name: 'אלכס ארגוב' } }));
   const body = `
-${pagehead(name, blurb, !list.length, app)}
-<section class="feed">
+${pagehead(name, blurb, !list.length && !app, app)}
+${app && app.shots ? `<section class="app-show">
+  <div class="wrap app-show-in">
+    <div class="app-copy"><h2>מה יש במילון</h2>${(app.intro || []).map(t => `<p>${esc(t)}</p>`).join('')}</div>
+    <div class="app-shots">${app.shots.map(s => `<figure><img src="${s.img}" alt="${esc(s.cap)}" loading="lazy" width="480" height="924"><figcaption>${esc(s.cap)}</figcaption></figure>`).join('')}</div>
+  </div>
+</section>` : ''}
+${list.length || !app ? `<section class="feed">
   <div class="wrap news-list">
   ${list.map(newsItem).join('\n  ')}
   </div>
-</section>
+</section>` : ''}
 ${NEWS_JS}`;
   return page({ title: `${name} | אלכס ארגוב`, desc: blurb, active: slug, body, canonical: `/${slug}/`,
     extraHead: list.length ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : '' });

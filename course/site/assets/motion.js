@@ -24,7 +24,7 @@
   }
 
   // Reveal: fade-up as items enter the viewport, staggered within the same parent.
-  var sel = '.board .tile,.story,.reel,.course,.news-item,.pagehead,.about,.watch-head,.feed h2';
+  var sel = '.app-shots figure,.app-copy,.board .tile,.story,.reel,.course,.news-item,.pagehead,.about,.watch-head,.feed h2';
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
