@@ -1,7 +1,7 @@
 [
   {
     "id": "mv3hq5f6exauo",
-    "status": "processed",
+    "status": "approved",
     "created": "2026-10-11T07:17:14.610Z",
     "section": "ahrei",
     "audience": "30",
@@ -63,8 +63,9 @@
       }
     },
     "video": "/assets/posts/mv3hq5f6exauo-video.mp4",
-    "updated": "2026-10-11T11:09:05.002Z",
-    "processedAt": "2026-10-11T10:15:08.773Z"
+    "updated": "2026-10-11T11:09:10.628Z",
+    "processedAt": "2026-10-11T10:15:08.773Z",
+    "approvedAt": "2026-10-11T11:09:10.628Z"
   },
   {
     "id": "muy7zjof9l33s",
