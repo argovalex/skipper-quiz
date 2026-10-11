@@ -3,7 +3,8 @@
 // Topic sections (each gets /<slug>/). Magazine and series were dropped (Alex, 2026-10-07).
 const SECTIONS = [
   { slug: 'takalot', name: 'לומדים מתקלות', blurb: 'אירועים אמיתיים מהים: מה קרה, איזה כלל הופר, ומה לומדים מזה.', img: 'crew' },
-  { slug: 'milon', name: 'מילון ימי', blurb: 'עמוד לכל מונח ימי, בעברית ובאנגלית.', img: 'globe' },
+  { slug: 'milon', name: 'מילון ימי', blurb: 'עמוד לכל מונח ימי, בעברית ובאנגלית.', img: 'globe',
+    app: { href: 'https://play.google.com/store/apps/details?id=com.alexskipper.marinedictionary&hl=he', label: 'להורדת המילון מ-Google Play' } },
   { slug: 'klim', name: 'כלים', blurb: 'סימולטור קריאת MAYDAY, משחק זכות קדימה, בוחן אורות ותנאי ים במרינות.', img: 'vhf' },
   { slug: 'israel', name: 'ישראל במים', blurb: 'מרינות, השכרת אופנוע ים, קניית סירה משומשת, ביטוח ורישוי.', img: 'motorboat' },
   { slug: 'ahrei', name: 'אחרי הרישיון', blurb: 'צ\'קליסט להפלגה ראשונה, העונה הראשונה, והמעבר ל-ICC.', img: 'night' },

@@ -126,12 +126,12 @@ function storyCard(p) {
       </a>`;
 }
 
-function pagehead(name, blurb, soon) {
+function pagehead(name, blurb, soon, app) {
   return `<section class="pagehead">
   <div class="wrap">
     <h1>${esc(name)}</h1>
     <p>${esc(blurb)}</p>
-    ${soon ? '<span class="soon">עולה בקרוב</span>' : ''}
+    ${app ? `<a class="btn btn-gold app-btn" href="${app.href}" target="_blank" rel="noopener">${esc(app.label)}</a>` : soon ? '<span class="soon">עולה בקרוב</span>' : ''}
   </div>
 </section>`;
 }
@@ -317,11 +317,11 @@ const NEWS_JS = `<script>
 })();
 </script>`;
 
-function feed(slug, name, blurb, list) {
+function feed(slug, name, blurb, list, app) {
   const ld = list.map(p => ({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: p.title,
     description: p.excerpt, datePublished: p.date, inLanguage: 'he', author: { '@type': 'Person', name: 'אלכס ארגוב' } }));
   const body = `
-${pagehead(name, blurb, !list.length)}
+${pagehead(name, blurb, !list.length, app)}
 <section class="feed">
   <div class="wrap news-list">
   ${list.map(newsItem).join('\n  ')}
@@ -383,6 +383,6 @@ write('v2/index.html', home());
 write('video/index.html', videoPage());
 write('kursim/index.html', coursesPage());
 write(`${NEWS.slug}/index.html`, feed(NEWS.slug, NEWS.name, NEWS.blurb, posts));
-for (const s of SECTIONS) write(`${s.slug}/index.html`, feed(s.slug, s.name, s.blurb, posts.filter(p => p.section === s.slug)));
+for (const s of SECTIONS) write(`${s.slug}/index.html`, feed(s.slug, s.name, s.blurb, posts.filter(p => p.section === s.slug), s.app));
 
 console.log(`site: home, video (${allVideos.length}), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} news item(s)`);
