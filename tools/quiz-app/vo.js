@@ -145,17 +145,26 @@ function lexiconPairs() {
   if (typeof VO_LEXICON !== 'undefined') return VO_LEXICON;          // browser global (vo-lexicon.js)
   try { return require('./vo-lexicon.js').VO_LEXICON; } catch (e) { return []; }  // Node
 }
+// Single pass (one alternation, longest entry first): a phrase entry ("שלוש עֶשְׂרֵה") must not
+// be re-vocalised afterwards by a shorter homograph entry ("עשרה" → עָשָׂרָה).
 function applyLexiconText(text) {
-  for (const [src, dst] of lexiconPairs()) {
-    const body = [...src].map(ch =>
+  const pairs = lexiconPairs();
+  if (!pairs.length) return text;
+  const map = new Map();
+  const alts = pairs.map(([src, dst], i) => {
+    map.set(i, dst);
+    return `(?<g${i}>` + [...src].map(ch =>
       /[א-ת]/.test(ch) ? ch + HE_MARKS
       : /\s/.test(ch) ? '\\s+'
       : ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    ).join('');
-    const pat = new RegExp(`(?<![\\u05D0-\\u05EA\\u0591-\\u05C7])${body}(?![\\u05D0-\\u05EA\\u0591-\\u05C7])`, 'g');
-    text = text.replace(pat, dst);
-  }
-  return text;
+    ).join('') + ')';
+  });
+  const pat = new RegExp(`(?<![\\u05D0-\\u05EA\\u0591-\\u05C7])(?:${alts.join('|')})(?![\\u05D0-\\u05EA\\u0591-\\u05C7])`, 'g');
+  return text.replace(pat, (...args) => {
+    const groups = args[args.length - 1];
+    for (const k in groups) if (groups[k] !== undefined) return map.get(Number(k.slice(1)));
+    return args[0];
+  });
 }
 
 // Questions whose pre-pause narration gets an explicit "מה התשובה הנכונה?" cue

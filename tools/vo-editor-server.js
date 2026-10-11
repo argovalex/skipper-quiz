@@ -109,7 +109,7 @@ async function liveV2(text) {
 }
 
 // ── עדכון המילון ────────────────────────────────────────────────────────────────
-function addToLexicon(nikudRaw, plainOverride) {
+function addToLexicon(nikudRaw, plainOverride, replace) {
   const nikud = String(nikudRaw || '').trim();
   if (!nikud) return { status: 'error', message: 'לא התקבלה מילה' };
   if (!/[֑-ׇ]/.test(nikud)) return { status: 'error', message: 'המילה אינה מנוקדת' };
@@ -144,7 +144,10 @@ function addToLexicon(nikudRaw, plainOverride) {
   let status;
   if (existing.has(key)) {
     const i = existing.get(key);
-    if (lines[i].trim() === row) { status = 'exists'; }
+    const cur = lines[i].trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim())[1] || '';
+    if (lines[i].trim() === row || cur === nikud) { status = 'exists'; }
+    // הומוגרף (עָשָׂרָה / עֶשְׂרֵה): אותו כתיב, ניקוד אחר. לא דורסים בשקט, העורך שואל קודם.
+    else if (!replace) { return { status: 'conflict', plain, nikud, existing: cur }; }
     else { lines[i] = row; status = 'updated'; }
   } else {
     lines.splice(rowIdx[rowIdx.length - 1] + 1, 0, row);
@@ -331,7 +334,7 @@ const server = http.createServer((req, res) => {
     req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
     req.on('end', () => {
       let out;
-      try { const j = JSON.parse(body || '{}'); out = addToLexicon(j.nikud, j.plain); }
+      try { const j = JSON.parse(body || '{}'); out = addToLexicon(j.nikud, j.plain, j.replace === true); }
       catch (e) { out = { status: 'error', message: e.message }; }
       res.writeHead(out.status === 'error' ? 400 : 200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify(out));

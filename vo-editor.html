@@ -129,9 +129,10 @@
         <div class="row" style="margin-bottom:6px">
           <input id="lexAdd" type="text" placeholder="הדבק מילה מנוקדת..." style="flex:1;min-width:0"
             onkeydown="if(event.key==='Enter')addToLexicon(this.value)">
-          <button class="btn btn-green" onclick="addToLexicon(document.getElementById('lexAdd').value)"
+          <button class="btn btn-green" onmousedown="event.preventDefault()"
+            onclick="addToLexicon(document.getElementById('lexAdd').value.trim() || markedText())"
             title="הוסף את המילה המנוקדת למילון">➕ הוסף</button>
-          <button class="btn btn-green" onclick="addToLexicon(currentText(true))"
+          <button class="btn btn-green" onmousedown="event.preventDefault()" onclick="addToLexicon(markedText())"
             title="הוסף את הקטע המסומן בטקסט למילון">הוסף מסומן</button>
         </div>
         <div class="row" style="margin-bottom:8px">
@@ -201,6 +202,18 @@ function replaceRange(useSelection, newText) {
   }
   t.focus();
   saveDraft();
+}
+// Text marked for "הוסף מסומן": the textarea selection widened to whole words (a selection
+// that drops the final ה must not add "עשר → עֶשְׂרֵ"), else text marked anywhere else on the page.
+function markedText() {
+  const t = ta(), v = t.value, isW = c => /[א-ת֑-ׇ'׳״"]/.test(c);
+  let s = t.selectionStart, e = t.selectionEnd;
+  if (e > s) {
+    while (s > 0 && isW(v[s - 1])) s--;
+    while (e < v.length && isW(v[e])) e++;
+    return v.substring(s, e).trim();
+  }
+  return String(window.getSelection() || '').trim();
 }
 function currentText(useSelection) {
   const t = ta();
@@ -434,17 +447,26 @@ async function loadLexicon() {
 }
 
 // Add a vocalised word to references/niqqud-lexicon.md via the local :8899 server.
-async function addToLexicon(raw) {
+async function addToLexicon(raw, replace = false) {
   const nikud = (raw || '').trim();
-  if (!nikud) { setStatus('אין מילה להוספה — הדבק מילה מנוקדת או סמן קטע', 'err'); return; }
+  if (!nikud) { setStatus('אין מילה להוספה: סמן את המילה המנוקדת בטקסט או הדבק אותה בשדה', 'err'); return; }
   if (!/[֑-ׇ]/.test(nikud)) { setStatus('המילה אינה מנוקדת', 'err'); return; }
   try {
     const r = await fetch('/api/lexicon', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nikud })
+      body: JSON.stringify({ nikud, replace })
     });
     const j = await r.json();
     if (!r.ok || j.status === 'error') throw new Error(j.message || ('HTTP ' + r.status));
+    // הומוגרף: אותו כתיב כבר במילון בניקוד אחר (עָשָׂרָה מול עֶשְׂרֵה). המילון מחזיק ניקוד אחד לכל כתיב,
+    // אז במקום לדרוס בשקט: שואלים. לשתי הצורות, מסמנים צירוף (למשל "שלוש עֶשְׂרֵה") שנשמר כשורה נפרדת.
+    if (j.status === 'conflict') {
+      if (confirm('"' + j.plain + '" כבר במילון כ-' + j.existing + '\n\nלהחליף ל-' + j.nikud + '?\n\n' +
+          'ביטול = המילון לא משתנה. לשמור את שתי ההגיות: סמן את המילה יחד עם המילה שלפניה (למשל "שלוש עֶשְׂרֵה") והוסף כצירוף.'))
+        return addToLexicon(nikud, true);
+      setStatus('לא שונה: ' + j.plain + ' נשאר ' + j.existing + ' · להגייה אחרת בהקשר הוסף צירוף', 'err');
+      return;
+    }
     const msg = { added: '✅ נוסף למילון', updated: '✅ עודכן במילון', exists: 'כבר קיים במילון' }[j.status] || '✅';
     setStatus(msg + ': ' + j.plain + ' → ' + j.nikud, 'ok');
     document.getElementById('lexAdd').value = '';
