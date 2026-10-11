@@ -63,6 +63,11 @@ HEADINGS = {
     's11_anchor_q47': 'עוגן בזרם', 's12_current_q104': 'זרם נגדי', 's13_compass': 'מצפן מול GPS', 's14_functions': 'פונקציות',
     's15_route_q160': 'ROUTE, TRACK, CTS', 's16_mob_q44': 'MOB מול MARK', 's17_errors': 'דיוק ודאטום', 's18_dop_q137': 'PDOP',
     's19_accuracy_q158': 'בדיקת דיוק', 's20_antenna_q46': 'האנטנה', 's21_summary': 'סיכום',
+    # lesson 13
+    's02_gmdss': 'GMDSS', 's03_waves': 'גל רדיו', 's04_antenna_q111': 'גודל האנטנה', 's05_antenna_q72': 'מה נדרש מהאנטנה', 's06_propagation': 'קרקע, רקיע, ישיר',
+    's07_hf_night_q124': 'HF בלילה', 's08_bands': 'MF, VHF, UHF', 's08b_units': 'יחידות תדר', 's09_vhf_band_q125': 'ה-VHF הימי', 's10_why_band_q91': 'למה דווקא שם', 's11_modulation_q112': 'אפנון',
+    's12_controls': 'הפקדים', 's13_dualwatch_q55': 'DUAL WATCH', 's14_dualwatch_q116': '16 וערוץ נבחר', 's15_squelch_q57': 'כיוון שדורש ניסיון', 's16_range': 'טווחי קשר',
+    's17_range_q58': 'מה קובע את הטווח', 's18_handheld_q127': 'VHF נייד', 's19_summary': 'סיכום',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }

@@ -1,0 +1,7 @@
+Lesson 13 (גלי רדיו ומכשיר VHF) photos, lessons/l30/sources/assets:
+u13_vhf.jpg       "Modernes VHF-Funkgerät.JPG", PaterMcFly, CC BY 3.0 (Wikimedia Commons)
+u13_handheld.jpg  "Handheld Maritime VHF.jpg", Ulflarsen, CC BY-SA 3.0 (Wikimedia Commons)
+Reused: u10_arch, u9_screen, u7_helm_displays, u7_cruise_anemo. Credit is burned onto each card that uses the Commons photos.
+u13_longwave.jpg  "Solec-Kujawski-longwave-antenna-330m.jpg", JohnnyWiki, CC BY-SA 3.0 (Wikimedia Commons)
+u13_vhf_whip.jpg  "Ant VHF.JPG", F1jmm, CC BY-SA 3.0 (Wikimedia Commons)
+u13_range.jpg / u13_range.mp4 / u13_block.jpg  AI scenes, Higgsfield (nano_banana, seedance_2_5). s16/s17 overlays: Tailwind HTML via tw_render.js (u13_tw.py)

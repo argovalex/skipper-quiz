@@ -70,3 +70,7 @@ logs/
 media/realistic/_*_cache.png
 
 lessons/*/cards/*/_old/
+
+# l30 lesson sources: AI video clips used as cards are source assets; Tailwind work dir is scratch
+!lessons/l30/sources/assets/*.mp4
+lessons/l30/sources/_tw/

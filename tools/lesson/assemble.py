@@ -52,6 +52,12 @@ def pad(aud, out, sec=0.5):
 
 
 def clip_card(out, img, aud):
+    vid = os.path.splitext(img)[0] + ".mp4"   # a <sid>.mp4 next to the card plays (looped) instead of the still
+    if os.path.isfile(vid):
+        run(["ffmpeg", "-y", "-stream_loop", "-1", "-i", vid, "-i", aud,
+             "-map", "0:v", "-map", "1:a", "-vf", "scale=1280:720,setsar=1", "-c:v", "libx264",
+             "-pix_fmt", "yuv420p", "-r", "25", *AAC, "-shortest", out])
+        return
     run(["ffmpeg", "-y", "-loop", "1", "-i", img, "-i", aud,
          "-vf", "scale=1280:720,setsar=1", "-c:v", "libx264", "-tune", "stillimage",
          "-pix_fmt", "yuv420p", "-r", "25", *AAC, "-shortest", out])
