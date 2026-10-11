@@ -32,5 +32,22 @@
     "publish_session_id": "8ef74ab4-5898-4fac-8856-19ab7c5b348a",
     "source_date": "manual-2026-10-05-graph-api",
     "note": "mirror of manual FB/IG test post 2026-10-05"
+  },
+  {
+    "num": 265,
+    "topic": "אותות קוליים",
+    "date": "2026-10-06T10:13:38.000Z",
+    "status": "prepared",
+    "publish_session_id": "65f56adc-a23c-4b71-9496-87167720585b",
+    "source_date": "2026-10-04T21:01:59.776Z"
+  },
+  {
+    "num": 265,
+    "topic": "אותות קוליים",
+    "date": "2026-10-07T07:55:24.000Z",
+    "status": "prepared",
+    "publish_session_id": "86128a49-51d1-46a3-af3c-14348d250a3a",
+    "source_date": "2026-10-04T21:01:59.776Z",
+    "note": "re-prepare: 10-06 session expired; git pull failed (no GitHub creds in VM), newer FB entries not visible"
   }
 ]

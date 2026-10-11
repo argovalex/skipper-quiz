@@ -14,5 +14,8 @@
   { "name": "חוכמת הים - סיפורי שייטים על תקלות ופתרונות", "id": "1017161957390247", "default": false },
   { "name": "סקיפרים/יות ושייטים/ות Yachting & Sailing IL", "id": "Yachtskiper", "default": false },
   { "name": "סקיפרים בינלאומיים 60", "id": "2177087959010890", "default": false },
-  { "name": "Sailing EUROPE", "id": "333522640460315", "default": false }
+  { "name": "Sailing EUROPE", "id": "333522640460315", "default": false },
+  { "name": "סירות מפרשיות יאכטות אופנועי ים יד שנייה תחזית מצב הים - SEAZONE", "id": "1415699152031142", "default": false },
+  { "name": "יאכטות מנועיות Motor Yachts", "id": "224700764645871", "default": false },
+  { "name": "עולם השייט הישראלי", "id": "139620929424960", "default": false }
 ]

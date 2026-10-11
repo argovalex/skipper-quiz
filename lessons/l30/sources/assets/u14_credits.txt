@@ -1,0 +1,4 @@
+Lesson 14 (ערוצים, MMSI ו-DSC), lessons/l30/sources/assets:
+u14_two_yachts.jpg, u14_coast_station.jpg, u14_bridge.jpg, u14_chart_table.jpg  AI scenes, Higgsfield nano_banana
+Reused: u13_vhf.jpg ("Modernes VHF-Funkgerät.JPG", PaterMcFly, CC BY 3.0, credit burned on the cards).
+Left panels: Tailwind HTML (twcard.py + tw_render.js).
