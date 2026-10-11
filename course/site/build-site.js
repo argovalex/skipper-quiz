@@ -68,6 +68,7 @@ function page({ title, desc, active, body, canonical, extraHead = '' }) {
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
+<script src="/assets/ga.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
