@@ -1037,9 +1037,9 @@
       "ג. על ידי הפעלת SART אחר בסביבה",
       "ד. רק כאשר מכ\"מ ב-X-band מפעיל אותו"
     ],
-    "answer": "ב",
+    "answer": "ד",
     "answer_confirmed": false,
-    "explanation": "SART (Search And Rescue Transponder) = מגיב לכל פולס מכ\"מ ימי. כשמכ\"מ מקרין — SART מגיב ומייצר סדרת נקודות על מסך המכ\"מ.",
+    "explanation": "ה-SART מופעל ונכנס למצב המתנה. רק פולס של מכ\"מ בתחום X (9 GHz) מעיר אותו, ואז הוא משיב ומייצר שורה של 12 נקודות על מסך המכ\"מ המחפש. תשובה א שגויה כי מגע עם מים לא מעיר אותו. תשובה ב שגויה כי מכ\"מ בתחום S לא מעיר אותו. תשובה ג שגויה כי SART לא מגיב ל-SART אחר.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/realistic/l30_q144.jpg",
     "mediaType": "image",
     "approved_for_publish": false,
