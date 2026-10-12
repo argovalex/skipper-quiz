@@ -209,6 +209,9 @@ function markedText() {
   const t = ta(), v = t.value, isW = c => /[א-ת֑-ׇ'׳״"]/.test(c);
   let s = t.selectionStart, e = t.selectionEnd;
   if (e > s) {
+    while (e > s && /\s/.test(v[e - 1])) e--;
+    while (s < e && /\s/.test(v[s])) s++;
+    if (e === s) return '';
     while (s > 0 && isW(v[s - 1])) s--;
     while (e < v.length && isW(v[e])) e++;
     return v.substring(s, e).trim();
@@ -415,7 +418,7 @@ let LEX_INDEX = new Map();               // consonants(plain) -> nikud
 const lexKey = s => stripNikudStr(s).replace(/\s+/g, ' ').trim();
 function buildLexIndex() {
   LEX_INDEX = new Map();
-  for (const it of LEXICON) LEX_INDEX.set(lexKey(it.plain), it.nikud);
+  for (const it of LEXICON) if (!LEX_INDEX.has(lexKey(it.plain))) LEX_INDEX.set(lexKey(it.plain), it.nikud);   // first variant = default
 }
 // Parse the markdown table rows: | plain | niqud |  (skip header / separator / annotations)
 function parseLexiconMd(md) {
@@ -447,27 +450,59 @@ async function loadLexicon() {
 }
 
 // Add a vocalised word to references/niqqud-lexicon.md via the local :8899 server.
-async function addToLexicon(raw, replace = false) {
+// Homograph dialog: same spelling already in the lexicon with other niqqud.
+// Resolves 'variant' (keep both), 'replace' (new one becomes the default) or '' (cancel).
+function askHomograph(j) {
+  return new Promise(resolve => {
+    const ov = document.createElement('div');
+    ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999';
+    const box = document.createElement('div');
+    box.dir = 'rtl';
+    box.style.cssText = 'background:var(--panel,#1b2330);color:inherit;border:1px solid var(--border,#334);border-radius:12px;padding:18px 20px;max-width:440px;width:calc(100% - 32px);font-size:15px;line-height:1.6';
+    const p = document.createElement('div');
+    p.textContent = '"' + j.plain + '" כבר במילון: ' + j.variants.join(' · ') + '. מה לעשות עם ' + j.nikud + '?';
+    const hint = document.createElement('div');
+    hint.className = 'hint'; hint.style.margin = '8px 0 14px';
+    hint.textContent = 'גרסה נוספת: שתיהן נשמרות ומופיעות בעורך. ההחלה האוטומטית בצינור משתמשת בגרסה הראשונה (' + j.existing + ').';
+    const row = document.createElement('div');
+    row.className = 'row'; row.style.gap = '8px';
+    const done = v => { ov.remove(); document.removeEventListener('keydown', onKey); resolve(v); };
+    const onKey = e => { if (e.key === 'Escape') done(''); };
+    for (const [label, val, cls] of [['➕ הוסף כגרסה נוספת', 'variant', 'btn-green'], ['החלף את ' + j.existing, 'replace', 'btn-amber'], ['ביטול', '', '']]) {
+      const b = document.createElement('button');
+      b.className = 'btn ' + cls; b.textContent = label;
+      b.onclick = () => done(val);
+      row.appendChild(b);
+    }
+    box.append(p, hint, row);
+    ov.appendChild(box);
+    ov.onclick = e => { if (e.target === ov) done(''); };
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(ov);
+    row.firstChild.focus();
+  });
+}
+
+async function addToLexicon(raw, mode = '') {
   const nikud = (raw || '').trim();
   if (!nikud) { setStatus('אין מילה להוספה: סמן את המילה המנוקדת בטקסט או הדבק אותה בשדה', 'err'); return; }
   if (!/[֑-ׇ]/.test(nikud)) { setStatus('המילה אינה מנוקדת', 'err'); return; }
   try {
     const r = await fetch('/api/lexicon', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nikud, replace })
+      body: JSON.stringify({ nikud, mode })
     });
     const j = await r.json();
     if (!r.ok || j.status === 'error') throw new Error(j.message || ('HTTP ' + r.status));
-    // הומוגרף: אותו כתיב כבר במילון בניקוד אחר (עָשָׂרָה מול עֶשְׂרֵה). המילון מחזיק ניקוד אחד לכל כתיב,
-    // אז במקום לדרוס בשקט: שואלים. לשתי הצורות, מסמנים צירוף (למשל "שלוש עֶשְׂרֵה") שנשמר כשורה נפרדת.
+    // הומוגרף: אותו כתיב כבר במילון בניקוד אחר (בַּמָּקוֹם מול בְּמָקוֹם). לא דורסים בשקט: שואלים.
     if (j.status === 'conflict') {
-      if (confirm('"' + j.plain + '" כבר במילון כ-' + j.existing + '\n\nלהחליף ל-' + j.nikud + '?\n\n' +
-          'ביטול = המילון לא משתנה. לשמור את שתי ההגיות: סמן את המילה יחד עם המילה שלפניה (למשל "שלוש עֶשְׂרֵה") והוסף כצירוף.'))
-        return addToLexicon(nikud, true);
-      setStatus('לא שונה: ' + j.plain + ' נשאר ' + j.existing + ' · להגייה אחרת בהקשר הוסף צירוף', 'err');
+      if (!j.variants) j.variants = [j.existing];
+      const choice = await askHomograph(j);
+      if (choice) return addToLexicon(nikud, choice);
+      setStatus('לא שונה: ' + j.plain + ' נשאר ' + j.variants.join(' · '), 'err');
       return;
     }
-    const msg = { added: '✅ נוסף למילון', updated: '✅ עודכן במילון', exists: 'כבר קיים במילון' }[j.status] || '✅';
+    const msg = { added: '✅ נוסף למילון', updated: '✅ עודכן במילון', variant: '✅ נוספה גרסה נוספת', exists: 'כבר קיים במילון' }[j.status] || '✅';
     setStatus(msg + ': ' + j.plain + ' → ' + j.nikud, 'ok');
     document.getElementById('lexAdd').value = '';
     await loadLexicon();                              // refresh the live list + index
@@ -483,7 +518,7 @@ async function deleteFromLexicon(it) {
   try {
     const r = await fetch('/api/lexicon-delete', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plain: it.plain })
+      body: JSON.stringify({ plain: it.plain, nikud: it.nikud })   // only this variant
     });
     const j = await r.json();
     if (!r.ok || j.status === 'error') throw new Error(j.message || ('HTTP ' + r.status));
@@ -553,8 +588,9 @@ function updateLexSuggest() {
 
   const exact = LEX_INDEX.get(lexKey(sel));
   const suggestions = [];
-  if (exact && exact !== sel) suggestions.push(exact);
-  for (const it of findLexNear(sel)) if (it.nikud !== exact) suggestions.push(it.nikud);
+  for (const it of LEXICON)                                   // every variant of the same spelling
+    if (lexKey(it.plain) === lexKey(sel) && it.nikud !== sel && !suggestions.includes(it.nikud)) suggestions.push(it.nikud);
+  for (const it of findLexNear(sel)) if (!suggestions.includes(it.nikud) && it.nikud !== sel) suggestions.push(it.nikud);
   if (!suggestions.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
 
   box.innerHTML = '';

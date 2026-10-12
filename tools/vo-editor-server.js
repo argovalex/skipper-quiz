@@ -109,7 +109,7 @@ async function liveV2(text) {
 }
 
 // ── עדכון המילון ────────────────────────────────────────────────────────────────
-function addToLexicon(nikudRaw, plainOverride, replace) {
+function addToLexicon(nikudRaw, plainOverride, mode) {
   const nikud = String(nikudRaw || '').trim();
   if (!nikud) return { status: 'error', message: 'לא התקבלה מילה' };
   if (!/[֑-ׇ]/.test(nikud)) return { status: 'error', message: 'המילה אינה מנוקדת' };
@@ -130,25 +130,30 @@ function addToLexicon(nikudRaw, plainOverride, replace) {
   if (!rowIdx.length) return { status: 'error', message: 'לא נמצאה טבלה בסקציית המילים' };
 
   // מיפוי צורה-רגילה -> אינדקס שורה (מדלג על כותרת/מפריד)
+  // צורה-רגילה -> כל השורות שלה (מדלג על כותרת/מפריד). כמה שורות לאותו כתיב = גרסאות ניקוד;
+  // הראשונה היא ברירת המחדל שהצינור מחיל אוטומטית, השאר זמינות בעורך.
   const existing = new Map();
   for (const i of rowIdx) {
     const cells = lines[i].trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
     if (cells.length < 2) continue;
     const p = cells[0];
     if (p === 'רגיל' || p === '' || /^[-: ]+$/.test(p)) continue;
-    existing.set(stripNiqqud(p.split('(')[0].trim()), i);
+    const k = stripNiqqud(p.split('(')[0].trim());
+    if (!existing.has(k)) existing.set(k, []);
+    existing.get(k).push({ i, nikud: cells[1] });
   }
 
   const key = stripNiqqud(plain.split('(')[0].trim());
   const row = `| ${plain} | ${nikud} |`;
   let status;
   if (existing.has(key)) {
-    const i = existing.get(key);
-    const cur = lines[i].trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim())[1] || '';
-    if (lines[i].trim() === row || cur === nikud) { status = 'exists'; }
-    // הומוגרף (עָשָׂרָה / עֶשְׂרֵה): אותו כתיב, ניקוד אחר. לא דורסים בשקט, העורך שואל קודם.
-    else if (!replace) { return { status: 'conflict', plain, nikud, existing: cur }; }
-    else { lines[i] = row; status = 'updated'; }
+    const rows = existing.get(key);
+    if (rows.some(r => r.nikud === nikud)) { status = 'exists'; }
+    // הומוגרף (בַּמָּקוֹם / בְּמָקוֹם): אותו כתיב, ניקוד אחר. לא דורסים בשקט, העורך שואל:
+    // replace = מחליף את ברירת המחדל, variant = מוסיף שורה נוספת אחרי הגרסאות הקיימות.
+    else if (mode === 'replace') { lines[rows[0].i] = row; status = 'updated'; }
+    else if (mode === 'variant') { lines.splice(rows[rows.length - 1].i + 1, 0, row); status = 'variant'; }
+    else { return { status: 'conflict', plain, nikud, existing: rows[0].nikud, variants: rows.map(r => r.nikud) }; }
   } else {
     lines.splice(rowIdx[rowIdx.length - 1] + 1, 0, row);
     status = 'added';
@@ -159,7 +164,8 @@ function addToLexicon(nikudRaw, plainOverride, replace) {
 }
 
 // מחיקת מילה מהמילון לפי הצורה הרגילה (התאמה לפי אותיות, בלי ניקוד), רק בסקציית המילים.
-function removeFromLexicon(plainRaw) {
+function removeFromLexicon(plainRaw, nikudRaw) {
+  const only = String(nikudRaw || '').trim();   // עם ניקוד: מוחק רק את הגרסה הזו, לא את כל הגרסאות
   const key = stripNiqqud(String(plainRaw || '').split('(')[0]);
   if (!key) return { status: 'error', message: 'לא התקבלה מילה' };
   const md = fs.readFileSync(LEXICON, 'utf8');
@@ -173,7 +179,7 @@ function removeFromLexicon(plainRaw) {
   for (let i = secIdx + 1; i < endIdx; i++) {
     if (!lines[i].trimStart().startsWith('|')) continue;
     const cells = lines[i].trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
-    if (cells.length >= 2 && stripNiqqud(cells[0].split('(')[0]) === key) hits.push(i);
+    if (cells.length >= 2 && stripNiqqud(cells[0].split('(')[0]) === key && (!only || cells[1] === only)) hits.push(i);
   }
   if (!hits.length) return { status: 'missing', plain: key };
   const removed = hits.map(i => lines[i].trim());
@@ -334,7 +340,7 @@ const server = http.createServer((req, res) => {
     req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
     req.on('end', () => {
       let out;
-      try { const j = JSON.parse(body || '{}'); out = addToLexicon(j.nikud, j.plain, j.replace === true); }
+      try { const j = JSON.parse(body || '{}'); out = addToLexicon(j.nikud, j.plain, j.mode || (j.replace === true ? 'replace' : '')); }
       catch (e) { out = { status: 'error', message: e.message }; }
       res.writeHead(out.status === 'error' ? 400 : 200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify(out));
@@ -346,7 +352,7 @@ const server = http.createServer((req, res) => {
     req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
     req.on('end', () => {
       let out;
-      try { out = removeFromLexicon(JSON.parse(body || '{}').plain); }
+      try { const j = JSON.parse(body || '{}'); out = removeFromLexicon(j.plain, j.nikud); }
       catch (e) { out = { status: 'error', message: e.message }; }
       res.writeHead(out.status === 'error' ? 400 : 200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify(out));
