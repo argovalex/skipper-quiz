@@ -1,0 +1,7 @@
+Lesson 15 (NAVTEX), lessons/l30/sources/assets (Wikimedia Commons, credit burned on the cards):
+u15_rx_target.jpg   "NASA-Marine-NAVTEX-RX.jpg", K. Krallis (SV1XV), CC BY-SA 3.0
+u15_rx_printer.jpg  "Navtex.jpg", Clipper, CC BY 2.5
+u15_hvar_mast.jpg   "Splitradio Hvar Navtex 20200101.jpg", Coronium, CC BY 4.0
+Left panels: Tailwind HTML (twcard.py + tw_render.js).
+u15_navarea.jpg     "NAVAREA.jpg", Chrumps, CC0 (s07, credit in panel)
+u15_navtex_pro.jpg  NASA Marine Target NAVTEX Pro-Plus product shot, supplied by Alex (s01)
