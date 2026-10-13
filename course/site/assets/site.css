@@ -296,3 +296,6 @@ html.lenis,html.lenis body{height:auto}
 .qa-links a:hover{border-color:var(--line)}
 .qa-links span{font-size:.85rem;color:var(--dim)}
 @media(max-width:820px){.vp-grid{grid-template-columns:1fr}.vp-media{max-width:340px;margin:0 auto}.related .stories{grid-template-columns:1fr}}
+.price-box .seats{font-weight:800;color:var(--gold)}
+.side-cta .acts{display:flex;gap:10px;flex-wrap:wrap}
+a[data-buy][aria-disabled="true"]{opacity:.6;pointer-events:none}
