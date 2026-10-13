@@ -1,0 +1,44 @@
+# Rebuilds the new site whenever its content changes, so a post approved in back-office.html
+# (which commits course/site/content/posts.json) goes live with no manual build step.
+# The bot commit then triggers the normal Railway deploy of course/site.
+name: build-site
+
+on:
+  push:
+    branches: [redesign, main]
+    paths:
+      - course/site/content/**
+      - course/site/hub.js
+      - course/site/build-site.js
+      - course/site/ofnoa-yam/topics.json
+      - data/l11.json
+      - tools/daily-publish-pool.json
+      - tools/tiktok-publish-history.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build
+        run: node course/site/build-site.js
+      - name: Commit built pages
+        run: |
+          git config user.name "site-builder[bot]"
+          git config user.email "site-builder[bot]@users.noreply.github.com"
+          git add -A course/site
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "site: rebuild after content change (${GITHUB_SHA::7})"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
