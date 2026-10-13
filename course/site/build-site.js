@@ -322,13 +322,22 @@ function embed(src) {
   return '';
 }
 
+// A Facebook post (not a reel/video) embed breaks whenever the post goes private or is removed.
+// When the Back Office attached an image, show that instead and keep the credit link.
+const isFbPost = u => /facebook\.com/.test(u || '') && !/\/(reel|videos|watch)\b|fb\.watch/.test(u || '');
+const ownImage = p => p.image && !/\/assets\/tiles\//.test(p.image);
+function postMedia(p) {
+  const src = p.source || {};
+  // A video file attached in the Back Office wins over embedding the source post.
+  if (p.video) return `<video src="${esc(p.video)}" controls playsinline preload="metadata"${p.image ? ` poster="${esc(p.image)}"` : ''}></video>`;
+  if (ownImage(p) && (isFbPost(src.url) || src.mediaType !== 'video')) return `<img class="own" src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`;
+  return src.mediaType === 'video' || isFbPost(src.url) ? embed(src) : '';
+}
+
 // One news item: video beside the headline and a few lines; "קרא עוד" opens the rest in place.
 function newsItem(p) {
   const src = p.source || {};
-  // A video file attached in the Back Office wins over embedding the source post.
-  const video = p.video
-    ? `<video src="${esc(p.video)}" controls playsinline preload="metadata"${p.image ? ` poster="${esc(p.image)}"` : ''}></video>`
-    : src.mediaType === 'video' ? embed(src) : '';
+  const video = postMedia(p);
   const credit = src.url ? `<a class="credit" href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.author || 'המקור')}${src.platform ? `, ב${esc(src.platform)}` : ''}</a>` : '';
   return `<article class="news-item" id="${esc(p.slug)}">
     <div class="news-media">${video || `<img src="${p.img}" alt="" loading="lazy">`}${credit ? `<p class="news-credit">הסרטון: ${credit}</p>` : ''}</div>
@@ -394,9 +403,7 @@ ${NEWS_JS}`;
 function postPage(p) {
   const sec = sectionOf(p.section);
   const src = p.source || {};
-  const media = p.video
-    ? `<video src="${esc(p.video)}" controls playsinline preload="metadata"${p.image ? ` poster="${esc(p.image)}"` : ''}></video>`
-    : src.mediaType === 'video' || /facebook\.com/.test(src.url || '') ? embed(src) : '';
+  const media = postMedia(p);
   const credit = src.url ? `<a class="credit" href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.author || 'המקור')}${src.platform ? `, ב${esc(src.platform)}` : ''}</a>` : '';
   const others = posts.filter(o => o.slug !== p.slug).slice(0, 3);
   const graph = [
