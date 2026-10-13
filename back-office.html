@@ -457,7 +457,9 @@ function embed(u){
   const ig=u.match(/instagram\.com\/(?:reel|p)\/([\w-]+)/);if(ig)return `<iframe src="https://www.instagram.com/p/${ig[1]}/embed"></iframe>`;
   return "";
 }
-const siteBase = location.href.replace(/[^/]*$/,"") + "course/site/";
+// The site's stylesheet lives on the site branch, not next to this file (and a file:// base is blocked
+// inside the preview iframe), so the preview loads it from the branch through jsDelivr.
+const siteBase = () => `https://cdn.jsdelivr.net/gh/${REPO}@${encodeURIComponent(cfg.branch())}/course/site/`;
 let bgImg=null,coverUrl="";
 // Media belongs to one post: image/video files are committed to course/site/assets/posts/ and the post keeps their site paths.
 const MEDIA_DIR="course/site/assets/posts/";
@@ -579,7 +581,7 @@ function renderPreview(){
   const url=$("fUrl").value.trim(),author=$("fAuthor").value.trim(),isVideo=$("fMedia").value==="video";
   const video=media.video?`<video src="${esc(mediaSrc("video"))}" controls playsinline preload="metadata" style="width:100%;border-radius:14px;background:#000"></video>`:isVideo?embed(url):"";
   const sec=SECTIONS[$("fSection").value];
-  const doc=`<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><base href="${siteBase}">
+  const doc=`<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><base href="${siteBase()}" target="_blank">
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css"><style>body{padding:24px 0}.news-more{display:block}</style></head><body>
 <section class="feed" style="padding:0"><div class="wrap news-list"><article class="news-item">
