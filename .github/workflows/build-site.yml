@@ -10,6 +10,7 @@ on:
       - course/site/content/**
       - course/site/hub.js
       - course/site/build-site.js
+      - course/site/video-durations.js
       - course/site/ofnoa-yam/topics.json
       - data/l11.json
       - tools/daily-publish-pool.json
@@ -31,6 +32,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Video durations (for VideoObject.duration; probes only new URLs)
+        run: |
+          command -v ffprobe || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+          node course/site/video-durations.js
       - name: Build
         run: node course/site/build-site.js
       - name: Commit built pages

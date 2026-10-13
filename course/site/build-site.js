@@ -27,7 +27,8 @@ const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'
   .filter(d => (d.status === 'approved' || d.status === 'published') && d.out && d.out.slug)
   .map(d => ({ id: d.id, slug: d.out.slug, title: d.out.title, excerpt: d.out.excerpt, body: d.out.body, rule: d.out.rule,
     exam: d.out.exam, section: d.section, source: d.source, image: d.image, video: d.video,
-    date: (d.approvedAt || d.updated || d.created).slice(0, 10) }))
+    date: (d.approvedAt || d.updated || d.created).slice(0, 10),
+    modified: [d.approvedAt, d.updated, d.created].filter(Boolean).sort().pop().slice(0, 10) }))
   .sort((a, b) => b.date.localeCompare(a.date))
   .map(p => ({ ...p, href: `/${p.section}/${p.slug}/`, anchor: `/hadash/#${p.slug}`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
 
@@ -69,14 +70,28 @@ const articles = JSON.parse(fs.readFileSync(path.join(ROOT, 'ofnoa-yam', 'topics
   .map(t => ({ href: `/ofnoa-yam/${t.slug}.html`, img: t.poster, title: t.h1, topic: t.topic }));
 
 // ---------- structured data ----------
+// sameAs = profiles of the same entity only. WhatsApp is a contact channel, so it sits in contactPoint.
 const ORG = { '@type': 'Organization', '@id': `${SITE}/#org`, name: 'אלכס ארגוב · סקיפר דיגיטלי', url: `${SITE}/`,
   logo: `${SITE}/assets/logo.jpg`, email: 'alex@alargov.com',
-  sameAs: ['https://www.instagram.com/argovalexander/', 'https://wa.me/972523682486',
-    'https://play.google.com/store/apps/details?id=com.alexskipper.marinedictionary'] };
+  sameAs: ['https://www.instagram.com/argovalexander/',
+    'https://play.google.com/store/apps/details?id=com.alexskipper.marinedictionary'],
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', telephone: '+972-52-368-2486',
+    email: 'alex@alargov.com', url: 'https://wa.me/972523682486', availableLanguage: ['he'] } };
+// A real photo of Alex beats the logo for E-E-A-T: drop it at assets/alex.jpg and the build picks it up.
+const PERSON_IMG = fs.existsSync(path.join(ROOT, 'assets', 'alex.jpg')) ? 'alex.jpg' : 'logo.jpg';
 const PERSON = { '@type': 'Person', '@id': `${SITE}/#alex`, name: 'אלכס ארגוב', alternateName: 'Alexander Argov',
   jobTitle: 'מדריך שיט', description: 'מדריך שיט מעשי ותאוריה עם 9 שנות הדרכה. מלמד תאוריה לרישיונות שיט בישראל.',
-  url: `${SITE}/`, image: `${SITE}/assets/logo.jpg`, worksFor: { '@id': `${SITE}/#org` },
+  url: `${SITE}/`, image: `${SITE}/assets/${PERSON_IMG}`, worksFor: { '@id': `${SITE}/#org` },
+  sameAs: ['https://www.instagram.com/argovalexander/'],
   knowsAbout: ['רישיון שיט', 'רישיון אופנוע ים', 'מבחן תאוריה בשיט', 'חוקי הדרך בים (COLREG)', 'ניווט חופי', 'בטיחות בים'] };
+const ORG_REF = { '@id': `${SITE}/#org` };
+const ALEX_REF = { '@id': `${SITE}/#alex` };
+// The live course; question videos and Q&A link to it with isPartOf.
+const COURSE_REF = { '@id': `${SITE}/kursim/#${COURSES.find(c => c.live).id}` };
+// Video length (ISO 8601) from content/video-durations.json, filled by `node video-durations.js`.
+const DURFILE = path.join(ROOT, 'content', 'video-durations.json');
+const durations = fs.existsSync(DURFILE) ? JSON.parse(fs.readFileSync(DURFILE, 'utf8')) : {};
+const isoDur = u => { const s = durations[u]; return s ? `PT${Math.floor(s / 60) ? Math.floor(s / 60) + 'M' : ''}${s % 60}S` : undefined; };
 const WEBSITE = { '@type': 'WebSite', '@id': `${SITE}/#website`, name: 'אלכס ארגוב · סקיפר דיגיטלי', url: `${SITE}/`,
   inLanguage: 'he', publisher: { '@id': `${SITE}/#org` } };
 const ld = obj => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
@@ -362,8 +377,17 @@ ${list.length || !app ? `<section class="feed">
 </section>` : ''}
 ${NEWS_JS}`;
   // An empty section is a placeholder: keep it out of search until it has something to say.
+  // A section that is an app page (the dictionary) describes the app itself.
+  const app_ld = app && { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'MobileApplication', '@id': `${SITE}/${slug}/#app`, name, alternateName: 'Marine Dictionary',
+      description: blurb, url: `${SITE}/${slug}/`, installUrl: app.href.replace(/&hl=\w+$/, ''),
+      operatingSystem: 'Android', applicationCategory: 'EducationalApplication', inLanguage: ['he', 'en', 'fr'],
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'ILS' },
+      ...(app.shots ? { screenshot: app.shots.map(s => abs(s.img)) } : {}),
+      author: ALEX_REF, publisher: ORG_REF },
+    ORG, PERSON] };
   return page({ title: `${name} | אלכס ארגוב`, desc: blurb, active: slug, body, canonical: `/${slug}/`,
-    noindex: !list.length && !app, extraHead: list.length ? ld(list_ld) : '' });
+    noindex: !list.length && !app, extraHead: [list.length ? ld(list_ld) : '', app_ld ? ld(app_ld) : ''].filter(Boolean).join('\n') });
 }
 
 // ---------- article page (one permanent URL per post) ----------
@@ -378,12 +402,13 @@ function postPage(p) {
   const graph = [
     { '@type': 'Article', '@id': `${SITE}${p.href}#article`, headline: p.title, description: p.excerpt,
       url: SITE + p.href, mainEntityOfPage: SITE + p.href, image: [abs(p.img)], inLanguage: 'he',
-      datePublished: p.date, dateModified: p.date, articleSection: sec.name,
-      author: PERSON, publisher: ORG,
+      datePublished: p.date, dateModified: p.modified, articleSection: sec.name,
+      author: ALEX_REF, publisher: ORG_REF,
       ...(src.url ? { isBasedOn: src.url } : {}),
       ...(p.video ? { video: { '@type': 'VideoObject', name: p.title, description: p.excerpt, contentUrl: abs(p.video),
-        thumbnailUrl: abs(p.img), uploadDate: p.date } } : {}) },
+        thumbnailUrl: abs(p.img), uploadDate: p.date, duration: isoDur(p.video) } } : {}) },
     crumbs([['בית', '/'], [sec.name, `/${p.section}/`], [p.title, p.href]]),
+    ORG, PERSON,
   ];
   const body = `
 <article class="post-page">
@@ -423,13 +448,22 @@ function videoItemPage(v) {
   const more = related.length < 6 ? related.concat(allVideos.filter(o => o.topic !== v.topic).slice(0, 6 - related.length)) : related;
   const correct = Number.isInteger(v.answer) ? v.answer : LETTERS.indexOf(String(v.answer).trim());
   const opt = o => String(o).replace(/^[אבגד][.)]\s*/, '');
+  // Same shape as the /ofnoa-yam/ Q&A pages: QAPage > Question > acceptedAnswer. No embedUrl: the
+  // page is not a player, and contentUrl already points at the file.
+  const answered = correct >= 0 && v.options[correct];
   const graph = [
     { '@type': 'VideoObject', '@id': `${SITE}${v.href}#video`, name: v.q, description: v.explanation || v.q,
-      thumbnailUrl: [v.poster], uploadDate: v.date || undefined, contentUrl: v.src, embedUrl: SITE + v.href,
-      inLanguage: 'he', transcript: v.transcript, isFamilyFriendly: true,
-      about: v.topic, creator: { '@id': `${SITE}/#alex` }, publisher: ORG },
-    { '@type': 'Question', name: v.q, ...(correct >= 0 && v.options[correct] ? { acceptedAnswer: { '@type': 'Answer', text: `${opt(v.options[correct])} ${v.explanation}` } } : {}) },
+      thumbnailUrl: [v.poster], uploadDate: v.date || undefined, duration: isoDur(v.src), contentUrl: v.src,
+      inLanguage: 'he', transcript: v.transcript, isFamilyFriendly: true, learningResourceType: 'הסבר לשאלת מבחן',
+      about: { '@type': 'DefinedTerm', name: v.topic }, isPartOf: COURSE_REF,
+      creator: ALEX_REF, publisher: ORG_REF },
+    ...(answered ? [{ '@type': 'QAPage', '@id': `${SITE}${v.href}#page`, url: SITE + v.href, inLanguage: 'he',
+      mainEntity: { '@type': 'Question', name: v.q, text: `שאלה ${v.num} מתוך מאגר מבחן התאוריה לרישיון אופנוע ים.`,
+        answerCount: 1, ...(v.date ? { datePublished: v.date } : {}), author: ALEX_REF,
+        acceptedAnswer: { '@type': 'Answer', text: `${opt(v.options[correct])} ${v.explanation}`.trim(),
+          url: SITE + v.href, author: ALEX_REF, ...(v.date ? { datePublished: v.date } : {}) } } }] : []),
     crumbs([['בית', '/'], ['סרטונים', '/video/'], [v.title, v.href]]),
+    ORG, PERSON,
   ];
   const body = `
 <article class="video-page">
@@ -520,9 +554,16 @@ function coursesPage() {
   const graph = [
     ...live.map(c => ({ '@type': 'Course', '@id': `${SITE}/kursim/#${c.id}`, name: `קורס תאוריה לרישיון ${c.name}`,
       description: 'הכנה מלאה למבחן התאוריה: כל שאלות המאגר הרשמי של רספ״ן, הסבר קולי לכל שאלה, 13 מערכי שיעור מצולמים ומבחני דמה בפורמט האמיתי.',
-      inLanguage: 'he', provider: { '@id': `${SITE}/#org` }, instructor: { '@id': `${SITE}/#alex` },
-      offers: { '@type': 'Offer', category: 'מסלול מייסדים', price: '199', priceCurrency: 'ILS', availability: 'https://schema.org/InStock', url: `${SITE}/kursim/#${c.id}` },
-      hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT10H' } })),
+      inLanguage: 'he', provider: ORG_REF, instructor: ALEX_REF,
+      // Google's Course info accepts only Free / Partially Free / Subscription / Paid in category.
+      offers: { '@type': 'Offer', name: 'מסלול מייסדים', category: 'Paid', price: '199', priceCurrency: 'ILS',
+        priceSpecification: [
+          { '@type': 'UnitPriceSpecification', price: '199', priceCurrency: 'ILS' },
+          { '@type': 'UnitPriceSpecification', priceType: 'https://schema.org/StrikethroughPrice', price: '349', priceCurrency: 'ILS' }],
+        availability: 'https://schema.org/InStock', url: `${SITE}/kursim/#${c.id}` },
+      hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT10H', instructor: ALEX_REF },
+      teaches: [...new Set(questions.map(q => q.topic).filter(Boolean))],
+      educationalLevel: 'Beginner', isAccessibleForFree: false })),
     { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
     ORG, PERSON,
   ];

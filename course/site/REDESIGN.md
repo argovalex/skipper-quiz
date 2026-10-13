@@ -47,7 +47,7 @@
 
 ## האתר החדש (`/v2/` ב-staging)
 
-בנייה: `node build-topics.js && node build-site.js` (בסדר הזה: build-site כותב את sitemap.xml המלא ואת llms.txt).
+בנייה: `node build-topics.js && node video-durations.js && node build-site.js` (בסדר הזה: build-site כותב את sitemap.xml המלא ואת llms.txt). `video-durations.js` ממלא את `content/video-durations.json` עם ffprobe (רק סרטונים חדשים) בשביל `duration` ב-VideoObject; ה-workflow מריץ אותו לבד.
 
 GEO / אינדוקס:
 - אינדוקס נקבע רק ב-Dockerfile: `STAGING=1` = Disallow + תג noindex אחד לכל עמוד + בלי cache. בפרודקשן העמודים עולים כמו שנבנו, עם cache של `CACHE_SECONDS` (ברירת מחדל 3600). ב-HTML אין noindex חוץ ממדורים ריקים.
