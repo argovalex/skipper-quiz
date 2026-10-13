@@ -639,20 +639,31 @@ let feedsEdit=[];
 function renderFeedSrc(){
   $("sFeeds").innerHTML=feedsEdit.length?feedsEdit.map((f,i)=>`<div class="src"><b>${esc(f.name)}</b><span class="u">${esc(f.url)}</span><span class="hint">${esc(SECTIONS[f.section]||"")}</span><button type="button" class="ghost danger" data-rmfeed="${i}">הסר</button></div>`).join(""):`<p class="hint">אין מקורות. הוסף אתר למטה.</p>`;
 }
-$("sFeeds").addEventListener("click",e=>{const b=e.target.closest("[data-rmfeed]");if(!b)return;feedsEdit.splice(Number(b.dataset.rmfeed),1);renderFeedSrc()});
-$("btnFeedAdd").onclick=()=>{
-  const name=$("sFeedName").value.trim(),url=$("sFeedUrl").value.trim();
-  if(!/^https?:\/\//.test(url)){toast("כתובת הפיד חייבת להתחיל ב-https://");$("sFeedUrl").focus();return}
-  if(feedsEdit.some(f=>f.url===url)){toast("המקור כבר ברשימה");return}
-  feedsEdit.push({name:name||new URL(url).hostname,url,section:$("sFeedSection").value});
-  $("sFeedName").value="";$("sFeedUrl").value="";renderFeedSrc();
-};
+// The source list is saved the moment a source is added or removed, not only on "שמור":
+// Enter in a field submits the dialog through "שמור" and Esc/ביטול closes it, and both used to drop a new source.
+const saveFeeds=()=>LS.set("sq_bo_feeds",JSON.stringify(feedsEdit));
+$("sFeeds").addEventListener("click",e=>{const b=e.target.closest("[data-rmfeed]");if(!b)return;feedsEdit.splice(Number(b.dataset.rmfeed),1);saveFeeds();renderFeedSrc()});
+function addFeedFromFields(quiet){
+  const name=$("sFeedName").value.trim();let url=$("sFeedUrl").value.trim();
+  if(!url)return false;
+  if(!/^https?:\/\//i.test(url))url="https://"+url;
+  try{new URL(url)}catch{if(!quiet){toast("כתובת לא תקינה");$("sFeedUrl").focus()}return false}
+  if(feedsEdit.some(f=>f.url===url)){if(!quiet)toast("המקור כבר ברשימה");return false}
+  feedsEdit.push({name:name||new URL(url).hostname.replace(/^www\./,""),url,section:$("sFeedSection").value});
+  saveFeeds();$("sFeedName").value="";$("sFeedUrl").value="";renderFeedSrc();
+  if(!quiet)toast("המקור נוסף ונשמר");return true;
+}
+$("btnFeedAdd").onclick=()=>{if(!$("sFeedUrl").value.trim()){toast("הכנס כתובת של אתר או פיד");$("sFeedUrl").focus();return}addFeedFromFields(false)};
+["sFeedName","sFeedUrl"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();addFeedFromFields(false)}}));
+const addPending=()=>{if(addFeedFromFields(true))toast("המקור נוסף ונשמר")};
+$("settings").querySelector("form").addEventListener("submit",addPending); // "שמור"/"ביטול" (fires before close)
+$("settings").addEventListener("cancel",addPending); // Esc
 $("btnSettings").onclick=()=>{$("sGh").value=cfg.gh();$("sAk").value=cfg.key();$("sModel").value=cfg.model();$("sBranch").value=cfg.branch();
   feedsEdit=getFeeds();renderFeedSrc();$("sFeedSection").innerHTML=sectionOpts("takalot");$("settings").showModal()};
 $("settings").addEventListener("close",()=>{if($("settings").returnValue!=="save")return;
   LS.set("sq_gh_token",$("sGh").value.trim());LS.set("sq_anthropic_key",$("sAk").value.trim());
   LS.set("sq_bo_model",$("sModel").value.trim()||"claude-sonnet-5-5");LS.set("sq_bo_branch",$("sBranch").value.trim()||"redesign");
-  LS.set("sq_bo_feeds",JSON.stringify(feedsEdit));
+  saveFeeds();
   renderConn();loadQueue()});
 
 // ---------- feed import ----------
@@ -707,7 +718,16 @@ $("btnFeedLoad").onclick=async()=>{
   const res=await Promise.all(srcs.map(async src=>{
     try{
       let xml=srcs.length===1&&pasted?pasted:"";
-      if(!xml){const r=await xfetch(src.url);if(!r.ok)throw new Error("HTTP "+r.status);xml=await r.text()}
+      if(!xml){const r=await xfetch(src.url);if(!r.ok)throw new Error("HTTP "+r.status);xml=await r.text();
+        // A site's home page instead of its feed: follow the page's own RSS/Atom link.
+        if(/^\s*(<!doctype html|<html)/i.test(xml)){
+          const ln=htmlDoc(xml).querySelector('link[rel~="alternate"][type="application/rss+xml"],link[rel~="alternate"][type="application/atom+xml"]');
+          let feedUrl=ln?new URL(ln.getAttribute("href"),src.url).href:"";
+          if(!feedUrl){feedUrl=new URL("/feed",src.url).href}
+          const r2=await xfetch(feedUrl);if(!r2.ok)throw new Error("no feed");xml=await r2.text();
+          const all=getFeeds(),i=all.findIndex(f=>f.url===src.url);
+          if(i>=0&&!/^\s*(<!doctype html|<html)/i.test(xml)){all[i]={...all[i],url:feedUrl};LS.set("sq_bo_feeds",JSON.stringify(all))}
+        }}
       return parseFeed(xml).slice(0,30).map(it=>({...it,src}));
     }catch{failed.push(src.name);return[]}
   }));
