@@ -46,7 +46,9 @@ def run(a):
         raise SystemExit(1)
 
 
-def build(in_mp4, out_mp4, workdir):
+def build(in_mp4, out_mp4, workdir, size="1280x720"):
+    global W, H
+    W, H = map(int, size.split("x"))
     os.makedirs(workdir, exist_ok=True)
 
     logo = Image.open(P(REPO, "media", "my_logo.jpg")).convert("RGB")
@@ -59,13 +61,14 @@ def build(in_mp4, out_mp4, workdir):
         bw = 560
         bh = int(boat.height * bw / boat.width)
         b = boat.resize((bw, bh), Image.LANCZOS)
-        img.paste(b, ((W - bw) // 2, 70))
-        y = 70 + bh - 20
+        top = max(70, (H - bh - 200) // 2)                 # portrait: center the block vertically
+        img.paste(b, ((W - bw) // 2, top))
+        y = top + bh - 20
         ctr(d, W / 2, y, "Alex Argov", f(66, True), (245, 248, 252)); y += 86
         ctr(d, W / 2, y, "Sailing Instructor", f(34), (150, 175, 205)); y += 52
         ctr(d, W / 2, y, "www.alargov.com", f(30, True), (90, 150, 220))
         if tagline:
-            ctr(d, W / 2, 40, tagline, f(30), (150, 175, 205))
+            ctr(d, W / 2, top - 30, tagline, f(30), (150, 175, 205))
         img.save(path)
 
     brand_card(P(workdir, "intro.png"))
@@ -91,7 +94,7 @@ def build(in_mp4, out_mp4, workdir):
     def still(img, dur, out):
         run(["ffmpeg", "-y", "-loop", "1", "-r", "25", "-t", f"{dur}", "-i", img,
              "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-t", f"{dur}",
-             "-vf", "scale=1280:720,setsar=1", *VENC, *AENC, "-shortest", out])
+             "-vf", f"scale={W}:{H},setsar=1", *VENC, *AENC, "-shortest", out])
 
     still(P(workdir, "intro.png"), 3.0, P(workdir, "intro.mp4"))
     still(P(workdir, "outro.png"), 4.0, P(workdir, "outro.mp4"))
@@ -112,6 +115,7 @@ def main():
     ap.add_argument("in_mp4", help="סרטון השיעור הגולמי")
     ap.add_argument("out_mp4", nargs="?", help="פלט ממותג (ברירת מחדל: <שם>_branded.mp4)")
     ap.add_argument("--workdir", help="תיקיית נכסי ביניים (ברירת מחדל: temp)")
+    ap.add_argument("--size", default="1280x720", help="רזולוציה WxH (1080x1920 לגרסת נייד)")
     args = ap.parse_args()
 
     in_mp4 = os.path.abspath(args.in_mp4)
@@ -124,7 +128,7 @@ def main():
         out_mp4 = base + "_branded" + (ext or ".mp4")
     workdir = args.workdir or tempfile.mkdtemp(prefix="lesson_brand_")
 
-    build(in_mp4, out_mp4, workdir)
+    build(in_mp4, out_mp4, workdir, args.size)
 
 
 if __name__ == "__main__":

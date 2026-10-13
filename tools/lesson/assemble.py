@@ -51,15 +51,15 @@ def pad(aud, out, sec=0.5):
     run(["ffmpeg", "-y", "-i", aud, "-af", f"apad=pad_dur={sec}", "-c:a", "libmp3lame", out])
 
 
-def clip_card(out, img, aud):
+def clip_card(out, img, aud, size="1280:720"):
     vid = os.path.splitext(img)[0] + ".mp4"   # a <sid>.mp4 next to the card plays (looped) instead of the still
     if os.path.isfile(vid):
         run(["ffmpeg", "-y", "-stream_loop", "-1", "-i", vid, "-i", aud,
-             "-map", "0:v", "-map", "1:a", "-vf", "scale=1280:720,setsar=1", "-c:v", "libx264",
+             "-map", "0:v", "-map", "1:a", "-vf", f"scale={size}:force_original_aspect_ratio=decrease,pad={size}:(ow-iw)/2:(oh-ih)/2,setsar=1", "-c:v", "libx264",
              "-pix_fmt", "yuv420p", "-r", "25", *AAC, "-shortest", out])
         return
     run(["ffmpeg", "-y", "-loop", "1", "-i", img, "-i", aud,
-         "-vf", "scale=1280:720,setsar=1", "-c:v", "libx264", "-tune", "stillimage",
+         "-vf", f"scale={size},setsar=1", "-c:v", "libx264", "-tune", "stillimage",
          "-pix_fmt", "yuv420p", "-r", "25", *AAC, "-shortest", out])
 
 
@@ -70,6 +70,7 @@ def main():
     ap.add_argument("--cards", required=True, help="תיקיית <sid>.png")
     ap.add_argument("--out", required=True, help="פלט lesson.mp4 גולמי")
     ap.add_argument("--workdir", help="תיקיית ביניים (ברירת מחדל: <audio>/wrk)")
+    ap.add_argument("--size", default="1280x720", help="רזולוציית פלט WxH (1080x1920 לגרסת נייד)")
     a = ap.parse_args()
 
     vo, aud, cards = map(os.path.abspath, (a.vo, a.audio, a.cards))
@@ -91,7 +92,7 @@ def main():
         t = os.path.join(wrk, f"{sid}_t.mp3"); trim(raw, t)
         p = os.path.join(wrk, f"{sid}_p.mp3"); pad(t, p, 3.0 if sid.endswith("_q") else 0.5)  # "_q" = question posed: 3s to think (Alex)
         o = os.path.join(wrk, f"{idx:02d}_{sid}.mp4")
-        clip_card(o, png, p)
+        clip_card(o, png, p, a.size.replace("x", ":"))
         segfiles.append(o)
         print("seg", sid)
 

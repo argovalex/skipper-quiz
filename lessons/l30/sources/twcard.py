@@ -57,3 +57,54 @@ def digits(groups):
         out.append(f'<div class="flex flex-col items-center gap-2"><div class="flex gap-1.5">{boxes}</div>'
                    f'<div class="text-white/80 text-[22px] font-semibold">{lab}</div></div>')
     return '<div class="flex gap-4 justify-center" dir="ltr">' + ''.join(out) + '</div>'
+
+
+# ---------- vertical (9:16) cards: one phone screen, no scrolling ----------
+VW, VH = 1080, 1920
+VTOP = 1080 * 1060 // 1180          # the 1180x1060 visual panel, scaled to full width
+
+VHEAD = """<!doctype html><html dir="rtl" lang="he"><head><meta charset="utf-8">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>html,body{{margin:0;font-family:Heebo,sans-serif}} .ltr{{direction:ltr;unicode-bidi:isolate}}
+body{{background:radial-gradient(120% 60% at 50% 35%,#16305a 0%,#0b1a33 70%)}}</style></head>
+<body><div data-page class="relative overflow-hidden flex flex-col" style="width:{w}px;height:{h}px">{body}</div></body></html>"""
+
+def _fit(tag, name, n, cls, html):
+    return f'<{tag} data-name="{name}" data-max-lines="{n}" class="{cls}">{html}</{tag}>'
+
+def vbottom(sub, title, text, q=None):
+    """Title / explanation / question block, sized for a phone. Line limits are enforced by tw_render.js."""
+    out = (f'<div class="text-sky-300 text-[30px] text-center">{sub}</div>'
+           + _fit('div', 'title', 1, 'text-white font-extrabold text-[66px] leading-[1.15] text-center mt-1', title)
+           + '<div class="mx-auto my-3 h-[10px] w-[120px] rounded-full bg-emerald-500"></div>'
+           + _fit('div', 'text', 3 if q else 6, 'text-white leading-[1.35] text-center ' + ('text-[38px]' if q else 'text-[46px]'), text))
+    if q:
+        head, qtext, opts, ok = q
+        rows = ''.join(
+            _fit('div', f'opt{i}', 1, 'rounded-xl px-4 py-[6px] text-[33px] leading-[1.3] '
+                 + ('bg-emerald-900/70 ring-2 ring-emerald-400 text-emerald-300 font-bold' if i == ok else 'text-white/90'),
+                 f'<span class="{"text-emerald-300" if i == ok else "text-slate-400"} font-bold">{"אבגד"[i]}:</span> {o}')
+            for i, o in enumerate(opts))
+        out += ('<div class="mt-5 rounded-3xl bg-slate-800/80 ring-1 ring-white/15 px-6 py-5 space-y-2">'
+                f'<div class="text-amber-400 font-bold text-[28px]">{head}</div>'
+                + _fit('div', 'question', 2, 'text-white font-semibold text-[35px] leading-[1.3]', qtext) + rows + '</div>')
+    return out
+
+def vcard(path, caption, visual, bottom):
+    """visual: html for the top area (VW x VTOP) ; bottom: html from vbottom(). Raises if any text overflows."""
+    body = (f'<div class="h-[120px] flex items-center justify-center text-white font-extrabold text-[52px] shrink-0">{caption}</div>'
+            f'<div class="relative shrink-0 overflow-hidden" style="height:{VTOP}px">{visual}</div>'
+            f'<div class="flex-1 flex flex-col justify-center px-10 pb-6">{bottom}</div>')
+    hp = os.path.join(WRK, 'v_' + os.path.basename(path).replace('.png', '.html'))
+    open(hp, 'w', encoding='utf-8').write(VHEAD.format(w=VW, h=VH, body=body))
+    r = subprocess.run(['node', os.path.join(HERE, 'tw_render.js'), hp, path, str(VW), str(VH)], check=True, capture_output=True, text=True, encoding='utf-8')
+    if 'OVERFLOW' in r.stdout:
+        raise ValueError(f'{os.path.basename(path)}: ' + r.stdout.split('OVERFLOW', 1)[1].strip())
+    return path
+
+def vimg(png):
+    return f'<img src="file:///{png.replace(chr(92), "/")}" class="absolute inset-0 w-full h-full">'
+
+def vphoto(name, pos='center'):
+    return f'<img src="{asset(name)}" class="absolute inset-0 w-full h-full object-cover" style="object-position:{pos}">'

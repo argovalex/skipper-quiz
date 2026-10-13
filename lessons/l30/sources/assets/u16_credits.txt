@@ -1,0 +1,8 @@
+Lesson 16 (EPIRB, SART ו-AIS), lessons/l30/sources/assets (Wikimedia Commons, credit burned on the cards):
+u16_epirb_bracket.jpg  "EPIRB (1).jpg", Marwan Mohamad, CC BY-SA 4.0
+u16_hydro.jpg          "Epirb hydrostatic release mechanism.jpg", 12thave, CC BY-SA 3.0
+u16_sart_radar.jpg     SART on X-band radar infographic, supplied by Alex; ranges relabelled to RSPN (5-8, 1-5, <1 NM), watermark removed (s16-s18)
+u16_cospas.jpg         "Diagram of Satellite Search and Rescue (SARSAT) concept (2268-475).jpg", NOAA, Public domain
+u16_raft_epirb.jpg, u16_ships.jpg  AI scenes, Higgsfield nano_banana
+Reused: u14_coast_station, u13_vhf, u15_rx_printer.
+u16_sart_pro.jpg       SART product shot, supplied by Alex (s12-s15, s19, s20)
