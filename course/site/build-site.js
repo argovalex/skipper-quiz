@@ -180,14 +180,9 @@ ${slides.map((s, i) => `        <a class="slide${i === 0 ? ' on' : ''}" href="${
 
 function home() {
   const courseSlides = COURSES.map(c => ({ href: c.href, img: tile(c.img), badge: c.state, title: c.name, text: c.text }));
-  // Items dated today win: the script below hides the rest when any exist.
-  // Newest across the site (posts + all videos), top 10. "היום באתר" logic below keys off data-date.
-  const fresh = [
-    ...allVideos.map(v => ({ href: v.href, img: v.poster, badge: 'סרטון', title: v.title, date: v.date, kind: 'video' })),
-    ...posts.map(p => ({ href: p.href, img: p.img, badge: 'פוסט', title: p.title, date: p.date, kind: 'post' })),
-  ].sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.kind === 'video' ? -1 : 1)).slice(0, 10);
-  // Open on a video so this window doesn't show the same post as the news window beside it.
-  const fv = fresh.findIndex(x => x.kind === 'video'); if (fv > 0) fresh.unshift(...fresh.splice(fv, 1));
+  // "חדש באתר": the newest videos only. Posts live in the "חדש מהים" window beside it, so the two
+  // never show the same item. Items dated today win: the script below hides the rest when any exist.
+  const fresh = allVideos.slice(0, 10).map(v => ({ href: v.href, img: v.poster, badge: 'סרטון', title: v.title, date: v.date, kind: 'video' }));
   // News window: posts first; while there are fewer than 5, Q&A articles fill it so it keeps turning.
   const newsSlides = [
     ...posts.map(p => ({ href: p.href, img: p.img, badge: sectionOf(p.section).name, title: p.title, text: fmtDate(p.date) })),
