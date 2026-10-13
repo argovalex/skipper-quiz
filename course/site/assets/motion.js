@@ -27,7 +27,7 @@
   var sel = '.app-shots figure,.app-copy,.board .tile,.story,.reel,.course,.news-item,.pagehead,.about,.watch-head,.feed h2';
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  }, { rootMargin: '0px 0px 15% 0px', threshold: 0 }); // fire just before an item scrolls in, so fast scrolling never shows empty gaps
   document.querySelectorAll(sel).forEach(function (el) {
     var sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
     el.style.setProperty('--rv-d', Math.min(sibs, 8) * 70 + 'ms');

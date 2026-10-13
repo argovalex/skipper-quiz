@@ -61,9 +61,14 @@ p{margin:0}
 .slide-txt>span:not(.badge){color:var(--sky);font-size:.95rem;line-height:1.4}
 .tile--courses .slide-txt b{font-size:clamp(2.8rem,5vw,4.6rem)}
 .tile--courses .slide-txt{padding:24px 26px 30px}
-.dots{position:absolute;z-index:3;bottom:12px;left:14px;display:flex;gap:6px}
-.dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.45);cursor:pointer}
-.dots button.on{background:var(--gold);width:22px;border-radius:5px}
+.dots{position:absolute;z-index:3;bottom:4px;left:6px;display:flex;gap:0}
+/* 9px dot drawn inside a 25px hit area (padding + content-box clip), so it can be tapped on a phone */
+.dots button{box-sizing:content-box;width:9px;height:9px;padding:8px;border:0;border-radius:50%;background-color:rgba(255,255,255,.45);background-clip:content-box;cursor:pointer}
+.dots button.on{background-color:var(--gold);width:22px;border-radius:13px}
+/* News slides often carry a screenshot full of its own text: darker scrim + shadow so ours stays readable */
+.tile--news::after{background:linear-gradient(0deg,rgba(10,28,51,.97) 0%,rgba(10,28,51,.88) 55%,rgba(10,28,51,.55) 100%)}
+.tile--news .slide-txt{text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.tile--news .slide-txt b{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;padding-bottom:.08em}
 .topic{aspect-ratio:4/3.4}
 .topic .slide-txt b{font-size:1.9rem}
 .topic .slide-txt>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -179,6 +184,7 @@ footer a:hover{color:var(--gold)}
   .strip p{display:none}
   .board-top{grid-template-columns:1fr}
   .board-top .tile{aspect-ratio:16/11!important}
+  .tile--news .slide-txt b{font-size:1.6rem;line-height:1.05}
   .board-topics{grid-template-columns:1fr 1fr}
   .stories{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr}
