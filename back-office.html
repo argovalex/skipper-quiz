@@ -476,13 +476,13 @@ function setMedia(p){
 const hasOwnMedia=()=>!!(media.image||media.video||($("fMedia").value==="video"&&embed($("fUrl").value.trim())));
 function renderMediaNow(){
   const parts=[],p=working();
-  if(media.image)parts.push(`תמונה: <span class="ltr">${esc(media.image.split("/").pop())}</span> <a href="#" data-rm="image">הסר</a>`);
+  if(media.image)parts.push(`תמונה: <span class="ltr">${esc(media.image.split("/").pop())}</span> <a href="#" data-rm="image">הסר</a>${/-ai\d*\./.test(media.image)?` <button type="button" id="btnRegenImg" style="padding:2px 10px;font-size:13px">צור שוב</button>`:""}`);
   if(media.video)parts.push(`סרטון: <span class="ltr">${esc(media.video.split("/").pop())}</span> <a href="#" data-rm="video">הסר</a>`);
   let html=parts.length?"מצורף לפוסט הזה · "+parts.join(" · "):"";
   if(!media.image&&!media.video){
     html=`<span class="noimg-bar"><b>אין תמונה לפוסט.</b>
       ${p.source?.url?`<button type="button" id="btnSrcImg">צרף תמונה מהמקור</button>`:""}
-      <button type="button" id="btnAskImg">${p.imageRequest?"✓ בקשת תמונה AI נשלחה":"בקש תמונה AI"}</button>
+      <button type="button" id="btnAskImg">צור תמונה AI</button>
       <span>או העלה קובץ בשדה התמונה</span></span>`;
   }
   $("mediaNow").innerHTML=html;
@@ -493,10 +493,7 @@ $("mediaNow").addEventListener("click",async e=>{
       if(current()){if(await save(p,"התמונה מהמקור צורפה"))fillForm(p)}else{setMedia(p);$("procStatus").textContent="התמונה הועלתה. לחץ שמור"}}
     catch(err){$("procStatus").classList.add("err");$("procStatus").textContent=err.message;e.target.disabled=false}
     return}
-  if(e.target.id==="btnAskImg"){const p=working();p.imageRequest={at:new Date().toISOString(),title:srcTitle(p)||p.out?.title||""};
-    const req=`צור תמונה לפוסט ${p.id} ב-back-office (posts.json, ענף ${cfg.branch()}): "${p.out?.title||srcTitle(p)}". מקור: ${p.source?.url||"-"}`;
-    try{await navigator.clipboard.writeText(req)}catch{}
-    if(await save(p,"הבקשה נשמרה והועתקה. הדבק אותה ל-Claude"))fillForm(p);return}
+  if(e.target.id==="btnAskImg"||e.target.id==="btnRegenImg"){e.target.disabled=true;await makeAiImage(working());e.target.disabled=false;return}
   const a=e.target.closest("[data-rm]");if(!a)return;e.preventDefault();const k=a.dataset.rm;
   media[k]="";localUrl[k]="";if(k==="image")bgImg=null;renderMediaNow();renderPreview();
   $("procStatus").textContent="ההסרה תישמר כשתלחץ שמור"});
@@ -507,6 +504,36 @@ const proxyBase=()=>(typeof getRailwayUrl==="function"&&getRailwayUrl())||RAILWA
 async function xfetch(url){
   try{const r=await fetch(`${proxyBase()}/fetch?url=${encodeURIComponent(url)}`);if(r.ok)return r;if(r.status!==404)throw new Error("proxy "+r.status)}catch(e){console.warn("[back-office] /fetch",url,e.message||e)}
   return fetch(url,{cache:"no-store",referrerPolicy:"no-referrer"});
+}
+// AI image through the server's /image (Gemini). The prompt is built from the post itself, so the
+// picture shows this item's scene, never a generic sea shot.
+function imagePrompt(p){
+  const o=p.out||{},s=p.source||{};
+  const what=[o.title,o.excerpt,s.title,(s.summary||p.original?.text||"").slice(0,500),p.original?.mediaDesc].filter(Boolean).join("\n");
+  return `Photorealistic editorial news photograph illustrating this specific maritime story (the text may be Hebrew or English):
+${what}
+
+Show the concrete situation the story is about: the vessels, place, equipment or incident described, as a press photographer would capture it. Realistic boats, rigging and sea state; natural light. Landscape 4:3.
+Do not include any text, captions, letters, numbers, logos, flags with writing or watermarks.`;
+}
+async function makeAiImage(p){
+  const st=$("procStatus");st.classList.remove("err");st.textContent="יוצר תמונה AI… בדרך כלל 10–40 שניות";
+  try{
+    const r=await fetch(`${proxyBase()}/image`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:imagePrompt(p),aspectRatio:"4:3"})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(r.status===503?"בשרת עדיין אין GEMINI_API_KEY":r.status===429?"הגעת למכסת התמונות לשעה. נסה שוב מאוחר יותר":(j.error||"HTTP "+r.status));
+    const type=j.mimeType||"image/png",ext=({"image/jpeg":"jpg","image/webp":"webp"})[type]||"png";
+    const bin=Uint8Array.from(atob(j.data),c=>c.charCodeAt(0));
+    const name=`${p.id}-ai${Date.now().toString(36)}.${ext}`;
+    const f=new File([bin],name,{type});
+    st.textContent="מעלה את התמונה ל-GitHub…";
+    await putAsset(MEDIA_DIR+name,f,`back-office: תמונה AI · ${p.out?.slug||p.id}`);
+    media.image="/assets/posts/"+name;localUrl.image=URL.createObjectURL(f);delete p.imageRequest;
+    const im=new Image();im.onload=()=>{bgImg=im;renderPreview()};im.src=localUrl.image;
+    renderMediaNow();
+    if(current()){const keep={...localUrl};if(await save(p,"התמונה נוצרה וצורפה")){fillForm(p);localUrl=keep;renderPreview()}}
+    else st.textContent="התמונה נוצרה. לחץ שמור כדי לשייך אותה לפוסט";
+  }catch(e){st.classList.add("err");st.textContent="יצירת התמונה נכשלה: "+e.message}
 }
 async function putAsset(repoPath,f,message){
   const tok=cfg.gh();if(!tok)throw new Error("חסר GitHub Token בהגדרות");
@@ -532,7 +559,7 @@ async function attachSourceImage(p){
   let url="";
   if(s.url){try{url=await ogImage(s.url)}catch{}}
   if(!url||GENERIC_IMG.test(url))url=(s.image||"").replace(/-\d{2,4}x\d{2,4}(?=\.\w+(\?|$))/,"");
-  if(!url||GENERIC_IMG.test(url))throw new Error("אין במקור תמונה של הידיעה עצמה. בקש תמונה AI");
+  if(!url||GENERIC_IMG.test(url))throw new Error("אין במקור תמונה של הידיעה עצמה. צור תמונה AI");
   let blob;
   try{const r=await xfetch(url);if(!r.ok)throw new Error();blob=await r.blob()}
   catch{throw new Error("האתר חוסם הורדת התמונה מהדפדפן. שמור אותה מהידיעה ידנית והעלה בשדה התמונה")}
@@ -590,7 +617,7 @@ function renderPreview(){
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css"><style>body{padding:24px 0}.news-more{display:block}</style></head><body>
 <section class="feed" style="padding:0"><div class="wrap news-list"><article class="news-item">
-<div class="news-media">${video||(media.image?`<img src="${esc(mediaSrc("image"))}" alt="">`:`<div style="aspect-ratio:4/3;display:grid;place-items:center;border:2px dashed #c9d3dc;border-radius:14px;color:#8a99a8;font-size:15px;padding:16px;text-align:center">אין תמונה לפוסט. צרף מהמקור או בקש תמונה AI</div>`)}${url&&isVideo?`<p class="news-credit">הסרטון: <a href="${esc(url)}" target="_blank">${esc(author||"המקור")}, ב${esc($("fPlatform").value)}</a></p>`:""}</div>
+<div class="news-media">${video||(media.image?`<img src="${esc(mediaSrc("image"))}" alt="">`:`<div style="aspect-ratio:4/3;display:grid;place-items:center;border:2px dashed #c9d3dc;border-radius:14px;color:#8a99a8;font-size:15px;padding:16px;text-align:center">אין תמונה לפוסט. צרף מהמקור או צור תמונה AI</div>`)}${url&&isVideo?`<p class="news-credit">הסרטון: <a href="${esc(url)}" target="_blank">${esc(author||"המקור")}, ב${esc($("fPlatform").value)}</a></p>`:""}</div>
 <div class="news-txt"><p class="post-meta"><a>${esc(sec)}</a> <time>היום</time></p><h2>${esc($("oTitle").value)}</h2><p class="news-lede">${esc($("oExcerpt").value)}</p>
 <div class="news-more">${md($("oBody").value)}${$("oRule").value?`<div class="rule"><h3>הכלל</h3><p>${esc($("oRule").value)}</p></div>`:""}<p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p>${url?`<p class="post-source">המקור: <a href="${esc(url)}" target="_blank" rel="noopener">${esc(author||"הידיעה המקורית")}</a></p>`:""}</div></div>
 </article></div></section></body></html>`;
@@ -616,7 +643,7 @@ $("btnReload").onclick=loadQueue;
 $("btnSaveDraft").onclick=()=>save(working(),"הטיוטה נשמרה");
 $("btnSave").onclick=()=>save(working(),"השינויים נשמרו");
 $("btnApprove").onclick=async()=>{const p=readForm(working());if(!p.out?.slug){toast("חסרה כתובת (slug) לפני אישור");return}
-  if(!hasOwnMedia()){toast("אין תמונה לפוסט. צרף מהמקור או בקש תמונה AI לפני אישור");$("mediaNow").scrollIntoView({behavior:"smooth",block:"center"});return}
+  if(!hasOwnMedia()){toast("אין תמונה לפוסט. צרף מהמקור או צור תמונה AI לפני אישור");$("mediaNow").scrollIntoView({behavior:"smooth",block:"center"});return}
   p.status="approved";p.approvedAt=new Date().toISOString();if(await save(p,"אושר ונשמר ל-GitHub. עולה לאתר בבנייה הבאה"))fillForm(p)};
 $("btnPublished").onclick=async()=>{const p=working();p.status="published";if(await save(p,"סומן כפורסם"))fillForm(p)};
 $("btnReject").onclick=async()=>{const p=working();p.status="rejected";if(await save(p,"הפוסט נדחה"))fillForm(p)};
@@ -755,7 +782,7 @@ $("btnFeedImport").onclick=async()=>{
     for(const [i,p] of added.entries()){feedMsg(`מצרף תמונות מהמקור ${i+1}/${added.length}…`);try{await attachSourceImage(p);got++}catch{}}
     if(got)await commitQueue(`back-office: ${got} תמונות מהמקור`);
     filter="new";renderFilters();$("feedModal").close();openPost(added[0].id);
-    if(got<added.length)setTimeout(()=>toast(`${added.length-got} ידיעות בלי תמונה. פתח אותן ובקש תמונה AI`),3000);
+    if(got<added.length)setTimeout(()=>toast(`${added.length-got} ידיעות בלי תמונה. פתח אותן וצור תמונה AI`),3000);
     toast(`נוספו ${added.length} ידיעות לתור. הראשונה פתוחה, לחץ "עבד לעברית"`);
   }else{posts=posts.filter(p=>!added.includes(p));feedMsg("השמירה נכשלה, שום דבר לא נוסף",true);$("btnFeedImport").disabled=false}
 };
