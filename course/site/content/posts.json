@@ -1,5 +1,26 @@
 [
   {
+    "id": "mv6mg9fjnuuxc",
+    "status": "new",
+    "created": "2026-10-13T11:52:49.855Z",
+    "section": "ahrei",
+    "audience": "all",
+    "source": {
+      "url": "https://www.yachtingmonthly.com/news/mca-tells-maritime-sector-to-plan-for-life-without-gps-106566",
+      "platform": "אחר",
+      "mediaType": "image",
+      "author": ""
+    },
+    "original": {
+      "text": "The UK government is advising yachtsmen, ship owners, ports and all those involved in the maritime sector to plan for operations without GPS, as spoofing, jamming, signal loss and interference in Global Navigation Satellite Systems (GNSS) increase worldwide",
+      "mediaDesc": ""
+    },
+    "notes": "",
+    "out": null,
+    "updated": "2026-10-13T11:55:02.689Z",
+    "processedAt": "2026-10-13T11:55:02.689Z"
+  },
+  {
     "id": "mv3hq5f6exauo",
     "status": "approved",
     "created": "2026-10-11T07:17:14.610Z",
