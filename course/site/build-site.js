@@ -13,6 +13,8 @@ const path = require('path');
 const { SECTIONS, NEWS, VIDEO, COURSES, FONTS, header, footer } = require('./hub');
 
 const ROOT = __dirname;
+const SITE = 'https://www.alargov.com';
+const abs = u => (/^https?:/.test(u) ? u : SITE + u);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const tile = name => `/assets/tiles/${name}.jpg`;
 const fmtDate = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('he-IL', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -27,7 +29,7 @@ const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'posts.json'
     exam: d.out.exam, section: d.section, source: d.source, image: d.image, video: d.video,
     date: (d.approvedAt || d.updated || d.created).slice(0, 10) }))
   .sort((a, b) => b.date.localeCompare(a.date))
-  .map(p => ({ ...p, href: `/hadash/#${p.slug}`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
+  .map(p => ({ ...p, href: `/${p.section}/${p.slug}/`, anchor: `/hadash/#${p.slug}`, img: p.image || tile(sectionOf(p.section).img || 'coast') }));
 
 const questions = JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'data', 'l11.json'), 'utf8'));
 const qByNum = new Map(questions.map(q => [q.num, q]));
@@ -42,6 +44,9 @@ if (fs.existsSync(pubFile)) for (const h of JSON.parse(fs.readFileSync(pubFile, 
   const d = (h.published_at || h.date || '').slice(0, 10);
   if (d && (!published.get(h.num) || d > published.get(h.num))) published.set(h.num, d);
 }
+// Spoken script without niqqud / pause markers = the video's transcript.
+const transcriptOf = q => String(q.voiceover_text || '').replace(/\[\[PAUSE\]\]/g, ' ')
+  .replace(/[\u0591-\u05C7]/g, '').replace(/\s+/g, ' ').replace(/\s+([.,?!])/g, '$1').trim();
 const shortQ = t => { t = t.replace(/\s+/g, ' ').trim(); if (t.length <= 58) return t; const cut = t.slice(0, 58); return cut.slice(0, cut.lastIndexOf(' ')) + '…'; };
 // Only the public rotation pool goes on the site (tools/daily-publish-pool.json — the 40 questions
 // that are posted to social media again and again). The rest of the bank stays inside the paid course.
@@ -52,7 +57,8 @@ const allVideos = questions.filter(q => q.videoUrl && POOL.has(q.num)).map(q => 
   return { num: q.num, topic: q.topic, src: q.videoUrl, date: dates.pop() || '',
     title: titleOf.get(q.num) || shortQ(q.q_he), picked: titleOf.has(q.num),
     poster: q.videoUrl.replace('/video/upload/', '/video/upload/so_3,w_500,c_scale/').replace(/\.mp4$/, '.jpg'),
-    href: `/video/?v=${q.num}` };
+    q: q.q_he, options: q.options || [], answer: q.answer, explanation: q.explanation || '',
+    transcript: transcriptOf(q), href: `/video/q${q.num}/` };
 }).sort((a, b) => b.date.localeCompare(a.date) || b.num - a.num);
 // Homepage rail: hand-picked first (reels.json order), then the newest.
 const videos = [...picks.map(r => allVideos.find(v => v.num === r.num)).filter(Boolean),
@@ -62,8 +68,25 @@ const videos = [...picks.map(r => allVideos.find(v => v.num === r.num)).filter(B
 const articles = JSON.parse(fs.readFileSync(path.join(ROOT, 'ofnoa-yam', 'topics.json'), 'utf8'))
   .map(t => ({ href: `/ofnoa-yam/${t.slug}.html`, img: t.poster, title: t.h1, topic: t.topic }));
 
+// ---------- structured data ----------
+const ORG = { '@type': 'Organization', '@id': `${SITE}/#org`, name: 'אלכס ארגוב · סקיפר דיגיטלי', url: `${SITE}/`,
+  logo: `${SITE}/assets/logo.jpg`, email: 'alex@alargov.com',
+  sameAs: ['https://www.instagram.com/argovalexander/', 'https://wa.me/972523682486',
+    'https://play.google.com/store/apps/details?id=com.alexskipper.marinedictionary'] };
+const PERSON = { '@type': 'Person', '@id': `${SITE}/#alex`, name: 'אלכס ארגוב', alternateName: 'Alexander Argov',
+  jobTitle: 'מדריך שיט', description: 'מדריך שיט מעשי ותאוריה עם 9 שנות הדרכה. מלמד תאוריה לרישיונות שיט בישראל.',
+  url: `${SITE}/`, image: `${SITE}/assets/logo.jpg`, worksFor: { '@id': `${SITE}/#org` },
+  knowsAbout: ['רישיון שיט', 'רישיון אופנוע ים', 'מבחן תאוריה בשיט', 'חוקי הדרך בים (COLREG)', 'ניווט חופי', 'בטיחות בים'] };
+const WEBSITE = { '@type': 'WebSite', '@id': `${SITE}/#website`, name: 'אלכס ארגוב · סקיפר דיגיטלי', url: `${SITE}/`,
+  inLanguage: 'he', publisher: { '@id': `${SITE}/#org` } };
+const ld = obj => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
+const crumbs = items => ({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, url], i) =>
+  ({ '@type': 'ListItem', position: i + 1, name, item: SITE + url })) });
+
 // ---------- shared pieces ----------
-function page({ title, desc, active, body, canonical, extraHead = '' }) {
+// Indexing is controlled by the deploy, not the code: the Dockerfile adds noindex + Disallow only
+// when STAGING=1. A page asks for noindex here only when it is an empty placeholder.
+function page({ title, desc, active, body, canonical, extraHead = '', noindex = false, image = '/assets/sea-hero.jpg', type = 'website' }) {
   return `<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -72,12 +95,15 @@ function page({ title, desc, active, body, canonical, extraHead = '' }) {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<meta name="robots" content="noindex">
-<meta name="theme-color" content="#102948">
+${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta name="theme-color" content="#102948">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:locale" content="he_IL">
-${canonical ? `<link rel="canonical" href="https://www.alargov.com${canonical}">` : ''}
+<meta property="og:type" content="${type}">
+<meta property="og:image" content="${esc(abs(image))}">
+<meta property="og:site_name" content="אלכס ארגוב · סקיפר דיגיטלי">
+${canonical ? `<meta property="og:url" content="${SITE}${canonical}">\n<link rel="canonical" href="${SITE}${canonical}">` : ''}
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
 ${FONTS}
 <link rel="stylesheet" href="/assets/site.css">
 ${extraHead}
@@ -171,8 +197,8 @@ function home() {
   <img class="poster" src="/assets/sea-hero.jpg" alt="">
   <video id="heroVid" autoplay muted loop playsinline poster="/assets/sea-hero.jpg" aria-hidden="true"><source src="/assets/sea-hero.mp4" type="video/mp4"></video>
   <div class="wrap strip-copy">
-    <h1>לצאת לים, ולדעת מה עושים.</h1>
-    <p>סרטונים, חדשות מהים, מדריכים וקורסים לרישיונות שיט. בעברית, מאת מדריך שיט.</p>
+    <h1><span class="h1-kicker">קורסי תאוריה לרישיון שיט · אלכס ארגוב</span>לצאת לים, ולדעת מה עושים.</h1>
+    <p>סרטונים, חדשות מהים, מדריכים וקורסי הכנה למבחן התאוריה לרישיונות שיט. בעברית, מאת מדריך השיט אלכס ארגוב.</p>
   </div>
   <button class="mute" id="heroPause" type="button">עצור וידאו</button>
 </section>
@@ -251,7 +277,8 @@ ${PLAYER}
   });
 })();
 </script>`;
-  return page({ title: 'אלכס ארגוב · סקיפר דיגיטלי', desc: 'סרטונים, חדשות מהים, מדריכים וקורסים לרישיונות שיט, בעברית. מאת מדריך השיט אלכס ארגוב.', active: null, body, canonical: '/' });
+  return page({ title: 'אלכס ארגוב · סקיפר דיגיטלי | קורסי תאוריה לרישיון שיט', desc: 'קורסי הכנה למבחן התאוריה לרישיונות שיט, סרטונים עם הסבר לשאלות המבחן, וחדשות מהים. בעברית, מאת מדריך השיט אלכס ארגוב.', active: null, body, canonical: '/',
+    extraHead: ld({ '@context': 'https://schema.org', '@graph': [ORG, PERSON, WEBSITE] }) });
 }
 
 // ---------- posts ----------
@@ -303,6 +330,7 @@ ${md(p.body)}
         <p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p>
       </div>
       <button class="read-more" type="button" aria-expanded="false">קרא עוד</button>
+      <a class="permalink" href="${p.href}">לכתבה המלאה</a>
     </div>
   </article>`;
 }
@@ -319,8 +347,9 @@ const NEWS_JS = `<script>
 </script>`;
 
 function feed(slug, name, blurb, list, app) {
-  const ld = list.map(p => ({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: p.title,
-    description: p.excerpt, datePublished: p.date, inLanguage: 'he', author: { '@type': 'Person', name: 'אלכס ארגוב' } }));
+  // The feed only lists the articles; each article's own page carries the Article markup.
+  const list_ld = { '@context': 'https://schema.org', '@type': 'ItemList', name,
+    itemListElement: list.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + p.href, name: p.title })) };
   const body = `
 ${pagehead(name, blurb, !list.length && !app, app)}
 ${app && app.shots ? `<section class="app-show">
@@ -335,8 +364,107 @@ ${list.length || !app ? `<section class="feed">
   </div>
 </section>` : ''}
 ${NEWS_JS}`;
+  // An empty section is a placeholder: keep it out of search until it has something to say.
   return page({ title: `${name} | אלכס ארגוב`, desc: blurb, active: slug, body, canonical: `/${slug}/`,
-    extraHead: list.length ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : '' });
+    noindex: !list.length && !app, extraHead: list.length ? ld(list_ld) : '' });
+}
+
+// ---------- article page (one permanent URL per post) ----------
+function postPage(p) {
+  const sec = sectionOf(p.section);
+  const src = p.source || {};
+  const media = p.video
+    ? `<video src="${esc(p.video)}" controls playsinline preload="metadata"${p.image ? ` poster="${esc(p.image)}"` : ''}></video>`
+    : src.mediaType === 'video' || /facebook\.com/.test(src.url || '') ? embed(src) : '';
+  const credit = src.url ? `<a class="credit" href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.author || 'המקור')}${src.platform ? `, ב${esc(src.platform)}` : ''}</a>` : '';
+  const others = posts.filter(o => o.slug !== p.slug).slice(0, 3);
+  const graph = [
+    { '@type': 'Article', '@id': `${SITE}${p.href}#article`, headline: p.title, description: p.excerpt,
+      url: SITE + p.href, mainEntityOfPage: SITE + p.href, image: [abs(p.img)], inLanguage: 'he',
+      datePublished: p.date, dateModified: p.date, articleSection: sec.name,
+      author: PERSON, publisher: ORG,
+      ...(src.url ? { isBasedOn: src.url } : {}),
+      ...(p.video ? { video: { '@type': 'VideoObject', name: p.title, description: p.excerpt, contentUrl: abs(p.video),
+        thumbnailUrl: abs(p.img), uploadDate: p.date } } : {}) },
+    crumbs([['בית', '/'], [sec.name, `/${p.section}/`], [p.title, p.href]]),
+  ];
+  const body = `
+<article class="post-page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="פירורי לחם"><a href="/v2/">בית</a> › <a href="/${p.section}/">${esc(sec.name)}</a></nav>
+    <div class="news-item news-item--open">
+      <div class="news-media">${media || `<img src="${p.img}" alt="" loading="lazy">`}${credit ? `<p class="news-credit">המקור: ${credit}</p>` : ''}</div>
+      <div class="news-txt">
+        <p class="post-meta"><a href="/${p.section}/">${esc(sec.name)}</a> <time datetime="${p.date}">${fmtDate(p.date)}</time></p>
+        <h1>${esc(p.title)}</h1>
+        <p class="news-lede">${esc(p.excerpt)}</p>
+        <div class="news-more">
+${md(p.body)}
+          ${p.rule ? `<div class="rule"><h2>הכלל</h2><p>${esc(p.rule)}</p></div>` : ''}
+          <p class="post-sign">אלכס ארגוב, מדריך שיט · <a href="/kursim/">קורסי תאוריה לרישיון שיט</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+${others.length ? `<section class="feed related">
+  <div class="wrap">
+    <h2>עוד מ${esc(NEWS.name)}</h2>
+    <div class="stories">
+      ${others.map(storyCard).join('\n      ')}
+    </div>
+  </div>
+</section>` : ''}`;
+  return page({ title: `${p.title} | אלכס ארגוב`, desc: p.excerpt, active: p.section, body, canonical: p.href,
+    image: p.img, type: 'article', extraHead: ld({ '@context': 'https://schema.org', '@graph': graph }) });
+}
+
+// ---------- video pages ----------
+const LETTERS = ['א', 'ב', 'ג', 'ד'];
+function videoItemPage(v) {
+  const related = allVideos.filter(o => o.topic === v.topic && o.num !== v.num).slice(0, 6);
+  const more = related.length < 6 ? related.concat(allVideos.filter(o => o.topic !== v.topic).slice(0, 6 - related.length)) : related;
+  const correct = Number.isInteger(v.answer) ? v.answer : LETTERS.indexOf(String(v.answer).trim());
+  const opt = o => String(o).replace(/^[אבגד][.)]\s*/, '');
+  const graph = [
+    { '@type': 'VideoObject', '@id': `${SITE}${v.href}#video`, name: v.q, description: v.explanation || v.q,
+      thumbnailUrl: [v.poster], uploadDate: v.date || undefined, contentUrl: v.src, embedUrl: SITE + v.href,
+      inLanguage: 'he', transcript: v.transcript, isFamilyFriendly: true,
+      about: v.topic, creator: { '@id': `${SITE}/#alex` }, publisher: ORG },
+    { '@type': 'Question', name: v.q, ...(correct >= 0 && v.options[correct] ? { acceptedAnswer: { '@type': 'Answer', text: `${opt(v.options[correct])} ${v.explanation}` } } : {}) },
+    crumbs([['בית', '/'], ['סרטונים', '/video/'], [v.title, v.href]]),
+  ];
+  const body = `
+<article class="video-page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="פירורי לחם"><a href="/v2/">בית</a> › <a href="/video/">סרטונים</a> › ${esc(v.topic)}</nav>
+    <div class="vp-grid">
+      <div class="vp-media"><video src="${esc(v.src)}" poster="${esc(v.poster)}" controls playsinline preload="metadata"></video></div>
+      <div class="vp-txt">
+        <p class="post-meta"><span class="topic-tag">${esc(v.topic)}</span>${v.date ? ` <time datetime="${v.date}">${fmtDate(v.date)}</time>` : ''}</p>
+        <h1>${esc(v.q)}</h1>
+        ${v.options.length ? `<ol class="vp-opts">${v.options.map((o, i) => `<li${i === correct ? ' class="ok"' : ''}><b>${LETTERS[i] || i + 1}</b> ${esc(opt(o))}${i === correct ? ' <span>התשובה הנכונה</span>' : ''}</li>`).join('')}</ol>` : ''}
+        ${v.explanation ? `<div class="rule"><h2>ההסבר</h2><p>${esc(v.explanation)}</p></div>` : ''}
+        <details class="transcript" open><summary>תמליל הסרטון</summary><p>${esc(v.transcript)}</p></details>
+        <div class="side-cta"><p>זו שאלה מתוך מאגר מבחן התאוריה לרישיון אופנוע ים. בקורס יש הסבר כזה לכל שאלה במאגר.</p><a class="btn btn-gold" href="/kursim/">לקורסים</a></div>
+      </div>
+    </div>
+  </div>
+</article>
+<section class="feed related">
+  <div class="wrap">
+    <h2>עוד סרטונים</h2>
+    <div class="vgrid">
+    ${more.map(videoLink).join('\n    ')}
+    </div>
+  </div>
+</section>`;
+  return page({ title: `${v.title} · סרטון הסבר | אלכס ארגוב`, desc: `${v.q} ${v.explanation}`.slice(0, 155), active: VIDEO.slug, body,
+    canonical: v.href, image: v.poster, type: 'video.other', extraHead: ld({ '@context': 'https://schema.org', '@graph': graph }) });
+}
+// Crawlable card: a real link to the video's own page.
+function videoLink(v) {
+  return `<a class="reel" href="${v.href}" data-topic="${esc(v.topic)}"><span class="thumb"><img src="${esc(v.poster)}" alt="" loading="lazy"><span class="play">${PLAY}</span></span><span class="cap"><b>${esc(v.title)}</b><span>${esc(v.topic)}</span></span></a>`;
 }
 
 function videoPage() {
@@ -357,23 +485,52 @@ ${seaVideos.length ? `<h2 class="vsec">מקרים מהים</h2>
       ${topics.map(t => `<button type="button" class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join('\n      ')}
     </div>
     <div class="vgrid">
-    ${allVideos.map(v => reelCard(v).replace('<button class="reel"', `<button data-topic="${esc(v.topic)}" class="reel"`)).join('\n    ')}
+    ${allVideos.map(videoLink).join('\n    ')}
     </div>
   </div>
 </section>
-${PLAYER}
 <script>
 document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
   document.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===c)});
   document.querySelectorAll('.vgrid .reel').forEach(function(r){r.hidden=!!c.dataset.t&&r.dataset.topic!==c.dataset.t});
 })});
+// old links /video/?v=1154 -> /video/q1154/
+(function(){var v=new URLSearchParams(location.search).get('v');if(v)location.replace('/video/q'+v+'/')})();
 </script>`;
-  return page({ title: `${VIDEO.name} | אלכס ארגוב`, desc: VIDEO.blurb, active: VIDEO.slug, body, canonical: '/video/' });
+  const list = { '@context': 'https://schema.org', '@type': 'ItemList', name: VIDEO.name,
+    itemListElement: allVideos.map((v, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + v.href, name: v.title })) };
+  return page({ title: `${VIDEO.name}: הסברים לשאלות מבחן התאוריה בשיט | אלכס ארגוב`, desc: VIDEO.blurb, active: VIDEO.slug, body, canonical: '/video/', extraHead: ld(list) });
 }
 
+// ---------- courses ----------
+const FAQ = [
+  ['לאיזה רישיון הקורס מיועד?', 'הקורס הפתוח היום מכין למבחן התאוריה של רישיון אופנוע ים של רשות הספנות והנמלים (רספ״ן). קורסים למשיט 12, 30 ו-40 בהכנה.'],
+  ['מה כולל הקורס?', 'כל שאלות המאגר הרשמי, הסבר קולי לכל שאלה, 13 מערכי שיעור מצולמים שמכסים את כל נושאי הסילבוס, ומבחני דמה בפורמט האמיתי.'],
+  ['כמה עולה הקורס?', '10 הנרשמים הראשונים מקבלים גישה מלאה ב-199 ש״ח במסלול המייסדים. אחר כך המחיר 349 ש״ח.'],
+  ['יש אחריות אם לא עברתי?', 'כן. מי שלמד ולא עבר את המבחן הרשמי זכאי להחזר מלא, בכפוף לתנאי מדיניות הביטולים.'],
+  ['אפשר להתנסות בחינם?', 'כן. 13 השאלות הראשונות פתוחות לתרגול חינם, בלי הרשמה.'],
+  ['מאיזה מכשיר לומדים?', 'מכל מכשיר: טלפון, טאבלט או מחשב. ההתקדמות נשמרת ועוברת איתך.'],
+];
+const WHAT = [
+  ['מאגר רספ״ן המלא', 'כל השאלות מהמאגר הרשמי, בנוסח המדויק, מסודרות לפי נושאי הסילבוס.'],
+  ['הסבר בקול לכל שאלה', 'המדריך מסביר בקול למה התשובה נכונה, ולמה האחרות לא.'],
+  ['13 מערכי שיעור מצולמים', 'שיעור לכל נושא בסילבוס, מזכות מעבר ועד עזרה ראשונה.'],
+  ['מבחני דמה בפורמט האמיתי', 'מספר שאלות, טיימר, ציון עובר ומד מוכנות שאומר מתי אפשר לגשת.'],
+  ['חזרה חכמה על טעויות', 'שאלה שטעית בה חוזרת במרווחים עד שהיא יושבת.'],
+];
 function coursesPage() {
+  const live = COURSES.filter(c => c.live);
+  const graph = [
+    ...live.map(c => ({ '@type': 'Course', '@id': `${SITE}/kursim/#${c.id}`, name: `קורס תאוריה לרישיון ${c.name}`,
+      description: 'הכנה מלאה למבחן התאוריה: כל שאלות המאגר הרשמי של רספ״ן, הסבר קולי לכל שאלה, 13 מערכי שיעור מצולמים ומבחני דמה בפורמט האמיתי.',
+      inLanguage: 'he', provider: { '@id': `${SITE}/#org` }, instructor: { '@id': `${SITE}/#alex` },
+      offers: { '@type': 'Offer', category: 'מסלול מייסדים', price: '199', priceCurrency: 'ILS', availability: 'https://schema.org/InStock', url: `${SITE}/kursim/#${c.id}` },
+      hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT10H' } })),
+    { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+    ORG, PERSON,
+  ];
   const body = `
-${pagehead('קורסים לרישיונות שיט', 'הכנה למבחן התאוריה: כל שאלות המאגר הרשמי, הסבר בקול לכל שאלה ומערכי שיעור מצולמים.')}
+${pagehead('קורסי תאוריה לרישיון שיט', 'הכנה למבחן התאוריה של רשות הספנות והנמלים: כל שאלות המאגר הרשמי, הסבר בקול לכל שאלה, מערכי שיעור מצולמים ומבחני דמה.')}
 <section class="feed">
   <div class="wrap courses">
 ${COURSES.map(c => `    <${c.live ? `a href="${c.href}"` : 'div'} class="course${c.live ? ' course--live' : ''}" id="${c.id}">
@@ -381,15 +538,87 @@ ${COURSES.map(c => `    <${c.live ? `a href="${c.href}"` : 'div'} class="course$
       <span class="course-txt"><span class="badge">${esc(c.state)}</span><b>${esc(c.name)}</b>${c.text ? `<span>${esc(c.text)}</span>` : ''}${c.live ? '<span class="btn btn-gold">לקורס</span>' : ''}</span>
     </${c.live ? 'a' : 'div'}>`).join('\n')}
   </div>
+</section>
+
+<section class="kursim-what">
+  <div class="wrap">
+    <h2>מה מקבלים בקורס לרישיון אופנוע ים</h2>
+    <ul class="what-list">
+${WHAT.map(([h, t]) => `      <li><h3>${h}</h3><p>${t}</p></li>`).join('\n')}
+    </ul>
+    <div class="price-box">
+      <p class="price"><b>₪199</b> <s>₪349</s></p>
+      <p>מסלול מייסדים: 10 הנרשמים הראשונים ב-199 ש״ח, אחר כך 349 ש״ח. לא עברת את המבחן? הכסף חוזר אליך.*</p>
+      <div class="acts"><a class="btn btn-gold" href="https://app.alargov.com/?buy=1">רכוש עכשיו</a> <a class="btn btn-navy" href="https://app.alargov.com/">13 שאלות חינם</a></div>
+      <p class="fine">* בכפוף ל<a href="/legal/refund-policy.html">מדיניות הביטולים</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="kursim-faq">
+  <div class="wrap">
+    <h2>שאלות נפוצות</h2>
+${FAQ.map(([q, a]) => `    <details><summary>${q}</summary><p>${a}</p></details>`).join('\n')}
+  </div>
+</section>
+
+<section class="feed">
+  <div class="wrap">
+    <h2>שאלות מהמאגר, עם הסבר מלא</h2>
+    <ul class="qa-links">
+${articles.map(a => `      <li><a href="${a.href}"><b>${esc(a.title)}</b><span>${esc(a.topic)}</span></a></li>`).join('\n')}
+    </ul>
+  </div>
 </section>`;
-  return page({ title: 'קורסים | אלכס ארגוב', desc: 'קורסי הכנה למבחן התאוריה לרישיונות שיט.', active: 'kursim', body, canonical: '/kursim/' });
+  return page({ title: 'קורסי תאוריה לרישיון שיט: אופנוע ים, משיט 12, 30, 40 | אלכס ארגוב', desc: 'קורס הכנה למבחן התאוריה לרישיון אופנוע ים: כל שאלות מאגר רספ״ן, הסבר קולי לכל שאלה, 13 מערכי שיעור ומבחני דמה. החזר כספי למי שלא עבר.', active: 'kursim', body, canonical: '/kursim/',
+    image: tile('jetski'), extraHead: ld({ '@context': 'https://schema.org', '@graph': graph }) });
 }
 
 // ---------- write ----------
 write('v2/index.html', home());
 write('video/index.html', videoPage());
+for (const v of allVideos) write(`video/q${v.num}/index.html`, videoItemPage(v));
 write('kursim/index.html', coursesPage());
 write(`${NEWS.slug}/index.html`, feed(NEWS.slug, NEWS.name, NEWS.blurb, posts));
-for (const s of SECTIONS) write(`${s.slug}/index.html`, feed(s.slug, s.name, s.blurb, posts.filter(p => p.section === s.slug), s.app));
+const sectionLists = SECTIONS.map(s => [s, posts.filter(p => p.section === s.slug)]);
+for (const [s, list] of sectionLists) write(`${s.slug}/index.html`, feed(s.slug, s.name, s.blurb, list, s.app));
+for (const p of posts) write(`${p.section}/${p.slug}/index.html`, postPage(p));
 
-console.log(`site: home, video (${allVideos.length}), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} news item(s)`);
+// ---------- sitemap.xml (everything indexable) + llms.txt ----------
+const today = new Date().toISOString().slice(0, 10);
+const urls = [
+  ['/', today, '1.0'], ['/kursim/', today, '0.9'], ['/video/', today, '0.8'], [`/${NEWS.slug}/`, posts[0]?.date || today, '0.8'],
+  ...sectionLists.filter(([s, l]) => l.length || s.app).map(([s, l]) => [`/${s.slug}/`, l[0]?.date || today, '0.6']),
+  ...posts.map(p => [p.href, p.date, '0.7']),
+  ...allVideos.map(v => [v.href, v.date || today, '0.6']),
+  ...articles.map(a => [a.href, null, '0.7']),
+  ...['refund-policy', 'privacy-policy', 'terms-of-service', 'accessibility-statement'].map(l => [`/legal/${l}.html`, null, '0.2']),
+];
+fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(([u, d, pr]) => `  <url><loc>${SITE}${u}</loc>${d ? `<lastmod>${d}</lastmod>` : ''}<priority>${pr}</priority></url>`).join('\n')}
+</urlset>
+`);
+fs.writeFileSync(path.join(ROOT, 'llms.txt'), `# אלכס ארגוב · סקיפר דיגיטלי (alargov.com)
+
+> אתר בעברית של מדריך השיט אלכס ארגוב: קורסי הכנה למבחן התאוריה לרישיונות שיט בישראל (רשות הספנות והנמלים, מאגר רספ״ן), סרטוני הסבר לשאלות המבחן, וחדשות ומקרים מהים עם ניתוח של מדריך.
+
+## קורסים
+- [קורסי תאוריה לרישיון שיט](${SITE}/kursim/): קורס רישיון אופנוע ים (פתוח), משיט 12, 30, 40 (בהכנה). מחיר, מה כלול, שאלות נפוצות.
+
+## חדש מהים
+${posts.map(p => `- [${p.title}](${SITE}${p.href}): ${p.excerpt}`).join('\n')}
+
+## סרטוני הסבר לשאלות המבחן (עם תמליל)
+${allVideos.map(v => `- [${v.title}](${SITE}${v.href}): ${v.topic}`).join('\n')}
+
+## שאלות מהמאגר עם הסבר מלא
+${articles.map(a => `- [${a.title}](${SITE}${a.href}): ${a.topic}`).join('\n')}
+
+## עוד
+- [מילון ימי](${SITE}/milon/): מילון מונחים ימיים בעברית, אנגלית וצרפתית (אפליקציה)
+- [מדיניות ביטולים והחזרים](${SITE}/legal/refund-policy.html)
+- קשר: alex@alargov.com · וואטסאפ 052-368-2486
+`);
+
+console.log(`site: home, video (${allVideos.length} pages), kursim, ${NEWS.slug} + ${SECTIONS.length} sections, ${posts.length} article page(s), sitemap ${urls.length} urls, llms.txt`);
