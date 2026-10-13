@@ -53,7 +53,7 @@ const shortQ = t => { t = t.replace(/\s+/g, ' ').trim(); if (t.length <= 58) ret
 // that are posted to social media again and again). The rest of the bank stays inside the paid course.
 const POOL = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, '..', '..', 'tools', 'daily-publish-pool.json'), 'utf8')).map(p => p.num));
 for (const r of picks) if (!POOL.has(r.num)) throw new Error(`reels.json: question ${r.num} is not in the public pool`);
-const allVideos = questions.filter(q => q.videoUrl && POOL.has(q.num)).map(q => {
+const poolVideos = questions.filter(q => q.videoUrl && POOL.has(q.num)).map(q => {
   const dates = [published.get(q.num), (q.rendered_at || '').slice(0, 10)].filter(Boolean).sort();
   return { num: q.num, topic: q.topic, src: q.videoUrl, date: dates.pop() || '',
     title: titleOf.get(q.num) || shortQ(q.q_he), picked: titleOf.has(q.num),
@@ -61,6 +61,11 @@ const allVideos = questions.filter(q => q.videoUrl && POOL.has(q.num)).map(q => 
     q: q.q_he, options: q.options || [], answer: q.answer, explanation: q.explanation || '',
     transcript: transcriptOf(q), href: `/video/q${q.num}/` };
 }).sort((a, b) => b.date.localeCompare(a.date) || b.num - a.num);
+// The site shows a sample of the exam, never the bank (Alex, 2026-10-13): the hand-picked reels.json
+// questions, topped up with the newest, SAMPLE_SIZE in all. Everything else stays inside the course.
+const SAMPLE_SIZE = 13;
+const allVideos = [...poolVideos.filter(v => v.picked), ...poolVideos.filter(v => !v.picked)].slice(0, SAMPLE_SIZE)
+  .sort((a, b) => b.date.localeCompare(a.date) || b.num - a.num);
 // Homepage rail: hand-picked first (reels.json order), then the newest.
 const videos = [...picks.map(r => allVideos.find(v => v.num === r.num)).filter(Boolean),
   ...allVideos.filter(v => !v.picked)].slice(0, 14);
@@ -505,12 +510,10 @@ function videoLink(v) {
   return `<a class="reel" href="${v.href}" data-topic="${esc(v.topic)}"><span class="thumb"><img src="${esc(v.poster)}" alt="" loading="lazy"><span class="play">${PLAY}</span></span><span class="cap"><b>${esc(v.title)}</b><span>${esc(v.topic)}</span></span></a>`;
 }
 
-const SAMPLE_SIZE = 13;
 function videoPage() {
   // News posts built around a video show here too, newest first.
   const seaVideos = posts.filter(p => p.video || (p.source || {}).mediaType === 'video');
-  // A sample, not the whole bank: the same 13 as the free trial count. The full bank is the course.
-  const sample = allVideos.slice(0, SAMPLE_SIZE);
+  const sample = allVideos;
   const topics = [...new Set(sample.map(v => v.topic))];
   const body = `
 ${pagehead(VIDEO.name, VIDEO.blurb)}
@@ -629,6 +632,11 @@ ${articles.map(a => `      <li><a href="${a.href}"><b>${esc(a.title)}</b><span>$
 write('v2/index.html', home());
 write('video/index.html', videoPage());
 for (const v of allVideos) write(`video/q${v.num}/index.html`, videoItemPage(v));
+// Drop pages of questions that are no longer in the sample, so they stop being served.
+for (const d of fs.readdirSync(path.join(ROOT, 'video'))) {
+  const m = d.match(/^q(\d+)$/);
+  if (m && !allVideos.some(v => v.num === Number(m[1]))) fs.rmSync(path.join(ROOT, 'video', d), { recursive: true, force: true });
+}
 write('kursim/index.html', coursesPage());
 write(`${NEWS.slug}/index.html`, feed(NEWS.slug, NEWS.name, NEWS.blurb, posts));
 const sectionLists = SECTIONS.map(s => [s, posts.filter(p => p.section === s.slug)]);
