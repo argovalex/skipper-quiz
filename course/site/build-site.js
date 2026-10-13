@@ -505,10 +505,13 @@ function videoLink(v) {
   return `<a class="reel" href="${v.href}" data-topic="${esc(v.topic)}"><span class="thumb"><img src="${esc(v.poster)}" alt="" loading="lazy"><span class="play">${PLAY}</span></span><span class="cap"><b>${esc(v.title)}</b><span>${esc(v.topic)}</span></span></a>`;
 }
 
+const SAMPLE_SIZE = 13;
 function videoPage() {
   // News posts built around a video show here too, newest first.
   const seaVideos = posts.filter(p => p.video || (p.source || {}).mediaType === 'video');
-  const topics = [...new Set(allVideos.map(v => v.topic))];
+  // A sample, not the whole bank: the same 13 as the free trial count. The full bank is the course.
+  const sample = allVideos.slice(0, SAMPLE_SIZE);
+  const topics = [...new Set(sample.map(v => v.topic))];
   const body = `
 ${pagehead(VIDEO.name, VIDEO.blurb)}
 <section class="vgrid-wrap">
@@ -516,15 +519,16 @@ ${pagehead(VIDEO.name, VIDEO.blurb)}
 ${seaVideos.length ? `<h2 class="vsec">מקרים מהים</h2>
     <div class="stories vstories">
       ${seaVideos.map(storyCard).join('\n      ')}
-    </div>
-    <h2 class="vsec">שאלות מהמבחן</h2>` : ''}
+    </div>` : ''}
+    <h2 class="vsec">שאלות לדוגמה ממבחן התאוריה</h2>
     <div class="chips" role="group" aria-label="סינון לפי נושא">
       <button type="button" class="chip on" data-t="">הכל</button>
       ${topics.map(t => `<button type="button" class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join('\n      ')}
     </div>
     <div class="vgrid">
-    ${allVideos.map(videoLink).join('\n    ')}
+    ${sample.map(videoLink).join('\n    ')}
     </div>
+    <div class="side-cta"><p>אלה ${sample.length} שאלות לדוגמה. בקורס יש הסבר כזה לכל שאלה במאגר של רשיון אופנוע ים.</p><div class="acts"><a class="btn btn-gold" href="https://app.alargov.com/" data-trial>13 שאלות חינם</a> <a class="btn btn-navy" href="/kursim/#buy">לקורס המלא</a></div></div>
   </div>
 </section>
 <script>
@@ -536,7 +540,7 @@ document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click
 (function(){var v=new URLSearchParams(location.search).get('v');if(v)location.replace('/video/q'+v+'/')})();
 </script>`;
   const list = { '@context': 'https://schema.org', '@type': 'ItemList', name: VIDEO.name,
-    itemListElement: allVideos.map((v, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + v.href, name: v.title })) };
+    itemListElement: sample.map((v, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + v.href, name: v.title })) };
   return page({ title: `${VIDEO.name}: הסברים לשאלות מבחן התאוריה בשיט | אלכס ארגוב`, desc: VIDEO.blurb, active: VIDEO.slug, body, canonical: '/video/', extraHead: ld(list) });
 }
 
