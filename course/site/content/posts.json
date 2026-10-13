@@ -1,24 +1,5 @@
 [
   {
-    "id": "mv6m19fwzr1i9",
-    "status": "new",
-    "created": "2026-10-13T11:41:10.028Z",
-    "section": "takalot",
-    "audience": "all",
-    "source": {
-      "url": "https://www.gov.uk/government/news/arvia-report-published",
-      "platform": "אתר / בלוג",
-      "mediaType": "text",
-      "author": "MAIB (תאונות, בריטניה)"
-    },
-    "original": {
-      "text": "Arvia report published\n\nFatal accident to a crew member on board a passenger vessel while on passage from Southampton, England, to Santa Cruz de Tenerife, Canary Islands, Spain.",
-      "mediaDesc": ""
-    },
-    "notes": "",
-    "out": null
-  },
-  {
     "id": "mv3hq5f6exauo",
     "status": "approved",
     "created": "2026-10-11T07:17:14.610Z",
