@@ -47,7 +47,12 @@
 
 ## האתר החדש (`/v2/` ב-staging)
 
-בנייה: `node build-site.js` (סקריפט אחד, בונה את כל העמודים החדשים).
+בנייה: `node build-topics.js && node build-site.js` (בסדר הזה: build-site כותב את sitemap.xml המלא ואת llms.txt).
+
+GEO / אינדוקס:
+- אינדוקס נקבע רק ב-Dockerfile: `STAGING=1` = Disallow + תג noindex אחד לכל עמוד + בלי cache. בפרודקשן העמודים עולים כמו שנבנו, עם cache של `CACHE_SECONDS` (ברירת מחדל 3600). ב-HTML אין noindex חוץ ממדורים ריקים.
+- כתובות קבועות: כתבה `/<מדור>/<slug>/` (Article), סרטון `/video/q<מספר>/` (VideoObject + תמליל מ-voiceover_text), קורסים `/kursim/` (Course+Offer+FAQPage), בית (Organization+Person+WebSite).
+- הפידים (`/hadash/`, מדורים) מציגים את הכתבות במקום ומסמנים ItemList בלבד, בלי כפילות Article.
 
 - מבנה, תפריט, קורסים ופוטר: `hub.js`. עיצוב: `assets/site.css`. תמונות החלונות: `assets/tiles/`.
 - חדשות: `content/posts.json`, ייצוא מה-Back Office. רק `status: "approved"` עולה. שדה `image` אופציונלי.
