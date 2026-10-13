@@ -103,6 +103,23 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .feed-mock .cap{padding:4px 12px 14px;font-size:14px;white-space:pre-line}
 .feed-mock .tags{color:var(--info)}
 dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);padding:20px;max-width:520px;width:92vw}
+#feedModal{max-width:640px}
+.noimg-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 12px;border-radius:8px;background:var(--warn-soft);color:var(--warn)}
+.noimg-bar button{padding:4px 10px;font-size:13px}
+.src-pv{display:grid;grid-template-columns:160px minmax(0,1fr);gap:14px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.src-pv.noimg{grid-template-columns:1fr}
+.src-pv img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;background:var(--line)}
+.src-pv h3{margin:2px 0 6px;font-size:17px;line-height:1.35}
+.src-pv p{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.src-pv .meta{font-size:12.5px;color:var(--muted)}
+@media (max-width:560px){.src-pv{grid-template-columns:1fr}}
+.feed-src{display:flex;flex-direction:column;gap:6px}
+.feed-src .src{display:flex;gap:8px;align-items:center;font-size:13.5px;padding:6px 10px;border:1px solid var(--line);border-radius:8px}
+.feed-src .src .u{color:var(--muted);direction:ltr;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.feed-items{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto}
+.feed-items label{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400;padding:6px 8px;border:1px solid var(--line);border-radius:8px}
+.feed-items label input{width:auto;margin-top:3px}
+.feed-items .d{display:block;color:var(--muted);font-size:12.5px}
 dialog::backdrop{background:rgba(4,9,15,.55)}
 dialog form{display:flex;flex-direction:column;gap:14px}
 .conn{font-size:12.5px;color:var(--muted)}
@@ -118,6 +135,7 @@ dialog form{display:flex;flex-direction:column;gap:14px}
       <a href="hub.html">→ חזרה ל-Hub</a>
     </div>
     <div class="top-actions">
+      <button id="btnFeed" type="button" title="ייבוא ידיעות מפיד RSS/Atom">📥 ייבוא מפיד</button>
       <button id="btnNew" class="primary">+ פוסט חדש</button>
       <button id="btnReload" title="טען מחדש את התור מ-GitHub">רענן תור</button>
       <button id="btnExport" title="גיבוי מקומי של כל התור">הורד posts.json</button>
@@ -140,6 +158,8 @@ dialog form{display:flex;flex-direction:column;gap:14px}
           <h2 id="sheetTitle" class="grow">פוסט חדש</h2>
           <span class="pill" id="statusPill"></span>
         </div>
+
+        <section id="srcPreview" class="src-pv" hidden></section>
 
         <section>
           <p class="sec-label">המקור</p>
@@ -172,6 +192,12 @@ dialog form{display:flex;flex-direction:column;gap:14px}
           <button type="button" id="btnStop" hidden>עצור</button>
           <button type="button" id="btnSaveDraft" class="ghost">שמור טיוטה</button>
           <span class="status-line grow" id="procStatus" role="status"></span>
+          <button type="button" id="btnDeleteTop" class="ghost danger">מחק</button>
+        </div>
+        <div class="confirm" id="confirmDel" hidden>
+          <span>למחוק את הפוסט לצמיתות?</span>
+          <button type="button" id="btnDelYes" class="danger">מחק</button>
+          <button type="button" id="btnDelNo" class="ghost">ביטול</button>
         </div>
 
         <div id="outBlock" hidden>
@@ -224,11 +250,6 @@ dialog form{display:flex;flex-direction:column;gap:14px}
               <span class="grow"></span>
               <button type="button" id="btnDelete" class="ghost danger">מחק</button>
             </div>
-            <div class="confirm" id="confirmDel" hidden>
-              <span>למחוק את הפוסט לצמיתות?</span>
-              <button type="button" id="btnDelYes" class="danger">מחק</button>
-              <button type="button" id="btnDelNo" class="ghost">ביטול</button>
-            </div>
           </section>
         </div>
       </form>
@@ -243,8 +264,40 @@ dialog form{display:flex;flex-direction:column;gap:14px}
     <label>Anthropic API Key (לעיבוד לעברית)<input id="sAk" class="ltr" type="password" autocomplete="off" placeholder="sk-ant-..."></label>
     <label>מודל<input id="sModel" class="ltr"></label>
     <label>ענף ב-GitHub<input id="sBranch" class="ltr"></label>
+    <p class="sec-label" style="margin:6px 0 0">מקורות לייבוא מפיד</p>
+    <div id="sFeeds" class="feed-src"></div>
+    <div class="row">
+      <label>שם האתר<input id="sFeedName" placeholder="למשל: BoatUS"></label>
+      <label>כתובת הפיד (RSS/Atom)<input id="sFeedUrl" class="ltr" type="url" placeholder="https://.../feed"></label>
+      <label>מדור ברירת מחדל<select id="sFeedSection"></select></label>
+    </div>
+    <div class="bar"><button type="button" id="btnFeedAdd">+ הוסף מקור</button></div>
     <p class="hint">המפתחות נשמרים רק בדפדפן הזה. הקובץ: <span class="ltr">course/site/content/posts.json</span>. בזמן העבודה על האתר החדש הענף הוא redesign; כשהאתר עולה לאוויר מחליפים ל-main.</p>
     <div class="bar"><button value="save" class="primary">שמור</button><button value="cancel" class="ghost">ביטול</button></div>
+  </form>
+</dialog>
+<dialog id="feedModal">
+  <form method="dialog">
+    <h2 style="font-family:var(--f-display);font-weight:400;margin:0">ייבוא מפיד</h2>
+    <div class="row">
+      <label>מקור<select id="feedSrc"></select></label>
+      <label>מדור<select id="feedSection"></select></label>
+    </div>
+    <div class="bar">
+      <button type="button" id="btnFeedLoad" class="primary">טען ידיעות</button>
+      <a id="feedOpen" href="#" target="_blank" rel="noopener">פתח את הפיד בלשונית</a>
+    </div>
+    <details id="feedPasteBox">
+      <summary class="hint">האתר חוסם טעינה ישירה? הדבק את תוכן הפיד</summary>
+      <p class="hint">פתח את הפיד בלשונית, Ctrl+A, Ctrl+C, הדבק כאן ולחץ "טען ידיעות".</p>
+      <textarea id="feedPaste" class="ltr" style="min-height:120px;font-family:var(--f-mono);font-size:12px"></textarea>
+    </details>
+    <div id="feedItems" class="feed-items"></div>
+    <div class="bar">
+      <button type="button" id="btnFeedImport" class="primary" disabled>הוסף לתור</button>
+      <button value="cancel" class="ghost">סגור</button>
+      <span class="status-line grow" id="feedStatus" role="status"></span>
+    </div>
   </form>
 </dialog>
 <div class="toast" id="toast" hidden></div>
@@ -319,9 +372,9 @@ function renderQueue(){
   const list=posts.filter(p=>filter==="all"||p.status===filter);
   if(!list.length){$("queue").innerHTML=`<div class="empty">${posts.length?"אין פוסטים בסטטוס הזה":"התור ריק. לחץ \"פוסט חדש\" והדבק קישור ראשון."}</div>`;return}
   $("queue").innerHTML=list.map(p=>`<button type="button" class="item" data-id="${p.id}" aria-current="${p.id===currentId}">
-    <span class="t">${esc(p.out?.title||p.source?.author||p.original?.mediaDesc||"פוסט ללא כותרת")}</span>
+    <span class="t">${esc(p.out?.title||srcTitle(p)||p.source?.author||p.original?.mediaDesc||"פוסט ללא כותרת")}</span>
     <span class="pill s-${p.status}">${STATUS[p.status]||p.status}</span>
-    <span class="m">${esc(SECTIONS[p.section]||"")} · ${esc(p.source?.url||"ללא קישור")}</span></button>`).join("");
+    <span class="m">${p.imageRequest&&!p.image?"🖼 מחכה לתמונה · ":""}${esc(SECTIONS[p.section]||"")} · ${esc(p.source?.url||"ללא קישור")}</span></button>`).join("");
 }
 $("queue").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)openPost(b.dataset.id)});
 function blankPost(){return{id:newId(),status:"new",created:new Date().toISOString(),section:"takalot",audience:"all",source:{url:"",platform:"פייסבוק",mediaType:"video",author:""},original:{text:"",mediaDesc:""},notes:"",out:null}}
@@ -331,12 +384,27 @@ function current(){return currentId?posts.find(x=>x.id===currentId):null}
 function fillForm(p){
   const draft=LS.get("sq_bo_draft_"+p.id); if(draft){try{const d=JSON.parse(draft);if((d.updated||"")>(p.updated||""))p=Object.assign(p,d)}catch{}}
   $("placeholder").hidden=true;$("form").hidden=false;$("confirmDel").hidden=true;
-  $("sheetTitle").textContent=p.out?.title||"פוסט חדש";
+  $("sheetTitle").textContent=p.out?.title||srcTitle(p)||"פוסט חדש";
+  renderSrcPreview(p);
   $("statusPill").className="pill s-"+p.status;$("statusPill").textContent=STATUS[p.status]||p.status;
   $("fUrl").value=p.source.url;$("fPlatform").value=p.source.platform;$("fMedia").value=p.source.mediaType;$("fAuthor").value=p.source.author;
   $("fText").value=p.original.text;$("fMediaDesc").value=p.original.mediaDesc;$("fSection").value=SECTIONS[p.section]&&p.section!=="sidrot"?p.section:"takalot";$("fAudience").value=p.audience||"all";$("fNotes").value=p.notes||"";
   $("fImage").value="";$("fVideo").value="";$("fRedo").value="";setMedia(p);$("procStatus").textContent=draft?"יש שינויים מקומיים שלא נשמרו ל-GitHub":"";$("procStatus").classList.remove("err");
   fillOut(p.out);
+}
+// Preview of the source item (feed imports), shown until Claude has processed the post.
+// Title of an unprocessed post: the feed title, or the first line of the pasted text (older imports).
+function srcTitle(p){return p.source?.title||(p.original?.text||"").trim().split("\n")[0].slice(0,100)}
+function renderSrcPreview(p){
+  const lines=(p.original?.text||"").trim().split("\n");
+  const s={...p.source,title:srcTitle(p),summary:p.source?.summary||lines.slice(1).join(" ").trim().slice(0,600)},box=$("srcPreview");
+  box.hidden=!!p.out||!(s.title||s.summary);if(box.hidden)return;
+  const img=/^https?:\/\//.test(s.image||"")?s.image:"";
+  box.className="src-pv"+(img?"":" noimg");
+  box.innerHTML=`${img?`<img src="${esc(img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove();this.parentNode&&this.parentNode.classList.add('noimg')">`:""}
+    <div><p class="meta">${esc(s.author||"")}${s.date&&!isNaN(new Date(s.date))?" · "+esc(new Date(s.date).toLocaleDateString("he-IL")):""} · תצוגת המקור, לפני עיבוד</p>
+    <h3>${esc(s.title||"")}</h3><p>${esc(s.summary||"")}</p>
+    ${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">פתח את הידיעה המקורית ↗</a>`:""}</div>`;
 }
 function fillOut(o){
   $("outBlock").hidden=!o;if(!o)return;
@@ -350,7 +418,7 @@ function fillOut(o){
   renderPreview();
 }
 function readForm(p){
-  p.source={url:$("fUrl").value.trim(),platform:$("fPlatform").value,mediaType:$("fMedia").value,author:$("fAuthor").value.trim()};
+  p.source={...p.source,url:$("fUrl").value.trim(),platform:$("fPlatform").value,mediaType:$("fMedia").value,author:$("fAuthor").value.trim()};
   p.original={text:$("fText").value,mediaDesc:$("fMediaDesc").value};p.section=$("fSection").value;p.audience=$("fAudience").value;p.notes=$("fNotes").value;
   if(media.image)p.image=media.image;else delete p.image;if(media.video)p.video=media.video;else delete p.video;
   if(!$("outBlock").hidden&&p.out){
@@ -401,27 +469,82 @@ function setMedia(p){
   bgImg=null;if(media.image){const im=new Image();im.crossOrigin="anonymous";im.onload=()=>{bgImg=im;renderPreview()};im.src=rawUrl(media.image)}
   renderMediaNow();
 }
+// A post without its own image or video shows no picture: the site never falls back to a generic tile
+// for it. The image comes from the source (feed / og:image), a manual upload, or an AI image Alex asks for.
+const hasOwnMedia=()=>!!(media.image||media.video||($("fMedia").value==="video"&&embed($("fUrl").value.trim())));
 function renderMediaNow(){
-  const parts=[];
+  const parts=[],p=working();
   if(media.image)parts.push(`תמונה: <span class="ltr">${esc(media.image.split("/").pop())}</span> <a href="#" data-rm="image">הסר</a>`);
   if(media.video)parts.push(`סרטון: <span class="ltr">${esc(media.video.split("/").pop())}</span> <a href="#" data-rm="video">הסר</a>`);
-  $("mediaNow").innerHTML=parts.length?"מצורף לפוסט הזה · "+parts.join(" · "):"";
+  let html=parts.length?"מצורף לפוסט הזה · "+parts.join(" · "):"";
+  if(!media.image&&!media.video){
+    html=`<span class="noimg-bar"><b>אין תמונה לפוסט.</b>
+      ${p.source?.url?`<button type="button" id="btnSrcImg">צרף תמונה מהמקור</button>`:""}
+      <button type="button" id="btnAskImg">${p.imageRequest?"✓ בקשת תמונה AI נשלחה":"בקש תמונה AI"}</button>
+      <span>או העלה קובץ בשדה התמונה</span></span>`;
+  }
+  $("mediaNow").innerHTML=html;
 }
-$("mediaNow").addEventListener("click",e=>{const a=e.target.closest("[data-rm]");if(!a)return;e.preventDefault();const k=a.dataset.rm;
+$("mediaNow").addEventListener("click",async e=>{
+  if(e.target.id==="btnSrcImg"){const p=working();e.target.disabled=true;$("procStatus").classList.remove("err");$("procStatus").textContent="מחפש את התמונה במקור…";
+    try{await attachSourceImage(p);media.image=p.image;readForm(p);
+      if(current()){if(await save(p,"התמונה מהמקור צורפה"))fillForm(p)}else{setMedia(p);$("procStatus").textContent="התמונה הועלתה. לחץ שמור"}}
+    catch(err){$("procStatus").classList.add("err");$("procStatus").textContent=err.message;e.target.disabled=false}
+    return}
+  if(e.target.id==="btnAskImg"){const p=working();p.imageRequest={at:new Date().toISOString(),title:srcTitle(p)||p.out?.title||""};
+    const req=`צור תמונה לפוסט ${p.id} ב-back-office (posts.json, ענף ${cfg.branch()}): "${p.out?.title||srcTitle(p)}". מקור: ${p.source?.url||"-"}`;
+    try{await navigator.clipboard.writeText(req)}catch{}
+    if(await save(p,"הבקשה נשמרה והועתקה. הדבק אותה ל-Claude"))fillForm(p);return}
+  const a=e.target.closest("[data-rm]");if(!a)return;e.preventDefault();const k=a.dataset.rm;
   media[k]="";localUrl[k]="";if(k==="image")bgImg=null;renderMediaNow();renderPreview();
   $("procStatus").textContent="ההסרה תישמר כשתלחץ שמור"});
+// Other sites block browser reads (CORS), so feeds, article pages and source images come through
+// the publisher server's /fetch (Railway). If it is unreachable, try the site directly.
+const RAILWAY_DEFAULT="https://skipper-quiz-publisher-production.up.railway.app";
+const proxyBase=()=>(typeof getRailwayUrl==="function"&&getRailwayUrl())||RAILWAY_DEFAULT;
+async function xfetch(url){
+  try{const r=await fetch(`${proxyBase()}/fetch?url=${encodeURIComponent(url)}`);if(r.ok)return r;if(r.status!==404)throw new Error("proxy "+r.status)}catch(e){console.warn("[back-office] /fetch",url,e.message||e)}
+  return fetch(url,{cache:"no-store",referrerPolicy:"no-referrer"});
+}
+async function putAsset(repoPath,f,message){
+  const tok=cfg.gh();if(!tok)throw new Error("חסר GitHub Token בהגדרות");
+  const api=`https://api.github.com/repos/${REPO}/contents/${repoPath}`;
+  const body={message,content:await fileB64(f),branch:cfg.branch()};
+  const g=await fetch(api+"?ref="+encodeURIComponent(cfg.branch()),{headers:{Authorization:`Bearer ${tok}`},cache:"no-store"});
+  if(g.ok)body.sha=(await g.json()).sha;
+  const r=await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${tok}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+}
+// The article page's og:image / twitter:image, for feeds that carry no picture (MAIB).
+async function ogImage(link){
+  const r=await xfetch(link);if(!r.ok)throw new Error();
+  const d=htmlDoc(await r.text());
+  const u=d.querySelector('meta[property="og:image"],meta[name="og:image"],meta[name="twitter:image"],meta[property="twitter:image"]')?.getAttribute("content")||"";
+  return u?new URL(u,link).href:"";
+}
+async function attachSourceImage(p){
+  const s=p.source||{};let url=s.image||"";
+  if(!url&&s.url){try{url=await ogImage(s.url)}catch{throw new Error("האתר חוסם קריאה מהדפדפן. שמור את התמונה מהידיעה ידנית והעלה אותה, או בקש תמונה AI")}}
+  if(!url)throw new Error("לא נמצאה תמונה במקור. בקש תמונה AI");
+  let blob;
+  try{const r=await xfetch(url);if(!r.ok)throw new Error();blob=await r.blob()}
+  catch{throw new Error("האתר חוסם הורדת התמונה מהדפדפן. שמור אותה מהידיעה ידנית והעלה בשדה התמונה")}
+  if(!blob.type.startsWith("image/"))throw new Error("הקישור במקור לא מוביל לתמונה");
+  if(!s.image){p.source={...s,image:url}}
+  const ext=({"image/jpeg":"jpg","image/png":"png","image/webp":"webp","image/gif":"gif"})[blob.type]||"jpg";
+  const name=`${p.id}-image.${ext}`;
+  await putAsset(MEDIA_DIR+name,new File([blob],name,{type:blob.type}),`back-office: תמונה מהמקור · ${p.out?.slug||p.id}`);
+  p.image="/assets/posts/"+name;delete p.imageRequest;p.updated=new Date().toISOString();
+}
 async function uploadMedia(kind,f){
   const tok=cfg.gh();if(!tok){toast("חסר GitHub Token בהגדרות");return}
   if(f.size>45*1024*1024){toast("הקובץ גדול מ-45MB. כווץ אותו ונסה שוב");return}
   const p=working(),ext=(f.name.split(".").pop()||"bin").toLowerCase().replace(/[^a-z0-9]/g,"");
-  const name=`${p.id}-${kind}.${ext}`,repoPath=MEDIA_DIR+name,api=`https://api.github.com/repos/${REPO}/contents/${repoPath}`;
+  const name=`${p.id}-${kind}.${ext}`,repoPath=MEDIA_DIR+name;
   $("procStatus").classList.remove("err");$("procStatus").textContent=`מעלה ${kind==="video"?"סרטון":"תמונה"} ל-GitHub…`;
   try{
-    const body={message:`back-office: ${kind==="video"?"סרטון":"תמונה"} · ${p.out?.slug||p.id}`,content:await fileB64(f),branch:cfg.branch()};
-    const g=await fetch(api+"?ref="+encodeURIComponent(cfg.branch()),{headers:{Authorization:`Bearer ${tok}`},cache:"no-store"});
-    if(g.ok)body.sha=(await g.json()).sha;
-    const r=await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${tok}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
-    if(!r.ok)throw new Error("HTTP "+r.status);
+    await putAsset(repoPath,f,`back-office: ${kind==="video"?"סרטון":"תמונה"} · ${p.out?.slug||p.id}`);
+    if(kind==="image")delete p.imageRequest;
     media[kind]="/assets/posts/"+name;localUrl[kind]=URL.createObjectURL(f);renderMediaNow();
     const saved=current();
     if(saved){const keep={...localUrl};if(await save(saved,"הקובץ הועלה ושויך לפוסט")){fillForm(saved);localUrl=keep;renderPreview()}}
@@ -460,9 +583,9 @@ function renderPreview(){
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css"><style>body{padding:24px 0}.news-more{display:block}</style></head><body>
 <section class="feed" style="padding:0"><div class="wrap news-list"><article class="news-item">
-<div class="news-media">${video||`<img src="${coverUrl}" alt="">`}${url?`<p class="news-credit">הסרטון: <a href="${esc(url)}" target="_blank">${esc(author||"המקור")}, ב${esc($("fPlatform").value)}</a></p>`:""}</div>
+<div class="news-media">${video||(media.image?`<img src="${esc(mediaSrc("image"))}" alt="">`:`<div style="aspect-ratio:4/3;display:grid;place-items:center;border:2px dashed #c9d3dc;border-radius:14px;color:#8a99a8;font-size:15px;padding:16px;text-align:center">אין תמונה לפוסט. צרף מהמקור או בקש תמונה AI</div>`)}${url&&isVideo?`<p class="news-credit">הסרטון: <a href="${esc(url)}" target="_blank">${esc(author||"המקור")}, ב${esc($("fPlatform").value)}</a></p>`:""}</div>
 <div class="news-txt"><p class="post-meta"><a>${esc(sec)}</a> <time>היום</time></p><h2>${esc($("oTitle").value)}</h2><p class="news-lede">${esc($("oExcerpt").value)}</p>
-<div class="news-more">${md($("oBody").value)}${$("oRule").value?`<div class="rule"><h3>הכלל</h3><p>${esc($("oRule").value)}</p></div>`:""}<p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p></div></div>
+<div class="news-more">${md($("oBody").value)}${$("oRule").value?`<div class="rule"><h3>הכלל</h3><p>${esc($("oRule").value)}</p></div>`:""}<p class="post-sign">אלכס ארגוב, סקיפר דיגיטלי</p>${url?`<p class="post-source">המקור: <a href="${esc(url)}" target="_blank" rel="noopener">${esc(author||"הידיעה המקורית")}</a></p>`:""}</div></div>
 </article></div></section></body></html>`;
   $("pvSite").srcdoc=doc;
   $("pvFeed").innerHTML=`<div class="head"><span class="av">א</span>argovalexander</div><img src="${coverUrl}" alt="">
@@ -486,22 +609,129 @@ $("btnReload").onclick=loadQueue;
 $("btnSaveDraft").onclick=()=>save(working(),"הטיוטה נשמרה");
 $("btnSave").onclick=()=>save(working(),"השינויים נשמרו");
 $("btnApprove").onclick=async()=>{const p=readForm(working());if(!p.out?.slug){toast("חסרה כתובת (slug) לפני אישור");return}
+  if(!hasOwnMedia()){toast("אין תמונה לפוסט. צרף מהמקור או בקש תמונה AI לפני אישור");$("mediaNow").scrollIntoView({behavior:"smooth",block:"center"});return}
   p.status="approved";p.approvedAt=new Date().toISOString();if(await save(p,"אושר ונשמר ל-GitHub. עולה לאתר בבנייה הבאה"))fillForm(p)};
 $("btnPublished").onclick=async()=>{const p=working();p.status="published";if(await save(p,"סומן כפורסם"))fillForm(p)};
 $("btnReject").onclick=async()=>{const p=working();p.status="rejected";if(await save(p,"הפוסט נדחה"))fillForm(p)};
-$("btnDelete").onclick=()=>{$("confirmDel").hidden=false};
+$("btnDelete").onclick=$("btnDeleteTop").onclick=()=>{$("confirmDel").hidden=false;$("confirmDel").scrollIntoView({behavior:"smooth",block:"center"})};
 $("btnDelNo").onclick=()=>{$("confirmDel").hidden=true};
-$("btnDelYes").onclick=async()=>{const p=current();if(!p){$("confirmDel").hidden=true;return}
+$("btnDelYes").onclick=async()=>{const p=current();
+  if(!p){const d=$("form")._draft;if(d)LS.del("sq_bo_draft_"+d.id);$("form")._draft=null;$("form").hidden=true;$("placeholder").hidden=false;toast("הטיוטה נמחקה");return}
   posts=posts.filter(x=>x.id!==p.id);LS.del("sq_bo_draft_"+p.id);
   if(await commitQueue(`back-office: delete · ${p.out?.slug||p.id}`)){currentId=null;$("form").hidden=true;$("placeholder").hidden=false;renderFilters();renderQueue();toast("נמחק")}};
 $("btnExport").onclick=()=>{const a=document.createElement("a");a.download="posts.json";a.href=URL.createObjectURL(new Blob([JSON.stringify(posts,null,2)],{type:"application/json"}));a.click()};
 
 // ---------- settings ----------
-$("btnSettings").onclick=()=>{$("sGh").value=cfg.gh();$("sAk").value=cfg.key();$("sModel").value=cfg.model();$("sBranch").value=cfg.branch();$("settings").showModal()};
+// Feed sources live in this browser (sq_bo_feeds); edited in settings, kept on "שמור".
+const DEFAULT_FEEDS=[
+  {name:"MAIB (תאונות, בריטניה)",url:"https://www.gov.uk/government/organisations/marine-accident-investigation-branch.atom",section:"takalot"},
+  {name:"Yachting Monthly",url:"https://www.yachtingmonthly.com/feed",section:"ahrei"}];
+const getFeeds=()=>{try{const f=JSON.parse(LS.get("sq_bo_feeds"));if(Array.isArray(f))return f}catch{}return DEFAULT_FEEDS.slice()};
+const sectionOpts=sel=>Object.entries(SECTIONS).filter(([k])=>k!=="sidrot").map(([k,v])=>`<option value="${k}"${k===sel?" selected":""}>${esc(v)}</option>`).join("");
+let feedsEdit=[];
+function renderFeedSrc(){
+  $("sFeeds").innerHTML=feedsEdit.length?feedsEdit.map((f,i)=>`<div class="src"><b>${esc(f.name)}</b><span class="u">${esc(f.url)}</span><span class="hint">${esc(SECTIONS[f.section]||"")}</span><button type="button" class="ghost danger" data-rmfeed="${i}">הסר</button></div>`).join(""):`<p class="hint">אין מקורות. הוסף אתר למטה.</p>`;
+}
+$("sFeeds").addEventListener("click",e=>{const b=e.target.closest("[data-rmfeed]");if(!b)return;feedsEdit.splice(Number(b.dataset.rmfeed),1);renderFeedSrc()});
+$("btnFeedAdd").onclick=()=>{
+  const name=$("sFeedName").value.trim(),url=$("sFeedUrl").value.trim();
+  if(!/^https?:\/\//.test(url)){toast("כתובת הפיד חייבת להתחיל ב-https://");$("sFeedUrl").focus();return}
+  if(feedsEdit.some(f=>f.url===url)){toast("המקור כבר ברשימה");return}
+  feedsEdit.push({name:name||new URL(url).hostname,url,section:$("sFeedSection").value});
+  $("sFeedName").value="";$("sFeedUrl").value="";renderFeedSrc();
+};
+$("btnSettings").onclick=()=>{$("sGh").value=cfg.gh();$("sAk").value=cfg.key();$("sModel").value=cfg.model();$("sBranch").value=cfg.branch();
+  feedsEdit=getFeeds();renderFeedSrc();$("sFeedSection").innerHTML=sectionOpts("takalot");$("settings").showModal()};
 $("settings").addEventListener("close",()=>{if($("settings").returnValue!=="save")return;
   LS.set("sq_gh_token",$("sGh").value.trim());LS.set("sq_anthropic_key",$("sAk").value.trim());
   LS.set("sq_bo_model",$("sModel").value.trim()||"claude-sonnet-5-5");LS.set("sq_bo_branch",$("sBranch").value.trim()||"redesign");
+  LS.set("sq_bo_feeds",JSON.stringify(feedsEdit));
   renderConn();loadQueue()});
+
+// ---------- feed import ----------
+let feedItems=[];
+const feedMsg=(t,err)=>{$("feedStatus").textContent=t;$("feedStatus").classList.toggle("err",!!err)};
+// DOMParser documents are inert: feed HTML never runs scripts or loads images here.
+const htmlDoc=s=>new DOMParser().parseFromString(String(s||""),"text/html");
+const stripHtml=s=>(htmlDoc(s).body.textContent||"").replace(/\s+/g," ").trim();
+function feedImage(el,html){
+  for(const tag of ["media:content","media:thumbnail","enclosure"]){
+    for(const m of el.getElementsByTagName(tag)){const u=m.getAttribute("url")||"",t=m.getAttribute("type")||"";if(u&&(!t||t.startsWith("image")))return u}}
+  const src=htmlDoc(html).querySelector("img[src]")?.getAttribute("src")||"";
+  return /^https?:\/\//.test(src)?src:"";
+}
+function parseFeed(xml){
+  const doc=new DOMParser().parseFromString(xml.trim(),"application/xml");
+  if(doc.querySelector("parsererror"))throw new Error("זה לא נראה כמו RSS/Atom");
+  const txt=(el,sel)=>el.getElementsByTagName(sel)[0]?.textContent?.trim()||"";
+  const rss=[...doc.getElementsByTagName("item")].map(it=>{const h=txt(it,"description")||txt(it,"content:encoded");
+    return {title:stripHtml(txt(it,"title")),link:txt(it,"link"),date:txt(it,"pubDate"),summary:stripHtml(h),image:feedImage(it,txt(it,"content:encoded")||h)}});
+  const atom=[...doc.getElementsByTagName("entry")].map(en=>{const l=[...en.getElementsByTagName("link")];const a=l.find(x=>(x.getAttribute("rel")||"alternate")==="alternate")||l[0];
+    const h=txt(en,"summary")||txt(en,"content");
+    return {title:stripHtml(txt(en,"title")),link:a?.getAttribute("href")||"",date:txt(en,"updated")||txt(en,"published"),summary:stripHtml(h),image:feedImage(en,txt(en,"content")||h)}});
+  return rss.concat(atom).filter(x=>x.title&&x.link);
+}
+function renderFeedItems(){
+  const have=new Set(posts.map(p=>p.source?.url).filter(Boolean));
+  $("feedItems").innerHTML=feedItems.map((it,i)=>{const dup=have.has(it.link);
+    return `<label><input type="checkbox" data-fi="${i}" ${dup?"disabled":""}><span><b>${esc(it.title)}</b>${dup?" · <span class=\"hint\">כבר בתור</span>":""}
+      <span class="d">${esc(it.src.name)} · ${esc(it.date&&!isNaN(new Date(it.date))?new Date(it.date).toLocaleDateString("he-IL"):"")} · <a href="${esc(it.link)}" target="_blank" rel="noopener">פתח את הידיעה ↗</a></span>
+      <span class="d">${esc(it.summary.slice(0,160))}</span></span></label>`}).join("");
+  $("btnFeedImport").disabled=true;
+}
+$("feedItems").addEventListener("change",()=>{$("btnFeedImport").disabled=!$("feedItems").querySelector("input:checked")});
+const feedSel=()=>{const v=$("feedSrc").value,all=getFeeds();return v==="all"?all:[all[v]].filter(Boolean)};
+function syncFeedSrc(){const one=$("feedSrc").value!=="all",f=feedSel()[0];
+  $("feedSection").innerHTML=`<option value="">לפי המקור</option>`+sectionOpts(one?f?.section:"");
+  $("feedOpen").hidden=!one;$("feedPasteBox").hidden=!one;if(one&&f)$("feedOpen").href=f.url}
+$("btnFeed").onclick=()=>{
+  const feeds=getFeeds();
+  if(!feeds.length){toast("אין מקורות. הוסף אתר ב-⚙ הגדרות");return}
+  $("feedSrc").innerHTML=`<option value="all">כל המקורות (${feeds.length})</option>`+feeds.map((f,i)=>`<option value="${i}">${esc(f.name)}</option>`).join("");
+  syncFeedSrc();feedItems=[];$("feedItems").innerHTML="";$("feedPaste").value="";feedMsg("");$("btnFeedImport").disabled=true;$("feedModal").showModal();
+  $("btnFeedLoad").click();
+};
+$("feedSrc").addEventListener("change",()=>{syncFeedSrc();feedItems=[];$("feedItems").innerHTML="";$("feedPaste").value="";feedMsg("")});
+$("btnFeedLoad").onclick=async()=>{
+  const srcs=feedSel();if(!srcs.length)return;
+  const pasted=$("feedPaste").value.trim();
+  feedMsg(`סורק ${srcs.length} מקורות…`);$("btnFeedLoad").disabled=true;
+  const failed=[];
+  const res=await Promise.all(srcs.map(async src=>{
+    try{
+      let xml=srcs.length===1&&pasted?pasted:"";
+      if(!xml){const r=await xfetch(src.url);if(!r.ok)throw new Error("HTTP "+r.status);xml=await r.text()}
+      return parseFeed(xml).slice(0,30).map(it=>({...it,src}));
+    }catch{failed.push(src.name);return[]}
+  }));
+  $("btnFeedLoad").disabled=false;
+  const t=d=>{const n=Date.parse(d);return isNaN(n)?0:n};
+  feedItems=res.flat().sort((a,b)=>t(b.date)-t(a.date));
+  renderFeedItems();
+  let m=feedItems.length?`${feedItems.length} ידיעות. סמן מה להוסיף לתור.`:"לא נמצאו ידיעות.";
+  if(failed.length){m+=` לא נטענו: ${failed.join(", ")} (האתר חוסם טעינה ישירה. בחר אותו לבד והדבק את הפיד).`;if(srcs.length===1)$("feedPasteBox").open=true}
+  feedMsg(m,!feedItems.length||failed.length>0);
+};
+$("btnFeedImport").onclick=async()=>{
+  const sec=$("feedSection").value;
+  const picked=[...$("feedItems").querySelectorAll("input:checked")].map(x=>feedItems[x.dataset.fi]);
+  if(!picked.length)return;
+  const now=Date.now();
+  const added=picked.map((it,i)=>{const p=blankPost();p.created=new Date(now-i).toISOString();p.section=sec||it.src.section||"takalot";
+    p.source={url:it.link,platform:"אתר / בלוג",mediaType:"text",author:it.src.name||"",title:it.title,summary:it.summary.slice(0,600),image:it.image||"",date:it.date||""};
+    p.original={text:`${it.title}\n\n${it.summary}`.slice(0,6000),mediaDesc:""};return p});
+  posts=added.concat(posts);
+  $("btnFeedImport").disabled=true;feedMsg("שומר ל-GitHub…");
+  if(await commitQueue(`back-office: ייבוא ${added.length} ידיעות מפיד (${[...new Set(picked.map(x=>x.src.name))].join(", ")})`)){
+    // Attach each item's own picture (feed image or the article's og:image) right away.
+    let got=0;
+    for(const [i,p] of added.entries()){feedMsg(`מצרף תמונות מהמקור ${i+1}/${added.length}…`);try{await attachSourceImage(p);got++}catch{}}
+    if(got)await commitQueue(`back-office: ${got} תמונות מהמקור`);
+    filter="new";renderFilters();$("feedModal").close();openPost(added[0].id);
+    if(got<added.length)setTimeout(()=>toast(`${added.length-got} ידיעות בלי תמונה. פתח אותן ובקש תמונה AI`),3000);
+    toast(`נוספו ${added.length} ידיעות לתור. הראשונה פתוחה, לחץ "עבד לעברית"`);
+  }else{posts=posts.filter(p=>!added.includes(p));feedMsg("השמירה נכשלה, שום דבר לא נוסף",true);$("btnFeedImport").disabled=false}
+};
 
 // ---------- Claude ----------
 function buildPrompt(p,redo){
