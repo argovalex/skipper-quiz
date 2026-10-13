@@ -94,6 +94,11 @@ def main():
         o = os.path.join(wrk, f"{idx:02d}_{sid}.mp4")
         clip_card(o, png, p, a.size.replace("x", ":"))
         segfiles.append(o)
+        sim, simpng = os.path.join(aud, f"sim_{sid}.mp3"), os.path.join(cards, f"{sid}_sim.png")
+        if os.path.isfile(sim) and os.path.isfile(simpng):          # simulated radio exchange after the narration (radio_sim.py)
+            sp = os.path.join(wrk, f"{sid}_sim_p.mp3"); pad(sim, sp, 1.0)
+            so = os.path.join(wrk, f"{idx:02d}b_{sid}_sim.mp4"); clip_card(so, simpng, sp, a.size.replace("x", ":"))
+            segfiles.append(so)
         print("seg", sid)
 
     inp = []
