@@ -109,6 +109,8 @@ for idx, (sid, text) in enumerate(secs, 1):
             t1 = t0 + (b - a) * plain_len(c) / ctot
             events.append((off + t0, off + t1, c)); t0 = t1
     off += cdur
+    sim = os.path.join(AUD, 'wrk', f'{idx:02d}b_{sid}_sim.mp4')   # radio_sim exchange: transcript is on the card, no subtitles
+    if os.path.isfile(sim): off += probe(sim)
 
 # extend each event to the next start (no flicker), cap tail
 ev2 = []
