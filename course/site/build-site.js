@@ -96,6 +96,7 @@ function page({ title, desc, active, body, canonical, extraHead = '', noindex = 
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta name="theme-color" content="#102948">
+<meta name="sq-api" content="https://api.alargov.com">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:locale" content="he_IL">
@@ -114,6 +115,7 @@ ${body}
 ${footer()}
 <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
 <script src="/assets/motion.js" defer></script>
+<script src="/assets/buy.js" defer></script>
 </body>
 </html>
 `;
@@ -446,7 +448,7 @@ function videoItemPage(v) {
         ${v.options.length ? `<ol class="vp-opts">${v.options.map((o, i) => `<li${i === correct ? ' class="ok"' : ''}><b>${LETTERS[i] || i + 1}</b> ${esc(opt(o))}${i === correct ? ' <span>התשובה הנכונה</span>' : ''}</li>`).join('')}</ol>` : ''}
         ${v.explanation ? `<div class="rule"><h2>ההסבר</h2><p>${esc(v.explanation)}</p></div>` : ''}
         <details class="transcript" open><summary>תמליל הסרטון</summary><p>${esc(v.transcript)}</p></details>
-        <div class="side-cta"><p>זו שאלה מתוך מאגר מבחן התאוריה לרישיון אופנוע ים. בקורס יש הסבר כזה לכל שאלה במאגר.</p><a class="btn btn-gold" href="/kursim/">לקורסים</a></div>
+        <div class="side-cta"><p>זו שאלה מתוך מאגר מבחן התאוריה לרישיון אופנוע ים. בקורס יש הסבר כזה לכל שאלה במאגר.</p><div class="acts"><a class="btn btn-gold" href="https://app.alargov.com/" data-trial>13 שאלות חינם</a> <a class="btn btn-navy" href="/kursim/#buy">לקורס המלא</a></div></div>
       </div>
     </div>
   </div>
@@ -535,7 +537,7 @@ ${pagehead('קורסי תאוריה לרישיון שיט', 'הכנה למבחן
   <div class="wrap courses">
 ${COURSES.map(c => `    <${c.live ? `a href="${c.href}"` : 'div'} class="course${c.live ? ' course--live' : ''}" id="${c.id}">
       <span class="course-img"><img src="${tile(c.img)}" alt="" loading="lazy"></span>
-      <span class="course-txt"><span class="badge">${esc(c.state)}</span><b>${esc(c.name)}</b>${c.text ? `<span>${esc(c.text)}</span>` : ''}${c.live ? '<span class="btn btn-gold">לקורס</span>' : ''}</span>
+      <span class="course-txt"><span class="badge">${esc(c.state)}</span><b>${esc(c.name)}</b>${c.text ? `<span>${esc(c.text)}</span>` : ''}${c.live ? '<span class="btn btn-gold">למחיר ולרכישה</span>' : ''}</span>
     </${c.live ? 'a' : 'div'}>`).join('\n')}
   </div>
 </section>
@@ -546,11 +548,13 @@ ${COURSES.map(c => `    <${c.live ? `a href="${c.href}"` : 'div'} class="course$
     <ul class="what-list">
 ${WHAT.map(([h, t]) => `      <li><h3>${h}</h3><p>${t}</p></li>`).join('\n')}
     </ul>
-    <div class="price-box">
-      <p class="price"><b>₪199</b> <s>₪349</s></p>
-      <p>מסלול מייסדים: 10 הנרשמים הראשונים ב-199 ש״ח, אחר כך 349 ש״ח. לא עברת את המבחן? הכסף חוזר אליך.*</p>
-      <div class="acts"><a class="btn btn-gold" href="https://app.alargov.com/?buy=1">רכוש עכשיו</a> <a class="btn btn-navy" href="https://app.alargov.com/">13 שאלות חינם</a></div>
-      <p class="fine">* בכפוף ל<a href="/legal/refund-policy.html">מדיניות הביטולים</a>.</p>
+    <div class="price-box" id="buy">
+      <p class="price"><b data-price>₪199</b> <s data-price-regular>₪349</s></p>
+      <p data-founders>מסלול מייסדים: 10 הנרשמים הראשונים ב-199 ש״ח, אחר כך 349 ש״ח.</p>
+      <p class="seats" data-seats hidden></p>
+      <p>גישה מלאה מיד אחרי התשלום. לא עברת את המבחן? הכסף חוזר אליך.*</p>
+      <div class="acts"><a class="btn btn-gold" href="https://app.alargov.com/?buy=1" data-buy>רכוש עכשיו</a> <a class="btn btn-navy" href="https://app.alargov.com/" data-trial>13 שאלות חינם</a></div>
+      <p class="fine">תשלום מאובטח בכרטיס אשראי דרך טרנזילה. * בכפוף ל<a href="/legal/refund-policy.html">מדיניות הביטולים</a>.</p>
     </div>
   </div>
 </section>

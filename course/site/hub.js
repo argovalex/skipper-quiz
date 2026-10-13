@@ -24,7 +24,7 @@ const VIDEO = { slug: 'video', name: 'סרטונים', blurb: 'סרטונים ק
 
 // Licenses. href: the course page; the rest go to /kursim/ until they open.
 const COURSES = [
-  { id: 'ofnoa', name: 'אופנוע ים', state: 'פתוח להרשמה', live: true, href: '/', img: 'jetski',
+  { id: 'ofnoa', name: 'אופנוע ים', state: 'פתוח להרשמה', live: true, href: '/kursim/#buy', img: 'jetski',
     text: '13 שיעורים, כל שאלות המאגר הרשמי והסבר בקול לכל שאלה.' },
   { id: '12', name: 'משיט 12', state: 'בהכנה', href: '/kursim/#12', img: 'speedboat', text: 'סירת מנוע.' },
   { id: '30', name: 'משיט 30', state: 'בהמשך', href: '/kursim/#30', img: 'sail', text: '' },
