@@ -1,6 +1,6 @@
 // AUTO-GENERATED from references/niqqud-lexicon.md by
 // tools/quiz-app/gen-vo-lexicon.js. Do NOT edit by hand — edit the .md and re-run.
-// 360 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
+// 362 entries (3+ Hebrew-letter forms; short collision-prone words skipped).
 const VO_LEXICON = [
   ["FLOAT FREE ציפה חופשית","FLOAT FREE ציפַה חופשית"],
   ["בין כלי שייט. אז","בין כְּלֵי שָייט. אז"],
@@ -127,6 +127,7 @@ const VO_LEXICON = [
   ["באפנון","באִפְנוּן"],
   ["דחיפות","דחיפוֹת"],
   ["עוגנים","עוֹגְנִים"],
+  ["המשואה","המַשּׂוּאָה"],
   ["זיהית","זִיֽהִיתָ"],
   ["וזכור","וּזְכֹוֽר"],
   ["המצוף","הַמָּצוֹף"],
@@ -196,7 +197,6 @@ const VO_LEXICON = [
   ["הרדיו","הַרדיו"],
   ["לישון","לישׁון"],
   ["שקיים","שֶקַיִיָם"],
-  ["הלוין","הַלַוְין"],
   ["לחיים","לַחַיִּים"],
   ["נטענת","נִטעּנֶת"],
   ["במצפן","במַצְפֵּן"],
@@ -228,6 +228,8 @@ const VO_LEXICON = [
   ["שמונה","שמונָה"],
   ["שעולה","שעולֶה"],
   ["למשדר","למָשדר"],
+  ["משואת","מַשּׂוּאָת"],
+  ["הלוין","הַלְּויָן"],
   ["שכלי","שֶׁכְּלי"],
   ["נמצא","נִמְצָא"],
   ["זכור","זְכֹוֽר"],
