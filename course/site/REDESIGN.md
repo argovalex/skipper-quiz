@@ -58,3 +58,6 @@ GEO / אינדוקס:
 - חדשות: `content/posts.json`, ייצוא מה-Back Office. רק `status: "approved"` עולה. שדה `image` אופציונלי.
 - סרטונים: `content/reels.json` (מספר שאלה, כותרת, `date` אופציונלי). הקישור נלקח מ-`data/l11.json`.
 - חלון "חדש באתר" בדף הבית: אם יש פוסט או סרטון עם תאריך של היום (שעון ישראל), הוא הופך ל"היום באתר" ומציג רק אותם.
+
+## פרסום כתבה מ-back-office.html
+"אשר לפרסום" שומר את `course/site/content/posts.json` ב-GitHub. ה-workflow `.github/workflows/build-site.yml` מריץ את `build-site.js` ומעלה את העמודים, ו-Railway פורס. אין צורך לבנות מקומית. אחרי כל פרסום: `git pull` במחשב המקומי.
