@@ -243,7 +243,7 @@ ${SECTIONS.map(s => `      <a class="tile topic" href="/${s.slug}/"><img src="${
 
 <section class="about">
   <div class="wrap about-grid">
-    <img src="/assets/logo.jpg" alt="הלוגו של אלכס ארגוב: קטמרן בקווים לבנים על רקע כחול">
+    <img src="/assets/${PERSON_IMG}" alt="${PERSON_IMG === 'alex.jpg' ? 'אלכס ארגוב, מדריך שיט' : 'הלוגו של אלכס ארגוב: קטמרן בקווים לבנים על רקע כחול'}" width="240" height="240" loading="lazy">
     <div>
       <h2>אני אלכס.</h2>
       <p>מדריך שיט כבר 9 שנים. מלמד תאוריה לרישיונות שיט, ופה אני שם את מה שאני מספר לתלמידים מחוץ לשיעור: מה קרה בים, מה אפשר ללמוד מזה, ואיך מתכוננים ליציאה הבאה.</p>
