@@ -524,15 +524,20 @@ async function ogImage(link){
   const u=d.querySelector('meta[property="og:image"],meta[name="og:image"],meta[name="twitter:image"],meta[property="twitter:image"]')?.getAttribute("content")||"";
   return u?new URL(u,link).href:"";
 }
+// Site-wide share images (gov.uk crest, logos) are not about the item: treat them as "no image".
+const GENERIC_IMG=/opengraph-image|og-default|default[-_]?(og|share|image)|placeholder|fallback|\/logo|logo[-_.]/i;
 async function attachSourceImage(p){
-  const s=p.source||{};let url=s.image||"";
-  if(!url&&s.url){try{url=await ogImage(s.url)}catch{throw new Error("האתר חוסם קריאה מהדפדפן. שמור את התמונה מהידיעה ידנית והעלה אותה, או בקש תמונה AI")}}
-  if(!url)throw new Error("לא נמצאה תמונה במקור. בקש תמונה AI");
+  const s=p.source||{};
+  // The article's og:image is full size; the feed often carries only a thumbnail (WordPress -300x169).
+  let url="";
+  if(s.url){try{url=await ogImage(s.url)}catch{}}
+  if(!url||GENERIC_IMG.test(url))url=(s.image||"").replace(/-\d{2,4}x\d{2,4}(?=\.\w+(\?|$))/,"");
+  if(!url||GENERIC_IMG.test(url))throw new Error("אין במקור תמונה של הידיעה עצמה. בקש תמונה AI");
   let blob;
   try{const r=await xfetch(url);if(!r.ok)throw new Error();blob=await r.blob()}
   catch{throw new Error("האתר חוסם הורדת התמונה מהדפדפן. שמור אותה מהידיעה ידנית והעלה בשדה התמונה")}
   if(!blob.type.startsWith("image/"))throw new Error("הקישור במקור לא מוביל לתמונה");
-  if(!s.image){p.source={...s,image:url}}
+  p.source={...s,image:url};
   const ext=({"image/jpeg":"jpg","image/png":"png","image/webp":"webp","image/gif":"gif"})[blob.type]||"jpg";
   const name=`${p.id}-image.${ext}`;
   await putAsset(MEDIA_DIR+name,new File([blob],name,{type:blob.type}),`back-office: תמונה מהמקור · ${p.out?.slug||p.id}`);
