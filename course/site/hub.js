@@ -68,7 +68,8 @@ function footer() {
       </div>
       <div><h4>קורסים</h4><ul>${crs}</ul></div>
       <div><h4>באתר</h4><ul>${sec}</ul></div>
-      <div><h4>דברו איתי</h4><ul><li><a href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ 052-368-2486</a></li><li><a href="mailto:alex@alargov.com">alex@alargov.com</a></li><li><a href="/legal/refund-policy.html">ביטולים והחזרים</a></li></ul></div>
+      <div><h4>צור קשר</h4><ul><li><a href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ · 052-368-2486</a></li><li><a href="tel:+972523682486">להתקשר · 052-368-2486</a></li><li><a href="mailto:alex@alargov.com">alex@alargov.com</a></li></ul></div>
+      <div><h4>מידע</h4><ul><li><a href="/legal/terms-of-service.html">תנאי שימוש</a></li><li><a href="/legal/privacy-policy.html">מדיניות פרטיות</a></li><li><a href="/legal/refund-policy.html">ביטולים והחזרים</a></li><li><a href="/legal/accessibility-statement.html">הצהרת נגישות</a></li></ul></div>
     </div>
     <div class="fbottom"><span>© אלכס ארגוב, סקיפר דיגיטלי</span><span>* בכפוף לתנאי ההחזר</span></div>
   </div>
