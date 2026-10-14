@@ -219,6 +219,8 @@ function buildVoiceover(q, keepLatin) {
     // License 11 keeps the v3-era cue "... ב'!" it was rendered with (Alex 2026-10-04: l11 stays as is).
     // Other licenses speak the letter's alphabet name: a bare "ב:" came out as "bayit" (Alex 2026-10-09, same rule as l30 el_tts).
     const LETTER_NAME = { 'א': 'אָלֶף', 'ב': 'בֵּית', 'ג': 'גִּימֶל', 'ד': 'דָּלֶת' };
+    // l12: the cue says a bare "ב:", not "בֵּית:" (Alex 2026-10-14, q2008/2009). l30 keeps the alphabet name.
+    if (Number(q.license) === 12) LETTER_NAME['ב'] = 'ב';
     const cue = (q.license == null || Number(q.license) === 11) ? `התשובה הנכונה... ${letter}'!` : `התשובה הנכונה היא ${LETTER_NAME[letter] || letter}:`;
     q2 = applySpokenFixes(/^התשובה הנכונה/.test(sp) ? sp : `${cue} ${sp}`, keepLatin);
   } else {
