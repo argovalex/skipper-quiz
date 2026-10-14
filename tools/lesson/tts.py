@@ -20,6 +20,7 @@ tts.py — מפיק קריינות edge-tts לכל סעיף בקובץ VO של �
 """
 import asyncio, os, re, shutil, sys, subprocess
 from niqqud import load_lexicon, apply as niqqud_apply
+import nowin  # child processes without a console window (no black windows)
 
 VOICE = "he-IL-HilaNeural"
 RATE = "-10%"

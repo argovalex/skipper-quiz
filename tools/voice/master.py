@@ -10,6 +10,9 @@ master.py — מסטרינג קבוע לקול Alex Skipper v2 (ראה docs/voic
     python tools/voice/master.py --check <file.mp3> <text_chars>             # אימות אורך
 """
 import subprocess, sys
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lesson"))
+import nowin  # ffmpeg children without a console window (no black windows)
 
 CHAIN = ("highpass=f=70,"
          "acompressor=threshold=-20dB:ratio=2:attack=10:release=150,"

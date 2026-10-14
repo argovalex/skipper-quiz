@@ -12,6 +12,7 @@
 תלות: ffmpeg ב-PATH, Pillow, python-bidi, media/my_logo.jpg בריפו.
 """
 import os, sys, subprocess, tempfile, argparse
+import nowin  # ffmpeg children without a console window (no black windows)
 from PIL import Image, ImageDraw, ImageFont
 from bidi.algorithm import get_display
 

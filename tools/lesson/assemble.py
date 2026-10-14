@@ -12,6 +12,7 @@ assemble.py — מרכיב את סרטון השיעור הגולמי מכרטי�
     python tools/lesson/assemble.py --vo <vo.txt> --audio <aud_dir> --cards <cards_dir> --out <lesson.mp4>
 """
 import os, re, sys, argparse, subprocess
+import nowin  # ffmpeg children without a console window (no black windows)
 
 AAC = ["-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "192k"]
 VENC = ["-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "25", "-preset", "medium"]
