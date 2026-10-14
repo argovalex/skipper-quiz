@@ -1,5 +1,69 @@
 [
   {
+    "id": "mv81586cyn1lu",
+    "status": "processed",
+    "created": "2026-10-14T11:31:55.429Z",
+    "section": "takalot",
+    "audience": "all",
+    "source": {
+      "url": "https://www.facebook.com/share/p/18RoUgqB5R/",
+      "platform": "פייסבוק",
+      "mediaType": "image",
+      "author": ""
+    },
+    "original": {
+      "text": "Mayday in the Pacific: 4 Sailors Saved After Whale Strike 🐋⛵\nOn 26 September 2026, the Australian-flagged yacht Tai Tam (15.5m) struck a whale roughly 250 nautical miles north of Norfolk Island. The vessel rapidly took on water, forcing all four crew members to abandon ship into a life raft.\nThe Incident Timeline:\n• 13:00: Rescue Coordination Centre NZ detects an EPIRB signal.\n• Air Reconnaissance: A Royal New Zealand Air Force P-8A Poseidon locates the survivors and establishes comms.\n• 06:00 (27 Sept): Container ship Sofrana Surville arrives on scene and safely recovers all four sailors.\nMaritime authorities praised the crew’s preparation and immediate EPIRB activation as decisive factors in their survival.\nCaptain’s Perspective ⚓\nIncidents like this are a reminder: you can’t plan for a whale strike, but you can control your emergency response.\nBy keeping gear ready and triggering their beacon without delay, the crew gave rescuers a pinpoint target in a vast ocean. Beyond equipment, this rescue highlights the true spirit of the sea—military aircraft, international coordination centers, and a commercial container ship altering course to save four strangers.\nPreparation doesn't prevent every emergency, but it completely changes what happens next.\nBecause the sea doesn’t forgive what you don’t know.\nMaritime Hub by Capt. Anamaria",
+      "mediaDesc": "Mayday in the Pacific: 4 Sailors Saved After Whale Strike "
+    },
+    "notes": "",
+    "out": {
+      "title": "פגיעה בלוויתן, אסדת הצלה ומשואה אחת שהופעלה בזמן",
+      "slug": "whale-strike-epirb-life-raft-pacific",
+      "excerpt": "יאכטה בת 15.5 מטר פגעה בלוויתן באמצע האוקיינוס השקט, ושישה-עשר... ארבעה אנשי צוות עברו לאסדת הצלה. מה שהציל אותם היה הכנה והפעלה מיידית של משואת המצוקה, ואלה דברים שגם אתה שולט בהם.",
+      "body": "**מה קרה.** יאכטה אוסטרלית בשם Tai Tam, באורך 15.5 מטר, פגעה בלוויתן כ-250 מייל ימי צפונית לאי נורפולק באוקיינוס השקט. הכלי התחיל להתמלא מים במהירות, וארבעת אנשי הצוות נאלצו לעזוב לאסדת הצלה (רפסודת הצלה). מרכז התיאום של ניו זילנד קלט אות ממשואת המצוקה (EPIRB), מטוס צבאי איתר את השורדים, ובבוקר למחרת ספינת מכולות שינתה מסלול ואספה את כולם.\n\n**למה זה קרה.** את הפגיעה בלוויתן אי אפשר לתכנן. גם שמירה טובה לא תמיד תראה משהו שנמצא סמוך לפני המים. בים התיכון זה לא לוויתנים, אבל יש מכולות שאבדו, בולי עץ ורשתות צפות. התוצאה דומה: פגיעה פתאומית, מים בפנים, וזמן קצר להחליט.\n\n**מה עושים נכון.** אתה לא שולט במה שפוגע בך. אתה שולט במה שקורה אחרי. הצוות הזה עשה כמה דברים נכון:\n\n- הפעיל את משואת המצוקה מיד, בלי לבזבז זמן על ניסיונות להציל את הכלי.\n- הכין ציוד מראש, כך שהמעבר לאסדה היה מסודר.\n- נשאר יחד, באסדה אחת, כמטרה אחת שקל לאתר.\n\nשאל את עצמך. איפה המשואה שלך עכשיו? האם היא רשומה, האם הסוללה בתוקף, והאם כל אחד על הסיפון יודע להפעיל אותה? תיק מילוט מוכן ליד היציאה שווה יותר מכל הסברים בזמן אמת.\n\n**איך זה קשור למבחן.** בחומר של רספ״ן יש נושא שלם של ציוד הצלה, איתות מצוקה ועזיבת כלי שיט. סדר הפעולות חוזר שוב ושוב בשאלות: קודם מצוקה, אחר כך עזיבה, ואחרי זה הישארות ליד האסדה.",
+      "rule": "כשכלי שיט מתמלא מים ואתה עוזב לאסדת הצלה, מפעילים את משואת המצוקה מיד, לוקחים אותה איתך ונשארים עם האסדה.",
+      "exam": {
+        "q": "יאכטה נפגעה מעצם צף ומתמלאת מים במהירות, והחלטתם לעזוב לאסדת הצלה. מה נכון לגבי משואת המצוקה (EPIRB)?",
+        "options": [
+          "להפעיל אותה רק אחרי כמה שעות, אם לא הגיעה עזרה",
+          "להפעיל אותה מיד, לקחת אותה לאסדה ולהישאר עם האסדה",
+          "להשאיר אותה על היאכטה כדי שהאות יסמן את מקום הכלי",
+          "להפעיל אותה רק לאחר שמזהים כלי שיט אחר באופק"
+        ],
+        "correct": 1,
+        "explanation": "משואת המצוקה משדרת מיקום לגורמי החילוץ, ולכן כל עיכוב מאריך את זמן ההמתנה. היא נלקחת לאסדה, והצוות נשאר איתה, כי אסדה היא מטרה גדולה וקלה יותר לאיתור מאדם בודד במים. היאכטה עלולה לשקוע, ואין סיבה לחכות לכלי אחר.",
+        "official": false
+      },
+      "caption": "פגעת בלוויתן, או בעצם צף אחר. הכלי מתמלא מים. מה עושים קודם? הצוות של Tai Tam הפעיל את משואת המצוקה מיד, ועשה את זה נכון. בדוק עכשיו איפה המשואה שלך, אם היא רשומה ואם הסוללה בתוקף. הידיעה המלאה באתר.",
+      "hashtags": [
+        "#שיט",
+        "#בטיחותבים",
+        "#לומדיםמתקלות",
+        "#משואתמצוקה",
+        "#אסדתהצלה",
+        "#מבחןרספן",
+        "#אלכסארגוב"
+      ],
+      "mediaPlan": "הטמעה מהמקור עם קרדיט ל-Maritime Hub by Capt. Anamaria (שם העמוד שפרסם; היוצר המקורי של התמונה לא צוין). אין להוריד ולהעלות מחדש. חלופה: סרטון AI מקורי שמשחזר את התרחיש, כלומר יאכטה, מים בתא, הפעלת משואה ומעבר לאסדה, בלי להציג את התמונה המקורית.",
+      "flags": [
+        "התאריך במקור הוא 26 בספטמבר 2026. ייתכן שזו טעות הקלדה או תאריך עתידי, ולכן השמטתי אותו מהגוף. כדאי לאמת מול דיווח רשמי של RCC New Zealand.",
+        "שורה בתקציר: יש לבדוק ולנקות את הניסוח של 'שישה-עשר...' בתחילת התקציר לפני פרסום. נשאר שם שגיאת ניסוח.",
+        "המקור הוא עמוד פייסבוק (Maritime Hub) ולא דיווח רשמי. פרטי הספינות, הנקודה הגיאוגרפית ושם המטוס לא אומתו.",
+        "המונח העברי הרשמי של EPIRB ושל אסדת הצלה לא אומת מול מילון רספ״ן. השתמשתי ב'משואת מצוקה' וב'אסדת הצלה (רפסודת הצלה)'. כדאי לוודא מול החומר הרשמי.",
+        "ההמלצה על רישום משואה ובדיקת סוללה נכתבה כעצה כללית ולא כדרישת תקנה. לא ציינתי תקנה או סעיף ספציפי של רשות הספנות והנמלים.",
+        "המקור מציין 13:00 ו-06:00 בלי אזור זמן, ולכן כתבתי רק 'בבוקר למחרת'.",
+        "יוצר התמונה לא צוין, ולכן הקרדיט הוא לשם העמוד. כדאי לאמת בעת ההטמעה."
+      ],
+      "fit": {
+        "score": 8,
+        "why": "סיפור הצלה קצר עם לקח ברור על משואת מצוקה וציוד הצלה שמתחבר ישירות לחומר רספ״ן, אך המדיה היא כרטיס טקסט ולא וידאו, והמקור לא רשמי."
+      }
+    },
+    "imageNotes": "",
+    "updated": "2026-10-14T11:35:23.994Z",
+    "processedAt": "2026-10-14T11:35:23.954Z"
+  },
+  {
     "id": "mv6oauy3aqo5n",
     "status": "approved",
     "created": "2026-10-13T12:44:37.035Z",
