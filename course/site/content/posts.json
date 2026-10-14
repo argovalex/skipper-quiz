@@ -1,7 +1,7 @@
 [
   {
     "id": "mv81586cyn1lu",
-    "status": "processed",
+    "status": "approved",
     "created": "2026-10-14T11:31:55.429Z",
     "section": "takalot",
     "audience": "all",
@@ -63,9 +63,10 @@
       }
     },
     "imageNotes": "",
-    "updated": "2026-10-14T12:13:14.280Z",
+    "updated": "2026-10-14T12:14:06.061Z",
     "processedAt": "2026-10-14T11:44:37.071Z",
-    "image": "/assets/posts/mv81586cyn1lu-image.png"
+    "image": "/assets/posts/mv81586cyn1lu-image.png",
+    "approvedAt": "2026-10-14T12:14:06.061Z"
   },
   {
     "id": "mv6oauy3aqo5n",
