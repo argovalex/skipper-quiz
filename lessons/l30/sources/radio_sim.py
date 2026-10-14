@@ -4,6 +4,7 @@ Each line is TTS'd (ElevenLabs: 'me' = Alex's clone, 'coast' = a second voice), 
 <aud_dir>/sim_<sid>.mp3. assemble.py plays it right after the section's narration, over <sid>_sim.png.
 usage: python radio_sim.py <lesson-number> <aud_dir>      (SIMS dict is read from u<NN>_cards.py)"""
 import os, sys, json, hashlib, subprocess, importlib.util, urllib.request
+import nowin  # child processes (ffmpeg, node, python) without a console window
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import el_tts
 VOICES = {'me': el_tts.VOICE, 'coast': el_tts.env.get('ELEVENLABS_COAST_VOICE_ID', 'onwK4e9ZLuTAKqWW03F9')}

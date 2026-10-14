@@ -2,6 +2,7 @@
 usage: python el_tts.py <vo.txt> <aud_dir>      -> <aud_dir>/seg_<sid>.mp3 for every '## sid' section
 Skips sections whose seg file already exists for the same text (cache key in <aud_dir>/raw/<sid>.txt)."""
 import os, re, sys, json, subprocess, urllib.request
+import nowin  # child processes (ffmpeg, node, python) without a console window
 from concurrent.futures import ThreadPoolExecutor
 ROOT = r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz'
 sys.path.insert(0, ROOT + '/tools/lesson')

@@ -1,6 +1,7 @@
 """Tailwind left panels for l30 cards: HTML (Tailwind CDN, Heebo) over an optional photo, rendered by tw_render.js.
 A card = PIL base + left_panel caption + this panel pasted into inner() + PIL right_block."""
 import os, subprocess
+import nowin  # child processes (ffmpeg, node, python) without a console window
 HERE = os.path.dirname(os.path.abspath(__file__)); A = os.path.join(HERE, 'assets'); WRK = os.path.join(HERE, '_tw'); os.makedirs(WRK, exist_ok=True)
 
 HEAD = """<!doctype html><html dir="rtl" lang="he"><head><meta charset="utf-8">

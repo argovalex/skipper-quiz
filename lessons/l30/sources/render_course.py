@@ -1,11 +1,12 @@
 """Re-render l30 lessons in Alex's voice (ElevenLabs clone). Old outputs move to <lesson>/_old/ (nothing deleted).
 usage: python render_course.py <work_dir> [lesson-number ...]   (default: all)"""
 import os, sys, shutil, subprocess
+import nowin  # child processes (ffmpeg, node, python) without a console window
 ROOT = r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz'
 CARDS = ROOT + '/lessons/l30/cards'
 SRC = ROOT + '/lessons/l30/sources'
-LESSONS = {1: 'הרשת הגיאוגרפית', 2: 'המפה הימית ומרקטור', 3: 'אזורי זמן', 4: 'אופק כוכבים וכוכב הצפון', 5: 'מצפן מגנטי', 6: "מצפן ג'יירו ושער שטף", 7: 'מד מהירות ומד רוח', 8: 'מד עומק', 9: 'עקרון המכ״מ', 10: 'מכ״מ יחסי', 11: 'הגה אוטומטי', 12: 'GPS', 13: 'גלי רדיו ומכשיר VHF', 14: 'ערוצים, MMSI ו-DSC', 15: 'NAVTEX', 16: 'EPIRB, SART ו-AIS', 17: 'נהלי קשר'}
-TITLES = {1: 'הרשת הגיאוגרפית', 2: 'המפה הימית ומרקטור', 3: 'אזורי זמן', 4: 'אופק, כוכבים וכוכב הצפון', 5: 'מצפן מגנטי', 6: "מצפן ג'יירו ושער שטף", 7: 'מד מהירות ומד רוח', 8: 'מד עומק', 9: 'עקרון המכ״מ', 10: 'מכ״מ יחסי', 11: 'הגה אוטומטי', 12: 'GPS', 13: 'גלי רדיו ומכשיר VHF', 14: 'ערוצים, MMSI ו-DSC', 15: 'NAVTEX', 16: 'EPIRB, SART ו-AIS', 17: 'נהלי קשר'}
+LESSONS = {1: 'הרשת הגיאוגרפית', 2: 'המפה הימית ומרקטור', 3: 'אזורי זמן', 4: 'אופק כוכבים וכוכב הצפון', 5: 'מצפן מגנטי', 6: "מצפן ג'יירו ושער שטף", 7: 'מד מהירות ומד רוח', 8: 'מד עומק', 9: 'עקרון המכ״מ', 10: 'מכ״מ יחסי', 11: 'הגה אוטומטי', 12: 'GPS', 13: 'גלי רדיו ומכשיר VHF', 14: 'ערוצים, MMSI ו-DSC', 15: 'NAVTEX', 16: 'EPIRB, SART ו-AIS', 17: 'נהלי קשר', 18: 'נוהל מצוקה'}
+TITLES = {1: 'הרשת הגיאוגרפית', 2: 'המפה הימית ומרקטור', 3: 'אזורי זמן', 4: 'אופק, כוכבים וכוכב הצפון', 5: 'מצפן מגנטי', 6: "מצפן ג'יירו ושער שטף", 7: 'מד מהירות ומד רוח', 8: 'מד עומק', 9: 'עקרון המכ״מ', 10: 'מכ״מ יחסי', 11: 'הגה אוטומטי', 12: 'GPS', 13: 'גלי רדיו ומכשיר VHF', 14: 'ערוצים, MMSI ו-DSC', 15: 'NAVTEX', 16: 'EPIRB, SART ו-AIS', 17: 'נהלי קשר', 18: 'נוהל מצוקה'}
 W = sys.argv[1]
 which = [int(a) for a in sys.argv[2:]] or sorted(LESSONS)
 py = sys.executable

@@ -5,6 +5,7 @@ boundaries are estimated by character share and snapped to detected pauses in th
 Display text: TTS-only spellings mapped back (גברַאלְטָר -> גיברלטר), lexicon niqqud applied.
 """
 import os, re, sys, subprocess, shutil
+import nowin  # child processes (ffmpeg, node, python) without a console window
 sys.path.insert(0, r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz/tools/lesson')
 from niqqud import load_lexicon, apply as niqqud_apply
 from PIL import ImageFont

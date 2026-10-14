@@ -3,6 +3,7 @@ Each card's left half (caption + visual) goes on top, its right block (title, te
 Output: <lesson>/<name> - נייד.mp4 ; vertical cards in <lesson>/_v/.
 usage: python vertical.py <work_dir> <lesson-number> [...]"""
 import os, re, sys, ast, subprocess, importlib.util
+import nowin  # child processes (ffmpeg, node, python) without a console window
 from PIL import Image, ImageChops
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 spec = importlib.util.spec_from_file_location('u01', os.path.join(HERE, 'u01_cards.py')); C = importlib.util.module_from_spec(spec); spec.loader.exec_module(C)

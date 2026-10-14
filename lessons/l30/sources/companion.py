@@ -90,6 +90,11 @@ HEADINGS = {
     's12_q70': 'PAN PAN', 's13_q60': 'מתי דחיפות', 's14_q73': 'מה לא דחיפות', 's15_q96': 'הודעת MEDICO', 's16_securite': 'בטיחות SECURITE',
     's17_q97': 'הודעות SECURITE', 's18_q123': 'מתי בטיחות', 's19_summary': 'סיכום',
     's21_q62': 'מי קולט מצוקה','s22_q107': 'מי קולט מצוקה, נוסח שני', 's23_q110': 'ציוד חובה ב-A1', 's24_ais': 'מערכת AIS', 's25_q128': 'מטרת ה-AIS', 's26_summary': 'סיכום',
+    # lesson 18
+    's01_origin': 'מאיפה MAYDAY', 's02_mayday': 'מתי MAYDAY', 's03_q59': 'מי מפעיל מצוקה', 's04_rules': 'דממת רדיו ותחנה מפקחת', 's05_call': 'קריאת MAYDAY', 's06_q94': 'מהי קריאת מצוקה',
+    's07_q173': 'מהי קריאת מצוקה, נוסח שני', 's08_q113': 'מצא את השגיאה', 's09_q132': 'יכטה MARNI', 's10_q193': 'מי עונה ל-MAYDAY', 's11_q95': 'אדם בים',
+    's12_control': 'ניהול המצוקה', 's13_codes': 'קודי מצוקה', 's14_q98': 'SEELONCE MAYDAY', 's15_q99': 'SEELONCE DISTRESS', 's16_q100': 'PRUDONCE',
+    's17_q61': 'SEELONCE FEENEE', 's18_q115': 'SEELONCE FEENEE, נוסח שני', 's19_relay': 'ממסר מצוקה', 's20_cancel': 'ביטול מצוקה', 's21_imot': 'נוהל IMOT', 's22_summary': 'סיכום',
     # shared
     's01_intro': 'פתיחה', 's10_summary': 'סיכום', 's11_summary': 'סיכום', 's14_summary': 'סיכום',
 }
