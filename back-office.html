@@ -187,6 +187,7 @@ dialog form{display:flex;flex-direction:column;gap:14px}
         <p id="mediaNow" class="hint"></p>
         <label>הנחיות ל-Claude (לעיבוד ולעיבוד מחדש)<textarea id="fNotes" placeholder="למשל: לחבר לכלל 9 בתעלות צרות, להזכיר את מרינה הרצליה. בעיבוד מחדש: קצר יותר, יותר דגש על אופנוע ים"></textarea></label>
         <label>הנחיות לתמונת AI<textarea id="fImgNotes" placeholder="מה התמונה צריכה להראות. למשל: יאכטה ליד המזח בשפל, שלוש סירות על שרטון, צלם מהחוף. אם צירפת תמונה, Claude רואה אותה ובונה לפיה"></textarea></label>
+        <div class="bar"><button type="button" id="btnImgFromNotes">צור תמונה AI לפי ההנחיות</button><span class="status-line grow" id="imgStatus" role="status"></span></div>
 
         <div class="bar">
           <button type="button" id="btnProcess" class="primary">עבד לעברית</button>
@@ -388,7 +389,7 @@ function fillForm(p){
   renderSrcPreview(p);
   $("statusPill").className="pill s-"+p.status;$("statusPill").textContent=STATUS[p.status]||p.status;
   $("fUrl").value=p.source.url;$("fPlatform").value=p.source.platform;$("fMedia").value=p.source.mediaType;$("fAuthor").value=p.source.author;
-  $("fText").value=p.original.text;$("fMediaDesc").value=p.original.mediaDesc;$("fSection").value=SECTIONS[p.section]&&p.section!=="sidrot"?p.section:"takalot";$("fAudience").value=p.audience||"all";$("fNotes").value=p.notes||"";$("fImgNotes").value=p.imageNotes||"";
+  $("fText").value=p.original.text;$("fMediaDesc").value=p.original.mediaDesc;$("fSection").value=SECTIONS[p.section]&&p.section!=="sidrot"?p.section:"takalot";$("fAudience").value=p.audience||"all";$("fNotes").value=p.notes||"";$("fImgNotes").value=p.imageNotes||"";$("imgStatus").textContent="";
   $("fImage").value="";$("fVideo").value="";setMedia(p);$("procStatus").textContent=draft?"יש שינויים מקומיים שלא נשמרו ל-GitHub":"";$("procStatus").classList.remove("err");
   fillOut(p.out);
 }
@@ -494,6 +495,12 @@ $("mediaNow").addEventListener("click",async e=>{
     catch(err){$("procStatus").classList.add("err");$("procStatus").textContent=err.message;e.target.disabled=false}
     return}
   if(e.target.id==="btnAskImg"||e.target.id==="btnRegenImg"){e.target.disabled=true;await makeAiImage(working());e.target.disabled=false;return}
+});
+$("btnImgFromNotes").addEventListener("click",async e=>{
+  if(!$("fImgNotes").value.trim()){$("imgStatus").textContent="כתוב קודם מה התמונה צריכה להראות";$("fImgNotes").focus();return}
+  e.target.disabled=true;await makeAiImage(working());e.target.disabled=false;
+});
+$("mediaNow").addEventListener("click",e=>{
   const a=e.target.closest("[data-rm]");if(!a)return;e.preventDefault();const k=a.dataset.rm;
   media[k]="";localUrl[k]="";if(k==="image")bgImg=null;renderMediaNow();renderPreview();
   $("procStatus").textContent="ההסרה תישמר כשתלחץ שמור"});
@@ -539,15 +546,15 @@ async function claudeImagePrompt(p){
 
 The post:
 ${storyText(p)}
-${p.imageNotes?`\nAlex's instructions for the image (follow them first): ${p.imageNotes}`:""}
+${p.imageNotes?`\nAlex's instructions for the image. They override everything below. If they are a full scene description, translate it faithfully and keep every element he lists, including any on-screen text he asks for (quote it exactly), lighting and mood:\n${p.imageNotes}`:""}
 ${ref?"\nThe attached photo is the post's own picture. Keep its scene, subject and setting; describe it precisely so the new image matches it.":""}
 
-Rules:
-- Depict the concrete scene of THIS story: the actual vessel types, place, equipment, weather and what is happening. Nautically correct: real rigging, correct lights/flags only if relevant, believable sea state.
+Defaults (only where Alex's instructions say nothing):
+- Depict the concrete scene of THIS story: the actual vessel types, place, equipment, weather and what is happening. Nautically correct: real rigging, nautical charts (not land maps), correct lights/flags only if relevant, believable sea state.
 - Do not put a person posing or looking at the camera unless the story is about a person. Prefer the scene, the boat, the equipment.
-- Editorial press-photo look, natural light, landscape 4:3.
-- No text, letters, numbers, logos or watermarks in the image.
-- 60-120 words. Return only the prompt, nothing else.`});
+- Editorial press-photo look, natural light.
+- No text, letters, numbers, logos or watermarks in the image, except text Alex explicitly asks for.
+- 60-160 words. Return only the prompt, nothing else.`});
   const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"x-api-key":cfg.key(),"anthropic-version":"2023-06-01","content-type":"application/json","anthropic-dangerous-direct-browser-access":"true"},
     body:JSON.stringify({model:cfg.model(),max_tokens:600,messages:[{role:"user",content}]})});
   if(!r.ok)throw new Error("Claude "+r.status);
@@ -556,15 +563,22 @@ Rules:
   if(!t)throw new Error("empty");
   return t;
 }
+// Orientation follows Alex's image instructions; the site card default is landscape 4:3.
+// (Higgsfield Soul accepts 9:16, 16:9, 4:3, 3:4, 1:1, 2:3, 3:2.)
+const imageAspect=notes=>/אנכי|לאורך|vertical|portrait|סטורי|story|reel|רילס/i.test(notes||"")?"3:4":/ריבוע|מרובע|square/i.test(notes||"")?"1:1":"4:3";
 async function makeAiImage(p){
-  const st=$("procStatus");st.classList.remove("err");
+  // Status goes next to the button that was pressed, not only at the top of the form.
+  const near=$("imgStatus"),top=$("procStatus");
+  const st={classList:{remove:c=>{near.classList.remove(c);top.classList.remove(c)},add:c=>{near.classList.add(c);top.classList.add(c)}},
+    set textContent(t){near.textContent=t;top.textContent=t}};
+  st.classList.remove("err");
   readForm(p);
   try{
     let prompt=imagePrompt(p);
     if(cfg.key()){st.textContent="Claude כותב תיאור לתמונה…";try{prompt=await claudeImagePrompt(p)}catch(e){console.warn("[back-office] image prompt",e)}}
     console.log("[back-office] image prompt:",prompt);
     st.textContent="יוצר תמונה AI… בדרך כלל 20–40 שניות";
-    const r=await fetch(`${proxyBase()}/image`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,aspectRatio:"4:3"})});
+    const r=await fetch(`${proxyBase()}/image`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,aspectRatio:imageAspect(p.imageNotes)})});
     const j=await r.json().catch(()=>({}));
     if(!r.ok)throw new Error(r.status===503?"בשרת עדיין אין מפתח Higgsfield (HF_API_KEY_ID, HF_API_KEY_SECRET)":r.status===429?"הגעת למכסת התמונות לשעה. נסה שוב מאוחר יותר":(j.error||"HTTP "+r.status));
     const type=j.mimeType||"image/png",ext=({"image/jpeg":"jpg","image/webp":"webp"})[type]||"png";
@@ -576,7 +590,7 @@ async function makeAiImage(p){
     media.image="/assets/posts/"+name;localUrl.image=URL.createObjectURL(f);delete p.imageRequest;
     const im=new Image();im.onload=()=>{bgImg=im;renderPreview()};im.src=localUrl.image;
     renderMediaNow();
-    if(current()){const keep={...localUrl};if(await save(p,"התמונה נוצרה וצורפה")){fillForm(p);localUrl=keep;renderPreview()}}
+    if(current()){const keep={...localUrl};if(await save(p,"התמונה נוצרה וצורפה")){fillForm(p);localUrl=keep;renderPreview();near.textContent="✓ התמונה נוצרה וצורפה לפוסט"}}
     else st.textContent="התמונה נוצרה. לחץ שמור כדי לשייך אותה לפוסט";
   }catch(e){st.classList.add("err");st.textContent="יצירת התמונה נכשלה: "+e.message}
 }
