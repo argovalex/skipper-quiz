@@ -13,7 +13,7 @@ C.SUB = 'ניווט חופי ומכשירים · נוהל מצוקה'
 F, text_c, text_r, dot, base, left_panel, right_block, save, RC = C.F, C.text_c, C.text_r, C.dot, C.base, C.left_panel, C.right_block, C.save, C.RC
 TEXT, GREEN, GREEN_L, BLUE_L, PANEL = C.TEXT, C.GREEN, C.GREEN_L, C.BLUE_L, C.PANEL
 photo = U8.photo; credit = U12.credit
-CR = {'u18_bounty': 'Photo: U.S. Coast Guard · Public domain'}
+CR = {'u18_bounty': 'Photo: U.S. Coast Guard · Public domain', 'u18_vhf16': 'Photo: PaterMcFly · CC BY 3.0 · edited'}
 U12.CREDIT.update(CR)
 X0, Y0, X1, Y1 = [int(v) for v in U5.inner()]; PW, PH = X1 - X0, Y1 - Y0
 VOUT = os.path.join(C.OUT, '_v'); VSUB = 'שיעור 18 · נוהל מצוקה'
