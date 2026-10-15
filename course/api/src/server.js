@@ -440,6 +440,7 @@ app.post('/api/admin/bank-import', async (req, res) => {
     let n = 0;
     for (const q of rows) {
       if (q.num == null || (only && !only.has(String(q.num)))) continue;
+      if (!content.isL11(q)) continue; // paid course = license 11 only
       await db.q('insert into bank(num, data, updated_at) values ($1,$2,now()) on conflict(num) do update set data=$2, updated_at=now()', [q.num, q]);
       n++;
     }

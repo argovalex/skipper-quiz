@@ -122,6 +122,8 @@ function readEnvFile(file) {
 // the content cache itself. Best-effort: missing token or unreachable API warns only.
 async function propagateToCourseDb(done) {
   if (noDb) { console.log('--no-db: skipping course propagation'); return; }
+  // The paid course (app.alargov.com) is license 11 only; other licenses never go there (Alex 2026-10-15).
+  if (LICENSE !== 11) { console.log(`course: license ${LICENSE} is not in the paid course, skipping`); return; }
   const env = readEnvFile(path.join(ROOT, 'course', 'api', '.env'));
   const apiUrl = (process.env.COURSE_API_URL || env.COURSE_API_URL || 'https://skipper-quiz-production.up.railway.app').replace(/\/$/, '');
   const token = process.env.ADMIN_TOKEN || env.ADMIN_TOKEN;

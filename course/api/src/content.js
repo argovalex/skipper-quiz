@@ -100,7 +100,7 @@ async function readRaw() {
 
 async function load(force) {
   if (!force && cache.lessons && Date.now() - cache.at < TTL) return cache.lessons;
-  cache = { at: Date.now(), lessons: buildLessons(await readRaw()) };
+  cache = { at: Date.now(), lessons: buildLessons((await readRaw()).filter(isL11)) };
   return cache.lessons;
 }
 
@@ -133,4 +133,11 @@ async function fetchCanonical() {
   return await res.json();
 }
 
-module.exports = { load, freeSubset, fetchCanonical };
+// The paid course is license 11 (רשיון אופנוע ים) only. The Postgres bank also held l12/l30
+// rows pushed by update-question.js, which leaked into these lessons by shared topic names
+// (Alex 2026-10-15). Anything that is not an l11 question never reaches the app.
+function isL11(q) {
+  return q && Number(q.license ?? 11) === 11 && Number(q.num) >= 1001 && Number(q.num) <= 1999;
+}
+
+module.exports = { load, freeSubset, fetchCanonical, isL11 };
