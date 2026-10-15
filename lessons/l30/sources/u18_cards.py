@@ -191,9 +191,14 @@ def s19():
 
 def s20():
     body = fill(rows(('1', 'DSC · כיבוי והדלקה · ביטול לכל התחנות', 'sky', 30), ('2', 'SART · כיבוי · ביטול לכל התחנות', 'amber', 30),
-                     ('3', 'EPIRB · כיבוי, ניתוק סוללה · לתחנת החוף', 'red', 30), gap=5)
-                + glass('<div class="p-5 text-rose-300 text-[36px] font-extrabold text-center">MAYDAY לשווא · עבירה פלילית</div>', 'ring-2 ring-rose-400'))
-    card('s20_cancel', 'שידור בטעות', body, 'ביטול מצוקה', 'כיבוי והודעת ביטול. MAYDAY לשווא, בכוונה, הוא עבירה פלילית חמורה.', bg='u16_ships', shade=0.7)
+                     ('3', 'EPIRB · כיבוי, ניתוק סוללה · לתחנת החוף', 'red', 30), gap=5))
+    card('s20_cancel', 'שידור בטעות', body, 'ביטול מצוקה', 'כיבוי, והודעת ביטול. ב-EPIRB גם מנתקים את הסוללה.', bg='u16_ships', shade=0.7)
+
+def s20f():
+    body = top(chip('MAYDAY לשווא · עבירה פלילית', 'red', 32)) + bottom(rows(('⚖', 'פקודת הטלגרף האלחוטי · מאסר', 'red', 30), ('§', 'חוק העונשין · ידיעה כוזבת', 'red', 30),
+                                                                         ('!', 'רשות הספנות · התליית רשיון המשיט', 'amber', 30), ('🌐', 'תקנות הרדיו הבינלאומיות · בכל העולם', 'sky', 30),
+                                                                         ('US', 'עד 5 שנים · $250,000 · הוצאות החילוץ', 'sky', 30)))
+    card('s20_false', 'MAYDAY לשווא', body, 'עבירה פלילית', 'מאסר, התליית רשיון המשיט, ותשלום על הוצאות החילוץ.', bg='u18_bounty', shade=0.55)
 
 def s21():
     items = ['שם הסקיפר', 'צוות ונוסעים', 'אזרחות ודגל', 'מאיפה באנו', 'נמל בית', 'מהירות', 'קורס', 'מיקום']
@@ -252,7 +257,7 @@ def sim_cards():
                 + f'<div class="absolute inset-x-6 bottom-6 top-[110px] flex flex-col justify-center gap-4">' + ''.join(bubble(w, t, size) for w, t in lines) + '</div>')
         card(sid + '_sim', 'סימולציה בקשר', body, title, gloss, bg='u17_vhf_call', shade=0.82)
 
-ALL = [s01, s01o, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, sim_cards]
+ALL = [s01, s01o, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s20f, s21, s22, sim_cards]
 
 def vsheet():
     fs = sorted(f for f in os.listdir(VOUT) if f.startswith('s') and f.endswith('.png'))

@@ -75,15 +75,20 @@ def build(in_mp4, out_mp4, workdir, size="1280x720"):
     brand_card(P(workdir, "intro.png"))
     brand_card(P(workdir, "outro.png"), tagline="תודה שצפיתם")
 
-    # סימן מים — פינה שמאלית-עליונה
-    wm = Image.new("RGBA", (430, 84), (0, 0, 0, 0))
+    # סימן מים — פינה שמאלית-עליונה. בנייד (H>W) רק סמל הסירה: כותרת הכרטיס ממורכזת בשורה העליונה,
+    # והתווית המלאה (430px) כיסתה אותה (אלכס 2026-10-15). השם והאתר מופיעים בכרטיסי הפתיחה והסיום.
+    portrait = H > W
+    ww = 84 if portrait else 430
+    wm = Image.new("RGBA", (ww, 84), (0, 0, 0, 0))
     d = ImageDraw.Draw(wm)
-    d.rounded_rectangle([0, 0, 430, 84], radius=42, fill=(12, 22, 40, 175))
-    d.polygon([(60, 20), (60, 58), (96, 58)], fill=(240, 245, 250))
-    d.line([(60, 14), (60, 58)], fill=(240, 245, 250), width=3)
-    d.line([(40, 60), (104, 60)], fill=(240, 245, 250), width=4)
-    d.text((150, 14), "Alex Argov", font=f(30, True), fill=(245, 248, 252))
-    d.text((150, 50), "alargov.com", font=f(22), fill=(150, 175, 205))
+    d.rounded_rectangle([0, 0, ww, 84], radius=42, fill=(12, 22, 40, 175))
+    dx = -20 if portrait else 0                        # center the boat in the round badge
+    d.polygon([(60 + dx, 20), (60 + dx, 58), (96 + dx, 58)], fill=(240, 245, 250))
+    d.line([(60 + dx, 14), (60 + dx, 58)], fill=(240, 245, 250), width=3)
+    d.line([(40 + dx, 60), (104 + dx, 60)], fill=(240, 245, 250), width=4)
+    if not portrait:
+        d.text((150, 14), "Alex Argov", font=f(30, True), fill=(245, 248, 252))
+        d.text((150, 50), "alargov.com", font=f(22), fill=(150, 175, 205))
     wm.save(P(workdir, "wm.png"))
     print("navy", navy, "| brand assets ready")
 
