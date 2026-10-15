@@ -13,6 +13,7 @@ LEFT = (0, 200, 1300, 1440)                     # caption + visual panel of a 25
 RIGHT = (1270, 0, 2560, 1440)                   # title, text, question
 BLANK = C.base()[0]
 BGIMG = BLANK.crop(RIGHT).resize((VW, VH), Image.LANCZOS)
+MIN_S = 0.8                                     # smallest scale for the title/text/question block on the phone
 
 def right_bbox(im, x0r=RIGHT[0]):
     """Tight box around the right block: diff against an empty card background."""
@@ -22,14 +23,31 @@ def right_bbox(im, x0r=RIGHT[0]):
     m = 40
     return (R[0] + max(0, x0 - m), max(0, y0 - m), R[0] + min(R[2] - R[0], x1 + m), min(1440, y1 + m))
 
+STACK = {'s02_parts': ((640, 40, 1920, 260), [(49, 290, 1267, 1414), (1293, 290, 2511, 1414)])}   # full-width cards: title + panels stacked
+
+def stack(im, dst, title, panels):
+    out = BGIMG.copy(); t = im.crop(title); t = t.resize((VW, round(t.height * VW / t.width)), Image.LANCZOS); out.paste(t, (0, 40))
+    y = 40 + t.height + 10; ph = (VH - y - 30) // len(panels) - 10
+    for box in panels:
+        p = im.crop(box); p = p.resize((round(p.width * ph / p.height), ph), Image.LANCZOS)
+        out.paste(p, ((VW - p.width) // 2, y)); y += ph + 10
+    out.save(dst)
+
 def vcard(src, dst):
     im = Image.open(src).convert('RGB')
+    sid = os.path.splitext(os.path.basename(src))[0]
+    if sid in STACK: return stack(im, dst, *STACK[sid])
     out = BGIMG.copy()
     top = im.crop(LEFT); top = top.resize((VW, round(top.height * VW / top.width)), Image.LANCZOS)
     out.paste(top, (0, 60))
     bb = right_bbox(im, 1305 if re.search(r'intro|summary', src) else RIGHT[0]); rb = im.crop(bb); room = VH - (60 + top.height) - 40
     mask = ImageChops.difference(rb, BLANK.crop(bb)).convert('L').point(lambda v: min(255, v * 6))   # content only, soft edges
     s = min(VW / rb.width, room / rb.height, 1.0)
+    if s < MIN_S and VW / rb.width >= MIN_S:        # tall right block: shrink the visual instead of the text (Alex 2026-10-15)
+        th = max(round(top.height * 0.55), VH - 60 - 40 - round(rb.height * MIN_S))
+        top = im.crop(LEFT); top = top.resize((round(top.width * th / top.height), th), Image.LANCZOS)
+        out = BGIMG.copy(); out.paste(top, ((VW - top.width) // 2, 60)); room = VH - (60 + th) - 40
+        s = min(VW / rb.width, room / rb.height, 1.0)
     if s < 0.7: print(f'  small text {s:.2f}: {os.path.basename(src)}', flush=True)
     sz = (round(rb.width * s), round(rb.height * s)); rb = rb.resize(sz, Image.LANCZOS); mask = mask.resize(sz, Image.LANCZOS)
     out.paste(rb, ((VW - rb.width) // 2, 60 + top.height + (room - rb.height) // 2), mask)
