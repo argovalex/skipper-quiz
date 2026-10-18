@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>html,body{margin:0}#map{width:1180px;height:1060px}
+.lbl{font:800 34px Heebo,Arial,sans-serif;color:#fff;text-shadow:0 2px 6px #000;white-space:nowrap}</style></head>
+<body><div id="map"></div><script>
+// A1 / A2 ranges around a coast station on Mount Carmel (Haifa). Illustrative: ~25 NM VHF, ~100 NM MF.
+const NM = 1852, st = [32.79, 35.00];
+const map = L.map('map', {zoomControl: false, attributionControl: true}).setView([32.55, 34.15], 8);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap'}).addTo(map);
+L.circle(st, {radius: 100 * NM, color: '#38bdf8', weight: 5, fillColor: '#38bdf8', fillOpacity: 0.18}).addTo(map);
+L.circle(st, {radius: 25 * NM, color: '#34d399', weight: 5, fillColor: '#34d399', fillOpacity: 0.35}).addTo(map);
+L.circleMarker(st, {radius: 12, color: '#fff', weight: 4, fillColor: '#ef4444', fillOpacity: 1}).addTo(map);
+map.whenReady(() => setTimeout(() => window.__mapReady = true, 3000));
+</script></body></html>

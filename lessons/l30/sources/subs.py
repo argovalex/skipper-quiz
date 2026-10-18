@@ -42,8 +42,16 @@ def sections(vo):
     return out
 
 lex = load_lexicon()
+# SUBS_PLAIN=1 (l40, Alex 2026-10-18): burn subtitles without niqqud, spelled-out acronyms joined back (V H F -> VHF).
+PLAIN = bool(os.environ.get('SUBS_PLAIN'))
+ACRO = [('G M D S S', 'GMDSS'), ('M M S I', 'MMSI'), ('V H F', 'VHF'), ('D S C', 'DSC'), ('R C C', 'RCC'), ('M S I', 'MSI'), ('L U T', 'LUT'),
+        ('M C C', 'MCC'), ('M F', 'MF'), ('H F', 'HF'), ('A אחת', 'A1'), ('A שתיים', 'A2'), ('A שלוש', 'A3'), ('A ארבע', 'A4')]
 def display(t):
     for a, b in DISPLAY: t = t.replace(a, b)
+    if PLAIN:
+        t = NIQ.sub('', t)
+        for a, b in ACRO: t = t.replace(a, b)
+        return t
     t = niqqud_apply(t, lex)
     t = re.sub(r'(?<![\u0590-\u05FF])אֹ(?![\u0590-\u05FF])', 'א', t)
     return t
