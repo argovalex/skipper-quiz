@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>סימולטור GMDSS</title>
+<style>
+:root{--bg:#0d1620;--panel:#14212d;--line:#24384a;--txt:#e6eef5;--mut:#8aa0b3;--acc:#38bdf8;--ok:#22c55e;--bad:#ef4444;--warn:#f59e0b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 "Segoe UI",Arial,sans-serif}
+button{font:inherit;cursor:pointer}
+header{display:flex;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+header h1{font-size:18px;margin:0;flex:1;min-width:180px}
+.pill{background:var(--panel);border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:5px 12px;font-size:13px}
+.pill.on{background:var(--acc);color:#04202e;border-color:var(--acc)}
+#coach{margin:10px 16px 0;padding:10px 14px;border-radius:10px;background:#10314a;border:1px solid #1e5a80;font-size:15px}
+#coach b{color:#7dd3fc}
+#coach.exam{background:var(--panel);border-color:var(--line);color:var(--mut)}
+main{display:grid;grid-template-columns:minmax(330px,1.25fr) minmax(260px,.9fr) minmax(300px,1fr);gap:14px;padding:14px 16px 90px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+.card h2{margin:0 0 8px;font-size:14px;color:var(--mut);font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.info{font-size:13px;color:var(--mut);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+body.exam .info,body.exam .hint{display:none}
+#tabs{display:none}
+
+/* ---------- VHF ---------- */
+.vhf{direction:ltr;position:relative;background:linear-gradient(#30353b,#16191c);border-radius:18px;padding:14px;box-shadow:inset 0 1px 0 #4a5058,0 8px 24px #0008;display:grid;grid-template-columns:16% 1fr 30%;gap:10px;user-select:none}
+.spk{border-radius:8px;background:repeating-linear-gradient(#0c0e10 0 4px,#24282c 4px 8px)}
+.lcd{background:#1c1c1c;border-radius:6px;min-height:150px;padding:6px 8px;font-family:Consolas,"Courier New",monospace;color:#2a1606;position:relative;overflow:hidden;box-shadow:inset 0 0 0 3px #0a0a0a}
+.vhf.on .lcd{background:radial-gradient(#ffc27a,#f39a3c)}
+.lcd>*{visibility:hidden}.vhf.on .lcd>*{visibility:visible}
+.lcd .top{display:flex;justify-content:space-between;font-size:11px;font-weight:700}
+.lcd .mid{display:flex;align-items:center;gap:8px}
+.lcd .ch{font-size:58px;font-weight:900;line-height:1;letter-spacing:-3px}
+.lcd .pos{font-size:11px;font-weight:700;line-height:1.35}
+.lcd .msg{position:absolute;inset:0;background:radial-gradient(#ffc27a,#f39a3c);padding:8px;font-size:13px;font-weight:700;display:none;white-space:pre-line}
+.lcd .msg.show{display:block}
+.lcd .soft{position:absolute;bottom:4px;left:8px;right:8px;display:flex;justify-content:space-between;font-size:11px;font-weight:800;border-top:1px solid #2a160655;padding-top:2px}
+.tx{background:#b91c1c;color:#fff;padding:0 4px;border-radius:3px;visibility:hidden!important}
+.vhf.on.txing .tx{visibility:visible!important}
+.rx{background:#2a1606;color:#ffc27a;padding:0 4px;border-radius:3px;visibility:hidden!important}
+.vhf.on.rxing .rx{visibility:visible!important}
+.keys{display:grid;grid-template-columns:1fr 1fr;gap:7px;align-content:start}
+.k{background:linear-gradient(#3a4047,#22262a);color:#e5e7eb;border:1px solid #0b0c0d;border-radius:7px;padding:8px 0;font-size:12px;font-weight:700;box-shadow:0 2px 0 #0b0c0d}
+.k:active{transform:translateY(1px);box-shadow:none}
+.k.pwr{grid-column:span 2;color:#ef4444;border-radius:999px}
+.bottom{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.softkeys{display:flex;gap:8px;justify-content:center}
+.softkeys .k{flex:1;padding:6px 0}
+.knobs{display:flex;gap:6px;justify-content:center}
+.knobs .k{padding:6px 8px}
+.dwrap{position:relative;width:78px;height:54px;margin:4px}
+.dbtn{position:absolute;inset:0;background:radial-gradient(#ef4444,#991b1b);border:2px solid #450a0a;border-radius:6px;color:#fff;font-size:10px;font-weight:900}
+.cover{position:absolute;inset:-4px;background:linear-gradient(#f87171cc,#b91c1ccc);border:2px solid #7f1d1d;border-radius:8px;color:#fff;font-size:9px;font-weight:800;transform-origin:top;transition:transform .35s;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1}
+.cover.open{transform:perspective(200px) rotateX(75deg) translateY(-30px)}
+.label{grid-column:1/-1;text-align:center;font-size:11px;color:#9ca3af;letter-spacing:.5px}
+.handset{direction:ltr;margin-top:12px;display:flex;gap:12px;align-items:center;background:linear-gradient(#2b2f34,#15181b);border-radius:40px;padding:10px 14px}
+#ptt{flex:1;height:64px;border-radius:32px;border:2px solid #0b0c0d;background:linear-gradient(#3f464e,#1d2125);color:#e5e7eb;font-weight:900;font-size:16px;touch-action:none;user-select:none;-webkit-user-select:none}
+#ptt.down{background:linear-gradient(#dc2626,#7f1d1d);color:#fff}
+.mic{font-size:12px;color:#9ca3af;width:90px;text-align:center}
+.typed{display:flex;gap:8px;margin-top:10px;direction:ltr}
+.typed input{flex:1;background:#0b131b;border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:8px 10px;font:14px Consolas,monospace}
+.typed button{background:var(--acc);color:#04202e;border:0;border-radius:8px;padding:0 14px;font-weight:700}
+#interim{direction:ltr;min-height:20px;font:13px Consolas,monospace;color:#fca5a5;margin-top:6px}
+
+/* ---------- EPIRB / SART ---------- */
+.devs{display:flex;gap:14px;justify-content:space-around;flex-wrap:wrap}
+.dev{direction:ltr;display:flex;flex-direction:column;align-items:center;width:130px;user-select:none}
+.ant{width:5px;height:46px;background:#111;border-radius:3px}
+.dome{width:64px;height:30px;border-radius:32px 32px 6px 6px;background:radial-gradient(circle at 50% 70%,#ffffff33,#d1e9ff22);border:2px solid #9fb3c4;position:relative}
+.strobe{position:absolute;left:50%;top:55%;width:22px;height:22px;margin:-11px;border-radius:50%;background:#e5e7eb22}
+.strobe.flash{background:#fff;box-shadow:0 0 30px 14px #fff}
+.ebody{width:110px;height:170px;border-radius:14px 14px 22px 22px;background:linear-gradient(90deg,#b8c91f,#e3f23f 40%,#c3d42a);position:relative;padding:8px 6px;text-align:center;color:#1f2a03;font-weight:800;font-size:11px}
+.ebody small{display:block;font-weight:600;font-size:9px}
+.bracket{position:absolute;left:-8px;right:-8px;top:62px;height:52px;background:linear-gradient(#374151,#111827);border-radius:6px;color:#e5e7eb;font-size:9px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;transition:opacity .3s}
+.bracket button{font-size:10px;padding:2px 8px;border-radius:5px;border:0;background:#f59e0b;color:#111;font-weight:800}
+.out .bracket{opacity:0;pointer-events:none}
+.ctrls{position:absolute;bottom:10px;left:6px;right:6px;display:flex;flex-direction:column;gap:5px;align-items:center}
+.sw{display:flex;gap:4px}
+.sw button{border:1px solid #1f2a03;background:#f8fafc;color:#111;border-radius:5px;font-size:10px;font-weight:800;padding:3px 6px}
+.sw button.sel{background:#1f2a03;color:#f7ff9e}
+.guard{position:relative}
+.guard .g{position:absolute;inset:-3px;background:#0f172acc;color:#fff;border-radius:6px;font-size:9px;display:flex;align-items:center;justify-content:center;border:0}
+.guard .g.open{display:none}
+.leds{display:flex;gap:6px;font-size:9px}
+.led{width:9px;height:9px;border-radius:50%;background:#374151;display:inline-block;vertical-align:middle}
+.led.g{background:#22c55e;box-shadow:0 0 6px #22c55e}.led.r{background:#ef4444;box-shadow:0 0 6px #ef4444}
+.sbody{width:76px;height:190px;border-radius:12px 12px 16px 16px;background:linear-gradient(90deg,#d4510f,#ff7a2f 45%,#e0601a);position:relative;padding:8px 4px;text-align:center;color:#2b0d00;font-weight:900;font-size:11px}
+.sdome{width:40px;height:22px;border-radius:20px 20px 4px 4px;background:#fde68a33;border:2px solid #b45309;position:relative}
+.sdome .strobe{width:14px;height:14px;margin:-7px}
+.sdome .strobe.flash{background:#fde047;box-shadow:0 0 22px 10px #fde047}
+.pole{margin-top:6px;font-size:11px}
+.pole button{border-radius:6px;border:1px solid var(--line);background:#0b131b;color:var(--txt);padding:3px 8px;font-size:12px}
+.pole button.sel{background:var(--acc);color:#04202e}
+.lcdmini{font:9px Consolas,monospace;background:#0b1a0b;color:#86efac;border-radius:4px;padding:3px;min-height:34px;width:100%;text-align:left;white-space:pre-line}
+.water{margin-top:8px;border-radius:8px;border:1px solid #1e5a80;background:#0c2a40;color:#7dd3fc;padding:4px 10px;font-size:12px}
+
+/* ---------- radar + log ---------- */
+#radar{width:100%;max-width:340px;aspect-ratio:1;display:block;margin:0 auto;border-radius:50%;background:#020a04}
+.rhud{direction:ltr;display:flex;justify-content:space-between;font:12px Consolas,monospace;color:#4ade80;margin-top:6px}
+#rlabel{text-align:center;color:#86efac;font-size:13px;min-height:20px}
+#log{height:240px;overflow:auto;font-size:13px;direction:ltr;text-align:left}
+#log div{padding:4px 0;border-bottom:1px solid #1b2b3a}
+#log .t{color:var(--mut);font:11px Consolas,monospace;margin-right:6px}
+#log .me{color:#fca5a5}#log .st{color:#7dd3fc}#log .ev{color:#fcd34d;direction:rtl;text-align:right}
+.ctlrow{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- debrief ---------- */
+#deb{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:9}
+#deb.show{display:flex}
+#deb .box{background:var(--panel);border:1px solid var(--line);border-radius:16px;max-width:620px;width:100%;max-height:90vh;overflow:auto;padding:18px}
+#deb h3{margin:0 0 4px}
+.score{font-size:42px;font-weight:900}
+.row{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #1b2b3a}
+.row .s{width:22px;flex:none;text-align:center}
+.row small{display:block;color:var(--mut)}
+.tpl{direction:ltr;text-align:left;font:13px Consolas,monospace;background:#0b131b;border-radius:8px;padding:8px;white-space:pre-line;display:none;margin-top:8px}
+.tpl.show{display:block}
+
+@media (max-width:900px){
+  main{display:block;padding:10px 12px 90px}
+  main>section{display:none}main>section.act{display:block}
+  #tabs{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0b131b;border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:5}
+  #tabs button{flex:1;background:none;border:0;color:var(--mut);font-size:13px;padding:6px 0;position:relative}
+  #tabs button.act{color:var(--acc);font-weight:700}
+  #tabs button.ping::after{content:"";position:absolute;top:4px;right:28%;width:8px;height:8px;border-radius:50%;background:var(--bad)}
+  .vhf{grid-template-columns:12% 1fr 32%;padding:10px;gap:7px}
+  .lcd .ch{font-size:46px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>סימולטור GMDSS · נטישת ספינה</h1>
+  <button class="pill on" id="mPractice">תרגול</button>
+  <button class="pill" id="mExam">מבחן</button>
+  <button class="pill" id="speed">מהירות ×1</button>
+  <button class="pill" id="restart">התחל מחדש</button>
+</header>
+<div id="coach"></div>
+
+<main>
+<section data-tab="vhf" class="act">
+  <div class="card">
+    <h2>VHF/DSC קבוע <button class="pill hint" id="tplBtn">תבנית MAYDAY</button></h2>
+    <div class="tpl" id="tpl">MAYDAY MAYDAY MAYDAY
+This is sailing yacht SONDRA SONDRA SONDRA
+MMSI 4-2-8-1-2-3-4-5-6
+MAYDAY SONDRA
+Position 3-2 degrees 4-5 minutes North, 0-3-4 degrees 5-2 minutes East
+On fire (nature of distress)
+Require immediate assistance
+4 persons on board
+Over</div>
+    <div class="vhf" id="vhf">
+      <div class="spk"></div>
+      <div class="lcd">
+        <div class="top"><span id="pwrTxt">25W</span><span class="tx">TX</span><span class="rx">RX</span><span id="volTxt">VOL 6</span><span id="sqTxt">SQ</span></div>
+        <div class="mid"><div class="ch" id="ch">16</div><div class="pos" id="pos">32°45.00'N<br>034°52.00'E<br><span id="utc">15:12</span> UTC</div></div>
+        <div class="soft" id="soft"><span></span><span></span><span></span></div>
+        <div class="msg" id="msg"></div>
+      </div>
+      <div class="keys">
+        <button class="k pwr" id="kPwr">PWR · 16+</button>
+        <button class="k" id="kDsc">DSC</button><button class="k" id="kHilo">HI/LO</button>
+        <button class="k" id="kMenu">MENU</button><button class="k" id="kClr">CLEAR</button>
+        <button class="k" id="kUp">CH ▲</button><button class="k" id="kDn">CH ▼</button>
+      </div>
+      <div class="bottom">
+        <div class="dwrap"><button class="dbtn" id="kDis">DISTRESS</button><div class="cover" id="cover">LIFT<br>COVER</div></div>
+        <div class="softkeys"><button class="k" data-s="0">◀</button><button class="k" data-s="1">▶</button><button class="k" data-s="2">●</button></div>
+        <div class="knobs"><button class="k" id="vDn">VOL−</button><button class="k" id="vUp">VOL+</button><button class="k" id="kSq">SQ</button></div>
+      </div>
+      <div class="label">S/Y SONDRA · MMSI 428123456 · 4 POB</div>
+    </div>
+    <div class="handset">
+      <button id="ptt">PTT · לחץ והחזק</button>
+      <div class="mic" id="micState">🎙</div>
+    </div>
+    <div id="interim"></div>
+    <div class="typed"><input id="typed" placeholder="Or type your transmission here…"><button id="sendTyped">שדר</button></div>
+    <div class="info">DSC Distress משודר בערוץ 70 וחוזר אוטומטית כל 3.5 עד 4.5 דקות עד שמתקבל אישור. מיד אחריו עוברים לערוץ 16 ומשדרים MAYDAY בקול.</div>
+  </div>
+</section>
+
+<section data-tab="beacons">
+  <div class="card">
+    <h2>EPIRB · SART</h2>
+    <div class="devs">
+      <div class="dev" id="epirb">
+        <div class="ant"></div>
+        <div class="dome"><div class="strobe" id="eStrobe"></div></div>
+        <div class="ebody">406 MHz<small>GPS EPIRB · SONDRA</small>
+          <div class="bracket">HRU · FLOAT-FREE<button id="eRelease">שחרר מהתושבת</button></div>
+          <div class="ctrls">
+            <div class="lcdmini" id="eLcd">READY</div>
+            <div class="guard"><div class="sw"><button id="eOff" class="sel">OFF</button><button id="eOn">ON</button></div><button class="g" id="eGuard">LIFT GUARD</button></div>
+            <div class="sw"><button id="eTest">TEST</button></div>
+            <div class="leds"><span><i class="led" id="eL406"></i> 406</span><span><i class="led" id="eLgps"></i> GPS</span></div>
+          </div>
+        </div>
+        <button class="water" id="eWater">🌊 הכנס למים</button>
+      </div>
+      <div class="dev" id="sart">
+        <div class="sdome"><div class="strobe" id="sStrobe"></div></div>
+        <div class="sbody">SART<small style="display:block;font-size:9px;font-weight:700">9 GHz RADAR</small>
+          <div class="ctrls">
+            <div class="lcdmini" id="sLcd">OFF</div>
+            <div class="sw" style="flex-direction:column"><button id="sOff" class="sel">OFF</button><button id="sTest">TEST</button><button id="sOn">ON</button></div>
+          </div>
+        </div>
+        <div class="pole">על מוט: <button id="sLow" class="sel">ביד</button> <button id="sHigh">הרם</button></div>
+      </div>
+    </div>
+    <div class="info">EPIRB: התראה ב-406 MHz ללווייני COSPAS-SARSAT עם מיקום GPS, ו-121.5 MHz לאיתור מקרוב (homing). ההתראה הראשונה יוצאת כ-50 שניות אחרי ההפעלה. בתושבת עם HRU הוא משתחרר לבד בעומק 1.5 עד 4 מטר ומופעל במגע עם מים.<br>SART: משיב למכ"ם X-band (9 GHz) ומצייר 12 נקודות מהרפסודה והלאה. ככל שהוא גבוה יותר, מכ"ם קולט אותו מרחוק יותר. 96 שעות בהמתנה, 8 שעות שידור.</div>
+  </div>
+</section>
+
+<section data-tab="radar">
+  <div class="card">
+    <h2>מכ"ם X-band של ספינת החילוץ <span class="rhud" style="margin:0" id="rng"></span></h2>
+    <canvas id="radar" width="680" height="680"></canvas>
+    <div id="rlabel" class="hint"></div>
+    <div class="info">מרחוק: 12 נקודות בקו מהרפסודה והלאה. כ-1 עד 2 מייל: הנקודות הופכות לקשתות. קרוב מאוד: מעגלים סביב מרכז המכ"ם. הספינה מנווטת אל הנקודה הקרובה ביותר.</div>
+  </div>
+</section>
+
+<section data-tab="log">
+  <div class="card">
+    <h2>יומן קשר</h2>
+    <div id="log"></div>
+  </div>
+</section>
+</main>
+
+<nav id="tabs">
+  <button data-t="vhf" class="act">VHF</button><button data-t="beacons">EPIRB/SART</button><button data-t="radar">מכ"ם</button><button data-t="log">יומן</button>
+</nav>
+
+<div id="deb"><div class="box"><h3>סיכום תרגיל</h3><div class="score" id="dScore"></div><div id="dRows"></div><div class="ctlrow" style="margin-top:12px"><button class="pill on" id="again">תרגיל חוזר</button><button class="pill" id="closeDeb">סגור</button></div></div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const NAME = /\b(sondra|sandra|saundra|sundra|sondre|sondo?ra)\b/g, MMSI = '428123456';
+const NATURES = ['UNDESIGNATED','FIRE/EXPLOSION','FLOODING','COLLISION','GROUNDING','LISTING','SINKING','DISABLED/ADRIFT','ABANDONING SHIP','PIRACY','MAN OVERBOARD'];
+
+let S, speed = 1, exam = false, timers = [], last = performance.now();
+function fresh(){
+  return {t:0, utc0:15*60+12,
+    vhf:{on:false, ch:16, vol:6, sq:true, hi:true, mode:'norm', nat:0, natSel:-1, dscSent:false, ack:false, alarm:null},
+    ep:{out:false, guard:false, on:false, wet:false, act:null, burst:false},
+    sa:{mode:'off', high:false, interrogated:false},
+    phase:'brief', maydays:0, maydayGrade:null, sayAgain:0, rescueRange:null, heard:{}, missed:[], replies:{}, offChannelTx:0,
+    flags:{rccCalled:false, sartCalled:false, closeCalled:false, done:false}, startReal:performance.now()};
+}
+
+/* ---------- audio ---------- */
+let AC, hissG;
+function ac(){ if(!AC){ AC = new (window.AudioContext||window.webkitAudioContext)();
+  const b = AC.createBuffer(1, AC.sampleRate*2, AC.sampleRate), d = b.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+  const n = AC.createBufferSource(); n.buffer=b; n.loop=true; const bp = AC.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=1600; bp.Q.value=.6;
+  hissG = AC.createGain(); hissG.gain.value=0; n.connect(bp).connect(hissG).connect(AC.destination); n.start(); }
+  if(AC.state==='suspended') AC.resume(); return AC; }
+function hiss(){ if(!hissG) return; const v=S.vhf; hissG.gain.value = (v.on && !v.sq && v.vol>0 && !playing) ? .02*v.vol/6 : 0; }
+function beep(f=1000, dur=.12, vol=.15){ const a=ac(), o=a.createOscillator(), g=a.createGain(); o.frequency.value=f; g.gain.value=vol; o.connect(g).connect(a.destination); o.start(); o.stop(a.currentTime+dur); }
+function alarm(on){ clearInterval(S.vhf.alarm); S.vhf.alarm=null; if(on){ let k=0; S.vhf.alarm=setInterval(()=>beep(k++%2?1300:2100,.24,.12),250); setTimeout(()=>alarm(false),7000);} }
+
+/* station transmissions: queued, heard only on 16 with power and volume */
+const Q=[]; let playing=null;
+const TXT = {
+ haifa_ack:['Haifa Radio','MAYDAY. Sondra, Sondra, Sondra. This is Haifa Radio, Haifa Radio, Haifa Radio. Received MAYDAY. Over.'],
+ haifa_task:['Haifa Radio','Sondra, this is Haifa Radio. Rescue vessel is on the way to your position. If you abandon ship, activate your EPIRB and take your SART to the life raft. Report when in the life raft. Over.'],
+ haifa_sayagain:['Haifa Radio','Station calling MAYDAY, this is Haifa Radio. Say again your vessel name and position. Over.'],
+ haifa_generic:['Haifa Radio','Station calling Haifa Radio, this is Haifa Radio. Say again. Over.'],
+ haifa_raft:['Haifa Radio','Sondra, this is Haifa Radio. Received, four persons in the life raft. Keep watch on channel one six. Out.'],
+ rcc_epirb:['RCC Haifa','Sondra, Sondra, Sondra. This is RCC Haifa. Your 406 EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.'],
+ rescue_sart:['Rescue vessel','Sondra, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.'],
+ rescue_close:['Rescue vessel','Sondra, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.'],
+ haifa_seelonce:['Haifa Radio','MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time 1540 UTC. Sailing yacht Sondra, MMSI 428123456. SEELONCE FEENEE. Out.'],
+};
+function station(id, then){ Q.push([id,then]); pump(); }
+function pump(){
+  if(playing || !Q.length) return;
+  const [id,then] = Q.shift(), v=S.vhf, audible = v.on && v.ch===16 && v.vol>0;
+  if(!audible){ S.missed.push(id); log('ev', `📻 ${TXT[id][0]} שידר בערוץ 16 ולא שמעת (${!v.on?'המכשיר כבוי':v.ch!==16?'היית בערוץ '+v.ch:'עוצמה 0'})`); then&&then(); return pump(); }
+  S.heard[id]=S.t; const a = new Audio('audio/'+id+'.mp3'); a.volume = Math.min(1, v.vol/8); playing=a; $('#vhf').classList.add('rxing'); hiss(); pingTab('vhf');
+  log('st', `${TXT[id][0]}: ${TXT[id][1]}`);
+  const end = ()=>{ if(playing!==a) return; playing=null; $('#vhf').classList.remove('rxing'); hiss(); then&&then(); setTimeout(pump,600); };
+  a.onended=end; a.onerror=()=>setTimeout(end, TXT[id][1].length*55); a.play().catch(a.onerror);
+}
+
+/* ---------- sim clock ---------- */
+function after(sec, fn){ timers.push({at:S.t+sec, fn}); }
+function tick(now){
+  const dt = Math.min(.25,(now-last)/1000)*speed; last=now; S.t+=dt;
+  for(const x of timers.filter(x=>x.at<=S.t)){ timers.splice(timers.indexOf(x),1); x.fn(); }
+  const m = (S.utc0 + Math.floor(S.t/60))%1440; $('#utc').textContent = String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+  rescueStep(dt); epirbStep(); drawRadar(now); requestAnimationFrame(tick);
+}
+
+/* ---------- VHF ---------- */
+function lcd(){
+  const v=S.vhf, el=$('#vhf'); el.classList.toggle('on',v.on);
+  $('#ch').textContent = String(v.ch).padStart(2,'0'); $('#pwrTxt').textContent = v.hi?'25W':'1W';
+  $('#volTxt').textContent='VOL '+v.vol; $('#sqTxt').textContent = v.sq?'SQ':'SQ OPEN';
+  const m=$('#msg'), soft=$('#soft').children; let txt='', sk=['','',''];
+  if(v.mode==='nat'){ txt='DISTRESS · NATURE\n'+NATURES.map((n,i)=>(i===v.natSel?'▶ ':'  ')+n).slice(Math.max(0,v.natSel-2),Math.max(0,v.natSel-2)+5).join('\n'); sk=['▲','▼','SELECT']; }
+  else if(v.mode==='ready') { txt=`DISTRESS · ${NATURES[v.nat]}\n\nHOLD DISTRESS 5 SEC`; sk=['','','BACK']; }
+  else if(v.mode==='hold') { txt=`SENDING DISTRESS\n${NATURES[v.nat]}\n\n${'■'.repeat(v.holdN)}${'□'.repeat(5-v.holdN)}`; }
+  else if(v.mode==='sent') { txt=`DISTRESS SENT · CH70\n${NATURES[v.nat]}\nWAITING FOR ACK\nAUTO REPEAT 3.5-4.5 MIN\n→ CH16 VOICE MAYDAY`; sk=['','','OK']; }
+  else if(v.mode==='ack')  { txt=`DISTRESS ACK RCVD\nFROM: HAIFA RADIO\n\nCH16 · VOICE MAYDAY NOW`; sk=['','','OK']; }
+  else if(v.mode==='dsc')  { txt='DSC MENU\n▶ DISTRESS\n  INDIVIDUAL CALL\n  ALL SHIPS\n  CALL LOG'; sk=['','','SELECT']; }
+  else sk=['WATCH','','SCAN'];
+  m.textContent=txt; m.classList.toggle('show',!!txt); sk.forEach((s,i)=>soft[i].textContent=s); hiss();
+}
+function key(){ ac(); if(S.vhf.alarm){ alarm(false); } beep(1800,.03,.05); }
+let pwrDown=0;
+$('#kPwr').onpointerdown=()=>{ pwrDown=performance.now(); };
+$('#kPwr').onpointerup=()=>{ key(); const v=S.vhf, long=performance.now()-pwrDown>900;
+  if(!v.on){ v.on=true; v.ch=16; log('ev','ה-VHF דולק, ערוץ 16'); }
+  else if(long){ v.on=false; v.mode='norm'; log('ev','ה-VHF כבוי'); }
+  else { v.ch=16; v.mode=v.mode==='hold'?'norm':v.mode; }
+  lcd(); coach(); };
+$('#kUp').onclick=()=>{ key(); const v=S.vhf; if(!v.on) return; v.ch = v.ch>=88?1:v.ch+1; lcd(); };
+$('#kDn').onclick=()=>{ key(); const v=S.vhf; if(!v.on) return; v.ch = v.ch<=1?88:v.ch-1; lcd(); };
+$('#vUp').onclick=()=>{ key(); S.vhf.vol=Math.min(10,S.vhf.vol+1); if(playing) playing.volume=Math.min(1,S.vhf.vol/8); lcd(); };
+$('#vDn').onclick=()=>{ key(); S.vhf.vol=Math.max(0,S.vhf.vol-1); if(playing) playing.volume=Math.min(1,S.vhf.vol/8); lcd(); };
+$('#kSq').onclick=()=>{ key(); S.vhf.sq=!S.vhf.sq; lcd(); };
+$('#kHilo').onclick=()=>{ key(); S.vhf.hi=!S.vhf.hi; lcd(); };
+$('#kClr').onclick=()=>{ key(); const v=S.vhf; if(['nat','ready','dsc','sent','ack'].includes(v.mode)) v.mode='norm'; lcd(); };
+$('#kMenu').onclick=()=>{ key(); };
+$('#kDsc').onclick=()=>{ key(); const v=S.vhf; if(!v.on) return; v.mode = v.mode==='dsc'?'norm':'dsc'; lcd(); };
+document.querySelectorAll('.softkeys .k').forEach(b=>b.onclick=()=>{ key(); const v=S.vhf, s=+b.dataset.s; if(!v.on) return;
+  if(v.mode==='nat'){ if(s===0) v.natSel=Math.max(0,v.natSel-1); if(s===1) v.natSel=Math.min(NATURES.length-1,v.natSel+1); if(s===2){ v.nat=v.natSel; v.mode='ready'; } }
+  else if(v.mode==='dsc' && s===2){ v.mode='nat'; v.natSel=Math.max(0,v.nat); }
+  else if(v.mode==='ready' && s===2){ v.mode='nat'; }
+  else if(['sent','ack'].includes(v.mode) && s===2){ v.mode='norm'; }
+  lcd(); coach(); });
+$('#cover').onclick=()=>{ ac(); $('#cover').classList.toggle('open'); beep(600,.05,.06); coach(); };
+let holdT=null, holdStart=0;
+$('#kDis').onpointerdown=e=>{ e.preventDefault(); key(); const v=S.vhf; if(!v.on) return; holdStart=performance.now();
+  holdT=setInterval(()=>{ const n=Math.floor((performance.now()-holdStart)/1000); if(n<1) return; if(v.mode!=='hold'){ v.mode='hold'; }
+    v.holdN=Math.min(5,n); beep(2000,.1,.12); lcd(); if(n>=5){ clearInterval(holdT); holdT=null; sendDsc(); } },200); };
+const disUp=()=>{ if(!holdT) return; clearInterval(holdT); holdT=null; const v=S.vhf;
+  if(performance.now()-holdStart<900){ v.mode='nat'; v.natSel=Math.max(0,v.nat); } else if(v.mode==='hold'){ v.mode=v.nat?'ready':'norm'; log('ev','DISTRESS שוחרר לפני 5 שניות. ההתראה לא נשלחה.'); }
+  lcd(); coach(); };
+$('#kDis').onpointerup=disUp; $('#kDis').onpointerleave=disUp; $('#kDis').onpointercancel=disUp;
+function sendDsc(){ const v=S.vhf; v.dscSent=true; v.dscNat=v.nat; v.mode='sent'; v.ch=16; v.dscAt=S.t; alarm(true);
+  log('ev',`📡 DSC DISTRESS נשלח בערוץ 70: ${NATURES[v.nat]}, MMSI 428123456, מיקום 32°45'N 034°52'E`); lcd(); coach();
+  after(6, ()=>{ v.ack=true; if(v.on){ v.mode='ack'; alarm(true); } log('ev','📡 DSC ACK התקבל מ-HAIFA RADIO'); lcd(); coach(); }); }
+
+/* ---------- PTT + speech ---------- */
+const SR = window.SpeechRecognition||window.webkitSpeechRecognition; let rec=null, heardTxt='', pttOn=false;
+if(!SR) $('#micState').textContent='אין זיהוי דיבור בדפדפן. הקלד למטה';
+function pttDown(e){ e.preventDefault(); ac(); if(pttOn) return; pttOn=true; $('#ptt').classList.add('down'); if(!S.vhf.on) return;
+  $('#vhf').classList.add('txing'); if(playing){ playing.pause(); playing.onended&&playing.onended(); } heardTxt=''; $('#interim').textContent='';
+  if(SR){ rec=new SR(); rec.lang='en-US'; rec.continuous=true; rec.interimResults=true;
+    rec.onresult=ev=>{ let f='',i=''; for(const r of ev.results) (r.isFinal? (f+=r[0].transcript+' ') : (i+=r[0].transcript)); heardTxt=f; $('#interim').textContent='🎙 '+f+i; };
+    rec.onerror=ev=>{ $('#micState').textContent = ev.error==='not-allowed'?'אין הרשאת מיקרופון':'שגיאת מיקרופון: '+ev.error; };
+    rec.onend=()=>{ const t=(heardTxt||$('#interim').textContent.replace('🎙','')).trim(); rec=null; if(t) transmit(t); };
+    try{ rec.start(); $('#micState').textContent='🔴 משדר'; }catch(_){} } }
+function pttUp(){ if(!pttOn) return; pttOn=false; $('#ptt').classList.remove('down'); $('#vhf').classList.remove('txing'); $('#micState').textContent='🎙';
+  if(rec) setTimeout(()=>rec&&rec.stop(),350); }
+const P=$('#ptt'); P.onpointerdown=pttDown; P.onpointerup=pttUp; P.onpointerleave=pttUp; P.onpointercancel=pttUp; P.oncontextmenu=e=>e.preventDefault();
+$('#sendTyped').onclick=()=>{ ac(); const t=$('#typed').value.trim(); if(!t) return; $('#typed').value=''; if(!S.vhf.on){ log('ev','ה-VHF כבוי. השידור לא יצא.'); return; } transmit(t); };
+$('#typed').onkeydown=e=>{ if(e.key==='Enter') $('#sendTyped').click(); };
+
+/* ---------- grading ---------- */
+function norm(t){
+  const U={zero:0,oh:0,one:1,two:2,to:2,too:2,three:3,four:4,for:4,five:5,six:6,seven:7,eight:8,nine:9,niner:9}, T={ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19},
+        D={twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90};
+  const w=t.toLowerCase().replace(/[-,.;:!?'"°]/g,' ').split(/\s+/).filter(Boolean), out=[];
+  for(let i=0;i<w.length;i++){ const x=w[i];
+    if(D[x]!==undefined){ if(U[w[i+1]]>0){ out.push(String(D[x]+U[w[i+1]])); i++; } else out.push(String(D[x])); }
+    else if(T[x]!==undefined) out.push(String(T[x]));
+    else if(U[x]!==undefined && !(['to','too','for'].includes(x) && !/^\d/.test(out[out.length-1]||'') && !(U[w[i+1]]!==undefined))) out.push(String(U[x]));
+    else out.push(x); }
+  return out.join(' ').replace(/(\d)\s+(?=\d)/g,'$1').replace(/\bmay day\b/g,'mayday').replace(/\bm\s?m\s?s\s?i\b|\bemmesai\b/g,'mmsi');
+}
+function gradeMayday(raw){
+  const t=norm(raw), names=[...t.matchAll(NAME)].map(m=>m.index), idx=re=>{ const m=t.match(re); return m?m.index:-1; };
+  const iThis=idx(/this is/), iMmsi=t.indexOf(MMSI)>=0?t.indexOf(MMSI):idx(/mmsi/), tPos=t.replace(MMSI,' ');
+  const posOK = /32/.test(tPos)&&/45/.test(tPos)&&/34/.test(tPos)&&/52/.test(tPos), pos=Math.max(idx(/position|32\s*degrees|3245/),-1);
+  const iNat=idx(/fire|burning|explosion|smoke/), iAs=idx(/immediate assistance|require assistance|assistance/), iPob=idx(/persons|people|souls|pob|on board/), iOver=t.lastIndexOf('over');
+  const pre = iThis>0? t.slice(0,iThis):t, mid = iThis>=0 ? t.slice(iThis, iMmsi>iThis?iMmsi:(t.indexOf('mayday',iThis+7)>0?t.indexOf('mayday',iThis+7):t.length)) : '';
+  const items=[
+    ['MAYDAY ×3 בפתיחה', (pre.match(/mayday/g)||[]).length>=3, 'פותחים ב-MAYDAY שלוש פעמים.'],
+    ['THIS IS + שם הכלי ×3', iThis>=0 && (mid.match(NAME)||[]).length>=3, 'This is sailing yacht SONDRA SONDRA SONDRA.'],
+    ['MMSI', t.includes(MMSI), 'MMSI ספרה-ספרה: 4-2-8-1-2-3-4-5-6.'],
+    ['MAYDAY + שם (פעם אחת)', new RegExp('mayday\\s+(sailing\\s+yacht\\s+|yacht\\s+|s\\s?y\\s+)?'+NAME.source.replace(/\\b/g,'')).test(t.slice(Math.max(0,iThis))), 'אחרי הזיהוי: MAYDAY SONDRA.'],
+    ['מיקום', posOK, 'המיקום מהמסך: 32°45\' North, 034°52\' East, ספרה-ספרה.'],
+    ['מהות המצוקה', iNat>=0, 'אומרים מה קרה: On fire.'],
+    ['בקשת עזרה', iAs>=0, 'Require immediate assistance.'],
+    ['מספר אנשים', iPob>=0 && /\b4\b/.test(t), 'Four persons on board.'],
+    ['OVER בסוף', iOver>=0 && iOver>=t.length-12, 'מסיימים ב-Over.'],
+  ];
+  const seq=[t.indexOf('mayday'),iThis,iMmsi,pos,iNat,iAs,iPob].filter(x=>x>=0), ordered=seq.every((x,i)=>!i||x>=seq[i-1]);
+  items.push(['סדר נכון', ordered, 'הסדר: MAYDAY ×3 ← זיהוי ← MMSI ← MAYDAY + שם ← מיקום ← מהות ← עזרה ← אנשים ← Over.']);
+  return {items, ok:items.filter(x=>x[1]).length, name:names.length>0, pos:posOK, text:raw};
+}
+
+/* ---------- conversation ---------- */
+function transmit(text){
+  log('me', `SONDRA (ch ${S.vhf.ch}): ${text}`); const t=norm(text);
+  if(S.vhf.ch!==16){ S.offChannelTx++; if(!exam) after(5,()=>coachMsg('אף תחנה לא ענתה. <b>באיזה ערוץ שידרת?</b> מצוקה בקול = ערוץ 16.')); return; }
+  if(/mayday/.test(t) && !S.maydayGrade?.accepted){
+    const g=gradeMayday(text); S.maydays++; S.maydayGrade=Object.assign(g,{accepted:false});
+    if((!g.name || !g.pos) && S.sayAgain<2){ S.sayAgain++; after(2.5,()=>station('haifa_sayagain')); return; }
+    g.accepted=true; S.phase='mayday';
+    after(2.5,()=>station('haifa_ack',()=>after(2,()=>station('haifa_task',startAbandon)))); return; }
+  if(S.flags.rccCalled && !S.replies.rcc && /rcc|haifa/.test(t)){ S.replies.rcc=true; S.replies.rccForm = NAME.test(t) && /\bover\b|\bout\b/.test(t); NAME.lastIndex=0;
+    if(/raft/.test(t)){ S.replies.raft=true; after(2,()=>station('haifa_raft')); } return; }
+  if(S.flags.sartCalled && !S.replies.rescue && /rescue/.test(t)){ S.replies.rescue=true; if(/raft/.test(t)&&!S.replies.raft){ S.replies.raft=true; after(2,()=>station('haifa_raft')); } return; }
+  if(S.phase!=='brief' && /raft/.test(t) && !S.replies.raft){ S.replies.raft=true; after(2,()=>station('haifa_raft')); return; }
+  after(2.5,()=>station('haifa_generic'));
+}
+function startAbandon(){ if(S.phase==='abandon') return; S.phase='abandon'; log('ev','🔥 האש יצאה משליטה. נוטשים לרפסודה עם EPIRB, SART ו-VHF נייד.'); S.rescueRange=13; coach(); pingTab('beacons'); }
+
+/* ---------- EPIRB ---------- */
+const E=()=>S.ep;
+$('#eRelease').onclick=()=>{ ac(); E().out=true; $('#epirb').classList.add('out'); log('ev','EPIRB שוחרר מהתושבת'); epUI(); coach(); };
+$('#eGuard').onclick=()=>{ ac(); E().guard=true; epUI(); };
+$('#eOn').onclick=()=>{ ac(); if(!E().guard) return; epActivate('ידנית'); };
+$('#eOff').onclick=()=>{ ac(); const e=E(); if(e.on){ e.on=false; e.act=null; log('ev','EPIRB כובה'); } epUI(); };
+$('#eWater').onclick=()=>{ ac(); const e=E(); if(!e.out){ log('ev','ה-EPIRB עדיין בתושבת. בלי שחרור הוא לא נוגע במים.'); return; } e.wet=true; epActivate('מגע מים'); };
+$('#eTest').onclick=()=>{ ac(); const e=E(); if(e.on) return; e.testing=true; epUI('SELF TEST…'); flash('#eStrobe');
+  setTimeout(()=>{ e.testing=false; epUI('SELF TEST OK\nBATT OK · GPS OK'); beep(1500,.15,.08); },1500); setTimeout(()=>{ if(!e.on) epUI(); },4000); };
+function epActivate(how){ const e=E(); if(e.on) return; e.on=true; e.act=S.t; log('ev',`🛰 EPIRB הופעל (${how}). התראה ראשונה ב-406 MHz בעוד ~50 שניות.`); epUI(); coach(); }
+function epirbStep(){ const e=E(); if(!e.on) return; const dt=S.t-e.act;
+  if(Math.floor(S.t*1.5)!==Math.floor((S.t-0.05)*1.5)) flash('#eStrobe');
+  $('#eLgps').className='led '+(dt>15?'g':'');
+  if(dt>=50 && !e.burst){ e.burst=true; $('#eL406').className='led r'; setTimeout(()=>$('#eL406').className='led',600); log('ev','🛰 EPIRB: התראת 406 MHz יצאה ללוויין, כולל מיקום GPS');
+    after(15,()=>{ if(!S.flags.rccCalled){ S.flags.rccCalled=true; station('rcc_epirb'); coach(); } }); }
+  $('#eLcd').textContent = dt<50 ? `ACTIVE\n406 BURST IN ${Math.ceil(50-dt)}s\n121.5 HOMING ON` : `ACTIVE · 406 SENT\nGPS ${dt>15?'FIX':'…'}\n121.5 HOMING ON`; }
+function epUI(msg){ const e=E(); $('#eOn').classList.toggle('sel',e.on); $('#eOff').classList.toggle('sel',!e.on); $('#eGuard').classList.toggle('open',e.guard);
+  if(!e.on) $('#eLcd').textContent = msg || (e.out?'READY · WATER ARMED':'READY · IN BRACKET'); }
+function flash(sel){ const s=$(sel); s.classList.add('flash'); setTimeout(()=>s.classList.remove('flash'),120); }
+
+/* ---------- SART ---------- */
+const sBtns={off:'#sOff',test:'#sTest',on:'#sOn'};
+for(const [m,sel] of Object.entries(sBtns)) $(sel).onclick=()=>{ ac(); setSart(m); };
+$('#sLow').onclick=()=>{ S.sa.high=false; sUI(); }; $('#sHigh').onclick=()=>{ ac(); S.sa.high=true; log('ev','SART הורם על המוט'); sUI(); coach(); };
+function setSart(m){ const s=S.sa; s.mode=m; if(m==='test'){ flash('#sStrobe'); [0,400,800].forEach(d=>setTimeout(()=>beep(900,.12,.08),d)); sUI('TEST OK\nBATT OK'); setTimeout(()=>{ if(s.mode==='test'){ s.mode='off'; sUI(); } },2500); return; }
+  if(m==='on'){ s.onAt=S.t; log('ev','📡 SART הופעל, ממתין לפולס מכ"ם (standby)'); } sUI(); coach(); }
+function sUI(msg){ const s=S.sa; for(const [m,sel] of Object.entries(sBtns)) $(sel).classList.toggle('sel',s.mode===m);
+  $('#sLow').classList.toggle('sel',!s.high); $('#sHigh').classList.toggle('sel',s.high);
+  $('#sLcd').textContent = msg || (s.mode==='on' ? (s.interrogated?'ACTIVE\nRADAR DETECTED':'STANDBY\nWAITING RADAR') : 'OFF'); }
+const detectNm = ()=> S.sa.high ? 8 : 5;
+
+/* ---------- rescue vessel + radar ---------- */
+let sartBeep=0;
+function rescueStep(dt){
+  if(S.rescueRange==null || S.flags.done) return; const sOn=S.sa.mode==='on';
+  const floor = sOn ? 0 : 2.6;   // without a SART they search around the last DSC/EPIRB position
+  if(S.rescueRange>floor) S.rescueRange=Math.max(floor, S.rescueRange-dt*0.11);
+  if(!sOn && S.rescueRange<=floor+.01 && !S.searchHint){ S.searchHint=true; if(!exam) coachMsg('ספינת החילוץ מחפשת ולא מוצאת את הרפסודה במכ"ם. <b>מה יעזור לה?</b>'); }
+  const inter = sOn && S.rescueRange<=detectNm(); if(inter!==S.sa.interrogated){ S.sa.interrogated=inter; sUI(); if(inter) log('ev','📡 SART קלט פולס מכ"ם ועבר לשידור. הנורית מהבהבת והזמזם פועל.'); }
+  if(inter){ if(Math.floor(S.t*2)!==Math.floor((S.t-dt)*2)) flash('#sStrobe'); if(performance.now()-sartBeep>1500){ sartBeep=performance.now(); beep(3000,.05,.03); } }
+  else if(sOn && Math.floor(S.t/2)!==Math.floor((S.t-dt)/2)) flash('#sStrobe');
+  if(inter && !S.flags.sartCalled){ S.flags.sartCalled=true; after(3,()=>{ station('rescue_sart'); coach(); }); pingTab('radar'); }
+  if(S.rescueRange<=0.3 && !S.flags.closeCalled){ S.flags.closeCalled=true; station('rescue_close',()=>after(6,()=>station('haifa_seelonce',()=>setTimeout(debrief,1500)))); }
+  $('#rng').textContent = `RNG ${S.rescueRange.toFixed(1)} NM · BRG 020°`;
+}
+const cv=$('#radar'), cx=cv.getContext('2d'), R=340, SC=R/12, BRG=20*Math.PI/180;
+function drawRadar(now){
+  const sw=((now/2500)%1)*2*Math.PI; cx.fillStyle='rgba(2,10,4,.32)'; cx.fillRect(0,0,680,680);
+  cx.save(); cx.translate(R,R); cx.strokeStyle='#14532d'; cx.lineWidth=1.5;
+  for(const r of [3,6,9,12]){ cx.beginPath(); cx.arc(0,0,r*SC-2,0,7); cx.stroke(); }
+  for(let a=0;a<360;a+=10){ const t=a*Math.PI/180, r1=a%30?R-10:R-20; cx.beginPath(); cx.moveTo(Math.sin(t)*r1,-Math.cos(t)*r1); cx.lineTo(Math.sin(t)*(R-2),-Math.cos(t)*(R-2)); cx.stroke(); }
+  const g=cx.createConicGradient? cx.createConicGradient(sw-Math.PI/2-0.6,0,0):null;
+  if(g){ g.addColorStop(0,'rgba(34,197,94,0)'); g.addColorStop(.095,'rgba(34,197,94,.35)'); g.addColorStop(.096,'rgba(34,197,94,0)'); cx.fillStyle=g; cx.beginPath(); cx.arc(0,0,R,0,7); cx.fill(); }
+  const fade = a => { const d=((sw-a)%(2*Math.PI)+2*Math.PI)%(2*Math.PI); return Math.max(0,1-d/(2*Math.PI))**1.6; };
+  const r=S.rescueRange;
+  if(r!=null){
+    if(r<2.2){ const al=fade(BRG); cx.fillStyle=`rgba(134,239,172,${al})`; cx.beginPath(); cx.arc(Math.sin(BRG)*r*SC,-Math.cos(BRG)*r*SC,4,0,7); cx.fill(); }
+    if(S.sa.interrogated){ cx.lineWidth=6; cx.lineCap='round';
+      for(let i=0;i<12;i++){ const d=(r+i*0.64)*SC; if(d>R-4) break;
+        if(r>2){ cx.fillStyle=`rgba(74,222,128,${fade(BRG)})`; cx.beginPath(); cx.arc(Math.sin(BRG)*d,-Math.cos(BRG)*d,6,0,7); cx.fill(); }
+        else { const span = r<1 ? Math.PI : (2-r)*Math.PI*0.5+0.08; for(let k=-12;k<12;k++){ const a=BRG+span*k/12, b=BRG+span*(k+1)/12;
+          cx.strokeStyle=`rgba(74,222,128,${fade((a+b)/2)})`; cx.beginPath(); cx.arc(0,0,d,a-Math.PI/2,b-Math.PI/2); cx.stroke(); } } } }
+  }
+  cx.fillStyle='#4ade80'; cx.beginPath(); cx.arc(0,0,4,0,7); cx.fill(); cx.restore();
+  const lbl = r==null ? 'ספינת החילוץ עוד לא יצאה' : !S.sa.interrogated ? (S.sa.mode==='on'?`SART בהמתנה. המכ"ם עוד רחוק (קליטה עד ~${detectNm()} מייל)`:'אין SART פעיל. הרפסודה כמעט לא נראית במכ"ם') : r>2?'12 נקודות: ה-SART בנקודה הקרובה למרכז':r>=1?'קשתות: מתקרבים, פחות מ-2 מייל':'מעגלים: הספינה כמעט ליד הרפסודה';
+  $('#rlabel').textContent=lbl;
+}
+
+/* ---------- coach / log / UI ---------- */
+function coachMsg(h){ const c=$('#coach'); c.innerHTML=h; c.className=exam?'exam':''; }
+function coach(){
+  if(exam){ coachMsg('מצב מבחן: אין רמזים. S/Y SONDRA, 4 אנשים. שריפה בחדר המכונות יוצאת משליטה. פעל לפי הנוהל.'); return; }
+  const v=S.vhf, e=S.ep, s=S.sa; let h;
+  if(!v.on) h='S/Y SONDRA, 4 אנשים על הסיפון. שריפה בחדר המכונות יוצאת משליטה. <b>הדלק את ה-VHF:</b> לחיצה על PWR · 16+.';
+  else if(!v.dscSent && v.mode==='nat') h='בחר מהות עם ◀ ▶ (<b>FIRE/EXPLOSION</b>) ואשר ב-●.';
+  else if(!v.dscSent && v.mode==='ready') h='<b>החזק DISTRESS 5 שניות</b> עד שכל 5 הריבועים מתמלאים.';
+  else if(!v.dscSent && !$('#cover').classList.contains('open')) h='<b>שלח התראת DSC:</b> פתח את המכסה האדום של DISTRESS.';
+  else if(!v.dscSent) h='לחיצה קצרה על DISTRESS לבחירת מהות האירוע, ואז <b>החזקה של 5 שניות</b>. (החזקה בלי בחירה = UNDESIGNATED)';
+  else if(!S.maydayGrade?.accepted) h='ההתראה יצאה בערוץ 70 והמכשיר עבר לערוץ 16. <b>עכשיו MAYDAY בקול:</b> החזק PTT ודבר באנגלית (או הקלד). המיקום על המסך.';
+  else if(S.phase!=='abandon') h='הקשב לתחנת החוף בערוץ 16.';
+  else if(!e.on) h='נוטשים. <b>הפעל את ה-EPIRB:</b> שחרר מהתושבת, הרם את המגן ולחץ ON (או הכנס למים).';
+  else if(s.mode!=='on') h='<b>הפעל את ה-SART</b> (ON) וקח אותו לרפסודה.';
+  else if(!s.high) h='<b>הרם את ה-SART על המוט.</b> ככל שהוא גבוה יותר, המכ"ם קולט אותו מרחוק יותר.';
+  else if(S.flags.rccCalled && !S.replies.rcc) h='RCC Haifa קרא לך. <b>ענה:</b> RCC Haifa, this is SONDRA… ודווח שאתם ברפסודה.';
+  else if(S.flags.sartCalled && !S.replies.rescue) h='ספינת החילוץ קוראת לך. <b>ענה לה</b> ועקוב במכ"ם איך הנקודות משתנות.';
+  else h='הישאר בערוץ 16 ועקוב במכ"ם אחרי ספינת החילוץ.';
+  coachMsg(h);
+}
+function log(cls, txt){ const m=(S.utc0+Math.floor(S.t/60))%1440, d=document.createElement('div');
+  d.className=cls; d.innerHTML=`<span class="t">${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}</span>`; d.append(txt);
+  $('#log').append(d); $('#log').scrollTop=1e9; if(cls!=='me') pingTab('log'); }
+function pingTab(t){ const b=document.querySelector(`#tabs [data-t="${t}"]`); if(b && !b.classList.contains('act')) b.classList.add('ping'); }
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('act',x===b)); b.classList.remove('ping');
+  document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('act',s.dataset.tab===b.dataset.t)); });
+$('#tplBtn').onclick=()=>$('#tpl').classList.toggle('show');
+$('#speed').onclick=()=>{ speed = speed===1?4:1; $('#speed').textContent='מהירות ×'+speed; };
+function setMode(x){ exam=x; document.body.classList.toggle('exam',x); $('#mExam').classList.toggle('on',x); $('#mPractice').classList.toggle('on',!x); $('#tpl').classList.remove('show'); coach(); }
+$('#mExam').onclick=()=>{ setMode(true); reset(); }; $('#mPractice').onclick=()=>{ setMode(false); reset(); };
+$('#restart').onclick=reset; $('#again').onclick=()=>{ $('#deb').classList.remove('show'); reset(); }; $('#closeDeb').onclick=()=>$('#deb').classList.remove('show');
+
+function debrief(){
+  if(S.flags.done) return; S.flags.done=true; const v=S.vhf, g=S.maydayGrade, rows=[];
+  const add=(ok,title,why,w=1)=>rows.push({ok,title,why,w});
+  add(v.dscSent,'התראת DSC DISTRESS נשלחה', v.dscSent?'נשלחה בערוץ 70 עם MMSI ומיקום.':'לא נשלחה. DSC הוא הצעד הראשון: מכסה, מהות, החזקה 5 שניות.',2);
+  add(v.dscSent && v.dscNat===1,'מהות נכונה ב-DSC', !v.dscSent?'':v.dscNat===1?'FIRE/EXPLOSION.':`נבחר ${NATURES[v.dscNat]}. כשיש זמן בוחרים את המהות (FIRE/EXPLOSION). UNDESIGNATED רק כשאין זמן.`);
+  if(g) for(const [t,ok,why] of g.items) add(ok,'MAYDAY: '+t, ok?'':why);
+  else add(false,'MAYDAY בקול בערוץ 16','לא שודר MAYDAY בקול.',4);
+  if(S.sayAgain) add(false,'החוף הבין מהשידור הראשון',`Haifa Radio ביקש לחזור על השם והמיקום ${S.sayAgain} פעמים.`);
+  add(S.ep.on,'EPIRB הופעל', S.ep.on?'406 MHz ללוויין + 121.5 homing.':'לא הופעל. בנטישה לוקחים את ה-EPIRB לרפסודה ומפעילים.',2);
+  add(S.sa.mode==='on','SART הופעל', S.sa.mode==='on'?'':'בלי SART ספינת החילוץ מחפשת "בעיניים".',2);
+  add(S.sa.high,'SART הורם על המוט', S.sa.high?'נקלט מ-8 מייל במקום 5.':'SART נמוך נקלט מקרוב יותר. מחזיקים אותו גבוה.');
+  add(!!S.replies.rcc,'ענית ל-RCC Haifa', S.replies.rcc?(S.replies.rccForm?'':'כדאי לכלול את שם הכלי ולסיים ב-Over.'):'תחנה שקוראת לך מחכה לתשובה.');
+  add(!!S.replies.raft,'דיווחת שאתם ברפסודה','Haifa Radio ביקש: Report when in the life raft.');
+  add(!S.missed.length,'לא פספסת שידורים', S.missed.length?`פספסת ${S.missed.length} שידורים. בזמן מצוקה נשארים בערוץ 16.`:'');
+  add(!S.offChannelTx,'שידרת רק בערוץ 16', S.offChannelTx?`${S.offChannelTx} שידורים יצאו בערוץ אחר.`:'');
+  const tot=rows.reduce((a,r)=>a+r.w,0), got=rows.reduce((a,r)=>a+(r.ok?r.w:0),0), pct=Math.round(100*got/tot);
+  $('#dScore').textContent=pct+'%'; $('#dScore').style.color=pct>=80?'var(--ok)':pct>=60?'var(--warn)':'var(--bad)';
+  $('#dRows').innerHTML=''; for(const r of rows){ const d=document.createElement('div'); d.className='row'; d.innerHTML=`<span class="s">${r.ok?'✅':'❌'}</span><div>${r.title}<small></small></div>`; d.querySelector('small').textContent=r.why; $('#dRows').append(d); }
+  if(g){ const d=document.createElement('div'); d.className='row'; d.innerHTML='<span class="s">🎙</span><div>מה שידרת<small style="direction:ltr;text-align:left"></small></div>'; d.querySelector('small').textContent=g.text; $('#dRows').append(d); }
+  $('#deb').classList.add('show');
+}
+function reset(){
+  if(playing){ playing.pause(); playing=null; } Q.length=0; timers=[]; if(S) alarm(false);
+  S=fresh(); $('#log').innerHTML=''; $('#cover').classList.remove('open'); $('#epirb').classList.remove('out'); $('#vhf').classList.remove('rxing','txing');
+  $('#rng').textContent=''; $('#interim').textContent=''; cx.fillStyle='#020a04'; cx.fillRect(0,0,680,680);
+  lcd(); epUI(); sUI(); coach(); log('ev','תרחיש: S/Y SONDRA, 4 אנשים, 32°45\'N 034°52\'E. שריפה בחדר המכונות.');
+}
+reset(); requestAnimationFrame(t=>{ last=t; tick(t); });
+</script>
+</body>
+</html>

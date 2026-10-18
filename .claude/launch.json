@@ -4,26 +4,65 @@
     {
       "name": "editor",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["tools/vo-editor-server.js"],
+      "runtimeArgs": [
+        "tools/vo-editor-server.js"
+      ],
       "port": 8899
     },
     {
       "name": "demo",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "http-server", "-p", "8903", "-c-1", "--silent"],
+      "runtimeArgs": [
+        "--yes",
+        "http-server",
+        "-p",
+        "8903",
+        "-c-1",
+        "--silent"
+      ],
       "port": 8903
     },
     {
       "name": "course-app",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "http-server", "course/app", "-p", "8055", "-c-1", "--silent"],
+      "runtimeArgs": [
+        "--yes",
+        "http-server",
+        "course/app",
+        "-p",
+        "8055",
+        "-c-1",
+        "--silent"
+      ],
       "port": 8055
     },
     {
       "name": "site",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "http-server", "course/site", "-p", "8056", "-c-1", "--silent"],
+      "runtimeArgs": [
+        "--yes",
+        "http-server",
+        "course/site",
+        "-p",
+        "8056",
+        "-c-1",
+        "--silent"
+      ],
       "port": 8056
+    },
+    {
+      "name": "gmdss-sim",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server",
+        "lessons/l40/simulator",
+        "-p",
+        "8911",
+        "-c-1",
+        "--silent"
+      ],
+      "port": 8911
     }
   ]
 }
