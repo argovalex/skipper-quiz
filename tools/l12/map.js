@@ -3,7 +3,7 @@
 // spec: { center:[lat,lng], zoom, title, answer?,
 //         markers:[{name, lat, lng, kind:'start'|'answer'|'other'}],
 //         route?:[[lat,lng],...], zones?:[{name, poly:[[lat,lng],...]}], lines?:[{name, pts:[[lat,lng],...]}] }
-// 1200x1040 PNG; keep key content inside x 130..1070 (the card cover-crops the sides).
+// 1200x850 PNG (the question card shows ~1.4:1); keep key content inside x 130..1070. No answer box: the video reveals the answer itself.
 const puppeteer = require('puppeteer');
 const fs = require('fs'), path = require('path');
 const [specFile, out] = process.argv.slice(2);
@@ -12,14 +12,14 @@ const html = `<!doctype html><html dir="rtl"><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@700;900&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>html,body{margin:0}#map{width:1200px;height:1040px}
+<style>html,body{margin:0}#map{width:1200px;height:850px}
 .title{position:absolute;top:24px;left:50%;transform:translateX(-50%);z-index:1000;background:#0c1a3a;color:#fff;font:900 40px Heebo,Arial;padding:14px 28px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.35);white-space:nowrap}
 .ans{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:1000;background:#0b7a3b;color:#fff;font:900 36px Heebo,Arial;padding:12px 26px;border-radius:14px;white-space:nowrap}
 .chip{background:#0c1a3a;color:#fff;font:700 26px Heebo,Arial;padding:4px 12px;border-radius:10px;white-space:nowrap;display:inline-block}
 .chip.answer{background:#0b7a3b}.chip.start{background:#1d4ed8}
 .dot{width:22px;height:22px;border-radius:50%;background:#e11d48;border:3px solid #fff;box-shadow:0 0 0 2px #0c1a3a}
 .dot.answer{background:#16a34a}.dot.start{background:#2563eb}
-.rose{position:absolute;right:150px;bottom:130px;z-index:1000;width:110px;height:110px}
+.rose{position:absolute;right:150px;bottom:60px;z-index:1000;width:110px;height:110px}
 </style></head><body><div id="map"></div>
 <div class="title">${spec.title}</div>${spec.answer ? `<div class="ans">${spec.answer}</div>` : ''}
 <svg class="rose" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" fill-opacity=".85" stroke="#0c1a3a" stroke-width="3"/>
@@ -43,7 +43,7 @@ setTimeout(()=>window.__mapReady=true,15000);
   fs.writeFileSync(tmp, html);
   const b = await puppeteer.launch({ headless: 'new' });
   const p = await b.newPage();
-  await p.setViewport({ width: 1200, height: 1040 });
+  await p.setViewport({ width: 1200, height: 850 });
   await p.goto('file:///' + tmp.replace(/\\/g, '/'), { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForFunction('window.__mapReady===true', { timeout: 30000 });
   await p.screenshot({ path: out });
