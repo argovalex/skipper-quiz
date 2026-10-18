@@ -227,8 +227,11 @@ Over</div>
   <div class="card">
     <h2>מכ"ם X-band של ספינת החילוץ <span class="rhud" style="margin:0" id="rng"></span></h2>
     <canvas id="radar" width="680" height="680"></canvas>
-    <div id="rlabel" class="hint"></div>
-    <div class="info">מרחוק: 12 נקודות בקו מהרפסודה והלאה. כ-1 עד 2 מייל: הנקודות הופכות לקשתות. קרוב מאוד: מעגלים סביב מרכז המכ"ם. הספינה מנווטת אל הנקודה הקרובה ביותר.</div>
+    <div id="rlabel"></div>
+    <div class="ctlrow" id="rngBtns" style="justify-content:center;margin:8px 0"><button class="pill" data-r="3">3 NM</button><button class="pill" data-r="6">6 NM</button><button class="pill on" data-r="12">12 NM</button></div>
+    <div style="direction:ltr;display:flex;gap:8px;align-items:center"><span style="font-size:12px;color:var(--mut)">13 NM</span><input id="dist" type="range" min="0.2" max="13" step="0.1" value="13" style="flex:1"><span style="font-size:12px;color:var(--mut)">0.2</span></div>
+    <div style="text-align:center;font-size:12px;color:var(--mut)">גרור כדי לקרב או להרחיק את ספינת החילוץ ולראות את צורת ה-SART <button class="clip" id="auto" style="display:none">המשך אוטומטי</button></div>
+    <div class="info">12 נקודות במרחק 0.64 מייל זו מזו, שמתחילות ב-SART ונמשכות החוצה. מרחוק הן נקודות נפרדות. ככל שמתקרבים, האלומה של המכ"ם רחבה יחסית ולכן כל נקודה מתרחבת לקשת. קרוב מאוד הקשתות נסגרות למעגלים שלמים סביב ספינת החילוץ.</div>
   </div>
 </section>
 
@@ -476,20 +479,28 @@ let sartBeep=0;
 function rescueStep(dt){
   if(S.rescueRange==null || S.flags.done) return; const sOn=S.sa.mode==='on';
   const floor = sOn ? 0 : 2.6;   // without a SART they search around the last DSC/EPIRB position
-  if(S.rescueRange>floor) S.rescueRange=Math.max(floor, S.rescueRange-dt*0.11);
+  if(!S.manual && S.rescueRange>floor) S.rescueRange=Math.max(floor, S.rescueRange-dt*0.06);
   if(!sOn && S.rescueRange<=floor+.01 && !S.searchHint){ S.searchHint=true; if(!exam) coachMsg('ספינת החילוץ מחפשת ולא מוצאת את הרפסודה במכ"ם. <b>מה יעזור לה?</b>'); }
   const inter = sOn && S.rescueRange<=detectNm(); if(inter!==S.sa.interrogated){ S.sa.interrogated=inter; sUI(); if(inter) log('ev','📡 SART קלט פולס מכ"ם ועבר לשידור. הנורית מהבהבת והזמזם פועל.'); }
   if(inter){ if(Math.floor(S.t*2)!==Math.floor((S.t-dt)*2)) flash('#sStrobe'); if(performance.now()-sartBeep>1500){ sartBeep=performance.now(); beep(3000,.05,.03); } }
   else if(sOn && Math.floor(S.t/2)!==Math.floor((S.t-dt)/2)) flash('#sStrobe');
   if(inter && !S.flags.sartCalled){ S.flags.sartCalled=true; after(3,()=>{ station('rescue_sart'); coach(); }); pingTab('radar'); }
-  if(S.rescueRange<=0.3 && !S.flags.closeCalled){ S.flags.closeCalled=true; station('rescue_close',()=>after(6,()=>station('haifa_seelonce',()=>setTimeout(debrief,1500)))); }
+  if(!S.manual && S.rescueRange<=0.3 && !S.flags.closeCalled){ S.flags.closeCalled=true; station('rescue_close',()=>after(6,()=>station('haifa_seelonce',()=>setTimeout(debrief,1500)))); }
   $('#rng').textContent = `RNG ${S.rescueRange.toFixed(1)} NM · BRG 020°`;
 }
-const cv=$('#radar'), cx=cv.getContext('2d'), R=340, SC=R/12, BRG=20*Math.PI/180;
+const cv=$('#radar'), cx=cv.getContext('2d'), R=340, BRG=20*Math.PI/180;
+let RNG=12, SC=R/RNG;
+document.querySelectorAll('#rngBtns button').forEach(b=>b.onclick=()=>{ RNG=+b.dataset.r; SC=R/RNG; document.querySelectorAll('#rngBtns button').forEach(x=>x.classList.toggle('on',x===b)); });
+$('#dist').oninput=e=>{ S.manual=true; S.rescueRange=+e.target.value; $('#auto').style.display='inline-block'; };
+$('#auto').onclick=()=>{ S.manual=false; $('#auto').style.display='none'; };
+// SART return shape vs. distance: 12 separate dots far away, each widening into an arc as the ship closes, full circles under 1 NM
+function sartHalfSpan(r){ if(r>=7) return 0; if(r<=1) return Math.PI; const k=(7-r)/6; return Math.PI*Math.pow(k,2.2); }
+function sartStage(r){ return r>=6?'dots':r>1.2?'arcs':'rings'; }
 function drawRadar(now){
   const sw=((now/2500)%1)*2*Math.PI; cx.fillStyle='rgba(2,10,4,.32)'; cx.fillRect(0,0,680,680);
   cx.save(); cx.translate(R,R); cx.strokeStyle='#14532d'; cx.lineWidth=1.5;
-  for(const r of [3,6,9,12]){ cx.beginPath(); cx.arc(0,0,r*SC-2,0,7); cx.stroke(); }
+  const rings=[RNG/4,RNG/2,RNG*.75,RNG];
+  for(const r of rings){ cx.beginPath(); cx.arc(0,0,r*SC-2,0,7); cx.stroke(); }
   for(let a=0;a<360;a+=10){ const t=a*Math.PI/180, r1=a%30?R-10:R-20; cx.beginPath(); cx.moveTo(Math.sin(t)*r1,-Math.cos(t)*r1); cx.lineTo(Math.sin(t)*(R-2),-Math.cos(t)*(R-2)); cx.stroke(); }
   const g=cx.createConicGradient? cx.createConicGradient(sw-Math.PI/2-0.6,0,0):null;
   if(g){ g.addColorStop(0,'rgba(34,197,94,0)'); g.addColorStop(.095,'rgba(34,197,94,.35)'); g.addColorStop(.096,'rgba(34,197,94,0)'); cx.fillStyle=g; cx.beginPath(); cx.arc(0,0,R,0,7); cx.fill(); }
@@ -497,16 +508,16 @@ function drawRadar(now){
   const r=S.rescueRange;
   if(r!=null){
     if(r<2.2){ const al=fade(BRG); cx.fillStyle=`rgba(134,239,172,${al})`; cx.beginPath(); cx.arc(Math.sin(BRG)*r*SC,-Math.cos(BRG)*r*SC,4,0,7); cx.fill(); }
-    if(S.sa.interrogated){ cx.lineWidth=6; cx.lineCap='round';
-      for(let i=0;i<12;i++){ const d=(r+i*0.64)*SC; if(d>R-4) break;
-        if(r>2){ cx.fillStyle=`rgba(74,222,128,${Math.max(.55,fade(BRG))})`; cx.beginPath(); cx.arc(Math.sin(BRG)*d,-Math.cos(BRG)*d,8,0,7); cx.fill(); cx.strokeStyle='rgba(187,247,208,.8)'; cx.lineWidth=1.5; cx.stroke(); cx.lineWidth=6; }
-        else { const span = r<1 ? Math.PI : (2-r)*Math.PI*0.5+0.08; for(let k=-12;k<12;k++){ const a=BRG+span*k/12, b=BRG+span*(k+1)/12;
-          cx.strokeStyle=`rgba(74,222,128,${Math.max(.5,fade((a+b)/2))})`; cx.beginPath(); cx.arc(0,0,d,a-Math.PI/2,b-Math.PI/2); cx.stroke(); } } } }
+    if(S.sa.interrogated){ cx.lineCap='round'; const h=sartHalfSpan(r), full=h>=Math.PI-.01;
+      for(let i=0;i<12;i++){ const d=(r+i*0.64)*SC; if(d>R-4) break; const th=Math.max(h,.004), a0=BRG-th-Math.PI/2, a1=BRG+th-Math.PI/2;
+        cx.lineWidth=Math.max(6,Math.min(11,d/18+4));
+        if(full || th>.25){ const n=Math.max(8,Math.ceil(th*14)); for(let k=0;k<n;k++){ const a=a0+(a1-a0)*k/n, b=a0+(a1-a0)*(k+1)/n; cx.strokeStyle=`rgba(74,222,128,${Math.max(.55,fade((a+b)/2+Math.PI/2))})`; cx.beginPath(); cx.arc(0,0,d,a,b+.01); cx.stroke(); } }
+        else { cx.strokeStyle=`rgba(74,222,128,${Math.max(.6,fade(BRG))})`; cx.beginPath(); cx.arc(0,0,d,a0,a1); cx.stroke(); } } }
   }
-  cx.fillStyle='#86efac'; cx.font='14px Consolas'; for(const rr of [3,6,9,12]) cx.fillText(rr+' NM',6,-rr*SC+14);
+  cx.fillStyle='#86efac'; cx.font='14px Consolas'; for(const rr of rings) cx.fillText(+rr.toFixed(2)+' NM',6,-rr*SC+14);
   cx.fillStyle='#4ade80'; cx.beginPath(); cx.arc(0,0,4,0,7); cx.fill(); cx.restore();
-  const lbl = r==null ? 'ספינת החילוץ עוד לא יצאה' : !S.sa.interrogated ? (S.sa.mode==='on'?`SART דולק. הנקודות יופיעו כשספינת החילוץ תגיע ל-${detectNm()} מייל (עוד ~${Math.max(1,Math.round((r-detectNm())/.11/speed))} שניות)`:'אין SART פעיל. הרפסודה כמעט לא נראית במכ"ם') : r>2?'12 נקודות: ה-SART בנקודה הקרובה למרכז':r>=1?'קשתות: מתקרבים, פחות מ-2 מייל':'מעגלים: הספינה כמעט ליד הרפסודה';
-  $('#rlabel').textContent=lbl;
+  const lbl = r==null ? 'ספינת החילוץ עוד לא יצאה' : !S.sa.interrogated ? (S.sa.mode==='on'?`SART דולק. הנקודות יופיעו כשספינת החילוץ תגיע ל-${detectNm()} מייל (עוד ~${Math.max(1,Math.round((r-detectNm())/.06/speed))} שניות)`:'אין SART פעיל. הרפסודה כמעט לא נראית במכ"ם') : {dots:'12 נקודות נפרדות: ה-SART רחוק (מעל ~6 מייל). הנקודה הקרובה למרכז היא מיקום ה-SART',arcs:'קשתות: הנקודות מתרחבות ככל שמתקרבים (1.2 עד 6 מייל)',rings:'מעגלים שלמים סביב המכ"ם: הספינה כמעט ליד הרפסודה (פחות מ-1.2 מייל)'}[sartStage(r)];
+  $('#rlabel').textContent=lbl; if($('#dist')!==document.activeElement && r!=null) $('#dist').value=Math.min(13,r);
 }
 
 /* ---------- coach / log / UI ---------- */
