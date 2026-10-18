@@ -4,6 +4,7 @@ s17 = AI photo (u13_block.jpg) as the HTML background -> cards/<s17>.png
 usage: python u13_tw.py"""
 import os, sys, subprocess, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE); import nowin  # child processes (ffmpeg, node) without a console window
 spec = importlib.util.spec_from_file_location('u13', os.path.join(HERE, 'u13_cards.py')); U = importlib.util.module_from_spec(spec); spec.loader.exec_module(U)
 from PIL import Image
 A = os.path.join(HERE, 'assets'); OUT = U.C.OUT; WRK = os.path.join(HERE, '_tw'); os.makedirs(WRK, exist_ok=True)

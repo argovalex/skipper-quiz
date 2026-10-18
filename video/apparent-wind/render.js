@@ -10,7 +10,7 @@ const puppeteer = require('puppeteer'), { spawn } = require('child_process'), pa
   const dur = await pg.evaluate(() => window.DURATION), n = Math.round(dur * FPS);
   const ff = spawn('ffmpeg', ['-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'png', '-i', '-',
     '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo', '-shortest',
-    '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18', '-c:a', 'aac', '-movflags', '+faststart', out], { stdio: ['pipe', 'ignore', 'inherit'] });
+    '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18', '-c:a', 'aac', '-movflags', '+faststart', out], { stdio: ['pipe', 'ignore', 'inherit'], windowsHide: true });
   for (let i = 0; i < n; i++) {
     const d = await pg.evaluate(t => { renderAt(t); return document.getElementById('c').toDataURL('image/png'); }, i / FPS);
     if (!ff.stdin.write(Buffer.from(d.split(',')[1], 'base64'))) await new Promise(r => ff.stdin.once('drain', r));

@@ -34,6 +34,9 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lesson"))
+import nowin  # noqa: E402  child processes without a console window (no black windows)
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GH_RAW = "https://raw.githubusercontent.com/argovalex/skipper-quiz/main"
 

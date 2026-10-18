@@ -103,7 +103,7 @@ async function liveV2(text) {
     args.push('-af', MASTER_CHAIN);
   }
   args.push('-b:a', '192k', out);
-  execFileSync('ffmpeg', args);
+  execFileSync('ffmpeg', args, { windowsHide: true }); // server has no console: without this ffmpeg opens a black window
   raw.forEach(f => fs.rmSync(f, { force: true }));
   return out;
 }
