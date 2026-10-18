@@ -52,15 +52,9 @@
     },
     {
       "name": "gmdss-sim",
-      "runtimeExecutable": "npx",
+      "runtimeExecutable": "node",
       "runtimeArgs": [
-        "--yes",
-        "http-server",
-        "lessons/l40/simulator",
-        "-p",
-        "8911",
-        "-c-1",
-        "--silent"
+        "tools/gmdss-sim-server.js"
       ],
       "port": 8911
     }
