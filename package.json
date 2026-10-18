@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@higgsfield/client": "^0.2.6",
     "@whiskeysockets/baileys": "^7.0.0-rc14",
     "aws4fetch": "^1.0.20",
     "googleapis": "^176.0.0",

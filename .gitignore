@@ -78,3 +78,6 @@ lessons/l30/sources/_tw/
 # Third-party copyrighted study material (Sea-Time etc.): never commit
 lessons/l40/sources/*.pdf
 lessons/l40/sources/*.txt
+
+# Higgsfield API credentials (key-id:key-secret)
+.env.local
