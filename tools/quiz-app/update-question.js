@@ -90,12 +90,12 @@ async function render(num, q) {
 }
 
 function git(...a) {
-  const r = spawnSync('git', a, { cwd: ROOT, encoding: 'utf8' });
+  const r = spawnSync('git', a, { cwd: ROOT, encoding: 'utf8', windowsHide: true }); // no black console windows (Alex)
   if (r.status !== 0) throw new Error(`git ${a.join(' ')} failed:\n${r.stderr || r.stdout}`);
   return (r.stdout || '').trim();
 }
 function node(script, extra = []) {
-  const r = spawnSync(process.execPath, [path.join(HERE, script), ...extra], { cwd: ROOT, encoding: 'utf8', stdio: 'inherit' });
+  const r = spawnSync(process.execPath, [path.join(HERE, script), ...extra], { cwd: ROOT, encoding: 'utf8', stdio: 'inherit', windowsHide: true });
   if (r.status !== 0) throw new Error(`${script} failed`);
 }
 

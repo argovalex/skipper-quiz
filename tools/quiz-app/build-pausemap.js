@@ -36,7 +36,7 @@ for (const q of vids) {
   if (done[q.num]) continue;
   const r = spawnSync(FF, ["-hide_banner", "-i", q.videoUrl, "-vn",
     "-af", "silencedetect=noise=-30dB:d=0.8", "-f", "null", "-"],
-    { encoding: "utf8", maxBuffer: 1 << 26 });
+    { encoding: "utf8", maxBuffer: 1 << 26, windowsHide: true });
   const log = (r.stderr || "") + (r.stdout || "");
   const { dur, best } = parse(log);
   if (best) {
