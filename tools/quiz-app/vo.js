@@ -20,6 +20,8 @@ const LATIN_LETTER_HE = {
 };
 
 const VO_FIXES = [
+  // Alex 2026-10-19: spoken "ערוץ 70", never "Ch70"/"CH 16".
+  [/\bCH\.?\s?(\d{1,2}[A-Za-z]?)(?![A-Za-z0-9])/gi, 'ערוץ $1'],
   // Drop parenthetical Latin-word glosses like (underway), (bearing), (Kill Switch):
   // the Hebrew term precedes them and is already spoken. Require 2+ consecutive
   // Latin letters so single-letter vessel/flag labels like (K), (G), (A) are kept
@@ -245,10 +247,23 @@ function buildVoiceoverRaw(q, keepLatin) {
   return q1 + ' [[PAUSE]] ' + q2;
 }
 
+// Answer letters as the alphabet names (Alex 2026-10-19: the l12 convention "אָלף/בֶת/גִּימֶל/דָּלֶת" sounds right, "א'" and bare letters do not).
+// Mirrors tools/l12/fixvo.js, plus the geresh forms ("ב'?", "וד'?") and the plain names. Applied to license 40.
+const LETTER_BY = { 'א': 'אָלף', 'ב': 'בֶת', 'ג': 'גִּימֶל', 'ד': 'דָלֶת' };
+const NAME_BY = { 'אלף': 'א', 'אֶלף': 'א', 'אָלֶף': 'א', 'אָלף': 'א', 'בית': 'ב', 'בֵּית': 'ב', 'בֶת': 'ב', 'גימל': 'ג', 'גִּימֶל': 'ג', 'דלת': 'ד', 'דָּלֶת': 'ד', 'דָלֶת': 'ד' };
+function fixAnswerLetters(t) {
+  return t
+    .replace(/(^|[\s.!?,])(ו?)(אלף|אֶלף|אָלֶף|אָלף|בית|בֵּית|בֶת|גימל|גִּימֶל|דלת|דָּלֶת|דָלֶת)(?=[\s:?.,!]|$)/g, (m, pre, v, w) => pre + v + LETTER_BY[NAME_BY[w]])
+    .replace(/(^|[\s.!?,])(ו?)([אבגד])['׳]?(?=[:?.,]|\s(?:נכונה|שגויה|וב|ו)|$)/g, (m, pre, v, l) => pre + v + LETTER_BY[l]);
+}
+
 // Alex 2026-10-19: "לָמָה לא א'" always, never the lexicon's "לֶמָה לא" (he corrected it by hand on every render).
 function buildVoiceover(q, keepLatin) {
   KEEP_SPACED_ACRONYMS = Number(q.license) === 40;
-  try { return buildVoiceoverRaw(q, keepLatin).replace(/לֶמָה(?= לא )/g, 'לָמָה'); }
+  try {
+    const v = buildVoiceoverRaw(q, keepLatin).replace(/לֶמָה(?= לא )/g, 'לָמָה');
+    return (Number(q.license) === 40 && !keepLatin) ? fixAnswerLetters(v) : v;
+  }
   finally { KEEP_SPACED_ACRONYMS = false; }
 }
 
@@ -258,5 +273,5 @@ function buildVoiceover(q, keepLatin) {
 // scope where index.html's inline scripts resolve buildVoiceover/applyVoFixes by
 // name. Guard the export so the browser doesn't throw on `module` being undefined.
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { buildVoiceover, applyVoFixes, applySpokenFixes, applyLexiconText, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
+  module.exports = { fixAnswerLetters, buildVoiceover, applyVoFixes, applySpokenFixes, applyLexiconText, heNum, VO_FIXES, LATIN_LETTER_HE, ANSWER_PROMPT_NUMS };
 }
