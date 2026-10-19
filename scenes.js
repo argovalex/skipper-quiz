@@ -1621,15 +1621,17 @@ function crVessel(letter) {
     + `<rect x="${(lbl.x-11).toFixed(1)}" y="${(lbl.y-11).toFixed(1)}" width="22" height="22" fill="#fff" stroke="${color}" stroke-width="2.2"/>`
     + `<text x="${lbl.x.toFixed(1)}" y="${(lbl.y+5).toFixed(1)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="${color}">${letter}</text>`;
 }
+// observer / target highlight colours: two strong, clearly different hues (yellow was too faint on white)
+const CR_OBS_COLOR = '#0057ff', CR_TGT_COLOR = '#ff1744';
 function crHighlight(letter, color) {
   const p = crPos(CR_LETTERS.indexOf(letter) * 22.5, CR_R_LABEL);
-  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="17" fill="none" stroke="${color || '#ffd700'}" stroke-width="3"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle>`;
+  return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="17" fill="none" stroke="${color || CR_OBS_COLOR}" stroke-width="4"><animate attributeName="r" values="13;18;13" dur="1.4s" repeatCount="indefinite"/></circle>`;
 }
 function crBowLine(letter, color) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5, flip = letter === 'E' || letter === 'I';
   const tipR = flip ? CR_R_BASE : CR_R_TIP;
   const from = crPos(angle, tipR), to = crPos(angle, flip ? tipR + 50 : tipR - 45);
-  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="#111" stroke-width="3.5" stroke-dasharray="6,3" opacity="0.9"/>`;
+  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color || '#111'}" stroke-width="4" stroke-dasharray="6,3" opacity="0.95"/>`;
 }
 function crBall(cx, cy, r) { return `<circle cx="${cx}" cy="${cy}" r="${r||8}" fill="#111"/>`; }
 function crDiamond(cx, cy, s) { s=s||9; const h=s*1.4,w=s*0.65; return `<polygon points="${cx},${cy-h} ${cx+w},${cy} ${cx},${cy+h} ${cx-w},${cy}" fill="#111"/>`; }
@@ -1730,6 +1732,12 @@ const CR_SIGN_TO_TYPE = {
   84:'fishing_net',                                              // דייג
   20:'sailing_bare', 82:'sailing_bare',                          // מפרשית תחת מנוע
 };
+// boat mode: the vessel's heading continued from the bow through the rose centre, in its highlight colour
+function crHeadingLine(letter, color) {
+  const angle = CR_LETTERS.indexOf(letter) * 22.5;
+  const from = crPos(angle, 8), to = crPos(angle, -34);
+  return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color}" stroke-width="4" stroke-dasharray="6,3" opacity="0.95"/>`;
+}
 function crBoat(letter, type) {
   const w = 40, h = 78, R_BOAT = 46;
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
@@ -1764,7 +1772,9 @@ function crSignCardAbove(letter, shapeIds, withBall) {
   const p = crPos(angle, CR_R_LABEL + 42);   // same radial offset for every sign
   const id = shapeIds[0] || null;
   const box = 58, S = 50;
-  const cx = Math.max(box/2 + 12, Math.min(348 - box/2, p.x));
+  // letters in the bottom band: the card is clamped up and would cover the letter, so slide it sideways
+  const lowSlide = p.y > 304 ? (p.x >= CR_CX ? 46 : -46) : 0;
+  const cx = Math.max(box/2 + 12, Math.min(348 - box/2, p.x + lowSlide));
   const cy = Math.max(box/2 + 8, Math.min(304, p.y)); // keep full offset yet above the y=345 watermark
   let inner, label;
   if (id && CR_FLAG_ID[id] && SIGNAL_FLAGS[CR_FLAG_ID[id]]) {
@@ -1831,16 +1841,17 @@ function generateCompassRoseScene(qText, useBoats) {
     const targetType = (shapeIds.length && CR_SIGN_TO_TYPE[shapeIds[0]]) || 'speedboat';
     svg += crBoat(target, targetType);
     if (shapeIds.length || withBall) svg += crSignCardAbove(target, shapeIds, withBall);
-    svg += crHighlight(observer, '#ffd700');
-    svg += crHighlight(target, '#e74c3c');
+    svg += crHeadingLine(observer, CR_OBS_COLOR) + crHeadingLine(target, CR_TGT_COLOR);
+    svg += crHighlight(observer, CR_OBS_COLOR);
+    svg += crHighlight(target, CR_TGT_COLOR);
     return svg;
   }
   for (const l of CR_LETTERS) svg += crVessel(l);
   if ((shapeIds.length || withBall) && target) svg += crDayShape(target, shapeIds, withBall);
-  if (observer) svg += crBowLine(observer, '#ffd700');
-  if (target) svg += crBowLine(target, '#e74c3c');
-  if (observer) svg += crHighlight(observer);
-  if (target) svg += crHighlight(target);
+  if (observer) svg += crBowLine(observer, CR_OBS_COLOR);
+  if (target) svg += crBowLine(target, CR_TGT_COLOR);
+  if (observer) svg += crHighlight(observer, CR_OBS_COLOR);
+  if (target) svg += crHighlight(target, CR_TGT_COLOR);
   const shapeId = shapeIds[0] || null;
   const hasShape = shapeIds.some(id => CR_SHAPES[id]) || withBall;
   const signalPattern = shapeId && SIGNAL_IMAGES[shapeId];
