@@ -31,6 +31,12 @@ const map=L.map('map',{zoomControl:false,attributionControl:true,zoomSnap:0.25})
 const tl=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
 (S.zones||[]).forEach(z=>{const pg=L.polygon(z.poly,{color:'#e11d48',weight:3,fillColor:'#e11d48',fillOpacity:.35}).addTo(map);if(z.name)pg.bindTooltip(z.name,{permanent:true,direction:'center',className:'chip'});});
 (S.lines||[]).forEach(l=>L.polyline(l.pts,{color:'#e11d48',weight:4,dashArray:'10 8'}).addTo(map).bindTooltip(l.name,{permanent:true,direction:'bottom',className:'chip'}));
+// arrows:[{pts:[[lat,lng],...], name?, color?}] - a wind/drift arrow with a head at the last point
+(S.arrows||[]).forEach(a=>{const c=a.color||'#e11d48';const pl=L.polyline(a.pts,{color:c,weight:7}).addTo(map);
+  if(a.name)pl.bindTooltip('<span class="chip">'+a.name+'</span>',{permanent:true,direction:'top',opacity:1,className:''});
+  const p1=map.latLngToContainerPoint(a.pts[a.pts.length-2]),p2=map.latLngToContainerPoint(a.pts[a.pts.length-1]);
+  const ang=Math.atan2(p2.y-p1.y,p2.x-p1.x)*180/Math.PI;
+  L.marker(a.pts[a.pts.length-1],{icon:L.divIcon({className:'',iconSize:[34,34],iconAnchor:[17,17],html:'<svg width="34" height="34" viewBox="0 0 34 34" style="transform:rotate('+ang+'deg)"><polygon points="34,17 4,3 4,31" fill="'+c+'"/></svg>'})}).addTo(map);});
 if(S.route) L.polyline(S.route,{color:'#2563eb',weight:6,dashArray:'14 10'}).addTo(map);
 (S.markers||[]).forEach(m=>{const k=m.kind||'other';
   L.marker([m.lat,m.lng],{icon:L.divIcon({className:'',html:'<div class="dot '+k+'"></div>',iconSize:[28,28],iconAnchor:[14,14]})}).addTo(map)
