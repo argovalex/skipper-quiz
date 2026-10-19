@@ -254,7 +254,7 @@ const NAME_BY = { 'אלף': 'א', 'אֶלף': 'א', 'אָלֶף': 'א', 'אָל�
 function fixAnswerLetters(t) {
   return t
     .replace(/(^|[\s.!?,])(ו?)(אלף|אֶלף|אָלֶף|אָלף|בית|בֵּית|בֶת|גימל|גִּימֶל|דלת|דָּלֶת|דָלֶת)(?=[\s:?.,!]|$)/g, (m, pre, v, w) => pre + v + LETTER_BY[NAME_BY[w]])
-    .replace(/(^|[\s.!?,])(ו?)([אבגד])['׳]?(?=[:?.,]|\s(?:נכונה|שגויה|וב|ו)|$)/g, (m, pre, v, l) => pre + v + LETTER_BY[l]);
+    .replace(/(^|[\s.!?,])(ו?)([אבגד])['׳]?(?=[:?.,!]|\s(?:נכונה|שגויה|וב|ו)|$)/g, (m, pre, v, l) => pre + v + LETTER_BY[l]);
 }
 
 // Alex 2026-10-19: "לָמָה לא א'" always, never the lexicon's "לֶמָה לא" (he corrected it by hand on every render).
