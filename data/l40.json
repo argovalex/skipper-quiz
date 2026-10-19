@@ -21,7 +21,8 @@
     "license": 40,
     "explanation_spoken": "הכוונה כאן לאזור ים. אם תחנת חוף מאזינה ברציפות בערוץ שבעים, בדי אס סי, אתה באזור ים א אחת. זה האזור שבו תחנת חוף שומעת אותך ב וי אייץ אף, בערך עשרים עד שלושים מייל. אז לָמָה לא ב'? נבארי אחת הוא אזור של מידע בטיחות, לא אזור הפלגה. ג'? א שתיים מוגדר לפי תחנה שמאזינה ב אם אף, עד כמאה מייל. וד'? מימי חופים, תעלות ונהרות הם לא אזור ים של ג'י אם די אס אס.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4001.jpg",
-    "mediaType": "image"
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4001. אנייה מפליגה כל הזמן באזור הנמצא תחת כיסוי של תחנת חוף כלשהי המאזינה ברציפות על Ch70 נמצאת ב:. [[PAUSE]] התשובה הנכונה היא אֶלף: הכוונה כאן לאזור ים. אם תחנת חוף מאזינה ברציפות בערוץ שבעים, בדי אס סי, אתה באזור ים א אחת. זה האזור שבו תחנת חוף שומעת אותך ב וי אייץ אף, בערך עשרים עד שלושים מָייל. אז לֶמָה לא ב'? נבארי אחת הוא אזור של מידע בטיחות, לא אזור הפלגה. ג'? א שתיים מוגדר לפי תחנה שמאזינה ב אם אף, עד כמאה מָייל. וד'? מימי חופים, תעלות ונהרות הם לא אזור ים של ג'י אם די אס אס."
   },
   {
     "num": 4002,
@@ -45,7 +46,8 @@
     "license": 40,
     "explanation_spoken": "קלטת הודעת בטיחות, סקיוריטה, עדיפות שלישית. מה עושים? מאזינים עד הסוף, רושמים את פרטי ההודעה ביומן התחנה, וממסרים מיד לאיש המשמרת. הוא זה שמחליט. אז לָמָה לא א'? להודעת בטיחות לא שולחים אישור קליטה. זה שידור לכולם. ג'? פאן פאן היא דחיפות, ואין סיבה לשדר את זה שוב. וד'? ל אר סי סי לא שולחים אישור על הודעת בטיחות.",
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4002.jpg",
-    "mediaType": "image"
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4002. איך תגיב להודעת בטיחות?. [[PAUSE]] התשובה הנכונה היא בֵּית: קלטת הודעת בטיחות, סקיוריטֶה, עדיפות שלישית. מה עושים? מאזינים עד הסוף, רושמים את פרטי ההודעה ביומן התחנה, וממסרים מיד לאיש המשמרת. הוא זה שמחליט. אז לָמָה לא א'? להודעת בטיחות לא שולחים אישור קליטה. זה שידור לכולם. ג'? פָאָן פָאָן היא דחיפוֹת, ואין סיבה לשדר את זה שוב. וד'? ל R C C לא שולחים אישור על הודעת בטיחות."
   },
   {
     "num": 4003,
@@ -138,7 +140,9 @@
     "exam_id": "GMDSS-E01-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4007,
@@ -159,7 +163,9 @@
     "exam_id": "GMDSS-E01-Q07",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4008,
@@ -180,7 +186,9 @@
     "exam_id": "GMDSS-E01-Q08",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4009,
@@ -201,7 +209,9 @@
     "exam_id": "GMDSS-E01-Q09",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4010,
@@ -222,7 +232,9 @@
     "exam_id": "GMDSS-E01-Q10",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4011,
@@ -243,7 +255,9 @@
     "exam_id": "GMDSS-E01-Q11",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4012,
@@ -264,7 +278,9 @@
     "exam_id": "GMDSS-E01-Q12",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4013,
@@ -285,7 +301,9 @@
     "exam_id": "GMDSS-E01-Q13",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4014,
@@ -306,7 +324,9 @@
     "exam_id": "GMDSS-E01-Q14",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4015,
@@ -327,7 +347,9 @@
     "exam_id": "GMDSS-E01-Q15",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4016,
@@ -348,7 +370,9 @@
     "exam_id": "GMDSS-E01-Q16",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4017,
@@ -369,7 +393,9 @@
     "exam_id": "GMDSS-E01-Q17",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4018,
@@ -390,7 +416,9 @@
     "exam_id": "GMDSS-E01-Q18",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4019,
@@ -411,7 +439,9 @@
     "exam_id": "GMDSS-E01-Q19",
     "lesson": 2,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4020,
@@ -432,7 +462,9 @@
     "exam_id": "GMDSS-E01-Q20",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4021,
@@ -453,7 +485,9 @@
     "exam_id": "GMDSS-E02-Q01",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4022,
@@ -474,7 +508,9 @@
     "exam_id": "GMDSS-E02-Q02",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4023,
@@ -495,7 +531,9 @@
     "exam_id": "GMDSS-E02-Q03",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4024,
@@ -516,7 +554,9 @@
     "exam_id": "GMDSS-E02-Q04",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4025,
@@ -537,7 +577,9 @@
     "exam_id": "GMDSS-E02-Q05",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4026,
@@ -558,7 +600,9 @@
     "exam_id": "GMDSS-E02-Q06",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4027,
@@ -579,7 +623,9 @@
     "exam_id": "GMDSS-E02-Q07",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4028,
@@ -600,7 +646,9 @@
     "exam_id": "GMDSS-E02-Q08",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4029,
@@ -621,7 +669,9 @@
     "exam_id": "GMDSS-E02-Q09",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4030,
@@ -642,7 +692,9 @@
     "exam_id": "GMDSS-E02-Q10",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4031,
@@ -663,7 +715,9 @@
     "exam_id": "GMDSS-E02-Q11",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4032,
@@ -684,7 +738,9 @@
     "exam_id": "GMDSS-E02-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4033,
@@ -705,7 +761,9 @@
     "exam_id": "GMDSS-E02-Q13",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4034,
@@ -726,7 +784,9 @@
     "exam_id": "GMDSS-E02-Q14",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4035,
@@ -747,7 +807,9 @@
     "exam_id": "GMDSS-E02-Q15",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4036,
@@ -768,7 +830,9 @@
     "exam_id": "GMDSS-E02-Q16",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4037,
@@ -789,7 +853,9 @@
     "exam_id": "GMDSS-E02-Q17",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4038,
@@ -810,7 +876,9 @@
     "exam_id": "GMDSS-E02-Q18",
     "lesson": 8,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4039,
@@ -831,7 +899,9 @@
     "exam_id": "GMDSS-E02-Q19",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4040,
@@ -853,7 +923,9 @@
     "exam_id": "GMDSS-E02-Q20",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4041,
@@ -875,7 +947,9 @@
     "exam_id": "GMDSS-E03-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4042,
@@ -896,7 +970,9 @@
     "exam_id": "GMDSS-E03-Q02",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4043,
@@ -917,7 +993,9 @@
     "exam_id": "GMDSS-E03-Q03",
     "lesson": 2,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4044,
@@ -938,7 +1016,9 @@
     "exam_id": "GMDSS-E03-Q04",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4045,
@@ -959,7 +1039,9 @@
     "exam_id": "GMDSS-E03-Q05",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4046,
@@ -980,7 +1062,9 @@
     "exam_id": "GMDSS-E03-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4047,
@@ -1001,7 +1085,9 @@
     "exam_id": "GMDSS-E03-Q07",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4048,
@@ -1022,7 +1108,9 @@
     "exam_id": "GMDSS-E03-Q08",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4049,
@@ -1043,7 +1131,9 @@
     "exam_id": "GMDSS-E03-Q09",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4050,
@@ -1064,7 +1154,9 @@
     "exam_id": "GMDSS-E03-Q10",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4051,
@@ -1085,7 +1177,9 @@
     "exam_id": "GMDSS-E03-Q11",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4052,
@@ -1106,7 +1200,9 @@
     "exam_id": "GMDSS-E03-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4053,
@@ -1127,7 +1223,9 @@
     "exam_id": "GMDSS-E03-Q13",
     "lesson": 3,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4054,
@@ -1148,7 +1246,9 @@
     "exam_id": "GMDSS-E03-Q14",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4055,
@@ -1169,7 +1269,9 @@
     "exam_id": "GMDSS-E03-Q15",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4056,
@@ -1190,7 +1292,9 @@
     "exam_id": "GMDSS-E03-Q16",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4057,
@@ -1211,7 +1315,9 @@
     "exam_id": "GMDSS-E03-Q17",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4058,
@@ -1232,7 +1338,9 @@
     "exam_id": "GMDSS-E03-Q18",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4059,
@@ -1253,7 +1361,9 @@
     "exam_id": "GMDSS-E03-Q19",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4060,
@@ -1274,7 +1384,9 @@
     "exam_id": "GMDSS-E03-Q20",
     "lesson": 6,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4061,
@@ -1295,7 +1407,9 @@
     "exam_id": "GMDSS-E04-Q01",
     "lesson": 8,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4062,
@@ -1316,7 +1430,9 @@
     "exam_id": "GMDSS-E04-Q02",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4063,
@@ -1337,7 +1453,9 @@
     "exam_id": "GMDSS-E04-Q03",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4064,
@@ -1358,7 +1476,9 @@
     "exam_id": "GMDSS-E04-Q04",
     "lesson": 9,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4065,
@@ -1379,7 +1499,9 @@
     "exam_id": "GMDSS-E04-Q05",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4066,
@@ -1400,7 +1522,9 @@
     "exam_id": "GMDSS-E04-Q06",
     "lesson": 8,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4067,
@@ -1421,7 +1545,9 @@
     "exam_id": "GMDSS-E04-Q07",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4068,
@@ -1442,7 +1568,9 @@
     "exam_id": "GMDSS-E04-Q08",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4069,
@@ -1463,7 +1591,9 @@
     "exam_id": "GMDSS-E04-Q09",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4070,
@@ -1484,7 +1614,9 @@
     "exam_id": "GMDSS-E04-Q10",
     "lesson": 9,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4071,
@@ -1505,7 +1637,9 @@
     "exam_id": "GMDSS-E04-Q11",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4072,
@@ -1526,7 +1660,9 @@
     "exam_id": "GMDSS-E04-Q12",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4073,
@@ -1547,7 +1683,9 @@
     "exam_id": "GMDSS-E04-Q13",
     "lesson": 9,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4074,
@@ -1568,7 +1706,9 @@
     "exam_id": "GMDSS-E04-Q14",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4075,
@@ -1589,7 +1729,9 @@
     "exam_id": "GMDSS-E04-Q15",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4076,
@@ -1610,7 +1752,9 @@
     "exam_id": "GMDSS-E04-Q16",
     "lesson": 1,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4077,
@@ -1631,7 +1775,9 @@
     "exam_id": "GMDSS-E04-Q17",
     "lesson": 9,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4078,
@@ -1652,7 +1798,9 @@
     "exam_id": "GMDSS-E04-Q18",
     "lesson": 9,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4079,
@@ -1673,7 +1821,9 @@
     "exam_id": "GMDSS-E04-Q19",
     "lesson": 8,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4080,
@@ -1694,7 +1844,9 @@
     "exam_id": "GMDSS-E04-Q20",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4081,
@@ -1715,7 +1867,9 @@
     "exam_id": "GMDSS-E05-Q01",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4082,
@@ -1736,7 +1890,9 @@
     "exam_id": "GMDSS-E05-Q02",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4083,
@@ -1757,7 +1913,9 @@
     "exam_id": "GMDSS-E05-Q03",
     "lesson": 5,
     "lesson_cover": "direct",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4084,
@@ -1778,7 +1936,9 @@
     "exam_id": "GMDSS-E05-Q04",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4085,
@@ -1799,7 +1959,9 @@
     "exam_id": "GMDSS-E05-Q05",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4086,
@@ -1820,7 +1982,9 @@
     "exam_id": "GMDSS-E05-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4087,
@@ -1841,7 +2005,9 @@
     "exam_id": "GMDSS-E05-Q08",
     "lesson": 6,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4088,
@@ -1862,7 +2028,9 @@
     "exam_id": "GMDSS-E05-Q09",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4089,
@@ -1883,7 +2051,9 @@
     "exam_id": "GMDSS-E05-Q10",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4090,
@@ -1904,7 +2074,9 @@
     "exam_id": "GMDSS-E05-Q11",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4091,
@@ -1925,7 +2097,9 @@
     "exam_id": "GMDSS-E05-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4092,
@@ -1946,7 +2120,9 @@
     "exam_id": "GMDSS-E05-Q13",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4093,
@@ -1967,7 +2143,9 @@
     "exam_id": "GMDSS-E05-Q14",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4094,
@@ -1988,7 +2166,9 @@
     "exam_id": "GMDSS-E05-Q15",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4095,
@@ -2009,7 +2189,9 @@
     "exam_id": "GMDSS-E05-Q16",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4096,
@@ -2030,7 +2212,9 @@
     "exam_id": "GMDSS-E05-Q18",
     "lesson": 8,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4097,
@@ -2051,7 +2235,9 @@
     "exam_id": "GMDSS-E05-Q19",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4098,
@@ -2072,7 +2258,9 @@
     "exam_id": "GMDSS-E05-Q20",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4099,
@@ -2093,7 +2281,9 @@
     "exam_id": "GMDSS-E06-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4100,
@@ -2114,7 +2304,9 @@
     "exam_id": "GMDSS-E06-Q02",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4101,
@@ -2135,7 +2327,9 @@
     "exam_id": "GMDSS-E06-Q03",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4102,
@@ -2156,7 +2350,9 @@
     "exam_id": "GMDSS-E06-Q04",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4103,
@@ -2177,7 +2373,9 @@
     "exam_id": "GMDSS-E06-Q05",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4104,
@@ -2198,7 +2396,9 @@
     "exam_id": "GMDSS-E06-Q06",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4105,
@@ -2219,7 +2419,9 @@
     "exam_id": "GMDSS-E06-Q07",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4106,
@@ -2240,7 +2442,9 @@
     "exam_id": "GMDSS-E06-Q08",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4107,
@@ -2261,7 +2465,9 @@
     "exam_id": "GMDSS-E06-Q09",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4108,
@@ -2282,7 +2488,9 @@
     "exam_id": "GMDSS-E06-Q10",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4109,
@@ -2303,7 +2511,9 @@
     "exam_id": "GMDSS-E06-Q11",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4110,
@@ -2324,7 +2534,9 @@
     "exam_id": "GMDSS-E06-Q12",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4111,
@@ -2345,7 +2557,9 @@
     "exam_id": "GMDSS-E06-Q13",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4112,
@@ -2366,7 +2580,9 @@
     "exam_id": "GMDSS-E06-Q14",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4113,
@@ -2387,7 +2603,9 @@
     "exam_id": "GMDSS-E06-Q15",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4114,
@@ -2408,7 +2626,9 @@
     "exam_id": "GMDSS-E06-Q16",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4115,
@@ -2429,7 +2649,9 @@
     "exam_id": "GMDSS-E06-Q17",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4116,
@@ -2450,7 +2672,9 @@
     "exam_id": "GMDSS-E06-Q18",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4117,
@@ -2471,7 +2695,9 @@
     "exam_id": "GMDSS-E06-Q19",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4118,
@@ -2493,7 +2719,9 @@
     "exam_id": "GMDSS-E06-Q20",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4119,
@@ -2514,7 +2742,9 @@
     "exam_id": "GMDSS-E07-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4120,
@@ -2535,7 +2765,9 @@
     "exam_id": "GMDSS-E07-Q02",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4121,
@@ -2556,7 +2788,9 @@
     "exam_id": "GMDSS-E07-Q03",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4122,
@@ -2577,7 +2811,9 @@
     "exam_id": "GMDSS-E07-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4123,
@@ -2598,7 +2834,9 @@
     "exam_id": "GMDSS-E07-Q07",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4124,
@@ -2619,7 +2857,9 @@
     "exam_id": "GMDSS-E07-Q08",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4125,
@@ -2640,7 +2880,9 @@
     "exam_id": "GMDSS-E07-Q09",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4126,
@@ -2661,7 +2903,9 @@
     "exam_id": "GMDSS-E07-Q10",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4127,
@@ -2682,7 +2926,9 @@
     "exam_id": "GMDSS-E07-Q11",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4128,
@@ -2703,7 +2949,9 @@
     "exam_id": "GMDSS-E07-Q12",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4129,
@@ -2724,7 +2972,9 @@
     "exam_id": "GMDSS-E07-Q13",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4130,
@@ -2745,7 +2995,9 @@
     "exam_id": "GMDSS-E07-Q14",
     "lesson": 3,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4131,
@@ -2766,7 +3018,9 @@
     "exam_id": "GMDSS-E07-Q15",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4132,
@@ -2787,7 +3041,9 @@
     "exam_id": "GMDSS-E07-Q18",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4133,
@@ -2808,7 +3064,9 @@
     "exam_id": "GMDSS-E08-Q01",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4134,
@@ -2829,7 +3087,9 @@
     "exam_id": "GMDSS-E08-Q02",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4135,
@@ -2850,7 +3110,9 @@
     "exam_id": "GMDSS-E08-Q03",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4136,
@@ -2871,7 +3133,9 @@
     "exam_id": "GMDSS-E08-Q04",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4137,
@@ -2892,7 +3156,9 @@
     "exam_id": "GMDSS-E08-Q05",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4138,
@@ -2913,7 +3179,9 @@
     "exam_id": "GMDSS-E08-Q06",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4139,
@@ -2934,7 +3202,9 @@
     "exam_id": "GMDSS-E08-Q07",
     "lesson": 3,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4140,
@@ -2955,7 +3225,9 @@
     "exam_id": "GMDSS-E08-Q08",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4141,
@@ -2976,7 +3248,9 @@
     "exam_id": "GMDSS-E08-Q09",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4142,
@@ -2997,7 +3271,9 @@
     "exam_id": "GMDSS-E08-Q10",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4143,
@@ -3018,7 +3294,9 @@
     "exam_id": "GMDSS-E08-Q11",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4144,
@@ -3039,7 +3317,9 @@
     "exam_id": "GMDSS-E08-Q12",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4145,
@@ -3060,7 +3340,9 @@
     "exam_id": "GMDSS-E08-Q13",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4146,
@@ -3081,7 +3363,9 @@
     "exam_id": "GMDSS-E08-Q14",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4147,
@@ -3102,7 +3386,9 @@
     "exam_id": "GMDSS-E08-Q15",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4148,
@@ -3123,7 +3409,9 @@
     "exam_id": "GMDSS-E08-Q16",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4149,
@@ -3145,7 +3433,9 @@
     "exam_id": "GMDSS-E08-Q17",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4150,
@@ -3166,7 +3456,9 @@
     "exam_id": "GMDSS-E08-Q18",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4151,
@@ -3187,7 +3479,9 @@
     "exam_id": "GMDSS-E08-Q19",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4152,
@@ -3208,7 +3502,9 @@
     "exam_id": "GMDSS-E08-Q20",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4153,
@@ -3229,7 +3525,9 @@
     "exam_id": "GMDSS-E09-Q01",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4154,
@@ -3250,7 +3548,9 @@
     "exam_id": "GMDSS-E09-Q02",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4155,
@@ -3271,7 +3571,9 @@
     "exam_id": "GMDSS-E09-Q03",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4156,
@@ -3292,7 +3594,9 @@
     "exam_id": "GMDSS-E09-Q04",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4157,
@@ -3313,7 +3617,9 @@
     "exam_id": "GMDSS-E09-Q05",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4158,
@@ -3334,7 +3640,9 @@
     "exam_id": "GMDSS-E09-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4159,
@@ -3355,7 +3663,9 @@
     "exam_id": "GMDSS-E09-Q07",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4160,
@@ -3376,7 +3686,9 @@
     "exam_id": "GMDSS-E09-Q08",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4161,
@@ -3397,7 +3709,9 @@
     "exam_id": "GMDSS-E09-Q09",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4162,
@@ -3418,7 +3732,9 @@
     "exam_id": "GMDSS-E09-Q10",
     "lesson": 3,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4163,
@@ -3439,7 +3755,9 @@
     "exam_id": "GMDSS-E09-Q11",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4164,
@@ -3460,7 +3778,9 @@
     "exam_id": "GMDSS-E09-Q12",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4165,
@@ -3481,7 +3801,9 @@
     "exam_id": "GMDSS-E09-Q13",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4166,
@@ -3502,7 +3824,9 @@
     "exam_id": "GMDSS-E09-Q14",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4167,
@@ -3523,7 +3847,9 @@
     "exam_id": "GMDSS-E09-Q15",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4168,
@@ -3544,7 +3870,9 @@
     "exam_id": "GMDSS-E09-Q16",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4169,
@@ -3565,7 +3893,9 @@
     "exam_id": "GMDSS-E09-Q17",
     "lesson": 2,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4170,
@@ -3586,7 +3916,9 @@
     "exam_id": "GMDSS-E09-Q18",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4171,
@@ -3607,7 +3939,9 @@
     "exam_id": "GMDSS-E09-Q19",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4172,
@@ -3628,7 +3962,9 @@
     "exam_id": "GMDSS-E09-Q20",
     "lesson": 8,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4173,
@@ -3649,7 +3985,9 @@
     "exam_id": "GMDSS-E10-Q01",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4174,
@@ -3670,7 +4008,9 @@
     "exam_id": "GMDSS-E10-Q02",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4175,
@@ -3691,7 +4031,9 @@
     "exam_id": "GMDSS-E10-Q04",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4176,
@@ -3712,7 +4054,9 @@
     "exam_id": "GMDSS-E10-Q05",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4177,
@@ -3733,7 +4077,9 @@
     "exam_id": "GMDSS-E10-Q06",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4178,
@@ -3754,7 +4100,9 @@
     "exam_id": "GMDSS-E10-Q07",
     "lesson": 2,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4179,
@@ -3775,7 +4123,9 @@
     "exam_id": "GMDSS-E10-Q08",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4180,
@@ -3796,7 +4146,9 @@
     "exam_id": "GMDSS-E10-Q09",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4181,
@@ -3817,7 +4169,9 @@
     "exam_id": "GMDSS-E10-Q10",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4182,
@@ -3838,7 +4192,9 @@
     "exam_id": "GMDSS-E10-Q11",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4183,
@@ -3859,7 +4215,9 @@
     "exam_id": "GMDSS-E10-Q12",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4184,
@@ -3880,7 +4238,9 @@
     "exam_id": "GMDSS-E10-Q13",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4185,
@@ -3901,7 +4261,9 @@
     "exam_id": "GMDSS-E10-Q14",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4186,
@@ -3922,7 +4284,9 @@
     "exam_id": "GMDSS-E10-Q15",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4187,
@@ -3943,7 +4307,9 @@
     "exam_id": "GMDSS-E10-Q16",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4188,
@@ -3964,7 +4330,9 @@
     "exam_id": "GMDSS-E10-Q17",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4189,
@@ -3985,7 +4353,9 @@
     "exam_id": "GMDSS-E10-Q18",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4190,
@@ -4006,7 +4376,9 @@
     "exam_id": "GMDSS-E10-Q19",
     "lesson": 2,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4191,
@@ -4027,7 +4399,9 @@
     "exam_id": "GMDSS-E10-Q20",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4192,
@@ -4049,7 +4423,9 @@
     "exam_id": "GMDSS-E11-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4193,
@@ -4070,7 +4446,9 @@
     "exam_id": "GMDSS-E11-Q02",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4194,
@@ -4091,7 +4469,9 @@
     "exam_id": "GMDSS-E11-Q03",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4195,
@@ -4112,7 +4492,9 @@
     "exam_id": "GMDSS-E11-Q04",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4196,
@@ -4133,7 +4515,9 @@
     "exam_id": "GMDSS-E11-Q05",
     "lesson": 4,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4197,
@@ -4155,7 +4539,9 @@
     "exam_id": "GMDSS-E11-Q06",
     "lesson": 8,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4198,
@@ -4176,7 +4562,9 @@
     "exam_id": "GMDSS-E11-Q07",
     "lesson": 4,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4199,
@@ -4197,7 +4585,9 @@
     "exam_id": "GMDSS-E11-Q08",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4200,
@@ -4218,7 +4608,9 @@
     "exam_id": "GMDSS-E11-Q09",
     "lesson": 6,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4201,
@@ -4240,7 +4632,9 @@
     "exam_id": "GMDSS-E11-Q10",
     "lesson": 5,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4202,
@@ -4261,7 +4655,9 @@
     "exam_id": "GMDSS-E11-Q11",
     "lesson": 6,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4203,
@@ -4282,7 +4678,9 @@
     "exam_id": "GMDSS-E11-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4204,
@@ -4303,7 +4701,9 @@
     "exam_id": "GMDSS-E11-Q13",
     "lesson": 5,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4205,
@@ -4324,7 +4724,9 @@
     "exam_id": "GMDSS-E11-Q14",
     "lesson": 2,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4206,
@@ -4345,7 +4747,9 @@
     "exam_id": "GMDSS-E11-Q15",
     "lesson": 7,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4207,
@@ -4366,7 +4770,9 @@
     "exam_id": "GMDSS-E11-Q16",
     "lesson": 3,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4208,
@@ -4387,7 +4793,9 @@
     "exam_id": "GMDSS-E11-Q17",
     "lesson": 2,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4209,
@@ -4408,7 +4816,9 @@
     "exam_id": "GMDSS-E11-Q18",
     "lesson": null,
     "lesson_cover": "none",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   },
   {
     "num": 4210,
@@ -4429,6 +4839,8 @@
     "exam_id": "GMDSS-E11-Q19",
     "lesson": 9,
     "lesson_cover": "topic",
-    "license": 40
+    "license": 40,
+    "mediaUrl": "",
+    "mediaType": ""
   }
 ]
