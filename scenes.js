@@ -1733,14 +1733,17 @@ const CR_SIGN_TO_TYPE = {
   84:'fishing_net',                                              // דייג
   20:'sailing_bare', 82:'sailing_bare',                          // מפרשית תחת מנוע
 };
-// boat mode: the vessel's heading continued from the bow through the rose centre, in its highlight colour
+// boat mode: the vessel's heading on ITS OWN spoke, from the bow to the rose centre, in its
+// highlight colour. (It used to continue past the centre, so each line ended on the far side
+// of the rose next to some other letter: P's blue line pointed at G/H, K's at D. Q#2160/2161.)
+const CR_BOAT_W = 30, CR_BOAT_H = 58, CR_BOAT_R = 54;   // bow at R=25, stern at R=83 (just inside the letter box)
 function crHeadingLine(letter, color) {
   const angle = CR_LETTERS.indexOf(letter) * 22.5;
-  const from = crPos(angle, 8), to = crPos(angle, -34);
+  const from = crPos(angle, CR_BOAT_R - CR_BOAT_H / 2 + 2), to = crPos(angle, 0);
   return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color}" stroke-width="4" stroke-dasharray="6,3" opacity="0.95"/>`;
 }
 function crBoat(letter, type) {
-  const w = 40, h = 78, R_BOAT = 46;
+  const w = CR_BOAT_W, h = CR_BOAT_H, R_BOAT = CR_BOAT_R;
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
   const p = crPos(angle, R_BOAT);
   const toC = Math.atan2(CR_CY - p.y, CR_CX - p.x) * 180 / Math.PI;
@@ -1768,18 +1771,53 @@ function crSignBase() {
 // booklet image number -> signal-flag letter, so flags render as a clean CENTERED
 // flag (the booklet flag photos are off-centre with a mast and edge bleed).
 const CR_FLAG_ID = { 92:'C', 93:'N', 95:'B', 98:'A', 104:'O', 106:'Q' };
+// A sign card (plus its dark label strip) must sit NEXT TO its letter and never cover any letter
+// box or highlight ring (Q#2160: the card for G was clamped onto G's ring). Tries the classic
+// spot first (so layouts like Q#2159 stay as they were), then pushes further out / sideways.
+function crCardRect(cx, cy, w, h) {
+  const above = cy >= 200;                     // lower-half cards carry their label above
+  return { x1: cx - w/2, x2: cx + w/2, y1: cy - h/2 - (above ? 17 : 0), y2: cy + h/2 + (above ? 0 : 17) };
+}
+// overlap cost: covering one of the two scenario letters (or another card) is never acceptable,
+// covering a bystander letter is only a tie-breaker
+function crCardHits(r) {
+  const vs = crCardRect.vessels || [];
+  let cost = 0;
+  CR_LETTERS.forEach((l, i) => {
+    const c = crPos(i * 22.5, CR_R_LABEL), rad = 20;   // letter box incl. its highlight ring
+    if (c.x + rad > r.x1 && c.x - rad < r.x2 && c.y + rad > r.y1 && c.y - rad < r.y2) cost += vs.includes(l) ? 1000 : 10;
+  });
+  (crCardRect.taken || []).forEach(t => { if (t.x1 < r.x2 && t.x2 > r.x1 && t.y1 < r.y2 && t.y2 > r.y1) cost += 1000; });
+  return cost;
+}
+function crPlaceCard(letter, w, h, R0) {
+  const angle = CR_LETTERS.indexOf(letter) * 22.5;
+  const clampX = x => Math.max(w/2 + 12, Math.min(348 - w/2, x));
+  const clampY = y => Math.max(118, Math.min(304, y));   // visible band is y~82..338 (slice crop)
+  const p = crPos(angle, R0);
+  const cands = [];
+  // classic spot: bottom letters slide sideways, top letters go to the free top corners
+  const lowSlide = p.y > 304 ? (p.x >= CR_CX ? 46 : -46) : 0;
+  if (p.y < 125) cands.push({ x: p.x < CR_CX ? w/2 + 12 : 348 - w/2, y: 118 });
+  else cands.push({ x: clampX(p.x + lowSlide), y: clampY(p.y) });
+  for (const R of [R0 + 14, R0 + 28, R0 + 42]) {
+    const q = crPos(angle, R);
+    cands.push({ x: clampX(q.x), y: clampY(q.y) });
+  }
+  const side = p.x >= CR_CX ? 1 : -1;
+  for (const dy of [30, -30, 55, -55, 80, -80]) for (const dx of [0, side * 30]) cands.push({ x: clampX(p.x + dx), y: clampY(p.y + dy) });
+  let pick = cands[0], best = Infinity;
+  cands.forEach((c, i) => { const s = crCardHits(crCardRect(c.x, c.y, w, h)) + i; if (s < best) { best = s; pick = c; } });
+  (crCardRect.taken = crCardRect.taken || []).push(crCardRect(pick.x, pick.y, w, h));
+  return pick;
+}
 function crSignCardAbove(letter, shapeIds, withBall) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
-  const p = crPos(angle, CR_R_LABEL + 42);   // same radial offset for every sign
   if (shapeIds.length > 1) {
     // two booklet images for one vessel (e.g. 84 + 85): two small cards side by side, one label
     const n = shapeIds.length, box = 46, S = 38, gap = 6, total = n * box + (n - 1) * gap;
-    const p2 = crPos(angle, CR_R_LABEL + 56);   // two cards are wider: sit a little further out
-    const lowSlide2 = p2.y > 304 ? (p2.x >= CR_CX ? 46 : -46) : 0;
-    let mid = Math.max(total/2 + 8, Math.min(352 - total/2, p2.x + lowSlide2));
-    let cy = Math.max(box/2 + 8, Math.min(304, p2.y));
-    // the scene is cropped (slice) to y~82..338: cards for the top letters go to the free top corners
-    if (p.y < 125) { mid = p.x < CR_CX ? total/2 + 10 : 350 - total/2; cy = 118; }
+    const pos2 = crPlaceCard(letter, total, box, CR_R_LABEL + 56);   // two cards are wider: sit a little further out
+    const mid = pos2.x, cy = pos2.y;
     let out = '';
     shapeIds.forEach((sid, i) => {
       const cxi = mid - total/2 + box/2 + i * (box + gap);
@@ -1793,11 +1831,9 @@ function crSignCardAbove(letter, shapeIds, withBall) {
   }
   const id = shapeIds[0] || null;
   const box = 58, S = 50;
-  // letters in the bottom band: the card is clamped up and would cover the letter, so slide it sideways
-  const lowSlide = p.y > 304 ? (p.x >= CR_CX ? 46 : -46) : 0;
-  let cx = Math.max(box/2 + 12, Math.min(348 - box/2, p.x + lowSlide));
-  let cy = Math.max(box/2 + 8, Math.min(304, p.y)); // keep full offset yet above the y=345 watermark
-  if (p.y < 125) { cx = p.x < CR_CX ? box/2 + 12 : 348 - box/2; cy = 118; }  // visible band is y~82..338: top-letter cards go to the free top corners
+  if (!id && !withBall) return '';
+  const pos = crPlaceCard(letter, box, box, CR_R_LABEL + 42);   // same radial offset for every sign
+  const cx = pos.x, cy = pos.y;
   let inner, label;
   if (id && CR_FLAG_ID[id] && SIGNAL_FLAGS[CR_FLAG_ID[id]]) {
     const fw = 44, fh = 30;                    // flag centred in the card
@@ -1877,6 +1913,8 @@ function generateCompassRoseScene(qText, useBoats) {
   svg += `<line x1="${CR_CX+d45}" y1="${CR_CY-d45}" x2="${CR_CX-d45}" y2="${CR_CY+d45}" stroke="#333" stroke-width="0.5" stroke-dasharray="2,2"/>`;
   // l12 boat overlay: top-view illustration per vessel, sign card above the letter.
   if (useBoats) {
+    crCardRect.taken = [];   // per-scene list of placed sign cards
+    crCardRect.vessels = [observer, target];
     for (const l of CR_LETTERS) svg += (l === observer || l === target) ? crVesselLabel(l) : crVessel(l);
     const signs = crSignsByVessel(txt, [observer, target]);
     const typeOf = l => (signs[l] && signs[l].length && CR_SIGN_TO_TYPE[signs[l][0]]) || 'speedboat';
