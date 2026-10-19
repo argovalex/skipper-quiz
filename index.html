@@ -217,6 +217,7 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
         <button id="lic-30" class="filter-btn active" onclick="setLicense(30)" style="flex:1">רישיון 30</button>
         <button id="lic-11" class="filter-btn" onclick="setLicense(11)" style="flex:1">רישיון 11</button>
         <button id="lic-12" class="filter-btn" onclick="setLicense(12)" style="flex:1">רישיון 12</button>
+        <button id="lic-40" class="filter-btn" onclick="setLicense(40)" style="flex:1">GMDSS</button>
       </div>
       <!-- l30 branches (ענפים). Filled by renderBranchBar(); hidden for other licenses. -->
       <div id="branch-bar" style="display:none;flex-wrap:wrap;gap:4px;margin-bottom:6px"></div>
@@ -359,6 +360,7 @@ function setLicense(lic) {
   document.getElementById('lic-30').classList.toggle('active', lic === 30);
   document.getElementById('lic-11').classList.toggle('active', lic === 11);
   document.getElementById('lic-12').classList.toggle('active', lic === 12);
+  document.getElementById('lic-40').classList.toggle('active', lic === 40);
   currentIdx = -1;
   showEmptyEditor();
   populateTopicFilter();
@@ -793,10 +795,11 @@ function populateTopicFilter() {
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function initApp() {
   const savedLic = parseInt(localStorage.getItem('sq_license'), 10);
-  if (savedLic === 11 || savedLic === 30 || savedLic === 12) activeLicense = savedLic;
+  if (savedLic === 11 || savedLic === 30 || savedLic === 12 || savedLic === 40) activeLicense = savedLic;
   document.getElementById('lic-30').classList.toggle('active', activeLicense === 30);
   document.getElementById('lic-11').classList.toggle('active', activeLicense === 11);
   document.getElementById('lic-12').classList.toggle('active', activeLicense === 12);
+  document.getElementById('lic-40').classList.toggle('active', activeLicense === 40);
   document.getElementById('ghToken').value = localStorage.getItem('sq_gh_token') || '';
   const railwayInput = document.getElementById('railwayUrl');
   if (railwayInput) railwayInput.value = localStorage.getItem('sq_railway_url') || '';
