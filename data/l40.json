@@ -688,14 +688,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה ערוץ עבודה משמש לתקשורת עם מרינה. הכלל: לפי המבחן, מרינה עובדת בערוץ 11, ולכן התשובה היא ג. תשובה א שגויה כי ערוץ 20 הוא ערוץ של רשויות נמל. תשובה ב שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוץ 15 הוא קשר פנים על הסיפון בהספק וואט אחד.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q06",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4026.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזה ערוץ למרינה? ערוץ אחד עשר. זה ג! אז למה לא א? כי ערוץ עשרים הוא של רשויות נמל. ב? ערוץ שלוש עשרה זה גשר לגשר. וד? ערוץ חמש עשרה זה קשר פנים, על הסיפון. וואט אחד."
   },
   {
     "num": 4027,
@@ -711,14 +712,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באמצעות מה רשויות החוף משדרות ממסר מצוקה, MAYDAY RELAY. הכלל: הממסר משודר ב-NAVTEX, ולכן התשובה היא ג. תשובה א שגויה כי COSPAS-SARSAT הוא מערכת משואות. תשובה ב שגויה כי AIS-SART הוא מתקן איתור. תשובה ד שגויה כי זו אינה תשובה ספציפית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q07",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4027.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך רשויות החוף משדרות MAYDAY RELAY? ב NAVTEX! זה ג. אז למה לא א? כי COSPAS SARSAT זו מערכת משואות. ב? AIS SART הוא מתקן איתור. וד? זו לא תשובה ספציפית."
   },
   {
     "num": 4028,
@@ -734,14 +736,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מי קולט את משואת ה-COSPAS-SARSAT. הכלל: המשואה נקלטת ישירות בלוויינים, LEOSAR ו-GEOSAR, ולכן התשובה היא ד. תשובה א שגויה כי ה-RCC מקבל את ההתרעה רק בסוף המסלול. תשובה ב שגויה כי ה-MCC מעבד ומנתב, ולא קולט מהמשואה. תשובה ג שגויה כי LEOLUT ו-GEOLUT הן תחנות קרקע שקולטות מהלוויין, לא מהמשואה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q08",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4028.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מי קולט את המשואה? הלוויינים! LEOSAR ו GEOSAR. זה ד. אז למה לא א? כי ה RCC מקבל את ההתרעה רק בסוף המסלול. ב? ה MCC מעבד ומנתב. הוא לא קולט מהמשואה. וג? LEOLUT ו GEOLUT הן תחנות קרקע. הן קולטות מהלוויין."
   },
   {
     "num": 4029,
@@ -757,14 +760,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך קוראים לתחנת החוף של נאפולי. הכלל: קוראים לתחנת חוף בשם העיר ואחריו RADIO, ולכן התשובה היא ד, NAPOLI RADIO. תשובות א, ב וג שגויות כי PORT, STATION ו-HARBOUR אינם משמשים לקריאה לתחנת חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q09",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4029.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך קוראים לתחנת החוף של נאפולי? שם העיר, ו RADIO. NAPOLI RADIO! זה ד. אז למה לא א, ב או ג? כי PORT, STATION ו HARBOUR לא משמשים לקריאה לתחנת חוף."
   },
   {
     "num": 4030,
@@ -780,14 +784,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כמה פעמים תחנת NAVTEX משדרת ביממה. הכלל: כל ארבע שעות, ובכל שידור עד עשר דקות, ולכן התשובה היא ב. תשובה א שגויה כי כל שש שעות וחמש עשרה דקות הם לא הנתונים. תשובה ג שגויה כי ארבע פעמים ביממה אינן התדירות. תשובה ד שגויה כי שש פעמים נכון, אבל דקה אחת קצרה מדי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q10",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4030.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "תחנת NAVTEX ביממה. כל ארבע שעות! ובכל שידור, עד עשר דקות. זה ב. אז למה לא א? כי כל שש שעות זה לא התדירות. ג? ארבע פעמים, גם לא. וד? שש פעמים נכון. אבל דקה אחת? קצר מדי."
   },
   {
     "num": 4031,
@@ -803,14 +808,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מתי משתמשים במונח DISABLED AND ADRIFT. הכלל: זה כלי שיט ללא שליטה, בסכנה ברורה ומיידית או כזה שזקוק לגרירה בדחיפות, ולכן התשובה היא ד, א ו-ב נכונות. תשובה ג שגויה כי מכולה שנסחפת בזרם אינה כלי שיט.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q11",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4031.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "DISABLED AND ADRIFT. כלי שיט שאין לו שליטה. א? כלי ללא שליטה, בסכנה ברורה ומיידית. נכון. ב? כלי ללא שליטה שזקוק לגרירה בדחיפות. גם נכון. אז ד! אז למה לא ג? כי מכולה שנסחפת היא לא כלי שיט."
   },
   {
     "num": 4032,
@@ -826,14 +832,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה עושים אחרי שידור התרעת שווא ב-DSC. הכלל: מבטלים בהודעה קולית בערוץ 16, ולכן התשובה היא ב. תשובה א שגויה כי הביטול לא נעשה בהודעת DSC בערוץ 70. תשובה ג שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוץ 24 הוא ערוץ שיחות עם תחנת חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4032.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "שידרת התרעת שווא ב D S C. מה עושים? מבטלים בקול. בערוץ שש עשרה! זה ב. אז למה לא א? כי לא מבטלים בהודעת D S C בערוץ שבעים. ג? ערוץ שלוש עשרה זה גשר לגשר. וד? ערוץ עשרים וארבע זה שיחות עם תחנת חוף."
   },
   {
     "num": 4033,
@@ -849,14 +856,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזו עדיפות מבטלים התרעת שווא. הכלל: הביטול מבטל התרעת מצוקה, ולכן הוא משודר בעדיפות מצוקה, והתשובה היא א. תשובה ב שגויה כי דחיפות היא עדיפות נמוכה מדי. תשובה ג שגויה כי בטיחות נמוכה עוד יותר. תשובה ד שגויה כי שגרה היא הנמוכה ביותר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q13",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4033.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ביטול התרעת שווא. באיזו עדיפות? מצוקה! כי אתה מבטל התרעת מצוקה. זה א. אז למה לא ב? כי דחיפות נמוכה מדי. ג? בטיחות, עוד יותר נמוכה. וד? שגרה, הכי נמוכה."
   },
   {
     "num": 4034,
@@ -872,14 +880,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא לאיזה מתקן יש טווח הקשר הגדול ביותר. הכלל: NAVTEX מכסה מאתיים עד ארבע מאות מייל, ולכן התשובה היא ג. תשובה א שגויה כי ה-SART מגיע לכמה מיילים בלבד. תשובה ב שגויה כי AIS הוא VHF וטווחו קצר. תשובה ד שגויה כי DSC בערוץ 70 הוא גם VHF.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q14",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4034.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזה מתקן מגיע הכי רחוק? NAVTEX! מאתיים עד ארבע מאות מייל. זה ג. אז למה לא א? כי ה SART מגיע רק לכמה מילים. ב? AIS זה V H F. טווח קצר. וד? D S C בערוץ שבעים זה גם V H F."
   },
   {
     "num": 4035,
@@ -895,14 +904,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כל כמה זמן בודקים את מצברי תחנת הקשר. הכלל: בדיקה יומית ושבועית, ולכן התשובה היא ב. תשובה א שגויה כי חודשית לא מספיקה. תשובה ג שגויה כי לא בודקים רק לפני הפלגה. תשובה ד שגויה כי התקנה קובעת בדיקה יומית ושבועית, לא רק לפי היצרן.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q15",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4035.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מצברי תחנת הקשר. כל יום! וכל שבוע. זה ב. אז למה לא א? כי חודשית לא מספיקה. ג? לא רק לפני הפלגה. וד? לא רק לפי היצרן. התקנה קובעת יומית ושבועית."
   },
   {
     "num": 4036,
