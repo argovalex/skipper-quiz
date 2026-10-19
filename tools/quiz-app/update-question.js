@@ -212,7 +212,7 @@ async function propagateToCourseDb(done) {
       const q = arr.find(x => String(x.num) === num);
       if (!q) continue;
       if (!q.videoUrl) { q.videoUrl = newUrls[num]; q.rendered_at = new Date().toISOString(); }
-      if (!noRender) q.voiceover_text = buildVoiceover(q);
+      if (!noRender && !(args.includes('--stored-vo') && q.voiceover_text)) q.voiceover_text = buildVoiceover(q);
     }
     raw = JSON.stringify(arr, null, 2);
     if (crlf) raw = raw.replace(/\n/g, '\r\n');
