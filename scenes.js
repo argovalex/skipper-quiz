@@ -1728,6 +1728,7 @@ function crVesselBase() {
 // day-sign image number -> vessel type illustration. Missing = motor (speedboat).
 const CR_SIGN_TO_TYPE = {
   79:'workboat', 87:'workboat', 89:'workboat', 90:'workboat',   // מוגבל בתמרון (RAM)
+  78:'workboat',                                                 // גרר מוגבל בתמרון
   80:'nuc_damaged', 81:'nuc_damaged',                            // ללא שליטה / על שרטון
   84:'fishing_net',                                              // דייג
   20:'sailing_bare', 82:'sailing_bare',                          // מפרשית תחת מנוע
@@ -1770,12 +1771,33 @@ const CR_FLAG_ID = { 92:'C', 93:'N', 95:'B', 98:'A', 104:'O', 106:'Q' };
 function crSignCardAbove(letter, shapeIds, withBall) {
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
   const p = crPos(angle, CR_R_LABEL + 42);   // same radial offset for every sign
+  if (shapeIds.length > 1) {
+    // two booklet images for one vessel (e.g. 84 + 85): two small cards side by side, one label
+    const n = shapeIds.length, box = 46, S = 38, gap = 6, total = n * box + (n - 1) * gap;
+    const p2 = crPos(angle, CR_R_LABEL + 56);   // two cards are wider: sit a little further out
+    const lowSlide2 = p2.y > 304 ? (p2.x >= CR_CX ? 46 : -46) : 0;
+    let mid = Math.max(total/2 + 8, Math.min(352 - total/2, p2.x + lowSlide2));
+    let cy = Math.max(box/2 + 8, Math.min(304, p2.y));
+    // the scene is cropped (slice) to y~82..338: cards for the top letters go to the free top corners
+    if (p.y < 125) { mid = p.x < CR_CX ? total/2 + 10 : 350 - total/2; cy = 118; }
+    let out = '';
+    shapeIds.forEach((sid, i) => {
+      const cxi = mid - total/2 + box/2 + i * (box + gap);
+      out += `<rect x="${(cxi-box/2).toFixed(1)}" y="${(cy-box/2).toFixed(1)}" width="${box}" height="${box}" rx="8" fill="#fff" stroke="#e74c3c" stroke-width="2.4"/>`
+        + `<image href="${crSignBase()}/tmuna_${String(sid).padStart(3,'0')}.png" x="${(cxi-S/2).toFixed(1)}" y="${(cy-S/2).toFixed(1)}" width="${S}" height="${S}"/>`;
+    });
+    const label2 = 'תמונות ' + shapeIds.join(', ');
+    const ly2 = (cy >= 200) ? (cy - box/2 - 9) : (cy + box/2 + 9), lw2 = Math.max(60, label2.length * 6.2);
+    return out + `<rect x="${(mid-lw2/2).toFixed(1)}" y="${(ly2-7).toFixed(1)}" width="${lw2.toFixed(1)}" height="14" rx="3" fill="#0c1a3a"/>`
+      + `<text x="${mid.toFixed(1)}" y="${(ly2+3.5).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${label2}</text>`;
+  }
   const id = shapeIds[0] || null;
   const box = 58, S = 50;
   // letters in the bottom band: the card is clamped up and would cover the letter, so slide it sideways
   const lowSlide = p.y > 304 ? (p.x >= CR_CX ? 46 : -46) : 0;
-  const cx = Math.max(box/2 + 12, Math.min(348 - box/2, p.x + lowSlide));
-  const cy = Math.max(box/2 + 8, Math.min(304, p.y)); // keep full offset yet above the y=345 watermark
+  let cx = Math.max(box/2 + 12, Math.min(348 - box/2, p.x + lowSlide));
+  let cy = Math.max(box/2 + 8, Math.min(304, p.y)); // keep full offset yet above the y=345 watermark
+  if (p.y < 125) { cx = p.x < CR_CX ? box/2 + 12 : 348 - box/2; cy = 118; }  // visible band is y~82..338: top-letter cards go to the free top corners
   let inner, label;
   if (id && CR_FLAG_ID[id] && SIGNAL_FLAGS[CR_FLAG_ID[id]]) {
     const fw = 44, fh = 30;                    // flag centred in the card
@@ -1798,6 +1820,25 @@ function crSignCardAbove(letter, shapeIds, withBall) {
     + `<text x="${cx.toFixed(1)}" y="${(ly+3.5).toFixed(1)}" text-anchor="middle" font-family="Heebo,sans-serif" font-size="8.5" font-weight="700" fill="#fff">${label}</text>`;
 }
 
+// Which booklet images belong to which vessel: each "תמונה N" / "תמונות N ו- M" goes to the
+// nearest vessel letter written BEFORE it in the question ("ספינה (M) ... תמונה 84 ... מפרשית (E) ... תמונה 82").
+// Images with no preceding letter fall back to the target (old behaviour).
+function crSignsByVessel(txt, vessels) {
+  const out = {};
+  const occ = [];
+  const lre = /(?:\(\s*|["״“”]|(?:כלי.(?:ה)?שייט|אופנוע.{0,3}ים|מפרשית|סירת מנוע|סירה(?:\s+דו\s+מנועית)?|ספינה(?:\s+דו\s+מנועית)?|וגם(?:\s+את)?)\s+)([A-P])(?=[\s)"״“”‏.,]|$)/g;
+  let m;
+  while ((m = lre.exec(txt))) occ.push({ i: m.index, l: m[1] });
+  const ire = /תמונ(?:ה|ות)\s*["״“”(]?\s*(\d+)(?:\s*ו-?\s*(\d+))?/g;
+  while ((m = ire.exec(txt))) {
+    const ids = [parseInt(m[1], 10)].concat(m[2] ? [parseInt(m[2], 10)] : []);
+    const prev = occ.filter(o => o.i < m.index && vessels.includes(o.l)).pop();
+    const owner = prev ? prev.l : vessels[1];
+    out[owner] = (out[owner] || []).concat(ids);
+  }
+  for (const k of Object.keys(out)) if (out[k].length > 1 && /ומעליו/.test(txt)) out[k].reverse();
+  return out;
+}
 function generateCompassRoseScene(qText, useBoats) {
   const txt = qText || '';
   const parenMatch = txt.match(/\(\s*([A-P])\s*\)/g);
@@ -1837,10 +1878,12 @@ function generateCompassRoseScene(qText, useBoats) {
   // l12 boat overlay: top-view illustration per vessel, sign card above the letter.
   if (useBoats) {
     for (const l of CR_LETTERS) svg += (l === observer || l === target) ? crVesselLabel(l) : crVessel(l);
-    svg += crBoat(observer, 'speedboat');
-    const targetType = (shapeIds.length && CR_SIGN_TO_TYPE[shapeIds[0]]) || 'speedboat';
-    svg += crBoat(target, targetType);
-    if (shapeIds.length || withBall) svg += crSignCardAbove(target, shapeIds, withBall);
+    const signs = crSignsByVessel(txt, [observer, target]);
+    const typeOf = l => (signs[l] && signs[l].length && CR_SIGN_TO_TYPE[signs[l][0]]) || 'speedboat';
+    svg += crBoat(observer, typeOf(observer));
+    svg += crBoat(target, typeOf(target));
+    if (signs[observer]) svg += crSignCardAbove(observer, signs[observer], false);
+    if (signs[target] || withBall) svg += crSignCardAbove(target, signs[target] || [], withBall);
     svg += crHeadingLine(observer, CR_OBS_COLOR) + crHeadingLine(target, CR_TGT_COLOR);
     svg += crHighlight(observer, CR_OBS_COLOR);
     svg += crHighlight(target, CR_TGT_COLOR);
