@@ -420,14 +420,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה המונחים GEO, MEO ו-LEO מתארים. הכלל: אלה שלושה סוגי לוויינים בגבהים שונים, שמשולבים במערכת GMDSS, ולכן התשובה היא א. תשובה ב שגויה כי אלה לא תחנות NAVTEX. תשובה ג שגויה כי אלה לא סוגי קרינה של משדרים. תשובה ד שגויה כי אלה לא הגדרות של התפשטות גלי רדיו.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E01-Q16",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4016.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "GEO, MEO, LEO. מה זה? שלושה סוגי לוויינים. בשלושה גבהים שונים! LEO נמוך, בערך אלף קילומטר. MEO באמצע. GEO גבוה, שלושים ושישה אלף קילומטר. אלה לוויינים שעובדים עם GMDSS. זה א. אז למה לא ב? כי אלה לא תחנות NAVTEX. ג? גם לא. אלה לא סוגי קרינה. וד? זה לא קשור להתפשטות גלי רדיו."
   },
   {
     "num": 4017,
@@ -443,14 +444,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "אנחנו במרחק 170 מייל ימי מהחוף. הכלל: משדר NAVTEX מכסה בדרך כלל מאתיים עד ארבע מאות מייל, ולכן סביר שנהיה בטווח של תחנת NAVTEX, והתשובה היא א. תשובה ב שגויה כי אזור A1 הוא רק עשרים עד שלושים מייל מתחנת חוף. תשובה ג שגויה כי במצוקה מפעילים EPIRB בכל מרחק. תשובה ד שגויה כי התרעת DSC בערוץ 70 היא VHF, והיא לא תגיע ל-170 מייל.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E01-Q17",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4017.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מאה ושבעים מייל מהחוף. איפה אתה? משדר NAVTEX מכסה מאתיים עד ארבע מאות מייל. אז סביר שאתה בטווח! זה א. אז למה לא ב? כי A1 זה רק עשרים עד שלושים מייל. ג? במצוקה מפעילים EPIRB בכל מרחק. וד? ערוץ שבעים זה V H F. הוא לא יגיע למאה ושבעים מייל."
   },
   {
     "num": 4018,
@@ -466,14 +468,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה המטרה העיקרית של AIS-SART בנטישה. הכלל: ה-AIS-SART משדר מיקום ומאפשר לכלי ההצלה להתבייט עליו בדיוק, ולכן התשובה היא א. תשובה ב שגויה כי ההבחנה על מסך ה-AIS היא תוצאה ולא המטרה העיקרית. תשובה ג שגויה כי ה-Radar-SART הוא מתקן נפרד. תשובה ד שגויה כי ה-AIS-SART נקלט בכלי שיט ובמטוסים בסביבה, ולא במרכזי הצלה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E01-Q18",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4018.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "AIS-SART בנטישה. בשביל מה? שכלי ההצלה יתבייתו עליו! בדיוק. זה א. אז למה לא ב? הבחנה על מסך ה AIS זה רק תוצאה. לא המטרה. ג? ה Radar SART הוא מתקן נפרד. וד? ה AIS SART נקלט בכלי שיט ובמטוסים בסביבה. לא במרכזי הצלה."
   },
   {
     "num": 4019,
@@ -489,14 +492,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מהם ערוצי ה-DUPLEX. הכלל: ערוצי 24, 26 ו-27 הם DUPLEX, ולכן התשובה היא ב, ערוצים 24 ו-27. תשובה א שגויה כי ערוצים 75 ו-76 הם ערוצים מוגבלים בהספק נמוך. תשובה ג שגויה כי 87B ו-88B הם ערוצי AIS. תשובה ד שגויה כי ערוצים 9 ו-10 הם SIMPLEX.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E01-Q19",
     "lesson": 2,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4019.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוצי DUPLEX. מי הם? עשרים וארבע ועשרים ושבע! זה ב. אז למה לא א? כי שבעים וחמישה ושבעים ושישה הם ערוצים מוגבלים, בהספק נמוך. ג? שמונים ושבע B ושמונים ושמונה B זה AIS. וד? תשע ועשר? זה SIMPLEX."
   },
   {
     "num": 4020,
@@ -512,14 +516,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה חשוב להצטייד ב-EPIRB, באזור A1. הכלל: היתרון העיקרי הוא שהיא פועלת אוטומטית בכלי שעומד לטבוע, ולכן התשובה היא ב. תשובה א שגויה כי היא לא גיבוי ל-DSC, היא מערכת נפרדת. תשובה ג שגויה כי האמינות והדיוק אינם ההבדל העיקרי. תשובה ד שגויה כי המרחק הוא לא היתרון ש-A1 מדגיש, היתרון הוא ההפעלה האוטומטית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E01-Q20",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4020.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "למה צריך EPIRB? כי היא פועלת לבד! אוטומטית. כשהספינה שוקעת, אין לך זמן. זה ב. אז למה לא א? כי היא לא גיבוי ל D S C. היא מערכת נפרדת. ג? האמינות היא לא ההבדל העיקרי. וד? המרחק הוא לא היתרון ב A1. היתרון הוא הפעלה אוטומטית."
   },
   {
     "num": 4021,
@@ -535,14 +540,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה פרסום מופיעים פרטים על תחנות NAVTEX. הכלל: הפרטים מופיעים ב-Admiralty List of Radio Signals, כרך 5, ולכן התשובה היא א. תשובה ב שגויה כי List of call signs הוא פרסום של אותות קריאה. תשובה ג שגויה כי כרך 1 הוא כרך אחר. תשובה ד שגויה כי אין פרסום בשם List of Navtex stations.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q01",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4021.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איפה מוצאים פרטים על תחנות NAVTEX? ב ADMIRALTY, כרך חמש! זה א. אז למה לא ב? כי List of call signs זה רשימת אותות קריאה. ג? כרך אחד, זה כרך אחר. וד? פרסום כזה לא קיים."
   },
   {
     "num": 4022,
@@ -558,14 +564,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה מונח מציין סיום אירוע מצוקה. הכלל: SEELONCE FEENEE הוא המונח שמסיים את המצוקה, ולכן התשובה היא ד. תשובות א, ב וג שגויות כי DISTRESS FEENEE, PRUDONCE FEENEE ו-MAYDAY FEENEE אינם מונחים. PRUDONCE הוא רק לקראת סיום, ו-MAYDAY הוא הקריאה עצמה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q02",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4022.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך מסיימים מצוקה? SEELONCE FEENEE! זה ד. אז למה לא א? כי DISTRESS FEENEE לא קיים. ב? גם PRUDONCE FEENEE לא קיים. PRUDONCE זה רק לקראת סיום. וג? MAYDAY FEENEE? לא. MAYDAY זה הקריאה עצמה."
   },
   {
     "num": 4023,
@@ -581,14 +588,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה זה ה-SART. הכלל: זה משיב מכ\"ם שמאפשר לכלי שיט ולמטוסי חיפוש והצלה להתבייט על סירת הצלה שמפעילה אותו, ולכן התשובה היא ג. תשובה א שגויה כי הוא לא מתקן התרעה, הוא לא משדר זיהוי. תשובה ב שגויה כי 406.025 הוא תדר של EPIRB, ו-SART עובד ב-X-band. תשובה ד שגויה כי הוא לא קשור ל-MSI.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q03",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4023.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה זה SART? משיב מכ\"ם. כשמכ\"ם של ספינה או של מטוס מקרין עליו, הוא עונה. וככה מוצאים סירת הצלה! זה ג. אז למה לא א? כי הוא לא מתקן התרעה. הוא לא משדר זיהוי. ב? ארבע מאות ושש זה תדר של EPIRB. ה SART עובד ב X-band. וד? הוא לא קשור ל MSI."
   },
   {
     "num": 4024,
@@ -604,14 +612,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "הפנייה ALL STATIONS SEELONCE MAYDAY בזמן מצוקה מתמשכת. הכלל: SEELONCE MAYDAY היא פנייה של התחנה המפקחת להשתיק תחנות מפריעות, ולכן התשובה היא א. תשובה ב שגויה כי סיום המצוקה הוא SEELONCE FEENEE. תשובה ג שגויה כי בקשת עזרה מעוד כלי שיט היא MAYDAY RELAY. תשובה ד שגויה כי חזרה זהירה לערוץ 16 היא PRUDONCE.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q04",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4024.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ALL STATIONS, SEELONCE MAYDAY. מי מדבר? התחנה המפקחת! והיא משתיקה את כולם. כדי שהמצוקה תתנהל. זה א. אז למה לא ב? כי סיום מצוקה זה SEELONCE FEENEE. ג? בקשת עזרה מכלי שיט נוספים זה MAYDAY RELAY. וד? חזרה זהירה לערוץ שש עשרה זה PRUDONCE."
   },
   {
     "num": 4025,
@@ -627,14 +636,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מי יכול לשמש אחראי ומפקח על אירוע מצוקה. הכלל: ה-OSC, המפקד במקום האירוע, הוא שמפקח, ולכן התשובה היא ב. תשובה א שגויה כי MCC רק מעביר את המידע מהלוויין ולא מפקח. תשובה ג שגויה כי DSC הוא שיטת קשר ולא יחידה. תשובה ד שגויה כי EGC הוא שירות הודעות של לוויין.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q05",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4025.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מי מפקח על אירוע מצוקה? ה OSC! המפקד במקום האירוע. זה ב. אז למה לא א? כי ה MCC רק מעביר מידע מהלוויין. הוא לא מפקח. ג? D S C זו שיטת קשר, לא יחידה. וד? EGC זה שירות הודעות של לוויין."
   },
   {
     "num": 4026,
