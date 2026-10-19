@@ -1736,14 +1736,15 @@ const CR_SIGN_TO_TYPE = {
 // boat mode: the vessel's heading on ITS OWN spoke, from the bow to the rose centre, in its
 // highlight colour. (It used to continue past the centre, so each line ended on the far side
 // of the rose next to some other letter: P's blue line pointed at G/H, K's at D. Q#2160/2161.)
-const CR_BOAT_W = 30, CR_BOAT_H = 58, CR_BOAT_R = 54;   // bow at R=25, stern at R=83 (just inside the letter box)
+// The vessel PNGs are 400x400 squares (boat ~80% of the height), so the drawn boat is CR_BOAT_S tall.
+const CR_BOAT_S = 48, CR_BOAT_R = 54;   // boat spans R~32..76: bow ~R34, stern just inside the letter box
 function crHeadingLine(letter, color) {
   const angle = CR_LETTERS.indexOf(letter) * 22.5;
-  const from = crPos(angle, CR_BOAT_R - CR_BOAT_H / 2 + 2), to = crPos(angle, 0);
+  const from = crPos(angle, CR_BOAT_R - CR_BOAT_S * 0.4), to = crPos(angle, 0);
   return `<line x1="${from.x.toFixed(1)}" y1="${from.y.toFixed(1)}" x2="${to.x.toFixed(1)}" y2="${to.y.toFixed(1)}" stroke="${color}" stroke-width="4" stroke-dasharray="6,3" opacity="0.95"/>`;
 }
 function crBoat(letter, type) {
-  const w = CR_BOAT_W, h = CR_BOAT_H, R_BOAT = CR_BOAT_R;
+  const w = CR_BOAT_S, h = CR_BOAT_S, R_BOAT = CR_BOAT_R;
   const idx = CR_LETTERS.indexOf(letter), angle = idx * 22.5;
   const p = crPos(angle, R_BOAT);
   const toC = Math.atan2(CR_CY - p.y, CR_CX - p.x) * 180 / Math.PI;
@@ -1917,7 +1918,14 @@ function generateCompassRoseScene(qText, useBoats) {
     crCardRect.vessels = [observer, target];
     for (const l of CR_LETTERS) svg += (l === observer || l === target) ? crVesselLabel(l) : crVessel(l);
     const signs = crSignsByVessel(txt, [observer, target]);
-    const typeOf = l => (signs[l] && signs[l].length && CR_SIGN_TO_TYPE[signs[l][0]]) || 'speedboat';
+    // a day sign decides the type; without one, the noun that introduces the letter does
+    // ("מפרשית (G)" = sail, "סירת משוטים (H)" = rowing), otherwise motor
+    const nounType = l => {
+      const re = new RegExp(`(מפרשית|משוטים)\\s*[("״“”]?\\s*${l}(?![A-Za-z])`);
+      const m = txt.match(re);
+      return m ? (m[1] === 'מפרשית' ? 'sailing_sail' : 'rowboat') : null;
+    };
+    const typeOf = l => (signs[l] && signs[l].length && CR_SIGN_TO_TYPE[signs[l][0]]) || nounType(l) || 'speedboat';
     svg += crBoat(observer, typeOf(observer));
     svg += crBoat(target, typeOf(target));
     if (signs[observer]) svg += crSignCardAbove(observer, signs[observer], false);
