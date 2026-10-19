@@ -119,9 +119,14 @@ const VO_FIXES = [
 // only: apply it for the spoken (TTS) text, but NOT for the on-screen/caption text,
 // which must keep the real letter "J" (Alex 2026-09-02). Kept out of VO_FIXES so a
 // display build can skip it; runs last so brackets/glosses are already resolved.
+// License 40 (GMDSS, Alex 2026-10-19): spaced acronyms ("R C C", "D S C") stay Latin letters, not Hebrew
+// transliteration. buildVoiceover sets KEEP_SPACED_ACRONYMS for the duration of one build.
+let KEEP_SPACED_ACRONYMS = false;
+const inSpacedAcronym = (str, off, len) =>
+  /(?:^|[^A-Za-z])[A-Za-z] $/.test(str.slice(0, off)) || /^ [A-Za-z](?![A-Za-z])/.test(str.slice(off + len));
 const LETTER_RULES = [
-  [/(?<=[֐-׿]-)([A-Za-z])(?![A-Za-z-])/g, (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
-  [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g, (m, l) => LATIN_LETTER_HE[l.toUpperCase()] || m],
+  [/(?<=[֐-׿]-)([A-Za-z])(?![A-Za-z-])/g, (m, l, off, str) => (KEEP_SPACED_ACRONYMS && inSpacedAcronym(str, off, m.length)) ? m : (LATIN_LETTER_HE[l.toUpperCase()] || m)],
+  [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g, (m, l, off, str) => (KEEP_SPACED_ACRONYMS && inSpacedAcronym(str, off, m.length)) ? m : (LATIN_LETTER_HE[l.toUpperCase()] || m)],
 ];
 
 // keepLatin=true returns DISPLAY text (letters stay "J"); default transliterates
@@ -205,7 +210,7 @@ function applySpokenFixes(text, keepLatin) {
   return applyVoFixes(text.replace(/\.{3,}/g, '…'), keepLatin).replace(/…/g, '...');
 }
 
-function buildVoiceover(q, keepLatin) {
+function buildVoiceoverRaw(q, keepLatin) {
   const idx = { 'א': 0, 'ב': 1, 'ג': 2, 'ד': 3 }[(q.answer || 'א').trim()] ?? 0;
   const ans = ((q.options || [])[idx] || '').replace(/^[אבגד]\.\s*/, '');
   const letter = (q.answer || 'א').trim();
@@ -221,7 +226,7 @@ function buildVoiceover(q, keepLatin) {
     const LETTER_NAME = { 'א': 'אָלֶף', 'ב': 'בֵּית', 'ג': 'גִּימֶל', 'ד': 'דָּלֶת' };
     // l12 cue letters (Alex 2026-10-14): "אָלף" and "בֶת". They are lexicon variants, not defaults
     // (the lexicon would turn them into אֶלף / skip בת), so the l12 cue is added AFTER the lexicon pass.
-    const l12 = Number(q.license) === 12;
+    const l12 = Number(q.license) === 12 || Number(q.license) === 40;   // l40 (Alex 2026-10-19): same cue letters as l12
     if (l12) Object.assign(LETTER_NAME, { 'א': 'אָלף', 'ב': 'בֶת' });
     const cue = (q.license == null || Number(q.license) === 11) ? `התשובה הנכונה... ${letter}'!` : `התשובה הנכונה היא ${LETTER_NAME[letter] || letter}:`;
     if (l12 && !/^התשובה הנכונה/.test(sp)) {
@@ -238,6 +243,13 @@ function buildVoiceover(q, keepLatin) {
   q1 = applyLexiconText(q1);
   q2 = applyLexiconText(q2);
   return q1 + ' [[PAUSE]] ' + q2;
+}
+
+// Alex 2026-10-19: "לָמָה לא א'" always, never the lexicon's "לֶמָה לא" (he corrected it by hand on every render).
+function buildVoiceover(q, keepLatin) {
+  KEEP_SPACED_ACRONYMS = Number(q.license) === 40;
+  try { return buildVoiceoverRaw(q, keepLatin).replace(/לֶמָה(?= לא )/g, 'לָמָה'); }
+  finally { KEEP_SPACED_ACRONYMS = false; }
 }
 
 // Dual-use module. In Node (update-question.js, render-with-html.js) it exports

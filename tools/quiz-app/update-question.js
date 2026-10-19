@@ -71,7 +71,8 @@ function loadAudio(num) {
 }
 
 async function render(num, q) {
-  const vo = buildVoiceover(q);
+  // --stored-vo: Alex's hand-corrected voiceover_text wins (his niqqud is never overwritten, see CLAUDE.md)
+  const vo = (args.includes('--stored-vo') && q.voiceover_text) ? q.voiceover_text : buildVoiceover(q);
   const html = genHtml(q); // question-specific visual — REQUIRED, else the server renders a generic anchor
   const audio = AUDIO_DIR ? loadAudio(num) : {};
   const ctrl = new AbortController();
