@@ -131,11 +131,21 @@ const LETTER_RULES = [
   [/(?<![A-Za-z-])([A-Za-z])(?![A-Za-z-])/g, (m, l, off, str) => (KEEP_SPACED_ACRONYMS && inSpacedAcronym(str, off, m.length)) ? m : (LATIN_LETTER_HE[l.toUpperCase()] || m)],
 ];
 
+// License 40 (Alex 2026-10-20): acronyms stay Latin letters (V H F, D S C), never the Hebrew phonetic of VO_FIXES.
+let L40_LATIN = false;
+const ACRONYM_RULE = /^\\b(VHF|UTC|GPS|AIS|EPIRB|NUC|SOS|MMSI|DSC|MOB)\\b$/;
+const ACRONYM_SPACED = { VHF: 'V H F', UTC: 'U T C', GPS: 'G P S', AIS: 'A I S', MMSI: 'M M S I', DSC: 'D S C', NUC: 'N U C', SOS: 'S O S', MOB: 'M O B' };
+const ACRONYM_SPACE = /\b(VHF|UTC|GPS|AIS|MMSI|DSC|NUC|SOS|MOB)\b/g;
+
 // keepLatin=true returns DISPLAY text (letters stay "J"); default transliterates
 // them for the TTS voice.
 function applyVoFixes(text, keepLatin) {
   let t = text;
-  for (const [pat, rep] of VO_FIXES) t = t.replace(pat, rep);
+  for (const [pat, rep] of VO_FIXES) {
+    if (L40_LATIN && ACRONYM_RULE.test(pat.source)) continue;
+    t = t.replace(pat, rep);
+  }
+  if (L40_LATIN) t = t.replace(ACRONYM_SPACE, (m, a) => ACRONYM_SPACED[a] || m);
   if (!keepLatin) for (const [pat, rep] of LETTER_RULES) t = t.replace(pat, rep);
   return t.replace(/\s{2,}/g, ' ').trim();
 }
@@ -259,12 +269,13 @@ function fixAnswerLetters(t) {
 
 // Alex 2026-10-19: "לָמָה לא א'" always, never the lexicon's "לֶמָה לא" (he corrected it by hand on every render).
 function buildVoiceover(q, keepLatin) {
-  KEEP_SPACED_ACRONYMS = Number(q.license) === 40;
+  KEEP_SPACED_ACRONYMS = L40_LATIN = Number(q.license) === 40;
   try {
-    const v = buildVoiceoverRaw(q, keepLatin).replace(/לֶמָה(?= לא )/g, 'לָמָה');
+    let v = buildVoiceoverRaw(q, keepLatin).replace(/לֶמָה(?= לא )/g, 'לָמָה');
+    if (L40_LATIN) v = v.replace(/מכמ(?![א-ת"])/g, 'מכ"מ');
     return (Number(q.license) === 40 && !keepLatin) ? fixAnswerLetters(v) : v;
   }
-  finally { KEEP_SPACED_ACRONYMS = false; }
+  finally { KEEP_SPACED_ACRONYMS = L40_LATIN = false; }
 }
 
 // Dual-use module. In Node (update-question.js, render-with-html.js) it exports
