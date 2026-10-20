@@ -960,14 +960,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה ציוד שולח התרעת מצוקה שנקלטת בכלי שיט באזור A1. הכלל: התרעה ברדיו ל-A1 נשלחת ב-DSC, בערוץ 70, ולכן התשובה היא ג, DSC CONTROLLER. תשובה א שגויה כי NAVTEX הוא מקלט. תשובה ב שגויה כי AIS-SART הוא מתקן איתור. תשובה ד שגויה כי EPIRB ו-GPIRB משדרות ללוויין, לא ישירות לכלי שיט.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q16",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4036.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזה ציוד שולח התרעת מצוקה לספינות ב A1? ה D S C! בערוץ שבעים. זה ג. אז למה לא א? כי NAVTEX הוא מקלט. ב? AIS SART הוא מתקן איתור. וד? EPIRB ו GPIRB משדרות ללוויין. לא ישירות לספינות."
   },
   {
     "num": 4037,
@@ -983,14 +984,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באילו ערוצים אפשר ליצור קשר בין שתי יכטות. הכלל: ערוצים 11, 15 ו-13 הם ערוצי קשר בין כלי שיט, ולכן התשובה היא ד. תשובה א שגויה כי ערוץ 16 הוא קריאה ומצוקה, ו-12 ו-20 הם ערוצי נמל. תשובה ב שגויה כי ערוץ 70 הוא דיגיטלי. תשובה ג שגויה כי ערוצים 12 ו-20 הם נמל, ו-24 הוא DUPLEX לתחנת חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q17",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4037.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בין שתי יכטות. אחד עשר, חמש עשרה ושלוש עשרה! זה ד. אז למה לא א? כי ערוץ שש עשרה זה קריאה ומצוקה. ושתים עשרה ועשרים זה נמל. ב? ערוץ שבעים הוא דיגיטלי. וג? עשרים וארבע זה DUPLEX, לתחנת חוף."
   },
   {
     "num": 4038,
@@ -1006,14 +1008,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה מטרת שירות BRIDGE TO BRIDGE ב-VHF. הכלל: תקשורת בין כלי שיט אחד לשני, להגברת בטיחות השייט, ולכן התשובה היא א. תשובה ב שגויה כי תקשורת עם תחנות חוף היא שירות אחר. תשובה ג שגויה כי תקשורת יכטות עם מרינות היא שירות אחר. תשובה ד שגויה כי תקשורת בחיפוש והצלה היא ON-SCENE.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q18",
     "lesson": 8,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4038.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "BRIDGE TO BRIDGE. גשר לגשר. מה המטרה? תקשורת בין שתי ספינות. כדי להגביר את בטיחות השייט! זה א. אז למה לא ב? כי קשר עם תחנות חוף הוא שירות אחר. ג? יכטות ומרינות, גם שירות אחר. וד? חיפוש והצלה זה ON SCENE."
   },
   {
     "num": 4039,
@@ -1029,14 +1032,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא לאיזה מתקן שייך הזיהוי 970881234. הכלל: זיהוי שמתחיל ב-970 הוא של AIS-SART, ולכן התשובה היא ב. תשובה א שגויה כי AIS רגיל משדר M M S I של ספינה, שמתחיל בקוד מדינה. תשובה ג שגויה כי ל-RADAR-SART אין זיהוי. תשובה ד שגויה כי מטוס חיפוש והצלה מתחיל ב-111.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q19",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4039.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "זיהוי שמתחיל בתשע שבע אפס. זה AIS-SART! זה ב. אז למה לא א? כי AIS רגיל משדר M M S I של ספינה. קוד מדינה. ג? ל RADAR SART אין זיהוי. וד? מטוס חיפוש והצלה מתחיל ב 111."
   },
   {
     "num": 4040,
@@ -1053,14 +1057,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באילו נסיבות מבטלים התרעת מצוקה. הכלל: מבטלים כשהתרעה נשלחה בטעות, כשמפעילים EPIRB ולא מוצאים אותה, או כשה-DSC הופעל בשוגג, ולכן התשובה היא ד, א ו-ב נכונות. תשובה ג שגויה כי SART שנופל למים אינו משדר התרעה, ולכן אין מה לבטל. תשובה ה שגויה מאותה סיבה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E02-Q20",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4040.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מתי מבטלים התרעת מצוקה? כשהיא נשלחה בטעות! א, מפעילים EPIRB ולא מוצאים אותה. נכון. ב, D S C הופעל בשוגג. גם נכון. אז ד! אז למה לא ג? כי SART שנופל למים לא משדר התרעה. אין מה לבטל. ולכן גם ה שגויה."
   },
   {
     "num": 4041,
@@ -1077,14 +1082,15 @@
     ],
     "answer": "ה",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא על איזה מתקן אפשר להתבייט כשכלי שיט במצוקה. הכלל: אפשר להתבייט על GPIRB בתדר 121.5, על AIS-SART ועל RADAR-SART, ולכן התשובה היא ה, א, ב וג נכונות. תשובה ד שגויה כי DSC בתדר VHF הוא מתקן קריאה, ולא אמצעי התביית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4041.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "על מה אפשר להתבייט? על GPIRB, בתדר מאה עשרים ואחד נקודה חמש! על AIS-SART. ועל RADAR SART. כולם! זה ה. ולמה לא ד? כי D S C הוא מתקן קריאה. הוא לא אמצעי התביית."
   },
   {
     "num": 4042,
@@ -1100,14 +1106,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא אילו הודעות הן הודעות בטיחות. הכלל: הודעת NAVTEX מסוג L והודעת NAVTEX שמתריעה על סערה טרופית הן הודעות בטיחות, ולכן התשובה היא ד, א ו-ג נכונות. תשובה ב שגויה כי בקשת גרירה בערוץ 16 היא דחיפות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q02",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4042.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה נחשב הודעת בטיחות? הודעת NAVTEX מסוג L. נכון. הודעת NAVTEX על סערה טרופית. גם נכון. אז ד! אז למה לא ב? כי בקשת גרירה בערוץ שש עשרה זו דחיפות."
   },
   {
     "num": 4043,
@@ -1123,14 +1130,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באילו ערוצים מתקיימת תקשורת של כלי שייט קטנים. הכלל: ערוצים 11 ו-79, ולכן התשובה היא א. תשובה ב שגויה כי ערוצים 75 ו-76 הם ערוצים מוגבלים בהספק נמוך. תשובה ג שגויה כי ערוצים 12 ו-14 הם ערוצי נמל. תשובה ד שגויה כי ערוצים 15 ו-17 הם קשר פנים על הסיפון.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q03",
     "lesson": 2,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4043.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "תנועת כלי שייט קטנים. ערוצים אחד עשר ושבעים ותשעה. זה א! אז למה לא ב? כי שבעים וחמישה ושבעים ושישה הם ערוצים מוגבלים. ג? שתים עשרה וארבע עשרה זה נמל. וד? חמש עשרה ושבע עשרה זה קשר פנים. על הסיפון."
   },
   {
     "num": 4044,
@@ -1146,14 +1154,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזו הצהרה שגויה. הכלל: 406 הוא תדר של משואה במגה הרץ, לא של NAVTEX, ולכן התשובה היא ד. ההצהרות האחרות נכונות: ערוצי AIS בתחום הימי של VHF, VHF נייד משמש לקשר בין סירות הצלה, ו-RADAR-SART אינו משדר זיהוי ולכן אינו מתקן התרעה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q04",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4044.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזו הצהרה שגויה? ד! תדרי NAVTEX הם ארבע מאות ותשעים וחמש מאות שמונה עשרה קילו הרץ. ארבע מאות ושש? זה משואה. במגה הרץ. ההצהרות האחרות נכונות. ערוצי AIS ב V H F. VHF נייד לסירות הצלה. ו RADAR SART לא משדר זיהוי."
   },
   {
     "num": 4045,
@@ -1169,14 +1178,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך בודקים את תקשורת ה-DSC בלב ים. הכלל: בבדיקה פנימית באמצעים שמספק היצרן, אחת ליממה, ולכן התשובה היא ב. תשובה א שגויה כי לא שולחים קריאה לתחנת חוף בכל יום. תשובה ג שגויה כי לא כל שבוע מול תחנה. תשובה ד שגויה כי כן צריך לבדוק, גם אם המכשיר פעיל כל הזמן.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q05",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4045.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בדיקת D S C בלב ים. בדיקה פנימית של היצרן. פעם ביממה! זה ב. אז למה לא א? כי לא שולחים קריאה לתחנת חוף כל יום. ג? גם לא כל שבוע. וד? כן צריך לבדוק. גם אם המכשיר פעיל כל הזמן."
   },
   {
     "num": 4046,
