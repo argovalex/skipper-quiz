@@ -17687,9 +17687,10 @@
     "answer_confirmed": false,
     "explanation": "",
     "approved_for_publish": false,
-    "videoUrl": "",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792509981/skipper-quiz/gwcxkxyeecaqzlr0kv7k.mp4",
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "rendered_at": "2026-10-20T15:26:22.663Z"
   },
   {
     "num": 2221,
