@@ -146,7 +146,7 @@ function applyVoFixes(text, keepLatin) {
     t = t.replace(pat, rep);
   }
   if (L40_LATIN) t = t.replace(ACRONYM_SPACE, (m, a) => ACRONYM_SPACED[a] || m);
-  if (!keepLatin) for (const [pat, rep] of LETTER_RULES) t = t.replace(pat, rep);
+  if (!keepLatin && !L40_LATIN) for (const [pat, rep] of LETTER_RULES) t = t.replace(pat, rep);   // l40: single Latin letters stay Latin too
   return t.replace(/\s{2,}/g, ' ').trim();
 }
 
@@ -273,6 +273,7 @@ function buildVoiceover(q, keepLatin) {
   try {
     let v = buildVoiceoverRaw(q, keepLatin).replace(/לֶמָה(?= לא )/g, 'לָמָה');
     if (L40_LATIN) v = v.replace(/מכמ(?![א-ת"])/g, 'מכ"מ');
+    if (L40_LATIN) v = v.replace(/(שתים|שלוש|ארבע|חמש|שש|שבע|שמונ[א-ת\u0591-\u05C7]?|תשע)\s+ע[\u0591-\u05C7]*ש[\u0591-\u05C7]*ר[\u0591-\u05C7]*ה(?![א-ת])/g, (m, a) => a + ' עֶשְׂרֵה');   // lexicon gives עָשָׂרָה
     return (Number(q.license) === 40 && !keepLatin) ? fixAnswerLetters(v) : v;
   }
   finally { KEEP_SPACED_ACRONYMS = L40_LATIN = false; }
