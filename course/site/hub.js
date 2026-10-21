@@ -25,7 +25,7 @@ const VIDEO = { slug: 'video', name: 'סרטונים', blurb: 'סרטונים ק
 // Licenses. href: the course page; the rest go to /kursim/ until they open.
 const COURSES = [
   { id: 'ofnoa', name: 'אופנוע ים', state: 'פתוח להרשמה', live: true, href: '/kursim/#buy', img: 'jetski',
-    text: '13 שיעורים, כל שאלות המאגר הרשמי והסבר בקול לכל שאלה.' },
+    text: '13 שיעורים, כל שאלות המאגר הרשמי והסבר בקול לכל שאלה. לא עברת? כספך בחזרה.*' },
   { id: '12', name: 'משיט 12', state: 'בהכנה', href: '/kursim/#12', img: 'speedboat', text: 'סירת מנוע.' },
   { id: '30', name: 'משיט 30', state: 'בהמשך', href: '/kursim/#30', img: 'sail', text: '' },
   { id: '40', name: 'משיט 40', state: 'בהמשך', href: '/kursim/#40', img: 'chart', text: '' },
@@ -71,7 +71,7 @@ function footer() {
       <div><h4>צור קשר</h4><ul><li><a href="https://wa.me/972523682486" target="_blank" rel="noopener">וואטסאפ · 052-368-2486</a></li><li><a href="tel:+972523682486">להתקשר · 052-368-2486</a></li><li><a href="mailto:alex@alargov.com">alex@alargov.com</a></li></ul></div>
       <div><h4>מידע</h4><ul><li><a href="/legal/terms-of-service.html">תנאי שימוש</a></li><li><a href="/legal/privacy-policy.html">מדיניות פרטיות</a></li><li><a href="/legal/refund-policy.html">ביטולים והחזרים</a></li><li><a href="/legal/accessibility-statement.html">הצהרת נגישות</a></li></ul></div>
     </div>
-    <div class="fbottom"><span>© אלכס ארגוב, סקיפר דיגיטלי</span><span>* בכפוף לתנאי ההחזר</span></div>
+    <div class="fbottom"><span>© אלכס ארגוב, סקיפר דיגיטלי</span><span><a href="/legal/refund-policy.html">* בכפוף לתנאי ההחזר</a></span></div>
   </div>
 </footer>
 <script>
