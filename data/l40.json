@@ -2291,7 +2291,7 @@
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4085.jpg",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4085b.jpg",
     "mediaType": "image",
     "voiceover_text": "שֶאלָה מִספָר 4085. האלפאבית הפונטי הבינלאומי יבטא את הצירוף 10 PM?. [[PAUSE]] התשובה הנכונה היא גִּימֶל: איך אומרים עשר פי אִם באלפבית הפונטי? אחד, UNAONE. אפס, NADAZERO. אחר כך PAPA MIKE! זה גִּימֶל. הכתיב של האפס משתנָה בין מבחנים. אבל זו התשובה היחידה שכולה פונטית. אז לָמָה לא אָלף ו בֶת? כי זה משפט באנגלית רגילה. ודָלֶת? POST MERIDIAN הן לא מילים פונטיות.",
     "explanation_spoken": "איך אומרים עשר פי אם באלפבית הפונטי? אחד, UNAONE. אפס, NADAZERO. אחר כך PAPA MIKE! זה ג. הכתיב של האפס משתנה בין מבחנים. אבל זו התשובה היחידה שכולה פונטית. אז למה לא א ו ב? כי זה משפט באנגלית רגילה. וד? POST MERIDIAN הן לא מילים פונטיות.",
@@ -2312,14 +2312,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה גורם ל-SART להתחיל לשדר. הכלל: הוא ממתין ומתחיל לשדר רק כשקרינה ממכ\"ם X-band נקלטת אצלו, ולכן התשובה היא ד. תשובה א שגויה כי השלכה למים לא מפעילה אותו. תשובה ב שגויה כי הפעלה ידנית ותלייה במקום גבוה רק מכינות אותו. תשובה ג שגויה כי ה-SART עובד ב-X-band ולא ב-S-band.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4086.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה גורם ל SART לשדר? הוא ממתין. עד שמכ\"ם X-band מקרין עליו. אז הוא עונה! זה ד. אז למה לא א? כי השלכה למים לא מפעילה אותו. ב? הפעלה ידנית ותלייה במקום גבוה רק מכינות אותו. וג? מכ\"ם S-band? לא. ה SART עובד ב X-band."
   },
   {
     "num": 4087,
@@ -2335,14 +2336,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למי משדרים פרטי מסע TR. הכלל: דיווח מסע נשלח לתחנת חוף רלוונטית, ולכן התשובה היא א. תשובה ב שגויה כי RCC מטפל בחיפוש והצלה. תשובה ג שגויה כי אחראי תפעול נמלים לא מקבל דיווחי מסע. תשובה ד שגויה כי מרינה אינה תחנת חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q08",
     "lesson": 6,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4087.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "פרטי מסע, TR. למי משדרים? לתחנת חוף רלוונטית! זה א. אז למה לא ב? כי RCC מטפל בחיפוש והצלה. ג? אחראי תפעול נמלים לא מקבל דיווחי מסע. וד? מרינה היא לא תחנת חוף."
   },
   {
     "num": 4088,
@@ -2358,14 +2360,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מהי קריאה מקוצרת בערוץ 16. הכלל: קוראים לתחנה פעם אחת ומזדהים פעמיים, ולכן התשובה היא ג. תשובה א שגויה כי DSC היא שיטה אחרת. תשובה ב שגויה כי DUAL WATCH הוא פקד במכשיר. תשובה ד שגויה כי שלוש פעמים ושלוש פעמים היא הקריאה המלאה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q09",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4088.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קריאה מקוצרת בערוץ שש עשרה. קוראים לתחנה פעם אחת, ומזדהים פעמיים! זה ג. אז למה לא א? כי D S C היא שיטה אחרת. ב? DUAL WATCH הוא פקד במכשיר. וד? שלוש פעמים ושלוש פעמים זו הקריאה המלאה."
   },
   {
     "num": 4089,
@@ -2381,14 +2384,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה מתקן NAVTEX קולט בשפה היוונית. הכלל: בתדר 490 קילו הרץ משדרים בשפה לאומית, ולכן התשובה היא ג. תשובה א שגויה כי 4209.5 קילו הרץ הוא תדר HF. תשובה ב שגויה כי הקרבה לחוף היווני אינה הסיבה. תשובה ד שגויה כי 518 קילו הרץ הוא תדר האנגלית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q10",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4089.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "למה ה NAVTEX קולט ביוונית? כי הוא קולט בארבע מאות ותשעים קילו הרץ! שם משדרים בשפה לאומית. זה ג. אז למה לא א? כי ארבעת אלפים מאתיים ותשע זה HF. ב? הקרבה לחוף היווני לא מכריעה. וד? חמש מאות שמונה עשרה זה תדר האנגלית."
   },
   {
     "num": 4090,
@@ -2404,14 +2408,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כמה זמן הסוללה של ה-SART מחזיקה במצב המתנה. הכלל: ארבעה ימים, תשעים ושישה שעות, ולכן התשובה היא ד. תשובה א שגויה כי שמונה שעות הוא זמן השידור. תשובות ב וג שגויות כי יומיים ושלושה ימים הם פחות מארבעה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q11",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4090.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "כמה זמן הסוללה של ה SART מחזיקה בהמתנה? ארבעה ימים! זה ד. אז למה לא א? כי שמונה שעות זה זמן השידור. ב? יומיים, קצר מדי. וג? שלושה ימים, גם פחות."
   },
   {
     "num": 4091,
@@ -2427,14 +2432,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה עושים אחרי שידור התרעת שווא ב-DSC. הכלל: מבטלים בהודעה קולית בערוץ 16, ולכן התשובה היא ב. תשובה א שגויה כי הביטול לא נעשה בהודעת DSC בערוץ 70. תשובה ג שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוץ 24 הוא ערוץ שיחות עם תחנת חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4091.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "שידרת התרעת שווא. מבטלים בקול. בערוץ שש עשרה! זה ב. אז למה לא א? כי לא מבטלים בהודעת D S C בערוץ שבעים. ג? ערוץ שלוש עשרה זה גשר לגשר. וד? ערוץ עשרים וארבע זה שיחות עם תחנת חוף."
   },
   {
     "num": 4092,
@@ -2450,14 +2456,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה משמשת עדיפות דחיפות. הכלל: להודעות המכילות מידע על בטיחות של כלי נייד או אדם, ולכן התשובה היא ג. תשובה א שגויה כי בטיחות החיים בים היא מצוקה. תשובה ב שגויה כי הודעות ניווט חשובות הן בטיחות. תשובה ד שגויה כי תקשורת במקום האירוע היא שירות נפרד.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q13",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4092.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "עדיפות דחיפות. הודעות על בטיחות של כלי נייד או של אדם! זה ג. אז למה לא א? כי בטיחות החיים בים זו מצוקה. ב? הודעות ניווט חשובות זו בטיחות. וד? תקשורת במקום האירוע היא שירות נפרד."
   },
   {
     "num": 4093,
@@ -2473,14 +2480,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מתי מצדיק לשדר אות בטיחות. הכלל: כשיש אזהרות מטאורולוגיות או אזהרות ניווט, ולכן התשובה היא ג. תשובות א וב שגויות כי סכנה לאנייה או לאדם היא דחיפות או מצוקה. תשובה ד שגויה כי תקלה ב-NAVTEX לא מצדיקה אות בטיחות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q14",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4093.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מתי משדרים אות בטיחות? כשיש אזהרות מזג אוויר או אזהרות ניווט! זה ג. אז למה לא א ו ב? כי סכנה לאנייה או לאדם זו דחיפות או מצוקה. וד? תקלה ב NAVTEX לא מצדיקה אות בטיחות."
   },
   {
     "num": 4094,
@@ -2496,14 +2504,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כל כמה זמן חייב להיבדק ציוד חובה של VHF-DSC. הכלל: בדיקה יומית היא המינימום, ולכן התשובה היא א. תשובות ב, ג וד שגויות כי בדיקה שנתית, ביקורת SOLAS שנתית או בדיקה חודשית אינן מספיקות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q15",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4094.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ציוד חובה של V H F D S C. כל כמה זמן בודקים? כל יום! זה א. אז למה לא ב, ג או ד? כי שנתי, ביקורת שנתית או חודשי, זה לא מספיק. המינימום הוא בדיקה יומית."
   },
   {
     "num": 4095,
@@ -2519,14 +2528,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה ציוד משמש לשלוח התרעות מצוקה וקריאות לתחנות ייעודיות. הכלל: DSC CONTROLLER, ולכן התשובה היא ג. תשובה א שגויה כי NAVTEX הוא מקלט. תשובה ב שגויה כי AIS-SART הוא מתקן איתור. תשובה ד שגויה כי EPIRB ו-GPIRB משדרות ללוויין.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q16",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4095.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזה ציוד שולח התרעות מצוקה וקריאות לתחנות ייעודיות? ה D S C CONTROLLER! זה ג. אז למה לא א? כי NAVTEX הוא מקלט. ב? AIS SART הוא מתקן איתור. וד? EPIRB ו GPIRB משדרות ללוויין."
   },
   {
     "num": 4096,
