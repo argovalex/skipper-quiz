@@ -103,11 +103,10 @@ preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק �
 | `back-office.html`, `monitor.html`, `publish-review.html` | הפצה ופרסום | פעיל, השרת (`publisher/index.js`) מקשר אליהם |
 | `admin.html`, `records.html` | ניהול מדריכים ורשומות קורס | פעיל, `course/api` מקשר אליהם |
 | `fix-requests.html` | בקשות תיקון | פעיל, `hub.html` מקשר |
-| `landing.html`, `skipper-app.html` | גרסאות מוקדמות של האתר והאפליקציה, הוחלפו ע"י `course/` | נשארו כי ייתכן שיש אליהם קישורים חיצוניים ב-Pages. החלטה של אלכס |
 
 **הכלל:** דפים נשארים בשורש כי GitHub Pages מגיש אותם בכתובת `argovalex.github.io/skipper-quiz/<דף>` וקוד השרתים מקשר לשם. העברה לתיקייה תשבור קישורים.
 
-**ארכיון (2026-10-21):** הוצאו מ-git ונשמרו מקומית ב-`_archive/root-2026-10-21/` (מוחרג ב-gitignore): `demo.html`, `question-bank.html`, `review-l11.html`, `skipper-control.html` + `config.json` שלו, `skipper_quiz_studio.html`, `setup-github.ps1` (ריק), `s3-041_zoom.jpeg`, וקבצים מקומיים לא-עקובים (PDF, תמונות, `questions-Alex.json`, `raspen_5_diverse.json`, `chk.mp3`, `scratch_gen_all.py`). שחזור: העתקה חזרה מהארכיון, או `git checkout e98758d7 -- <קובץ>`.
+**ארכיון (2026-10-21):** הוצאו מ-git ונשמרו מקומית ב-`_archive/root-2026-10-21/` (מוחרג ב-gitignore): `demo.html`, `question-bank.html`, `review-l11.html`, `skipper-control.html` + `config.json` שלו, `skipper_quiz_studio.html`, `landing.html` ו-`skipper-app.html` (הוחלפו ע"י `course/`), `setup-github.ps1` (ריק), `s3-041_zoom.jpeg`, וקבצים מקומיים לא-עקובים (PDF, תמונות, `questions-Alex.json`, `raspen_5_diverse.json`, `chk.mp3`, `scratch_gen_all.py`). שחזור: העתקה חזרה מהארכיון, או `git checkout e98758d7 -- <קובץ>`.
 `LAUNCH_PLAN.md` ← `course/docs/`. `review_license11.xlsx` ← `references/`. `queue.html` כבר לא קיים.
 נשארו בשורש בכוונה: `scratch_niqqud.py` (CLAUDE.md מפנה אליו), `scratch_vo_u6b.txt` (ברירת המחדל של `vo-editor.html`), `auth.js` (ריק אבל נטען מ-4 דפים).
 
