@@ -1232,14 +1232,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא אילו תכונות יש במשואת EPIRB או GPIRB. הכלל: היא משדרת ב-121.5 מגה הרץ להתבייתות, יש לה מנגנון שחרור וציפה אוטומטיים, והיא משדרת התרעה בתדר 406.031 מגה הרץ, ולכן התשובה היא ד, כל התשובות נכונות. כל אחת מהתשובות א, ב וג נכונה, ולכן אין מסיח שגוי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4046.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "אילו תכונות יש במשואה? שידור בתדר מאה עשרים ואחד נקודה חמש להתבייתות. נכון! מנגנון שחרור וציפה אוטומטיים. גם נכון! ושידור התרעה בארבע מאות ושש נקודה אפס שלושים ואחד מגה הרץ. נכון! אז ד. כולן."
   },
   {
     "num": 4047,
@@ -1255,14 +1256,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה ביטוי משתיקים תחנה מפריעה לקשר מצוקה. הכלל: תחנה שאינה המפקחת משתיקה את מי שמפריע ב-SEELONCE DISTRESS, ולכן התשובה היא ד. תשובה א שגויה כי MAYDAY FEENEE אינו מונח. תשובה ב שגויה כי SEELONCE FEENEE מסיים את המצוקה. תשובה ג שגויה כי MAYDAY RELAY הוא העברת הודעת מצוקה של כלי אחר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q07",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4047.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך משתיקים תחנה מפריעה? SEELONCE DISTRESS! זה ד. אז למה לא א? כי MAYDAY FEENEE לא קיים. ב? SEELONCE FEENEE מסיים את המצוקה. וג? MAYDAY RELAY זה העברת הודעת מצוקה של כלי אחר."
   },
   {
     "num": 4048,
@@ -1278,14 +1280,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה מתייחסים בהגדרת הטווח של אזור A1. הכלל: A1 מוגדר לפי הכיסוי של תחנת חוף שמאזינה בערוץ 70, ערוץ הקריאה הדיגיטלית, ולכן התשובה היא ב. תשובה א שגויה כי ערוץ 16 הוא קול. תשובה ג שגויה כי 518 קילו הרץ הוא NAVTEX. תשובה ד שגויה כי רק ב נכונה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q08",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4048.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך מגדירים את הטווח של A1? לפי ערוץ שבעים! ערוץ הקריאה הדיגיטלית. אם תחנת חוף שומעת אותך ב D S C, אתה ב A1. זה ב. אז למה לא א? כי ערוץ שש עשרה הוא קול. ג? חמש מאות שמונה עשרה קילו הרץ זה NAVTEX. וד? כל הנ\"ל? לא. רק ב."
   },
   {
     "num": 4049,
@@ -1301,14 +1304,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה גובה משייטים לוויני LEOSAT ב-COSPAS-SARSAT. הכלל: LEO הוא מסלול נמוך, בערך אלף קילומטר, ולכן התשובה היא א. תשובה ב שגויה כי 36000 קילומטר הוא גובה של לוויין GEO. תשובה ג שגויה כי 10000 קילומטר אינו גובה של אף סוג. תשובה ד שגויה כי הגובה קבוע ואינו משתנה לפי צורך.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q09",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4049.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "לוויני LEOSAT. LEO, מסלול נמוך. בערך אלף קילומטר! זה א. אז למה לא ב? כי שלושים ושישה אלף זה GEO. ג? עשרת אלפים, לא שייך לאף סוג. וד? הגובה קבוע. הוא לא משתנה לפי צורך."
   },
   {
     "num": 4050,
@@ -1324,14 +1328,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה עושים כשקולטים בערוץ 70 התרעת דחיפות לכל התחנות. הכלל: עוברים לערוץ 16 ומאזינים להודעת הדחיפות, ולכן התשובה היא ג. תשובה א שגויה כי לא מאשרים התרעה שנשלחה לכל התחנות. תשובה ב שגויה כי אפשר לקלוט התרעות דחיפות ב-DSC. תשובה ד שגויה כי לא ממתינים בערוץ 70.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q10",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4050.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קלטת בערוץ שבעים התרעת דחיפות לכולם. מה עושים? עוברים לערוץ שש עשרה! ומאזינים להודעה. זה ג. אז למה לא א? כי לא מאשרים התרעה שנשלחה לכולם. ב? כן אפשר לקלוט התרעת דחיפות ב D S C. וד? לא ממתינים בערוץ שבעים."
   },
   {
     "num": 4051,
@@ -1347,14 +1352,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה מספר MMSI שייך לקבוצת כלי שיט לא ישראליים. הכלל: מספר קבוצה מתחיל באפס אחד ואחריו ה-MID, ולכן התשובה היא ג, 044280001, שה-MID שלו אינו ישראלי. תשובה א שגויה כי 0428 הוא MID של ישראל. תשובה ב שגויה כי שני אפסים בהתחלה הם תחנת חוף. תשובה ד שגויה כי מספר שמתחיל ב-MID הוא ספינה בודדת.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q11",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4051.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קבוצה של כלי שיט. מתחילה באפס אחד! ואחריו ה MID. אפס, ארבע ארבע שתיים. לא ישראלי. זה ג. אז למה לא א? כי אפס ארבע שתיים שמונה זה MID של ישראל. ב? שני אפסים בהתחלה זה תחנת חוף. וד? מספר שמתחיל ב MID זה ספינה בודדת."
   },
   {
     "num": 4052,
@@ -1370,14 +1376,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מתי משתמשים במונח MAYDAY RELAY. הכלל: כשמשדרים הודעת מצוקה של כלי שייט אחר או בשמו, ולכן התשובה היא ב. תשובה א שגויה כי השתקת תחנה מפריעה היא SEELONCE. תשובה ג שגויה כי סיום מצוקה הוא SEELONCE FEENEE. תשובה ד שגויה כי ביטול התרעת שווא הוא בהודעת ביטול.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4052.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MAYDAY RELAY. מתי? כשאתה משדר הודעת מצוקה בשם כלי שייט אחר! זה ב. אז למה לא א? כי השתקה זה SEELONCE. ג? סיום מצוקה זה SEELONCE FEENEE. וד? ביטול התרעת שווא זו הודעת ביטול."
   },
   {
     "num": 4053,
@@ -1393,14 +1400,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש המונח MID. הכלל: MID הוא קוד המדינה, שלוש הספרות הראשונות בזיהוי MMSI, ולכן התשובה היא ב. תשובה א שגויה כי MID אינו קיצור של MIDDLE. תשובה ג שגויה כי הוא לא קוד של מכשיר AIS. תשובה ד שגויה כי הוא לא קוד של מכשיר NAVTEX.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q13",
     "lesson": 3,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4053.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה זה MID? קוד המדינה! שלוש הספרות הראשונות ב M M S I. זה ב. אז למה לא א? כי הוא לא קיצור של MIDDLE. ג? הוא לא קוד של מכשיר A I S. וד? גם לא של NAVTEX."
   },
   {
     "num": 4054,
@@ -1416,14 +1424,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כמה זמן חובה להאזין לערוץ 70 בלב ים. הכלל: עשרים וארבע שעות ביממה, ולכן התשובה היא ג. תשובה א שגויה כי ארבע שעות לא מספיקות. תשובה ב שגויה כי לא רק בזמן מצוקה. תשובה ד שגויה כי שמונה שעות לא מספיקות. ה-DSC חייב להאזין כל הזמן כדי לקלוט התרעות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q14",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4054.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "האזנה בערוץ שבעים. כמה? עשרים וארבע שעות ביממה! זה ג. אז למה לא א? כי ארבע שעות לא מספיקות. ב? לא רק במצוקה. וד? שמונה שעות, גם לא. ה D S C חייב להאזין כל הזמן."
   },
   {
     "num": 4055,
@@ -1439,14 +1448,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזו עדיפות קשר מטפלים באדם בים שאבד קשר העין עמו. הכלל: אדם בים הוא סכנת חיים מיידית, ולכן התשובה היא ד, DISTRESS. תשובה א שגויה כי IMPORTANT הוא רמה של NAVTEX ולא עדיפות קשר. תשובה ב שגויה כי SAFETY היא עדיפות נמוכה. תשובה ג שגויה כי URGENCY מתאימה לבעיה בלי סכנת חיים מיידית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q15",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4055.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "אדם בים. איבדת אותו מהעין. סכנת חיים מיידית! זה DISTRESS. זה ד. אז למה לא א? כי IMPORTANT זו רמה של NAVTEX. לא עדיפות קשר. ב? SAFETY היא עדיפות נמוכה. וג? URGENCY זה בלי סכנת חיים מיידית."
   },
   {
     "num": 4056,
