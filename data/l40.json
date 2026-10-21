@@ -1772,14 +1772,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה עושים כש-EPIRB הופעלה בטעות. הכלל: מודיעים לתחנת חוף או ל-RCC בערוץ 16 על התרעת שווא, ולכן התשובה היא ד. תשובה א שגויה כי לא מודיעים לכל כלי השיט, אלא למי שמטפל בהצלה. תשובה ב שגויה כי LUT היא תחנת קרקע אוטומטית. תשובה ג שגויה כי MCC הוא מרכז ניתוב ולא מקבל קריאות קול.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q06",
     "lesson": 8,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4066.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "הפעלת EPIRB בטעות. מכבים, ומודיעים! לתחנת חוף או ל RCC. בערוץ שש עשרה. זה ד. אז למה לא א? כי לא מודיעים לכל כלי השיט. מודיעים למי שמטפל בהצלה. ב? LUT היא תחנת קרקע אוטומטית. וג? MCC הוא מרכז ניתוב. הוא לא מקבל קריאות קול."
   },
   {
     "num": 4067,
@@ -1795,14 +1796,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך מעבירים מידע על אזהרות מטאורולוגיות ואזהרות נווט לציבור כלי השיט. הכלל: בשידורים מתוזמנים של תחנות NAVTEX, ולכן התשובה היא ג. תשובה א שגויה כי AIS אינו מערכת להפצת מידע כזה. תשובה ב שגויה כי מתאם MSI אזורי לא מופעל לפי בקשה של כלי שיט. תשובה ד שגויה כי רשימות תעבורה הן הודעות לספינות מסוימות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q07",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4067.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך מעבירים אזהרות מזג אוויר וניווט לכולם? NAVTEX! שידורים מתוזמנים. זה ג. אז למה לא א? כי AIS הוא לא מערכת להפצת מידע כזה. ב? מתאם MSI לא מופעל לפי בקשה של כלי שיט. וד? רשימת תעבורה זו הודעה לספינות מסוימות."
   },
   {
     "num": 4068,
@@ -1818,14 +1820,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה ערוץ הוקצה לתקשורת בין שני כלי שייט לפינוי נתיב. הכלל: ערוץ 13 הוא ערוץ הגשר לגשר, ולכן התשובה היא ב. תשובה א שגויה כי ערוץ 06 הוא חיפוש והצלה בין ספינות. תשובה ג שגויה כי ערוץ 20 הוא של רשויות נמל. תשובה ד שגויה כי ערוץ 11 הוא לתנועת כלי שייט קטנים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q08",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4068.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "שתי ספינות מפנות נתיב אחת לשנייה. ערוץ שלוש עשרה! גשר לגשר. זה ב. אז למה לא א? כי ערוץ שש זה חיפוש והצלה. ג? ערוץ עשרים הוא של רשויות נמל. וד? ערוץ אחד עשר זה לכלי שייט קטנים."
   },
   {
     "num": 4069,
@@ -1841,14 +1844,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזו הודעה משתמשים ב-PAN PAN. הכלל: PAN PAN היא דחיפות, למשל בקשה לגרירה, ולכן התשובה היא ב. תשובות א וד שגויות כי הודעה על שטח ירי או על מגדלור לא תקין היא בטיחות. תשובה ג שגויה כי חיפוש אחר אדם במים הוא מצוקה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q09",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4069.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "PAN PAN. דחיפות! בקשה לגרירה. זה ב. אז למה לא א? כי שטח ירי זה בטיחות. ג? חיפוש אחר אדם במים זו מצוקה. וד? מגדלור לא תקין, גם בטיחות."
   },
   {
     "num": 4070,
@@ -1864,14 +1868,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה ביטוי מציין סיום מצב מצוקה. הכלל: SEELONCE FEENEE, ולכן התשובה היא ב. תשובה א שגויה כי SEELONCE MAYDAY משתיק את כולם באמצע המצוקה. תשובה ג שגויה כי SEELONCE DISTRESS הוא של תחנה שאינה המפקחת. תשובה ד שגויה כי SEELONCE OUT אינו קיים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q10",
     "lesson": 9,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4070.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך מסיימים מצוקה? SEELONCE FEENEE! זה ב. אז למה לא א? כי SEELONCE MAYDAY משתיק את כולם באמצע המצוקה. ג? SEELONCE DISTRESS הוא של תחנה שאינה המפקחת. וד? SEELONCE OUT לא קיים."
   },
   {
     "num": 4071,
@@ -1887,14 +1892,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כמה אזורי NAVAREA יש בחלוקה העולמית. הכלל: עשרים ואחד, ולכן התשובה היא ג. תשובות א, ב וד שגויות כי 12, 16 ו-24 אינם מספר האזורים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q11",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4071.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "כמה אזורי NAVAREA יש בעולם? עשרים ואחד! זה ג. אז למה לא א, ב או ד? כי שתים עשרה, שש עשרה ועשרים וארבע הם לא מספר האזורים."
   },
   {
     "num": 4072,
@@ -1910,14 +1916,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה משמש התדר 121.5 מגה הרץ. הכלל: זה תדר ביות אחרון לאיתור משואת רדיו ימית, ולכן התשובה היא א. תשובה ב שגויה כי שידורי MSI הם ב-NAVTEX. תשובה ג שגויה כי הזיהוי האוטומטי של המשואה הוא ב-406. תשובה ד שגויה כי זה לא ערוץ של מכשיר ה-VHF הימי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q12",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4072.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מאה עשרים ואחד נקודה חמש מגה הרץ. תדר ביות אחרון! כדי לאתר משואה. זה א. אז למה לא ב? כי MSI זה NAVTEX. ג? הזיהוי האוטומטי של המשואה הוא ב ארבע מאות ושש. וד? זה לא ערוץ של מכשיר ה V H F הימי."
   },
   {
     "num": 4073,
@@ -1933,14 +1940,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא לכמה רמות מחולקות הודעות NAVTEX. הכלל: VITAL, IMPORTANT ו-ROUTINE, ולכן התשובה היא א. תשובה ב שגויה כי DISTRESS, URGENCY ו-SAFETY הן עדיפויות הקשר הקולי. תשובה ג שגויה כי ההודעות לא שוות, VITAL משודרת מיד. תשובה ד שגויה כי א נכונה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q13",
     "lesson": 9,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4073.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "רמות ב NAVTEX. VITAL, IMPORTANT, ROUTINE! זה א. אז למה לא ב? כי DISTRESS, URGENCY, SAFETY זה עדיפויות של הקשר הקולי. ג? ההודעות לא שוות. VITAL משודרת מיד. וד? יש תשובה נכונה. א."
   },
   {
     "num": 4074,
@@ -1956,14 +1964,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה אירוע משתמשים בקוד SECURITE. הכלל: באירועים של בטיחות השייט או אזהרה מטאורולוגית, ולכן התשובה היא ד. תשובה א שגויה כי איש צוות שנפל לים הוא מצוקה. תשובה ב שגויה כי מצב רפואי קשה הוא דחיפות. תשובה ג שגויה כי א וב שגויות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q14",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4074.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מתי SECURITE? כשיש אירוע של בטיחות שייט או אזהרת מזג אוויר. זה ד. אז למה לא א? כי איש צוות שנפל לים זו מצוקה. ב? מצב רפואי קשה זו דחיפות. וג? א וב שגויות."
   },
   {
     "num": 4075,
@@ -1979,14 +1988,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא אילו מתקנים מספקים דיוק מיקום של GPS. הכלל: אלה שיש בהם מקלט GPS, AIS-SART, GPIRB ו-AIS, ולכן התשובה היא ב. תשובה א שגויה כי RADAR-SART לא משדר מיקום. תשובה ג שגויה כי EPIRB בלי GPS מאותרת לפי דופלר. תשובה ד שגויה כי NAVTEX הוא מקלט ו-RADAR-SART לא משדר מיקום.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q15",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4075.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "אילו מתקנים נותנים דיוק של G P S? אלה שיש בהם מקלט G P S! AIS SART, GPIRB ו AIS. זה ב. אז למה לא א? כי RADAR SART לא משדר מיקום. ג? EPIRB בלי G P S מאותרת לפי דופלר. וד? NAVTEX הוא מקלט."
   },
   {
     "num": 4076,
