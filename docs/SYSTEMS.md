@@ -13,6 +13,23 @@ data/lXX.json  ──►  עורך (index.html / vo-editor) ──►  רינד�
      └─► lessons/<lic>/cards/ ─► tools/lesson ─► mp4 ממותג                       └─► הפצה (TikTok / WA / FB / YouTube)
 ```
 
+## פקודה אחת: `tools/sq.js`
+
+`node tools/sq.js <פקודה>` או `npm run <פקודה> -- <ארגומנטים>`. בלי ארגומנטים מדפיס עזרה.
+
+| פקודה | מה עושה |
+|---|---|
+| `status` | git status + פער מול origin (פתיחת סשן) |
+| `sync` | pull ff-only (בלי autostash) + `gen-vo-lexicon` |
+| `preflight <num...> [--license N]` | sync + בדיקה שתמונת `mediaUrl` כבר ב-GitHub |
+| `check <num...>` | preflight + `vo-check` (מילים חדשות בלי ניקוד) |
+| `render <num...> [--license N]` | preflight + `update-question.js` (כל הדגלים שלו עוברים) |
+| `stored <num...>` | l12 מ-`voiceover_text` שמור + propagate |
+| `propagate <num...>` | `update-question --no-render` (רונדר כבר בעורך) |
+| `pausemap`, `lexicon`, `html`, `topics`, `brand`, `quota` | עטיפות לסקריפטים הקיימים |
+
+preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק את קבצי המדיה החסרים, ו-`--no-sync` מדלג על pull ועל המילון.
+
 ## 1. בנק השאלות (מקור אמת)
 
 | מה | איפה |
@@ -94,7 +111,7 @@ data/lXX.json  ──►  עורך (index.html / vo-editor) ──►  רינד�
 ## תוכנית ייעול
 
 1. ✅ מפת מערכות (המסמך הזה).
-2. CLI אחד (`npm run <פקודה>`) מעל הסקריפטים הקיימים, שאוכף pull, gen-vo-lexicon ו-push media לבד.
+2. ✅ CLI אחד (`tools/sq.js`, `npm run <פקודה>`) שאוכף pull, gen-vo-lexicon ו-push media לבד.
 3. מנוע ניקוד אחד לכל המסלולים.
 4. צנרת VO משותפת (טקסט ← מילון ← ElevenLabs ← master.py) לשאלות, שיעורים ו-l12.
 5. ניקוי השורש: דפי ניהול ל-`admin/`, קבצים בינאריים ל-`references/`/`media/`, מחיקת scratch. לבדוק קודם מה Pages ו-Railway מגישים.

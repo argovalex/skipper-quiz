@@ -1,4 +1,19 @@
 {
+  "scripts": {
+    "sq": "node tools/sq.js",
+    "status": "node tools/sq.js status",
+    "sync": "node tools/sq.js sync",
+    "check": "node tools/sq.js check",
+    "render": "node tools/sq.js render",
+    "stored": "node tools/sq.js stored",
+    "propagate": "node tools/sq.js propagate",
+    "pausemap": "node tools/sq.js pausemap",
+    "lexicon": "node tools/sq.js lexicon",
+    "html": "node tools/sq.js html",
+    "topics": "node tools/sq.js topics",
+    "brand": "node tools/sq.js brand",
+    "quota": "node tools/sq.js quota"
+  },
   "dependencies": {
     "@higgsfield/client": "^0.2.6",
     "@whiskeysockets/baileys": "^7.0.0-rc14",
