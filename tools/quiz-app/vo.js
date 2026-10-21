@@ -150,36 +150,50 @@ function applyVoFixes(text, keepLatin) {
   return t.replace(/\s{2,}/g, ' ').trim();
 }
 
-// Applies Alex's niqqud lexicon (references/niqqud-lexicon.md -> vo-lexicon.js)
-// to content words (מָצוֹף, מֶמוּכַּנִים, סִימָן, עֹגֶן...), so every render is
-// vocalised automatically without a manual pass. Whole-word, matched THROUGH any
-// existing niqqud so a form is re-set to Alex's. Collision-prone shorts and the
-// multi-letter homographs (למנוע/צופה) are already filtered out of vo-lexicon.js;
-// flag letters are handled separately in LATIN_LETTER_HE above. [[PAUSE]] has no
-// Hebrew so it survives untouched. Same logic as index.html's applyLexiconText.
+// THE niqqud engine: applies Alex's lexicon (references/niqqud-lexicon.md ->
+// vo-lexicon.js) to content words. The only implementation: question renders,
+// the editor's "מילון" button, lessons and the delivered vo.txt all use it
+// (Python calls it through tools/quiz-app/niqqud-cli.js). Rules
+// (reports/niqqud-engines-2026-10-21.md):
+//   - Single pass, longest entry first: a phrase entry ("שלוש עֶשְׂרֵה") is never
+//     re-vocalised by a shorter one ("עשרה").
+//   - Existing niqqud is never overwritten: only plain words match, so Alex's manual
+//     forms (כְּלֵי שייט, לָמָה לא) survive. override:true matches THROUGH niqqud and
+//     re-sets the form; only the editor button uses it (after Dicta, so Alex's forms win).
+//   - 1-2 letter forms only from SHORT_OK; letter names (אי/בי/די/בת...) collide with
+//     words and flag letters are handled by LATIN_LETTER_HE above.
+//   - mode 'quiz' (default) skips QUIZ_DENY homographs whose lexicon form is only right
+//     in lessons (למנוע = "to the engine", צופה = "coated"); mode 'lesson' keeps them.
+// [[PAUSE]] has no Hebrew so it survives untouched.
 const HE_MARKS = '[\\u0591-\\u05C7]*';
+const SHORT_OK = new Set(['או', 'קו', 'אם', 'עד', 'פה', 'אף']);
+const QUIZ_DENY = new Set(['למנוע', 'צופה']);
 function lexiconPairs() {
   if (typeof VO_LEXICON !== 'undefined') return VO_LEXICON;          // browser global (vo-lexicon.js)
   try { return require('./vo-lexicon.js').VO_LEXICON; } catch (e) { return []; }  // Node
 }
-// Single pass (one alternation, longest entry first): a phrase entry ("שלוש עֶשְׂרֵה") must not
-// be re-vocalised afterwards by a shorter homograph entry ("עשרה" → עָשָׂרָה).
-function applyLexiconText(text) {
-  const pairs = lexiconPairs();
-  if (!pairs.length) return text;
-  const map = new Map();
-  const alts = pairs.map(([src, dst], i) => {
-    map.set(i, dst);
-    return `(?<g${i}>` + [...src].map(ch =>
-      /[א-ת]/.test(ch) ? ch + HE_MARKS
-      : /\s/.test(ch) ? '\\s+'
-      : ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    ).join('') + ')';
-  });
+const _lexRx = {};
+function lexiconRegex(mode, override) {
+  const key = mode + (override ? '+o' : '');
+  if (_lexRx[key]) return _lexRx[key];
+  const pairs = lexiconPairs().filter(([src]) =>
+    ((src.match(/[א-ת]/g) || []).length >= 3 || SHORT_OK.has(src)) &&
+    !(mode === 'quiz' && QUIZ_DENY.has(src)));
+  if (!pairs.length) return (_lexRx[key] = null);
+  const alts = pairs.map(([src], i) => `(?<g${i}>` + [...src].map(ch =>
+    /[א-ת]/.test(ch) ? ch + (override ? HE_MARKS : '')
+    : /\s/.test(ch) ? '\\s+'
+    : ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  ).join('') + ')');
   const pat = new RegExp(`(?<![\\u05D0-\\u05EA\\u0591-\\u05C7])(?:${alts.join('|')})(?![\\u05D0-\\u05EA\\u0591-\\u05C7])`, 'g');
-  return text.replace(pat, (...args) => {
+  return (_lexRx[key] = { pat, dst: pairs.map(p => p[1]) });
+}
+function applyLexiconText(text, { mode = 'quiz', override = false } = {}) {
+  const rx = lexiconRegex(mode, override);
+  if (!rx) return text;
+  return text.replace(rx.pat, (...args) => {
     const groups = args[args.length - 1];
-    for (const k in groups) if (groups[k] !== undefined) return map.get(Number(k.slice(1)));
+    for (const k in groups) if (groups[k] !== undefined) return rx.dst[Number(k.slice(1))];
     return args[0];
   });
 }

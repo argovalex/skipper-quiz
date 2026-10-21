@@ -341,8 +341,8 @@ body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;direc
 <script src="auth.js"></script>
 <script src="scenes.js?v=9"></script>
 <script src="github-api.js?v=9"></script>
-<script src="tools/quiz-app/vo.js?v=14"></script>
-<script src="tools/quiz-app/vo-lexicon.js?v=2"></script>
+<script src="tools/quiz-app/vo.js?v=15"></script>
+<script src="tools/quiz-app/vo-lexicon.js?v=3"></script>
 <script>
 // ── State ──────────────────────────────────────────────────────────────────
 let questions = [];
@@ -523,7 +523,7 @@ function applyLexicon(btn) {
   const statusEl = document.getElementById('rm-preview-status');
   const text = ta.value;
   if (!text.trim()) return;
-  ta.value = applyLexiconText(text);
+  ta.value = applyLexiconText(text, { override: true });   // after Dicta: Alex's forms win
   if (currentIdx >= 0) questions[currentIdx].voiceover_text = ta.value;
   statusEl.textContent = '✅ הוחל המילון שלך — עברו על התוצאה, תקנו ידנית אם צריך, ואז 🔊 האזן';
 }

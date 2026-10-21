@@ -48,10 +48,10 @@ preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק �
 | עורך המילון | `vo-editor.html` + `tools/vo-editor-server.js`, פורט 8899, עולה ב-login (Scheduled Task `SkipperQuiz VO Editor`) |
 | ייצוא ל-JS | `node tools/quiz-app/gen-vo-lexicon.js` ← `tools/quiz-app/vo-lexicon.js` |
 | בניית VO לשאלה | `tools/quiz-app/vo.js` (`buildVoiceover`), בדיקה: `vo-check.js` |
-| ניקוד ב-Python | `tools/lesson/niqqud.py` (שיעורים), `scratch_niqqud.py` (`apply_lexicon`, ל-vo.txt) |
+| **מנוע הניקוד (יחיד)** | `applyLexiconText` ב-`tools/quiz-app/vo.js`. Python (`tools/lesson/niqqud.py`, `scratch_niqqud.py`) קורא לו דרך `niqqud-cli.js`. בדיקות: `npm test` |
 | קול | ElevenLabs, שיבוט `825LDODpKbomKDZoqVG5`, `eleven_v4`. כלים: `tools/voice/` (`elevenlabs-clone.js`, `el-quota.js`), מסטרינג `tools/voice/master.py` |
 
-**כפילות ידועה:** ארבעה מימושי ניקוד (`vo-lexicon.js`, `tools/lesson/niqqud.py`, `scratch_niqqud.py`, `tools/add-niqqud.py`). יעד: מנוע אחד (שלב 3 בתוכנית למטה).
+כללי המנוע: לא דורס ניקוד קיים (חוץ מכפתור "מילון" בעורך, `override`), מעבר אחד הארוך קודם, מילים קצרות רק `או קו אם עד פה אף`, `למנוע`/`צופה` רק בשיעורים (`mode:'lesson'`). רקע: [reports/niqqud-engines-2026-10-21.md](../reports/niqqud-engines-2026-10-21.md).
 
 ## 3. הפקת וידאו
 
@@ -112,6 +112,6 @@ preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק �
 
 1. ✅ מפת מערכות (המסמך הזה).
 2. ✅ CLI אחד (`tools/sq.js`, `npm run <פקודה>`) שאוכף pull, gen-vo-lexicon ו-push media לבד.
-3. מנוע ניקוד אחד לכל המסלולים.
+3. ✅ מנוע ניקוד אחד לכל המסלולים.
 4. צנרת VO משותפת (טקסט ← מילון ← ElevenLabs ← master.py) לשאלות, שיעורים ו-l12.
 5. ניקוי השורש: דפי ניהול ל-`admin/`, קבצים בינאריים ל-`references/`/`media/`, מחיקת scratch. לבדוק קודם מה Pages ו-Railway מגישים.

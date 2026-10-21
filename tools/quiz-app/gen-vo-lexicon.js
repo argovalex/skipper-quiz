@@ -7,10 +7,9 @@
 //
 //   node tools/quiz-app/gen-vo-lexicon.js
 //
-// Short 1-2 letter plain forms (אי/אם/אף/בי/אן/עד/פה) are SKIPPED: they collide
-// with common Hebrew words ("אם"=if) and flag-letter renderings, so a blind
-// whole-word replace would create many false positives. Only 3+ Hebrew-letter
-// forms are emitted. Mirrors load_lexicon() in tools/lesson/niqqud.py.
+// Emits every vocalised entry (first wins on duplicate spellings). Which entries
+// apply where (short words, quiz-only homographs) is decided by the engine in
+// vo.js, not here.
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -20,13 +19,6 @@ const LEXICON = path.join(ROOT, 'references', 'niqqud-lexicon.md');
 const OUT = path.join(ROOT, 'tools', 'quiz-app', 'vo-lexicon.js');
 const MARK = /[֑-ׇ]/;                 // niqqud / cantillation
 const heLetters = s => (s.match(/[א-ת]/g) || []).length;
-
-// Multi-letter homographs whose lexicon form is only correct in the LESSON
-// pipeline but WRONG in the quiz corpus, so they must not be blanket-applied at
-// question render: למנוע=to-prevent (lexicon לָמָנוע = "to the engine"),
-// צופה=observer/צוֹפֶה (lexicon צוּפה = "coated"). The 1-2 letter homographs
-// (אם/אי/אף...) are already dropped by the heLetters<3 rule below.
-const DENY = new Set(['למנוע', 'צופה']);
 
 const md = fs.readFileSync(LEXICON, 'utf8');
 const lines = md.split(/\r?\n/);
@@ -45,8 +37,7 @@ for (const raw of lines) {
   src = src.split(' (')[0].trim();                        // drop "(hint)"
   if (!src || !dst) continue;
   if (!MARK.test(dst)) continue;                          // dst must be vocalised
-  if (heLetters(src) < 3) continue;                       // skip collision-prone shorts
-  if (DENY.has(src)) continue;                            // skip multi-letter homographs
+  if (!heLetters(src)) continue;
   if (seen.has(src)) continue;                            // first wins on dupes
   seen.add(src);
   pairs.push([src, dst]);
@@ -56,7 +47,7 @@ pairs.sort((a, b) => b[0].length - a[0].length);           // longest first
 const body = pairs.map(([p, n]) => `  ${JSON.stringify([p, n])},`).join('\n');
 const out = `// AUTO-GENERATED from references/niqqud-lexicon.md by
 // tools/quiz-app/gen-vo-lexicon.js. Do NOT edit by hand — edit the .md and re-run.
-// ${pairs.length} entries (3+ Hebrew-letter forms; short collision-prone words skipped).
+// ${pairs.length} entries. Filtering (short words, quiz-only homographs) happens in vo.js.
 const VO_LEXICON = [
 ${body}
 ];

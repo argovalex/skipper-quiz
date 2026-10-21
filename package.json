@@ -12,7 +12,8 @@
     "html": "node tools/sq.js html",
     "topics": "node tools/sq.js topics",
     "brand": "node tools/sq.js brand",
-    "quota": "node tools/sq.js quota"
+    "quota": "node tools/sq.js quota",
+    "test": "node tools/quiz-app/niqqud-test.js"
   },
   "dependencies": {
     "@higgsfield/client": "^0.2.6",
