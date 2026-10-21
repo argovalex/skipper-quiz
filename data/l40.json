@@ -1502,14 +1502,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באילו פרקי זמן מפעילים את ה-NAVTEX בהפלגה בים. הכלל: המקלט פועל כל הזמן, והוא קולט אוטומטית את ההודעות שתוכנת לקלוט, ולכן התשובה היא ג. תשובה א שגויה כי כל 4 שעות הוא מחזור השידור של התחנה ולא זמן ההפעלה. תשובה ב שגויה כי אין מחזור של 6 שעות. תשובה ד שגויה כי טווח 200 עד 400 מייל הוא טווח הקליטה, לא תנאי להפעלה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q16",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4056.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מתי מפעילים את ה NAVTEX בים? כל הזמן! הוא קולט לבד. זה ג. אז למה לא א? כי כל ארבע שעות זה מחזור השידור של התחנה. לא זמן ההפעלה. ב? אין מחזור של שש שעות. וד? מאתיים עד ארבע מאות מייל זה טווח הקליטה. זה לא תנאי להפעלה."
   },
   {
     "num": 4057,
@@ -1525,14 +1526,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך נמנעים מקליטת הודעות מיותרות ב-NAVTEX. הכלל: מתכנתים את המכשיר לבטל תחנות ואזורים לא רצויים וסוגי הודעות לא נחוצים, ולכן התשובה היא ד. תשובה א שגויה כי אין צורך להיות בקרבת התחנה. תשובה ב שגויה כי אי אפשר לסנן לפי לוח זמנים. תשובה ג שגויה כי כיבוי והדלקה אינם מסננים הודעות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q17",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4057.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך מונעים הודעות מיותרות ב NAVTEX? מתכנתים אותו! מבטלים תחנות, אזורים וסוגי הודעות שלא צריך. זה ד. אז למה לא א? כי אין צורך להיות ליד התחנה. ב? אי אפשר לסנן לפי לוח זמנים. וג? כיבוי והדלקה לא מסננים כלום."
   },
   {
     "num": 4058,
@@ -1548,14 +1550,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה עושים אחרי שידור התרעת שווא ב-VHF DSC. הכלל: מכבים את ה-DSC ומדליקים מיד, עורכים הודעה קולית לביטול ומשדרים אותה בערוץ 16 לכל התחנות, ולכן התשובה היא ב. תשובה א שגויה כי הביטול אינו הודעת DSC בערוץ 70. תשובה ג שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוץ 24 הוא ערוץ שיחות עם תחנת חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q18",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4058.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "שידרת התרעת שווא. מכבים את ה D S C, ומדליקים מיד. ואז הודעה קולית לביטול. בערוץ שש עשרה, לכל התחנות! זה ב. אז למה לא א? כי לא מבטלים בהודעת D S C בערוץ שבעים. ג? ערוץ שלוש עשרה זה גשר לגשר. וד? ערוץ עשרים וארבע זה שיחות עם תחנת חוף."
   },
   {
     "num": 4059,
@@ -1571,14 +1574,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה פקד גורם להאזנה בו-זמנית על שני ערוצים. הכלל: DW, DUAL WATCH, מאזין לערוץ 16 ולערוץ נוסף, ולכן התשובה היא ג. תשובה א שגויה כי SCAN סורק ערוצים רבים ולא שניים. תשובה ב שגויה כי DIM מעמעם את המסך. תשובה ד שגויה כי SQUELCH מסנן רעשים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q19",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4059.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזה פקד מאזין לשני ערוצים? DW! DUAL WATCH. ערוץ שש עשרה, ועוד ערוץ. זה ג. אז למה לא א? כי SCAN סורק הרבה ערוצים. ב? DIM מעמעם את המסך. וד? SQUELCH מסנן רעשים."
   },
   {
     "num": 4060,
@@ -1594,14 +1598,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ההודעה CYPRUS RADIO THIS IS HAIFA TR OVER: כלי השייט חיפה פונה לתחנת החוף בקפריסין. הכלל: TR הוא דיווח מסע, ולכן התשובה היא ג, הכלי מודיע שהוא מתכוון לשדר פרטי מסע. תשובה א שגויה כי אין כאן תעבורת בטיחות. תשובה ב שגויה כי חיפה היא כלי שייט ולא תחנת חוף. תשובה ד שגויה כי TR אינו שיחת רדיוטלפון.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q20",
     "lesson": 6,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4060.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "CYPRUS RADIO, THIS IS HAIFA, TR, OVER. מי מדבר? כלי השייט חיפה. מה הוא רוצה? לדווח פרטי מסע! TR. זה ג. אז למה לא א? כי אין כאן תעבורת בטיחות. ב? חיפה היא כלי שייט, לא תחנת חוף. וד? TR הוא לא שיחת רדיוטלפון."
   },
   {
     "num": 4061,
@@ -1617,14 +1622,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך מגדילים את טווח ה-SART. הכלל: קרינת מכ\"ם נעה בקו ישר, ולכן ממקמים את ה-SART גבוה ככל האפשר, והתשובה היא ב. תשובה א שגויה כי הכנסה למים מורידה אותו נמוך ומקצרת את הטווח. תשובה ג שגויה כי אין ל-SART מצב הספק. תשובה ד שגויה כי הוא עובד ב-X-band ולא ב-S-band.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q01",
     "lesson": 8,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4061.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איך מגדילים את הטווח של SART? שמים אותו גבוה! ככל האפשר. כי קרינת מכ\"ם נעה בקו ישר. זה ב. אז למה לא א? כי במים הוא נמוך. הטווח קצר. ג? אין ל SART מצב הספק. וד? הוא עובד ב X-band. לא ב S-band."
   },
   {
     "num": 4062,
@@ -1640,14 +1646,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ההודעה SECURITE שלוש פעמים, ALL STATIONS, THIS IS TOKYO RADIO, TSUNAMI ALERT FOLLOWS. הכלל: SECURITE היא עדיפות בטיחות, שלישית, ולכן התשובה היא ב. תשובה א שגויה כי עדיפות רביעית אינה קיימת. תשובה ג שגויה כי שנייה היא PAN PAN. תשובה ד שגויה כי ראשונה היא MAYDAY.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q02",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4062.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "SECURITE שלוש פעמים. בטיחות. זה עדיפות שלישית! זה ב. אז למה לא א? כי עדיפות רביעית לא קיימת. ג? שנייה זה PAN PAN. וד? ראשונה זה MAYDAY."
   },
   {
     "num": 4063,
@@ -1663,14 +1670,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באילו ערוצים מותר לשדר בהספק וואט אחד בכל הנסיבות. הכלל: ערוצים 75 ו-76, וגם 15 ו-17, ולכן התשובה היא ד, ב ו-ג נכונות. תשובה א שגויה כי ערוצים 12 ו-14 הם ערוצי נמל, ושם משדרים בהספק מלא.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q03",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4063.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "וואט אחד בלבד. ערוצים שבעים וחמישה ושבעים ושישה. נכון! וגם חמש עשרה ושבע עשרה. גם נכון! אז ד. אז למה לא א? כי שתים עשרה וארבע עשרה זה ערוצי נמל. ושם משדרים בהספק מלא."
   },
   {
     "num": 4064,
@@ -1686,14 +1694,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזו הצהרה על VHF הנייד לסירת הצלה אינה נכונה. הכלל: המכשיר הנייד פועל ב-FM בערוץ 16, בהספק מינימלי של 0.25 וואט, ועם סוללה רזרבית, ולכן ההצהרה השגויה היא ד, שהוא חייב לפעול בערוץ 70. ערוץ 70 הוא ערוץ DSC דיגיטלי, והמכשיר הנייד לא מיועד לו. ההצהרות א, ב וג נכונות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q04",
     "lesson": 9,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4064.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזו הצהרה על המכשיר הנייד שגויה? ד! שהוא חייב לפעול בערוץ שבעים. ערוץ שבעים זה D S C. דיגיטלי. המכשיר הנייד לא מיועד לו. אז א? הוא פועל ב FM בערוץ שש עשרה. נכון. ב? הספק מינימלי של רבע וואט. נכון. וג? סוללה רזרבית. גם נכון."
   },
   {
     "num": 4065,
@@ -1709,14 +1718,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש AIS. הכלל: AUTOMATIC IDENTIFICATION SYSTEM, מערכת זיהוי אוטומטית, ולכן התשובה היא ב. תשובה א שגויה כי AUTO INSERT SIGNAL אינו קיים. תשובה ג שגויה כי AUTOMATIC INFORMATION SYSTEM קרוב, אבל המערכת מזהה ספינות ולא רק מעבירה מידע. תשובה ד שגויה כי ב נכונה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q05",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4065.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה פירוש AIS? AUTOMATIC IDENTIFICATION SYSTEM. מערכת זיהוי אוטומטית. זה ב. אז למה לא א? כי AUTO INSERT SIGNAL לא קיים. ג? AUTOMATIC INFORMATION SYSTEM קרוב. אבל המערכת מזהה ספינות. היא לא רק מעבירה מידע. וד? יש תשובה נכונה. ב."
   },
   {
     "num": 4066,
