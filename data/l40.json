@@ -3393,14 +3393,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מוחקים קוד זיהוי של הודעה כדי לקלוט אותה שוב במחזור השידור הבא. למשל כשהיא נקלטה עם נתונים שגויים חשובים. ולכן התשובה היא ג. תשובה א שגויה כי המחיקה לא דוחה הודעות נוספות. תשובה ב שגויה כי זה לא קשור להודעות ישנות. תשובה ד שגויה כי זה לא קשור לזיכרון.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q10",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4126.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מוחקים קוד זיהוי של הודעה כדי לקלוט אותה שוב במחזור השידור הבא! למשל כשהיא נקלטה עם נתונים שגויים חשובים. זה ג. אז למה לא א? המחיקה לא דוחה הודעות נוספות. ב? זה לא קשור להודעות ישנות. וד? זה לא קשור לזיכרון."
   },
   {
     "num": 4127,
@@ -3416,14 +3417,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "הסוללה של ה SART מחזיקה במצב המתנה ארבע יממות. ולכן התשובה היא ד. תשובה א שגויה כי שלוש עד חמש שנים זה אורך חיי הסוללה, לא זמן ההפעלה. תשובה ב שגויה כי שמונה שעות זה במצב שידור. תשובה ג שגויה כי שתי יממות זה פחות מדי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q11",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4127.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "הסוללה של ה SART מחזיקה במצב המתנה ארבע יממות! זה ד. אז למה לא א? שלוש עד חמש שנים זה אורך חיי הסוללה, לא זמן ההפעלה. ב? שמונה שעות זה במצב שידור. וג? שתי יממות זה פחות מדי."
   },
   {
     "num": 4128,
@@ -3439,14 +3441,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "כש GPS מפיק מיקום שגוי: מבטלים את השפעתו, בניתוק או בכפתור ייעודי. ומחדירים ידנית מיקום עדכני במרווחי זמן הולמים. א ו ב נכונות. ולכן התשובה היא ד. תשובה ג שגויה כי לא מנתקים את ה DSC לגמרי, וגם לא נדרש לדווח ל RCC על זה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q12",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4128.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "כש GPS מפיק מיקום שגוי: מבטלים את השפעתו, בניתוק או בכפתור ייעודי. ומחדירים ידנית מיקום עדכני במרווחי זמן הולמים. א ו ב נכונות! זה ד. אז למה לא ג? לא מנתקים את ה DSC לגמרי, וגם לא נדרש לדווח ל RCC על זה."
   },
   {
     "num": 4129,
@@ -3462,14 +3465,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "STAND-BY הוא המונח המקובל בתקשורת רדיוטלפונית להמתנה. ולכן התשובה היא ב. תשובה א שגויה כי ROGER אינו התשובה שהמבחן קובע. תשובה ג שגויה כי OVER AND OUT ביחד שגוי, כי OVER מחכה לתשובה ו OUT מסיים. תשובה ד שגויה כי PAN הוא לא מונח עצמאי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q13",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4129.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "STAND-BY הוא המונח המקובל בתקשורת רדיוטלפונית להמתנה! זה ב. אז למה לא א? ROGER אינו התשובה שהמבחן קובע. ג? OVER AND OUT ביחד שגוי, כי OVER מחכה לתשובה ו OUT מסיים. וד? PAN הוא לא מונח עצמאי."
   },
   {
     "num": 4130,
@@ -3485,14 +3489,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קוד תשע ספרות, ושלוש הראשונות הן ה MID. כאן ה MID הוא 482, כלי שייט של מדינה אחרת. ולכן התשובה היא ג. תשובה א שגויה כי מטוס חיפוש והצלה מתחיל ב 111. תשובה ב שגויה כי ה MID של ישראל הוא 428 ולא 482. תשובה ד שגויה כי זה מספר תקין, תשע ספרות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q14",
     "lesson": 3,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4130.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קוד תשע ספרות, ושלוש הראשונות הן ה MID. כאן ה MID הוא 482, כלי שייט של מדינה אחרת! זה ג. אז למה לא א? מטוס חיפוש והצלה מתחיל ב 111. ב? ה MID של ישראל הוא 428 ולא 482. וד? זה מספר תקין, תשע ספרות."
   },
   {
     "num": 4131,
@@ -3508,14 +3513,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "הערוצים הדיגיטליים הם 70, 87B ו 88B. ולכן התשובה היא ד. תשובה א שגויה כי ערוצים דיגיטליים כן קיימים. תשובה ב שגויה כי ערוצים 16 ו 6 הם ערוצי קול. תשובה ג שגויה כי מאה עשרים ואחד נקודה חמש מגה הרץ הוא תדר משואה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q15",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4131.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "הערוצים הדיגיטליים הם 70, 87B ו 88B! זה ד. אז למה לא א? ערוצים דיגיטליים כן קיימים. ב? ערוצים 16 ו 6 הם ערוצי קול. וג? מאה עשרים ואחד נקודה חמש מגה הרץ הוא תדר משואה."
   },
   {
     "num": 4132,
@@ -3531,14 +3537,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "תשובה ג אומרת שהמונח SECONDARY ALERT מתייחס לכל התרעה דיגיטלית. זה לא נכון. ולכן ד היא הנכונה. ולכן התשובה היא ד.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q18",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4132.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "תשובה ג אומרת שהמונח SECONDARY ALERT מתייחס לכל התרעה דיגיטלית. זה לא נכון! ולכן ד היא הנכונה. זה ד."
   },
   {
     "num": 4133,
@@ -3554,14 +3561,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "המרחק שבו SART מתחיל לשדר תלוי בעיקר בגובה אנטנת המכ\"ם המחפש. ולכן התשובה היא ג. תשובה א שגויה כי חמישה מייל הוא מספר קבוע. תשובה ב שגויה כי שמונה מייל הוא גם מספר קבוע. תשובה ד שגויה כי שתים עשרה מייל הוא גם מספר קבוע, וקרינת מכ\"ם נעה בקו ישר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q01",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4133.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "המרחק שבו SART מתחיל לשדר תלוי בעיקר בגובה אנטנת המכ\"ם המחפש! זה ג. אז למה לא א? חמישה מייל הוא מספר קבוע. ב? שמונה מייל הוא גם מספר קבוע. וד? שתים עשרה מייל הוא גם מספר קבוע, וקרינת מכ\"ם נעה בקו ישר."
   },
   {
     "num": 4134,
@@ -3577,14 +3585,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קלטת התרעת דחיפות ב DSC. ממתינים בהאזנה בערוץ 16 לפרטי ההודעה. ולכן התשובה היא ג. תשובה א שגויה כי לא שולחים אישור קליטה לתחנה ששידרה. תשובה ב שגויה כי לא שולחים אישור ל RCC. תשובה ד שגויה כי לא משדרים PAN PAN בעצמך.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q02",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4134.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קלטת התרעת דחיפות ב DSC. ממתינים בהאזנה בערוץ 16 לפרטי ההודעה! זה ג. אז למה לא א? לא שולחים אישור קליטה לתחנה ששידרה. ב? לא שולחים אישור ל RCC. וד? לא משדרים PAN PAN בעצמך."
   },
   {
     "num": 4135,
@@ -3600,14 +3609,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "משיב המכ\"ם, SART, נועד לאפשר התבייתות על הכלי שבמצוקה. ולכן התשובה היא ד. תשובה א שגויה כי הוא מסמן כיוון וטווח על המכ\"ם, לא מיקום מדויק. תשובה ב שגויה כי הוא לא מגדיל את יעילות המכ\"ם. תשובה ג שגויה כי הוא לא מתקן התרעה, הוא רק משיב.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q03",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4135.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "משיב המכ\"ם, SART, נועד לאפשר התבייתות על הכלי שבמצוקה! זה ד. אז למה לא א? הוא מסמן כיוון וטווח על המכ\"ם, לא מיקום מדויק. ב? הוא לא מגדיל את יעילות המכ\"ם. וג? הוא לא מתקן התרעה, הוא רק משיב."
   },
   {
     "num": 4136,
@@ -3623,14 +3633,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ערוצי AIS אחד ושניים אסורים לשידור קול מכלי שיט. ולכן התשובה היא ב. תשובה א שגויה כי ערוצים 75 ו 76 מותרים בהספק נמוך. תשובה ג שגויה כי ערוץ גשר לגשר הוא ערוץ רגיל. תשובה ד שגויה כי ערוצים 25 ו 26 הם ערוצי שיחה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q04",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4136.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוצי AIS אחד ושניים אסורים לשידור קול מכלי שיט! זה ב. אז למה לא א? ערוצים 75 ו 76 מותרים בהספק נמוך. ג? ערוץ גשר לגשר הוא ערוץ רגיל. וד? ערוצים 25 ו 26 הם ערוצי שיחה."
   },
   {
     "num": 4137,
@@ -3646,14 +3657,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ארבע הוא KARTEFOUR, X הוא X-RAY, S הוא SIERRA ו Q הוא QUEBEC. ולכן התשובה היא א. תשובה ב שגויה כי SELMA ו QUANTUM לא באלפבית. תשובה ג שגויה כי TERRAFOUR הוא לא ארבע. תשובה ד שגויה כי X-WAVE ו TERRAFOUR שגויים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q05",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4137.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ארבע הוא KARTEFOUR, X הוא X-RAY, S הוא SIERRA ו Q הוא QUEBEC! זה א. אז למה לא ב? SELMA ו QUANTUM לא באלפבית. ג? TERRAFOUR הוא לא ארבע. וד? X-WAVE ו TERRAFOUR שגויים."
   },
   {
     "num": 4138,
@@ -3669,14 +3681,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "כל תחנה משדרת כל ארבע שעות, שש פעמים ביממה. עשרים וארבע מחזורים הם ארבע תחנות כפול שש. ולכן התשובה היא ג. תשובה א שגויה כי בכל שעה לא מגיע שידור אחד. תשובה ב שגויה כי עשרים וארבע תחנות יתנו הרבה יותר. תשובה ד שגויה כי שש תחנות יתנו שלושים ושישה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q06",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4138.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "כל תחנה משדרת כל ארבע שעות, שש פעמים ביממה. עשרים וארבע מחזורים הם ארבע תחנות כפול שש! זה ג. אז למה לא א? בכל שעה לא מגיע שידור אחד. ב? עשרים וארבע תחנות יתנו הרבה יותר. וד? שש תחנות יתנו שלושים ושישה."
   },
   {
     "num": 4139,
@@ -3692,14 +3705,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "בהחדרת מיקום ידנית ל DSC: חוזרים על הפעולה בהפרשי זמן סבירים, ומבטלים את השפעת ה GPS בניתוק או בכיבוי. א ו ב נכונות. ולכן התשובה היא ד. תשובה ג שגויה כי לא צריך להודיע ל RCC בסיום הפעולה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q07",
     "lesson": 3,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4139.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בהחדרת מיקום ידנית ל DSC: חוזרים על הפעולה בהפרשי זמן סבירים, ומבטלים את השפעת ה GPS בניתוק או בכיבוי. א ו ב נכונות! זה ד. אז למה לא ג? לא צריך להודיע ל RCC בסיום הפעולה."
   },
   {
     "num": 4140,
@@ -3715,14 +3729,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "AIS SART מספק זיהוי עצמי שאינו M M S I של הספינה. הקוד שלו מתחיל בתשע שבע אפס. ולכן התשובה היא ד. תשובה א שגויה כי ל VHF נייד אין M M S I משלו. תשובה ב שגויה כי ל DSC יש M M S I של הספינה. תשובה ג שגויה כי המבחן קובע AIS SART, ולא EPIRB.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q08",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4140.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "AIS SART מספק זיהוי עצמי שאינו M M S I של הספינה! הקוד שלו מתחיל בתשע שבע אפס. זה ד. אז למה לא א? ל VHF נייד אין M M S I משלו. ב? ל DSC יש M M S I של הספינה. וג? המבחן קובע AIS SART, ולא EPIRB."
   },
   {
     "num": 4141,
@@ -3738,14 +3753,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מקום אחסון המצברים חייב אוורור כדי למזער סיכויי פיצוץ. המצבר פולט מימן בזמן טעינה. ולכן התשובה היא ד. תשובה א שגויה כי גיפור של ההדקים הוא בעיה, אבל זו לא הסיבה לאוורור. תשובה ב שגויה כי חמצן לא עוזר בהטענה. תשובה ג שגויה כי ניצוצות הם הסכנה, אבל התשובה הרחבה היא ד.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q09",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4141.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מקום אחסון המצברים חייב אוורור כדי למזער סיכויי פיצוץ! המצבר פולט מימן בזמן טעינה. זה ד. אז למה לא א? גיפור של ההדקים הוא בעיה, אבל זו לא הסיבה לאוורור. ב? חמצן לא עוזר בהטענה. וג? ניצוצות הם הסכנה, אבל התשובה הרחבה היא ד."
   },
   {
     "num": 4142,
@@ -3761,14 +3777,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "כופים דממת אלחוט על תחנה מפריעה ב SEELONCE DISTRESS. ולכן התשובה היא ד. תשובה א שגויה כי SEELONCE STOP SENDING לא קיים. תשובה ב שגויה כי SEELONCE RELAY לא קיים. תשובה ג שגויה כי SEELONCE FEENEE מסיים את המצוקה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q10",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4142.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "כופים דממת אלחוט על תחנה מפריעה ב SEELONCE DISTRESS! זה ד. אז למה לא א? SEELONCE STOP SENDING לא קיים. ב? SEELONCE RELAY לא קיים. וג? SEELONCE FEENEE מסיים את המצוקה."
   },
   {
     "num": 4143,
@@ -3784,14 +3801,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מצוקה UNDESIGNATED. סוג המצוקה לא נבחר, ולכן ייתכן שהכלי עומד להינטש, או שזו התרעת שווא. ב ו ג אפשריות. ולכן התשובה היא ד. תשובה א שגויה כי א מתארת רק חלק מהסיבות, והתשובה המלאה היא ד.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q11",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4143.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מצוקה UNDESIGNATED. סוג המצוקה לא נבחר, ולכן ייתכן שהכלי עומד להינטש, או שזו התרעת שווא. ב ו ג אפשריות! זה ד. אז למה לא א? א מתארת רק חלק מהסיבות, והתשובה המלאה היא ד."
   },
   {
     "num": 4144,
@@ -3807,14 +3825,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קלטת מצוקה UNDESIGNATED. ממתינים כחמש דקות לתגובת רשות חופית, ואז מנסים להקים קשר עם הכלי שבמצוקה. ולכן התשובה היא א. תשובה ב שגויה כי לא יוצאים מיד, אולי זו התרעת שווא. תשובה ג שגויה כי לא משדרים MAYDAY RELAY לפני שבדקת. תשובה ד שגויה כי לא מאשרים מצוקה ב DSC לפני שמוודאים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q12",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4144.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קלטת מצוקה UNDESIGNATED. ממתינים כחמש דקות לתגובת רשות חופית, ואז מנסים להקים קשר עם הכלי שבמצוקה! זה א. אז למה לא ב? לא יוצאים מיד, אולי זו התרעת שווא. ג? לא משדרים MAYDAY RELAY לפני שבדקת. וד? לא מאשרים מצוקה ב DSC לפני שמוודאים."
   },
   {
     "num": 4145,
@@ -3830,14 +3849,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "RECEIVED MAYDAY. תחנה כלשהי מאשרת קבלת הודעת מצוקה. ולכן התשובה היא א. תשובה ב שגויה כי זה לא רק הודעה ל RCC. תשובה ג שגויה כי זו לא הודעה לכל התחנות. תשובה ד שגויה כי זה לא אומר שהיא יוצאת לעזור.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q13",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4145.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "RECEIVED MAYDAY. תחנה כלשהי מאשרת קבלת הודעת מצוקה! זה א. אז למה לא ב? זה לא רק הודעה ל RCC. ג? זו לא הודעה לכל התחנות. וד? זה לא אומר שהיא יוצאת לעזור."
   },
   {
     "num": 4146,
@@ -3853,14 +3873,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מאשרים קבלת התרעת מצוקה מ DSC בערוץ 16, בקול. ולכן התשובה היא ג. תשובה א שגויה כי ערוץ 6 הוא ערוץ בין ספינות. תשובה ב שגויה כי ערוץ 70 הוא דיגיטלי ולא מדברים בו. תשובה ד שגויה כי ערוץ 13 הוא גשר לגשר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q14",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4146.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מאשרים קבלת התרעת מצוקה מ DSC בערוץ 16, בקול! זה ג. אז למה לא א? ערוץ 6 הוא ערוץ בין ספינות. ב? ערוץ 70 הוא דיגיטלי ולא מדברים בו. וד? ערוץ 13 הוא גשר לגשר."
   },
   {
     "num": 4147,
@@ -3876,14 +3897,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "לפינוי דרך משתמשים בערוץ 13, גשר לגשר. ולכן התשובה היא ג. תשובה א שגויה כי ערוצים 87B ו 88B הם ערוצי AIS. תשובה ב שגויה כי ערוץ 8 הוא ערוץ שיחה כללי בין ספינות. תשובה ד שגויה כי ערוץ 31 אינו ערוץ הבטיחות לפינוי דרך.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q15",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4147.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "לפינוי דרך משתמשים בערוץ 13, גשר לגשר! זה ג. אז למה לא א? ערוצים 87B ו 88B הם ערוצי AIS. ב? ערוץ 8 הוא ערוץ שיחה כללי בין ספינות. וד? ערוץ 31 אינו ערוץ הבטיחות לפינוי דרך."
   },
   {
     "num": 4148,
@@ -3899,14 +3921,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קוד AIS SART מתחיל בתשע שבע אפס. כאן 970445050. ולכן התשובה היא א. תשובה ב שגויה כי המספר מתחיל בתשע שמונה ארבע, ולא בתשע שבע אפס. תשובה ג שגויה כי המספר מתחיל בתשע שבע שמונה, ולא בתשע שבע אפס. תשובה ד שגויה כי המספר מתחיל בתשע תשע ארבע, ולא בתשע שבע אפס.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q16",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4148.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קוד AIS SART מתחיל בתשע שבע אפס! כאן 970445050. זה א. אז למה לא ב? המספר מתחיל בתשע שמונה ארבע, ולא בתשע שבע אפס. ג? המספר מתחיל בתשע שבע שמונה, ולא בתשע שבע אפס. וד? המספר מתחיל בתשע תשע ארבע, ולא בתשע שבע אפס."
   },
   {
     "num": 4149,
@@ -3923,14 +3946,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "NAVTEX מכסה את אזורי ההפלגה A1 ו A2. ולכן התשובה היא ב. תשובה א שגויה כי MEOSAR הוא מערך לוויינים ולא מכסה רק A1 ו A2. תשובה ג שגויה כי DSC בערוץ 70 מכסה רק A1. תשובה ד שגויה כי ד כוללת את א, שאינה נכונה. תשובה ה שגויה כי ה כוללת את ג, שאינה נכונה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q17",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4149.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "NAVTEX מכסה את אזורי ההפלגה A1 ו A2! זה ב. אז למה לא א? MEOSAR הוא מערך לוויינים ולא מכסה רק A1 ו A2. ג? DSC בערוץ 70 מכסה רק A1. ד? ד כוללת את א, שאינה נכונה. וה? ה כוללת את ג, שאינה נכונה."
   },
   {
     "num": 4150,
@@ -3946,14 +3970,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "לוויני GALILEO הם לוויני MEO, ולכן התחנה שקובעת את המיקום היא MEOLUT. ולכן התשובה היא ב. תשובה א שגויה כי GEOLUT היא ללוויין GEO. תשובה ג שגויה כי LEOLUT היא ללוויין LEO. תשובה ד שגויה כי GPSLUT לא קיימת.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q18",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4150.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "לוויני GALILEO הם לוויני MEO, ולכן התחנה שקובעת את המיקום היא MEOLUT! זה ב. אז למה לא א? GEOLUT היא ללוויין GEO. ג? LEOLUT היא ללוויין LEO. וד? GPSLUT לא קיימת."
   },
   {
     "num": 4151,
@@ -3969,14 +3994,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "האות D היא בקשה של רשות חופית מכלי שיט בסביבה לסייע בחיפוש והצלה. ולכן התשובה היא ד. תשובה א שגויה כי RCC לא מבקש מכלי ספציפי. תשובה ב שגויה כי MAYDAY RELAY הוא סוג הודעה אחר. תשובה ג שגויה כי NAVTEX לא כופה השתקה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q19",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4151.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "האות D היא בקשה של רשות חופית מכלי שיט בסביבה לסייע בחיפוש והצלה! זה ד. אז למה לא א? RCC לא מבקש מכלי ספציפי. ב? MAYDAY RELAY הוא סוג הודעה אחר. וג? NAVTEX לא כופה השתקה."
   },
   {
     "num": 4152,
@@ -3992,14 +4018,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "חזרה לשגרה בסיום מצוקה: SEELONCE FEENEE. ולכן התשובה היא ג. תשובה א שגויה כי SEELONCE MAYDAY משתיק את כולם באמצע המצוקה. תשובה ב שגויה כי SEELONCE DISTRESS הוא לתחנה שאינה המפקחת. תשובה ד שגויה כי SEELONCE CANCELATION לא קיים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q20",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4152.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "חזרה לשגרה בסיום מצוקה: SEELONCE FEENEE! זה ג. אז למה לא א? SEELONCE MAYDAY משתיק את כולם באמצע המצוקה. ב? SEELONCE DISTRESS הוא לתחנה שאינה המפקחת. וד? SEELONCE CANCELATION לא קיים."
   },
   {
     "num": 4153,
@@ -4015,14 +4042,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "זיהוי של כלי שיט יכול להיות שם הכלי. HAIFA. ולכן התשובה היא ג. תשובה א שגויה כי מספר שמתחיל בשני אפסים הוא תחנת חוף. תשובה ב שגויה כי DAKAR RADIO הוא שם של תחנת חוף. תשובה ד שגויה כי מספר שמתחיל באפס הוא קבוצה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q01",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4153.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "זיהוי של כלי שיט יכול להיות שם הכלי! HAIFA. זה ג. אז למה לא א? מספר שמתחיל בשני אפסים הוא תחנת חוף. ב? DAKAR RADIO הוא שם של תחנת חוף. וד? מספר שמתחיל באפס הוא קבוצה."
   },
   {
     "num": 4154,
@@ -4038,14 +4066,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מידע על חפץ צף שמפריע לכלי שיט משדרים לכל התחנות, ALL STATIONS. ולכן התשובה היא א. תשובה ב שגויה כי LEOLUT היא תחנת קרקע. תשובה ג שגויה כי מאתיים מייל אינו הגדרה של שידור. תשובה ד שגויה כי מתאם NAVTEX לא מקבל הודעות כאלה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q02",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4154.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מידע על חפץ צף שמפריע לכלי שיט משדרים לכל התחנות, ALL STATIONS! זה א. אז למה לא ב? LEOLUT היא תחנת קרקע. ג? מאתיים מייל אינו הגדרה של שידור. וד? מתאם NAVTEX לא מקבל הודעות כאלה."
   },
   {
     "num": 4155,
@@ -4061,14 +4090,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "במצוקה מתקשרים עם תחנת חוף בערוץ 16. ולכן התשובה היא ב. תשובה א שגויה כי ערוץ 70 הוא דיגיטלי. תשובה ג שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוצים 15 ו 17 הם קשר פנים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q03",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4155.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "במצוקה מתקשרים עם תחנת חוף בערוץ 16! זה ב. אז למה לא א? ערוץ 70 הוא דיגיטלי. ג? ערוץ 13 הוא גשר לגשר. וד? ערוצים 15 ו 17 הם קשר פנים."
   },
   {
     "num": 4156,
@@ -4084,14 +4114,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "פקד SQUELCH משפיע על רגישות המקלט. הוא מסנן רעשים. ולכן התשובה היא ב. תשובה א שגויה כי הוא לא משפיע על המשדר. תשובה ג שגויה כי הוא משפיע רק על המקלט. תשובה ד שגויה כי הוא לא קשור לצריכת הסוללה בשידור.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q04",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4156.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "פקד SQUELCH משפיע על רגישות המקלט! הוא מסנן רעשים. זה ב. אז למה לא א? הוא לא משפיע על המשדר. ג? הוא משפיע רק על המקלט. וד? הוא לא קשור לצריכת הסוללה בשידור."
   },
   {
     "num": 4157,
@@ -4107,14 +4138,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "בערוץ DUPLEX מתקשרים עם תחנת חוף, שירותי נמל או RCC, ולא בין שני כלי שיט. ולכן התשובה היא א. תשובה ב שגויה כי עם תחנת חוף כן אפשר. תשובה ג שגויה כי עם שירותי נמל כן אפשר. תשובה ד שגויה כי עם RCC כן אפשר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q05",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4157.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בערוץ DUPLEX מתקשרים עם תחנת חוף, שירותי נמל או RCC, ולא בין שני כלי שיט! זה א. אז למה לא ב? עם תחנת חוף כן אפשר. ג? עם שירותי נמל כן אפשר. וד? עם RCC כן אפשר."
   },
   {
     "num": 4158,
@@ -4130,14 +4162,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "SART במצב קליטה בלבד כשהופעל ידנית ואין מכ\"ם X-band בסביבה. ולכן התשובה היא ג. תשובה א שגויה כי הוא לא מתחיל לעבוד אוטומטית כשהוא נזרק למים. תשובה ב שגויה כי אם יש מכ\"ם X-band הוא משדר. תשובה ד שגויה כי יש מצב כזה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4158.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "SART במצב קליטה בלבד כשהופעל ידנית ואין מכ\"ם X-band בסביבה! זה ג. אז למה לא א? הוא לא מתחיל לעבוד אוטומטית כשהוא נזרק למים. ב? אם יש מכ\"ם X-band הוא משדר. וד? יש מצב כזה."
   },
   {
     "num": 4159,
@@ -4153,14 +4186,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מאה עשרים ואחד נקודה חמש מגה הרץ הוא תדר ביות של COSPAS SARSAT. ולכן התשובה היא ב. תשובה א שגויה כי AIS SART עובד ב VHF. תשובה ג שגויה כי RADAR SART עובד ב X-band. תשובה ד שגויה כי NAVTEX הוא תדר בינוני.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q07",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4159.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מאה עשרים ואחד נקודה חמש מגה הרץ הוא תדר ביות של COSPAS SARSAT! זה ב. אז למה לא א? AIS SART עובד ב VHF. ג? RADAR SART עובד ב X-band. וד? NAVTEX הוא תדר בינוני."
   },
   {
     "num": 4160,
@@ -4176,14 +4210,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השתקת תחנה מפריעה במהלך מצוקה: SEELONCE DISTRESS. ולכן התשובה היא א. תשובה ב שגויה כי SEELONCE FEENEE מסיים את המצוקה. תשובה ג שגויה כי PRUDONCE הוא לקראת סיום. תשובה ד שגויה כי SEELONCE ALL SHIPS לא קיים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q08",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4160.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "השתקת תחנה מפריעה במהלך מצוקה: SEELONCE DISTRESS! זה א. אז למה לא ב? SEELONCE FEENEE מסיים את המצוקה. ג? PRUDONCE הוא לקראת סיום. וד? SEELONCE ALL SHIPS לא קיים."
   },
   {
     "num": 4161,
@@ -4199,14 +4234,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "משואה בודקים במצב TEST לפני כל הפלגה, ואחת לחודש בלב ים. ולכן התשובה היא א. תשובה ב שגויה כי אחת לשבוע זה יותר מדי. תשובה ג שגויה כי אחת ליממה זה יותר מדי. תשובה ד שגויה כי כל ארבע שעות זה יותר מדי, וזה שוחק את הסוללה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q09",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4161.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "משואה בודקים במצב TEST לפני כל הפלגה, ואחת לחודש בלב ים! זה א. אז למה לא ב? אחת לשבוע זה יותר מדי. ג? אחת ליממה זה יותר מדי. וד? כל ארבע שעות זה יותר מדי, וזה שוחק את הסוללה."
   },
   {
     "num": 4162,
@@ -4222,14 +4258,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ערוץ 70 אינו תקני לשיחה בין ספינות, כי הוא דיגיטלי. ולכן התשובה היא א. תשובה ב שגויה כי ערוץ 14 הוא ערוץ שיחה תקני. תשובה ג שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוץ 16 הוא ערוץ קריאה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q10",
     "lesson": 3,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4162.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוץ 70 אינו תקני לשיחה בין ספינות, כי הוא דיגיטלי! זה א. אז למה לא ב? ערוץ 14 הוא ערוץ שיחה תקני. ג? ערוץ 13 הוא גשר לגשר. וד? ערוץ 16 הוא ערוץ קריאה."
   },
   {
     "num": 4163,
@@ -4245,14 +4282,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "חיבור קבוע ל GPS חיוני ל DSC. כך המיקום נכנס אוטומטית להתרעה. ולכן התשובה היא ג. תשובה א שגויה כי ל RADAR SART אין צורך ב GPS. תשובה ב שגויה כי ל EPIRB יש GPS רק בגרסת GPIRB, ובתוכה. תשובה ד שגויה כי NAVTEX לא צריך מיקום מדויק.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q11",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4163.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "חיבור קבוע ל GPS חיוני ל DSC! כך המיקום נכנס אוטומטית להתרעה. זה ג. אז למה לא א? ל RADAR SART אין צורך ב GPS. ב? ל EPIRB יש GPS רק בגרסת GPIRB, ובתוכה. וד? NAVTEX לא צריך מיקום מדויק."
   },
   {
     "num": 4164,
@@ -4268,14 +4306,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "MCC לא יכול לנהל אירוע מצוקה. הוא רק מעביר מידע מהלוויין. ולכן התשובה היא א. תשובה ב שגויה כי מרכז תיאום והצלה מנהל. תשובה ג שגויה כי כלי שיט גדול יכול לשמש מפקח. תשובה ד שגויה כי תחנת חוף יכולה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q12",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4164.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MCC לא יכול לנהל אירוע מצוקה! הוא רק מעביר מידע מהלוויין. זה א. אז למה לא ב? מרכז תיאום והצלה מנהל. ג? כלי שיט גדול יכול לשמש מפקח. וד? תחנת חוף יכולה."
   },
   {
     "num": 4165,
@@ -4291,14 +4330,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קשר פנים בהספק וואט אחד בערוצים 15 ו 17. ולכן התשובה היא א. תשובה ב שגויה כי ערוצים 75 ו 76 הם ערוצים מוגבלים. תשובה ג שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ד שגויה כי ערוצים 11 ו 79 הם לכלי שייט קטנים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q13",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4165.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קשר פנים בהספק וואט אחד בערוצים 15 ו 17! זה א. אז למה לא ב? ערוצים 75 ו 76 הם ערוצים מוגבלים. ג? ערוץ 13 הוא גשר לגשר. וד? ערוצים 11 ו 79 הם לכלי שייט קטנים."
   },
   {
     "num": 4166,
@@ -4314,14 +4354,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "אחרי התרעה ב DSC בערוץ 70 כל התחנות מאזינות להמשך בערוץ 16. ולכן התשובה היא ג. תשובה א שגויה כי לא תמיד תחנת חוף מאשרת מיד ב DSC. תשובה ב שגויה כי כלי השיט לא מודיעים בעצמם לתחנת חוף, הם מאזינים. תשובה ד שגויה כי לא בודקים ב NAVTEX.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q14",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4166.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "אחרי התרעה ב DSC בערוץ 70 כל התחנות מאזינות להמשך בערוץ 16! זה ג. אז למה לא א? לא תמיד תחנת חוף מאשרת מיד ב DSC. ב? כלי השיט לא מודיעים בעצמם לתחנת חוף, הם מאזינים. וד? לא בודקים ב NAVTEX."
   },
   {
     "num": 4167,
@@ -4337,14 +4378,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "כל אות בשם הפונטי שלה, CHARLIE HOTEL, ספרות OKTOEIGHT SETTESEVEN, ו BRAVO. ולכן התשובה היא ד. תשובה א שגויה כי CHAMPION ו HOSTEL לא באלפבית. תשובה ב שגויה כי BORDEAUX ו SETE לא נכונים. תשובה ג שגויה כי CHAMPION שוב שגוי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q15",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4167.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "כל אות בשם הפונטי שלה, CHARLIE HOTEL, ספרות OKTOEIGHT SETTESEVEN, ו BRAVO! זה ד. אז למה לא א? CHAMPION ו HOSTEL לא באלפבית. ב? BORDEAUX ו SETE לא נכונים. וג? CHAMPION שוב שגוי."
   },
   {
     "num": 4168,
@@ -4360,14 +4402,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "פרטי המידע העיקריים ב AIS: סטטי, דינמי, מסע ובטיחות. STATIC, DYNAMIC, VOYAGE, SAFETY. ולכן התשובה היא ד. תשובה א שגויה כי VITAL, IMPORTANT ו ROUTINE זה NAVTEX. תשובה ב שגויה כי DISTRESS, URGENCY ו SAFETY זה עדיפויות הקשר. תשובה ג שגויה כי גם זה NAVTEX.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q16",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4168.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "פרטי המידע העיקריים ב AIS: סטטי, דינמי, מסע ובטיחות! STATIC, DYNAMIC, VOYAGE, SAFETY. זה ד. אז למה לא א? VITAL, IMPORTANT ו ROUTINE זה NAVTEX. ב? DISTRESS, URGENCY ו SAFETY זה עדיפויות הקשר. וג? גם זה NAVTEX."
   },
   {
     "num": 4169,
@@ -4383,14 +4426,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "אי אפשר לעשות DUAL WATCH על ערוץ 16 וערוץ 36. ולכן התשובה היא ב. תשובה א שגויה כי עם ערוץ 26 אפשר. תשובה ג שגויה כי עם ערוץ 66 אפשר. תשובה ד שגויה כי עם ערוץ 86 אפשר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q17",
     "lesson": 2,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4169.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "אי אפשר לעשות DUAL WATCH על ערוץ 16 וערוץ 36! זה ב. אז למה לא א? עם ערוץ 26 אפשר. ג? עם ערוץ 66 אפשר. וד? עם ערוץ 86 אפשר."
   },
   {
     "num": 4170,
@@ -4406,14 +4450,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "שיחות רדיוטלפון בתשלום נותנת תחנת חוף, VARNA RADIO. ולכן התשובה היא ב. תשובה א שגויה כי RCC הוא מרכז הצלה, לא שירות שיחות. תשובה ג שגויה כי תחנת פיילוט נמל לא נותנת שירות כזה. תשובה ד שגויה כי מרינה לא נותנת שירות כזה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q18",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4170.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "שיחות רדיוטלפון בתשלום נותנת תחנת חוף, VARNA RADIO! זה ב. אז למה לא א? RCC הוא מרכז הצלה, לא שירות שיחות. ג? תחנת פיילוט נמל לא נותנת שירות כזה. וד? מרינה לא נותנת שירות כזה."
   },
   {
     "num": 4171,
@@ -4429,14 +4474,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מכשיר ה NAVTEX פועל בתחום תדר בינוני, MF, בגל קרקע. ולכן התשובה היא ד. תשובה א שגויה כי הוא לא עובד ב UHF. תשובה ב שגויה כי X-band הוא תחום של מכ\"ם. תשובה ג שגויה כי S-band הוא תחום של מכ\"ם אחר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q19",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4171.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מכשיר ה NAVTEX פועל בתחום תדר בינוני, MF, בגל קרקע! זה ד. אז למה לא א? הוא לא עובד ב UHF. ב? X-band הוא תחום של מכ\"ם. וג? S-band הוא תחום של מכ\"ם אחר."
   },
   {
     "num": 4172,
@@ -4452,14 +4498,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ה MCC מעביר ל RCC את פרטי המידע על אירוע מצוקה ב COSPAS SARSAT. ולכן התשובה היא ד. תשובה א שגויה כי תחנת NAVTEX משדרת הודעות, לא מעבירה פרטי משואה. תשובה ב שגויה כי תחנת חוף לא מעבירה פרטים מהלוויין. תשובה ג שגויה כי LEOSAR הוא הלוויין, והוא מעביר לתחנת קרקע ולא ישירות ל RCC.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E09-Q20",
     "lesson": 8,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4172.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ה MCC מעביר ל RCC את פרטי המידע על אירוע מצוקה ב COSPAS SARSAT! זה ד. אז למה לא א? תחנת NAVTEX משדרת הודעות, לא מעבירה פרטי משואה. ב? תחנת חוף לא מעבירה פרטים מהלוויין. וג? LEOSAR הוא הלוויין, והוא מעביר לתחנת קרקע ולא ישירות ל RCC."
   },
   {
     "num": 4173,
@@ -4475,14 +4522,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מבטלים התרעת מצוקה כשהיא הייתה התרעת שווא ששודרה בערוץ 70. ולכן התשובה היא א. תשובה ב שגויה כי התרעה לא משודרת ב NAVTEX. תשובה ג שגויה כי סיום מצוקה אמיתית הוא SEELONCE FEENEE, ולא ביטול. תשובה ד שגויה כי גם בלי הודעה קולית, התרעה שנשלחה צריכה טיפול.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q01",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4173.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מבטלים התרעת מצוקה כשהיא הייתה התרעת שווא ששודרה בערוץ 70! זה א. אז למה לא ב? התרעה לא משודרת ב NAVTEX. ג? סיום מצוקה אמיתית הוא SEELONCE FEENEE, ולא ביטול. וד? גם בלי הודעה קולית, התרעה שנשלחה צריכה טיפול."
   },
   {
     "num": 4174,
@@ -4498,14 +4546,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "FALSE DISTRESS ALERT, כשמבטלים התרעת מצוקה ששודרה בשוגג. ולכן התשובה היא ג. תשובה א שגויה כי התרעה בלי הודעה קולית היא לא בהכרח שווא. תשובה ב שגויה כי סיום אירוע מצוקה הוא SEELONCE FEENEE. תשובה ד שגויה כי כמה אירועים באותו אזור לא קשורים להתרעת שווא.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q02",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4174.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "FALSE DISTRESS ALERT, כשמבטלים התרעת מצוקה ששודרה בשוגג! זה ג. אז למה לא א? התרעה בלי הודעה קולית היא לא בהכרח שווא. ב? סיום אירוע מצוקה הוא SEELONCE FEENEE. וד? כמה אירועים באותו אזור לא קשורים להתרעת שווא."
   },
   {
     "num": 4175,
@@ -4521,14 +4570,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ערוצים 87B ו 88B הם ערוצי ה AIS, גם של AIS וגם של AIS SART. ולכן התשובה היא ד. תשובה א שגויה כי SART הוא משיב מכ\"ם ולא עובד בערוצים האלה. תשובה ב שגויה כי חירום ב DSC נשלח בערוץ 70. תשובה ג שגויה כי משואה עובדת בארבע מאות ושש מגה הרץ.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q04",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4175.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוצים 87B ו 88B הם ערוצי ה AIS, גם של AIS וגם של AIS SART! זה ד. אז למה לא א? SART הוא משיב מכ\"ם ולא עובד בערוצים האלה. ב? חירום ב DSC נשלח בערוץ 70. וג? משואה עובדת בארבע מאות ושש מגה הרץ."
   },
   {
     "num": 4176,
@@ -4544,14 +4594,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מספר שמתחיל בשני אפסים הוא תחנת חוף או RCC, ומספר שמתחיל באפס אחד הוא קבוצת כלי שיט. כאן תחנה קוראת לקבוצה 42424. ולכן התשובה היא ד. תשובה א שגויה כי היעד הוא קבוצה ולא תחנת כלי שיט. תשובה ב שגויה כי היעד הוא קבוצה מסוימת, לא כל כלי השיט בעלי MID 366. תשובה ג שגויה כי הקורא הוא תחנה ולא כלי שיט.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q05",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4176.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מספר שמתחיל בשני אפסים הוא תחנת חוף או RCC, ומספר שמתחיל באפס אחד הוא קבוצת כלי שיט. כאן תחנה קוראת לקבוצה 42424! זה ד. אז למה לא א? היעד הוא קבוצה ולא תחנת כלי שיט. ב? היעד הוא קבוצה מסוימת, לא כל כלי השיט בעלי MID 366. וג? הקורא הוא תחנה ולא כלי שיט."
   },
   {
     "num": 4177,
@@ -4567,14 +4618,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "M זה MIKE, B זה BRAVO, P זה PAPA ושלוש זה TERRATHREE. ולכן התשובה היא ג. תשובה א שגויה כי MAMA ו BELLA הן לא מילים באלפבית. תשובה ב שגויה כי BAKER לא קיים באלפבית. תשובה ד שגויה כי BRUNO ו PAPER הן המצאות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q06",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4177.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "M זה MIKE, B זה BRAVO, P זה PAPA ושלוש זה TERRATHREE! זה ג. אז למה לא א? MAMA ו BELLA הן לא מילים באלפבית. ב? BAKER לא קיים באלפבית. וד? BRUNO ו PAPER הן המצאות."
   },
   {
     "num": 4178,
@@ -4590,14 +4642,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מאזינים בערוץ 16 עשרים וארבע שעות ביממה, חוץ מפרקי זמן שבהם משתמשים בערוצים אחרים. ולכן התשובה היא ג. תשובה א שגויה כי שש שעות לא מספיקות. תשובה ב שגויה כי גם עם DSC חייבים להאזין, כי לא כל ספינה מצוידת. תשובה ד שגויה כי שמונה שעות לא מספיקות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q07",
     "lesson": 2,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4178.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מאזינים בערוץ 16 עשרים וארבע שעות ביממה, חוץ מפרקי זמן שבהם משתמשים בערוצים אחרים! זה ג. אז למה לא א? שש שעות לא מספיקות. ב? גם עם DSC חייבים להאזין, כי לא כל ספינה מצוידת. וד? שמונה שעות לא מספיקות."
   },
   {
     "num": 4179,
@@ -4613,14 +4666,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "מותר ליזום קשר ב DSC בפנייה מכלי שייט אחד לאחר בעדיפות ROUTINE. ולכן התשובה היא ב. תשובה א שגויה כי ביטול התרעת שווא נעשה בהודעה קולית. תשובה ג שגויה כי סיום מצוקה לא מתחיל בפנייה ב DSC. תשובה ד שגויה כי אישור קבלת מצוקה הוא תגובה, לא יוזמה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q08",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4179.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מותר ליזום קשר ב DSC בפנייה מכלי שייט אחד לאחר בעדיפות ROUTINE! זה ב. אז למה לא א? ביטול התרעת שווא נעשה בהודעה קולית. ג? סיום מצוקה לא מתחיל בפנייה ב DSC. וד? אישור קבלת מצוקה הוא תגובה, לא יוזמה."
   },
   {
     "num": 4180,
@@ -4636,14 +4690,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "אפשר להתבייט על רפסודה במכ\"ם X-band, כשיש עליה SART, וגם ב AIS כשיש עליה AIS SART. א ו ב נכונות. ולכן התשובה היא ד. תשובה ג שגויה כי DSC הוא קריאה, לא אמצעי התביית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q09",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4180.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "אפשר להתבייט על רפסודה במכ\"ם X-band, כשיש עליה SART, וגם ב AIS כשיש עליה AIS SART. א ו ב נכונות! זה ד. אז למה לא ג? DSC הוא קריאה, לא אמצעי התביית."
   },
   {
     "num": 4181,
@@ -4659,14 +4714,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "לקשר עם רשויות נמל משמשים ערוצים 12 ו 14. ולכן התשובה היא א. תשובה ב שגויה כי ערוצים 15 ו 17 הם קשר פנים. תשובה ג שגויה כי ערוצים 75 ו 76 הם ערוצים מוגבלים. תשובה ד שגויה כי ערוץ 11 הוא לכלי שייט קטנים, וערוץ 13 הוא גשר לגשר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q10",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4181.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "לקשר עם רשויות נמל משמשים ערוצים 12 ו 14! זה א. אז למה לא ב? ערוצים 15 ו 17 הם קשר פנים. ג? ערוצים 75 ו 76 הם ערוצים מוגבלים. וד? ערוץ 11 הוא לכלי שייט קטנים, וערוץ 13 הוא גשר לגשר."
   },
   {
     "num": 4182,
@@ -4682,14 +4738,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות ימי. ולכן התשובה היא ד. תשובה א שגויה כי התחזיות לא רק לכלי שיט קטנים. תשובה ב שגויה כי NAVTEX לא משדר התרעות מצוקה. תשובה ג שגויה כי STATIC, DYNAMIC ו VOYAGE זה AIS.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q11",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4182.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות ימי! זה ד. אז למה לא א? התחזיות לא רק לכלי שיט קטנים. ב? NAVTEX לא משדר התרעות מצוקה. וג? STATIC, DYNAMIC ו VOYAGE זה AIS."
   },
   {
     "num": 4183,
@@ -4705,14 +4762,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "LEOLUT, MEOLUT ו GEOLUT הן יחידות קרקע שקולטות נתוני משואה מלוויינים שונים. ולכן התשובה היא א. תשובה ב שגויה כי הן לא מעבירות לתחנות חוף. תשובה ג שגויה כי הן לא שייכות ללוויני תקשורת. תשובה ד שגויה כי הן לא מנהלות אירועי חיפוש והצלה, זה תפקיד ה RCC.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q12",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4183.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "LEOLUT, MEOLUT ו GEOLUT הן יחידות קרקע שקולטות נתוני משואה מלוויינים שונים! זה א. אז למה לא ב? הן לא מעבירות לתחנות חוף. ג? הן לא שייכות ללוויני תקשורת. וד? הן לא מנהלות אירועי חיפוש והצלה, זה תפקיד ה RCC."
   },
   {
     "num": 4184,
@@ -4728,14 +4786,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "בהתרעת מצוקה ובהתרעת דחיפות ה DSC מפיק מיקום אוטומטי. ולכן התשובה היא א. תשובה ב שגויה כי בבטיחות אין מיקום אוטומטי. תשובה ג שגויה כי לא בכל ארבע העדיפויות. תשובה ד שגויה כי לא רק במצוקה, גם בדחיפות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q13",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4184.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בהתרעת מצוקה ובהתרעת דחיפות ה DSC מפיק מיקום אוטומטי! זה א. אז למה לא ב? בבטיחות אין מיקום אוטומטי. ג? לא בכל ארבע העדיפויות. וד? לא רק במצוקה, גם בדחיפות."
   },
   {
     "num": 4185,
@@ -4751,14 +4810,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "DSC ממטוס חיפוש והצלה מתחיל בשלוש אחדות, ואחריהן ה MID. ולכן התשובה היא א. תשובה ב שגויה כי מספר שמתחיל ב MID הוא ספינה. תשובה ג שגויה כי תשע שבע אפס הוא AIS SART. תשובה ד שגויה כי תשע שמונה אפס הוא קוד אחר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q14",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4185.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "DSC ממטוס חיפוש והצלה מתחיל בשלוש אחדות, ואחריהן ה MID! זה א. אז למה לא ב? מספר שמתחיל ב MID הוא ספינה. ג? תשע שבע אפס הוא AIS SART. וד? תשע שמונה אפס הוא קוד אחר."
   },
   {
     "num": 4186,
@@ -4774,14 +4834,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ה MID הוא שלוש הספרות הראשונות, כאן 234. ולכן התשובה היא ג. תשובה א שגויה כי ארבע שתיים שמונה היא סדרה אחרת של ספרות. תשובה ב שגויה כי ארבע שמונה שתיים היא סדרה אחרת של ספרות. תשובה ד שגויה כי שלוש ארבע שתיים היא סדרה אחרת של ספרות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q15",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4186.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ה MID הוא שלוש הספרות הראשונות, כאן 234! זה ג. אז למה לא א? ארבע שתיים שמונה היא סדרה אחרת של ספרות. ב? ארבע שמונה שתיים היא סדרה אחרת של ספרות. וד? שלוש ארבע שתיים היא סדרה אחרת של ספרות."
   },
   {
     "num": 4187,
@@ -4797,14 +4858,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "התחנה המפקחת מודיעה על סיום מצוקה ב SEELONCE FEENEE. ולכן התשובה היא ג. תשובה א שגויה כי MAYDAY PRUDONCE אינו המונח. תשובה ב שגויה כי NO FURTHER ASSISTANCE REQUIRED אינו המונח. תשובה ד שגויה כי אין ביטול מצב מצוקה ב DSC בערוץ 70.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q16",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4187.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "התחנה המפקחת מודיעה על סיום מצוקה ב SEELONCE FEENEE! זה ג. אז למה לא א? MAYDAY PRUDONCE אינו המונח. ב? NO FURTHER ASSISTANCE REQUIRED אינו המונח. וד? אין ביטול מצב מצוקה ב DSC בערוץ 70."
   },
   {
     "num": 4188,
@@ -4820,14 +4882,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "משדר NAVTEX מכסה בדרך כלל מאתיים עד ארבע מאות מייל ימי. ולכן התשובה היא ב. תשובה א שגויה כי עשרים עד ארבעים מייל הוא הטווח של VHF. תשובה ג שגויה כי הטווח לא מוגבל ל A1. תשובה ד שגויה כי הטווח לא מוגבל ל A3.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q17",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4188.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "משדר NAVTEX מכסה בדרך כלל מאתיים עד ארבע מאות מייל ימי! זה ב. אז למה לא א? עשרים עד ארבעים מייל הוא הטווח של VHF. ג? הטווח לא מוגבל ל A1. וד? הטווח לא מוגבל ל A3."
   },
   {
     "num": 4189,
@@ -4843,14 +4906,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "משדרים התרעת מצוקה מכלי שיט ב DSC וב GPIRB. ולכן התשובה היא ד. תשובה א שגויה כי AIS SART ו RADAR SART הם מתקני איתור, לא מתקני התרעה. תשובה ב שגויה כי ערוץ 16 הוא קול, והשאלה מחפשת את המתקנים הייעודיים. תשובה ג שגויה כי NAVTEX הוא מקלט, אי אפשר לשדר איתו.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q18",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4189.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "משדרים התרעת מצוקה מכלי שיט ב DSC וב GPIRB! זה ד. אז למה לא א? AIS SART ו RADAR SART הם מתקני איתור, לא מתקני התרעה. ב? ערוץ 16 הוא קול, והשאלה מחפשת את המתקנים הייעודיים. וג? NAVTEX הוא מקלט, אי אפשר לשדר איתו."
   },
   {
     "num": 4190,
@@ -4866,14 +4930,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "בין כלי שיט ל RCC מדברים בערוצים 25 ו 27. ולכן התשובה היא ג. תשובה א שגויה כי ערוצים 10 ו 11 אינם ערוצי RCC. תשובה ב שגויה כי ערוצים 6 ו 8 אינם ערוצי RCC. תשובה ד שגויה כי ערוצים 15 ו 17 הם קשר פנים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q19",
     "lesson": 2,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4190.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בין כלי שיט ל RCC מדברים בערוצים 25 ו 27! זה ג. אז למה לא א? ערוצים 10 ו 11 אינם ערוצי RCC. ב? ערוצים 6 ו 8 אינם ערוצי RCC. וד? ערוצים 15 ו 17 הם קשר פנים."
   },
   {
     "num": 4191,
@@ -4889,14 +4954,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "CER הוא שיעור שגיאות. אם ההודעה תישאר בתוקף, היא תישלח שוב בעוד ארבע שעות. ולכן התשובה היא ב. תשובה א שגויה כי שש שעות אינו המחזור. תשובה ג שגויה כי זה לא קוד שנשמר בזיכרון. תשובה ד שגויה כי זה לא נפח הזיכרון.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q20",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4191.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "CER הוא שיעור שגיאות. אם ההודעה תישאר בתוקף, היא תישלח שוב בעוד ארבע שעות! זה ב. אז למה לא א? שש שעות אינו המחזור. ג? זה לא קוד שנשמר בזיכרון. וד? זה לא נפח הזיכרון."
   },
   {
     "num": 4192,
@@ -4913,14 +4979,15 @@
     ],
     "answer": "ה",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ל AIS ול AIS SART יש שלושה דברים משותפים: שניהם בתחום VHF, שניהם בהתפשטות גל מרחבי, ושניהם בערוצים 87B ו 88B. כל שלוש נכונות. ולכן התשובה היא ה. תשובה ד שגויה כי ד כוללת רק את א ואת ג, וחסרה ב.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4192.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ל AIS ול AIS SART יש שלושה דברים משותפים: שניהם בתחום VHF, שניהם בהתפשטות גל מרחבי, ושניהם בערוצים 87B ו 88B. כל שלוש נכונות! זה ה. אז למה לא ד? ד כוללת רק את א ואת ג, וחסרה ב."
   },
   {
     "num": 4193,
@@ -4936,14 +5003,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "MMSI של קבוצה מתחיל באפס אחד ואחריו ה MID. 036601010. ולכן התשובה היא ג. תשובה א שגויה כי מספר שמתחיל ב MID הוא ספינה בודדת. תשובה ב שגויה כי שני אפסים בהתחלה הם תחנת חוף. תשובה ד שגויה כי אפס אחד בהתחלה ואחריו אחד, לא ה MID.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q02",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4193.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MMSI של קבוצה מתחיל באפס אחד ואחריו ה MID. 036601010! זה ג. אז למה לא א? מספר שמתחיל ב MID הוא ספינה בודדת. ב? שני אפסים בהתחלה הם תחנת חוף. וד? אפס אחד בהתחלה ואחריו אחד, לא ה MID."
   },
   {
     "num": 4194,
@@ -4959,14 +5027,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ערוץ 6 הוא ערוץ חיפוש והצלה, וערוץ 16 הוא ערוץ מצוקה. ולכן התשובה היא ב. תשובה א שגויה כי ערוץ 16 הוא לא קשר פנים. תשובה ג שגויה כי PORT OPERATION ו SHIP MOVEMENTS הם ערוצים אחרים. תשובה ד שגויה כי א שגויה, ולכן ד שגויה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q03",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4194.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוץ 6 הוא ערוץ חיפוש והצלה, וערוץ 16 הוא ערוץ מצוקה! זה ב. אז למה לא א? ערוץ 16 הוא לא קשר פנים. ג? PORT OPERATION ו SHIP MOVEMENTS הם ערוצים אחרים. וד? א שגויה, ולכן ד שגויה."
   },
   {
     "num": 4195,
@@ -4982,14 +5051,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "להוראות עגינה בכניסה לנמל משמשים ערוצים 12 ו 14. ולכן התשובה היא א. תשובה ב שגויה כי ערוצים 75 ו 76 הם ערוצים מוגבלים. תשובה ג שגויה כי ערוץ 16 הוא לקריאה ולמצוקה. תשובה ד שגויה כי ערוצים 24 עד 27 הם DUPLEX לתחנות חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q04",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4195.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "להוראות עגינה בכניסה לנמל משמשים ערוצים 12 ו 14! זה א. אז למה לא ב? ערוצים 75 ו 76 הם ערוצים מוגבלים. ג? ערוץ 16 הוא לקריאה ולמצוקה. וד? ערוצים 24 עד 27 הם DUPLEX לתחנות חוף."
   },
   {
     "num": 4196,
@@ -5005,14 +5075,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "המידע של NAVTEX הוא שירות MSI, מידע בטיחות ימי. ולכן התשובה היא ב. תשובה א שגויה כי MMSI הוא מספר הזיהוי של ספינה. תשובה ג שגויה כי GMDSS היא כל המערכת. תשובה ד שגויה כי SAR הוא חיפוש והצלה, וזה חלק קטן מההודעות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q05",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4196.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "המידע של NAVTEX הוא שירות MSI, מידע בטיחות ימי! זה ב. אז למה לא א? MMSI הוא מספר הזיהוי של ספינה. ג? GMDSS היא כל המערכת. וד? SAR הוא חיפוש והצלה, וזה חלק קטן מההודעות."
   },
   {
     "num": 4197,
@@ -5029,14 +5100,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "את מיקום המשואה מחשבת תחנת ה LUT, לפי הדופלר. ולכן התשובה היא ב. תשובה א שגויה כי LES היא תחנה של לוויין תקשורת. תשובה ג שגויה כי ה RCC מקבל מיקום מוכן. תשובה ד שגויה כי ה MCC מעביר את המידע, לא מחשב. תשובה ה שגויה כי ה OSC מפקח במקום האירוע ולא מחשב מיקום.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q06",
     "lesson": 8,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4197.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "את מיקום המשואה מחשבת תחנת ה LUT, לפי הדופלר! זה ב. אז למה לא א? LES היא תחנה של לוויין תקשורת. ג? ה RCC מקבל מיקום מוכן. ד? ה MCC מעביר את המידע, לא מחשב. וה? ה OSC מפקח במקום האירוע ולא מחשב מיקום."
   },
   {
     "num": 4198,
@@ -5052,14 +5124,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "תחנת NAVTEX משדרת כל ארבע שעות. 0850 ועוד ארבע שעות הם 1250. ולכן התשובה היא ג. תשובה א שגויה כי 0450 הוא ארבע שעות לפני. תשובה ב שגויה כי 0050 הוא שמונה שעות לפני. תשובה ד שגויה כי 1450 הוא שש שעות אחרי.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q07",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4198.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "תחנת NAVTEX משדרת כל ארבע שעות. 0850 ועוד ארבע שעות הם 1250! זה ג. אז למה לא א? 0450 הוא ארבע שעות לפני. ב? 0050 הוא שמונה שעות לפני. וד? 1450 הוא שש שעות אחרי."
   },
   {
     "num": 4199,
@@ -5075,14 +5148,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "בערוץ 13 מותרת תקשורת גשר לגשר בענייני בטיחות של כלי שייט. ולכן התשובה היא א. תשובה ב שגויה כי לא כל תקשורת בטיחות היא בערוץ 13. תשובה ג שגויה כי ב שגויה, ולכן ג שגויה. תשובה ד שגויה כי תקשורת AIS אינה מותרת בערוץ הזה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q08",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4199.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בערוץ 13 מותרת תקשורת גשר לגשר בענייני בטיחות של כלי שייט! זה א. אז למה לא ב? לא כל תקשורת בטיחות היא בערוץ 13. ג? ב שגויה, ולכן ג שגויה. וד? תקשורת AIS אינה מותרת בערוץ הזה."
   },
   {
     "num": 4200,
@@ -5098,14 +5172,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קריאה מלאה בערוץ 16: קוראים לתחנה שלוש פעמים ומזדהים שלוש פעמים. ולכן התשובה היא א. תשובה ב שגויה כי DUAL WATCH הוא פקד במכשיר. תשובה ג שגויה כי זו הקריאה המקוצרת. תשובה ד שגויה כי עד שלוש פעמים אינו ההגדרה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q09",
     "lesson": 6,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4200.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קריאה מלאה בערוץ 16: קוראים לתחנה שלוש פעמים ומזדהים שלוש פעמים! זה א. אז למה לא ב? DUAL WATCH הוא פקד במכשיר. ג? זו הקריאה המקוצרת. וד? עד שלוש פעמים אינו ההגדרה."
   },
   {
     "num": 4201,
@@ -5122,14 +5197,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "במערכת MEOSAR יש זמינות מיידית דרך שבעים עד תשעים לוויינים, והניצולים מקבלים חיווי על המכשיר כשהמשואה נקלטה. א ו ב נכונות. ולכן התשובה היא ד. תשובה ג שגויה כי המערכת כן צריכה את יחידת הקרקע LUT.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q10",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4201.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "במערכת MEOSAR יש זמינות מיידית דרך שבעים עד תשעים לוויינים, והניצולים מקבלים חיווי על המכשיר כשהמשואה נקלטה. א ו ב נכונות! זה ד. אז למה לא ג? המערכת כן צריכה את יחידת הקרקע LUT."
   },
   {
     "num": 4202,
@@ -5145,14 +5221,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "J היא JULIET, A היא ALFA, N היא NOVEMBER, ושתיים ושלוש הן BISSOTWO ו TERRATHREE. ולכן התשובה היא ג. תשובה א שגויה כי JUNGLE ו NUMBER לא באלפבית. תשובה ב שגויה כי AMORE ו NOTENGO לא באלפבית. תשובה ד שגויה כי JANNET אינה מילה באלפבית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q11",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4202.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "J היא JULIET, A היא ALFA, N היא NOVEMBER, ושתיים ושלוש הן BISSOTWO ו TERRATHREE! זה ג. אז למה לא א? JUNGLE ו NUMBER לא באלפבית. ב? AMORE ו NOTENGO לא באלפבית. וד? JANNET אינה מילה באלפבית."
   },
   {
     "num": 4203,
@@ -5168,14 +5245,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "PAN PAN שלוש פעמים. תחנה מכינה לשידור הודעה דחופה על בטיחות של כלי נייד או אדם. ולכן התשובה היא ב. תשובה א שגויה כי אזהרת ניווט או מזג אוויר היא SECURITE. תשובה ג שגויה כי עזרה מיידית היא MAYDAY. תשובה ד שגויה כי יש תשובה נכונה, ב.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q12",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4203.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "PAN PAN שלוש פעמים. תחנה מכינה לשידור הודעה דחופה על בטיחות של כלי נייד או אדם! זה ב. אז למה לא א? אזהרת ניווט או מזג אוויר היא SECURITE. ג? עזרה מיידית היא MAYDAY. וד? יש תשובה נכונה, ב."
   },
   {
     "num": 4204,
@@ -5191,14 +5269,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ה SART משדר כשמכ\"ם X-band בטווח הקליטה שלו פועל. ולכן התשובה היא ג. תשובה א שגויה כי הפעלה ידנית לא גורמת לו לשדר, הוא ממתין. תשובה ב שגויה כי הוא כן משדר, כשמכ\"ם מקרין עליו. תשובה ד שגויה כי הוא עובד ב X-band ולא ב S-band.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q13",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4204.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ה SART משדר כשמכ\"ם X-band בטווח הקליטה שלו פועל! זה ג. אז למה לא א? הפעלה ידנית לא גורמת לו לשדר, הוא ממתין. ב? הוא כן משדר, כשמכ\"ם מקרין עליו. וד? הוא עובד ב X-band ולא ב S-band."
   },
   {
     "num": 4205,
@@ -5214,14 +5293,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ערוצים 26 ו 27 הם ערוצי DUPLEX בלבד. ולכן התשובה היא ב. תשובה א שגויה כי ערוצים 12 ו 14 הם ערוצי נמל, ב SIMPLEX. תשובה ג שגויה כי ערוצים 15 ו 17 הם קשר פנים, גם ב SIMPLEX. תשובה ד שגויה כי ג אינה נכונה, ולכן ד שגויה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q14",
     "lesson": 2,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4205.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוצים 26 ו 27 הם ערוצי DUPLEX בלבד! זה ב. אז למה לא א? ערוצים 12 ו 14 הם ערוצי נמל, ב SIMPLEX. ג? ערוצים 15 ו 17 הם קשר פנים, גם ב SIMPLEX. וד? ג אינה נכונה, ולכן ד שגויה."
   },
   {
     "num": 4206,
@@ -5237,14 +5317,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "ה DSC CONTROLLER משמש לשידור התרעות מצוקה וקריאות לתחנות ייעודיות. ולכן התשובה היא ג. תשובה א שגויה כי NAVTEX הוא מקלט. תשובה ב שגויה כי GPS לא משדר התרעות. תשובה ד שגויה כי EPIRB משדרת ללוויין.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q15",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4206.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ה DSC CONTROLLER משמש לשידור התרעות מצוקה וקריאות לתחנות ייעודיות! זה ג. אז למה לא א? NAVTEX הוא מקלט. ב? GPS לא משדר התרעות. וד? EPIRB משדרת ללוויין."
   },
   {
     "num": 4207,
@@ -5260,14 +5341,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "קלטת בערוץ 70 התרעת בטיחות לכל התחנות. עוברים לערוץ 16 ומאזינים להודעה. ולכן התשובה היא ג. תשובה א שגויה כי לא מאשרים התרעת בטיחות. תשובה ב שגויה כי כן אפשר לקלוט התרעות בטיחות ב DSC. תשובה ד שגויה כי לא ממתינים בערוץ 70.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q16",
     "lesson": 3,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4207.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קלטת בערוץ 70 התרעת בטיחות לכל התחנות. עוברים לערוץ 16 ומאזינים להודעה! זה ג. אז למה לא א? לא מאשרים התרעת בטיחות. ב? כן אפשר לקלוט התרעות בטיחות ב DSC. וד? לא ממתינים בערוץ 70."
   },
   {
     "num": 4208,
@@ -5283,14 +5365,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "בין שתי יכטות בערוץ 6 הטווח הוא כשמונה מייל ימי. כי VHF נע בקו ישר. ולכן התשובה היא ב. תשובה א שגויה כי שישים מייל זה יותר מדי ל VHF. תשובה ג שגויה כי ההספק מוגבל והטווח לא מגיע למאה מייל. תשובה ד שגויה כי יכטות כן יכולות להשתמש בערוץ 6.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q17",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4208.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "בין שתי יכטות בערוץ 6 הטווח הוא כשמונה מייל ימי! כי VHF נע בקו ישר. זה ב. אז למה לא א? שישים מייל זה יותר מדי ל VHF. ג? ההספק מוגבל והטווח לא מגיע למאה מייל. וד? יכטות כן יכולות להשתמש בערוץ 6."
   },
   {
     "num": 4209,
@@ -5306,14 +5389,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "HAIFA, CYPRUS, NAPOLI ו CAIRO הם שמות של כלי שיט, לפי המבחן. ולכן התשובה היא ג. תשובה א שגויה כי תחנת חוף נקראת בשם העיר ואחריו RADIO, ולכן אלה לא תחנות חוף כאן. תשובה ב שגויה כי RCC הוא מרכז הצלה, לא שם של ספינה. תשובה ד שגויה כי א וב שגויות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q18",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4209.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "HAIFA, CYPRUS, NAPOLI ו CAIRO הם שמות של כלי שיט, לפי המבחן! זה ג. אז למה לא א? תחנת חוף נקראת בשם העיר ואחריו RADIO, ולכן אלה לא תחנות חוף כאן. ב? RCC הוא מרכז הצלה, לא שם של ספינה. וד? א וב שגויות."
   },
   {
     "num": 4210,
@@ -5329,13 +5413,14 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "וואט אחד בלבד בערוצים 15 ו 17. ולכן התשובה היא ד. תשובה א שגויה כי ערוצים 11 ו 13 מותרים בהספק רגיל. תשובה ב שגויה כי ערוצים 88B ו 87B הם ערוצי AIS, בלי שידור קול. תשובה ג שגויה כי ערוצים 12 ו 14 הם ערוצי נמל בהספק מלא.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E11-Q19",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4210.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "וואט אחד בלבד בערוצים 15 ו 17! זה ד. אז למה לא א? ערוצים 11 ו 13 מותרים בהספק רגיל. ב? ערוצים 88B ו 87B הם ערוצי AIS, בלי שידור קול. וג? ערוצים 12 ו 14 הם ערוצי נמל בהספק מלא."
   }
 ]
