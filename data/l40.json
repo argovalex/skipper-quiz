@@ -2291,7 +2291,7 @@
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4085b.jpg",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4085c.jpg",
     "mediaType": "image",
     "voiceover_text": "שֶאלָה מִספָר 4085. האלפאבית הפונטי הבינלאומי יבטא את הצירוף 10 PM?. [[PAUSE]] התשובה הנכונה היא גִּימֶל: איך אומרים עשר פי אִם באלפבית הפונטי? אחד, UNAONE. אפס, NADAZERO. אחר כך PAPA MIKE! זה גִּימֶל. הכתיב של האפס משתנָה בין מבחנים. אבל זו התשובה היחידה שכולה פונטית. אז לָמָה לא אָלף ו בֶת? כי זה משפט באנגלית רגילה. ודָלֶת? POST MERIDIAN הן לא מילים פונטיות.",
     "explanation_spoken": "איך אומרים עשר פי אם באלפבית הפונטי? אחד, UNAONE. אפס, NADAZERO. אחר כך PAPA MIKE! זה ג. הכתיב של האפס משתנה בין מבחנים. אבל זו התשובה היחידה שכולה פונטית. אז למה לא א ו ב? כי זה משפט באנגלית רגילה. וד? POST MERIDIAN הן לא מילים פונטיות.",
@@ -2582,14 +2582,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה מטרת שירות BRIDGE TO BRIDGE ב-VHF. הכלל: תקשורת בין כלי שיט אחד לשני, להגברת בטיחות השייט, ולכן התשובה היא א. תשובה ב שגויה כי קשר עם תחנות חוף הוא שירות אחר. תשובה ג שגויה כי קשר יכטות עם מרינות הוא שירות אחר. תשובה ד שגויה כי תקשורת בחיפוש והצלה היא ON-SCENE.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q18",
     "lesson": 8,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4096.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "BRIDGE TO BRIDGE. גשר לגשר. תקשורת בין שתי ספינות, כדי להגביר בטיחות! זה א. אז למה לא ב? כי קשר עם תחנות חוף הוא שירות אחר. ג? יכטות ומרינות, גם שירות אחר. וד? חיפוש והצלה זה ON SCENE."
   },
   {
     "num": 4097,
@@ -2605,14 +2606,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה מתקן תורם לבטיחות השייט. הכלל: AIS משדר זיהוי ומיקום ומונע התנגשויות, ולכן התשובה היא א. תשובה ב שגויה כי AIS-SART נועד לאיתור בזמן נטישה, לא לבטיחות שוטפת. תשובה ג שגויה כי AIS-RADAR אינו מתקן קיים. תשובה ד שגויה כי מטוס חיפוש והצלה אינו מתקן על הספינה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q19",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4097.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איזה מתקן תורם לבטיחות השייט? AIS! הוא משדר זיהוי ומיקום. ומונע התנגשויות. זה א. אז למה לא ב? כי AIS SART נועד לאיתור בנטישה. לא לבטיחות שוטפת. ג? AIS RADAR לא קיים. וד? מטוס חיפוש והצלה הוא לא מתקן על הספינה."
   },
   {
     "num": 4098,
@@ -2628,14 +2630,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה מספר מזהה ספינה. הכלל: MMSI של ספינה הוא תשע ספרות, ושלוש הראשונות הן ה-MID, ולכן התשובה היא ב, 237001432. תשובה א שגויה כי יש בה רק שמונה ספרות. תשובה ג שגויה כי אפס בהתחלה הוא קבוצה. תשובה ד שגויה כי א שגויה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q20",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4098.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "זיהוי של ספינה. תשע ספרות! ושלוש הראשונות זה ה MID. שתיים שלוש שבע, אפס אפס אחד, ארבע שלוש שתיים. זה ב. אז למה לא א? כי יש בו רק שמונה ספרות. ג? אפס בהתחלה זו קבוצה. וד? א שגויה."
   },
   {
     "num": 4099,
@@ -2651,14 +2654,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה הכיסוי של לווייני GEOSAT הנייחים לקליטת משואות. הכלל: הם מכסים את כל האזורים בין 70 מעלות צפון ל-70 מעלות דרום, ולכן התשובה היא ג. תשובה א שגויה כי הכיסוי כולל גם A1 ו-A2. תשובה ב שגויה כי A4 הוא אזור הקטבים, ושם GEO לא מכסה. תשובה ד שגויה כי הקטבים לא מכוסים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4099.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "לווייני GEO. הם נייחים, מעל נקודה אחת. הכיסוי שלהם? בין שבעים צפון לשבעים דרום! זה ג. אז למה לא א? כי הכיסוי כולל גם A1 ו A2. ב? A4 זה הקטבים. שם GEO לא מכסה. וד? לא כל כדור הארץ. הקטבים לא מכוסים."
   },
   {
     "num": 4100,
@@ -2674,14 +2678,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש המונח MAYDAY RELAY. הכלל: שידור ממסר מצוקה עבור כלי שיט שבמצוקה, על ידי תחנה שאינה במצוקה, ולכן התשובה היא ד. תשובה א שגויה כי השהיית התרעה אינה המונח. תשובה ב שגויה כי אדם שנפל לים הוא מצב, לא מונח. תשובה ג שגויה כי סיום זהיר של מצוקה הוא PRUDONCE.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q02",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4100.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MAYDAY RELAY. תחנה שאינה במצוקה, משדרת הודעת מצוקה בשם כלי שייט אחר! זה ד. אז למה לא א? כי השהיית התרעה היא לא המונח. ב? אדם שנפל לים זה מצב, לא מונח. וג? סיום זהיר של מצוקה זה PRUDONCE."
   },
   {
     "num": 4101,
@@ -2697,14 +2702,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא דרך מה זמין שירות ה-MSI. הכלל: דרך מקלט ה-NAVTEX, ולכן התשובה היא א. תשובה ב שגויה כי AGC אינו מתקן קבלה של MSI. תשובה ג שגויה כי בקר ה-DSC הוא לקריאות והתרעות. תשובה ד שגויה כי SART לא מקבל הודעות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q03",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4101.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MSI. מידע בטיחות ימי. דרך מה מקבלים אותו? דרך מקלט ה NAVTEX! זה א. אז למה לא ב? כי AGC הוא לא מתקן קבלה של MSI. ג? בקר ה D S C הוא לקריאות והתרעות. וד? SART לא מקבל הודעות."
   },
   {
     "num": 4102,
@@ -2720,14 +2726,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזו עדיפות משדרים TR. הכלל: דיווח מסע הוא שגרה, ולכן התשובה היא ב. תשובות א, ג וד שגויות כי TR אינו דחיפות, מצוקה או בטיחות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q04",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4102.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "TR. דיווח מסע. באיזו עדיפות? שגרה! זה ב. אז למה לא א, ג או ד? כי זה לא דחיפות. לא מצוקה. ולא בטיחות."
   },
   {
     "num": 4103,
@@ -2743,14 +2750,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה ערוץ מתקשרים עם רשויות נמל. הכלל: ערוץ 12, ולכן התשובה היא א. תשובה ב שגויה כי ערוץ 13 הוא גשר לגשר. תשובה ג שגויה כי ערוץ 6 הוא חיפוש והצלה בין ספינות. תשובה ד שגויה כי ערוץ 75 הוא ערוץ מוגבל בהספק נמוך.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q05",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4103.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "רשויות נמל. ערוץ שתים עשרה! זה א. אז למה לא ב? כי ערוץ שלוש עשרה הוא גשר לגשר. ג? ערוץ שש זה חיפוש והצלה בין ספינות. וד? ערוץ שבעים וחמש הוא ערוץ מוגבל, בהספק נמוך."
   },
   {
     "num": 4104,
@@ -2766,14 +2774,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה פרסום מופיעים פרטים על תחנות חוף. הכלל: LIST OF COAST STATIONS, ולכן התשובה היא א. תשובה ב שגויה כי GMDSS RADIO LOGBOOK הוא היומן. תשובה ג שגויה כי INTERNATIONAL CODE OF SIGNALS הוא פרסום אחר. תשובה ד שגויה כי ב שגויה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q06",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4104.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "איפה מוצאים פרטים על תחנות חוף? ב LIST OF COAST STATIONS! זה א. אז למה לא ב? כי GMDSS RADIO LOGBOOK הוא היומן. ג? INTERNATIONAL CODE OF SIGNALS הוא פרסום אחר. וד? ב שגויה."
   },
   {
     "num": 4105,
@@ -2789,14 +2798,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "אתה NUMA ונקראת על ידי תחנה שלא קלטת את זיהויה. הכלל: מגיבים בקריאה STATION CALLING NUMA, REPEAT YOUR CALL, ולכן התשובה היא ב. תשובה א שגויה כי לא מתעלמים. תשובה ג שגויה כי לא ממתינים חמש דקות. תשובה ד שגויה כי לא כל התשובות מקובלות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q07",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4105.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "נקראת על ידי תחנה, ולא קלטת מי היא. מגיבים! STATION CALLING NUMA, REPEAT YOUR CALL. זה ב. אז למה לא א? כי לא מתעלמים וממתינים. ג? לא ממתינים חמש דקות. וד? לא כל התשובות מקובלות."
   },
   {
     "num": 4106,
