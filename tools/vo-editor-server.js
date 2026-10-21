@@ -60,27 +60,9 @@ function requestV2(text) {
 // Higgsfield לא חושף TTS ב-REST, אז העורך מפיק דרך ElevenLabs עם ELEVENLABS_API_KEY
 // ו-ELEVENLABS_VOICE_ID מ-.env (tools/voice/elevenlabs-clone.js יוצר את השיבוט).
 // cache לפי hash ב-output/voice-v2/editor/live-<id>.mp3; [[PAUSE]] = שתי קריאות + 2.5ש׳ שקט.
-function loadEnv() {
-  try {
-    for (const line of fs.readFileSync(path.join(ROOT, '.env'), 'utf8').split(/\r?\n/)) {
-      const m = line.match(/^\s*(ELEVENLABS_[A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
-      if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
-    }
-  } catch { /* אין .env */ }
-}
-loadEnv();
-const EL_MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v4';
-const MASTER_CHAIN = 'highpass=f=70,acompressor=threshold=-20dB:ratio=2:attack=10:release=150,loudnorm=I=-14:TP=-1:LRA=9';
-
-async function elevenTts(text, out) {
-  const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${process.env.ELEVENLABS_VOICE_ID}?output_format=mp3_44100_128`, {
-    method: 'POST',
-    headers: { 'xi-api-key': process.env.ELEVENLABS_API_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text, model_id: EL_MODEL }),
-  });
-  if (!r.ok) throw new Error(`ElevenLabs ${r.status}: ${(await r.text()).slice(0, 200)}`);
-  fs.writeFileSync(out, Buffer.from(await r.arrayBuffer()));
-}
+// The TTS + mastering itself is the shared pipeline tools/voice/voice.js (loads .env too).
+const voice = require('./voice/voice.js');
+const EL_MODEL = voice.modelFor();
 
 async function liveV2(text) {
   if (!process.env.ELEVENLABS_API_KEY || !process.env.ELEVENLABS_VOICE_ID)
@@ -89,23 +71,7 @@ async function liveV2(text) {
   const out = path.join(V2_DIR, `live-${id}.mp3`);
   if (fs.existsSync(out)) return out;
   fs.mkdirSync(V2_DIR, { recursive: true });
-  const { execFileSync } = require('child_process');
-  const parts = text.split('[[PAUSE]]').map(s => s.trim()).filter(Boolean);
-  const raw = parts.map((_, i) => path.join(V2_DIR, `tmp-${id}-${i}.mp3`));
-  await Promise.all(parts.map((p, i) => elevenTts(p, raw[i])));
-  const args = ['-y', '-loglevel', 'error'];
-  raw.forEach(f => args.push('-i', f));
-  if (raw.length > 1) {
-    args.push('-filter_complex',
-      `anullsrc=r=44100:cl=mono,atrim=duration=2.5[s];[0:a]aresample=44100,aformat=channel_layouts=mono[a];` +
-      `[1:a]aresample=44100,aformat=channel_layouts=mono[b];[a][s][b]concat=n=3:v=0:a=1,${MASTER_CHAIN}`);
-  } else {
-    args.push('-af', MASTER_CHAIN);
-  }
-  args.push('-b:a', '192k', out);
-  execFileSync('ffmpeg', args, { windowsHide: true }); // server has no console: without this ffmpeg opens a black window
-  raw.forEach(f => fs.rmSync(f, { force: true }));
-  return out;
+  return voice.say(text, out);
 }
 
 // ── עדכון המילון ────────────────────────────────────────────────────────────────

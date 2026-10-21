@@ -14,9 +14,9 @@ import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lesson"))
 import nowin  # ffmpeg children without a console window (no black windows)
 
-CHAIN = ("highpass=f=70,"
-         "acompressor=threshold=-20dB:ratio=2:attack=10:release=150,"
-         "loudnorm=I=-14:TP=-1:LRA=9")
+import json
+CHAIN = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "voice-config.json"),
+                       encoding="utf-8"))["masterChain"]   # one chain for every pipeline
 PAUSE_S = 2.5
 CPS_MIN, CPS_MAX = 6.0, 22.0   # תווים לשנייה; Alex v2 איטי (8-13), קיטוע = מעל המקסימום או אורך אפסי
 

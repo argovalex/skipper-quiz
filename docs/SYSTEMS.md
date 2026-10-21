@@ -26,6 +26,8 @@ data/lXX.json  ──►  עורך (index.html / vo-editor) ──►  רינד�
 | `render <num...> [--license N]` | preflight + `update-question.js` (כל הדגלים שלו עוברים) |
 | `stored <num...>` | l12 מ-`voiceover_text` שמור + propagate |
 | `propagate <num...>` | `update-question --no-render` (רונדר כבר בעורך) |
+| `render ... --local-voice` | הקול מופק מקומית ב-`voice.js` ונשלח כ-`--audio` (השרת לא מקריא) |
+| `voice segments\|say\|question\|master` | הצנרת `tools/voice/voice.js` ישירות |
 | `pausemap`, `lexicon`, `html`, `topics`, `brand`, `quota` | עטיפות לסקריפטים הקיימים |
 
 preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק את קבצי המדיה החסרים, ו-`--no-sync` מדלג על pull ועל המילון.
@@ -49,7 +51,8 @@ preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק �
 | ייצוא ל-JS | `node tools/quiz-app/gen-vo-lexicon.js` ← `tools/quiz-app/vo-lexicon.js` |
 | בניית VO לשאלה | `tools/quiz-app/vo.js` (`buildVoiceover`), בדיקה: `vo-check.js` |
 | **מנוע הניקוד (יחיד)** | `applyLexiconText` ב-`tools/quiz-app/vo.js`. Python (`tools/lesson/niqqud.py`, `scratch_niqqud.py`) קורא לו דרך `niqqud-cli.js`. בדיקות: `npm test` |
-| קול | ElevenLabs, שיבוט `825LDODpKbomKDZoqVG5`, `eleven_v4`. כלים: `tools/voice/` (`elevenlabs-clone.js`, `el-quota.js`), מסטרינג `tools/voice/master.py` |
+| קול | ElevenLabs, שיבוט `825LDODpKbomKDZoqVG5`, `eleven_v4` (l11: `eleven_v3`). כלים: `tools/voice/` (`elevenlabs-clone.js`, `el-quota.js`) |
+| **צנרת VO (יחידה)** | `tools/voice/voice.js`: מילון ← ElevenLabs ← מסטרינג ← בדיקת אורך. הגדרות (שרשרת מסטרינג, מודלים, השהיות) ב-`tools/voice/voice-config.json`. משתמשים בה: `el_tts.py` (l30/l40), `tools/lesson/tts.py --elevenlabs` (l11), שרת העורך, `master.py`, ו-`sq render --local-voice` |
 
 כללי המנוע: לא דורס ניקוד קיים (חוץ מכפתור "מילון" בעורך, `override`), מעבר אחד הארוך קודם, מילים קצרות רק `או קו אם עד פה אף`, `למנוע`/`צופה` רק בשיעורים (`mode:'lesson'`). רקע: [reports/niqqud-engines-2026-10-21.md](../reports/niqqud-engines-2026-10-21.md).
 
@@ -113,5 +116,5 @@ preflight עוצר כשתמונה לא ב-origin. `--push-media` דוחף רק �
 1. ✅ מפת מערכות (המסמך הזה).
 2. ✅ CLI אחד (`tools/sq.js`, `npm run <פקודה>`) שאוכף pull, gen-vo-lexicon ו-push media לבד.
 3. ✅ מנוע ניקוד אחד לכל המסלולים.
-4. צנרת VO משותפת (טקסט ← מילון ← ElevenLabs ← master.py) לשאלות, שיעורים ו-l12.
+4. ✅ צנרת VO משותפת (`tools/voice/voice.js`). חריג: `publisher/el-tts.js` (ריפו נפרד בשרת) מחזיק עותק של השרשרת וכלל המודל, לסנכרן ידנית.
 5. ניקוי השורש: דפי ניהול ל-`admin/`, קבצים בינאריים ל-`references/`/`media/`, מחיקת scratch. לבדוק קודם מה Pages ו-Railway מגישים.

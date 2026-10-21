@@ -1,0 +1,9 @@
+{
+  "_doc": "Single voice config (tools/voice/voice.js, master.py, el_tts.py, vo-editor-server.js). publisher/el-tts.js is a separate repo: keep its MASTER and model rule in sync by hand.",
+  "masterChain": "highpass=f=70,acompressor=threshold=-20dB:ratio=2:attack=10:release=150,loudnorm=I=-14:TP=-1:LRA=9",
+  "bitrate": "192k",
+  "outputFormat": "mp3_44100_128",
+  "models": { "default": "eleven_v4", "11": "eleven_v3" },
+  "pauseSeconds": { "question": 2.5, "lessonAnswer": 3 },
+  "cps": { "min": 5, "max": 22 }
+}

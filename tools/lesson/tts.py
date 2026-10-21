@@ -80,47 +80,13 @@ def from_dir(vofile, out_dir, src_dir):
 
 
 def elevenlabs(vofile, out_dir):
-    """קול v2 (docs/voice-style-v2.md): ElevenLabs ישירות, ELEVENLABS_* מ-.env, מסטרינג master.py."""
-    # l11 lessons stay on eleven_v3, as built (Alex 2026-10-04); everything else eleven_v4.
-    model = os.environ.get("ELEVENLABS_MODEL") or ("eleven_v3" if "l11" in os.path.abspath(vofile).replace("\\", "/").split("/") else "eleven_v4")
-    import json, urllib.request, urllib.error
+    """קול v2 (docs/voice-style-v2.md) דרך הצנרת האחת tools/voice/voice.js (--plain: מילון בלבד).
+    l11 נשאר על eleven_v3 (voice.js מזהה לפי הנתיב); מקטע קיים באורך סביר לא מוקלט מחדש."""
     root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
-    env = dict(re.findall(r"^\s*(ELEVENLABS_\w+)\s*=\s*(.+?)\s*$",
-                          open(os.path.join(root, ".env"), encoding="utf-8").read(), re.M))
-    key, voice = env["ELEVENLABS_API_KEY"], env["ELEVENLABS_VOICE_ID"]
-    sys.path.insert(0, os.path.join(root, "tools", "voice"))
-    import master as mst
-    lex = load_lexicon()
-    os.makedirs(out_dir, exist_ok=True)
-    segs = parse_segments(vofile)
-    bad = []
-    for sid, text in segs:
-        text = niqqud_apply(text, lex)
-        out = os.path.join(out_dir, f"seg_{sid}.mp3")
-        if os.path.exists(out) and mst.check(out, len(_MARKS.sub("", text))):
-            continue                                   # כבר הופק (המשך אחרי עצירה, חוסך מכסה)
-        raw = out + ".raw.mp3"
-        req = urllib.request.Request(
-            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
-            data=json.dumps({"text": text, "model_id": model}).encode(),
-            headers={"xi-api-key": key, "Content-Type": "application/json"})
-        for attempt in range(20):
-            try:
-                with urllib.request.urlopen(req, timeout=180) as r:
-                    open(raw, "wb").write(r.read())
-                break
-            except urllib.error.HTTPError as e:
-                if e.code == 429 and attempt < 19:      # מגבלת בקשות מקבילות בתוכנית, מחכים ומנסים שוב
-                    import time; time.sleep(15)
-                    continue
-                raise SystemExit(f"ABORT {sid}: ElevenLabs {e.code} {e.read()[:300]!r}")
-        mst.master(raw, out)
-        os.remove(raw)
-        if not mst.check(out, len(_MARKS.sub("", text))):
-            bad.append(sid)
-    if bad:
-        raise SystemExit(f"ABORT: suspicious length: {bad}")
-    print("segments:", len(segs))
+    r = subprocess.run(["node", os.path.join(root, "tools", "voice", "voice.js"),
+                        "segments", vofile, out_dir, "--plain"])
+    if r.returncode != 0:
+        raise SystemExit("ABORT: voice.js segments failed")
 
 
 async def run(vofile, out_dir):

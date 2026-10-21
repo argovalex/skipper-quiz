@@ -11,6 +11,8 @@
 //   preflight <num...> [--license N]  sync + media-on-GitHub check, nothing else
 //   check   <num...> [--license N]  preflight + vo-check (new unapproved VO words)
 //   render  <num...> [--license N] [update-question flags]   preflight + update-question.js
+//           --local-voice: voice made here by tools/voice/voice.js, sent as --audio
+//   voice   <voice.js args>         segments | say | question | master (tools/voice/voice.js)
 //   stored  <num...>                l12 render from stored voiceover_text + propagate
 //   propagate <num...> [--license N]  update-question --no-render (already rendered in the editor)
 //   pausemap [--license N]          build-pausemap + merge-inject
@@ -33,7 +35,7 @@ const QA = path.join(ROOT, 'tools', 'quiz-app');
 
 const [cmd, ...rest] = process.argv.slice(2);
 const flag = f => rest.includes(f);
-const SQ_FLAGS = new Set(['--no-sync', '--push-media']);
+const SQ_FLAGS = new Set(['--no-sync', '--push-media', '--local-voice']);
 const passArgs = rest.filter(a => !SQ_FLAGS.has(a));
 const li = rest.indexOf('--license');
 let LICENSE = li !== -1 ? parseInt(rest[li + 1], 10) : 11;
@@ -111,7 +113,16 @@ const commands = {
   preflight,
   lexicon: () => node(path.join(QA, 'gen-vo-lexicon.js')),
   check() { preflight(); node(path.join(QA, 'vo-check.js'), passArgs); },
-  render() { preflight(); node(path.join(QA, 'update-question.js'), passArgs); },
+  render() {
+    preflight();
+    if (!flag('--local-voice')) return node(path.join(QA, 'update-question.js'), passArgs);
+    // voice generated here by tools/voice/voice.js and shipped as --audio (server TTS skipped)
+    const dir = path.join(ROOT, 'output', 'voice-v2', 'q');
+    node(path.join(ROOT, 'tools', 'voice', 'voice.js'), ['question', ...nums, '--license', String(LICENSE),
+      ...(flag('--stored-vo') ? ['--stored-vo'] : []), '--out', dir]);
+    node(path.join(QA, 'update-question.js'), [...passArgs, '--audio', dir]);
+  },
+  voice: () => node(path.join(ROOT, 'tools', 'voice', 'voice.js'), passArgs),
   propagate() {
     if (!nums.length) die('give at least one question number');
     node(path.join(QA, 'update-question.js'), [...passArgs, '--no-render']);
@@ -140,7 +151,7 @@ const commands = {
 };
 
 if (!cmd || !commands[cmd]) {
-  const doc = fs.readFileSync(__filename, 'utf8').split('\n').filter(l => l.startsWith('//')).slice(0, 26);
+  const doc = fs.readFileSync(__filename, 'utf8').split('\n').filter(l => l.startsWith('//')).slice(0, 28);
   console.log(doc.map(l => l.replace(/^\/\/ ?/, '')).join('\n'));
   process.exit(cmd ? 1 : 0);
 }
