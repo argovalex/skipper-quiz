@@ -1967,7 +1967,7 @@
     "lesson": 9,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4073.jpg",
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4073b.jpg",
     "mediaType": "image",
     "explanation_spoken": "רמות ב NAVTEX. VITAL, IMPORTANT, ROUTINE! זה א. אז למה לא ב? כי DISTRESS, URGENCY, SAFETY זה עדיפויות של הקשר הקולי. ג? ההודעות לא שוות. VITAL משודרת מיד. וד? יש תשובה נכונה. א.",
     "voiceover_text": "שֶאלָה מִספָר 4073. לכמה רמות בטיחות מתחלקות הודעות ה-NAVTEX?. [[PAUSE]] התשובה הנכונה היא אָלף: רמות ב NAVTEX. VITAL, IMPORTANT, ROUTINE! זה אָלף. אז לָמָה לא בֶת? כי DISTRESS, URGENCY, SAFETY זה עדיפויות של הקשר הקולי. גִּימֶל? ההודעות לא שוות. VITAL משודרת מיד. ודָלֶת? יש תשובה נכונה. אָלף.",
@@ -2042,14 +2042,16 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזו הצהרה נכונה לגבי ציוד GMDSS לכלי שיט שמפליג רק באזור A1. הכלל: חייבים להיות מסוגלים ליזום התרעת מצוקה מהאנייה לחוף מגשר הפיקוד, וגם לשדר אותה משני מתקנים שונים ובלתי תלויים, ולכן התשובה היא ד, א ו-ב נכונות. תשובה ג שגויה כי חיבור ה-GPS ל-DSC נועד לעדכון מיקום, ולא לעדכון זמן.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q16",
     "lesson": 1,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4076.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4076. איזו מההצהרות היא נכונה לגבי דרישה לציוד GMDSS לִכְּלִי שיט המפליג רק באזור A1?. [[PAUSE]] התשובה הנכונה היא דָלֶת: תשובות אָלף ו-ב נְכוֹנוֹת.",
+    "explanation_spoken": "ספינה שמפליגה רק ב A1. מה חובה? א, ליזום התרעת מצוקה מגשר הפיקוד, ממרחק הידיים. נכון! ב, לשדר התרעה משני מתקנים נפרדים ובלתי תלויים. גם נכון! אז ד. אז למה לא ג? כי חיבור ה G P S ל D S C הוא לעדכון מיקום. לא לעדכון זמן."
   },
   {
     "num": 4077,
@@ -2065,14 +2067,16 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה משמש ערוץ 16. הכלל: ערוץ 16 משמש לתקשורת מצוקה, דחיפות, בטיחות וקריאה, ולכן התשובה היא ג. תשובה א שגויה כי הודעות NAVTEX לא מגיעות בערוץ קול. תשובה ב שגויה כי היא חלקית ולא כוללת מצוקה ודחיפות. תשובה ד שגויה כי הודעות מזג אוויר מגיעות ב-NAVTEX או בערוץ עבודה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q17",
     "lesson": 9,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4077.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4077. לֶמָה משמש ערוץ 16?. [[PAUSE]] התשובה הנכונה היא גִּימֶל: לתקשורת מצוקה, דחיפוֹת, בטיחות וקריאה.",
+    "explanation_spoken": "ערוץ שש עשרה. בשביל מה? מצוקה, דחיפות, בטיחות וקריאה! הכל. זה ג. אז למה לא א? כי הודעות NAVTEX לא מגיעות בערוץ קול. ב? זו תשובה חלקית. חסרות מצוקה ודחיפות. וד? מזג אוויר מגיע ב NAVTEX או בערוץ עבודה."
   },
   {
     "num": 4078,
@@ -2088,14 +2092,16 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה כוללת תקשורת דחיפות. הכלל: גרירה של כלי המוגבל בתנועתו, מצב רפואי של איש צוות או נוסע, ופינוי רפואי, הם כולם דחיפות PAN PAN, ולכן התשובה היא ד, כל התשובות נכונות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q18",
     "lesson": 9,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4078.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4078. תקשורת דחיפוֹת כוללת את הפריטים הבאים:. [[PAUSE]] התשובה הנכונה היא דָלֶת: כל התשובות נְכוֹנוֹת.",
+    "explanation_spoken": "מה כוללת דחיפות? עזרה בגרירה של כלי מוגבל בתנועתו. נכון! מצב רפואי של איש צוות או נוסע. נכון! וכל בקשה לפינוי רפואי. גם נכון! כולם PAN PAN. אז ד."
   },
   {
     "num": 4079,
@@ -2111,14 +2117,16 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא לאיזה סוג תקשורת מיועד שירות ON-SCENE COMMUNICATIONS. הכלל: תקשורת בין כלי נייד שנמצא במצוקה לבין תחנות ניידות אחרות שמגישות עזרה, ולכן התשובה היא ב. תשובה א שגויה כי תקשורת פנים בהפלגה היא קשר על הסיפון. תשובה ג שגויה כי תקשורת בין אניות בנושא בטיחות היא גשר לגשר. תשובה ד שגויה כי זה לא מוגבל לנמלים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q19",
     "lesson": 8,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4079.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4079. לאיזה סוג תקשורת מיועד השרות של On-Scene Communications?. [[PAUSE]] התשובה הנכונה היא בֶת: תקשורת בין כְּלי נייד כְּלֵי שָייט אוֹ מטוס הנמצא במצוקה לבין תחנות ניידות אחרות המגישות עזרה.",
+    "explanation_spoken": "ON SCENE. תקשורת במקום האירוע! בין מי שבמצוקה, לבין מי שבא לעזור. זה ב. אז למה לא א? כי תקשורת פנים זה על הסיפון. ג? בטיחות בין אניות זה גשר לגשר. וד? זה לא רק בנמלים."
   },
   {
     "num": 4080,
@@ -2134,14 +2142,16 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה המשותף לערוצים 12, 14 ו-20. הכלל: אלה ערוצים לתקשורת עם רשויות נמלים בכל העולם, ולכן התשובה היא א. תשובה ב שגויה כי הם לא ערוצי PUBLIC CORRESPONDENCE. תשובה ג שגויה כי לא כולם DUPLEX. תשובה ד שגויה כי ג אינה נכונה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E04-Q20",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4080.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4080. מה המשותף בין הערוצים 12, 14, 20?. [[PAUSE]] התשובה הנכונה היא אָלף: קיום תקשורת עם רשויות נמלים בכל העולם.",
+    "explanation_spoken": "ערוצים שתים עשרה, ארבע עשרה ועשרים. מה משותף? תקשורת עם רשויות נמלים! בכל העולם. זה א. אז למה לא ב? כי הם לא ערוצי שיחות בתשלום. ג? לא כולם DUPLEX. וד? ג לא נכונה."
   },
   {
     "num": 4081,
@@ -2157,14 +2167,16 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איזה תדר מתפשט כגל קרקע. הכלל: 518 קילו הרץ הוא תדר בינוני MF שמתפשט כגל קרקע, ולכן התשובה היא א. תשובה ב שגויה כי 4209 קילו הרץ הוא תדר HF שמתפשט בגל שמיים. תשובה ג שגויה כי 121.5 מגה הרץ הוא תדר ביות של משואה. תשובה ד שגויה כי ב שגויה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q01",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4081.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4081. איזה מהערוצים אוֹ תדרים תשייך לגל המתפשט כגל קרקע?. [[PAUSE]] התשובה הנכונה היא אָלף: 518 Khz.",
+    "explanation_spoken": "איזה תדר מתפשט כגל קרקע? חמש מאות שמונה עשרה קילו הרץ! תדר בינוני. זה א. אז למה לא ב? כי ארבעת אלפים מאתיים ותשע קילו הרץ הוא HF. הוא מתפשט בגל שמיים. ג? מאה עשרים ואחד נקודה חמש זה תדר ביות של משואה. וד? ב שגויה."
   },
   {
     "num": 4082,
@@ -2180,14 +2192,16 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "זו הודעת בטיחות על אזורי ירי. הכלל: מאזינים עד הסוף, רושמים את פרטי ההודעה ביומן התחנה וממסרים מיד לאיש המשמרת, ולכן התשובה היא ב. תשובה א שגויה כי להודעת בטיחות לא שולחים אישור קליטה. תשובה ג שגויה כי PAN PAN היא דחיפות ואין סיבה לשדר שוב. תשובה ד שגויה כי RCC לא מקבל אישורים על הודעות בטיחות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q02",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4082.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4082. איך תגיב להודעת בטיחות הקשורה לאזורי ירי?. [[PAUSE]] התשובה הנכונה היא בֶת: ארשום את פרטי ההודעה ביומן התחנה. אמסור מיד את ההודעה לאיש המשמרת.",
+    "explanation_spoken": "הודעת בטיחות על אזור ירי. מאזינים עד הסוף. רושמים ביומן התחנה. וממסרים מיד לאיש המשמרת! זה ב. אז למה לא א? כי לא שולחים אישור קליטה. ג? PAN PAN היא דחיפות. ד? ל RCC לא שולחים אישור על הודעת בטיחות."
   },
   {
     "num": 4083,
@@ -2203,14 +2217,16 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא על מטרת מערכת ה-AIS. הכלל: להגביר את בטיחות השייט ולמנוע התנגשויות, בעיקר באזורי תנועה צפופה, ולכן התשובה היא ג. תשובה א שגויה כי AIS לא מחליף את DSC. תשובה ב שגויה כי מידע בטיחות מגיע ב-NAVTEX. תשובה ד שגויה כי AIS לא מגדיל את יעילות המכ\"מ.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q03",
     "lesson": 5,
     "lesson_cover": "direct",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4083.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4083. מהי מטרתה של מערכת ה-A I S?. [[PAUSE]] התשובה הנכונה היא גִּימֶל: להגביר את בטיחות השייט ולמנוע התנגשויות בין כְּלי שיט בעיקר באזורי תנועה צפופה.",
+    "explanation_spoken": "מה המטרה של AIS? למנוע התנגשויות! בעיקר באזורי תנועה צפופה. זה ג. אז למה לא א? כי הוא לא מחליף את D S C. ב? מידע בטיחות מגיע ב NAVTEX. וד? הוא לא משפר את המכ\"ם."
   },
   {
     "num": 4084,
@@ -2226,14 +2242,16 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באילו ערוצים מקבלים מידע והוראות עגינה בכניסה לנמל. הכלל: ערוצים 12 ו-14 הם ערוצי רשויות נמל, ולכן התשובה היא א. תשובה ב שגויה כי 15 ו-17 הם קשר פנים על הסיפון. תשובה ג שגויה כי ערוץ 16 הוא לקריאה ומצוקה ולא להוראות עגינה. תשובה ד שגויה כי 24 עד 27 הם ערוצי DUPLEX לתחנות חוף.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q04",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4084.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4084. על איזה ערוצים ספינה תקבל מידע והוראות עגינה בכניסה לנמל?. [[PAUSE]] התשובה הנכונה היא אָלף: ערוץ 12 ערוץ 14.",
+    "explanation_spoken": "הוראות עגינה בכניסה לנמל. ערוצים שתים עשרה וארבע עשרה! זה א. אז למה לא ב? כי חמש עשרה ושבע עשרה זה קשר פנים. ג? ערוץ שש עשרה הוא לקריאה ולמצוקה. וד? עשרים וארבע עד עשרים ושבע הם DUPLEX לתחנות חוף."
   },
   {
     "num": 4085,
@@ -2249,14 +2267,16 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך האלפבית הפונטי הבינלאומי יבטא את הצירוף 10 PM. הכלל: ספרות ואותיות נקראות בשמות פונטיים קבועים, אחד UNAONE, אפס NADAZERO, ו-P ו-M הן PAPA ו-MIKE, ולכן התשובה היא ג, כי היא היחידה בנויה כולה משמות פונטיים. תשובות א וב שגויות כי הן משפט באנגלית רגילה. תשובה ד שגויה כי POST MERIDIAN אינן מילים פונטיות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E05-Q05",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4085.jpg",
+    "mediaType": "image",
+    "voiceover_text": "שֶאלָה מִספָר 4085. האלפאבית הפונטי הבינלאומי יבטא את הצירוף 10 PM?. [[PAUSE]] התשובה הנכונה היא גִּימֶל: UNAONE ZERONADA PAPA MIKE.",
+    "explanation_spoken": "איך אומרים עשר פי אם באלפבית הפונטי? אחד, UNAONE. אפס, NADAZERO. אחר כך PAPA MIKE! זה ג. הכתיב של האפס משתנה בין מבחנים. אבל זו התשובה היחידה שכולה פונטית. אז למה לא א ו ב? כי זה משפט באנגלית רגילה. וד? POST MERIDIAN הן לא מילים פונטיות."
   },
   {
     "num": 4086,
