@@ -3122,14 +3122,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מהי קריאה מקוצרת. הכלל: קוראים לתחנה פעם אחת ומזדהים פעמיים, ולכן התשובה היא ד, LANA THIS IS KOBE פעמיים OVER. תשובה א שגויה כי קוראים לתחנה פעמיים ומזדהים פעם אחת. תשובה ב שגויה כי גם התחנה וגם הזיהוי פעמיים. תשובה ג שגויה כי זיהוי פעם אחת בלבד.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q18",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4116.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קריאה מקוצרת. קוראים לתחנה פעם אחת, ומזדהים פעמיים! LANA, THIS IS KOBE, KOBE, OVER. זה ד. אז למה לא א? כי שם קוראים לתחנה פעמיים. ב? גם התחנה וגם הזיהוי פעמיים. וג? מזדהים פעם אחת בלבד."
   },
   {
     "num": 4117,
@@ -3145,14 +3146,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש הקוד LD00 בהודעת NAVTEX. הכלל: האות L היא התחנה, D סוג ההודעה, ו-00 מציין הודעה שכלי שיט במרחב השידור שלה לא יכולים לדחות, ולכן התשובה היא ד. תשובה א שגויה כי D הוא סוג ההודעה ולא תחנה. תשובה ב שגויה כי 00 לא מציין שאין הודעה בתוקף. תשובה ג שגויה כי הקוד לא מציין שתחנה אינה פעילה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q19",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4117.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "הקוד L D אפס אפס. L היא התחנה. D זה סוג ההודעה. ואפס אפס? הודעה שאי אפשר לדחות! זה ד. אז למה לא א? כי D הוא סוג ההודעה. לא תחנה. ב? אפס אפס לא אומר שאין הודעה בתוקף. וג? הקוד לא אומר שהתחנה אינה פעילה."
   },
   {
     "num": 4118,
@@ -3169,14 +3171,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא כל כמה זמן בודקים את המשקל הסגולי של נוזל כל תא במצברי התחנה. הכלל: אחת לשבוע, ולכן התשובה היא ב. תשובה א שגויה כי כל יום בודקים מתח. תשובה ג שגויה כי חודש ארוך מדי. תשובות ד וה שגויות כי אחת להפלגה או מתי שאפשר אינן נוהל.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q20",
     "lesson": 6,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4118.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "משקל סגולי של נוזל המצברים. כל שבוע! זה ב. אז למה לא א? כי כל יום בודקים מתח. ג? חודש ארוך מדי. וד ו ה? אחת להפלגה או מתי שאפשר, זה לא נוהל."
   },
   {
     "num": 4119,
@@ -3192,14 +3195,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מתי קצב שידור המידע של ה-AIS הוא המירבי. הכלל: כשכלי השיט נע במהירות מעל 15 קשר ומשנה קורס, ולכן התשובה היא א. תשובה ב שגויה כי בעגינה הקצב נמוך. תשובה ג שגויה כי אזור A1 לא קובע קצב. תשובה ד שגויה כי הקצב משתנה לפי מהירות ושינוי קורס.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q01",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4119.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מתי ה AIS משדר הכי הרבה? כשהספינה נעה מהר! מעל חמש עשרה קשר, ומשנה קורס. זה א. אז למה לא ב? כי בעגינה הקצב נמוך. ג? אזור A1 לא קובע קצב. וד? הקצב לא קבוע. הוא משתנה לפי מהירות וקורס."
   },
   {
     "num": 4120,
@@ -3215,14 +3219,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש המונח MEO. הכלל: MEDIUM EARTH ORBIT, מסלול בינוני סביב כדור הארץ, ולכן התשובה היא ג. תשובות א, ב וד שגויות כי MARITIME EARTH ORBIT, MARINE ELECTRONIC OFFICER ו-METEOROLOGICAL EARTH ORGANIZATION אינם מונחים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q02",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4120.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MEO. MEDIUM EARTH ORBIT! מסלול בינוני סביב כדור הארץ. זה ג. אז למה לא א, ב או ד? כי MARITIME EARTH ORBIT, MARINE ELECTRONIC OFFICER ו METEOROLOGICAL EARTH ORGANIZATION הם לא מונחים."
   },
   {
     "num": 4121,
@@ -3238,14 +3243,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה מטרת ה-SART. הכלל: לאפשר לכלי שיט ולמטוסי חיפוש והצלה עם מכ\"ם X-band להתבייט עליו, ולכן התשובה היא ג. תשובה א שגויה כי הוא לא תחליף ל-EPIRB. תשובה ב שגויה כי הוא לא משדר ולא קולט התרעות. תשובה ד שגויה כי הוא לא מגדיל את יעילות המכ\"ם.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q03",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4121.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה מטרת ה SART? לאפשר לספינות ולמטוסי חיפוש והצלה עם מכ\"ם X-band, להתבייט עליו! זה ג. אז למה לא א? כי הוא לא תחליף ל EPIRB. ב? הוא לא משדר ולא קולט התרעות. וד? הוא לא מגדיל את יעילות המכ\"ם."
   },
   {
     "num": 4122,
@@ -3261,14 +3267,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה גורם למשואה בתדר 406.031 להתחיל לשדר. הכלל: הפעלה אוטומטית בשחרור המנגנון בטביעה, או הפעלה ידנית במפסק ייעודי, ולכן התשובה היא ד, א ו-ב נכונות. תשובה ג שגויה כי אין הפעלה מרחוק דרך מערכות ניווט לווייניות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q06",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4122.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה מפעיל משואה? שחרור המנגנון כשהכלי טובע. נכון! או הפעלה ידנית, במפסק ייעודי. גם נכון! אז ד. אז למה לא ג? כי אין הפעלה מרחוק דרך מערכות ניווט לווייניות."
   },
   {
     "num": 4123,
@@ -3284,14 +3291,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא אילו מערכי לוויינים קולטים משואה בתחום 406 עד 406.1 מגה הרץ. הכלל: LEOSAT, MEOSAT ו-GEOSAT כולם קולטים, ולכן התשובה היא ד, כל התשובות נכונות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q07",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4123.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מי קולט משואה בארבע מאות ושש מגה הרץ? לוויני LEO. נכון! לוויני MEO. גם נכון! ולוויני GEO. גם נכון! אז ד. כולם."
   },
   {
     "num": 4124,
@@ -3307,14 +3315,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה הסיבה לקליטת מצוקה UNDESIGNATED ב-DSC. הכלל: מצוקה בלי סוג יכולה להישלח בטעות או בלחיצת כפתור מהירה על מצוקה אמיתית, ולכן התשובה היא ד, א ו-ג נכונות. תשובה ב שגויה כי התרעת שווא של EPIRB לא מבטלים במתקן ה-DSC.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q08",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4124.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מצוקה UNDESIGNATED ב D S C. למה? ייתכן שנשלחה התרעת שווא ב D S C. נכון! או שזו מצוקה אמיתית, בלחיצת כפתור מהירה. גם נכון! אז ד. אז למה לא ב? כי התרעת שווא של EPIRB לא מבטלים במתקן ה D S C."
   },
   {
     "num": 4125,
@@ -3330,14 +3339,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש SEELONCE MAYDAY. הכלל: השתקת תחנות מפריעות למהלך המצוקה בקשר רדיוטלפוני, ולכן התשובה היא א. תשובה ב שגויה כי סיום מצוקה הוא SEELONCE FEENEE. תשובה ג שגויה כי ביטול שידור בשוגג הוא הודעת ביטול. תשובה ד שגויה כי אין זכות תגובה ראשונית ל-RCC במונח הזה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E07-Q09",
     "lesson": 7,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4125.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "SEELONCE MAYDAY. השתקת תחנות מפריעות! כדי שהמצוקה תתנהל. זה א. אז למה לא ב? כי סיום מצוקה זה SEELONCE FEENEE. ג? ביטול שידור בשוגג זו הודעת ביטול. וד? זה לא נותן ל RCC זכות תגובה ראשונה."
   },
   {
     "num": 4126,
