@@ -2852,14 +2852,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא על איזה תדר מתבצעים שידורי NAVTEX. הכלל: לפי המבחן, 4209.5 קילו הרץ, ולכן התשובה היא ב. תשובה א שגויה כי 406 מגה הרץ הוא תדר משואה. תשובה ג שגויה כי 121.5 מגה הרץ הוא תדר ביות של משואה. תשובה ד שגויה כי א וג שגויות.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q08",
     "lesson": 4,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4106.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "שידורי NAVTEX. על איזה תדר? ארבעת אלפים מאתיים ותשע נקודה חמש קילו הרץ! זה ב. אז למה לא א? כי ארבע מאות ושש מגה הרץ זה תדר משואה. ג? מאה עשרים ואחד נקודה חמש זה תדר ביות של משואה. וד? א וג שגויות."
   },
   {
     "num": 4107,
@@ -2875,14 +2876,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מהו קוד זיהוי ההודעה של מתקן NAVTEX. הכלל: קוד ההודעה הוא ארבעה תווים, אות תחנה, אות סוג הודעה ושני ספרות מספר סידורי, ולכן ML22 הוא התשובה, ב. תשובה א שגויה כי NNNN מסמן סוף הודעה. תשובה ג שגויה כי NVT22 אינו בפורמט הזה. תשובה ד שגויה כי ZCZC מסמן תחילת הודעה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q09",
     "lesson": 4,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4107.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קוד הזיהוי של הודעת NAVTEX. ארבעה תווים! אות של התחנה. אות של סוג ההודעה. ושתי ספרות. M L שתיים שתיים. זה ב. אז למה לא א? כי NNNN מסמן סוף הודעה. ג? NVT עשרים ושניים לא בפורמט הזה. וד? ZCZC מסמן תחילת הודעה."
   },
   {
     "num": 4108,
@@ -2898,14 +2900,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא איך האלפבית הפונטי הבינלאומי יבטא את AIS CH87B. הכלל: כל אות ואות בשם הפונטי שלה, והספרות בצורה הפונטית, ולכן התשובה היא ד, ALFA INDIA SIERRA CHARLIE HOTEL OCTOEIGHT SETEseven BRAVO. תשובות א, ב וג שגויות כי חלקן כתובות במילים רגילות ולא בשמות פונטיים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q10",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4108.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "AIS, CH שמונים ושבע B, באיות פונטי. כל אות בשם הפונטי שלה! ALFA INDIA SIERRA. CHARLIE HOTEL. וספרות בצורה פונטית. זה ד. אז למה לא א? כי כתוב בשם רגיל. ב? חצי מהתשובה לא פונטית. וג? זה לא פונטי בכלל."
   },
   {
     "num": 4109,
@@ -2921,14 +2924,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "כלי שיט א' קורא לכלי שיט ב'. הכלל: מי שנקרא מנהל את הקשר, ולכן התשובה היא ג, כלי שיט ב'. תשובה א שגויה כי תחנת החוף לא מפקחת על קשר בין שני כלי שיט. תשובה ב שגויה כי זה הכלי שהתקשר. תשובה ד שגויה כי יש חשיבות, גם בלי מצוקה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q11",
     "lesson": null,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4109.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ספינה א קוראת לספינה ב. מי מנהל את הקשר? זו שנקראה! ספינה ב. זה ג. אז למה לא א? כי תחנת החוף לא מפקחת על קשר בין שתי ספינות. ב? ספינה א היא זו שהתקשרה. וד? יש חשיבות. גם בלי מצוקה."
   },
   {
     "num": 4110,
@@ -2944,14 +2948,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה גורם למשואת הרדיו להתחיל לשדר. הכלל: בהפעלה ידנית היא משדרת מיד, ובהפעלה אוטומטית כשהיא נזרקת לים, ולכן התשובה היא ד, א ו-ב נכונות. תשובה ג שגויה כי המשואה משדרת בעצמה, לא בתגובה לאות מהלוויין.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q12",
     "lesson": 5,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4110.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "מה גורם למשואה לשדר? הפעלה ידנית! מיד. נכון. הפעלה אוטומטית, כשהיא נזרקת לים. גם נכון. אז ד. אז למה לא ג? כי המשואה משדרת בעצמה. היא לא מחכה לאות מהלוויין."
   },
   {
     "num": 4111,
@@ -2967,14 +2972,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה פירוש SEELONCE FEENEE. הכלל: סיום מצב מצוקה, ולכן התשובה היא ג. תשובה א שגויה כי האזנה ללא הפרעה בערוץ המצוקה היא SEELONCE MAYDAY. תשובה ב שגויה כי תחנה מסוימת שמשתיקה תחנה מפריעה היא SEELONCE DISTRESS. תשובה ד שגויה כי היא לא קשורה למונח.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q13",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4111.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "SEELONCE FEENEE. מה זה? סיום מצב מצוקה! זה ג. אז למה לא א? כי האזנה ללא הפרעה זה SEELONCE MAYDAY. ב? תחנה שמשתיקה תחנה מפריעה זה SEELONCE DISTRESS. וד? זה לא קשור למונח."
   },
   {
     "num": 4112,
@@ -2990,14 +2996,15 @@
     ],
     "answer": "ג",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא באיזה תדר עובד ה-SART. הכלל: בתחום X-band, תשעה ג'יגה הרץ, ולכן התשובה היא ג. תשובה א שגויה כי 121.5 ו-406.025 מגה הרץ הם תדרי משואה. תשובה ב שגויה כי VHF אינו תדר של SART. תשובה ד שגויה כי S-band הוא מכ\"ם אחר.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q14",
     "lesson": 5,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4112.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "באיזה תדר עובד SART? X-band! תשעה ג'יגה הרץ. זה ג. אז למה לא א? כי מאה עשרים ואחד נקודה חמש וארבע מאות ושש הם תדרי משואה. ב? V H F לא קשור ל SART. וד? S-band הוא מכ\"ם אחר."
   },
   {
     "num": 4113,
@@ -3013,14 +3020,15 @@
     ],
     "answer": "א",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא למה מתכוונים במונח MEDICAL ADVICE. הכלל: אדם חולה או פצוע שזקוק לייעוץ מהחוף לדרך הטיפול, ולכן התשובה היא א. תשובה ב שגויה כי זה לא ערוץ שנותן הנחיות אוטומטית. תשובה ג שגויה כי זה לא טיפול אישי מרופא על כלי שייט בסביבה. תשובה ד שגויה כי פינוי הוא MEDICAL EVACUATION.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q15",
     "lesson": 7,
     "lesson_cover": "none",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4113.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "MEDICAL ADVICE. אדם חולה או פצוע, שצריך ייעוץ מהחוף! איך לטפל. זה א. אז למה לא ב? כי זה לא ערוץ עם הנחיות אוטומטיות. ג? זה לא רופא על כלי שייט בסביבה. וד? פינוי זה MEDICAL EVACUATION."
   },
   {
     "num": 4114,
@@ -3036,14 +3044,15 @@
     ],
     "answer": "ב",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה מטרת ערוץ 13. הכלל: תקשורת בין שני כלי שייט למטרות בטיחות השייט, גשר לגשר, ולכן התשובה היא ב. תשובה א שגויה כי תקשורת בחיפוש והצלה היא ON-SCENE. תשובה ג שגויה כי תנועת כלי שייט קטנים היא ערוצים 11 ו-79. תשובה ד שגויה כי לא כל תקשורת בטיחות היא בערוץ 13.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q16",
     "lesson": 2,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4114.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "ערוץ שלוש עשרה. מה המטרה? תקשורת בין שתי ספינות, בטיחות שייט! גשר לגשר. זה ב. אז למה לא א? כי חיפוש והצלה זה ON SCENE. ג? כלי שייט קטנים זה אחד עשר ושבעים ותשעה. וד? לא כל תקשורת בטיחות בערוץ שלוש עשרה."
   },
   {
     "num": 4115,
@@ -3059,14 +3068,15 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "",
+    "explanation": "השאלה היא מה נכון לגבי קשר פנים ב-VHF. הכלל: קשר פנים הוא בהספק וואט אחד בערוצים 15 ו-17, ולכן התשובה היא ד. תשובות א, ב וג שגויות כי ערוצים 67 ו-79, 11 ו-73, ו-75 ו-76 אינם ערוצי קשר פנים.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E06-Q17",
     "lesson": 9,
     "lesson_cover": "topic",
     "license": 40,
-    "mediaUrl": "",
-    "mediaType": ""
+    "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4115.jpg",
+    "mediaType": "image",
+    "explanation_spoken": "קשר פנים. וואט אחד, בערוצים חמש עשרה ושבע עשרה! זה ד. אז למה לא א, ב או ג? כי שישים ושבע ושבעים ותשעה, אחד עשר ושבעים ושלוש, ושבעים וחמישה ושבעים ושישה, אלה לא ערוצי קשר פנים."
   },
   {
     "num": 4116,
