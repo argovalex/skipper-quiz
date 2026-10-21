@@ -25076,7 +25076,9 @@
     "lesson_cover": "none",
     "license": 40,
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792598674/skipper-quiz/hwz52opilmrnuuo2vvwa.mp4",
+    "rendered_at": "2026-10-21T16:04:35.732Z"
   },
   {
     "num": 4207,
@@ -25099,7 +25101,9 @@
     "lesson_cover": "none",
     "license": 40,
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792598727/skipper-quiz/jdgmsive9ou46utj5szf.mp4",
+    "rendered_at": "2026-10-21T16:05:29.221Z"
   },
   {
     "num": 4208,
@@ -25122,7 +25126,9 @@
     "lesson_cover": "topic",
     "license": 40,
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792598786/skipper-quiz/rlqaewedggxvv2zhqaip.mp4",
+    "rendered_at": "2026-10-21T16:06:27.426Z"
   },
   {
     "num": 4209,
@@ -25145,7 +25151,9 @@
     "lesson_cover": "none",
     "license": 40,
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792598846/skipper-quiz/e66utwof0iwrixei95mp.mp4",
+    "rendered_at": "2026-10-21T16:07:27.981Z"
   },
   {
     "num": 4210,
@@ -25168,6 +25176,8 @@
     "lesson_cover": "topic",
     "license": 40,
     "mediaUrl": "",
-    "mediaType": ""
+    "mediaType": "",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792598907/skipper-quiz/gp4on9odaxy552bbcbdk.mp4",
+    "rendered_at": "2026-10-21T16:08:28.138Z"
   }
 ]
