@@ -15,7 +15,8 @@ header h1{font-size:18px;margin:0;flex:1;min-width:180px}
 .pill.on{background:var(--acc);color:#04202e;border-color:var(--acc)}
 #coach{margin:10px 16px 0;padding:10px 14px;border-radius:10px;background:#10314a;border:1px solid #1e5a80;font-size:15px}
 #coach b{color:#7dd3fc}
-#explain{margin:8px 16px 0;padding:8px 14px;border-radius:10px;background:#1a2a1a;border:1px solid #2f5d2f;color:#bbf7d0;font-size:14px;display:none}
+#explain{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:min(620px,calc(100% - 24px));z-index:8;padding:10px 14px;border-radius:10px;background:#1a2a1a;border:1px solid #2f5d2f;color:#bbf7d0;font-size:14px;display:none;box-shadow:0 8px 24px #000a;pointer-events:none}
+@media (max-width:980px){#explain{bottom:70px}}
 body.exam #explain{display:none!important}
 #help summary{cursor:pointer;color:var(--acc);font-size:13px;margin-top:8px}
 #help dl{margin:6px 0 0;font-size:13px}#help dt{color:#7dd3fc;font-weight:700;margin-top:6px;direction:ltr;text-align:right}#help dd{margin:0;color:var(--mut)}
@@ -78,16 +79,16 @@ body.exam .info,body.exam .hint{display:none}
 .ebody{width:110px;height:170px;border-radius:14px 14px 22px 22px;background:linear-gradient(90deg,#b8c91f,#e3f23f 40%,#c3d42a);position:relative;padding:8px 6px;text-align:center;color:#1f2a03;font-weight:800;font-size:11px}
 .ebody small{display:block;font-weight:600;font-size:9px}
 .bracket{position:absolute;left:-8px;right:-8px;top:62px;height:52px;background:linear-gradient(#374151,#111827);border-radius:6px;color:#e5e7eb;font-size:9px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;transition:opacity .3s}
-.bracket button{font-size:10px;padding:2px 8px;border-radius:5px;border:0;background:#f59e0b;color:#111;font-weight:800}
+.bracket button{font-size:12px;padding:6px 10px;border-radius:5px;border:0;background:#f59e0b;color:#111;font-weight:800}
 .out .bracket{opacity:0;pointer-events:none}
 .ctrls{position:absolute;bottom:10px;left:6px;right:6px;display:flex;flex-direction:column;gap:5px;align-items:center}
 .sw{display:flex;gap:4px}
 .sw button{border:1px solid #1f2a03;background:#f8fafc;color:#111;border-radius:5px;font-size:10px;font-weight:800;padding:3px 6px}
 .sw button.sel{background:#1f2a03;color:#f7ff9e}
 .guard{position:relative}
-.guard .g{position:absolute;inset:-3px;background:#0f172acc;color:#fff;border-radius:6px;font-size:9px;display:flex;align-items:center;justify-content:center;border:0}
+.guard .g{position:absolute;inset:-3px;background:#0f172acc;color:#fff;border-radius:6px;font-size:11px;display:flex;align-items:center;justify-content:center;border:0}
 .guard .g.open{display:none}
-.leds{display:flex;gap:6px;font-size:9px}
+.leds{display:flex;gap:6px;font-size:11px}
 .led{width:9px;height:9px;border-radius:50%;background:#374151;display:inline-block;vertical-align:middle}
 .led.g{background:#22c55e;box-shadow:0 0 6px #22c55e}.led.r{background:#ef4444;box-shadow:0 0 6px #ef4444}
 .sbody{width:76px;height:190px;border-radius:12px 12px 16px 16px;background:linear-gradient(90deg,#d4510f,#ff7a2f 45%,#e0601a);position:relative;padding:8px 4px;text-align:center;color:#2b0d00;font-weight:900;font-size:11px}
@@ -122,7 +123,33 @@ body.exam .info,body.exam .hint{display:none}
 .tpl{direction:ltr;text-align:left;font:13px Consolas,monospace;background:#0b131b;border-radius:8px;padding:8px;white-space:pre-line;display:none;margin-top:8px}
 .tpl.show{display:block}
 
-@media (max-width:900px){
+section[data-tab="log"]{grid-column:1/-1}
+#log{height:180px}
+.lcdmini{font-size:10px!important}.ebody small,.sbody small{font-size:11px!important}
+.ebody{height:215px!important}.sbody{height:235px!important}
+.sw button{font-size:12px;padding:8px 9px;min-height:36px}
+.k{min-height:40px}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.target{outline:3px solid var(--warn)!important;outline-offset:4px;border-radius:10px;animation:tg 1s infinite}
+@keyframes tg{50%{outline-color:#fff;box-shadow:0 0 18px 4px var(--warn)}}
+body.exam .target{outline:none!important;animation:none}
+#voice{margin-top:12px;border:1px solid #1e5a80;border-radius:14px;padding:10px;background:#0f2536}
+#voice h4{margin:0 0 6px;font-size:14px;color:#7dd3fc}
+#voice .off{font-size:13px;color:var(--warn);margin-bottom:6px}
+#ptt{font-size:18px!important;height:72px!important}
+#modeBanner{text-align:center;font-size:30px;font-weight:900;color:var(--bad);padding:8px 16px 0;letter-spacing:.5px}
+#rng{font-size:18px!important;font-weight:800;color:#4ade80}
+#gdim{position:fixed;inset:0;z-index:20;display:none;pointer-events:none}#gdim.show{display:block}
+#gspot{position:fixed;border-radius:12px;box-shadow:0 0 0 9999px rgba(0,0,0,.72);border:3px solid var(--warn);transition:all .35s;pointer-events:none;animation:gp 1.1s infinite}
+#gspot.none{border-color:transparent;animation:none}
+@keyframes gp{50%{border-color:#fff;box-shadow:0 0 0 9999px rgba(0,0,0,.72),0 0 22px 4px var(--warn)}}
+#gcard{position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));background:var(--panel);border:1px solid var(--acc);border-radius:14px;padding:14px 16px;z-index:21;box-shadow:0 10px 40px #000;display:none}
+#gcard.show{display:block}#gcard.top{top:12px;bottom:auto}#gcard.bot{bottom:12px;top:auto}#gcard.mid{top:50%;transform:translate(-50%,-50%)}
+#gcard .gx{position:absolute;top:8px;left:8px;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;width:34px;height:34px;font-size:16px}
+#gcard h3{margin:0 0 6px;padding-left:40px;font-size:17px;color:#7dd3fc}#gcard p{margin:0 0 12px;font-size:15px;line-height:1.6}
+#gcard .gnav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}#gcard .sp{flex:1;color:var(--mut);font-size:13px;min-width:60px}
+#gcard .pill{padding:8px 14px;font-size:14px}
+@media (max-width:980px){
   main{display:block;padding:10px 12px 90px}
   main>section{display:none}main>section.act{display:block}
   #tabs{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0b131b;border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:5}
@@ -143,7 +170,10 @@ body.exam .info,body.exam .hint{display:none}
   <button class="pill" id="mExam">מבחן</button>
   <button class="pill" id="speed">מהירות ×1</button>
   <button class="pill" id="restart">התחל מחדש</button>
+  <button class="pill" id="finish">סיים תרגיל</button>
+  <button class="pill" id="guideBtn">מדריך</button>
 </header>
+<div id="modeBanner">מצב תרגול</div>
 <div id="coach"></div>
 <div id="explain"></div>
 
@@ -176,17 +206,21 @@ Over</div>
       </div>
       <div class="bottom">
         <div class="dwrap"><button class="dbtn" id="kDis">DISTRESS</button><div class="cover" id="cover">LIFT<br>COVER</div></div>
-        <div class="softkeys"><button class="k" data-s="0">◀</button><button class="k" data-s="1">▶</button><button class="k" data-s="2">●</button></div>
+        <div class="softkeys"><button class="k" data-s="0" aria-label="מקש רך 1 (למעלה)">▲</button><button class="k" data-s="1" aria-label="מקש רך 2 (למטה)">▼</button><button class="k" data-s="2" aria-label="מקש רך 3 (בחירה)">●</button></div>
         <div class="knobs"><button class="k" id="vDn">VOL−</button><button class="k" id="vUp">VOL+</button><button class="k" id="sqDn">SQ−</button><button class="k" id="sqUp">SQ+</button></div>
       </div>
       <div class="label">S/Y SONDRA · MMSI 428123456 · 4 POB</div>
     </div>
-    <div class="handset">
-      <button id="ptt">PTT · לחץ והחזק</button>
-      <div class="mic" id="micState">🎙</div>
+    <div id="voice">
+      <h4>🎙 שידור בקול בערוץ 16 · כאן משדרים MAYDAY ועונים לתחנות</h4>
+      <div class="off" id="voiceOff">המכשיר כבוי. הדלק קודם את ה-VHF (PWR · 16+).</div>
+      <div class="handset">
+        <button id="ptt">🎙 לחץ והחזק כדי לדבר</button>
+        <div class="mic" id="micState" aria-live="polite">מיקרופון מוכן</div>
+      </div>
+      <div id="interim"></div>
+      <div class="typed"><input id="typed" placeholder="או הקלד כאן את השידור באנגלית…"><button id="sendTyped">שדר</button></div>
     </div>
-    <div id="interim"></div>
-    <div class="typed"><input id="typed" placeholder="Or type your transmission here…"><button id="sendTyped">שדר</button></div>
     <details id="help" class="hint"><summary>מה עושה כל כפתור</summary><dl id="helpList"></dl></details>
     <div class="info">DSC Distress משודר בערוץ 70 וחוזר אוטומטית כל 3.5 עד 4.5 דקות עד שמתקבל אישור. מיד אחריו עוברים לערוץ 16 ומשדרים MAYDAY בקול.</div>
   </div>
@@ -208,7 +242,7 @@ Over</div>
             <div class="leds"><span><i class="led" id="eL406"></i> 406</span><span><i class="led" id="eLgps"></i> GPS</span></div>
           </div>
         </div>
-        <button class="water" id="eWater">🌊 הכנס למים</button>
+        <button class="water" id="eWater">הכנס למים</button>
       </div>
       <div class="dev" id="sart">
         <div class="sdome"><div class="strobe" id="sStrobe"></div></div>
@@ -228,12 +262,12 @@ Over</div>
 <section data-tab="radar">
   <div class="card">
     <h2>מכ"ם X-band של ספינת החילוץ <span class="rhud" style="margin:0" id="rng"></span></h2>
-    <canvas id="radar" width="680" height="680"></canvas>
+    <canvas id="radar" dir="ltr" width="680" height="680"></canvas>
     <div id="rlabel"></div>
     <div class="ctlrow" id="rngBtns" style="justify-content:center;margin:8px 0"><button class="pill" data-r="3">3 NM</button><button class="pill" data-r="6">6 NM</button><button class="pill on" data-r="12">12 NM</button></div>
-    <div style="direction:ltr;display:flex;gap:8px;align-items:center"><span style="font-size:12px;color:var(--mut)">13 NM</span><input id="dist" type="range" min="0.2" max="13" step="0.1" value="13" style="flex:1"><span style="font-size:12px;color:var(--mut)">0.2</span></div>
+    <div style="direction:ltr;display:flex;gap:8px;align-items:center"><span style="font-size:12px;color:var(--mut)">0.2 NM</span><input id="dist" type="range" min="0.2" max="13" step="0.1" value="13" style="flex:1" aria-label="מרחק ספינת החילוץ"><span style="font-size:12px;color:var(--mut)">13 NM</span></div>
     <div style="text-align:center;font-size:12px;color:var(--mut)">גרור כדי לקרב או להרחיק את ספינת החילוץ ולראות את צורת ה-SART <button class="clip" id="auto" style="display:none">המשך אוטומטי</button></div>
-    <div class="info">12 נקודות במרחק 0.64 מייל זו מזו, שמתחילות ב-SART ונמשכות החוצה. מרחוק הן נקודות נפרדות. ככל שמתקרבים, האלומה של המכ"ם רחבה יחסית ולכן כל נקודה מתרחבת לקשת. קרוב מאוד הקשתות נסגרות למעגלים שלמים סביב ספינת החילוץ.</div>
+    <div class="info">12 נקודות במרחק 0.64 מייל זו מזו, שמתחילות ב-SART ונמשכות החוצה. מרחוק הן נקודות נפרדות. ככל שמתקרבים, האונות הצדדיות (side lobes) של אנטנת המכ"ם קולטות את ה-SART גם בכיוונים סמוכים, ולכן כל נקודה מתרחבת לקשת. קרוב מאוד הקשתות נסגרות למעגלים שלמים סביב ספינת החילוץ.</div>
   </div>
 </section>
 
@@ -249,6 +283,8 @@ Over</div>
   <button data-t="vhf" class="act">VHF</button><button data-t="beacons">EPIRB/SART</button><button data-t="radar">מכ"ם</button><button data-t="log">יומן</button>
 </nav>
 
+<div id="gdim"><div id="gspot"></div></div>
+<div id="gcard" role="dialog" aria-modal="false" aria-labelledby="gT"><button class="gx" id="gX" aria-label="סגור את המדריך">✕</button><h3 id="gT"></h3><p id="gP"></p><div class="gnav" id="gNav"></div></div>
 <div id="deb"><div class="box"><h3>סיכום תרגיל</h3><div class="score" id="dScore"></div><div id="dRows"></div><div class="ctlrow" style="margin-top:12px"><button class="pill on" id="again">תרגיל חוזר</button><button class="pill" id="closeDeb">סגור</button></div></div></div>
 
 <script>
@@ -287,6 +323,7 @@ const TXT = {
  haifa_raft:['Haifa Radio','Sondra, this is Haifa Radio. Received, four persons in the life raft. Keep watch on channel one six. Out.'],
  rcc_epirb:['RCC Haifa','Sondra, Sondra, Sondra. This is RCC Haifa. Your 406 EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.'],
  rescue_sart:['Rescue vessel','Sondra, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.'],
+ rescue_sart_low:['Rescue vessel','Sondra, this is Rescue vessel. I have your SART on my radar, range five miles. Raise the SART higher. Over.'],
  rescue_close:['Rescue vessel','Sondra, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.'],
  haifa_seelonce:['Haifa Radio','MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time 1540 UTC. Sailing yacht Sondra, MMSI 428123456. SEELONCE FEENEE. Out.'],
 };
@@ -309,12 +346,12 @@ function tick(now){
   const dt = Math.min(.25,(now-last)/1000)*speed; last=now; S.t+=dt;
   for(const x of timers.filter(x=>x.at<=S.t)){ timers.splice(timers.indexOf(x),1); x.fn(); }
   const m = (S.utc0 + Math.floor(S.t/60))%1440; $('#utc').textContent = String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
-  rescueStep(dt); epirbStep(); drawRadar(now); requestAnimationFrame(tick);
+  rescueStep(dt); epirbStep(); drawRadar(now); if(gi>=0) gPlace(); requestAnimationFrame(tick);
 }
 
 /* ---------- VHF ---------- */
 function lcd(){
-  const v=S.vhf, el=$('#vhf'); el.classList.toggle('on',v.on);
+  const v=S.vhf, el=$('#vhf'); el.classList.toggle('on',v.on); $('#voiceOff').style.display=v.on?'none':'block';
   $('#ch').textContent = String(v.ch).padStart(2,'0'); $('#pwrTxt').textContent = (v.hi?'25W':'1W')+(v.dw?' DW':'');
   $('#volTxt').textContent='VOL '+v.vol; $('#sqTxt').textContent='SQ '+v.sql; document.querySelector('.lcd').style.filter='brightness('+(.55+v.light*.2)+')';
   const m=$('#msg'), soft=$('#soft').children; let txt='', sk=['','',''];
@@ -381,8 +418,8 @@ function pttDown(e){ e.preventDefault(); ac(); if(pttOn) return; pttOn=true; $('
     rec.onresult=ev=>{ let f='',i=''; for(const r of ev.results) (r.isFinal? (f+=r[0].transcript+' ') : (i+=r[0].transcript)); heardTxt=f; $('#interim').textContent='🎙 '+f+i; };
     rec.onerror=ev=>{ $('#micState').textContent = ev.error==='not-allowed'?'אין הרשאת מיקרופון':'שגיאת מיקרופון: '+ev.error; };
     rec.onend=async()=>{ const t=(heardTxt||$('#interim').textContent.replace('🎙','')).trim(); rec=null; if(mr&&mr.state!=='inactive') mr.stop(); const c=await Promise.race([clipP,new Promise(r=>setTimeout(()=>r(null),800))]); if(t) transmit(t,c); };
-    try{ rec.start(); $('#micState').textContent='🔴 משדר'; }catch(_){} } }
-function pttUp(){ if(!pttOn) return; pttOn=false; $('#ptt').classList.remove('down'); $('#vhf').classList.remove('txing'); $('#micState').textContent='🎙';
+    try{ rec.start(); $('#micState').textContent='● משדר'; }catch(_){} } }
+function pttUp(){ if(!pttOn) return; pttOn=false; $('#ptt').classList.remove('down'); $('#vhf').classList.remove('txing'); $('#micState').textContent='מיקרופון מוכן';
   if(rec) setTimeout(()=>rec&&rec.stop(),350); else if(mr&&mr.state!=='inactive') mr.stop(); }
 const P=$('#ptt'); P.onpointerdown=pttDown; P.onpointerup=pttUp; P.onpointerleave=pttUp; P.onpointercancel=pttUp; P.oncontextmenu=e=>e.preventDefault();
 $('#sendTyped').onclick=()=>{ ac(); const t=$('#typed').value.trim(); if(!t) return; $('#typed').value=''; if(!S.vhf.on){ log('ev','ה-VHF כבוי. השידור לא יצא.'); return; } transmit(t); };
@@ -443,7 +480,7 @@ async function askServer(text){
     const bin=atob(j.audio), u=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i);
     stationDyn(j.station,j.text,URL.createObjectURL(new Blob([u],{type:'audio/mpeg'}))); }
   catch(_){ after(2.5,()=>station('haifa_generic')); } }
-function startAbandon(){ if(S.phase==='abandon') return; S.phase='abandon'; log('ev','🔥 האש יצאה משליטה. נוטשים לרפסודה עם EPIRB, SART ו-VHF נייד.'); S.rescueRange=13; coach(); pingTab('beacons'); }
+function startAbandon(){ if(S.phase==='abandon') return; S.phase='abandon'; log('ev','🔥 האש יצאה משליטה. נוטשים לרפסודה עם EPIRB, SART ו-VHF נייד.'); S.rescueRange=13; after(900,()=>{ if(!S.flags.done){ log('ev','⏱ תם הזמן לתרגיל.'); debrief(); } }); coach(); pingTab('beacons'); }
 
 /* ---------- EPIRB ---------- */
 const E=()=>S.ep;
@@ -469,11 +506,14 @@ function flash(sel){ const s=$(sel); s.classList.add('flash'); setTimeout(()=>s.
 const sBtns={off:'#sOff',test:'#sTest',on:'#sOn'};
 for(const [m,sel] of Object.entries(sBtns)) $(sel).onclick=()=>{ ac(); setSart(m); };
 $('#sLow').onclick=()=>{ S.sa.high=false; sUI(); }; $('#sHigh').onclick=()=>{ ac(); S.sa.high=true; log('ev','SART הורם על המוט'); sUI(); coach(); };
-function setSart(m){ const s=S.sa; s.mode=m; if(m==='test'){ flash('#sStrobe'); [0,400,800].forEach(d=>setTimeout(()=>beep(900,.12,.08),d)); sUI('TEST OK\nBATT OK'); setTimeout(()=>{ if(s.mode==='test'){ s.mode='off'; sUI(); } },2500); return; }
-  if(m==='on'){ s.onAt=S.t; log('ev','📡 SART הופעל, ממתין לפולס מכ"ם (standby)'); } sUI(); coach(); }
+function setSart(m){ const s=S.sa; s.mode=m; if(m==='test'){ sartDemo(); flash('#sStrobe'); [0,400,800].forEach(d=>setTimeout(()=>beep(900,.12,.08),d)); sUI('TEST OK\nBATT OK'); setTimeout(()=>{ if(s.mode==='test'){ s.mode='off'; sUI(); } },2500); return; }
+  if(m==='on'){ s.onAt=S.t; setSpeed(4); log('ev','📡 SART הופעל, ממתין לפולס מכ"ם (standby). הסימולציה עברה למהירות ×4.'); } sUI(); coach(); }
 function sUI(msg){ const s=S.sa; for(const [m,sel] of Object.entries(sBtns)) $(sel).classList.toggle('sel',s.mode===m);
   $('#sLow').classList.toggle('sel',!s.high); $('#sHigh').classList.toggle('sel',s.high);
   $('#sLcd').textContent = msg || (s.mode==='on' ? (s.interrogated?'ACTIVE\nRADAR DETECTED':'STANDBY\nWAITING RADAR') : 'OFF'); }
+let demo=null;
+function sartDemo(){ demo={t0:performance.now()}; const b=document.querySelector('#tabs [data-t="radar"]'); if(isMob()) b&&b.click(); else $('#radar').scrollIntoView({block:'center',behavior:'smooth'});
+  log('ev','🧪 SART TEST: הדגמה אוטומטית במכ"ם. ספינה מתקרבת מ-9 מייל: נקודות, קשתות, מעגלים.'); }
 const detectNm = ()=> S.sa.high ? 8 : 5;
 
 /* ---------- rescue vessel + radar ---------- */
@@ -486,11 +526,11 @@ function rescueStep(dt){
   const inter = sOn && S.rescueRange<=detectNm(); if(inter!==S.sa.interrogated){ S.sa.interrogated=inter; sUI(); if(inter) log('ev','📡 SART קלט פולס מכ"ם ועבר לשידור. הנורית מהבהבת והזמזם פועל.'); }
   if(inter){ if(Math.floor(S.t*2)!==Math.floor((S.t-dt)*2)) flash('#sStrobe'); if(performance.now()-sartBeep>1500){ sartBeep=performance.now(); beep(3000,.05,.03); } }
   else if(sOn && Math.floor(S.t/2)!==Math.floor((S.t-dt)/2)) flash('#sStrobe');
-  if(inter && !S.flags.sartCalled){ S.flags.sartCalled=true; after(3,()=>{ station('rescue_sart'); coach(); }); pingTab('radar'); }
-  if(!S.manual && S.rescueRange<=0.3 && !S.flags.closeCalled){ S.flags.closeCalled=true; station('rescue_close',()=>after(6,()=>station('haifa_seelonce',()=>setTimeout(debrief,1500)))); }
+  if(inter && !S.flags.sartCalled){ S.flags.sartCalled=true; after(3,()=>{ station(S.sa.high?'rescue_sart':'rescue_sart_low'); coach(); }); pingTab('radar'); }
+  if(!S.manual && S.rescueRange<=0.3 && !S.flags.closeCalled){ S.flags.closeCalled=true; const s0=S; station('rescue_close',()=>after(6,()=>station('haifa_seelonce',()=>setTimeout(()=>{ if(S===s0) debrief(); },1500)))); }
   $('#rng').textContent = `RNG ${S.rescueRange.toFixed(1)} NM · BRG 020°`;
 }
-const cv=$('#radar'), cx=cv.getContext('2d'), R=340, BRG=20*Math.PI/180;
+const cv=$('#radar'), cx=cv.getContext('2d'); cx.direction='ltr'; const _cx0=0, R=340, BRG=20*Math.PI/180;
 let RNG=12, SC=R/RNG;
 document.querySelectorAll('#rngBtns button').forEach(b=>b.onclick=()=>{ RNG=+b.dataset.r; SC=R/RNG; document.querySelectorAll('#rngBtns button').forEach(x=>x.classList.toggle('on',x===b)); });
 $('#dist').oninput=e=>{ S.manual=true; S.rescueRange=+e.target.value; $('#auto').style.display='inline-block'; };
@@ -507,53 +547,57 @@ function drawRadar(now){
   const g=cx.createConicGradient? cx.createConicGradient(sw-Math.PI/2-0.6,0,0):null;
   if(g){ g.addColorStop(0,'rgba(34,197,94,0)'); g.addColorStop(.095,'rgba(34,197,94,.35)'); g.addColorStop(.096,'rgba(34,197,94,0)'); cx.fillStyle=g; cx.beginPath(); cx.arc(0,0,R,0,7); cx.fill(); }
   const fade = a => { const d=((sw-a)%(2*Math.PI)+2*Math.PI)%(2*Math.PI); return Math.max(0,1-d/(2*Math.PI))**1.6; };
-  const r=S.rescueRange;
+  let dm=null; if(demo){ const el=(now-demo.t0)/1000; dm=Math.max(.5,9-el*.45); if(el>24) demo=null; }
+  const r=dm!=null?dm:S.rescueRange;
   if(r!=null){
     if(r<2.2){ const al=fade(BRG); cx.fillStyle=`rgba(134,239,172,${al})`; cx.beginPath(); cx.arc(Math.sin(BRG)*r*SC,-Math.cos(BRG)*r*SC,4,0,7); cx.fill(); }
-    if(S.sa.interrogated){ cx.lineCap='round'; const h=sartHalfSpan(r), full=h>=Math.PI-.01;
+    if(S.sa.interrogated||dm!=null){ cx.lineCap='round'; const h=sartHalfSpan(r), full=h>=Math.PI-.01;
       for(let i=0;i<12;i++){ const d=(r+i*0.64)*SC; if(d>R-4) break; const th=Math.max(h,.004), a0=BRG-th-Math.PI/2, a1=BRG+th-Math.PI/2;
         cx.lineWidth=Math.max(6,Math.min(11,d/18+4));
         if(full || th>.25){ const n=Math.max(8,Math.ceil(th*14)); for(let k=0;k<n;k++){ const a=a0+(a1-a0)*k/n, b=a0+(a1-a0)*(k+1)/n; cx.strokeStyle=`rgba(74,222,128,${Math.max(.55,fade((a+b)/2+Math.PI/2))})`; cx.beginPath(); cx.arc(0,0,d,a,b+.01); cx.stroke(); } }
         else { cx.strokeStyle=`rgba(74,222,128,${Math.max(.6,fade(BRG))})`; cx.beginPath(); cx.arc(0,0,d,a0,a1); cx.stroke(); } } }
   }
-  cx.fillStyle='#86efac'; cx.font='14px Consolas'; for(const rr of rings) cx.fillText(+rr.toFixed(2)+' NM',6,-rr*SC+14);
+  cx.fillStyle='#86efac'; cx.font='24px Consolas'; for(const rr of rings) cx.fillText(+rr.toFixed(2)+' NM',6,-rr*SC+24);
   cx.fillStyle='#4ade80'; cx.beginPath(); cx.arc(0,0,4,0,7); cx.fill(); cx.restore();
-  const lbl = r==null ? 'ספינת החילוץ עוד לא יצאה' : !S.sa.interrogated ? (S.sa.mode==='on'?`SART דולק. הנקודות יופיעו כשספינת החילוץ תגיע ל-${detectNm()} מייל (עוד ~${Math.max(1,Math.round((r-detectNm())/.06/speed))} שניות)`:'אין SART פעיל. הרפסודה כמעט לא נראית במכ"ם') : {dots:'12 נקודות נפרדות: ה-SART רחוק (מעל ~6 מייל). הנקודה הקרובה למרכז היא מיקום ה-SART',arcs:'קשתות: הנקודות מתרחבות ככל שמתקרבים (1.2 עד 6 מייל)',rings:'מעגלים שלמים סביב המכ"ם: הספינה כמעט ליד הרפסודה (פחות מ-1.2 מייל)'}[sartStage(r)];
-  $('#rlabel').textContent=lbl; if($('#dist')!==document.activeElement && r!=null) $('#dist').value=Math.min(13,r);
+  const lbl = dm!=null ? 'הדגמת TEST · טווח '+r.toFixed(1)+' NM · '+{dots:'12 נקודות נפרדות',arcs:'הנקודות מתרחבות לקשתות',rings:'מעגלים שלמים סביב המכ"ם'}[sartStage(r)] : r==null ? 'ספינת החילוץ עוד לא יצאה' : !S.sa.interrogated ? (S.sa.mode==='on'?`SART דולק. הנקודות יופיעו כשספינת החילוץ תגיע ל-${detectNm()} מייל (עוד ~${Math.max(1,Math.round((r-detectNm())/.06/speed))} שניות)`:'אין SART פעיל. הרפסודה כמעט לא נראית במכ"ם') : {dots:'12 נקודות נפרדות: ה-SART רחוק (מעל ~6 מייל). הנקודה הקרובה למרכז היא מיקום ה-SART',arcs:'קשתות: הנקודות מתרחבות ככל שמתקרבים (1.2 עד 6 מייל)',rings:'מעגלים שלמים סביב המכ"ם: הספינה כמעט ליד הרפסודה (פחות מ-1.2 מייל)'}[sartStage(r)];
+  $('#rlabel').textContent=(exam&&dm==null)?'':lbl; if(dm!=null) $('#rng').textContent=`TEST · RNG ${r.toFixed(1)} NM · BRG 020°`; if($('#dist')!==document.activeElement && r!=null) $('#dist').value=Math.min(13,r);
 }
 
 /* ---------- coach / log / UI ---------- */
 function coachMsg(h){ const c=$('#coach'); c.innerHTML=h; c.className=exam?'exam':''; }
 function coach(){
+  document.querySelectorAll('.target').forEach(x=>x.classList.remove('target'));
   if(exam){ coachMsg('מצב מבחן: אין רמזים. S/Y SONDRA, 4 אנשים. שריפה בחדר המכונות יוצאת משליטה. פעל לפי הנוהל.'); return; }
-  const v=S.vhf, e=S.ep, s=S.sa; let h;
-  if(!v.on) h='S/Y SONDRA, 4 אנשים על הסיפון. שריפה בחדר המכונות יוצאת משליטה. <b>הדלק את ה-VHF:</b> לחיצה על PWR · 16+.';
-  else if(!v.dscSent && v.mode==='nat') h='בחר מהות עם ◀ ▶ (<b>FIRE/EXPLOSION</b>) ואשר ב-●.';
-  else if(!v.dscSent && v.mode==='ready') h='<b>החזק DISTRESS 5 שניות</b> עד שכל 5 הריבועים מתמלאים.';
-  else if(!v.dscSent && !$('#cover').classList.contains('open')) h='<b>שלח התראת DSC:</b> פתח את המכסה האדום של DISTRESS.';
-  else if(!v.dscSent) h='לחיצה קצרה על DISTRESS לבחירת מהות האירוע, ואז <b>החזקה של 5 שניות</b>. (החזקה בלי בחירה = UNDESIGNATED)';
-  else if(!S.maydayGrade?.accepted) h='ההתראה יצאה בערוץ 70 והמכשיר עבר לערוץ 16. <b>עכשיו MAYDAY בקול:</b> החזק PTT ודבר באנגלית (או הקלד). המיקום על המסך.';
-  else if(S.phase!=='abandon') h='הקשב לתחנת החוף בערוץ 16.';
-  else if(!e.on) h='נוטשים. <b>הפעל את ה-EPIRB:</b> שחרר מהתושבת, הרם את המגן ולחץ ON (או הכנס למים).';
-  else if(s.mode!=='on') h='<b>הפעל את ה-SART</b> (ON) וקח אותו לרפסודה.';
-  else if(!s.high) h='<b>הרם את ה-SART על המוט.</b> ככל שהוא גבוה יותר, המכ"ם קולט אותו מרחוק יותר.';
-  else if(S.flags.rccCalled && !S.replies.rcc) h='RCC Haifa קרא לך. <b>ענה:</b> RCC Haifa, this is SONDRA… ודווח שאתם ברפסודה.';
-  else if(S.flags.sartCalled && !S.replies.rescue) h='ספינת החילוץ קוראת לך. <b>ענה לה</b> ועקוב במכ"ם איך הנקודות משתנות.';
-  else h='הישאר בערוץ 16 ועקוב במכ"ם אחרי ספינת החילוץ.';
+  const v=S.vhf, e=S.ep, s=S.sa; let h, tg=null;
+  if(!v.on){ h='S/Y SONDRA, 4 אנשים על הסיפון. שריפה בחדר המכונות יוצאת משליטה.<br><b>צעד 1: הדלק את מכשיר הקשר.</b> לחץ על הכפתור המהבהב בצהוב <b>PWR · 16+</b> במכשיר ה-VHF.'; tg='#kPwr'; }
+  else if(!v.dscSent && v.mode==='nat'){ h='<b>צעד 2:</b> בחר מהות עם ▲ ▼ (<b>FIRE/EXPLOSION</b>) ואשר ב-●.'; tg='.softkeys'; }
+  else if(!v.dscSent && v.mode==='ready'){ h='<b>צעד 2: החזק את DISTRESS 5 שניות</b> עד שכל 5 הריבועים על המסך מתמלאים.'; tg='.dwrap'; }
+  else if(!v.dscSent && !$('#cover').classList.contains('open')){ h='<b>צעד 2: שלח התראת DSC.</b> לחץ על המכסה האדום <b>LIFT COVER</b> כדי לפתוח אותו.'; tg='#cover'; }
+  else if(!v.dscSent){ h='<b>צעד 2:</b> לחיצה קצרה על DISTRESS לבחירת מהות האירוע, ואז <b>החזקה של 5 שניות</b>.'; tg='.dwrap'; }
+  else if(!S.maydayGrade?.accepted){ h='ההתראה יצאה והמכשיר עבר לערוץ 16.<br><b>צעד 3: MAYDAY בקול.</b> במסגרת המהבהבת מתחת למכשיר: לחץ והחזק את <b>🎙 לחץ והחזק כדי לדבר</b> ודבר באנגלית, או הקלד בשורה ולחץ <b>שדר</b>. הנוסח בכפתור <b>תבנית MAYDAY</b>.'; tg='#voice'; }
+  else if(S.phase!=='abandon'){ h='הקשב לתחנת החוף בערוץ 16.'; tg='.lcd'; }
+  else if(!e.on){ h='נוטשים. <b>צעד 4: הפעל את ה-EPIRB</b> (הצהוב): שחרר מהתושבת, LIFT GUARD ואז ON, או הכנס למים.'; tg='#epirb'; }
+  else if(s.mode!=='on'){ h='<b>צעד 5: הפעל את ה-SART</b> (הכתום): לחץ ON וקח אותו לרפסודה.'; tg='#sart'; }
+  else if(!s.high){ h='<b>הרם את ה-SART על המוט</b> (כפתור הרם). ככל שהוא גבוה יותר, המכ"ם קולט אותו מרחוק יותר.'; tg='#sHigh'; }
+  else if(S.flags.rccCalled && !S.replies.rcc){ h='RCC Haifa קרא לך. <b>ענה בתיבת השידור:</b> RCC Haifa, this is SONDRA… ודווח שאתם ברפסודה.'; tg='#voice'; }
+  else if(S.flags.sartCalled && !S.replies.rescue){ h='ספינת החילוץ קוראת לך. <b>ענה לה בתיבת השידור</b> ועקוב במכ"ם איך הנקודות משתנות.'; tg='#voice'; }
+  else { h='הישאר בערוץ 16 ועקוב במכ"ם אחרי ספינת החילוץ.'; tg='#radar'; }
   coachMsg(h);
+  const el=tg&&$(tg); if(el){ el.classList.add('target'); }
 }
 function log(cls, txt, clip){ const m=(S.utc0+Math.floor(S.t/60))%1440, d=document.createElement('div');
   d.className=cls; d.innerHTML=`<span class="t">${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}</span>`; d.append(txt);
-  if(clip){ const b=document.createElement('button'); b.className='clip'; b.textContent='▶ הקול שלי'; b.onclick=()=>new Audio(clip).play(); d.append(b); }
-  $('#log').append(d); $('#log').scrollTop=1e9; if(cls!=='me') pingTab('log'); }
+  if(clip){ const b=document.createElement('button'); b.className='clip'; b.textContent='השמע את הקול שלי'; b.onclick=()=>new Audio(clip).play(); d.append(b); }
+  $('#log').append(d); $('#log').scrollTop=1e9; if(cls==='st') pingTab('log'); }
 function pingTab(t){ const b=document.querySelector(`#tabs [data-t="${t}"]`); if(b && !b.classList.contains('act')) b.classList.add('ping'); }
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('act',x===b)); b.classList.remove('ping');
   document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('act',s.dataset.tab===b.dataset.t)); });
 $('#tplBtn').onclick=()=>$('#tpl').classList.toggle('show');
-$('#speed').onclick=()=>{ speed = speed===1?4:1; $('#speed').textContent='מהירות ×'+speed; };
-function setMode(x){ exam=x; document.body.classList.toggle('exam',x); $('#mExam').classList.toggle('on',x); $('#mPractice').classList.toggle('on',!x); $('#tpl').classList.remove('show'); coach(); }
+function setSpeed(x){ speed=x; $('#speed').textContent='מהירות ×'+x; }
+$('#speed').onclick=()=>setSpeed(speed===1?4:1);
+function setMode(x){ exam=x; document.body.classList.toggle('exam',x); $('#mExam').classList.toggle('on',x); $('#mPractice').classList.toggle('on',!x); $('#modeBanner').textContent=x?'מצב מבחן':'מצב תרגול'; $('#tpl').classList.remove('show'); for(const [k,sel] of Object.entries(ids)) $(sel).title=x?'':DESC[k][1]; coach(); }
 $('#mExam').onclick=()=>{ setMode(true); reset(); }; $('#mPractice').onclick=()=>{ setMode(false); reset(); };
-$('#restart').onclick=reset; $('#again').onclick=()=>{ $('#deb').classList.remove('show'); reset(); }; $('#closeDeb').onclick=()=>$('#deb').classList.remove('show');
+$('#restart').onclick=reset; $('#finish').onclick=()=>S.flags.done?$('#deb').classList.add('show'):debrief(); $('#again').onclick=()=>{ $('#deb').classList.remove('show'); reset(); }; $('#closeDeb').onclick=()=>$('#deb').classList.remove('show');
 
 function debrief(){
   if(S.flags.done) return; S.flags.done=true; const v=S.vhf, g=S.maydayGrade, rows=[];
@@ -578,7 +622,7 @@ function debrief(){
 }
 function reset(){
   if(playing){ playing.pause(); playing=null; } Q.length=0; timers=[]; if(S) alarm(false);
-  S=fresh(); $('#log').innerHTML=''; $('#cover').classList.remove('open'); $('#epirb').classList.remove('out'); $('#vhf').classList.remove('rxing','txing');
+  S=fresh(); setSpeed(1); $('#log').innerHTML=''; $('#cover').classList.remove('open'); $('#epirb').classList.remove('out'); $('#vhf').classList.remove('rxing','txing');
   $('#rng').textContent=''; $('#interim').textContent=''; cx.fillStyle='#020a04'; cx.fillRect(0,0,680,680);
   lcd(); epUI(); sUI(); coach(); log('ev','תרחיש: S/Y SONDRA, 4 אנשים, 32°45\'N 034°52\'E. שריפה בחדר המכונות.');
 }
@@ -586,7 +630,7 @@ const DESC={
  kPwr:['PWR · 16+','לחיצה קצרה מדליקה את המכשיר. כשהוא דולק, לחיצה קצרה חוזרת מיד לערוץ 16 מכל ערוץ. החזקה כשנייה מכבה.'],
  kDsc:['DSC','תפריט הקריאה הסלקטיבית הדיגיטלית: DISTRESS, קריאה אישית, כל הספינות, יומן. ההתראות עוברות בערוץ 70 ובלי קול.'],
  kHilo:['HI/LO','עוצמת שידור: 25W (HI) לשידור רחוק ומצוקה, 1W (LO) לקריאה קרובה בנמל.'],
- kMenu:['MENU','תפריט ההגדרות: תאורה, Dual Watch, קבוצת ערוצים INT/USA, מיקום GPS ויומן DSC. מנווטים עם ◀ ▶, בוחרים עם ●, יוצאים עם CLEAR.'],
+ kMenu:['MENU','תפריט ההגדרות: תאורה, Dual Watch, קבוצת ערוצים INT/USA, מיקום GPS ויומן DSC. מנווטים עם ▲ ▼, בוחרים עם ●, יוצאים עם CLEAR.'],
  kClr:['CLEAR','ביטול וחזרה למסך הקודם. עוצר גם את צפצוף ההתראה.'],
  kUp:['CH ▲','ערוץ הבא. מצוקה בקול רק בערוץ 16. ערוץ 70 שמור ל-DSC ואין בו דיבור.'],
  kDn:['CH ▼','ערוץ קודם.'],
@@ -596,7 +640,7 @@ const DESC={
  kDis:['DISTRESS','לחיצה קצרה: בחירת מהות האירוע. החזקה 5 שניות: שליחת התראה בערוץ 70 עם MMSI ומיקום.'],
  cover:['מכסה DISTRESS','מונע שליחה בטעות. פותחים אותו לפני הלחיצה.'],
  ptt:['PTT','לוחצים ומחזיקים לשידור, מדברים ברור, משחררים כדי לשמוע. שחרור הכפתור הוא ה-Over.'],
- sf0:['◀','בתפריטים: למעלה, או ערך קודם.'],sf1:['▶','בתפריטים: למטה, או ערך הבא.'],sf2:['●','בחירה ואישור.'],
+ sf0:['▲','בתפריטים: למעלה, או ערך קודם.'],sf1:['▼','בתפריטים: למטה, או ערך הבא.'],sf2:['●','בחירה ואישור.'],
  eRelease:['שחרור','מוציא את ה-EPIRB מהתושבת. בטביעה ה-HRU עושה זאת לבד בעומק 1.5 עד 4 מטר.'],
  eGuard:['מגן ON','מכסה מגן שמונע הפעלה בטעות. מרימים אותו לפני ON.'],
  eOn:['EPIRB ON','הפעלה ידנית: 121.5 homing מיד, התראת 406 MHz עם GPS אחרי כ-50 שניות.'],
@@ -606,12 +650,45 @@ const DESC={
  sOn:['SART ON','מצב המתנה: שותק עד שמכ"ם X-band בטווח "מעיר" אותו, ואז משדר 12 נקודות. 96 שעות המתנה, 8 שעות שידור.'],
  sTest:['SART TEST','בדיקה: הבזק וצפצוף. לא משדר למכ"ם.'],sOff:['SART OFF','כבוי.'],
  sHigh:['הרם SART','SART גבוה נקלט מרחוק (כ-8 מייל). נמוך, על הרפסודה, רק כ-5 מייל.'],sLow:['SART נמוך','ביד או על הרצפה. טווח הקליטה קצר.']};
-function explain(k){ const d=DESC[k]; if(!d||exam) return; const e=$('#explain'); e.style.display='block'; e.innerHTML='<b>'+d[0]+':</b> '+d[1]; }
+function explain(k){ const d=DESC[k]; if(!d||exam||$('#gcard').classList.contains('show')) return; const e=$('#explain'); e.style.display='block'; e.innerHTML='<b>'+d[0]+':</b> '+d[1]; clearTimeout(explain.t); explain.t=setTimeout(()=>e.style.display='none',6000); }
 const ids={kPwr:'#kPwr',kDsc:'#kDsc',kHilo:'#kHilo',kMenu:'#kMenu',kClr:'#kClr',kUp:'#kUp',kDn:'#kDn',vUp:'#vUp',vDn:'#vDn',sqUp:'#sqUp',sqDn:'#sqDn',kDis:'#kDis',cover:'#cover',ptt:'#ptt',
  sf0:'.softkeys [data-s="0"]',sf1:'.softkeys [data-s="1"]',sf2:'.softkeys [data-s="2"]',eRelease:'#eRelease',eGuard:'#eGuard',eOn:'#eOn',eOff:'#eOff',eTest:'#eTest',eWater:'#eWater',sOn:'#sOn',sTest:'#sTest',sOff:'#sOff',sHigh:'#sHigh',sLow:'#sLow'};
 for(const [k,sel] of Object.entries(ids)){ const el=$(sel); el.title=DESC[k][1]; el.addEventListener('pointerdown',()=>explain(k),true); }
 $('#helpList').innerHTML=['kPwr','kDsc','kHilo','kMenu','kClr','kUp','vUp','sqUp','kDis','ptt','eRelease','eOn','eTest','eWater','sOn','sTest','sHigh'].map(k=>`<dt>${DESC[k][0]}</dt><dd>${DESC[k][1]}</dd>`).join('');
-reset(); requestAnimationFrame(t=>{ last=t; tick(t); });
+
+/* ---------- user guide (steps + VO built by sources/guide_steps.py) ---------- */
+/*GUIDE*/const GUIDE=[{"id": "g01", "t": "התרחיש", "sel": null, "demo": null, "txt": "ברוך הבא לסימולטור GMDSS. אתה הסקיפר של היאכטה SONDRA, ארבעה אנשים על הסיפון. פרצה שריפה בחדר המכונות, והיא יוצאת משליטה. המשימה שלך: לשלוח התראת מצוקה, לשדר MAYDAY, לנטוש לרפסודה, ולהביא אליך את ספינת החילוץ. בוא נעבור על זה צעד אחר צעד."}, {"id": "g02", "t": "שורת ההדרכה", "sel": "#coach", "demo": null, "txt": "בראש המסך יש שורת הדרכה. במצב תרגול היא אומרת לך בכל רגע מה הצעד הבא. במצב מבחן היא נעלמת, ואתה לבד."}, {"id": "g03", "t": "הדלקת ה-VHF", "sel": "#kPwr", "demo": null, "txt": "הצעד הראשון: מדליקים את מכשיר ה-VHF. לחיצה על PWR מדליקה אותו, והוא עולה ישר על ערוץ שש עשרה. החזקה של שנייה מכבה אותו."}, {"id": "g04", "t": "המסך", "sel": ".lcd", "demo": null, "txt": "על המסך רואים את הערוץ, ולידו את המיקום מה-GPS ואת השעה. את המיקום הזה תקריא ב-MAYDAY."}, {"id": "g05", "t": "מכסה DISTRESS", "sel": ".dwrap", "demo": "cover", "txt": "עכשיו התראת DSC. כפתור DISTRESS מוגן במכסה אדום, כדי שלא ילחצו עליו בטעות. פותחים את המכסה."}, {"id": "g06", "t": "בחירת מהות", "sel": ".bottom", "demo": null, "txt": "לחיצה קצרה על DISTRESS פותחת את רשימת מהות האירוע. בוחרים עם החצים FIRE/EXPLOSION, שריפה או פיצוץ, ומאשרים בכפתור עם הנקודה."}, {"id": "g07", "t": "שליחת ההתראה", "sel": ".dwrap", "demo": "cover", "txt": "ואז מחזיקים את DISTRESS חמש שניות, עד שכל חמשת הריבועים על המסך מתמלאים. ההתראה יוצאת בערוץ שבעים, עם ה-MMSI והמיקום, והמכשיר עובר לבד לערוץ שש עשרה. אחרי כמה שניות תשמע צפצוף: אישור מ-HAIFA RADIO."}, {"id": "g08", "t": "MAYDAY בקול", "sel": "#voice", "demo": null, "txt": "עכשיו MAYDAY בקול. מתחת למכשיר יש תיבת שידור. לוחצים ומחזיקים את הכפתור הגדול עם המיקרופון, מדברים באנגלית ברור, ומשחררים בסוף. המערכת מזהה את הדיבור. אם אין מיקרופון, מקלידים בשורה שמתחת ולוחצים שדר."}, {"id": "g09", "t": "תבנית MAYDAY", "sel": "#tpl", "demo": "tpl", "txt": "שוכח את הסדר? הכפתור תבנית MAYDAY מציג את הנוסח המלא: שלוש פעמים MAYDAY, זיהוי, MMSI, מיקום, מה קרה, איזו עזרה, כמה אנשים, ו-Over. במבחן הכפתור הזה לא קיים."}, {"id": "g10", "t": "עוצמה ומשקט רחש", "sel": ".knobs", "demo": null, "txt": "שים לב לעוצמה ולמשקט הרחש. בעוצמה אפס, או במשקט גבוה מדי, לא תשמע את תחנת החוף, והשידור ייחשב כפספוס. ובזמן מצוקה נשארים בערוץ שש עשרה."}, {"id": "g11", "t": "EPIRB", "sel": "#epirb", "demo": null, "txt": "תחנת החוף תודיע שספינת חילוץ בדרך, והאש תצא משליטה. נוטשים. מפעילים את ה-EPIRB: משחררים מהתושבת, מרימים את המגן ולוחצים ON, או מכניסים למים. אחרי כחמישים שניות יוצאת התראה ללוויין."}, {"id": "g12", "t": "SART", "sel": "#sart", "demo": null, "txt": "לוקחים את ה-SART לרפסודה, מפעילים ON, ומרימים אותו על המוט. SART גבוה נקלט במכ\"ם מרחוק יותר. לחיצה על TEST מדגימה במכ\"ם, אוטומטית, איך הוא נראה."}, {"id": "g13", "t": "המכ\"ם", "sel": "#radar", "demo": null, "txt": "כאן המכ\"ם של ספינת החילוץ. כשה-SART פועל, מרחוק תראה שתים עשרה נקודות בקו. ככל שהספינה מתקרבת הן הופכות לקשתות, ובסוף למעגלים שלמים. אפשר לגרור את הסליידר כדי לקרב ולהרחיק."}, {"id": "g14", "t": "עונים לתחנות", "sel": "#log", "demo": null, "txt": "תחנות יקראו לך: RCC חיפה, וספינת החילוץ. עונים להן עם שם הכלי, מדווחים שאתם ברפסודה, ומסיימים ב-Over. כל השידורים נרשמים ביומן הקשר."}, {"id": "g15", "t": "תרגול ומבחן", "sel": "#mPractice", "demo": null, "txt": "בסוף מקבלים סיכום עם ציון וכל מה שפוספס. מתחילים בתרגול, וכשאתה מוכן עוברים למבחן. בהצלחה."}];/*/GUIDE*/
+let gi=-1, gAud=null, gUndo=null;
+const isMob=()=>window.matchMedia('(max-width:980px)').matches;
+function gStopVO(){ if(gAud){ gAud.onerror=null; gAud.pause(); gAud=null; } if(window.speechSynthesis) speechSynthesis.cancel(); }
+function gSpeak(t){ if(!window.speechSynthesis) return; const u=new SpeechSynthesisUtterance(t), v=speechSynthesis.getVoices().find(v=>/^he/i.test(v.lang)); u.lang='he-IL'; if(v) u.voice=v; speechSynthesis.speak(u); }
+function gVO(st){ gStopVO(); let fb=false; const a=new Audio('audio/guide/seg_'+st.id+'.mp3'); gAud=a; const f=()=>{ if(fb||gAud!==a) return; fb=true; gSpeak(st.txt); }; a.onerror=f; a.play().catch(f); }
+function gTab(el){ const sec=el.closest('section[data-tab]'); if(!sec||!isMob()) return; const b=document.querySelector(`#tabs [data-t="${sec.dataset.tab}"]`); b&&b.click(); }
+function gPlace(){ if(gi<0) return; const st=GUIDE[gi], sp=$('#gspot'), c=$('#gcard'); c.classList.remove('top','bot','mid');
+  const el=st.sel&&$(st.sel); if(!el||!el.offsetParent){ sp.classList.add('none'); Object.assign(sp.style,{left:'50%',top:'50%',width:'0',height:'0'}); c.classList.add('mid'); return; }
+  sp.classList.remove('none'); const r=el.getBoundingClientRect(), p=6; Object.assign(sp.style,{left:r.left-p+'px',top:r.top-p+'px',width:r.width+2*p+'px',height:r.height+2*p+'px'});
+  c.classList.add(r.top+r.height/2>innerHeight/2?'top':'bot'); }
+const DEMO={cover:()=>{ const c=$('#cover'), was=c.classList.contains('open'); setTimeout(()=>c.classList.add('open'),700); return ()=>c.classList.toggle('open',was); },
+  tpl:()=>{ const t=$('#tpl'), was=t.classList.contains('show'); t.classList.add('show'); return ()=>t.classList.toggle('show',was); }};
+function gNav(btns){ const n=$('#gNav'); n.innerHTML=''; setTimeout(()=>{ const f=n.querySelector('.pill.on'); f&&f.focus({preventScroll:true}); },0); for(const [txt,fn,cls] of btns){ if(txt==='|'){ const s=document.createElement('span'); s.className='sp'; s.textContent=fn; n.append(s); continue; } const b=document.createElement('button'); b.className='pill'+(cls?' '+cls:''); b.textContent=txt; b.onclick=fn; n.append(b); } }
+function gShow(i){ ac(); gUndo&&gUndo(); gUndo=null; gi=i; const st=GUIDE[i];
+  $('#gdim').classList.add('show'); $('#gcard').classList.add('show'); $('#gT').textContent=st.t; $('#gP').textContent=st.txt;
+  if(st.demo) gUndo=DEMO[st.demo]();
+  const el=st.sel&&$(st.sel); if(el){ gTab(el); el.scrollIntoView({block:'center',behavior:'smooth'}); } gPlace(); setTimeout(gPlace,400); setTimeout(gPlace,900);
+  gNav([['הקודם',()=>i&&gShow(i-1)],[i<GUIDE.length-1?'הבא':'התחל תרגיל',()=>i<GUIDE.length-1?gShow(i+1):gEnd(),'on'],['השמע שוב',()=>gVO(st)],['|',`${i+1} / ${GUIDE.length}`],['דלג',gEnd]]);
+  gVO(st); }
+function gEnd(fresh=true){ gStopVO(); gUndo&&gUndo(); gUndo=null; gi=-1; $('#gdim').classList.remove('show'); $('#gcard').classList.remove('show');
+  const b=document.querySelector('#tabs [data-t="vhf"]'); isMob()&&b&&b.click(); scrollTo({top:0,behavior:'smooth'}); if(fresh) reset(); else coach(); }
+function gOffer(){ gi=-1; $('#gdim').classList.add('show'); $('#gspot').classList.add('none'); Object.assign($('#gspot').style,{left:'50%',top:'50%',width:'0',height:'0'});
+  const c=$('#gcard'); c.classList.remove('top','bot'); c.classList.add('show','mid'); $('#gT').textContent='מדריך למשתמש';
+  $('#gP').textContent='לפני התרגיל: מדריך קצר עם קריינות, שמראה ומסביר כל צעד בתרגיל. כדאי לצפות בו בפעם הראשונה.';
+  gNav([['▶ צפה במדריך',()=>gShow(0),'on'],['דלג לתרגיל',gEnd]]); }
+$('#gX').onclick=()=>gEnd(false);
+addEventListener('keydown',e=>{ if(!$('#gcard').classList.contains('show')) return; if(e.key==='Escape') gEnd(false); if(gi>=0 && e.key==='ArrowLeft' && gi<GUIDE.length-1) gShow(gi+1); if(gi>0 && e.key==='ArrowRight') gShow(gi-1); });
+addEventListener('resize',gPlace); addEventListener('scroll',gPlace,true);
+$('#guideBtn').onclick=()=>gShow(0);
+
+reset(); gOffer(); requestAnimationFrame(t=>{ last=t; tick(t); });
 </script>
 </body>
 </html>
