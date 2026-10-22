@@ -24014,7 +24014,7 @@
       "ה. תשובות ב ו-ג נכונות"
     ],
     "answer": "ב",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "NAVTEX מכסה את אזורי ההפלגה A1 ו A2. ולכן התשובה היא ב. תשובה א שגויה כי MEOSAR הוא מערך לוויינים ולא מכסה רק A1 ו A2. תשובה ג שגויה כי DSC בערוץ 70 מכסה רק A1. תשובה ד שגויה כי ד כוללת את א, שאינה נכונה. תשובה ה שגויה כי ה כוללת את ג, שאינה נכונה.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E08-Q17",
