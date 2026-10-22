@@ -5,7 +5,7 @@ import os, re, sys, subprocess
 ROOT = r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz'
 L30 = ROOT + '/lessons/l30/sources'; sys.path.insert(0, L30)
 import nowin  # child processes without a console window
-NUM = {'ציוד ובדיקות GMDSS': None, 'מבוא ל-GMDSS': 1, 'השלמות למבחן GMDSS': 8, 'פתרון שאלות המבחן': None, 'ערוצים ו-DSC - השלמות למבחן': None, 'נהלים ופונטיקה - השלמות למבחן': None}
+NUM = {'ציוד ובדיקות GMDSS': None, 'מבוא ל-GMDSS': 1, 'השלמות למבחן GMDSS': 8, 'פתרון שאלות המבחן': None, 'ערוצים ו-DSC - השלמות למבחן': None, 'נהלים ופונטיקה - השלמות למבחן': None, 'NAVTEX - השלמות למבחן': None}
 HEADINGS = {
     'ציוד ובדיקות GMDSS': {'s01_intro': 'פתיחה', 's02_sart': 'SART', 's07_satellites': 'הלוויינים', 's14_epirb': 'EPIRB', 's24_batteries': 'מצברים', 's28_checks': 'בדיקות הציוד', 's33_summary': 'סיכום'},
     'מבוא ל-GMDSS': {'s01_intro': 'פתיחה', 's02_titanic': 'הטיטאניק', 's03_gmdss_born': 'איך נולדה GMDSS', 's04_principle': 'העיקרון: לחיצה אחת',
@@ -20,6 +20,8 @@ HEADINGS = {
     'ערוצים ו-DSC - השלמות למבחן': {'s01_intro': 'פתיחה', 's02_channels': 'הערוצים', 's02_ch70': 'ערוצים דיגיטליים', 's02_ch17': 'קשר על הסיפון', 's02_ch11': 'כלי שייט קטנים ונמלים', 's02_ch16': 'ערוץ 16', 's15_mmsi': 'MMSI', 's28_summary': 'סיכום'},
     'נהלים ופונטיקה - השלמות למבחן': {'s01_intro': 'פתיחה', 's02_alpha': 'האלפבית הפונטי', 's02_phonetic': 'ספרות ואותיות', 's09_call': 'קריאה לתחנה', 's04_callsign': 'הקידומת 4X', 's16_words': 'מונחי רדיוטלפון', 's25_medical_terms': 'מונחים רפואיים', 's33_pubs': 'פרסומים', 's20_priorities': 'העדיפויות',
                                       's27_mayday_terms': 'מונחי מצוקה', 's37_summary': 'סיכום'},
+    'NAVTEX - השלמות למבחן': {'s01_intro': 'פתיחה', 's02_basics': 'NAVTEX: היסודות', 's14_alrs': 'הפרסום', 's15_header': 'מבנה ההודעה', 's17_cer': 'C E R',
+                              's18_codes': 'סוגי הודעות', 's23_summary': 'סיכום'},
     'השלמות למבחן GMDSS': {'s01_intro': 'פתיחה', 's02_functions': 'הדרישות התפקודיות', 's03_q11': 'שאלה 11: דרישה תפקודית', 's04_onscene': 'On-Scene: תקשורת במקום האירוע',
                            's05_q19': 'שאלה 19: On-Scene Communications', 's06_q8': 'שאלה 8: הערוץ במקום האירוע', 's07_cospas': 'מסלול אות המצוקה',
                            's08_q15': 'שאלה 15: מי קובע את המיקום', 's09_false_epirb': 'EPIRB שנדלקה בטעות', 's10_q6': 'שאלה 6: אתרעת שווא',
