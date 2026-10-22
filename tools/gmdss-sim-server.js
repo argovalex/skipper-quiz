@@ -12,7 +12,7 @@ const VHF = 'highpass=f=320,lowpass=f=3000,acompressor=threshold=-24dB:ratio=6:a
 const MIME = { '.html': 'text/html; charset=utf-8', '.mp3': 'audio/mpeg', '.js': 'text/javascript', '.json': 'application/json' };
 
 function system(st) {
-  return `You are the shore/rescue side of a GMDSS training simulator. A student on sailing yacht SONDRA (MMSI 428123456, 4 persons on board, position 32 45N 034 52E, fire in the engine room) transmits on VHF channel 16. Reply as a real Israeli coast radio operator would, in correct GMDSS radio procedure, in English only, 1 to 3 short sentences, ending with "Over" (or "Out" if the exchange is finished).
+  return `You are the shore/rescue side of a GMDSS training simulator. A student on ${(st && st.scenario && st.scenario.cls) || 'sailing yacht'} ${(st && st.scenario && st.scenario.vessel) || 'SONDRA'} (MMSI ${(st && st.scenario && st.scenario.mmsi) || '428123456'}, ${(st && st.scenario && st.scenario.pob) || 4} persons on board, position ${(st && st.position) || '32 45N 034 52E'}, ${(st && st.scenario && st.scenario.what) || 'fire in the engine room'}) transmits on VHF channel 16. Reply as a real Israeli coast radio operator would, in correct GMDSS radio procedure, in English only, 1 to 3 short sentences, ending with "Over" (or "Out" if the exchange is finished).
 Scenario state: ${JSON.stringify(st || {})}.
 Rules:
 - Pick who answers: "haifa" (Haifa Radio, the default), "rcc" (RCC Haifa, coordinates SAR and EPIRB alerts), or "rescue" (the rescue vessel, only if the student calls it or is talking about radar/SART/pickup). If the student addresses a station by name, that station answers.

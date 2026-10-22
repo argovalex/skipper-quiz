@@ -168,6 +168,7 @@ body.exam .target{outline:none!important;animation:none}
   <h1>סימולטור GMDSS · נטישת ספינה</h1>
   <button class="pill on" id="mPractice">תרגול</button>
   <button class="pill" id="mExam">מבחן</button>
+  <select class="pill" id="scSel" aria-label="תרחיש" style="background:transparent;color:inherit;font:inherit"><option value="sondra">SONDRA · שריפה</option><option value="noa">NOA · שריפה בחדר המנוע</option><option value="dana">DANA · עלייה על שרטון</option></select>
   <button class="pill" id="speed">מהירות ×1</button>
   <button class="pill" id="restart">התחל מחדש</button>
   <button class="pill" id="finish">סיים תרגיל</button>
@@ -181,15 +182,7 @@ body.exam .target{outline:none!important;animation:none}
 <section data-tab="vhf" class="act">
   <div class="card">
     <h2>VHF/DSC קבוע <button class="pill hint" id="tplBtn">תבנית MAYDAY</button></h2>
-    <div class="tpl" id="tpl">MAYDAY MAYDAY MAYDAY
-This is sailing yacht SONDRA SONDRA SONDRA
-MMSI 4-2-8-1-2-3-4-5-6
-MAYDAY SONDRA
-Position 3-2 degrees 4-5 minutes North, 0-3-4 degrees 5-2 minutes East
-On fire (nature of distress)
-Require immediate assistance
-4 persons on board
-Over</div>
+    <div class="tpl" id="tpl"></div>
     <div class="vhf" id="vhf">
       <div class="spk"></div>
       <div class="lcd">
@@ -209,7 +202,7 @@ Over</div>
         <div class="softkeys"><button class="k" data-s="0" aria-label="מקש רך 1 (למעלה)">▲</button><button class="k" data-s="1" aria-label="מקש רך 2 (למטה)">▼</button><button class="k" data-s="2" aria-label="מקש רך 3 (בחירה)">●</button></div>
         <div class="knobs"><button class="k" id="vDn">VOL−</button><button class="k" id="vUp">VOL+</button><button class="k" id="sqDn">SQ−</button><button class="k" id="sqUp">SQ+</button></div>
       </div>
-      <div class="label">S/Y SONDRA · MMSI 428123456 · 4 POB</div>
+      <div class="label" id="vLabel">S/Y SONDRA · MMSI 428123456 · 4 POB</div>
     </div>
     <div id="voice">
       <h4>🎙 שידור בקול בערוץ 16 · כאן משדרים MAYDAY ועונים לתחנות</h4>
@@ -233,7 +226,7 @@ Over</div>
       <div class="dev" id="epirb">
         <div class="ant"></div>
         <div class="dome"><div class="strobe" id="eStrobe"></div></div>
-        <div class="ebody">406 MHz<small>GPS EPIRB · SONDRA</small>
+        <div class="ebody">406 MHz<small id="eLbl">GPS EPIRB · SONDRA</small>
           <div class="bracket">HRU · FLOAT-FREE<button id="eRelease">שחרר מהתושבת</button></div>
           <div class="ctrls">
             <div class="lcdmini" id="eLcd">READY</div>
@@ -289,7 +282,30 @@ Over</div>
 
 <script>
 const $ = s => document.querySelector(s);
-const NAME = /\b(sondra|sandra|saundra|sundra|sondre|sondo?ra)\b/g, MMSI = '428123456';
+let NAME, MMSI, SCN, curSc='sondra', TXT;
+const SCEN={
+ sondra:{pre:'',lbl:'S/Y',cls:'sailing yacht',name:'SONDRA',sp:'Sondra',nre:'sondra|sandra|saundra|sundra|sondre|sondo?ra',mmsi:'428123456',pob:4,pobW:'four',la:"32°45.00'N",lo:"034°52.00'E",pd:['32','45','34','52'],nat:1,natRe:'fire|burning|explosion|smoke',natPh:'On fire',what:'שריפה בחדר המכונות יוצאת משליטה',whatEn:'fire in the engine room',evt:'האש יצאה משליטה'},
+ noa:{pre:'noa_',lbl:'M/Y',cls:'motor yacht',name:'NOA',sp:'Noa',nre:'noa|no\\s?a|noah|nowa',mmsi:'428654321',pob:6,pobW:'six',la:"32°50.00'N",lo:"034°48.00'E",pd:['32','50','34','48'],nat:1,natRe:'fire|burning|explosion|smoke',natPh:'On fire',what:'שריפה בחדר המנוע, אין שליטה',whatEn:'fire in the engine room, no control',evt:'האש יצאה משליטה'},
+ dana:{pre:'dana_',lbl:'S/Y',cls:'sailing yacht',name:'DANA',sp:'Dana',nre:'dana|dahna|danna|donna',mmsi:'428234567',pob:5,pobW:'five',la:"32°35.00'N",lo:"034°55.00'E",pd:['32','35','34','55'],nat:4,natRe:'aground|grounding|grounded|ran aground',natPh:'Aground, taking water',what:'עלייה על שרטון וחדירת מים',whatEn:'aground on rocks and taking water',evt:'הספינה על השרטון והמים חודרים'}
+};
+const SHARED=new Set(['haifa_sayagain','haifa_generic']);
+function mkTXT(){ const n=SCN.sp, P=SCN.pobW, cls=SCN.cls[0].toUpperCase()+SCN.cls.slice(1); return {
+ haifa_ack:['Haifa Radio',`MAYDAY. ${n}, ${n}, ${n}. This is Haifa Radio, Haifa Radio, Haifa Radio. Received MAYDAY. Over.`],
+ haifa_task:['Haifa Radio',`${n}, this is Haifa Radio. Rescue vessel is on the way to your position. If you abandon ship, activate your EPIRB and take your SART to the life raft. Report when in the life raft. Over.`],
+ haifa_sayagain:['Haifa Radio','Station calling MAYDAY, this is Haifa Radio. Say again your vessel name and position. Over.'],
+ haifa_generic:['Haifa Radio','Station calling Haifa Radio, this is Haifa Radio. Say again. Over.'],
+ haifa_raft:['Haifa Radio',`${n}, this is Haifa Radio. Received, ${P} persons in the life raft. Keep watch on channel one six. Out.`],
+ rcc_epirb:['RCC Haifa',`${n}, ${n}, ${n}. This is RCC Haifa. Your 406 EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.`],
+ rescue_sart:['Rescue vessel',`${n}, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.`],
+ rescue_sart_low:['Rescue vessel',`${n}, this is Rescue vessel. I have your SART on my radar, range five miles. Raise the SART higher. Over.`],
+ rescue_close:['Rescue vessel',`${n}, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.`],
+ haifa_seelonce:['Haifa Radio',`MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time 1540 UTC. ${cls} ${n}, MMSI ${MMSI}. SEELONCE FEENEE. Out.`],
+}; }
+function applyScen(){ SCN=SCEN[curSc]; NAME=new RegExp('\\b('+SCN.nre+')\\b','g'); MMSI=SCN.mmsi; TXT=mkTXT();
+  const dig=s=>s.split('').join('-'), pp=s=>{ const m=s.match(/(\d+)°(\d+)/); return `${dig(m[1])} degrees ${dig(m[2])} minutes`; }, N=SCN.name;
+  $('#tpl').textContent=`MAYDAY MAYDAY MAYDAY\nThis is ${SCN.cls} ${N} ${N} ${N}\nMMSI ${dig(MMSI)}\nMAYDAY ${N}\nPosition ${pp(SCN.la)} North, ${pp(SCN.lo)} East\n${SCN.natPh} (nature of distress)\nRequire immediate assistance\n${SCN.pob} persons on board\nOver`;
+  $('#vLabel').textContent=`${SCN.lbl} ${N} · MMSI ${MMSI} · ${SCN.pob} POB`; $('#eLbl').textContent='GPS EPIRB · '+N;
+  $('#pos').innerHTML=`${SCN.la}<br>${SCN.lo}<br><span id="utc">15:12</span> UTC`; }
 const NATURES = ['UNDESIGNATED','FIRE/EXPLOSION','FLOODING','COLLISION','GROUNDING','LISTING','SINKING','DISABLED/ADRIFT','ABANDONING SHIP','PIRACY','MAN OVERBOARD'];
 
 let S, speed = 1, exam = false, timers = [], last = performance.now();
@@ -315,18 +331,6 @@ function alarm(on){ clearInterval(S.vhf.alarm); S.vhf.alarm=null; if(on){ let k=
 
 /* station transmissions: queued, heard only on 16 with power and volume */
 const Q=[]; let playing=null;
-const TXT = {
- haifa_ack:['Haifa Radio','MAYDAY. Sondra, Sondra, Sondra. This is Haifa Radio, Haifa Radio, Haifa Radio. Received MAYDAY. Over.'],
- haifa_task:['Haifa Radio','Sondra, this is Haifa Radio. Rescue vessel is on the way to your position. If you abandon ship, activate your EPIRB and take your SART to the life raft. Report when in the life raft. Over.'],
- haifa_sayagain:['Haifa Radio','Station calling MAYDAY, this is Haifa Radio. Say again your vessel name and position. Over.'],
- haifa_generic:['Haifa Radio','Station calling Haifa Radio, this is Haifa Radio. Say again. Over.'],
- haifa_raft:['Haifa Radio','Sondra, this is Haifa Radio. Received, four persons in the life raft. Keep watch on channel one six. Out.'],
- rcc_epirb:['RCC Haifa','Sondra, Sondra, Sondra. This is RCC Haifa. Your 406 EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.'],
- rescue_sart:['Rescue vessel','Sondra, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.'],
- rescue_sart_low:['Rescue vessel','Sondra, this is Rescue vessel. I have your SART on my radar, range five miles. Raise the SART higher. Over.'],
- rescue_close:['Rescue vessel','Sondra, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.'],
- haifa_seelonce:['Haifa Radio','MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time 1540 UTC. Sailing yacht Sondra, MMSI 428123456. SEELONCE FEENEE. Out.'],
-};
 const AUD={}; let dynN=0;
 function stationDyn(label,text,url,then){ const id='dyn'+(++dynN); TXT[id]=[label,text]; AUD[id]=url; station(id,then); }
 function station(id, then){ Q.push([id,then]); pump(); }
@@ -334,7 +338,7 @@ function pump(){
   if(playing || !Q.length) return;
   const [id,then] = Q.shift(), v=S.vhf, audible = v.on && (v.ch===16||v.dw) && v.vol>0 && v.sql<=6;
   if(!audible){ S.missed.push(id); log('ev', `📻 ${TXT[id][0]} שידר בערוץ 16 ולא שמעת (${!v.on?'המכשיר כבוי':v.ch!==16?'היית בערוץ '+v.ch:v.vol===0?'עוצמה 0':'ה-SQ גבוה מדי ('+v.sql+') ומשתיק שידורים חלשים'})`); then&&then(); return pump(); }
-  S.heard[id]=S.t; const a = new Audio(AUD[id]||'audio/'+id+'.mp3'); a.volume = Math.min(1, v.vol/8); playing=a; $('#vhf').classList.add('rxing'); hiss(); pingTab('vhf');
+  S.heard[id]=S.t; const a = new Audio(AUD[id]||'audio/'+(SHARED.has(id)?'':SCN.pre)+id+'.mp3'); a.volume = Math.min(1, v.vol/8); playing=a; $('#vhf').classList.add('rxing'); hiss(); pingTab('vhf');
   log('st', `${TXT[id][0]}: ${TXT[id][1]}`);
   const end = ()=>{ if(playing!==a) return; playing=null; $('#vhf').classList.remove('rxing'); hiss(); then&&then(); setTimeout(pump,600); };
   a.onended=end; a.onerror=()=>setTimeout(end, TXT[id][1].length*55); a.play().catch(a.onerror);
@@ -367,7 +371,7 @@ function lcd(){
   m.textContent=txt; m.classList.toggle('show',!!txt); sk.forEach((s,i)=>soft[i].textContent=s); hiss();
 }
 function menuItems(){ const v=S.vhf; return [[`BACKLIGHT  ${v.light}`,()=>{ v.light=v.light%3+1; }],[`DUAL WATCH  ${v.dw?'ON':'OFF'}`,()=>{ v.dw=!v.dw; }],[`CH GROUP  ${v.grp}`,()=>{ v.grp=v.grp==='INT'?'USA':'INT'; }],
-  ['GPS POSITION',()=>{ v.mode='info'; v.info="GPS POSITION\n32°45.00'N\n034°52.00'E\nMMSI 428123456"; }],
+  ['GPS POSITION',()=>{ v.mode='info'; v.info=`GPS POSITION\n${SCN.la}\n${SCN.lo}\nMMSI ${MMSI}`; }],
   ['DSC CALL LOG',()=>{ v.mode='info'; v.info=v.dscSent?`DSC LOG\nTX DISTRESS ${NATURES[v.dscNat]}\n${v.ack?'RX ACK HAIFA RADIO':'NO ACK YET'}`:'DSC LOG\nEMPTY'; }],['EXIT',()=>{ v.mode='norm'; }]]; }
 function key(){ ac(); if(S.vhf.alarm){ alarm(false); } beep(1800,.03,.05); }
 let pwrDown=0;
@@ -405,7 +409,7 @@ const disUp=()=>{ if(!holdT) return; clearInterval(holdT); holdT=null; const v=S
   lcd(); coach(); };
 $('#kDis').onpointerup=disUp; $('#kDis').onpointerleave=disUp; $('#kDis').onpointercancel=disUp;
 function sendDsc(){ const v=S.vhf; v.dscSent=true; v.dscNat=v.nat; v.mode='sent'; v.ch=16; v.dscAt=S.t; alarm(true);
-  log('ev',`📡 DSC DISTRESS נשלח בערוץ 70: ${NATURES[v.nat]}, MMSI 428123456, מיקום 32°45'N 034°52'E`); lcd(); coach();
+  log('ev',`📡 DSC DISTRESS נשלח בערוץ 70: ${NATURES[v.nat]}, MMSI ${MMSI}, מיקום ${SCN.la.replace('.00','')} ${SCN.lo.replace('.00','')}`); lcd(); coach();
   after(6, ()=>{ v.ack=true; if(v.on){ v.mode='ack'; alarm(true); } log('ev','📡 DSC ACK התקבל מ-HAIFA RADIO'); lcd(); coach(); }); }
 
 /* ---------- PTT + speech ---------- */
@@ -440,18 +444,18 @@ function norm(t){
 function gradeMayday(raw){
   const t=norm(raw), names=[...t.matchAll(NAME)].map(m=>m.index), idx=re=>{ const m=t.match(re); return m?m.index:-1; };
   const iThis=idx(/this is/), iMmsi=t.indexOf(MMSI)>=0?t.indexOf(MMSI):idx(/mmsi/), tPos=t.replace(MMSI,' ');
-  const posOK = /32/.test(tPos)&&/45/.test(tPos)&&/34/.test(tPos)&&/52/.test(tPos), pos=Math.max(idx(/position|32\s*degrees|3245/),-1);
-  const iNat=idx(/fire|burning|explosion|smoke/), iAs=idx(/immediate assistance|require assistance|assistance/), iPob=idx(/persons|people|souls|pob|on board/), iOver=t.lastIndexOf('over');
+  const posOK = SCN.pd.every(d=>new RegExp(d).test(tPos)), pos=Math.max(idx(/position|32\s*degrees|3245/),-1);
+  const iNat=idx(new RegExp(SCN.natRe)), iAs=idx(/immediate assistance|require assistance|assistance/), iPob=idx(/persons|people|souls|pob|on board/), iOver=t.lastIndexOf('over');
   const pre = iThis>0? t.slice(0,iThis):t, mid = iThis>=0 ? t.slice(iThis, iMmsi>iThis?iMmsi:(t.indexOf('mayday',iThis+7)>0?t.indexOf('mayday',iThis+7):t.length)) : '';
   const items=[
     ['MAYDAY ×3 בפתיחה', (pre.match(/mayday/g)||[]).length>=3, 'פותחים ב-MAYDAY שלוש פעמים.'],
-    ['THIS IS + שם הכלי ×3', iThis>=0 && (mid.match(NAME)||[]).length>=3, 'This is sailing yacht SONDRA SONDRA SONDRA.'],
-    ['MMSI', t.includes(MMSI), 'MMSI ספרה-ספרה: 4-2-8-1-2-3-4-5-6.'],
-    ['MAYDAY + שם (פעם אחת)', new RegExp('mayday\\s+(sailing\\s+yacht\\s+|yacht\\s+|s\\s?y\\s+)?'+NAME.source.replace(/\\b/g,'')).test(t.slice(Math.max(0,iThis))), 'אחרי הזיהוי: MAYDAY SONDRA.'],
-    ['מיקום', posOK, 'המיקום מהמסך: 32°45\' North, 034°52\' East, ספרה-ספרה.'],
-    ['מהות המצוקה', iNat>=0, 'אומרים מה קרה: On fire.'],
+    ['THIS IS + שם הכלי ×3', iThis>=0 && (mid.match(NAME)||[]).length>=3, `This is ${SCN.cls} ${SCN.name} ${SCN.name} ${SCN.name}.`],
+    ['MMSI', t.includes(MMSI), 'MMSI ספרה-ספרה: '+MMSI.split('').join('-')+'.'],
+    ['MAYDAY + שם (פעם אחת)', new RegExp('mayday\\s+(sailing\\s+yacht\\s+|motor\\s+yacht\\s+|yacht\\s+|s\\s?y\\s+|m\\s?y\\s+)?'+NAME.source.replace(/\\b/g,'')).test(t.slice(Math.max(0,iThis))), 'אחרי הזיהוי: MAYDAY '+SCN.name+'.'],
+    ['מיקום', posOK, `המיקום מהמסך: ${SCN.la}, ${SCN.lo}, ספרה-ספרה.`],
+    ['מהות המצוקה', iNat>=0, 'אומרים מה קרה: '+SCN.natPh+'.'],
     ['בקשת עזרה', iAs>=0, 'Require immediate assistance.'],
-    ['מספר אנשים', iPob>=0 && /\b4\b/.test(t), 'Four persons on board.'],
+    ['מספר אנשים', iPob>=0 && (new RegExp('\\b'+SCN.pob+'\\b').test(t)||t.includes(SCN.pobW)), SCN.pobW[0].toUpperCase()+SCN.pobW.slice(1)+' persons on board.'],
     ['OVER בסוף', iOver>=0 && iOver>=t.length-12, 'מסיימים ב-Over.'],
   ];
   const seq=[t.indexOf('mayday'),iThis,iMmsi,pos,iNat,iAs,iPob].filter(x=>x>=0), ordered=seq.every((x,i)=>!i||x>=seq[i-1]);
@@ -461,7 +465,7 @@ function gradeMayday(raw){
 
 /* ---------- conversation ---------- */
 function transmit(text, clip){
-  log('me', `SONDRA (ch ${S.vhf.ch}): ${text}`, clip); const t=norm(text);
+  log('me', `${SCN.name} (ch ${S.vhf.ch}): ${text}`, clip); const t=norm(text);
   if(S.vhf.ch!==16){ S.offChannelTx++; if(!exam) after(5,()=>coachMsg('אף תחנה לא ענתה. <b>באיזה ערוץ שידרת?</b> מצוקה בקול = ערוץ 16.')); return; }
   if(/mayday/.test(t) && !S.maydayGrade?.accepted){
     const g=gradeMayday(text); S.maydays++; S.maydayGrade=Object.assign(g,{accepted:false});
@@ -475,12 +479,12 @@ function transmit(text, clip){
   askServer(text);
 }
 async function askServer(text){
-  const e=E(), s=S.sa, st={phase:S.phase, abandoned:S.phase==='abandon', mayday_accepted:!!(S.maydayGrade&&S.maydayGrade.accepted), reported_in_raft:!!S.replies.raft, epirb_on:e.on, epirb_alert_received:e.burst, sart_on:s.mode==='on', sart_raised:s.high, sart_seen_by_rescue:s.interrogated, rescue_range_nm:S.rescueRange==null?null:+S.rescueRange.toFixed(1), eta_minutes:S.rescueRange==null?null:Math.max(5,Math.round(S.rescueRange*4)), position:"32 45N 034 52E", utc:$('#utc').textContent};
+  const e=E(), s=S.sa, st={phase:S.phase, abandoned:S.phase==='abandon', mayday_accepted:!!(S.maydayGrade&&S.maydayGrade.accepted), reported_in_raft:!!S.replies.raft, epirb_on:e.on, epirb_alert_received:e.burst, sart_on:s.mode==='on', sart_raised:s.high, sart_seen_by_rescue:s.interrogated, rescue_range_nm:S.rescueRange==null?null:+S.rescueRange.toFixed(1), eta_minutes:S.rescueRange==null?null:Math.max(5,Math.round(S.rescueRange*4)), position:SCN.la+" "+SCN.lo, scenario:{vessel:SCN.name,cls:SCN.cls,mmsi:MMSI,pob:SCN.pob,what:SCN.whatEn}, utc:$('#utc').textContent};
   try{ const r=await fetch('/api/reply',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({text,state:st})}); if(!r.ok) throw 0; const j=await r.json();
     const bin=atob(j.audio), u=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i);
     stationDyn(j.station,j.text,URL.createObjectURL(new Blob([u],{type:'audio/mpeg'}))); }
   catch(_){ after(2.5,()=>station('haifa_generic')); } }
-function startAbandon(){ if(S.phase==='abandon') return; S.phase='abandon'; log('ev','🔥 האש יצאה משליטה. נוטשים לרפסודה עם EPIRB, SART ו-VHF נייד.'); S.rescueRange=13; after(900,()=>{ if(!S.flags.done){ log('ev','⏱ תם הזמן לתרגיל.'); debrief(); } }); coach(); pingTab('beacons'); }
+function startAbandon(){ if(S.phase==='abandon') return; S.phase='abandon'; log('ev','🔥 '+SCN.evt+'. נוטשים לרפסודה עם EPIRB, SART ו-VHF נייד.'); S.rescueRange=13; after(900,()=>{ if(!S.flags.done){ log('ev','⏱ תם הזמן לתרגיל.'); debrief(); } }); coach(); pingTab('beacons'); }
 
 /* ---------- EPIRB ---------- */
 const E=()=>S.ep;
@@ -567,10 +571,10 @@ function drawRadar(now){
 function coachMsg(h){ const c=$('#coach'); c.innerHTML=h; c.className=exam?'exam':''; }
 function coach(){
   document.querySelectorAll('.target').forEach(x=>x.classList.remove('target'));
-  if(exam){ coachMsg('מצב מבחן: אין רמזים. S/Y SONDRA, 4 אנשים. שריפה בחדר המכונות יוצאת משליטה. פעל לפי הנוהל.'); return; }
+  if(exam){ coachMsg(`מצב מבחן: אין רמזים. ${SCN.lbl} ${SCN.name}, ${SCN.pob} אנשים. ${SCN.what}. פעל לפי הנוהל.`); return; }
   const v=S.vhf, e=S.ep, s=S.sa; let h, tg=null;
-  if(!v.on){ h='S/Y SONDRA, 4 אנשים על הסיפון. שריפה בחדר המכונות יוצאת משליטה.<br><b>צעד 1: הדלק את מכשיר הקשר.</b> לחץ על הכפתור המהבהב בצהוב <b>PWR · 16+</b> במכשיר ה-VHF.'; tg='#kPwr'; }
-  else if(!v.dscSent && v.mode==='nat'){ h='<b>צעד 2:</b> בחר מהות עם ▲ ▼ (<b>FIRE/EXPLOSION</b>) ואשר ב-●.'; tg='.softkeys'; }
+  if(!v.on){ h=SCN.lbl+' '+SCN.name+', '+SCN.pob+' אנשים על הסיפון. '+SCN.what+'.<br>'+'<b>צעד 1: הדלק את מכשיר הקשר.</b> לחץ על הכפתור המהבהב בצהוב <b>PWR · 16+</b> במכשיר ה-VHF.'; tg='#kPwr'; }
+  else if(!v.dscSent && v.mode==='nat'){ h='<b>צעד 2:</b> בחר מהות עם ▲ ▼ (<b>'+NATURES[SCN.nat]+'</b>) ואשר ב-●.'; tg='.softkeys'; }
   else if(!v.dscSent && v.mode==='ready'){ h='<b>צעד 2: החזק את DISTRESS 5 שניות</b> עד שכל 5 הריבועים על המסך מתמלאים.'; tg='.dwrap'; }
   else if(!v.dscSent && !$('#cover').classList.contains('open')){ h='<b>צעד 2: שלח התראת DSC.</b> לחץ על המכסה האדום <b>LIFT COVER</b> כדי לפתוח אותו.'; tg='#cover'; }
   else if(!v.dscSent){ h='<b>צעד 2:</b> לחיצה קצרה על DISTRESS לבחירת מהות האירוע, ואז <b>החזקה של 5 שניות</b>.'; tg='.dwrap'; }
@@ -579,7 +583,7 @@ function coach(){
   else if(!e.on){ h='נוטשים. <b>צעד 4: הפעל את ה-EPIRB</b> (הצהוב): שחרר מהתושבת, LIFT GUARD ואז ON, או הכנס למים.'; tg='#epirb'; }
   else if(s.mode!=='on'){ h='<b>צעד 5: הפעל את ה-SART</b> (הכתום): לחץ ON וקח אותו לרפסודה.'; tg='#sart'; }
   else if(!s.high){ h='<b>הרם את ה-SART על המוט</b> (כפתור הרם). ככל שהוא גבוה יותר, המכ"ם קולט אותו מרחוק יותר.'; tg='#sHigh'; }
-  else if(S.flags.rccCalled && !S.replies.rcc){ h='RCC Haifa קרא לך. <b>ענה בתיבת השידור:</b> RCC Haifa, this is SONDRA… ודווח שאתם ברפסודה.'; tg='#voice'; }
+  else if(S.flags.rccCalled && !S.replies.rcc){ h='RCC Haifa קרא לך. <b>ענה בתיבת השידור:</b> RCC Haifa, this is '+SCN.name+'… ודווח שאתם ברפסודה.'; tg='#voice'; }
   else if(S.flags.sartCalled && !S.replies.rescue){ h='ספינת החילוץ קוראת לך. <b>ענה לה בתיבת השידור</b> ועקוב במכ"ם איך הנקודות משתנות.'; tg='#voice'; }
   else { h='הישאר בערוץ 16 ועקוב במכ"ם אחרי ספינת החילוץ.'; tg='#radar'; }
   coachMsg(h);
@@ -603,7 +607,7 @@ function debrief(){
   if(S.flags.done) return; S.flags.done=true; const v=S.vhf, g=S.maydayGrade, rows=[];
   const add=(ok,title,why,w=1)=>rows.push({ok,title,why,w});
   add(v.dscSent,'התראת DSC DISTRESS נשלחה', v.dscSent?'נשלחה בערוץ 70 עם MMSI ומיקום.':'לא נשלחה. DSC הוא הצעד הראשון: מכסה, מהות, החזקה 5 שניות.',2);
-  add(v.dscSent && v.dscNat===1,'מהות נכונה ב-DSC', !v.dscSent?'':v.dscNat===1?'FIRE/EXPLOSION.':`נבחר ${NATURES[v.dscNat]}. כשיש זמן בוחרים את המהות (FIRE/EXPLOSION). UNDESIGNATED רק כשאין זמן.`);
+  add(v.dscSent && v.dscNat===SCN.nat,'מהות נכונה ב-DSC', !v.dscSent?'':v.dscNat===SCN.nat?NATURES[SCN.nat]+'.':`נבחר ${NATURES[v.dscNat]}. כשיש זמן בוחרים את המהות (${NATURES[SCN.nat]}). UNDESIGNATED רק כשאין זמן.`);
   if(g) for(const [t,ok,why] of g.items) add(ok,'MAYDAY: '+t, ok?'':why);
   else add(false,'MAYDAY בקול בערוץ 16','לא שודר MAYDAY בקול.',4);
   if(S.sayAgain) add(false,'החוף הבין מהשידור הראשון',`Haifa Radio ביקש לחזור על השם והמיקום ${S.sayAgain} פעמים.`);
@@ -622,9 +626,9 @@ function debrief(){
 }
 function reset(){
   if(playing){ playing.pause(); playing=null; } Q.length=0; timers=[]; if(S) alarm(false);
-  S=fresh(); setSpeed(1); $('#log').innerHTML=''; $('#cover').classList.remove('open'); $('#epirb').classList.remove('out'); $('#vhf').classList.remove('rxing','txing');
+  applyScen(); S=fresh(); setSpeed(1); $('#log').innerHTML=''; $('#cover').classList.remove('open'); $('#epirb').classList.remove('out'); $('#vhf').classList.remove('rxing','txing');
   $('#rng').textContent=''; $('#interim').textContent=''; cx.fillStyle='#020a04'; cx.fillRect(0,0,680,680);
-  lcd(); epUI(); sUI(); coach(); log('ev','תרחיש: S/Y SONDRA, 4 אנשים, 32°45\'N 034°52\'E. שריפה בחדר המכונות.');
+  lcd(); epUI(); sUI(); coach(); log('ev',`תרחיש: ${SCN.lbl} ${SCN.name}, ${SCN.pob} אנשים, ${SCN.la.replace('.00','')}, ${SCN.lo.replace('.00','')}. ${SCN.what}.`);
 }
 const DESC={
  kPwr:['PWR · 16+','לחיצה קצרה מדליקה את המכשיר. כשהוא דולק, לחיצה קצרה חוזרת מיד לערוץ 16 מכל ערוץ. החזקה כשנייה מכבה.'],
@@ -688,7 +692,8 @@ addEventListener('keydown',e=>{ if(!$('#gcard').classList.contains('show')) retu
 addEventListener('resize',gPlace); addEventListener('scroll',gPlace,true);
 $('#guideBtn').onclick=()=>gShow(0);
 
-reset(); gOffer(); requestAnimationFrame(t=>{ last=t; tick(t); });
+$('#scSel').onchange=()=>{ curSc=$('#scSel').value; reset(); };
+applyScen(); reset(); curSc==='sondra'&&gOffer(); requestAnimationFrame(t=>{ last=t; tick(t); });
 </script>
 </body>
 </html>

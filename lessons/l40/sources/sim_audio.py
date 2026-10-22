@@ -8,18 +8,31 @@ import nowin, radio_sim  # noqa: E401
 
 radio_sim.VOICES['rescue'] = 'pNInz6obpgDQGcFmaJgB'  # second shore-side voice, so the rescue vessel is not Haifa Radio
 
-LINES = {
-    'haifa_ack': ('coast', 'MAYDAY. Sondra, Sondra, Sondra. This is Haifa Radio, Haifa Radio, Haifa Radio. Received MAYDAY. Over.'),
-    'haifa_task': ('coast', 'Sondra, this is Haifa Radio. Rescue vessel is on the way to your position. If you abandon ship, activate your EPIRB and take your SART to the life raft. Report when in the life raft. Over.'),
+SC = {  # extra scenarios: files are <pre><id>.mp3 (SONDRA keeps the bare names)
+    '': dict(n='Sondra', P='four', cls='Sailing yacht', mmsi='four two eight one two three four five six'),
+    'noa_': dict(n='Noa', P='six', cls='Motor yacht', mmsi='four two eight six five four three two one'),
+    'dana_': dict(n='Dana', P='five', cls='Sailing yacht', mmsi='four two eight two three four five six seven'),
+}
+SHARED = {
     'haifa_sayagain': ('coast', 'Station calling MAYDAY, this is Haifa Radio. Say again your vessel name and position. Over.'),
     'haifa_generic': ('coast', 'Station calling Haifa Radio, this is Haifa Radio. Say again. Over.'),
-    'haifa_raft': ('coast', 'Sondra, this is Haifa Radio. Received, four persons in the life raft. Keep watch on channel one six. Out.'),
-    'rcc_epirb': ('coast', 'Sondra, Sondra, Sondra. This is RCC Haifa. Your four zero six EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.'),
-    'rescue_sart': ('rescue', 'Sondra, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.'),
-    'rescue_sart_low': ('rescue', 'Sondra, this is Rescue vessel. I have your SART on my radar, range five miles. Raise the SART higher. Over.'),
-    'rescue_close': ('rescue', 'Sondra, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.'),
-    'haifa_seelonce': ('coast', 'MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time one five four zero UTC. Sailing yacht Sondra, MMSI four two eight one two three four five six. SEELONCE FEENEE. Out.'),
 }
+
+def lines(pre, s):
+    n = s['n']
+    return {
+        pre + 'haifa_ack': ('coast', f'MAYDAY. {n}, {n}, {n}. This is Haifa Radio, Haifa Radio, Haifa Radio. Received MAYDAY. Over.'),
+        pre + 'haifa_task': ('coast', f'{n}, this is Haifa Radio. Rescue vessel is on the way to your position. If you abandon ship, activate your EPIRB and take your SART to the life raft. Report when in the life raft. Over.'),
+        pre + 'haifa_raft': ('coast', f'{n}, this is Haifa Radio. Received, {s["P"]} persons in the life raft. Keep watch on channel one six. Out.'),
+        pre + 'rcc_epirb': ('coast', f'{n}, {n}, {n}. This is RCC Haifa. Your four zero six EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.'),
+        pre + 'rescue_sart': ('rescue', f'{n}, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.'),
+        pre + 'rescue_sart_low': ('rescue', f'{n}, this is Rescue vessel. I have your SART on my radar, range five miles. Raise the SART higher. Over.'),
+        pre + 'rescue_close': ('rescue', f'{n}, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.'),
+        pre + 'haifa_seelonce': ('coast', f'MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time one five four zero UTC. {s["cls"]} {n}, MMSI {s["mmsi"]}. SEELONCE FEENEE. Out.'),
+    }
+
+LINES = dict(SHARED)
+for _pre, _s in SC.items(): LINES.update(lines(_pre, _s))
 
 if __name__ == '__main__':
     out_dir = os.path.join(HERE, '..', 'simulator', 'audio'); wrk = os.path.join(HERE, '..', 'simulator', '_work')
