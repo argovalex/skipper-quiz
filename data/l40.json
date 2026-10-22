@@ -4906,7 +4906,7 @@
     ],
     "answer": "ד",
     "answer_confirmed": true,
-    "explanation": "תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות ימי. ולכן התשובה היא ד. תשובה א שגויה כי התחזיות לא רק לכלי שיט קטנים. תשובה ב שגויה כי NAVTEX לא משדר התרעות מצוקה. תשובה ג שגויה כי STATIC, DYNAMIC ו VOYAGE זה AIS.",
+    "explanation": "תפקידו של NAVTEX הוא לספק שירותי MSI, מידע בטיחות ימי, ולכן התשובה היא ד. בפועל NAVTEX מכסה את אזורי ההפלגה A1 ו A2, והאזכור של A4 בנוסח המבחן כנראה שגוי. תשובה א שגויה כי התחזיות לא רק לכלי שיט קטנים. תשובה ב שגויה כי NAVTEX לא משדר התרעות מצוקה. תשובה ג שגויה כי STATIC, DYNAMIC ו VOYAGE זה AIS.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E10-Q11",
     "lesson": 4,
@@ -4914,10 +4914,10 @@
     "license": 40,
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4182.jpg",
     "mediaType": "image",
-    "explanation_spoken": "תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות ימי! זה ד. אז למה לא א? התחזיות לא רק לכלי שיט קטנים. ב? NAVTEX לא משדר התרעות מצוקה. וג? STATIC, DYNAMIC ו VOYAGE זה AIS.",
-    "voiceover_text": "שֶאלָה מִספָר 4182. תפקידו של הנווטקס:. [[PAUSE]] התשובה הנכונה היא דָלֶת: תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות יָמִי! זה דָלֶת. אז לָמָה לא אָלף? התחזיות לא רק לִכְּלִי שיט קטנים. בֶת? NAVTEX לא מָשדר התרעות מצוקה. וגִּימֶל? STATIC, DYNAMIC ו VOYAGE זה A I S.",
-    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792597235/skipper-quiz/ekaq3zn6keq7fcavnubl.mp4",
-    "rendered_at": "2026-10-21T15:43:31.408Z"
+    "explanation_spoken": "תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות ימי! זה ד. בפועל הוא מכסה את A1 ו A2. האזכור של A4 במבחן כנראה שגוי. אז למה לא א? כי התחזיות לא רק לכלי שיט קטנים. ב? NAVTEX לא משדר התרעות מצוקה. וג? STATIC, DYNAMIC ו VOYAGE זה AIS.",
+    "voiceover_text": "שֶאלָה מִספָר 4182. תפקידו של הנווטקס:. [[PAUSE]] התשובה הנכונה היא דָלֶת: תפקידו של ה NAVTEX הוא לספק שירותי MSI, מידע בטיחות יָמִי! זה דָלֶת. בפועל הוא מכסה את A1 ו A2. האזכור של A4 במבחן כנראה שגוי. אז לָמָה לא אָלף? כי התחזיות לא רק לִכְּלִי שיט קטנים. בֶת? NAVTEX לא מָשדר התרעות מצוקה. וגִּימֶל? STATIC, DYNAMIC ו VOYAGE זה A I S.",
+    "rendered_at": "2026-10-22T06:17:32.374Z",
+    "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792649846/skipper-quiz/q208efwbruaot6wb8l59.mp4"
   },
   {
     "num": 4183,
