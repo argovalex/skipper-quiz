@@ -61,27 +61,10 @@ def s14_alrs():
 
 def s14_q4021(): qc('s14_q4021', 'פרסום', 4021, 'כרך 5', 'ADMIRALTY, כרך 5.', 'l40_rcc')
 
-def s15_header():
-    info('s15_header', 'הודעת NAVTEX', 'מבנה ההודעה', 'sky',
-         [('Z', 'ZCZC · תחילת ההודעה', 'green', 28), ('1', 'B1 · אות התחנה', 'green', 28), ('2', 'B2 · אות סוג ההודעה', 'green', 28),
-          ('3', 'B3 B4 · מספר סידורי', 'green', 28), ('4h', 'כל תחנה משדרת פעם בארבע שעות', 'green', 28)],
-         'מבנה', 'המקלט זוכר קוד הודעה ולא מדפיס אותה שוב.', 'l40_world_a1a2', shade=0.3)
-
 def s15_q4138(): qc('s15_q4138', 'מחזורי שידור', 4138, '4 תחנות', '4 תחנות × 6 שידורים ביממה = 24.', 'l40_world_a1a2')
 def s16_q4126(): qc('s16_q4126', 'מחיקת קוד', 4126, 'קליטה חוזרת', 'כדי לקלוט שוב הודעה שנקלטה שגויה.', 'l40_world_a1a2')
 
-def s17_cer():
-    info('s17_cer', 'CER', 'שיעור שגיאות', 'sky',
-         [('%', 'CER · Character Error Rate', 'green', 28), ('✓', 'אחוז התווים השגויים בהודעה', 'green', 28)],
-         'C E R', 'שגיאות בהודעה, ואחוזן.', 'l40_world_a1a2', shade=0.3)
-
 def s17_q4191(): qc('s17_q4191', 'CER 6%', 4191, 'קליטה חוזרת', 'תיקלט שוב בעוד ארבע שעות.', 'l40_world_a1a2')
-
-def s18_codes():
-    info('s18_codes', 'אותיות סוג הודעה', 'B2', 'sky',
-         [('A', 'אזהרות ניווט', 'green', 28), ('B', 'אזהרות מטאורולוגיות', 'green', 28), ('D', 'חיפוש והצלה', 'green', 28),
-          ('L', 'אזהרות ניווט נוספות', 'green', 28), ('00', 'מספר 00 · הודעה דחופה', 'amber', 28)],
-         'סוגי הודעות', 'A, B, D ו-L אי אפשר לדחות. גם 00 לא.', 'l40_world_a1a2', shade=0.3)
 
 def s18_q4151(): qc('s18_q4151', 'האות D', 4151, 'חיפוש והצלה', 'D: בקשת סיוע בחיפוש והצלה.', 'l40_rcc')
 def s19_q4027(): qc('s19_q4027', 'MAYDAY RELAY', 4027, 'NAVTEX', 'ממסר מצוקה משודר ב-NAVTEX.', 'l40_rcc')
@@ -92,6 +75,52 @@ def s22_q4093(): qc('s22_q4093', 'אות בטיחות', 4093, 'מטאורולו�
 def s23_summary():
     summary('s23_summary', 'u16_vhf_ais', ['NAVTEX · MSI בגל קרקע', '518 · אנגלית  |  490 · לאומית', '4209.5 · HF', 'טווח 200 עד 400 מייל',
              '21 אזורי NAVAREA', '4 תחנות × 6 = 24 מחזורים', 'CER · שגיאות, תיקלט שוב', 'A, B, D, L ו-00 · לא ניתן לדחות'])
+
+from PIL import ImageFont, ImageDraw
+MONO = ImageFont.truetype('C:/Windows/Fonts/consolab.ttf', 92)
+MONO_S = ImageFont.truetype('C:/Windows/Fonts/consolab.ttf', 74)
+PHOS = (130, 255, 170); PHOS_DIM = (70, 150, 100)
+
+def screen(sid, lines, marks=(), chips=(), title='מקלט NAVTEX', foot=None):
+    """NAVTEX receiver mock-up. lines: [(text, color)] in monospace on the green screen.
+    marks: [(line, col, n, color)] boxes drawn around n characters; chips: [(text, color)] legend under the screen."""
+    im, d = C.base()
+    C.text_c(d, 1280, 34, title, F(72), TEXT)
+    d.rounded_rectangle((230, 140, 2330, 1350), 50, fill=(28, 34, 46), outline=(70, 84, 110), width=6)
+    d.rounded_rectangle((290, 200, 2270, 1010), 28, fill=(6, 22, 14), outline=(30, 80, 52), width=5)
+    x0, y0, lh = 350, 236, 112
+    cw = d.textlength('M', font=MONO)
+    for i, (txt, col) in enumerate(lines):
+        d.text((x0, y0 + i * lh), txt, font=MONO, fill=col)
+    for ln, c0, n, col in marks:
+        d.rounded_rectangle((x0 + c0 * cw + 2, y0 + ln * lh - 6, x0 + (c0 + n) * cw - 2, y0 + ln * lh + 100), 14, outline=col, width=7)
+    y = 1030
+    for txt, col in chips:
+        d.rounded_rectangle((330, y, 2230, y + 70), 20, fill=(20, 28, 44), outline=col, width=5)
+        C.text_r(d, 2190, y + 8, txt, F(46, False), TEXT)
+        y += 80
+    if foot:
+        C.text_c(d, 1280, 1290, foot, F(40, False), C.MUTED)
+    C.save(im, sid)
+
+def s15_header():
+    screen('s15_header', [('ZCZC KA21', PHOS), ('281200 UTC OCT 26', PHOS_DIM), ('NAVAREA III WARNING 123', PHOS_DIM), ('BUOY OFF POSITION. KEEP CLEAR', PHOS_DIM), ('NNNN', PHOS)],
+           marks=[(0, 5, 1, C.BLUE_L), (0, 6, 1, C.ORANGE), (0, 7, 2, C.GREEN_L)],
+           chips=[('K · B1 · אות התחנה', C.BLUE_L), ('A · B2 · אות סוג ההודעה', C.ORANGE), ('21 · B3 B4 · מספר סידורי', C.GREEN_L)],
+           foot='דוגמה להמחשה. ZCZC פותח את ההודעה ו-NNNN סוגר אותה.')
+
+def s17_cer():
+    screen('s17_cer', [('ZCZC KA21', PHOS_DIM), ('BUOY OFF POSITION.', PHOS_DIM), ('KEEP CLEAR', PHOS_DIM), ('CER=06%', (255, 190, 80)), ('NNNN', PHOS_DIM)],
+           marks=[(3, 0, 7, C.ORANGE)],
+           chips=[('C E R · אחוז התווים שנקלטו שגויים', C.ORANGE)],
+           foot='בסוף ההודעה. 06% = שישה אחוזים שגיאות.')
+
+def s18_codes():
+    screen('s18_codes', [('ZCZC KA21', PHOS), ('ZCZC KB22', PHOS), ('ZCZC KD05', PHOS), ('ZCZC KL07', PHOS), ('ZCZC KD00', (255, 190, 80))],
+           marks=[(0, 6, 1, C.GREEN_L), (1, 6, 1, C.GREEN_L), (2, 6, 1, C.GREEN_L), (3, 6, 1, C.GREEN_L), (4, 7, 2, C.ORANGE)],
+           chips=[('A אזהרות ניווט · B מטאורולוגיה · D חיפוש והצלה · L ניווט נוספות', C.GREEN_L), ('00 · הודעה דחופה, אי אפשר לדחות', C.ORANGE)],
+           title='מקלט NAVTEX · סוגי הודעות', foot='A, B, D ו-L לא נדחות.')
+
 
 ALL = [v for k, v in sorted(globals().items()) if re.match(r's\d\d_', k) and callable(v)]
 
