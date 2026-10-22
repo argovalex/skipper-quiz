@@ -1096,7 +1096,7 @@
       "ה. תשובות א, ב ו-ג נכונות"
     ],
     "answer": "א",
-    "answer_confirmed": false,
+    "answer_confirmed": true,
     "explanation": "השאלה היא על איזה מתקן אפשר להתבייט כשכלי שיט במצוקה. הכלל: אפשר להתבייט על GPIRB בתדר 121.5, על AIS-SART ועל RADAR-SART, ולכן התשובה היא ה, א, ב וג נכונות. תשובה ד שגויה כי DSC בתדר VHF הוא מתקן קריאה, ולא אמצעי התביית.",
     "approved_for_publish": false,
     "exam_id": "GMDSS-E03-Q01",
