@@ -5,12 +5,18 @@ import os, re, sys, subprocess
 ROOT = r'C:/Users/argov/OneDrive/Co-Work OS/SkipperQuiz'
 L30 = ROOT + '/lessons/l30/sources'; sys.path.insert(0, L30)
 import nowin  # child processes without a console window
-NUM = {'מבוא ל-GMDSS': 1, 'השלמות למבחן GMDSS': 8}
+NUM = {'ציוד ובדיקות GMDSS': None, 'מבוא ל-GMDSS': 1, 'השלמות למבחן GMDSS': 8, 'פתרון שאלות המבחן': None}
 HEADINGS = {
+    'ציוד ובדיקות GMDSS': {'s01_intro': 'פתיחה', 's02_sart': 'SART', 's07_satellites': 'הלוויינים', 's14_epirb': 'EPIRB', 's24_batteries': 'מצברים', 's28_checks': 'בדיקות הציוד', 's33_summary': 'סיכום'},
     'מבוא ל-GMDSS': {'s01_intro': 'פתיחה', 's02_titanic': 'הטיטאניק', 's03_gmdss_born': 'איך נולדה GMDSS', 's04_principle': 'העיקרון: לחיצה אחת',
                      's05_who_needs': 'מי צריך את זה', 's06_exam': 'מבנה המבחן', 's07_areas_intro': 'אזורי הים', 's08_area_a1a2': 'A1 ו-A2',
                      's09_area_a3a4': 'A3 ו-A4', 's10_exam_trap': 'המלכודת: חמישה מייל מהחוף', 's11_q16': 'שאלה 16: ציוד באזור A1',
                      's12_course_map': 'מפת הקורס', 's13_summary': 'סיכום'},
+    'פתרון שאלות המבחן': {'s01_intro': 'פתיחה', 's02_channels': 'הערוצים', 's03_g17': 'G17: ערוץ 16', 's04_g3': 'G3: וואט אחד מקסימום', 's05_portable': 'המכשיר הנייד',
+                          's06_g4': 'G4: ההצהרה השגויה', 's07_priorities': 'העדיפויות בקשר', 's08_g9': 'G9: PAN PAN', 's09_g7': 'G7: שלוש פעמים SECURITE',
+                          's10_g14': 'G14: עדיפות בטיחות', 's11_g18': 'G18: תקשורת דחיפות', 's12_silence': 'קודי השתקה', 's13_g10': 'G10: סיום מצוקה',
+                          's14_ais': 'AIS', 's15_g5': 'G5: מה פירוש AIS', 's16_navtex': 'עדיפויות ב-NAVTEX', 's17_g13': 'G13: רמות NAVTEX',
+                          's18_log': 'יומן הרדיו', 's19_g12': 'G12: היכן נשמר היומן', 's20_mmsi': 'MMSI', 's21_g20': 'G20: זיהוי של ספינה', 's22_summary': 'סיכום'},
     'השלמות למבחן GMDSS': {'s01_intro': 'פתיחה', 's02_functions': 'הדרישות התפקודיות', 's03_q11': 'שאלה 11: דרישה תפקודית', 's04_onscene': 'On-Scene: תקשורת במקום האירוע',
                            's05_q19': 'שאלה 19: On-Scene Communications', 's06_q8': 'שאלה 8: הערוץ במקום האירוע', 's07_cospas': 'מסלול אות המצוקה',
                            's08_q15': 'שאלה 15: מי קובע את המיקום', 's09_false_epirb': 'EPIRB שנדלקה בטעות', 's10_q6': 'שאלה 6: אתרעת שווא',
@@ -27,7 +33,7 @@ run(L30 + '/el_tts.py', D + '/vo.txt', AUD)
 run(ROOT + '/tools/lesson/assemble.py', '--vo', D + '/vo.txt', '--audio', AUD, '--cards', D, '--out', RAW)
 run(ROOT + '/tools/lesson/brand.py', RAW, os.path.join(D, NAME + '.mp4'))
 txt = os.path.join(D, NAME + '.txt')
-run(L30 + '/companion.py', D + '/vo.txt', txt, f'{NAME} · קורס GMDSS · שיעור {NUM[NAME]}')
+run(L30 + '/companion.py', D + '/vo.txt', txt, f'{NAME} · קורס GMDSS' + (f' · שיעור {NUM[NAME]}' if NUM[NAME] else ''))
 t = open(txt, encoding='utf-8').read()
 t = re.sub(r'^# (s\d\d\w*)$', lambda m: '# ' + HEADINGS[NAME].get(m.group(1), m.group(1)), t, flags=re.M)
 open(txt, 'w', encoding='utf-8').write(t)

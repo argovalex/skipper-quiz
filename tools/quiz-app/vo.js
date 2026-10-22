@@ -273,12 +273,12 @@ function buildVoiceoverRaw(q, keepLatin) {
 
 // Answer letters as the alphabet names (Alex 2026-10-19: the l12 convention "אָלף/בֶת/גִּימֶל/דָּלֶת" sounds right, "א'" and bare letters do not).
 // Mirrors tools/l12/fixvo.js, plus the geresh forms ("ב'?", "וד'?") and the plain names. Applied to license 40.
-const LETTER_BY = { 'א': 'אָלף', 'ב': 'בֶת', 'ג': 'גִּימֶל', 'ד': 'דָלֶת' };
+const LETTER_BY = { 'א': 'אָלף', 'ב': 'בֶת', 'ג': 'גִּימֶל', 'ד': 'דָלֶת', 'ה': 'הֵא' };
 const NAME_BY = { 'אלף': 'א', 'אֶלף': 'א', 'אָלֶף': 'א', 'אָלף': 'א', 'בית': 'ב', 'בֵּית': 'ב', 'בֶת': 'ב', 'גימל': 'ג', 'גִּימֶל': 'ג', 'דלת': 'ד', 'דָּלֶת': 'ד', 'דָלֶת': 'ד' };
 function fixAnswerLetters(t) {
   return t
     .replace(/(^|[\s.!?,])(ו?)(אלף|אֶלף|אָלֶף|אָלף|בית|בֵּית|בֶת|גימל|גִּימֶל|דלת|דָּלֶת|דָלֶת)(?=[\s:?.,!]|$)/g, (m, pre, v, w) => pre + v + LETTER_BY[NAME_BY[w]])
-    .replace(/(^|[\s.!?,])(ו?)([אבגד])['׳]?(?=[:?.,!]|\s(?:נכונה|שגויה|וב|ו)|$)/g, (m, pre, v, l) => pre + v + LETTER_BY[l]);
+    .replace(/(^|[\s.!?,])(ו?)([אבגדה])['׳]?(?=[:?.,!]|\s(?:נכונה|שגויה|וב|ו)|$)/g, (m, pre, v, l) => pre + v + LETTER_BY[l]);
 }
 
 // Alex 2026-10-19: "לָמָה לא א'" always, never the lexicon's "לֶמָה לא" (he corrected it by hand on every render).

@@ -86,7 +86,7 @@ def right_block(d, title, body, q=None, y=None):
             good = i == ok; h = len(ol) * 52 + 14
             if good:
                 d.rounded_rectangle((bx0 + 24, yy - 6, bx1 - 24, yy + h - 6), 16, fill=(24, 80, 60), outline=GREEN_L, width=3)
-            letter = 'אבגד'[i] + ':'
+            letter = 'אבגדה'[i] + ':'
             text_r(d, bx1 - 44, yy, letter, ofb, GREEN_L if good else MUTED)
             for j, ln in enumerate(ol):
                 text_r(d, bx1 - 110, yy + j * 52, ln, ofb if good else of, GREEN_L if good else TEXT)
