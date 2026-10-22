@@ -16,6 +16,7 @@ LINES = {
     'haifa_raft': ('coast', 'Sondra, this is Haifa Radio. Received, four persons in the life raft. Keep watch on channel one six. Out.'),
     'rcc_epirb': ('coast', 'Sondra, Sondra, Sondra. This is RCC Haifa. Your four zero six EPIRB alert is received and your position is confirmed. Rescue vessel will be on scene in three zero minutes. Over.'),
     'rescue_sart': ('rescue', 'Sondra, this is Rescue vessel. I have your SART on my radar, range eight miles. Keep the SART up high. Over.'),
+    'rescue_sart_low': ('rescue', 'Sondra, this is Rescue vessel. I have your SART on my radar, range five miles. Raise the SART higher. Over.'),
     'rescue_close': ('rescue', 'Sondra, this is Rescue vessel. Visual contact with your life raft. Coming alongside. Out.'),
     'haifa_seelonce': ('coast', 'MAYDAY. All stations, all stations, all stations. This is Haifa Radio. Time one five four zero UTC. Sailing yacht Sondra, MMSI four two eight one two three four five six. SEELONCE FEENEE. Out.'),
 }

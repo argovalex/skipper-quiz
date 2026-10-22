@@ -37,7 +37,7 @@ run(L30 + '/companion.py', D + '/vo.txt', txt, f'{NAME} · קורס GMDSS' + (f'
 t = open(txt, encoding='utf-8').read()
 t = re.sub(r'^# (s\d\d\w*)$', lambda m: '# ' + HEADINGS[NAME].get(m.group(1), m.group(1)), t, flags=re.M)
 open(txt, 'w', encoding='utf-8').write(t)
-os.environ['SUBS_WORK'] = os.path.join(W, 'subs'); os.environ['SUBS_PLAIN'] = '1'   # Alex 2026-10-18: burned subtitles without niqqud
+os.environ['SUBS_WORK'] = os.path.join(W, 'subs'); os.environ['SUBS_PLAIN'] = '1'; os.environ['SUBS_SPOKEN'] = '1'   # Alex 2026-10-18: burned subtitles without niqqud
 run(L30 + '/subs.py', D + '/vo.txt', AUD, os.path.join(D, NAME + '.mp4'), os.path.join(D, NAME + ' - כתוביות.mp4'))
 r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(D, NAME + '.mp4')], capture_output=True, text=True)
 print(f'DONE {float(r.stdout.strip()):.0f}s', flush=True)

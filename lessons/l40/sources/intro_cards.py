@@ -11,7 +11,7 @@ S.CR.update({'u13_vhf': 'Photo: PaterMcFly · CC BY 3.0', 'u12_sat': 'Image: NAS
 card, at, bottom, grid, rows, flow, centered = S.card, S.at, S.bottom, S.grid, S.rows, S.flow, S.centered
 F, text_c, text_r, dot, base, save, RC, photo, credit = S.F, S.text_c, S.text_r, S.dot, S.base, S.save, S.RC, S.photo, S.credit
 TEXT, GREEN, GREEN_L, BLUE_L, PANEL = S.TEXT, S.GREEN, S.GREEN_L, S.BLUE_L, S.PANEL
-EXAM = S.EXAM
+EXAM = S.EXAM; examq = S.examq
 
 def title_card(sid, bg, head, title, items, focus=(0.5, 0.5)):
     im, d = base()
@@ -129,8 +129,7 @@ def s11():
             + bottom(rows(('✓', 'ציוד ליזום מצוקה מהאנייה לחוף', 'green', 28), ('✗', 'VHF DSC · לא האמצעי היחיד', 'red', 28),
                           ('✗', 'MF / HF · הציוד של A2 ו-A3', 'red', 28), ('✗', 'HF עם MSI · לא מחליף VHF', 'red', 28))))
     card('s11_q16', 'ציוד באזור A1', body, 'תשובה א', 'יכולת לשדר מצוקה מהאנייה לחוף. ב-A1 צריך גם אמצעי נוסף, כמו EPIRB.',
-         (EXAM.format(16), 'איזו הצהרה נכונה לגבי ציוד GMDSS לכלי שייט המפליג רק באזור A1?',
-          ['חייב ציוד רדיו ליזום אתרעת מצוקה מהאנייה לחוף', 'VHF DSC יכול להיות האמצעי היחידי לאתרעת מצוקה', 'DSC ב-MF או ב-HF יכול לספק את הדרישות', 'SSB ב-HF המשלב MSI יכול לספק את הדרישות'], 0),
+         examq(16),
          bg='u13_vhf', shade=0.2)
 
 COURSE = [('2', 'גלי רדיו ו-VHF', 'sky'), ('3', 'ערוצים, MMSI ו-DSC', 'sky'), ('4', 'NAVTEX', 'sky'), ('5', 'EPIRB, SART ו-AIS', 'sky'),

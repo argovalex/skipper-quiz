@@ -28,6 +28,7 @@ def silences(p):
                        capture_output=True, text=True, encoding='utf-8', errors='replace')
     st = [float(x) for x in re.findall(r'silence_start: ([\d.]+)', r.stderr)]
     en = [float(x) for x in re.findall(r'silence_end: ([\d.]+)', r.stderr)]
+    if os.environ.get('SUBS_SPOKEN'): return [b - 0.08 for a, b in zip(st, en)]   # speech resumes at silence end (l40: long gaps after the answer)
     return [(a + b) / 2 for a, b in zip(st, en)]
 
 def sections(vo):
@@ -57,7 +58,17 @@ def display(t):
     return t
 
 def width(s): return FONT.getlength(s)
-def plain_len(s): return len(NIQ.sub('', s))
+SPOKEN = bool(os.environ.get('SUBS_SPOKEN'))
+def plain_len(s):
+    """Length proxy for how long a text takes to say. SUBS_SPOKEN=1 (l40, Alex 2026-10-22: subtitles ran ahead of the voice):
+    answer letters ("א'") are spoken as a whole word, digits and Latin words take longer than their characters."""
+    s = NIQ.sub('', s)
+    if not SPOKEN: return len(s)
+    s = re.sub(r"(?<![\u0590-\u05FF])[אבגדה]['\u05f3]", 'xxxxx', s)
+    s = re.sub(r'\d+', lambda m: 'x' * (3 * len(m.group()) + 2), s)
+    s = re.sub(r'(?<![A-Za-z])[A-Za-z](?![A-Za-z])', 'xxx', s)
+    s = re.sub(r'[A-Za-z]{2,}', lambda m: 'x' * (2 * len(m.group()) + 1), s)
+    return len(s)
 
 def split_sentence(s):
     """Split into chunks that fit in <=2 lines; prefer comma/colon breaks."""
@@ -108,7 +119,7 @@ for idx, (sid, text) in enumerate(secs, 1):
     bounds, acc = [0.0], 0
     for sct in sents[:-1]:
         acc += plain_len(sct); est = adur * acc / total
-        near = [p for p in pauses if abs(p - est) < 1.5 and p > bounds[-1] + 0.4]
+        near = [p for p in pauses if abs(p - est) < (2.5 if SPOKEN else 1.5) and p > bounds[-1] + 0.4]
         bounds.append(min(near, key=lambda p: abs(p - est)) if near else est)
     bounds.append(adur)
     for i, sct in enumerate(sents):
