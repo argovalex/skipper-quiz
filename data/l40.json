@@ -1095,7 +1095,7 @@
       "ד. DSC (156-174 מגה\"ץ)",
       "ה. תשובות א, ב ו-ג נכונות"
     ],
-    "answer": "ה",
+    "answer": "א",
     "answer_confirmed": false,
     "explanation": "השאלה היא על איזה מתקן אפשר להתבייט כשכלי שיט במצוקה. הכלל: אפשר להתבייט על GPIRB בתדר 121.5, על AIS-SART ועל RADAR-SART, ולכן התשובה היא ה, א, ב וג נכונות. תשובה ד שגויה כי DSC בתדר VHF הוא מתקן קריאה, ולא אמצעי התביית.",
     "approved_for_publish": false,
@@ -1106,7 +1106,7 @@
     "mediaUrl": "https://raw.githubusercontent.com/argovalex/skipper-quiz/main/media/l40/q4041.jpg",
     "mediaType": "image",
     "explanation_spoken": "על מה אפשר להתבייט? על GPIRB, בתדר מאה עשרים ואחד נקודה חמש! על AIS-SART. ועל RADAR SART. כולם! זה ה. ולמה לא ד? כי D S C הוא מתקן קריאה. הוא לא אמצעי התביית.",
-    "voiceover_text": "שֶאלָה מִספָר 4041. על איזה מתקן מהבאים נִיתן להתביית על כְּלֵי שָייט במצוקה?. [[PAUSE]] התשובה הנכונה היא ה: על מה אפשר להתבייט? על GPIRB, בתדר מאה עשרים ואחד נקודה חמש! על A I S-SART. ועל RADAR SART. כולם! זה ה. ולמה לא דָלֶת? כי D S C הוא מתקן קריאה. הוא לא אמצעי התביית.",
+    "voiceover_text": "שֶאלָה מִספָר 4041. על איזה מתקן מהבאים נִיתן להתביית על כְּלֵי שָייט במצוקה?. [[PAUSE]] התשובה הנכונה היא ה: על מה אפשר להתבייט? על GPIRB, בתדר מאה עשרים ואחד נקודה חמש! על A I S-SART. ועל RADAR SART. כולם! זהים. ולמה לא דָלֶת? כי D S C הוא מתקן קריאה. הוא לא אמצעי התביית.",
     "videoUrl": "https://res.cloudinary.com/dzmyg9pel/video/upload/v1792508305/skipper-quiz/vw62riunvjvunxjx6me7.mp4",
     "rendered_at": "2026-10-20T15:02:22.468Z"
   },
