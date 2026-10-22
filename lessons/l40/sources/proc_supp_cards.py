@@ -36,6 +36,24 @@ def s01_intro():
         text_c(d, RC, 810 + i * 84, s, F(52, False), TEXT)
     save(im, 's01_intro')
 
+ALPHA = ['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike',
+         'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']
+
+def s02_alpha():
+    """Whole 26-letter table on one card (display only, not read aloud)."""
+    im, d = C.base()
+    C.text_c(d, 1280, 36, 'האלפבית הפונטי', F(84), TEXT)
+    d.rounded_rectangle((1200, 142, 1360, 152), 5, fill=GREEN)
+    cw, gap, y0, rh, rg = 760, 60, 190, 84, 10
+    xs = [1280 - gap / 2 - cw, 1280 + gap / 2]
+    for i, w in enumerate(ALPHA):
+        col, row = divmod(i, 13)
+        x = xs[col]; y = y0 + row * (rh + rg)
+        d.rounded_rectangle((x, y, x + cw, y + rh), 18, fill=C.PANEL)
+        C.text_c(d, x + 90, y + 8, w[0], F(60), GREEN)
+        C.text_c(d, x + 90 + (cw - 90) / 2, y + 12, w, F(52, False), TEXT)
+    C.save(im, 's02_alpha')
+
 def s02_phonetic():
     info('s02_phonetic', 'אלפבית פונטי', 'ספרות לפי ITU', 'sky',
          [('0', 'אפס · NADAZERO', 'green', 30), ('1', 'אחד · UNAONE', 'green', 30), ('2', 'שניים · BISSOTWO', 'green', 30), ('3', 'שלוש · TERRATHREE', 'green', 30),
@@ -98,6 +116,31 @@ def s36_q4209(): qc('s36_q4209', 'HAIFA, CYPRUS...', 4209, 'כלי שיט', 'HAI
 def s37_summary():
     summary('s37_summary', 'u16_vhf_ais', ['ספרות · NADAZERO, UNAONE, KARTEFOUR', 'מקוצרת · תחנה פעם, ושמך פעמיים', 'תחנת חוף · שם העיר + RADIO',
              'MAYDAY · PAN PAN · SECURITE', 'בקשת גרירה · PAN PAN', 'הודעת בטיחות · ביומן + איש משמרת', 'PRUDONCE · RECEIVED MAYDAY', 'UNDESIGNATED · בלי סוג מצוקה'])
+
+def s04_callsign():
+    info('s04_callsign', 'אות קריאה', 'הקידומת של ישראל', 'sky',
+         [('✓', '4X · אות הקריאה הבינלאומי של ישראל', 'green', 32), ('✓', 'ITU · הקידומת נקבעה על ידי איגוד התקשורת הבינלאומי', 'green', 28),
+          ('⚓', 'זיהוי רשמי של כלי שיט ומטוסים אזרחיים הרשומים בישראל', 'green', 28)],
+         '4X', 'אות קריאה (Call Sign) הוא סימן זיהוי רשמי.', 'u16_ships', shade=0.3)
+
+def s16_words():
+    info('s16_words', 'מונחי רדיוטלפון', 'מונחים מקובלים', 'sky',
+         [('1', 'OVER · סיימתי לדבר, ממתין לתשובה', 'green', 28), ('2', 'OUT · הקשר הסתיים, אין צורך בתשובה', 'green', 28),
+          ('3', 'ROGER · קיבלתי והבנתי', 'green', 28), ('4', 'STAND-BY · המתן', 'green', 28),
+          ('5', 'ETA · זמן הגעה משוער', 'green', 28), ('6', 'TR · דיווח מסע, שגרה', 'green', 28)],
+         'מונחים', 'OVER AND OUT הוא ביטוי שגוי: שני הדברים יחד.', 'l40_handheld', shade=0.3)
+
+def s25_medical_terms():
+    info('s25_medical_terms', 'מצוקה רפואית ותקלה', 'שלושה מונחים', 'sky',
+         [('1', 'MEDICAL ADVICE · ייעוץ רפואי מהחוף', 'green', 28), ('2', 'MEDICAL EVACUATION · פינוי רפואי', 'green', 28),
+          ('3', 'DISABLED AND ADRIFT · בלי שליטה, נסחף', 'green', 28)],
+         'מונחים', 'ייעוץ הוא לא פינוי.', 'l40_handheld', shade=0.3)
+
+def s33_pubs():
+    info('s33_pubs', 'פרסומים', 'ALL STATIONS ופרסומים', 'sky',
+         [('✓', 'ALL STATIONS · פנייה לכל התחנות', 'green', 28), ('📘', 'LIST OF COAST STATIONS · תחנות חוף', 'green', 28),
+          ('📒', 'GMDSS RADIO LOGBOOK · יומן הרדיו', 'green', 28), ('🚩', 'INTERNATIONAL CODE OF SIGNALS · ספר האותות', 'green', 28)],
+         'פרסומים', 'כל פרסום משרת מטרה אחרת.', 'l40_rcc', shade=0.3)
 
 ALL = [v for k, v in sorted(globals().items()) if re.match(r's\d\d_', k) and callable(v)]
 
