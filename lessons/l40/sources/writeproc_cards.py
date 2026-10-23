@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 C.OUT = os.path.join(HERE, '..', 'cards', NAME); os.makedirs(C.OUT, exist_ok=True)
 C.SUB = 'קורס GMDSS · כותבים נוהל מצוקה'
 MONO = ImageFont.truetype('C:/Windows/Fonts/consolab.ttf', 64)
+MONO_S = ImageFont.truetype('C:/Windows/Fonts/consolab.ttf', 54)
 
 def note(sid, title, lines, chips=(), foot=None):
     """A sheet of paper with the written answer; lines = [(text, color)]; chips = legend rows under it."""
@@ -18,8 +19,9 @@ def note(sid, title, lines, chips=(), foot=None):
     C.text_c(d, 1280, 34, title, F(72), TEXT)
     d.rounded_rectangle((230, 140, 2330, 1350), 50, fill=(28, 34, 46), outline=(70, 84, 110), width=6)
     d.rounded_rectangle((290, 200, 2270, 1010 if chips else 1230), 28, fill=(244, 240, 228))
+    big = len(lines) <= 8
     for i, (txt, col) in enumerate(lines):
-        d.text((350, 232 + i * 88), txt, font=MONO, fill=col)
+        d.text((350, 222 + i * (88 if big else 74)), txt, font=MONO if big else MONO_S, fill=col)
     y = 1040
     for txt, col in chips:
         d.rounded_rectangle((330, y, 2230, y + 70), 20, fill=(20, 28, 44), outline=col, width=5)
@@ -73,9 +75,10 @@ def s07_position():
          'הטעות הנפוצה', 'הרוחב קודם ואחר כך האורך.', 'l40_world_a1a2', shade=0.3)
 
 def s08_example():
-    note('s08_example', 'דוגמה כתובה', [('MAYDAY MAYDAY MAYDAY', RED), ('THIS IS NOA NOA NOA', INK), ('MAYDAY NOA', RED), ('POSITION 3-2 DEG 5-0 MIN NORTH', BLUE),
-                                         ('FIRE IN ENGINE ROOM', INK), ('SIX PERSONS ON BOARD', INK), ('REQUIRE IMMEDIATE ASSISTANCE', INK), ('OVER', RED)],
-         chips=[('דוגמה להמחשה. כל משפט נותן פרט אחד', GREEN)])
+    note('s08_example', 'דוגמה כתובה', [('MAYDAY MAYDAY MAYDAY', RED), ('THIS IS MOTOR YACHT NOA NOA NOA', INK), ('MMSI 4-2-8-6-5-4-3-2-1', INK), ('MAYDAY NOA', RED),
+                                         ('POSITION 3-2 DEGREES 5-0 MINUTES NORTH', BLUE), ('0-3-4 DEGREES 4-8 MINUTES EAST', BLUE),
+                                         ('FIRE IN THE ENGINE ROOM, NO CONTROL', INK), ('SIX PERSONS ON BOARD', INK), ('REQUIRE IMMEDIATE ASSISTANCE', INK), ('OVER', RED)],
+         chips=[('קו הרוחב קודם, אחר כך קו האורך. דוגמה להמחשה', GREEN)])
 
 def s09_ack():
     info('s09_ack', 'אישור קבלה', 'RECEIVED MAYDAY', 'sky',
@@ -120,6 +123,13 @@ def s14_summary():
     summary('s14_summary', 'u16_vhf_ais', ['EPIRB · בהקדם · 5', 'DSC ערוץ 70 · 20', 'MAYDAY ערוץ 16 · מיקום ספרה ספרה', 'אישור: תחנת חוף או R C C',
              'נטישה · 10', 'EPIRB קשור, SART גבוה', 'VHF נייד על 16, סוללות', 'ציון מעבר 80'])
 
+def assets():
+    """Real simulator footage (sim_record.js): <sid>.mp4 replaces the still, <sid>_sim.png/.mp3 is the radio reply after the narration."""
+    import shutil
+    A = os.path.join(HERE, 'sim_assets')
+    for f in os.listdir(A):
+        shutil.copyfile(os.path.join(A, f), os.path.join(C.OUT, f))
+
 ALL = [v for k, v in sorted(globals().items()) if re.match(r's\d\d_', k) and callable(v)]
 
 if __name__ == '__main__':
@@ -130,3 +140,4 @@ if __name__ == '__main__':
                 try: fn(); break
                 except OSError:
                     import time; time.sleep(2)
+    assets()
