@@ -1,9 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const cheerio = require('cheerio');
-const Anthropic = require('@anthropic-ai/sdk');
-
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const { complete } = require('./llm');
 
 async function scrapeUrl(url) {
   const res = await axios.get(url, {
@@ -32,13 +30,7 @@ async function scrapeUrl(url) {
 }
 
 async function rewriteAsSkipperQuestion(scraped) {
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 1000,
-    messages: [
-      {
-        role: 'user',
-        content: `תוכן מדף חיצוני:
+  const text = (await complete(`תוכן מדף חיצוני:
 URL: ${scraped.url}
 כותרת: ${scraped.title}
 ${scraped.h1 ? `H1: ${scraped.h1}` : ''}
@@ -60,12 +52,7 @@ ${scraped.h1 ? `H1: ${scraped.h1}` : ''}
   "explanation_en": "Short explanation",
   "difficulty": "easy|medium|hard",
   "source_url": "${scraped.url}"
-}`,
-      },
-    ],
-  });
-
-  const text = response.content[0].text.trim();
+}`)).trim();
   const json = text.replace(/```json|```/g, '').trim();
   return JSON.parse(json);
 }

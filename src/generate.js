@@ -1,7 +1,5 @@
 require('dotenv').config();
-const Anthropic = require('@anthropic-ai/sdk');
-
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const { complete } = require('./llm');
 
 const TOPICS = [
   'COLREGs - כללי מניעת התנגשויות בים',
@@ -19,13 +17,7 @@ const TOPICS = [
 async function generateQuestion() {
   const topic = TOPICS[Math.floor(Math.random() * TOPICS.length)];
 
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 1000,
-    messages: [
-      {
-        role: 'user',
-        content: `צור שאלת מבחן סקיפר בנושא: "${topic}"
+  const text = (await complete(`צור שאלת מבחן סקיפר בנושא: "${topic}"
 
 פורמט מדויק (JSON בלבד, ללא markdown):
 {
@@ -44,12 +36,7 @@ async function generateQuestion() {
 - שאלה מקצועית ברמת מבחן סקיפר ישראלי
 - 4 תשובות, רק אחת נכונה
 - correct_index הוא 0-3
-- הסבר מקצועי וקצר`,
-      },
-    ],
-  });
-
-  const text = response.content[0].text.trim();
+- הסבר מקצועי וקצר`)).trim();
   const json = text.replace(/```json|```/g, '').trim();
   return JSON.parse(json);
 }
