@@ -24,7 +24,7 @@ HEADINGS = {
                           's06_step3_mayday': 'סעיף 3: MAYDAY בקול', 's07_position': 'המיקום', 's08_example': 'דוגמה', 's09_ack': 'אישור קבלה', 's10_step4_abandon': 'סעיף 4: נטישה',
                           's11_scenario_fire': 'תרחיש: שריפה', 's11_sondra': 'SONDRA', 's12_scenario_grounding': 'תרחיש: שרטון', 's12_simulator': 'הסימולטור',
                           's13_checklist': 'רשימת בדיקה', 's14_summary': 'סיכום'},
-    'NAVTEX - השלמות למבחן': {'s01_intro': 'פתיחה', 's02_basics': 'NAVTEX: היסודות', 's14_alrs': 'הפרסום', 's15_header': 'מבנה ההודעה', 's17_cer': 'C E R',
+    'NAVTEX - השלמות למבחן': {'s01_intro': 'פתיחה', 's02_basics': 'NAVTEX: היסודות', 's14_alrs': 'הפרסום', 's15_header': 'מבנה ההודעה', 's17_cer': 'C E R', 's04b_areas': 'אזורי הפלגה', 's08b_waves': 'גל קרקע וגל שמיים', 's10b_other': 'תדרים של מערכות אחרות', 's12b_navarea': 'NAVAREA', 's15b_memory': 'זיכרון המקלט', 's18b_relay': 'MAYDAY RELAY', 's20b_levels': 'רמות עדיפות',
                               's18_codes': 'סוגי הודעות', 's23_summary': 'סיכום'},
     'השלמות למבחן GMDSS': {'s01_intro': 'פתיחה', 's02_functions': 'הדרישות התפקודיות', 's03_q11': 'שאלה 11: דרישה תפקודית', 's04_onscene': 'On-Scene: תקשורת במקום האירוע',
                            's05_q19': 'שאלה 19: On-Scene Communications', 's06_q8': 'שאלה 8: הערוץ במקום האירוע', 's07_cospas': 'מסלול אות המצוקה',

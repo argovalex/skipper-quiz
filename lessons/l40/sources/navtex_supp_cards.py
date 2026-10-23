@@ -122,7 +122,42 @@ def s18_codes():
            title='מקלט NAVTEX · סוגי הודעות', foot='A, B, D ו-L לא נדחות.')
 
 
-ALL = [v for k, v in sorted(globals().items()) if re.match(r's\d\d_', k) and callable(v)]
+def s04b_areas():
+    info('s04b_areas', 'אזורי הפלגה', 'A1 עד A4', 'sky',
+         [('A1', 'VHF · 20 עד 30 מייל · DSC', 'green', 28), ('A2', 'MF · 100 עד 150 מייל', 'green', 28), ('A3', 'לוויין אינמרסאט', 'amber', 28), ('A4', 'אזורי הקטבים', 'amber', 28)],
+         'אזורי הפלגה', 'NAVTEX ב-MF: מכסה A1 ו-A2.', 'l40_world_a1a2', shade=0.3)
+
+def s08b_waves():
+    info('s08b_waves', 'התפשטות גל', 'קרקע ושמיים', 'sky',
+         [('MF', 'גל קרקע · עוקב אחרי פני הים', 'green', 28), ('HF', 'גל שמיים · מתנתר מהאטמוספירה', 'green', 28), ('406', 'MHz · משואה דרך לוויין', 'amber', 28)],
+         'איך הגל מתפשט', 'MF בגל קרקע, HF בגל שמיים.', 'l40_world_a1a2', shade=0.3)
+
+def s10b_other():
+    info('s10b_other', 'לא NAVTEX', 'תדרים אחרים', 'sky',
+         [('1', '406 MHz · EPIRB', 'amber', 28), ('2', '121.5 MHz · ביות', 'amber', 28), ('3', 'AIS · VHF · STATIC, DYNAMIC, VOYAGE', 'amber', 28), ('4', 'SART · עונה למכ״ם, לא משדר זיהוי', 'amber', 28)],
+         'מערכות אחרות', 'אלה לא תדרי NAVTEX.', 'u16_vhf_ais', shade=0.3)
+
+def s12b_navarea():
+    info('s12b_navarea', 'NAVAREA', '21 אזורים', 'sky',
+         [('21', 'אזורי NAVAREA בעולם', 'green', 30), ('III', 'ישראל · ים תיכון', 'green', 30), ('📡', 'תחנה מתאמת לכל אזור', 'green', 28)],
+         'NAVAREA', 'העולם מחולק ל-21 אזורים, לכל אחד מתאם.', 'l40_world_a1a2', shade=0.3)
+
+def s15b_memory():
+    info('s15b_memory', 'זיכרון המקלט', 'קוד הודעה', 'sky',
+         [('1', 'כל הודעה נקלטת עם קוד', 'green', 28), ('2', 'קוד שנשמר: ההודעה לא נקלטת שוב', 'green', 28), ('3', 'נקלטה עם שגיאות? מוחקים את הקוד', 'amber', 28)],
+         'הזיכרון', 'מחיקת הקוד מאפשרת קליטה חוזרת בשידור הבא.', 'l40_world_a1a2', shade=0.3)
+
+def s18b_relay():
+    info('s18b_relay', 'MAYDAY RELAY', 'ממסר מצוקה', 'sky',
+         [('📡', 'תחנת חוף שמעה מצוקה', 'amber', 28), ('➜', 'משדרת הלאה ב-NAVTEX', 'green', 28), ('🚢', 'כל ספינה בטווח מקבלת', 'green', 28)],
+         'ממסר מצוקה', 'המצוקה מועברת הלאה לכלי שיט בסביבה.', 'l40_rcc', shade=0.3)
+
+def s20b_levels():
+    info('s20b_levels', 'שלוש רמות', 'מצוקה, דחיפות, בטיחות', 'sky',
+         [('1', 'MAYDAY מצוקה · סכנה חמורה ומיידית', 'red', 28), ('2', 'PAN PAN דחיפות · בטיחות ספינה או אדם', 'amber', 28), ('3', 'SECURITE בטיחות · ניווט ומטאורולוגיה', 'green', 28)],
+         'עדיפויות', 'מצוקה, דחיפות, בטיחות.', 'l40_cockpit', shade=0.3)
+
+ALL = [v for k, v in sorted(globals().items()) if re.match(r's\d\d\w*?_', k) and callable(v)]
 
 if __name__ == '__main__':
     only = sys.argv[1:]
